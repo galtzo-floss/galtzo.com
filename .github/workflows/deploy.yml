@@ -30,7 +30,7 @@ jobs:
           bundle exec bridgetown build
 
       - name: Start ssh-agent and add deploy key
-        uses: webfactory/ssh-agent@v0.8.1
+        uses: webfactory/ssh-agent@v0.9.1
         with:
           ssh-private-key: ${{ secrets.DREAMHOST_SSH_PRIVATE_KEY }}
 
