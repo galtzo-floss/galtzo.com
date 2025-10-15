@@ -1,0 +1,10 @@
+- name: "example-project"
+  description: "A small example project demonstrating a feature."
+  url: "https://github.com/yourusername/example-project"
+  language: "Ruby"
+
+- name: "another-lib"
+  description: "A tiny library for doing useful things."
+  url: "https://github.com/yourusername/another-lib"
+  language: "JavaScript"
+

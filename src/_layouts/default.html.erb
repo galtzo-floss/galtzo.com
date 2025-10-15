@@ -1,0 +1,24 @@
+---
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title><%= (page.respond_to?(:data) && page.data["title"]) || site.config["title"] %></title>
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+  <header>
+    <nav><a href="/"><%= site.config["title"] %></a></nav>
+  </header>
+
+  <main>
+    <%= yield %>
+  </main>
+
+  <footer>
+    <p>&copy; <%= Time.now.strftime("%Y") %> <%= site.config["title"] %></p>
+  </footer>
+</body>
+</html>

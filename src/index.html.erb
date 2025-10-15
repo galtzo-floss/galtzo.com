@@ -1,0 +1,17 @@
+---
+layout: default
+title: Open Source Projects
+permalink: /
+---
+
+<h1><%= (page.respond_to?(:data) && page.data["title"]) || "Open Source Projects" %></h1>
+
+<ul>
+  <% site.data.projects.each do |project| %>
+  <li>
+    <h2><a href="<%= project["url"] %>"><%= project["name"] %></a></h2>
+    <p><%= project["description"] %></p>
+    <p><strong>Language:</strong> <%= project["language"] %></p>
+  </li>
+  <% end %>
+</ul>

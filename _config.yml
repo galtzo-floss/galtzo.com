@@ -1,0 +1,9 @@
+title: "galtzo.com — Open Source Projects"
+url: "http://localhost:4000"
+permalink: pretty
+
+# Use the `src/` directory as the Bridgetown source (we've moved site files into `src/`).
+source: "src"
+
+# Use ERB as the template engine (Bridgetown 2 default)
+template_engine: "erb"
