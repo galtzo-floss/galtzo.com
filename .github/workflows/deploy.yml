@@ -1,0 +1,68 @@
+name: Build and deploy to DreamHost
+
+on:
+  push:
+    branches: [ 'main' ]
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    name: Build site and deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.4'
+
+      - name: Install Bundler and dependencies
+        run: |
+          gem install bundler --no-document
+          bundle config set --local path 'vendor/bundle'
+          bundle install --jobs 4 --retry 3
+
+      - name: Build site (Bridgetown)
+        run: |
+          bundle exec bridgetown build
+
+      - name: Start ssh-agent and add deploy key
+        uses: webfactory/ssh-agent@v0.8.1
+        with:
+          ssh-private-key: ${{ secrets.DREAMHOST_SSH_PRIVATE_KEY }}
+
+      - name: Ensure DreamHost host key is known
+        env:
+          SSH_HOST: ${{ secrets.DREAMHOST_SSH_HOST }}
+          SSH_PORT: ${{ secrets.DREAMHOST_SSH_PORT }}
+        run: |
+          # Add host key to known_hosts to avoid interactive prompt.
+          # If SSH_PORT is not set, default to 22.
+          PORT=${SSH_PORT:-22}
+          ssh-keyscan -p "$PORT" -H "$SSH_HOST" >> ~/.ssh/known_hosts || true
+
+      - name: Deploy to DreamHost with rsync
+        env:
+          SSH_USER: ${{ secrets.DREAMHOST_SSH_USER }}
+          SSH_HOST: ${{ secrets.DREAMHOST_SSH_HOST }}
+          SSH_PORT: ${{ secrets.DREAMHOST_SSH_PORT }}
+          TARGET_DIR: ${{ secrets.DREAMHOST_TARGET_DIR }}
+        run: |
+          # Default SSH port to 22 if not provided
+          PORT=${SSH_PORT:-22}
+          echo "Deploying to ${SSH_USER}@${SSH_HOST}:${TARGET_DIR} (port ${PORT})"
+          rsync -avz --delete -e "ssh -p ${PORT} -o StrictHostKeyChecking=no" output/ ${SSH_USER}@${SSH_HOST}:${TARGET_DIR}
+
+# Notes for repository admin:
+# Required repository secrets (add these in Settings → Secrets → Actions):
+# - DREAMHOST_SSH_PRIVATE_KEY : the private SSH key (PEM) for a deploy user on DreamHost
+# - DREAMHOST_SSH_USER        : the SSH username on DreamHost
+# - DREAMHOST_SSH_HOST        : the DreamHost host (e.g. example.com or IP)
+# - DREAMHOST_TARGET_DIR      : the absolute path on the remote where files should be deployed (e.g. /home/username/example.com/)
+# - DREAMHOST_SSH_PORT        : (optional) SSH port if not 22
+# How to create a deploy key:
+#   ssh-keygen -t ed25519 -C "github-actions-deploy" -f gh_deploy_key -N ""
+# Add the contents of gh_deploy_key to the DREAMHOST_SSH_PRIVATE_KEY secret and add gh_deploy_key.pub to the remote server's ~/.ssh/authorized_keys for the deploy user.
