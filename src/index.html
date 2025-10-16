@@ -2,30 +2,35 @@
 layout: default
 title: Open Source Projects
 permalink: /
+body_class: projects
 ---
 
 <h1><%= (page.respond_to?(:data) && page.data["title"]) || "Open Source Projects" %></h1>
 
-<ul>
+<ul class="project-list">
   <% site.data.projects.each do |project| %>
   <li class="card">
     <h2>
-      <img
-              src="/assets/images/<%= project['language'] %>.svg"
-              alt="language: <%= project['language'] %>"
-              class="language"
-      >
       <%= project["name"] %>
-      <% project["forges"].each do |forge| %>
-          <a href="<%= forge['url'] %>" class="forge-link" target="_blank" rel="noopener">
-                <img
-                        src="/assets/images/<%= forge['type'] %>.svg"
-                        alt="forge: <%= forge['type'] %> (<%= forge['url'] %>)"
-                        class="forge"
-                >
-          </a>
-      <% end %>
     </h2>
+    <p>
+      <a href="https://bestgems.org/gems/<%= project['name'] %>" class="gem-link" target="_blank" rel="noopener">
+        <img
+                src="/assets/images/<%= project['language'] %>.svg"
+                alt="language: <%= project['language'] %>"
+                class="language"
+        >
+      </a>
+      <% project["forges"].each do |forge| %>
+        <a href="<%= forge['url'] %>" class="forge-link" target="_blank" rel="noopener">
+          <img
+                  src="/assets/images/<%= forge['type'] %>.svg"
+                  alt="forge: <%= forge['type'] %> (<%= forge['url'] %>)"
+                  class="forge"
+          >
+        </a>
+      <% end %>
+    </p>
     <p>
       <% if project["tags"] && project["tags"].any? %>
         <% project["tags"].each do |tag| %>

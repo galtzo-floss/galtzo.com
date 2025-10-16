@@ -4,32 +4,56 @@ h1 { border-bottom: 1px solid #eee; padding-bottom: .25rem; }
 li { margin: 1rem 0; }
 
 .language {
-  width: 24px;
-  height: 24px;
-  margin-bottom: -3px;
+  width: 20px;
+  height: 20px;
+  padding: 0.3rem 0.75rem;
+  margin-right: 0.5rem;
+  box-shadow: 0 0 10px rgba(255, 100, 0, 0.8);
+  background-color: rgba(255, 100, 0, 0.8);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
 }
 
 .forge {
-  width: 24px;
-  height: 24px;
-  margin: -3px;
+  width: 20px;
+  height: 20px;
+  padding: 0.3rem 0.75rem;
+  margin-right: 0.5rem;
   box-shadow: 0 0 10px rgba(255, 100, 0, 0.8);
-  background-color: rgba(255, 100, 0, 0.2);
+  background-color: rgba(255, 100, 0, 0.8);
 }
 
-.forge-link {
-  text-decoration: none;
-  padding: 0 7px 0 7px;
+.project-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  list-style: none;
+  padding: 0;
+}
+
+.card {
+  width: 450px;
+  box-sizing: border-box;
+  border: 1px solid #eee;
+  padding: 1rem;
+  border-radius: 4px;
 }
 
 .tag {
     display: inline-block;
     background-color: #eee;
     border-radius: 9999px;
-    padding: 0.1rem 0.75rem;
+    padding: 0.3rem 0.75rem;
     font-size: 0.75rem;
     font-weight: 600;
     margin-right: 0.5rem;
-    margin-top: -10px;
+    /*margin-top: -10px;*/
     box-shadow: 0 0 10px rgba(255, 100, 0, 0.6);
+}
+
+.projects {
+  max-width: none;
 }

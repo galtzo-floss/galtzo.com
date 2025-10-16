@@ -4,7 +4,7 @@
   language: Ruby
   forges:
     - type: GitHub
-      url: https://github.com/pboling/active_security
+      url: https://github.com/galtzo-floss/active_security
   tags:
     - rails
     - activerecord
@@ -14,7 +14,9 @@
     advantage of the features of ActiveRecord such as validation, relationships, nested_attributes,
     etc.
   language: Ruby
-  forges: [ ]
+  forges:
+    - type: GitHub
+      url: https://github.com/galtzo-floss/activerecord-tablefree
   tags:
     - rails
     - activerecord
@@ -23,7 +25,13 @@
   language: Ruby
   forges:
     - type: GitHub
-      url: https://github.com/pboling/activerecord-transactionable
+      url: https://github.com/galtzo-floss/activerecord-transactionable
+    - type: GitLab
+      url: https://gitlab.com/galtzo-floss/activerecord-transactionable
+    - type: Codeberg
+      url: https://codeberg.org/galtzo-floss/activerecord-transactionable
+    - type: SourceHut
+      url: https://git.sr.ht/~galtzo/activerecord-transactionable
   tags:
     - rails
     - activerecord
@@ -33,7 +41,7 @@
   language: Ruby
   forges:
     - type: GitHub
-      url: https://github.com/pboling/activesupport-broadcast_logger
+      url: https://github.com/galtzo-floss/activesupport-broadcast_logger
   tags:
     - rails
     - activesupport
@@ -43,7 +51,7 @@
   language: Ruby
   forges:
     - type: GitHub
-      url: https://github.com/pboling/activesupport-logger
+      url: https://github.com/galtzo-floss/activesupport-logger
   tags:
     - rails
     - activesupport
@@ -54,7 +62,7 @@
   language: Ruby
   forges:
     - type: GitHub
-      url: https://github.com/pboling/activesupport-tagged_logging
+      url: https://github.com/galtzo-floss/activesupport-tagged_logging
   tags:
     - rails
     - activesupport
@@ -64,7 +72,7 @@
   language: Ruby
   forges:
     - type: GitHub
-      url: http://github.com/pboling/anonymous_active_record
+      url: https://github.com/galtzo-floss/anonymous_active_record
   tags:
     - rails
     - activerecord
@@ -74,20 +82,28 @@
   language: Ruby
   forges:
     - type: GitHub
-      url: https://github.com/appraisal-rb/appraisal2/releases/tag/v3.0.0
+      url: https://github.com/appraisal-rb/appraisal2
+    - type: GitLab
+      url: https://gitlab.com/appraisal-rb/appraisal2
+    - type: Codeberg
+      url: https://codeberg.org/appraisal-rb/appraisal2
   tags:
     - testing
 - name: archivist-client
   description: archivist-client queries archive.org for book data and downloads some
     things.
   language: Ruby
-  forges: [ ]
+  forges:
+    - type: GitHub
+      url: https://github.com/wordtreefoundation/archivist-client
   tags:
     - archival
 - name: awesome_search
   description: Organize complicated search results
   language: Ruby
-  forges: [ ]
+  forges:
+    - type: GitHub
+      url: https://github.com/galtzo-floss/awesome_search
   tags:
     - unmaintained
 - name: cacheable_flash
@@ -97,16 +113,21 @@
     view template.  Flash contents are converted to JSON and placed in
     a cookie by an after_filter (default) or a Rack Middleware (option).
   language: Ruby
-  forges: [ ]
+  forges:
+    - type: GitHub
+      url: https://github.com/galtzo-floss/cacheable_flash
   tags:
     - unmaintained
+    - toast
 - name: capistrano_mailer
   description: Capistrano Deployment Email Notification.  Keep the whole team informed
     of each release!
   language: Ruby
   forges:
     - type: GitHub
-      url: http://github.com/pboling/capistrano_mailer
+      url: https://github.com/galtzo-floss/capistrano_mailer
+    - type: SourceHut
+      url: https://git.sr.ht/~galtzo/capistrano_mailer
   tags:
     - capistrano
     - email
@@ -115,7 +136,11 @@
   description: Asynchronously LISTEN for Postgresql NOTIFY messages with payloads
     and Do Something
   language: Ruby
-  forges: [ ]
+  forges:
+    - type: GitHub
+      url: https://github.com/galtzo-floss/celluloid-io-pg-listener
+    - type: SourceHut
+      url: https://git.sr.ht/~galtzo/celluloid-io-pg-listener
   tags:
     - postgresql
     - pub-sub
@@ -124,7 +149,9 @@
 - name: controller_validator
   description: Use the familiar ActiveModel::Errors pattern for controller validations
   language: Ruby
-  forges: [ ]
+  forges:
+    - type: GitHub
+      url: https://github.com/galtzo-floss/controller_validator
   tags:
     - rails
     - controllers
@@ -136,7 +163,9 @@
   language: Ruby
   forges:
     - type: GitHub
-      url: http://github.com/pboling/csv_pirate
+      url: https://github.com/galtzo-floss/csv_pirate
+    - type: SourceHut
+      url: https://git.sr.ht/~galtzo/csv_pirate
   tags:
     - rails
     - activerecord
@@ -150,7 +179,13 @@
   language: Ruby
   forges:
     - type: GitHub
-      url: https://github.com/pboling/debug_logging
+      url: https://github.com/galtzo-floss/debug_logging
+    - type: GitLab
+      url: https://gitlab.com/galtzo-floss/debug_logging
+    - type: Codeberg
+      url: https://codeberg.org/galtzo-floss/debug_logging
+    - type: SourceHut
+      url: https://git.sr.ht/~galtzo/debug_logging
   tags:
     - logging
     - debugging
@@ -159,7 +194,11 @@
   description: Useful when a presenter deals with multiple objects that may enter
     into error states, and the errors need to be collected at a single point.
   language: Ruby
-  forges: [ ]
+  forges:
+    - type: GitHub
+      url: https://github.com/galtzo-floss/destination_errors
+    - type: GitLab
+      url: https://gitlab.com/galtzo-floss/destination_errors
   tags:
     - rails
     - presenters
@@ -168,7 +207,11 @@
   description: 'Provides extensions to ActionView::Helpers::CaptureHelper: content_for_with_default,
     no_content_for, and an enhanced content_for that plays nice with friends'
   language: Ruby
-  forges: [ ]
+  forges:
+    - type: GitHub
+      url: https://github.com/galtzo-floss/dry_views
+    - type: SourceHut
+      url: https://git.sr.ht/~galtzo/dry_views
   tags:
     - rails
     - views
@@ -187,7 +230,11 @@
 - name: each_in_batches
   description: Batch Processing of Records with Blocks in Rails
   language: Ruby
-  forges: [ ]
+  forges:
+    - type: GitHub
+      url: https://github.com/galtzo-floss/each_in_batches
+    - type: SourceHut
+      url: https://git.sr.ht/~galtzo/each_in_batches
   tags:
     - rails
     - activerecord
@@ -203,6 +250,8 @@
       url: https://gitlab.com/galtzo-floss/flag_shih_tzu
     - type: Codeberg
       url: https://codeberg.org/galtzo-floss/flag_shih_tzu
+    - type: SourceHut
+      url: https://git.sr.ht/~galtzo/flag_shih_tzu
   tags:
     - rails
     - activerecord
@@ -227,7 +276,9 @@
   language: Ruby
   forges:
     - type: GitHub
-      url: http://github.com/pboling/gem_bench
+      url: https://github.com/pboling/gem_bench
+    - type: SourceHut
+      url: https://git.sr.ht/~galtzo/gem_bench
   tags:
     - performance
     - benchmarking
@@ -240,6 +291,8 @@
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/gitmoji-regex
+    - type: SourceHut
+      url: https://git.sr.ht/~galtzo/gitmoji-regex
   tags:
     - emoji
     - git
@@ -247,7 +300,9 @@
 - name: humorous_log_formatter
   description: Humorous Log Levels and Color For Rails.  Customizable!
   language: Ruby
-  forges: [ ]
+  forges:
+    - type: GitHub
+      url: https://github.com/galtzo-floss/humorous_log_formatter
   tags:
     - unmaintained
     - logging
@@ -256,7 +311,9 @@
   language: Ruby
   forges:
     - type: GitHub
-      url: http://github.com/pboling/include_with_respect
+      url: https://github.com/pboling/include_with_respect
+    - type: SourceHut
+      url: https://git.sr.ht/~galtzo/include_with_respect
   tags:
     - testing
 - name: json_schemer-fuzz
@@ -279,6 +336,10 @@
   forges:
     - type: GitHub
       url: https://github.com/kettle-rb/kettle-dev
+    - type: GitLab
+      url: https://gitlab.com/kettle-rb/kettle-dev
+    - type: Codeberg
+      url: https://codeberg.org/kettle-rb/kettle-dev
   tags:
     - harness
     - template
@@ -296,6 +357,10 @@
   forges:
     - type: GitHub
       url: https://github.com/kettle-rb/kettle-soup-cover
+    - type: GitLab
+      url: https://gitlab.com/kettle-rb/kettle-soup-cover
+    - type: Codeberg
+      url: https://codeberg.org/kettle-rb/kettle-soup-cover
   tags:
     - testing
     - coverage
@@ -311,6 +376,10 @@
   forges:
     - type: GitHub
       url: https://github.com/kettle-rb/kettle-test
+    - type: GitLab
+      url: https://gitlab.com/kettle-rb/kettle-test
+    - type: Codeberg
+      url: https://codeberg.org/kettle-rb/kettle-test
   tags:
     - harness
     - testing
@@ -318,7 +387,9 @@
   description: Organize data results from raw sql queries (as with PGresult, or Dossier)
     intelligently.
   language: Ruby
-  forges: [ ]
+  forges:
+    - type: GitHub
+      url: https://github.com/galtzo-floss/letter_group
   tags:
     - unmaintained
 - name: library_tree
@@ -329,14 +400,32 @@
       url: https://github.com/galtzo-floss/library_tree
   tags:
     - experimental
-- name: masq2
-  description: Masq2 supports OpenID 2.0 and supports SReg, AX (fetch and store requests)
+- name: masq
+  description: Masq supports OpenID 2.0 and supports SReg, AX (fetch and store requests)
     and PAPE as well as some custom additions like multi-factor authentication using
     a yubikey
   language: Ruby
   forges:
     - type: GitHub
-      url: https://github.com/ruby-openid/masq2
+      url: https://github.com/ruby-openid/masq
+    - type: GitLab
+      url: https://gitlab.com/ruby-openid/masq
+    - type: Codeberg
+      url: https://codeberg.org/ruby-openid/masq
+  tags:
+    - openid
+    - authentication
+    - security
+- name: masq2
+  description: Originally a fork. Has been merged back to the original gem.
+  language: Ruby
+  forges:
+    - type: GitHub
+      url: https://github.com/ruby-openid/masq
+    - type: GitLab
+      url: https://gitlab.com/ruby-openid/masq
+    - type: Codeberg
+      url: https://codeberg.org/ruby-openid/masq
   tags:
     - openid
     - authentication
@@ -344,7 +433,11 @@
 - name: month-serializer
   description: Serialize Month objects to Integer
   language: Ruby
-  forges: [ ]
+  forges:
+    - type: GitHub
+      url: https://github.com/galtzo-floss/month-serializer
+    - type: SourceHut
+      url: https://git.sr.ht/~galtzo/month-serializer
   tags:
     - time
     - math
@@ -355,6 +448,10 @@
   forges:
     - type: GitHub
       url: https://github.com/ruby-oauth/oauth
+    - type: GitLab
+      url: https://gitlab.com/ruby-oauth/oauth
+    - type: Codeberg
+      url: https://codeberg.org/ruby-oauth/oauth
   tags:
     - oauth
     - authorization
@@ -365,6 +462,10 @@
   forges:
     - type: GitHub
       url: https://github.com/ruby-oauth/oauth-tty
+    - type: GitLab
+      url: https://gitlab.com/ruby-oauth/oauth-tty
+    - type: Codeberg
+      url: https://codeberg.org/ruby-oauth/oauth-tty
   tags:
     - oauth
     - authorization
@@ -378,6 +479,8 @@
       url: https://github.com/ruby-oauth/oauth2
     - type: GitLab
       url: https://gitlab.com/ruby-oauth/oauth2
+    - type: Codeberg
+      url: https://codeberg.org/ruby-oauth/oauth2
   tags:
     - oauth
     - authorization
@@ -394,21 +497,27 @@
 - name: omniauth-jwt
   description: An OmniAuth strategy to accept JWT-based single sign-on.
   language: Ruby
-  forges: [ ]
+  forges:
+    - type: GitHub
+      url: https://github.com/omniauth/omniauth-jwt
   tags:
     - authentication
     - security
 - name: omniauth-jwt2
-  description: An OmniAuth strategy to accept JWT-based single sign-on.
+  description: Originally a fork. Has been merged back to the original gem.
   language: Ruby
-  forges: [ ]
+  forges:
+    - type: GitHub
+      url: https://github.com/omniauth/omniauth-jwt2
   tags:
     - authentication
     - security
 - name: omniauth-ldap
   description: A LDAP strategy for OmniAuth.
   language: Ruby
-  forges: [ ]
+  forges:
+    - type: GitHub
+      url: https://github.com/omniauth/omniauth-ldap
   tags:
     - authentication
     - security
@@ -418,6 +527,10 @@
   forges:
     - type: GitHub
       url: https://github.com/ruby-openid/omniauth-openid
+    - type: GitLab
+      url: https://gitlab.com/ruby-openid/omniauth-openid
+    - type: Codeberg
+      url: https://codeberg.org/ruby-openid/omniauth-openid
   tags:
     - openid
     - authentication
@@ -428,6 +541,10 @@
   forges:
     - type: GitHub
       url: https://github.com/ruby-openid/open_id_authentication
+    - type: GitLab
+      url: https://gitlab.com/ruby-openid/open_id_authentication
+    - type: Codeberg
+      url: https://codeberg.org/ruby-openid/open_id_authentication
   tags:
     - openid
     - authentication
@@ -440,14 +557,20 @@
   language: Ruby
   forges:
     - type: GitHub
-      url: https://github.com/pboling/pretty_feed
+      url: https://github.com/galtzo-floss/pretty_feed
+    - type: SourceHut
+      url: https://git.sr.ht/~galtzo/pretty_feed
   tags:
     - logging
     - debugging
 - name: qfill
   description: Advanced Queue Transformation
   language: Ruby
-  forges: [ ]
+  forges:
+    - type: GitHub
+      url: https://github.com/galtzo-floss/qfill
+    - type: SourceHut
+      url: https://git.sr.ht/~galtzo/qfill
   tags:
     - queues
 - name: rack-insight
@@ -455,7 +578,9 @@
     Debugging toolbar for Rack applications implemented as middleware.
         Based on logical-insight and rack-bug.
   language: Ruby
-  forges: [ ]
+  forges:
+    - type: GitHub
+      url: https://github.com/galtzo-floss/rack-insight
   tags:
     - rack-middleware
     - unmaintained
@@ -464,17 +589,25 @@
   language: Ruby
   forges:
     - type: GitHub
-      url: http://github.com/ruby-openid/rack-openid
+      url: https://github.com/ruby-openid/rack-openid
+    - type: GitLab
+      url: https://gitlab.com/ruby-openid/rack-openid
+    - type: Codeberg
+      url: https://codeberg.org/ruby-openid/rack-openid
   tags:
     - openid
     - authentication
     - security
 - name: rack-openid2
-  description: Provides a more HTTPish API around the ruby-openid2 library
+  description: Originally a fork. Has been merged back to the original gem.
   language: Ruby
   forges:
     - type: GitHub
       url: https://github.com/ruby-openid/rack-openid2
+    - type: GitLab
+      url: https://gitlab.com/ruby-openid/rack-openid
+    - type: Codeberg
+      url: https://codeberg.org/ruby-openid/rack-openid
   tags:
     - openid
     - authentication
@@ -483,7 +616,9 @@
   description: Provides an easy way to create Rack Middleware that injects things
     into the response body. Extracted from rack-insight.
   language: Ruby
-  forges: [ ]
+  forges:
+    - type: GitHub
+      url: https://github.com/galtzo-floss/rack-toolbar
   tags:
     - rack-middleware
     - unmaintained
@@ -493,7 +628,9 @@
       An alternate environment name, like "localdev", will prevent confusion,
       when "dev", or "develop", is used as a deployed environment.
   language: Ruby
-  forges: [ ]
+  forges:
+    - type: GitHub
+      url: https://github.com/galtzo-floss/rails_env_local
   tags:
     - rails
     - unmaintained
@@ -501,7 +638,9 @@
   description: Concern::Instrumentation Plugin for React::Rails Render Benchmarking
     with a reference implementation
   language: Ruby
-  forges: [ ]
+  forges:
+    - type: GitHub
+      url: https://github.com/galtzo-floss/react-rails-benchmark_renderer
   tags:
     - rails
     - react
@@ -509,7 +648,9 @@
 - name: remit
   description: An API for using the Amazon Flexible Payment Service (FPS).
   language: Ruby
-  forges: [ ]
+  forges:
+    - type: GitHub
+      url: https://github.com/galtzo-floss/remit
   tags:
     - unmaintained
     - payments
@@ -519,8 +660,14 @@
     Ruby by logging/benchmarking/timing-out/rescuing 'Kernel.require' & 'load'
   language: Ruby
   forges:
+    - type: GitHub
+      url: https://github.com/galtzo-floss/remit
     - type: GitLab
-      url: https://gitlab.com/pboling/require_bench/-
+      url: https://gitlab.com/galtzo-floss/require_bench
+    - type: Codeberg
+      url: https://codeberg.org/galtzo-floss/require_bench
+    - type: SourceHut
+      url: https://git.sr.ht/~galtzo/require_bench
   tags:
     - performance
     - debugging
@@ -538,7 +685,9 @@
         end
       end
   language: Ruby
-  forges: [ ]
+  forges:
+    - type: GitHub
+      url: https://github.com/resque/resque-lonely_job
   tags:
     - queues
     - uniqueness
@@ -556,7 +705,9 @@
         end
       end
   language: Ruby
-  forges: [ ]
+  forges:
+    - type: GitHub
+      url: https://github.com/resque/resque-unique_at_runtime
   tags:
     - queues
     - uniqueness
@@ -564,14 +715,20 @@
   description: Configure resque-unique_in_queue and resque-unique_at_runtime uniqueness
     by arity of perform method, with automated cleanup tools
   language: Ruby
-  forges: [ ]
+  forges:
+    - type: GitHub
+      url: https://github.com/resque/resque-unique_by_arity
+    - type: SourceHut
+      url: https://git.sr.ht/~galtzo/resque-unique_by_arity
   tags:
     - queues
     - uniqueness
 - name: resque-unique_in_queue
   description: A resque plugin that ensures job uniqueness at enqueue time.
   language: Ruby
-  forges: [ ]
+  forges:
+    - type: GitHub
+      url: https://github.com/resque/resque-unique_in_queue
   tags:
     - queues
     - uniqueness
@@ -583,18 +740,28 @@
   language: Ruby
   forges:
     - type: GitHub
-      url: http://github.com/ruby-openid/rots
+      url: https://github.com/ruby-openid/rots
+    - type: GitLab
+      url: https://gitlab.com/ruby-openid/rots
+    - type: Codeberg
+      url: https://codeberg.org/ruby-openid/rots
   tags:
     - openid
     - authentication
     - security
+    - testing
 - name: rspec-block_is_expected
-  description: subject { Integer(nil) }; it('raises') { block_is_expected.to raise_error(TypeError)
-    }
+  description: subject { Integer(nil) }; it('raises') { block_is_expected.to raise_error(TypeError) }
   language: Ruby
   forges:
     - type: GitHub
-      url: https://github.com/pboling/rspec-block_is_expected
+      url: https://github.com/galtzo-floss/rspec-block_is_expected
+    - type: GitLab
+      url: https://gitlab.com/galtzo-floss/rspec-block_is_expected
+    - type: Codeberg
+      url: https://codeberg.org/galtzo-floss/rspec-block_is_expected
+    - type: SourceHut
+      url: https://git.sr.ht/~galtzo/rspec-block_is_expected
   tags:
     - rspec
     - testing
@@ -606,8 +773,12 @@
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/rspec-pending_for
+    - type: GitLab
+      url: https://gitlab.com/galtzo-floss/rspec-pending_for
     - type: Codeberg
       url: https://codeberg.org/galtzo-floss/rspec-pending_for
+    - type: SourceHut
+      url: https://git.sr.ht/~galtzo/rspec-pending_for
   tags:
     - rspec
     - testing
@@ -620,6 +791,12 @@
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/rspec-stubbed_env
+    - type: GitLab
+      url: https://gitlab.com/galtzo-floss/rspec-stubbed_env
+    - type: Codeberg
+      url: https://codeberg.org/galtzo-floss/rspec-stubbed_env
+    - type: SourceHut
+      url: https://git.sr.ht/~galtzo/rspec-stubbed_env
   tags:
     - rspec
     - testing
@@ -628,7 +805,11 @@
   language: Ruby
   forges:
     - type: GitLab
-      url: https://gitlab.com/rubocop-lts/rubocop-lts/-
+      url: https://gitlab.com/rubocop-lts/rubocop-lts
+    - type: GitLab
+      url: https://gitlab.com/rubocop-lts/rubocop-lts
+    - type: Codeberg
+      url: https://codeberg.org/rubocop-lts/rubocop-lts
   tags:
     - rubocop
 - name: rubocop-ruby1_8
@@ -637,6 +818,8 @@
   forges:
     - type: GitHub
       url: https://github.com/rubocop-lts/rubocop-ruby1_8
+    - type: GitLab
+      url: https://gitlab.com/rubocop-lts/rubocop-ruby1_8
   tags:
     - rubocop
 - name: rubocop-ruby1_9
@@ -645,6 +828,8 @@
   forges:
     - type: GitHub
       url: https://github.com/rubocop-lts/rubocop-ruby1_9
+    - type: GitLab
+      url: https://gitlab.com/rubocop-lts/rubocop-ruby1_9
   tags:
     - rubocop
 - name: rubocop-ruby2_0
@@ -653,6 +838,8 @@
   forges:
     - type: GitHub
       url: https://github.com/rubocop-lts/rubocop-ruby2_0
+    - type: GitLab
+      url: https://gitlab.com/rubocop-lts/rubocop-ruby2_0
   tags:
     - rubocop
 - name: rubocop-ruby2_1
@@ -661,6 +848,8 @@
   forges:
     - type: GitHub
       url: https://github.com/rubocop-lts/rubocop-ruby2_1
+    - type: GitLab
+      url: https://gitlab.com/rubocop-lts/rubocop-ruby2_1
   tags:
     - rubocop
 - name: rubocop-ruby2_2
@@ -669,6 +858,8 @@
   forges:
     - type: GitHub
       url: https://github.com/rubocop-lts/rubocop-ruby2_2
+    - type: GitLab
+      url: https://gitlab.com/rubocop-lts/rubocop-ruby2_2
   tags:
     - rubocop
 - name: rubocop-ruby2_3
@@ -677,6 +868,8 @@
   forges:
     - type: GitHub
       url: https://github.com/rubocop-lts/rubocop-ruby2_3
+    - type: GitLab
+      url: https://gitlab.com/rubocop-lts/rubocop-ruby2_3
   tags:
     - rubocop
 - name: rubocop-ruby2_4
@@ -685,6 +878,8 @@
   forges:
     - type: GitHub
       url: https://github.com/rubocop-lts/rubocop-ruby2_4
+    - type: GitLab
+      url: https://gitlab.com/rubocop-lts/rubocop-ruby2_4
   tags:
     - rubocop
 - name: rubocop-ruby2_5
@@ -693,6 +888,8 @@
   forges:
     - type: GitHub
       url: https://github.com/rubocop-lts/rubocop-ruby2_5
+    - type: GitLab
+      url: https://gitlab.com/rubocop-lts/rubocop-ruby2_5
   tags:
     - rubocop
 - name: rubocop-ruby2_6
@@ -701,6 +898,8 @@
   forges:
     - type: GitHub
       url: https://github.com/rubocop-lts/rubocop-ruby2_6
+    - type: GitLab
+      url: https://gitlab.com/rubocop-lts/rubocop-ruby2_6
   tags:
     - rubocop
 - name: rubocop-ruby2_7
@@ -709,6 +908,8 @@
   forges:
     - type: GitHub
       url: https://github.com/rubocop-lts/rubocop-ruby2_7
+    - type: GitLab
+      url: https://gitlab.com/rubocop-lts/rubocop-ruby2_7
   tags:
     - rubocop
 - name: rubocop-ruby3_0
@@ -717,6 +918,10 @@
   forges:
     - type: GitHub
       url: https://github.com/rubocop-lts/rubocop-ruby3_0
+    - type: GitLab
+      url: https://gitlab.com/rubocop-lts/rubocop-ruby3_0
+    - type: Codeberg
+      url: https://codeberg.org/rubocop-lts/rubocop-ruby3_0
   tags:
     - rubocop
 - name: rubocop-ruby3_1
@@ -725,6 +930,8 @@
   forges:
     - type: GitHub
       url: https://github.com/rubocop-lts/rubocop-ruby3_1
+    - type: GitLab
+      url: https://gitlab.com/rubocop-lts/rubocop-ruby3_1
   tags:
     - rubocop
 - name: rubocop-ruby3_2
@@ -733,6 +940,8 @@
   forges:
     - type: GitHub
       url: https://github.com/rubocop-lts/rubocop-ruby3_2
+    - type: GitLab
+      url: https://gitlab.com/rubocop-lts/rubocop-ruby3_2
   tags:
     - rubocop
 - name: ruby-openid
@@ -741,16 +950,24 @@
   forges:
     - type: GitHub
       url: https://github.com/ruby-openid/ruby-openid
+    - type: GitLab
+      url: https://gitlab.com/ruby-openid/ruby-openid
+    - type: Codeberg
+      url: https://codeberg.org/ruby-openid/ruby-openid
   tags:
     - openid
     - authentication
     - security
 - name: ruby-openid2
-  description: A library for consuming and serving OpenID identities.
+  description: Originally a fork. Has been merged back to the original gem.
   language: Ruby
   forges:
     - type: GitHub
-      url: https://github.com/ruby-openid/ruby-openid2
+      url: https://github.com/ruby-openid/ruby-openid
+    - type: GitLab
+      url: https://gitlab.com/ruby-openid/ruby-openid
+    - type: Codeberg
+      url: https://codeberg.org/ruby-openid/ruby-openid
   tags:
     - openid
     - authentication
@@ -763,6 +980,12 @@
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/sanitize_email
+    - type: GitLab
+      url: https://gitlab.com/galtzo-floss/sanitize_email
+    - type: Codeberg
+      url: https://codeberg.org/galtzo-floss/sanitize_email
+    - type: SourceHut
+      url: https://git.sr.ht/~galtzo/sanitize_email
   tags:
     - rails
     - email
@@ -772,6 +995,8 @@
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/seed_migration
+    - type: SourceHut
+      url: https://git.sr.ht/~galtzo/seed_migration
   tags:
     - rails
     - seed
@@ -779,7 +1004,11 @@
 - name: sequential_file
   description: Create Files Named Sequentially Intelligently
   language: Ruby
-  forges: [ ]
+  forges:
+    - type: GitHub
+      url: https://github.com/galtzo-floss/sequential_file
+    - type: SourceHut
+      url: https://git.sr.ht/~galtzo/sequential_file
   tags:
     - unmaintained
 - name: service_actor-promptable
@@ -787,7 +1016,9 @@
   language: Ruby
   forges:
     - type: GitHub
-      url: https://github.com/pboling/service_actor-promptable
+      url: https://github.com/galtzo-floss/service_actor-promptable
+    - type: SourceHut
+      url: https://git.sr.ht/~galtzo/service_actor-promptable
   tags:
     - service-objects
     - tty
@@ -798,7 +1029,11 @@
   language: Ruby
   forges:
     - type: GitHub
-      url: https://github.com/galtzo-floss/shields-badge/releases/tag//v1.0.0
+      url: https://github.com/galtzo-floss/shields-badge
+    - type: GitLab
+      url: https://gitlab.com/galtzo-floss/shields-badge
+    - type: Codeberg
+      url: https://codeberg.org/galtzo-floss/shields-badge
   tags:
     - badges
     - shields
@@ -809,7 +1044,9 @@
   language: Ruby
   forges:
     - type: GitHub
-      url: https://github.com/pboling/shiftable
+      url: https://github.com/galtzo-floss/shiftable
+    - type: Shiftable
+      url: https://git.sr.ht/~galtzo/shiftable
   tags:
     - rails
     - activerecord
@@ -821,6 +1058,12 @@
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/silent_stream
+    - type: GitLab
+      url: https://gitlab.com/galtzo-floss/silent_stream
+    - type: Codeberg
+      url: https://codeberg.org/galtzo-floss/silent_stream
+    - type: Shiftable
+      url: https://git.sr.ht/~galtzo/silent_stream
   tags:
     - testing
     - logging
@@ -828,7 +1071,9 @@
   description: Dynamic modules which define dynamic methods for scopes based on a
     dynamic array of column names
   language: Ruby
-  forges: [ ]
+  forges:
+    - type: GitHub
+      url: https://github.com/galtzo-floss/simple_column-scopes
   tags:
     - rails
     - activerecord
@@ -837,7 +1082,11 @@
   language: Ruby
   forges:
     - type: GitHub
-      url: https://github.com/ruby-oauth/snaky_hash/releases/tag//v2.0.3
+      url: https://github.com/ruby-oauth/snaky_hash
+    - type: GitLab
+      url: https://gitlab.com/ruby-oauth/snaky_hash
+    - type: Codeberg
+      url: https://codeberg.org/ruby-oauth/snaky_hash
   tags:
     - hashie
     - snake_case
@@ -846,7 +1095,7 @@
   language: Ruby
   forges:
     - type: GitHub
-      url: https://github.com/pboling/spyke-connection_lambda
+      url: https://github.com/galtzo-floss/spyke-connection_lambda
   tags:
     - spyke
     - api
@@ -854,17 +1103,24 @@
   description: Allows flashes to stack intelligently, while preserving existing behavior
     of the Rails FlashHash
   language: Ruby
-  forges: [ ]
+  forges:
+    - type: GitHub
+      url: https://github.com/galtzo-floss/stackable_flash
   tags:
     - unmaintained
+    - toast
 - name: standard-rubocop-lts
   description: |
     Enables Ruby projects to more confidently support even the most finely-aged Rubies.
     Part of the rubocop-lts family.
   language: Ruby
   forges:
+    - type: GitHub
+      url: https://github.com/rubocop-lts/standard-rubocop-lts
     - type: GitLab
-      url: https://gitlab.com/rubocop-lts/standard-rubocop-lts/-
+      url: https://gitlab.com/rubocop-lts/standard-rubocop-lts
+    - type: Codeberg
+      url: https://codeberg.org/rubocop-lts/standard-rubocop-lts
   tags:
     - standard
     - rubocop
@@ -873,7 +1129,15 @@
     Provides content_tag_for method signature to create customizable and logic-gated labels from objects.
     Also includes a presenter base class to allow any Ruby web framework to create logic around HTML tags
   language: Ruby
-  forges: [ ]
+  forges:
+    - type: GitHub
+      url: https://github.com/galtzo-floss/status_tag
+    - type: GitLab
+      url: https://gitlab.com/galtzo-floss/status_tag
+    - type: Codeberg
+      url: https://codeberg.org/galtzo-floss/status_tag
+    - type: Shiftable
+      url: https://git.sr.ht/~galtzo/status_tag
   tags:
     - rails
     - presenters
@@ -887,6 +1151,10 @@
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/stone_checksums
+    - type: GitLab
+      url: https://gitlab.com/galtzo-floss/stone_checksums
+    - type: Codeberg
+      url: https://codeberg.org/galtzo-floss/stone_checksums
   tags:
     - checksums
     - security
@@ -895,7 +1163,11 @@
   description: Safely access state machine states with guarantee that there are no
     typos.  Compatible with all Ruby state machine libraries.
   language: Ruby
-  forges: [ ]
+  forges:
+    - type: GitHub
+      url: https://github.com/galtzo-floss/strict_states
+    - type: Shiftable
+      url: https://git.sr.ht/~galtzo/strict_states
   tags:
     - state-machine
 - name: super_exception_notifier
@@ -904,7 +1176,7 @@
   language: Ruby
   forges:
     - type: GitHub
-      url: http://github.com/pboling/exception_notification
+      url: https://github.com/pboling/exception_notification
   tags:
     - unmaintained
 - name: timecop-rspec
@@ -922,7 +1194,9 @@
 - name: undrive_google
   description: "\U0001F3F4 Liberate files from your Google Drive with transformations"
   language: Ruby
-  forges: [ ]
+  forges:
+    - type: SourceHut
+      url: https://git.sr.ht/~galtzo/undrive_google
   tags:
     - google
     - drive
@@ -932,15 +1206,23 @@
   forges:
     - type: GitHub
       url: https://github.com/ruby-oauth/version_gem
+    - type: GitLab
+      url: https://gitlab.com/ruby-oauth/version_gem
+    - type: Codeberg
+      url: https://codeberg.org/ruby-oauth/version_gem
+    - type: SourceHut
+      url: https://git.sr.ht/~galtzo/version_gem
   tags:
     - versioning
     - semver
     - epoch
 - name: warden_oauth
-  description: " \n      warden_oauth will help you create oauth authentication strategies
-    using the oauth\n      helper method on the Warden::Manager config setup\n    "
+  description: warden_oauth will help you create oauth authentication strategies
+    using the oauth helper method on the Warden::Manager config setup
   language: Ruby
-  forges: [ ]
+  forges:
+    - type: GitHub
+      url: https://github.com/ruby-oauth/warden_oauth
   tags:
     - oauth
     - authentication
