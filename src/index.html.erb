@@ -9,7 +9,14 @@ permalink: /
 <ul>
   <% site.data.projects.each do |project| %>
   <li>
-    <h2><a href="<%= project["url"] %>"><%= project["name"] %></a></h2>
+    <h2>
+      <%= project["name"] %>
+      <% project["forges"].each do |forge| %>
+        <span>
+          <a href="<%= forge["url"] %>"><%= forge["type"] %></a>
+        </span>
+      <% end %>
+    </h2>
     <p><%= project["description"] %></p>
     <p><strong>Language:</strong> <%= project["language"] %></p>
   </li>
