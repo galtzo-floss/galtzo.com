@@ -2,6 +2,7 @@
 - name: active_security
   description: Disallow insecure, unscoped, finds
   language: Ruby
+  minimum_version: 2.7
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/active_security
@@ -14,6 +15,7 @@
     advantage of the features of ActiveRecord such as validation, relationships, nested_attributes,
     etc.
   language: Ruby
+  minimum_version: 2.2
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/activerecord-tablefree
@@ -23,6 +25,7 @@
 - name: activerecord-transactionable
   description: Getting transactions right is hard, and this gem makes it easier.
   language: Ruby
+  minimum_version: 2.5
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/activerecord-transactionable
@@ -39,6 +42,7 @@
   description: Rails v8 ActiveSupport::BroadcastLogger, fixed & backported to Rails
     v5.2+ & Ruby 2.7+
   language: Ruby
+  minimum_version: 2.7
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/activesupport-broadcast_logger
@@ -49,6 +53,7 @@
 - name: activesupport-logger
   description: Rails v8 ActiveSupport::Logger backported to Rails v5.2+ & Ruby 2.7+
   language: Ruby
+  minimum_version: 2.7
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/activesupport-logger
@@ -60,6 +65,7 @@
   description: Rails v8 ActiveSupport::TaggedLogging, fixed & backported to Rails
     v5.2+ & Ruby 2.7+
   language: Ruby
+  minimum_version: 2.7
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/activesupport-tagged_logging
@@ -70,6 +76,7 @@
 - name: anonymous_active_record
   description: Replacement for broken Class.new(ActiveRecord::Base)
   language: Ruby
+  minimum_version: 2.4
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/anonymous_active_record
@@ -80,6 +87,7 @@
   description: Appraisal2 integrates with bundler and rake to test your library against
     different versions of dependencies in repeatable scenarios called "appraisals."
   language: Ruby
+  minimum_version: 1.8
   forges:
     - type: GitHub
       url: https://github.com/appraisal-rb/appraisal2
@@ -101,6 +109,7 @@
 - name: awesome_search
   description: Organize complicated search results
   language: Ruby
+  minimum_version: 1.8
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/awesome_search
@@ -113,6 +122,7 @@
     view template.  Flash contents are converted to JSON and placed in
     a cookie by an after_filter (default) or a Rack Middleware (option).
   language: Ruby
+  minimum_version: 1.8
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/cacheable_flash
@@ -123,6 +133,7 @@
   description: Capistrano Deployment Email Notification.  Keep the whole team informed
     of each release!
   language: Ruby
+  minimum_version: 1.8
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/capistrano_mailer
@@ -136,6 +147,7 @@
   description: Asynchronously LISTEN for Postgresql NOTIFY messages with payloads
     and Do Something
   language: Ruby
+  minimum_version: 1.8
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/celluloid-io-pg-listener
@@ -149,6 +161,7 @@
 - name: controller_validator
   description: Use the familiar ActiveModel::Errors pattern for controller validations
   language: Ruby
+  minimum_version: 1.8
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/controller_validator
@@ -161,6 +174,7 @@
     CsvPirate is the easy way to create a CSV of essentially anything in Ruby, in full pirate regalia.
     It works better if you are wearing a tricorne!
   language: Ruby
+  minimum_version: 1.8
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/csv_pirate
@@ -177,6 +191,7 @@
     Unobtrusive debug logging for Ruby.  NO LITTERING.
     Automatically log selected methods and their arguments as they are called at runtime!
   language: Ruby
+  minimum_version: 3.1
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/debug_logging
@@ -194,6 +209,7 @@
   description: Useful when a presenter deals with multiple objects that may enter
     into error states, and the errors need to be collected at a single point.
   language: Ruby
+  minimum_version: 1.8
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/destination_errors
@@ -207,6 +223,7 @@
   description: 'Provides extensions to ActionView::Helpers::CaptureHelper: content_for_with_default,
     no_content_for, and an enhanced content_for that plays nice with friends'
   language: Ruby
+  minimum_version: 1.8
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/dry_views
@@ -220,6 +237,7 @@
     associations, querying, and everything else you'd expect from an ActiveRecord-style
     replacement.
   language: Ruby
+  minimum_version: 2.3
   forges:
     - type: GitHub
       url: https://github.com/Dynamoid/dynamoid
@@ -230,6 +248,7 @@
 - name: each_in_batches
   description: Batch Processing of Records with Blocks in Rails
   language: Ruby
+  minimum_version: 1.8
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/each_in_batches
@@ -243,6 +262,7 @@
   description: Bit fields for ActiveRecord - store multiple boolean flags in a single
     integer column
   language: Ruby
+  minimum_version: 1.9
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/flag_shih_tzu
@@ -260,6 +280,7 @@
   description: Help overlooked open source projects - the ones at the bottom of the
     stack, and the dev dependencies - by funding them.
   language: Ruby
+  minimum_version: 1.9
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/floss_funding
@@ -274,6 +295,7 @@
     * Regex search across all installed gem's source code to find issues quickly
     * Trim down app load times by keeping your worst players on the bench (useful for beating Heroku slug load time cutoff)
   language: Ruby
+  minimum_version: 2.3
   forges:
     - type: GitHub
       url: https://github.com/pboling/gem_bench
@@ -288,6 +310,7 @@
     Emoji) symbolsFund overlooked open source projects - bottom of stack, dev/test
     dependencies: floss-funding.dev"
   language: Ruby
+  minimum_version: 2.4
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/gitmoji-regex
@@ -300,6 +323,7 @@
 - name: humorous_log_formatter
   description: Humorous Log Levels and Color For Rails.  Customizable!
   language: Ruby
+  minimum_version: 1.8
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/humorous_log_formatter
@@ -309,6 +333,7 @@
 - name: include_with_respect
   description: Find out if your Module include/extend hooks are misbehaving!
   language: Ruby
+  minimum_version: 1.8
   forges:
     - type: GitHub
       url: https://github.com/pboling/include_with_respect
@@ -319,6 +344,7 @@
 - name: json_schemer-fuzz
   description: Fuzz generator for json_schemer
   language: Ruby
+  minimum_version: 2.5
   forges:
     - type: GitHub
       url: https://github.com/pboling/json_schemer-fuzz
@@ -333,6 +359,7 @@
     ready to go. Fund overlooked open source projects - bottom of stack, dev/test
     dependencies: floss-funding.dev"
   language: Ruby
+  minimum_version: 2.7
   forges:
     - type: GitHub
       url: https://github.com/kettle-rb/kettle-dev
@@ -354,6 +381,7 @@
     Four-line SimpleCov config, w/ curated, opinionated, pre-configured, dependencies
     for every CI platform, batteries included.
   language: Ruby
+  minimum_version: 2.7
   forges:
     - type: GitHub
       url: https://github.com/kettle-rb/kettle-soup-cover
@@ -373,6 +401,7 @@
     to go. Fund overlooked open source projects - bottom of stack, dev/test dependencies:
     floss-funding.dev"
   language: Ruby
+  minimum_version: 2.7
   forges:
     - type: GitHub
       url: https://github.com/kettle-rb/kettle-test
@@ -387,6 +416,7 @@
   description: Organize data results from raw sql queries (as with PGresult, or Dossier)
     intelligently.
   language: Ruby
+  minimum_version: 1.8
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/letter_group
@@ -395,6 +425,7 @@
 - name: library_tree
   description: Builds a tree of module inclusion of a target module into other modules
   language: Ruby
+  minimum_version: 1.9
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/library_tree
@@ -405,6 +436,7 @@
     and PAPE as well as some custom additions like multi-factor authentication using
     a yubikey
   language: Ruby
+  minimum_version: 2.7
   forges:
     - type: GitHub
       url: https://github.com/ruby-openid/masq
@@ -419,6 +451,7 @@
 - name: masq2
   description: Originally a fork. Has been merged back to the original gem.
   language: Ruby
+  minimum_version: 2.7
   forges:
     - type: GitHub
       url: https://github.com/ruby-openid/masq
@@ -433,6 +466,7 @@
 - name: month-serializer
   description: Serialize Month objects to Integer
   language: Ruby
+  minimum_version: 1.9
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/month-serializer
@@ -445,6 +479,7 @@
 - name: oauth
   description: "\U0001F511 A Ruby wrapper for the original OAuth 1.0 / 1.0a spec."
   language: Ruby
+  minimum_version: 2.3
   forges:
     - type: GitHub
       url: https://github.com/ruby-oauth/oauth
@@ -459,6 +494,7 @@
 - name: oauth-tty
   description: "\U0001F5A5️ OAuth 1.0 / 1.0a TTY Command Line Interface"
   language: Ruby
+  minimum_version: 2.3
   forges:
     - type: GitHub
       url: https://github.com/ruby-oauth/oauth-tty
@@ -474,6 +510,7 @@
 - name: oauth2
   description: Ruby OAuth 2.0 framework for building OAuth providers and clients
   language: Ruby
+  minimum_version: 2.2
   forges:
     - type: GitHub
       url: https://github.com/ruby-oauth/oauth2
@@ -488,6 +525,7 @@
 - name: omniauth-identity
   description: Traditional username/password based authentication system for OmniAuth
   language: Ruby
+  minimum_version: 2.4
   forges:
     - type: GitHub
       url: https://github.com/omniauth/omniauth-identity
@@ -497,6 +535,7 @@
 - name: omniauth-jwt
   description: An OmniAuth strategy to accept JWT-based single sign-on.
   language: Ruby
+  minimum_version: 2.2
   forges:
     - type: GitHub
       url: https://github.com/omniauth/omniauth-jwt
@@ -506,6 +545,7 @@
 - name: omniauth-jwt2
   description: Originally a fork. Has been merged back to the original gem.
   language: Ruby
+  minimum_version: 2.2
   forges:
     - type: GitHub
       url: https://github.com/omniauth/omniauth-jwt2
@@ -515,6 +555,7 @@
 - name: omniauth-ldap
   description: A LDAP strategy for OmniAuth.
   language: Ruby
+  minimum_version: 1.8
   forges:
     - type: GitHub
       url: https://github.com/omniauth/omniauth-ldap
@@ -524,6 +565,7 @@
 - name: omniauth-openid
   description: OpenID (not OIDC) strategy for OmniAuth.
   language: Ruby
+  minimum_version: 2.4
   forges:
     - type: GitHub
       url: https://github.com/ruby-openid/omniauth-openid
@@ -538,6 +580,7 @@
 - name: open_id_authentication
   description: Provides a thin wrapper around the excellent rack-openid2 gem.
   language: Ruby
+  minimum_version: 2.7
   forges:
     - type: GitHub
       url: https://github.com/ruby-openid/open_id_authentication
@@ -555,6 +598,7 @@
     which allows for simple pass/fail logging colorization.
     Defaults are `truthy: 'green'` and `falsey: 'red'`.
   language: Ruby
+  minimum_version: 2.6
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/pretty_feed
@@ -566,6 +610,7 @@
 - name: qfill
   description: Advanced Queue Transformation
   language: Ruby
+  minimum_version: 1.8
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/qfill
@@ -578,6 +623,7 @@
     Debugging toolbar for Rack applications implemented as middleware.
         Based on logical-insight and rack-bug.
   language: Ruby
+  minimum_version: 1.8
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/rack-insight
@@ -587,6 +633,7 @@
 - name: rack-openid
   description: Provides a more HTTPish API around the ruby-openid library
   language: Ruby
+  minimum_version: 2.7
   forges:
     - type: GitHub
       url: https://github.com/ruby-openid/rack-openid
@@ -601,6 +648,7 @@
 - name: rack-openid2
   description: Originally a fork. Has been merged back to the original gem.
   language: Ruby
+  minimum_version: 2.7
   forges:
     - type: GitHub
       url: https://github.com/ruby-openid/rack-openid2
@@ -616,6 +664,7 @@
   description: Provides an easy way to create Rack Middleware that injects things
     into the response body. Extracted from rack-insight.
   language: Ruby
+  minimum_version: 1.8
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/rack-toolbar
@@ -628,6 +677,7 @@
       An alternate environment name, like "localdev", will prevent confusion,
       when "dev", or "develop", is used as a deployed environment.
   language: Ruby
+  minimum_version: 1.8
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/rails_env_local
@@ -638,6 +688,7 @@
   description: Concern::Instrumentation Plugin for React::Rails Render Benchmarking
     with a reference implementation
   language: Ruby
+  minimum_version: 1.8
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/react-rails-benchmark_renderer
@@ -648,6 +699,7 @@
 - name: remit
   description: An API for using the Amazon Flexible Payment Service (FPS).
   language: Ruby
+  minimum_version: 1.8
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/remit
@@ -659,6 +711,7 @@
   description: Ruby app loading slowly, or never? Discover bootstrapping issues in
     Ruby by logging/benchmarking/timing-out/rescuing 'Kernel.require' & 'load'
   language: Ruby
+  minimum_version: 2.2
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/remit
@@ -685,6 +738,7 @@
         end
       end
   language: Ruby
+  minimum_version: 1.8
   forges:
     - type: GitHub
       url: https://github.com/resque/resque-lonely_job
@@ -705,6 +759,7 @@
         end
       end
   language: Ruby
+  minimum_version: 2.3
   forges:
     - type: GitHub
       url: https://github.com/resque/resque-unique_at_runtime
@@ -715,6 +770,7 @@
   description: Configure resque-unique_in_queue and resque-unique_at_runtime uniqueness
     by arity of perform method, with automated cleanup tools
   language: Ruby
+  minimum_version: 2.3
   forges:
     - type: GitHub
       url: https://github.com/resque/resque-unique_by_arity
@@ -726,6 +782,7 @@
 - name: resque-unique_in_queue
   description: A resque plugin that ensures job uniqueness at enqueue time.
   language: Ruby
+  minimum_version: 2.3
   forges:
     - type: GitHub
       url: https://github.com/resque/resque-unique_in_queue
@@ -738,6 +795,7 @@
     With this small server, you can make dummy OpenID request for testing purposes,
     the success of the response will depend on a parameter given on the URL of the authentication request.
   language: Ruby
+  minimum_version: 2.7
   forges:
     - type: GitHub
       url: https://github.com/ruby-openid/rots
@@ -753,6 +811,7 @@
 - name: rspec-block_is_expected
   description: subject { Integer(nil) }; it('raises') { block_is_expected.to raise_error(TypeError) }
   language: Ruby
+  minimum_version: 1.8
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/rspec-block_is_expected
@@ -770,6 +829,7 @@
     or JRuby) & versions, or version ranges. Fund overlooked open source projects
     - bottom of stack, dev/test dependencies: floss-funding.dev"
   language: Ruby
+  minimum_version: 1.8
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/rspec-pending_for
@@ -788,6 +848,7 @@
     stub_env('REDIS_URL' => 'redis://localhost:6379/')
     hide_env('SESSION_SECRET')
   language: Ruby
+  minimum_version: 1.8
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/rspec-stubbed_env
@@ -803,6 +864,7 @@
 - name: rubocop-lts
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby code
   language: Ruby
+  minimum_version: 3.2
   forges:
     - type: GitLab
       url: https://gitlab.com/rubocop-lts/rubocop-lts
@@ -815,6 +877,7 @@
 - name: rubocop-ruby1_8
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 1.8 code
   language: Ruby
+  minimum_version: 3.2
   forges:
     - type: GitHub
       url: https://github.com/rubocop-lts/rubocop-ruby1_8
@@ -825,6 +888,7 @@
 - name: rubocop-ruby1_9
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 1.9 code
   language: Ruby
+  minimum_version: 3.2
   forges:
     - type: GitHub
       url: https://github.com/rubocop-lts/rubocop-ruby1_9
@@ -835,6 +899,7 @@
 - name: rubocop-ruby2_0
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 2.0 code
   language: Ruby
+  minimum_version: 3.2
   forges:
     - type: GitHub
       url: https://github.com/rubocop-lts/rubocop-ruby2_0
@@ -845,6 +910,7 @@
 - name: rubocop-ruby2_1
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 2.1 code
   language: Ruby
+  minimum_version: 3.2
   forges:
     - type: GitHub
       url: https://github.com/rubocop-lts/rubocop-ruby2_1
@@ -855,6 +921,7 @@
 - name: rubocop-ruby2_2
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 2.2 code
   language: Ruby
+  minimum_version: 3.2
   forges:
     - type: GitHub
       url: https://github.com/rubocop-lts/rubocop-ruby2_2
@@ -865,6 +932,7 @@
 - name: rubocop-ruby2_3
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 2.3 code
   language: Ruby
+  minimum_version: 3.2
   forges:
     - type: GitHub
       url: https://github.com/rubocop-lts/rubocop-ruby2_3
@@ -875,6 +943,7 @@
 - name: rubocop-ruby2_4
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 2.4 code
   language: Ruby
+  minimum_version: 3.2
   forges:
     - type: GitHub
       url: https://github.com/rubocop-lts/rubocop-ruby2_4
@@ -885,6 +954,7 @@
 - name: rubocop-ruby2_5
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 2.5 code
   language: Ruby
+  minimum_version: 3.2
   forges:
     - type: GitHub
       url: https://github.com/rubocop-lts/rubocop-ruby2_5
@@ -895,6 +965,7 @@
 - name: rubocop-ruby2_6
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 2.6 code
   language: Ruby
+  minimum_version: 3.2
   forges:
     - type: GitHub
       url: https://github.com/rubocop-lts/rubocop-ruby2_6
@@ -905,6 +976,7 @@
 - name: rubocop-ruby2_7
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 2.7 code
   language: Ruby
+  minimum_version: 3.2
   forges:
     - type: GitHub
       url: https://github.com/rubocop-lts/rubocop-ruby2_7
@@ -915,6 +987,7 @@
 - name: rubocop-ruby3_0
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 3.0 code
   language: Ruby
+  minimum_version: 3.2
   forges:
     - type: GitHub
       url: https://github.com/rubocop-lts/rubocop-ruby3_0
@@ -927,6 +1000,7 @@
 - name: rubocop-ruby3_1
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 3.1 code
   language: Ruby
+  minimum_version: 3.2
   forges:
     - type: GitHub
       url: https://github.com/rubocop-lts/rubocop-ruby3_1
@@ -937,6 +1011,7 @@
 - name: rubocop-ruby3_2
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 3.2 code
   language: Ruby
+  minimum_version: 3.2
   forges:
     - type: GitHub
       url: https://github.com/rubocop-lts/rubocop-ruby3_2
@@ -947,6 +1022,7 @@
 - name: ruby-openid
   description: A library for consuming and serving OpenID identities.
   language: Ruby
+  minimum_version: 2.7
   forges:
     - type: GitHub
       url: https://github.com/ruby-openid/ruby-openid
@@ -961,6 +1037,7 @@
 - name: ruby-openid2
   description: Originally a fork. Has been merged back to the original gem.
   language: Ruby
+  minimum_version: 2.7
   forges:
     - type: GitHub
       url: https://github.com/ruby-openid/ruby-openid
@@ -977,6 +1054,7 @@
       Email Condom for your Ruby Server.
     In Rails, Sinatra, et al, or simply the mail gem: Aids in development, testing, qa, and production troubleshooting of email issues without worrying that emails will get sent to actual live addresses.
   language: Ruby
+  minimum_version: 2.3
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/sanitize_email
@@ -992,6 +1070,7 @@
 - name: seed_migration
   description: Rails gem for Data Migrations
   language: Ruby
+  minimum_version: 1.8
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/seed_migration
@@ -1004,6 +1083,7 @@
 - name: sequential_file
   description: Create Files Named Sequentially Intelligently
   language: Ruby
+  minimum_version: 1.8
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/sequential_file
@@ -1014,6 +1094,7 @@
 - name: service_actor-promptable
   description: TTY Prompt plugin for your service objects for your application logic
   language: Ruby
+  minimum_version: 2.6
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/service_actor-promptable
@@ -1027,6 +1108,7 @@
     Shields::Badge.gem_total_downloads(path_parameters: {gem: 'rails'})
     => "[![RubyGems Total Downloads](https://img.shields.io/gem/dt/rails?)](https://rubygems.org/gems/rails)"
   language: Ruby
+  minimum_version: 3.1
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/shields-badge
@@ -1042,10 +1124,11 @@
   description: Move single records (has_one) or collections (has_many) from one parent
     (belongs_to) to another
   language: Ruby
+  minimum_version: 2.5
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/shiftable
-    - type: Shiftable
+    - type: SourceHut
       url: https://git.sr.ht/~galtzo/shiftable
   tags:
     - rails
@@ -1055,6 +1138,7 @@
     a few enhancementsFund overlooked open source projects - bottom of stack, dev/test
     dependencies: floss-funding.dev"
   language: Ruby
+  minimum_version: 2.3
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/silent_stream
@@ -1062,7 +1146,7 @@
       url: https://gitlab.com/galtzo-floss/silent_stream
     - type: Codeberg
       url: https://codeberg.org/galtzo-floss/silent_stream
-    - type: Shiftable
+    - type: SourceHut
       url: https://git.sr.ht/~galtzo/silent_stream
   tags:
     - testing
@@ -1071,6 +1155,7 @@
   description: Dynamic modules which define dynamic methods for scopes based on a
     dynamic array of column names
   language: Ruby
+  minimum_version: 2.3
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/simple_column-scopes
@@ -1080,6 +1165,7 @@
 - name: snaky_hash
   description: 'A Hashie::Mash joint to make #snakelife better'
   language: Ruby
+  minimum_version: 2.2
   forges:
     - type: GitHub
       url: https://github.com/ruby-oauth/snaky_hash
@@ -1093,6 +1179,7 @@
 - name: spyke-connection_lambda
   description: Dynamic Spyke API connection plugin for the Enterprise Cloud
   language: Ruby
+  minimum_version: 2.3
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/spyke-connection_lambda
@@ -1103,6 +1190,7 @@
   description: Allows flashes to stack intelligently, while preserving existing behavior
     of the Rails FlashHash
   language: Ruby
+  minimum_version: 1.8
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/stackable_flash
@@ -1114,6 +1202,7 @@
     Enables Ruby projects to more confidently support even the most finely-aged Rubies.
     Part of the rubocop-lts family.
   language: Ruby
+  minimum_version: 3.2
   forges:
     - type: GitHub
       url: https://github.com/rubocop-lts/standard-rubocop-lts
@@ -1129,6 +1218,7 @@
     Provides content_tag_for method signature to create customizable and logic-gated labels from objects.
     Also includes a presenter base class to allow any Ruby web framework to create logic around HTML tags
   language: Ruby
+  minimum_version: 1.8
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/status_tag
@@ -1136,7 +1226,7 @@
       url: https://gitlab.com/galtzo-floss/status_tag
     - type: Codeberg
       url: https://codeberg.org/galtzo-floss/status_tag
-    - type: Shiftable
+    - type: SourceHut
       url: https://git.sr.ht/~galtzo/status_tag
   tags:
     - rails
@@ -1148,6 +1238,7 @@
     options with ENV variables!\nFund overlooked open source projects - bottom of
     stack, dev/test dependencies: floss-funding.dev"
   language: Ruby
+  minimum_version: 2.2
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/stone_checksums
@@ -1163,10 +1254,11 @@
   description: Safely access state machine states with guarantee that there are no
     typos.  Compatible with all Ruby state machine libraries.
   language: Ruby
+  minimum_version: 1.8
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/strict_states
-    - type: Shiftable
+    - type: SourceHut
       url: https://git.sr.ht/~galtzo/strict_states
   tags:
     - state-machine
@@ -1174,6 +1266,7 @@
   description: In the Rails v2 era, this was a popular fork of exception_notification,
     with many extra features.  It is now deprecated in favor of the original gem.
   language: Ruby
+  minimum_version: 1.8
   forges:
     - type: GitHub
       url: https://github.com/pboling/exception_notification
@@ -1185,6 +1278,7 @@
     Find out how your code will behave... in the future! Fund overlooked open source
     projects - bottom of stack, dev/test dependencies: floss-funding.dev"
   language: Ruby
+  minimum_version: 1.9
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/timecop-rspec
@@ -1194,6 +1288,7 @@
 - name: undrive_google
   description: "\U0001F3F4 Liberate files from your Google Drive with transformations"
   language: Ruby
+  minimum_version: 1.9
   forges:
     - type: SourceHut
       url: https://git.sr.ht/~galtzo/undrive_google
@@ -1203,6 +1298,7 @@
 - name: version_gem
   description: "\U0001F516 Versions are good. Versions are cool. Versions will win."
   language: Ruby
+  minimum_version: 2.2
   forges:
     - type: GitHub
       url: https://github.com/ruby-oauth/version_gem
@@ -1220,6 +1316,7 @@
   description: warden_oauth will help you create oauth authentication strategies
     using the oauth helper method on the Warden::Manager config setup
   language: Ruby
+  minimum_version: 1.8
   forges:
     - type: GitHub
       url: https://github.com/ruby-oauth/warden_oauth

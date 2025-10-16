@@ -11,7 +11,9 @@ body_class: projects
   <% site.data.projects.each do |project| %>
   <li class="card">
     <h2>
-      <%= project["name"] %>
+      <a href="https://bestgems.org/gems/<%= project['name'] %>" class="gem-link" target="_blank" rel="noopener">
+        <%= project["name"] %>
+      </a>
     </h2>
     <p>
       <a href="https://bestgems.org/gems/<%= project['name'] %>" class="gem-link" target="_blank" rel="noopener">
@@ -32,12 +34,13 @@ body_class: projects
       <% end %>
     </p>
     <p>
+      <span class="tag"><%= project["language"] %> >= <%= project["minimum_version"] %></span>
       <% if project["tags"] && project["tags"].any? %>
         <% project["tags"].each do |tag| %>
           <span class="tag"><%= tag %></span>
         <% end %>
       <% else %>
-        <span class="tag">HELLACIOUSLY untagged FOREVER YOU MUTANT SSCU<</span>
+        <span class="tag">Oops<</span>
       <% end %>
     </p>
     <p><%= project["description"] %></p>
