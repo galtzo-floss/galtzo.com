@@ -8,17 +8,34 @@ permalink: /
 
 <ul>
   <% site.data.projects.each do |project| %>
-  <li>
+  <li class="card">
     <h2>
+      <img
+              src="/assets/images/<%= project['language'] %>.svg"
+              alt="language: <%= project['language'] %>"
+              class="language"
+      >
       <%= project["name"] %>
       <% project["forges"].each do |forge| %>
-        <span>
-          <a href="<%= forge["url"] %>"><%= forge["type"] %></a>
-        </span>
+          <a href="<%= forge['url'] %>" class="forge-link" target="_blank" rel="noopener">
+                <img
+                        src="/assets/images/<%= forge['type'] %>.svg"
+                        alt="forge: <%= forge['type'] %> (<%= forge['url'] %>)"
+                        class="forge"
+                >
+          </a>
       <% end %>
     </h2>
+    <p>
+      <% if project["tags"] && project["tags"].any? %>
+        <% project["tags"].each do |tag| %>
+          <span class="tag"><%= tag %></span>
+        <% end %>
+      <% else %>
+        <span class="tag">HELLACIOUSLY untagged FOREVER YOU MUTANT SSCU<</span>
+      <% end %>
+    </p>
     <p><%= project["description"] %></p>
-    <p><strong>Language:</strong> <%= project["language"] %></p>
   </li>
   <% end %>
 </ul>

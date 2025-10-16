@@ -3,3 +3,33 @@ header nav a { text-decoration: none; font-weight: 600; }
 h1 { border-bottom: 1px solid #eee; padding-bottom: .25rem; }
 li { margin: 1rem 0; }
 
+.language {
+  width: 24px;
+  height: 24px;
+  margin-bottom: -3px;
+}
+
+.forge {
+  width: 24px;
+  height: 24px;
+  margin: -3px;
+  box-shadow: 0 0 10px rgba(255, 100, 0, 0.8);
+  background-color: rgba(255, 100, 0, 0.2);
+}
+
+.forge-link {
+  text-decoration: none;
+  padding: 0 7px 0 7px;
+}
+
+.tag {
+    display: inline-block;
+    background-color: #eee;
+    border-radius: 9999px;
+    padding: 0.1rem 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-right: 0.5rem;
+    margin-top: -10px;
+    box-shadow: 0 0 10px rgba(255, 100, 0, 0.6);
+}

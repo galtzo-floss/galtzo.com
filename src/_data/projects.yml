@@ -1,171 +1,222 @@
 ---
 - name: active_security
   description: Disallow insecure, unscoped, finds
-  language: ruby
+  language: Ruby
   forges:
-  - type: github
-    url: https://github.com/pboling/active_security
-  tags: []
+    - type: GitHub
+      url: https://github.com/pboling/active_security
+  tags:
+    - rails
+    - activerecord
 - name: activerecord-tablefree
   description: ActiveRecord Tablefree Models provides a simple mixin for creating
     models that are not bound to the database. This approach is useful for taking
     advantage of the features of ActiveRecord such as validation, relationships, nested_attributes,
     etc.
-  language: ruby
-  forges: []
+  language: Ruby
+  forges: [ ]
   tags:
-  - rails
+    - rails
+    - activerecord
 - name: activerecord-transactionable
   description: Getting transactions right is hard, and this gem makes it easier.
-  language: ruby
+  language: Ruby
   forges:
-  - type: github
-    url: https://github.com/pboling/activerecord-transactionable
+    - type: GitHub
+      url: https://github.com/pboling/activerecord-transactionable
   tags:
-  - rails
+    - rails
+    - activerecord
 - name: activesupport-broadcast_logger
   description: Rails v8 ActiveSupport::BroadcastLogger, fixed & backported to Rails
     v5.2+ & Ruby 2.7+
-  language: ruby
+  language: Ruby
   forges:
-  - type: github
-    url: https://github.com/pboling/activesupport-broadcast_logger
-  tags: []
+    - type: GitHub
+      url: https://github.com/pboling/activesupport-broadcast_logger
+  tags:
+    - rails
+    - activesupport
+    - logging
 - name: activesupport-logger
   description: Rails v8 ActiveSupport::Logger backported to Rails v5.2+ & Ruby 2.7+
-  language: ruby
+  language: Ruby
   forges:
-  - type: github
-    url: https://github.com/pboling/activesupport-logger
-  tags: []
+    - type: GitHub
+      url: https://github.com/pboling/activesupport-logger
+  tags:
+    - rails
+    - activesupport
+    - logging
 - name: activesupport-tagged_logging
   description: Rails v8 ActiveSupport::TaggedLogging, fixed & backported to Rails
     v5.2+ & Ruby 2.7+
-  language: ruby
+  language: Ruby
   forges:
-  - type: github
-    url: https://github.com/pboling/activesupport-tagged_logging
-  tags: []
+    - type: GitHub
+      url: https://github.com/pboling/activesupport-tagged_logging
+  tags:
+    - rails
+    - activesupport
+    - logging
 - name: anonymous_active_record
   description: Replacement for broken Class.new(ActiveRecord::Base)
-  language: ruby
+  language: Ruby
   forges:
-  - type: github
-    url: http://github.com/pboling/anonymous_active_record
-  tags: []
+    - type: GitHub
+      url: http://github.com/pboling/anonymous_active_record
+  tags:
+    - rails
+    - activerecord
 - name: appraisal2
   description: Appraisal2 integrates with bundler and rake to test your library against
     different versions of dependencies in repeatable scenarios called "appraisals."
-  language: ruby
+  language: Ruby
   forges:
-  - type: github
-    url: https://github.com/appraisal-rb/appraisal2/releases/tag/v3.0.0
-  tags: []
+    - type: GitHub
+      url: https://github.com/appraisal-rb/appraisal2/releases/tag/v3.0.0
+  tags:
+    - testing
 - name: archivist-client
   description: archivist-client queries archive.org for book data and downloads some
     things.
-  language: ruby
-  forges: []
-  tags: []
+  language: Ruby
+  forges: [ ]
+  tags:
+    - archival
 - name: awesome_search
   description: Organize complicated search results
-  language: ruby
-  forges: []
-  tags: []
+  language: Ruby
+  forges: [ ]
+  tags:
+    - unmaintained
 - name: cacheable_flash
   description: |-
     Allows caching of pages with flash messages by rendering flash
     messages from a cookie using JavaScript, instead of statically in your Rails
     view template.  Flash contents are converted to JSON and placed in
     a cookie by an after_filter (default) or a Rack Middleware (option).
-  language: ruby
-  forges: []
-  tags: []
+  language: Ruby
+  forges: [ ]
+  tags:
+    - unmaintained
 - name: capistrano_mailer
   description: Capistrano Deployment Email Notification.  Keep the whole team informed
     of each release!
-  language: ruby
+  language: Ruby
   forges:
-  - type: github
-    url: http://github.com/pboling/capistrano_mailer
-  tags: []
+    - type: GitHub
+      url: http://github.com/pboling/capistrano_mailer
+  tags:
+    - capistrano
+    - email
+    - deployment
 - name: celluloid-io-pg-listener
   description: Asynchronously LISTEN for Postgresql NOTIFY messages with payloads
     and Do Something
-  language: ruby
-  forges: []
-  tags: []
+  language: Ruby
+  forges: [ ]
+  tags:
+    - postgresql
+    - pub-sub
+    - async
+    - celluloid
 - name: controller_validator
   description: Use the familiar ActiveModel::Errors pattern for controller validations
-  language: ruby
-  forges: []
-  tags: []
+  language: Ruby
+  forges: [ ]
+  tags:
+    - rails
+    - controllers
+    - validation
 - name: csv_pirate
   description: |-
     CsvPirate is the easy way to create a CSV of essentially anything in Ruby, in full pirate regalia.
     It works better if you are wearing a tricorne!
-  language: ruby
+  language: Ruby
   forges:
-  - type: github
-    url: http://github.com/pboling/csv_pirate
-  tags: []
+    - type: GitHub
+      url: http://github.com/pboling/csv_pirate
+  tags:
+    - rails
+    - activerecord
+    - csv
+    - export
+    - import
 - name: debug_logging
   description: |
     Unobtrusive debug logging for Ruby.  NO LITTERING.
     Automatically log selected methods and their arguments as they are called at runtime!
-  language: ruby
+  language: Ruby
   forges:
-  - type: github
-    url: https://github.com/pboling/debug_logging
-  tags: []
+    - type: GitHub
+      url: https://github.com/pboling/debug_logging
+  tags:
+    - logging
+    - debugging
+    - decorator
 - name: destination_errors
   description: Useful when a presenter deals with multiple objects that may enter
     into error states, and the errors need to be collected at a single point.
-  language: ruby
-  forges: []
-  tags: []
+  language: Ruby
+  forges: [ ]
+  tags:
+    - rails
+    - presenters
+    - error-handling
 - name: dry_views
   description: 'Provides extensions to ActionView::Helpers::CaptureHelper: content_for_with_default,
     no_content_for, and an enhanced content_for that plays nice with friends'
-  language: ruby
-  forges: []
-  tags: []
+  language: Ruby
+  forges: [ ]
+  tags:
+    - rails
+    - views
 - name: dynamoid
   description: Dynamoid is an ORM for Amazon's DynamoDB that supports offline development,
     associations, querying, and everything else you'd expect from an ActiveRecord-style
     replacement.
-  language: ruby
+  language: Ruby
   forges:
-  - type: github
-    url: https://github.com/Dynamoid/dynamoid
-  tags: []
+    - type: GitHub
+      url: https://github.com/Dynamoid/dynamoid
+  tags:
+    - dynamodb
+    - orm
+    - aws
 - name: each_in_batches
   description: Batch Processing of Records with Blocks in Rails
-  language: ruby
-  forges: []
-  tags: []
+  language: Ruby
+  forges: [ ]
+  tags:
+    - rails
+    - activerecord
+    - batch
 - name: flag_shih_tzu
   description: Bit fields for ActiveRecord - store multiple boolean flags in a single
     integer column
-  language: ruby
+  language: Ruby
   forges:
-  - type: github
-    url: https://github.com/galtzo-floss/flag_shih_tzu
-  - type: gitlab
-    url: https://gitlab.com/galtzo-floss/flag_shih_tzu
-  - type: codeberg
-    url: https://codeberg.org/galtzo-floss/flag_shih_tzu
+    - type: GitHub
+      url: https://github.com/galtzo-floss/flag_shih_tzu
+    - type: GitLab
+      url: https://gitlab.com/galtzo-floss/flag_shih_tzu
+    - type: Codeberg
+      url: https://codeberg.org/galtzo-floss/flag_shih_tzu
   tags:
-  - rails
-  - activerecord
+    - rails
+    - activerecord
+    - bitfields
 - name: floss_funding
   description: Help overlooked open source projects - the ones at the bottom of the
     stack, and the dev dependencies - by funding them.
-  language: ruby
+  language: Ruby
   forges:
-  - type: github
-    url: https://github.com/galtzo-floss/floss_funding
-  tags: []
+    - type: GitHub
+      url: https://github.com/galtzo-floss/floss_funding
+  tags:
+    - funding
+    - open-source
 - name: gem_bench
   description: |-
     * Benchmark different versions of same or similar gems
@@ -173,40 +224,50 @@
     * Enforce Gemfile version constraints
     * Regex search across all installed gem's source code to find issues quickly
     * Trim down app load times by keeping your worst players on the bench (useful for beating Heroku slug load time cutoff)
-  language: ruby
+  language: Ruby
   forges:
-  - type: github
-    url: http://github.com/pboling/gem_bench
-  tags: []
+    - type: GitHub
+      url: http://github.com/pboling/gem_bench
+  tags:
+    - performance
+    - benchmarking
+    - debugging
 - name: gitmoji-regex
   description: "\U0001F61C A regular expression matching Gitmoji (a subset of Unicode
     Emoji) symbolsFund overlooked open source projects - bottom of stack, dev/test
     dependencies: floss-funding.dev"
-  language: ruby
+  language: Ruby
   forges:
-  - type: github
-    url: https://github.com/galtzo-floss/gitmoji-regex
-  tags: []
+    - type: GitHub
+      url: https://github.com/galtzo-floss/gitmoji-regex
+  tags:
+    - emoji
+    - git
+    - regex
 - name: humorous_log_formatter
   description: Humorous Log Levels and Color For Rails.  Customizable!
-  language: ruby
-  forges: []
-  tags: []
+  language: Ruby
+  forges: [ ]
+  tags:
+    - unmaintained
+    - logging
 - name: include_with_respect
   description: Find out if your Module include/extend hooks are misbehaving!
-  language: ruby
+  language: Ruby
   forges:
-  - type: github
-    url: http://github.com/pboling/include_with_respect
+    - type: GitHub
+      url: http://github.com/pboling/include_with_respect
   tags:
-  - testing
+    - testing
 - name: json_schemer-fuzz
   description: Fuzz generator for json_schemer
-  language: ruby
+  language: Ruby
   forges:
-  - type: github
-    url: https://github.com/pboling/json_schemer-fuzz
-  tags: []
+    - type: GitHub
+      url: https://github.com/pboling/json_schemer-fuzz
+  tags:
+    - testing
+    - fuzzing
 - name: kettle-dev
   description: "\U0001F372 Kettle::Dev is a meta tool from kettle-rb to streamline
     development and testing. Acts as a shim dependency, pulling in many other dependencies,
@@ -214,23 +275,30 @@
     a complete set of Rake tasks, for all the libraries is brings in, so they arrive
     ready to go. Fund overlooked open source projects - bottom of stack, dev/test
     dependencies: floss-funding.dev"
-  language: ruby
+  language: Ruby
   forges:
-  - type: github
-    url: https://github.com/kettle-rb/kettle-dev
-  tags: []
+    - type: GitHub
+      url: https://github.com/kettle-rb/kettle-dev
+  tags:
+    - harness
+    - template
+    - release
+    - changelog
+    - documentation
+    - git-hooks
+    - GHA
 - name: kettle-soup-cover
   description: |
     A Covered Kettle of Test Coverage SOUP (Software of Unknown Provenance)
     Four-line SimpleCov config, w/ curated, opinionated, pre-configured, dependencies
     for every CI platform, batteries included.
-  language: ruby
+  language: Ruby
   forges:
-  - type: github
-    url: https://github.com/kettle-rb/kettle-soup-cover
+    - type: GitHub
+      url: https://github.com/kettle-rb/kettle-soup-cover
   tags:
-  - testing
-  - coverage
+    - testing
+    - coverage
 - name: kettle-test
   description: "\U0001F372 Kettle::Test is a meta tool from kettle-rb to streamline
     testing. Acts as a shim dependency, pulling in many other dependencies, to give
@@ -239,173 +307,223 @@
     each dependency library for proper use in the test suite, so they arrive ready
     to go. Fund overlooked open source projects - bottom of stack, dev/test dependencies:
     floss-funding.dev"
-  language: ruby
+  language: Ruby
   forges:
-  - type: github
-    url: https://github.com/kettle-rb/kettle-test
+    - type: GitHub
+      url: https://github.com/kettle-rb/kettle-test
   tags:
-  - testing
+    - harness
+    - testing
 - name: letter_group
   description: Organize data results from raw sql queries (as with PGresult, or Dossier)
     intelligently.
-  language: ruby
-  forges: []
-  tags: []
+  language: Ruby
+  forges: [ ]
+  tags:
+    - unmaintained
 - name: library_tree
   description: Builds a tree of module inclusion of a target module into other modules
-  language: ruby
+  language: Ruby
   forges:
-  - type: github
-    url: https://github.com/galtzo-floss/library_tree
-  tags: []
+    - type: GitHub
+      url: https://github.com/galtzo-floss/library_tree
+  tags:
+    - experimental
 - name: masq2
   description: Masq2 supports OpenID 2.0 and supports SReg, AX (fetch and store requests)
     and PAPE as well as some custom additions like multi-factor authentication using
     a yubikey
-  language: ruby
+  language: Ruby
   forges:
-  - type: github
-    url: https://github.com/oauth-xx/masq2
-  tags: []
+    - type: GitHub
+      url: https://github.com/ruby-openid/masq2
+  tags:
+    - openid
+    - authentication
+    - security
 - name: month-serializer
   description: Serialize Month objects to Integer
-  language: ruby
-  forges: []
-  tags: []
+  language: Ruby
+  forges: [ ]
+  tags:
+    - time
+    - math
+    - serializer
 - name: oauth
   description: "\U0001F511 A Ruby wrapper for the original OAuth 1.0 / 1.0a spec."
-  language: ruby
+  language: Ruby
   forges:
-  - type: github
-    url: https://github.com/ruby-oauth/oauth
+    - type: GitHub
+      url: https://github.com/ruby-oauth/oauth
   tags:
-  - oauth
+    - oauth
+    - authorization
+    - security
 - name: oauth-tty
   description: "\U0001F5A5️ OAuth 1.0 / 1.0a TTY Command Line Interface"
-  language: ruby
+  language: Ruby
   forges:
-  - type: github
-    url: https://github.com/ruby-oauth/oauth-tty
+    - type: GitHub
+      url: https://github.com/ruby-oauth/oauth-tty
   tags:
-  - oauth
+    - oauth
+    - authorization
+    - security
+    - tty
 - name: oauth2
   description: Ruby OAuth 2.0 framework for building OAuth providers and clients
-  language: ruby
+  language: Ruby
   forges:
-  - type: github
-    url: https://github.com/ruby-oauth/oauth2
-  - type: gitlab
-    url: https://gitlab.com/ruby-oauth/oauth2
+    - type: GitHub
+      url: https://github.com/ruby-oauth/oauth2
+    - type: GitLab
+      url: https://gitlab.com/ruby-oauth/oauth2
   tags:
-  - oauth
-  - security
+    - oauth
+    - authorization
+    - security
 - name: omniauth-identity
   description: Traditional username/password based authentication system for OmniAuth
-  language: ruby
+  language: Ruby
   forges:
-  - type: github
-    url: https://github.com/omniauth/omniauth-identity
-  tags: []
+    - type: GitHub
+      url: https://github.com/omniauth/omniauth-identity
+  tags:
+    - authentication
+    - security
 - name: omniauth-jwt
   description: An OmniAuth strategy to accept JWT-based single sign-on.
-  language: ruby
-  forges: []
-  tags: []
+  language: Ruby
+  forges: [ ]
+  tags:
+    - authentication
+    - security
 - name: omniauth-jwt2
   description: An OmniAuth strategy to accept JWT-based single sign-on.
-  language: ruby
-  forges: []
-  tags: []
+  language: Ruby
+  forges: [ ]
+  tags:
+    - authentication
+    - security
 - name: omniauth-ldap
   description: A LDAP strategy for OmniAuth.
-  language: ruby
-  forges: []
-  tags: []
+  language: Ruby
+  forges: [ ]
+  tags:
+    - authentication
+    - security
 - name: omniauth-openid
   description: OpenID (not OIDC) strategy for OmniAuth.
-  language: ruby
+  language: Ruby
   forges:
-  - type: github
-    url: https://github.com/omniauth/omniauth-openid
-  tags: []
+    - type: GitHub
+      url: https://github.com/ruby-openid/omniauth-openid
+  tags:
+    - openid
+    - authentication
+    - security
 - name: open_id_authentication
   description: Provides a thin wrapper around the excellent rack-openid2 gem.
-  language: ruby
+  language: Ruby
   forges:
-  - type: github
-    url: https://github.com/oauth-xx/open_id_authentication
-  tags: []
+    - type: GitHub
+      url: https://github.com/ruby-openid/open_id_authentication
+  tags:
+    - openid
+    - authentication
+    - security
 - name: pretty_feed
   description: |
     PrettyFeed provides a modulizer you can include in a job, worker, class, rake task, etc,
     which allows for simple pass/fail logging colorization.
     Defaults are `truthy: 'green'` and `falsey: 'red'`.
-  language: ruby
+  language: Ruby
   forges:
-  - type: github
-    url: https://github.com/pboling/pretty_feed
-  tags: []
+    - type: GitHub
+      url: https://github.com/pboling/pretty_feed
+  tags:
+    - logging
+    - debugging
 - name: qfill
   description: Advanced Queue Transformation
-  language: ruby
-  forges: []
-  tags: []
+  language: Ruby
+  forges: [ ]
+  tags:
+    - queues
 - name: rack-insight
   description: |-
     Debugging toolbar for Rack applications implemented as middleware.
         Based on logical-insight and rack-bug.
-  language: ruby
-  forges: []
-  tags: []
+  language: Ruby
+  forges: [ ]
+  tags:
+    - rack-middleware
+    - unmaintained
 - name: rack-openid
   description: Provides a more HTTPish API around the ruby-openid library
-  language: ruby
+  language: Ruby
   forges:
-  - type: github
-    url: http://github.com/grosser/rack-openid
-  tags: []
+    - type: GitHub
+      url: http://github.com/ruby-openid/rack-openid
+  tags:
+    - openid
+    - authentication
+    - security
 - name: rack-openid2
   description: Provides a more HTTPish API around the ruby-openid2 library
-  language: ruby
+  language: Ruby
   forges:
-  - type: github
-    url: https://github.com/oauth-xx/rack-openid2
-  tags: []
+    - type: GitHub
+      url: https://github.com/ruby-openid/rack-openid2
+  tags:
+    - openid
+    - authentication
+    - security
 - name: rack-toolbar
   description: Provides an easy way to create Rack Middleware that injects things
     into the response body. Extracted from rack-insight.
-  language: ruby
-  forges: []
-  tags: []
+  language: Ruby
+  forges: [ ]
+  tags:
+    - rack-middleware
+    - unmaintained
 - name: rails_env_local
   description: |2
       "development" is not always the best name for the local environment.
       An alternate environment name, like "localdev", will prevent confusion,
       when "dev", or "develop", is used as a deployed environment.
-  language: ruby
-  forges: []
+  language: Ruby
+  forges: [ ]
   tags:
-  - rails
+    - rails
+    - unmaintained
 - name: react-rails-benchmark_renderer
   description: Concern::Instrumentation Plugin for React::Rails Render Benchmarking
     with a reference implementation
-  language: ruby
-  forges: []
+  language: Ruby
+  forges: [ ]
   tags:
-  - rails
+    - rails
+    - react
+    - unmaintained
 - name: remit
   description: An API for using the Amazon Flexible Payment Service (FPS).
-  language: ruby
-  forges: []
-  tags: []
+  language: Ruby
+  forges: [ ]
+  tags:
+    - unmaintained
+    - payments
+    - aws
 - name: require_bench
   description: Ruby app loading slowly, or never? Discover bootstrapping issues in
     Ruby by logging/benchmarking/timing-out/rescuing 'Kernel.require' & 'load'
-  language: ruby
+  language: Ruby
   forges:
-  - type: gitlab
-    url: https://gitlab.com/pboling/require_bench/-
-  tags: []
+    - type: GitLab
+      url: https://gitlab.com/pboling/require_bench/-
+  tags:
+    - performance
+    - debugging
 - name: resque-lonely_job
   description: |
     Ensures that for a given queue, only one worker is working on a job at any given time.
@@ -419,9 +537,11 @@
           # particular queue
         end
       end
-  language: ruby
-  forges: []
-  tags: []
+  language: Ruby
+  forges: [ ]
+  tags:
+    - queues
+    - uniqueness
 - name: resque-unique_at_runtime
   description: |
     Ensures that for a given queue, only one worker is working on a job at any given time.
@@ -435,346 +555,394 @@
           # particular queue
         end
       end
-  language: ruby
-  forges: []
-  tags: []
+  language: Ruby
+  forges: [ ]
+  tags:
+    - queues
+    - uniqueness
 - name: resque-unique_by_arity
   description: Configure resque-unique_in_queue and resque-unique_at_runtime uniqueness
     by arity of perform method, with automated cleanup tools
-  language: ruby
-  forges: []
-  tags: []
+  language: Ruby
+  forges: [ ]
+  tags:
+    - queues
+    - uniqueness
 - name: resque-unique_in_queue
   description: A resque plugin that ensures job uniqueness at enqueue time.
-  language: ruby
-  forges: []
-  tags: []
+  language: Ruby
+  forges: [ ]
+  tags:
+    - queues
+    - uniqueness
 - name: rots
   description: |
     Ruby OpenID Test Server (ROTS) provides a basic OpenID server made in top of the Rack gem.
     With this small server, you can make dummy OpenID request for testing purposes,
     the success of the response will depend on a parameter given on the URL of the authentication request.
-  language: ruby
+  language: Ruby
   forges:
-  - type: github
-    url: http://github.com/oauth-xx/rots
-  tags: []
+    - type: GitHub
+      url: http://github.com/ruby-openid/rots
+  tags:
+    - openid
+    - authentication
+    - security
 - name: rspec-block_is_expected
   description: subject { Integer(nil) }; it('raises') { block_is_expected.to raise_error(TypeError)
     }
-  language: ruby
+  language: Ruby
   forges:
-  - type: github
-    url: https://github.com/pboling/rspec-block_is_expected
+    - type: GitHub
+      url: https://github.com/pboling/rspec-block_is_expected
   tags:
-  - rspec
-  - testing
+    - rspec
+    - testing
 - name: rspec-pending_for
   description: "⏳️ Mark specs pending or skipped for specific Ruby engine (e.g. MRI
     or JRuby) & versions, or version ranges. Fund overlooked open source projects
     - bottom of stack, dev/test dependencies: floss-funding.dev"
-  language: ruby
+  language: Ruby
   forges:
-  - type: github
-    url: https://github.com/galtzo-floss/rspec-pending_for
-  - type: codeberg
-    url: https://codeberg.org/galtzo-floss/rspec-pending_for
+    - type: GitHub
+      url: https://github.com/galtzo-floss/rspec-pending_for
+    - type: Codeberg
+      url: https://codeberg.org/galtzo-floss/rspec-pending_for
   tags:
-  - rspec
-  - testing
+    - rspec
+    - testing
 - name: rspec-stubbed_env
   description: |
     Stub or hide environment variables in a scoped context for testing
     stub_env('REDIS_URL' => 'redis://localhost:6379/')
     hide_env('SESSION_SECRET')
-  language: ruby
+  language: Ruby
   forges:
-  - type: github
-    url: https://github.com/galtzo-floss/rspec-stubbed_env
+    - type: GitHub
+      url: https://github.com/galtzo-floss/rspec-stubbed_env
   tags:
-  - rspec
-  - testing
+    - rspec
+    - testing
 - name: rubocop-lts
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby code
-  language: ruby
+  language: Ruby
   forges:
-  - type: gitlab
-    url: https://gitlab.com/rubocop-lts/rubocop-lts/-
-  tags: []
+    - type: GitLab
+      url: https://gitlab.com/rubocop-lts/rubocop-lts/-
+  tags:
+    - rubocop
 - name: rubocop-ruby1_8
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 1.8 code
-  language: ruby
+  language: Ruby
   forges:
-  - type: github
-    url: https://github.com/rubocop-lts/rubocop-ruby1_8
-  tags: []
+    - type: GitHub
+      url: https://github.com/rubocop-lts/rubocop-ruby1_8
+  tags:
+    - rubocop
 - name: rubocop-ruby1_9
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 1.9 code
-  language: ruby
+  language: Ruby
   forges:
-  - type: github
-    url: https://github.com/rubocop-lts/rubocop-ruby1_9
-  tags: []
+    - type: GitHub
+      url: https://github.com/rubocop-lts/rubocop-ruby1_9
+  tags:
+    - rubocop
 - name: rubocop-ruby2_0
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 2.0 code
-  language: ruby
+  language: Ruby
   forges:
-  - type: github
-    url: https://github.com/rubocop-lts/rubocop-ruby2_0
-  tags: []
+    - type: GitHub
+      url: https://github.com/rubocop-lts/rubocop-ruby2_0
+  tags:
+    - rubocop
 - name: rubocop-ruby2_1
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 2.1 code
-  language: ruby
+  language: Ruby
   forges:
-  - type: github
-    url: https://github.com/rubocop-lts/rubocop-ruby2_1
-  tags: []
+    - type: GitHub
+      url: https://github.com/rubocop-lts/rubocop-ruby2_1
+  tags:
+    - rubocop
 - name: rubocop-ruby2_2
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 2.2 code
-  language: ruby
+  language: Ruby
   forges:
-  - type: github
-    url: https://github.com/rubocop-lts/rubocop-ruby2_2
-  tags: []
+    - type: GitHub
+      url: https://github.com/rubocop-lts/rubocop-ruby2_2
+  tags:
+    - rubocop
 - name: rubocop-ruby2_3
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 2.3 code
-  language: ruby
+  language: Ruby
   forges:
-  - type: github
-    url: https://github.com/rubocop-lts/rubocop-ruby2_3
-  tags: []
+    - type: GitHub
+      url: https://github.com/rubocop-lts/rubocop-ruby2_3
+  tags:
+    - rubocop
 - name: rubocop-ruby2_4
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 2.4 code
-  language: ruby
+  language: Ruby
   forges:
-  - type: github
-    url: https://github.com/rubocop-lts/rubocop-ruby2_4
-  tags: []
+    - type: GitHub
+      url: https://github.com/rubocop-lts/rubocop-ruby2_4
+  tags:
+    - rubocop
 - name: rubocop-ruby2_5
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 2.5 code
-  language: ruby
+  language: Ruby
   forges:
-  - type: github
-    url: https://github.com/rubocop-lts/rubocop-ruby2_5
-  tags: []
+    - type: GitHub
+      url: https://github.com/rubocop-lts/rubocop-ruby2_5
+  tags:
+    - rubocop
 - name: rubocop-ruby2_6
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 2.6 code
-  language: ruby
+  language: Ruby
   forges:
-  - type: github
-    url: https://github.com/rubocop-lts/rubocop-ruby2_6
-  tags: []
+    - type: GitHub
+      url: https://github.com/rubocop-lts/rubocop-ruby2_6
+  tags:
+    - rubocop
 - name: rubocop-ruby2_7
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 2.7 code
-  language: ruby
+  language: Ruby
   forges:
-  - type: github
-    url: https://github.com/rubocop-lts/rubocop-ruby2_7
-  tags: []
+    - type: GitHub
+      url: https://github.com/rubocop-lts/rubocop-ruby2_7
+  tags:
+    - rubocop
 - name: rubocop-ruby3_0
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 3.0 code
-  language: ruby
+  language: Ruby
   forges:
-  - type: github
-    url: https://github.com/rubocop-lts/rubocop-ruby3_0
-  tags: []
+    - type: GitHub
+      url: https://github.com/rubocop-lts/rubocop-ruby3_0
+  tags:
+    - rubocop
 - name: rubocop-ruby3_1
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 3.1 code
-  language: ruby
+  language: Ruby
   forges:
-  - type: github
-    url: https://github.com/rubocop-lts/rubocop-ruby3_1
-  tags: []
+    - type: GitHub
+      url: https://github.com/rubocop-lts/rubocop-ruby3_1
+  tags:
+    - rubocop
 - name: rubocop-ruby3_2
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 3.2 code
-  language: ruby
+  language: Ruby
   forges:
-  - type: github
-    url: https://github.com/rubocop-lts/rubocop-ruby3_2
-  tags: []
+    - type: GitHub
+      url: https://github.com/rubocop-lts/rubocop-ruby3_2
+  tags:
+    - rubocop
 - name: ruby-openid
   description: A library for consuming and serving OpenID identities.
-  language: ruby
+  language: Ruby
   forges:
-  - type: github
-    url: https://github.com/openid/ruby-openid
-  tags: []
+    - type: GitHub
+      url: https://github.com/ruby-openid/ruby-openid
+  tags:
+    - openid
+    - authentication
+    - security
 - name: ruby-openid2
   description: A library for consuming and serving OpenID identities.
-  language: ruby
+  language: Ruby
   forges:
-  - type: github
-    url: https://github.com/oauth-xx/ruby-openid2
-  tags: []
+    - type: GitHub
+      url: https://github.com/ruby-openid/ruby-openid2
+  tags:
+    - openid
+    - authentication
+    - security
 - name: sanitize_email
   description: |2
       Email Condom for your Ruby Server.
     In Rails, Sinatra, et al, or simply the mail gem: Aids in development, testing, qa, and production troubleshooting of email issues without worrying that emails will get sent to actual live addresses.
-  language: ruby
+  language: Ruby
   forges:
-  - type: github
-    url: https://github.com/galtzo-floss/sanitize_email
+    - type: GitHub
+      url: https://github.com/galtzo-floss/sanitize_email
   tags:
-  - rails
-  - email
+    - rails
+    - email
 - name: seed_migration
   description: Rails gem for Data Migrations
-  language: ruby
-  forges: []
-  tags: []
+  language: Ruby
+  forges:
+    - type: GitHub
+      url: https://github.com/galtzo-floss/seed_migration
+  tags:
+    - rails
+    - seed
+    - migration
 - name: sequential_file
   description: Create Files Named Sequentially Intelligently
-  language: ruby
-  forges: []
-  tags: []
+  language: Ruby
+  forges: [ ]
+  tags:
+    - unmaintained
 - name: service_actor-promptable
   description: TTY Prompt plugin for your service objects for your application logic
-  language: ruby
+  language: Ruby
   forges:
-  - type: github
-    url: https://github.com/pboling/service_actor-promptable
-  tags: []
+    - type: GitHub
+      url: https://github.com/pboling/service_actor-promptable
+  tags:
+    - service-objects
+    - tty
 - name: shields-badge
   description: |
     Shields::Badge.gem_total_downloads(path_parameters: {gem: 'rails'})
     => "[![RubyGems Total Downloads](https://img.shields.io/gem/dt/rails?)](https://rubygems.org/gems/rails)"
-  language: ruby
+  language: Ruby
   forges:
-  - type: github
-    url: https://github.com/galtzo-floss/shields-badge/releases/tag//v1.0.0
-  tags: []
+    - type: GitHub
+      url: https://github.com/galtzo-floss/shields-badge/releases/tag//v1.0.0
+  tags:
+    - badges
+    - shields
+    - markdown
 - name: shiftable
   description: Move single records (has_one) or collections (has_many) from one parent
     (belongs_to) to another
-  language: ruby
+  language: Ruby
   forges:
-  - type: github
-    url: https://github.com/pboling/shiftable
-  tags: []
+    - type: GitHub
+      url: https://github.com/pboling/shiftable
+  tags:
+    - rails
+    - activerecord
 - name: silent_stream
   description: "\U0001F515 (formerly) ActiveSupport Kernel Reporting Detritus with
     a few enhancementsFund overlooked open source projects - bottom of stack, dev/test
     dependencies: floss-funding.dev"
-  language: ruby
+  language: Ruby
   forges:
-  - type: github
-    url: https://github.com/galtzo-floss/silent_stream
-  tags: []
+    - type: GitHub
+      url: https://github.com/galtzo-floss/silent_stream
+  tags:
+    - testing
+    - logging
 - name: simple_column-scopes
   description: Dynamic modules which define dynamic methods for scopes based on a
     dynamic array of column names
-  language: ruby
-  forges: []
-  tags: []
+  language: Ruby
+  forges: [ ]
+  tags:
+    - rails
+    - activerecord
 - name: snaky_hash
   description: 'A Hashie::Mash joint to make #snakelife better'
-  language: ruby
+  language: Ruby
   forges:
-  - type: github
-    url: https://github.com/oauth-xx/snaky_hash/releases/tag//v2.0.3
-  tags: []
+    - type: GitHub
+      url: https://github.com/ruby-oauth/snaky_hash/releases/tag//v2.0.3
+  tags:
+    - hashie
+    - snake_case
 - name: spyke-connection_lambda
   description: Dynamic Spyke API connection plugin for the Enterprise Cloud
-  language: ruby
+  language: Ruby
   forges:
-  - type: github
-    url: https://github.com/pboling/spyke-connection_lambda
-  tags: []
+    - type: GitHub
+      url: https://github.com/pboling/spyke-connection_lambda
+  tags:
+    - spyke
+    - api
 - name: stackable_flash
   description: Allows flashes to stack intelligently, while preserving existing behavior
     of the Rails FlashHash
-  language: ruby
-  forges: []
-  tags: []
+  language: Ruby
+  forges: [ ]
+  tags:
+    - unmaintained
 - name: standard-rubocop-lts
   description: |
     Enables Ruby projects to more confidently support even the most finely-aged Rubies.
     Part of the rubocop-lts family.
-  language: ruby
+  language: Ruby
   forges:
-  - type: gitlab
-    url: https://gitlab.com/rubocop-lts/standard-rubocop-lts/-
-  tags: []
+    - type: GitLab
+      url: https://gitlab.com/rubocop-lts/standard-rubocop-lts/-
+  tags:
+    - standard
+    - rubocop
 - name: status_tag
   description: |-
     Provides content_tag_for method signature to create customizable and logic-gated labels from objects.
     Also includes a presenter base class to allow any Ruby web framework to create logic around HTML tags
-  language: ruby
-  forges: []
-  tags: []
+  language: Ruby
+  forges: [ ]
+  tags:
+    - rails
+    - presenters
 - name: stone_checksums
   description: "\U0001F5FF Generate both SHA256 & SHA512 checksums into the checksums
     directory, and git commit them.\n  gem install stone_checksums\nThen, use the
     rake task or the script:\n  rake build:generate_checksums\n  gem_checksums\nControl
     options with ENV variables!\nFund overlooked open source projects - bottom of
     stack, dev/test dependencies: floss-funding.dev"
-  language: ruby
+  language: Ruby
   forges:
-  - type: github
-    url: https://github.com/galtzo-floss/stone_checksums
-  tags: []
+    - type: GitHub
+      url: https://github.com/galtzo-floss/stone_checksums
+  tags:
+    - checksums
+    - security
+    - release
 - name: strict_states
   description: Safely access state machine states with guarantee that there are no
     typos.  Compatible with all Ruby state machine libraries.
-  language: ruby
-  forges: []
-  tags: []
+  language: Ruby
+  forges: [ ]
+  tags:
+    - state-machine
 - name: super_exception_notifier
-  description: |-
-    Allows customization of:
-    * Specify which level of notification you would like with an array of optional styles of notification (email, webhooks)
-    * the sender address of the email
-    * the recipient addresses
-    * the text used to prefix the subject line
-    * the HTTP status codes to notify for
-    * the error classes to send emails for
-    * alternatively, the error classes to not notify for
-    * whether to send error emails or just render without sending anything
-    * the HTTP status and status code that gets rendered with specific errors
-    * the view path to the error page templates
-    * custom errors, with custom error templates
-    * define error layouts at application or controller level, or use the controller's own default layout, or no layout at all
-    * get error notification for errors that occur in the console, using notifiable method
-    * Override the gem's handling and rendering with explicit rescue statements inline.
-    * Hooks into `git blame` output so you can get an idea of who (may) have introduced the bug
-    * Hooks into other website services (e.g. you can send exceptions to to Switchub.com)
-    * Can notify of errors occurring in any class/method using notifiable { method }
-    * Can notify of errors in Rake tasks using NotifiedTask.new instead of task
-    * Works with Hoptoad Notifier, so you can notify via SEN and/or Hoptoad for any particular errors.
-    * Tested with Rails 2.3.x, should work with rails 2.2.x, and is apparently not yet compatible with rails 3.
-  language: ruby
+  description: In the Rails v2 era, this was a popular fork of exception_notification,
+    with many extra features.  It is now deprecated in favor of the original gem.
+  language: Ruby
   forges:
-  - type: github
-    url: http://github.com/pboling/exception_notification
-  tags: []
+    - type: GitHub
+      url: http://github.com/pboling/exception_notification
+  tags:
+    - unmaintained
 - name: timecop-rspec
   description: "⌚️ Timecop::Rspec provides Timecop time-machines for RSpec that allow
     youto time-travel test examples, context/describes, and/or your entire test suite.
     Find out how your code will behave... in the future! Fund overlooked open source
     projects - bottom of stack, dev/test dependencies: floss-funding.dev"
-  language: ruby
+  language: Ruby
   forges:
-  - type: github
-    url: https://github.com/galtzo-floss/timecop-rspec
+    - type: GitHub
+      url: https://github.com/galtzo-floss/timecop-rspec
   tags:
-  - rspec
-  - testing
+    - rspec
+    - testing
 - name: undrive_google
   description: "\U0001F3F4 Liberate files from your Google Drive with transformations"
-  language: ruby
-  forges: []
-  tags: []
+  language: Ruby
+  forges: [ ]
+  tags:
+    - google
+    - drive
 - name: version_gem
   description: "\U0001F516 Versions are good. Versions are cool. Versions will win."
-  language: ruby
+  language: Ruby
   forges:
-  - type: github
-    url: https://github.com/ruby-oauth/version_gem
-  tags: []
+    - type: GitHub
+      url: https://github.com/ruby-oauth/version_gem
+  tags:
+    - versioning
+    - semver
+    - epoch
 - name: warden_oauth
   description: " \n      warden_oauth will help you create oauth authentication strategies
     using the oauth\n      helper method on the Warden::Manager config setup\n    "
-  language: ruby
-  forges: []
+  language: Ruby
+  forges: [ ]
   tags:
-  - oauth
+    - oauth
+    - authentication
+    - authorization
+    - warden
