@@ -27,20 +27,22 @@ body_class: projects
   <% tags.each do |tag| %>
     <li>
       <a href="#" class="tag-link" data-tag="<%= tag %>">
-        <%= tag_counts[tag] %>&nbsp;
-        <span class="tag <%= tag %>"><%= tag %> </span>
+        <span class="count left"><%== tag_counts[tag].to_s.rjust(2, 'x').gsub('x', '&nbsp;') %></span>
+        <span class="tag <%= tag %>"><%= tag %></span>
+        <span class="count right"><%== tag_counts[tag].to_s.ljust(2, 'x').gsub('x', '&nbsp;') %></span>
       </a>
     </li>
   <% end %>
   <% min_ruby_versions.each do |min_ruby| %>
     <li>
       <a href="#" class="tag-link min_ruby-link" data-tag="Ruby >= <%= min_ruby %>">
-        <%= min_ruby_counts[min_ruby] %>&nbsp;
+        <span class="count left"><%== min_ruby_counts[min_ruby].to_s.rjust(2, 'x').gsub('x', '&nbsp;') %></span>
         <span class="tag min-language"><img
                 src="/assets/images/Ruby.svg"
                 alt="Ruby >= <%= min_ruby %>"
                 class="language"
-        >Ruby >= <%= min_ruby %></span>
+        >Min Ruby v<%= min_ruby %></span>
+        <span class="count right"><%== min_ruby_counts[min_ruby].to_s.ljust(2, 'x').gsub('x', '&nbsp;') %></span>
       </a>
     </li>
   <% end %>

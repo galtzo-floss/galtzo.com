@@ -446,7 +446,7 @@
       url: https://codeberg.org/ruby-openid/masq
   tags:
     - openid
-    - authentication
+    - auth
     - security
 - name: masq2
   description: Originally a fork. Has been merged back to the original gem.
@@ -461,7 +461,7 @@
       url: https://codeberg.org/ruby-openid/masq
   tags:
     - openid
-    - authentication
+    - auth
     - security
 - name: month-serializer
   description: Serialize Month objects to Integer
@@ -489,7 +489,7 @@
       url: https://codeberg.org/ruby-oauth/oauth
   tags:
     - oauth
-    - authorization
+    - auth
     - security
 - name: oauth-tty
   description: "\U0001F5A5️ OAuth 1.0 / 1.0a TTY Command Line Interface"
@@ -504,7 +504,7 @@
       url: https://codeberg.org/ruby-oauth/oauth-tty
   tags:
     - oauth
-    - authorization
+    - auth
     - security
     - tty
 - name: oauth2
@@ -520,7 +520,7 @@
       url: https://codeberg.org/ruby-oauth/oauth2
   tags:
     - oauth
-    - authorization
+    - auth
     - security
 - name: omniauth-identity
   description: Traditional username/password based authentication system for OmniAuth
@@ -530,7 +530,7 @@
     - type: GitHub
       url: https://github.com/omniauth/omniauth-identity
   tags:
-    - authentication
+    - auth
     - security
 - name: omniauth-jwt
   description: An OmniAuth strategy to accept JWT-based single sign-on.
@@ -540,7 +540,7 @@
     - type: GitHub
       url: https://github.com/omniauth/omniauth-jwt
   tags:
-    - authentication
+    - auth
     - security
 - name: omniauth-jwt2
   description: Originally a fork. Has been merged back to the original gem.
@@ -550,7 +550,7 @@
     - type: GitHub
       url: https://github.com/omniauth/omniauth-jwt2
   tags:
-    - authentication
+    - auth
     - security
 - name: omniauth-ldap
   description: A LDAP strategy for OmniAuth.
@@ -560,7 +560,7 @@
     - type: GitHub
       url: https://github.com/omniauth/omniauth-ldap
   tags:
-    - authentication
+    - auth
     - security
 - name: omniauth-openid
   description: OpenID (not OIDC) strategy for OmniAuth.
@@ -575,7 +575,7 @@
       url: https://codeberg.org/ruby-openid/omniauth-openid
   tags:
     - openid
-    - authentication
+    - auth
     - security
 - name: open_id_authentication
   description: Provides a thin wrapper around the excellent rack-openid2 gem.
@@ -590,7 +590,7 @@
       url: https://codeberg.org/ruby-openid/open_id_authentication
   tags:
     - openid
-    - authentication
+    - auth
     - security
 - name: pretty_feed
   description: |
@@ -643,7 +643,7 @@
       url: https://codeberg.org/ruby-openid/rack-openid
   tags:
     - openid
-    - authentication
+    - auth
     - security
 - name: rack-openid2
   description: Originally a fork. Has been merged back to the original gem.
@@ -658,7 +658,7 @@
       url: https://codeberg.org/ruby-openid/rack-openid
   tags:
     - openid
-    - authentication
+    - auth
     - security
 - name: rack-toolbar
   description: Provides an easy way to create Rack Middleware that injects things
@@ -805,7 +805,7 @@
       url: https://codeberg.org/ruby-openid/rots
   tags:
     - openid
-    - authentication
+    - auth
     - security
     - testing
 - name: rspec-block_is_expected
@@ -1032,7 +1032,7 @@
       url: https://codeberg.org/ruby-openid/ruby-openid
   tags:
     - openid
-    - authentication
+    - auth
     - security
 - name: ruby-openid2
   description: Originally a fork. Has been merged back to the original gem.
@@ -1047,7 +1047,7 @@
       url: https://codeberg.org/ruby-openid/ruby-openid
   tags:
     - openid
-    - authentication
+    - auth
     - security
 - name: sanitize_email
   description: |2
@@ -1322,6 +1322,5 @@
       url: https://github.com/ruby-oauth/warden_oauth
   tags:
     - oauth
-    - authentication
-    - authorization
+    - auth
     - warden
