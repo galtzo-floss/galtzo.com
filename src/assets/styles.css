@@ -12,6 +12,18 @@ li { margin: 1rem 0; }
   background-color: rgba(255, 100, 0, 0.8);
 }
 
+.min-language {
+    .language {
+        width: 14px;
+        height: 14px;
+        padding: 0.1rem 0.1rem;
+        margin-right: 0.1rem;
+        margin-bottom: -0.2rem;
+        box-shadow: none;
+        background-color: transparent;
+    }
+}
+
 a {
     text-decoration: none;
     color: inherit;
@@ -49,11 +61,31 @@ a {
     padding: 0.3rem 0.75rem;
     font-size: 0.75rem;
     font-weight: 600;
-    margin-right: 0.5rem;
-    /*margin-top: -10px;*/
+    margin: -0.5rem 0.5rem 0 0;
     box-shadow: 0 0 10px rgba(255, 100, 0, 0.6);
 }
 
 .projects {
   max-width: none;
+}
+
+.tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    list-style: none;
+    padding: 0;
+    li {
+        margin: 0;
+    }
+    .tag {
+        display: inline-block;
+        background-color: #eee;
+        border-radius: 9999px;
+        padding: 0.3rem 0.75rem;
+        font-size: 0.75rem;
+        font-weight: 600;
+        margin: 0;
+        box-shadow: 0 0 10px rgba(255, 100, 0, 0.6);
+    }
 }

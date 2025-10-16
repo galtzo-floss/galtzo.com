@@ -7,6 +7,27 @@ body_class: projects
 
 <h1><%= (page.respond_to?(:data) && page.data["title"]) || "Open Source Projects" %></h1>
 
+<% tags = site.data.projects.flat_map { |project| project["tags"] || [] }.uniq.sort %>
+<% min_ruby_versions = site.data.projects.select {|p| p["language"] == "Ruby" }.flat_map { |project| project["minimum_version"] || [] }.uniq.sort %>
+<ul class="tag-list">
+  <% tags.each do |tag| %>
+    <li>
+      <a href="#<%= tag %>" class="tag-link"><span class="tag <%= tag %>"><%= tag %></span></a>
+    </li>
+  <% end %>
+  <% min_ruby_versions.each do |min_ruby| %>
+    <li>
+      <a href="#<%= min_ruby %>" class="tag-link min_ruby-link">
+        <span class="tag min-language"><img
+                src="/assets/images/Ruby.svg"
+                alt="Ruby >= <%= min_ruby %>"
+                class="language"
+        >Ruby >= <%= min_ruby %></span>
+      </a>
+    </li>
+  <% end %>
+</ul>
+
 <ul class="project-list">
   <% site.data.projects.each do |project| %>
   <li class="card">
@@ -34,13 +55,19 @@ body_class: projects
       <% end %>
     </p>
     <p>
-      <span class="tag"><%= project["language"] %> >= <%= project["minimum_version"] %></span>
+      <% if !project["minimum_version"].nil? %>
+        <span class="tag min-language"><img
+                src="/assets/images/<%= project['language'] %>.svg"
+                alt="<%= project['language'] %> >= <%= project['minimum_version'] %>"
+                class="language"
+        ><%= project["language"] %> >= <%= project["minimum_version"] %></span>
+      <% end %>
       <% if project["tags"] && project["tags"].any? %>
         <% project["tags"].each do |tag| %>
-          <span class="tag"><%= tag %></span>
+          <span class="tag <%= tag %>"><%= tag %></span>
         <% end %>
       <% else %>
-        <span class="tag">Oops<</span>
+        <span class="tag oops">Oops<</span>
       <% end %>
     </p>
     <p><%= project["description"] %></p>
