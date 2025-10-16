@@ -66,6 +66,15 @@ a {
     background-color: var(--orange);
 }
 
+.doc-site {
+    width: 20px;
+    height: 20px;
+    padding: 0.3rem 0.75rem;
+    margin-right: 0.5rem;
+    box-shadow: 0 0 10px var(--orange);
+    background-color: var(--orange);
+}
+
 .project-list {
     display: flex;
     flex-wrap: wrap;

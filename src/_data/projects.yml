@@ -1299,6 +1299,7 @@
   description: "\U0001F516 Versions are good. Versions are cool. Versions will win."
   language: Ruby
   minimum_version: 2.2
+  doc_site: https://version-gem.galtzo.com
   forges:
     - type: GitHub
       url: https://github.com/ruby-oauth/version_gem

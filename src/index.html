@@ -64,6 +64,15 @@ body_class: projects
                 class="language"
         >
       </a>
+      <% if project["doc_site"] %>
+        <a href="<%= project['doc_site'] %>" class="doc-link" target="_blank" rel="noopener">
+          <img
+                  src="/assets/images/Read-the-Docs.svg"
+                  alt="Documentation Website (<%= project['doc_site'] %>)"
+                  class="doc-site"
+          >
+        </a>
+      <% end %>
       <% project["forges"].each do |forge| %>
         <a href="<%= forge['url'] %>" class="forge-link" target="_blank" rel="noopener">
           <img
