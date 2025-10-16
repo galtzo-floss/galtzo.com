@@ -12,12 +12,12 @@ body_class: projects
 <ul class="tag-list">
   <% tags.each do |tag| %>
     <li>
-      <a href="#<%= tag %>" class="tag-link"><span class="tag <%= tag %>"><%= tag %></span></a>
+      <a href="#" class="tag-link" data-tag="<%= tag %>"><span class="tag <%= tag %>"><%= tag %></span></a>
     </li>
   <% end %>
   <% min_ruby_versions.each do |min_ruby| %>
     <li>
-      <a href="#<%= min_ruby %>" class="tag-link min_ruby-link">
+      <a href="#" class="tag-link min_ruby-link" data-tag="Ruby >= <%= min_ruby %>">
         <span class="tag min-language"><img
                 src="/assets/images/Ruby.svg"
                 alt="Ruby >= <%= min_ruby %>"
@@ -67,10 +67,34 @@ body_class: projects
           <span class="tag <%= tag %>"><%= tag %></span>
         <% end %>
       <% else %>
-        <span class="tag oops">Oops<</span>
+        <span class="tag oops">Oops</span>
       <% end %>
     </p>
     <p><%= project["description"] %></p>
   </li>
   <% end %>
 </ul>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const tagLinks = document.querySelectorAll('.tag-link');
+  const cards = document.querySelectorAll('.card');
+
+  tagLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      this.classList.toggle('active');
+      filterProjects();
+    });
+  });
+
+  function filterProjects() {
+    const activeTags = Array.from(document.querySelectorAll('.tag-link.active')).map(link => link.dataset.tag);
+    cards.forEach(card => {
+      const cardTags = Array.from(card.querySelectorAll('.tag')).map(span => span.textContent.trim());
+      const matches = activeTags.length === 0 || activeTags.every(tag => cardTags.includes(tag));
+      card.style.display = matches ? '' : 'none';
+    });
+  }
+});
+</script>

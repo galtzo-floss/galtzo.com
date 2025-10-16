@@ -1,6 +1,17 @@
-body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; max-width: 48rem; margin: 2rem auto; padding: 0 1rem; color: #111; }
+:root {
+  --text-color: #111;
+  --border-color: #eee;
+  --background-light: #eee;
+  --orange: rgba(255, 100, 0, 0.8);
+  --orange-light: rgba(255, 100, 0, 0.6);
+  --orange-solid: #ff6400;
+  --white: white;
+  --transparent: transparent;
+}
+
+body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; max-width: 48rem; margin: 2rem auto; padding: 0 1rem; color: var(--text-color); }
 header nav a { text-decoration: none; font-weight: 600; }
-h1 { border-bottom: 1px solid #eee; padding-bottom: .25rem; }
+h1 { border-bottom: 1px solid var(--border-color); padding-bottom: .25rem; }
 li { margin: 1rem 0; }
 
 .language {
@@ -8,8 +19,8 @@ li { margin: 1rem 0; }
   height: 20px;
   padding: 0.3rem 0.75rem;
   margin-right: 0.5rem;
-  box-shadow: 0 0 10px rgba(255, 100, 0, 0.8);
-  background-color: rgba(255, 100, 0, 0.8);
+  box-shadow: 0 0 10px var(--orange);
+  background-color: var(--orange);
 }
 
 .min-language {
@@ -20,7 +31,7 @@ li { margin: 1rem 0; }
         margin-right: 0.1rem;
         margin-bottom: -0.2rem;
         box-shadow: none;
-        background-color: transparent;
+        background-color: var(--transparent);
     }
 }
 
@@ -34,8 +45,8 @@ a {
   height: 20px;
   padding: 0.3rem 0.75rem;
   margin-right: 0.5rem;
-  box-shadow: 0 0 10px rgba(255, 100, 0, 0.8);
-  background-color: rgba(255, 100, 0, 0.8);
+  box-shadow: 0 0 10px var(--orange);
+  background-color: var(--orange);
 }
 
 .project-list {
@@ -49,20 +60,20 @@ a {
 .card {
   width: 450px;
   box-sizing: border-box;
-  border: 1px solid #eee;
+  border: 1px solid var(--border-color);
   padding: 1rem;
   border-radius: 4px;
 }
 
 .tag {
     display: inline-block;
-    background-color: #eee;
+    background-color: var(--background-light);
     border-radius: 9999px;
     padding: 0.3rem 0.75rem;
     font-size: 0.75rem;
     font-weight: 600;
-    margin: -0.5rem 0.5rem 0 0;
-    box-shadow: 0 0 10px rgba(255, 100, 0, 0.6);
+    margin: -0.1rem 0.5rem 0 0;
+    box-shadow: 0 0 10px var(--orange-light);
 }
 
 .projects {
@@ -80,12 +91,19 @@ a {
     }
     .tag {
         display: inline-block;
-        background-color: #eee;
+        background-color: var(--background-light);
         border-radius: 9999px;
         padding: 0.3rem 0.75rem;
         font-size: 0.75rem;
         font-weight: 600;
         margin: 0;
-        box-shadow: 0 0 10px rgba(255, 100, 0, 0.6);
+        border: 2px solid var(--transparent);
+        box-shadow: 0 0 10px var(--orange-light);
     }
+}
+
+.tag-link.active .tag {
+  background-color: var(--orange);
+  color: var(--white);
+  border: 2px solid var(--orange-solid);
 }
