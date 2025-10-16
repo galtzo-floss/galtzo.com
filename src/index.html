@@ -8,11 +8,25 @@ body_class: projects
 <h1><%= (page.respond_to?(:data) && page.data["title"]) || "Open Source Projects" %></h1>
 
 <% tags = site.data.projects.flat_map { |project| project["tags"] || [] }.uniq.sort %>
+<% tag_counts = {} %>
+<% site.data.projects.each do |project| %>
+  <% (project["tags"] || []).each do |tag| %>
+    <% tag_counts[tag] ||= 0 %>
+    <% tag_counts[tag] += 1 %>
+  <% end %>
+<% end %>
 <% min_ruby_versions = site.data.projects.select {|p| p["language"] == "Ruby" }.flat_map { |project| project["minimum_version"] || [] }.uniq.sort %>
+<% min_ruby_counts = {} %>
+<% site.data.projects.select {|p| p["language"] == "Ruby" }.each do |project| %>
+  <% if project["minimum_version"] %>
+    <% min_ruby_counts[project["minimum_version"]] ||= 0 %>
+    <% min_ruby_counts[project["minimum_version"]] += 1 %>
+  <% end %>
+<% end %>
 <ul class="tag-list">
   <% tags.each do |tag| %>
     <li>
-      <a href="#" class="tag-link" data-tag="<%= tag %>"><span class="tag <%= tag %>"><%= tag %></span></a>
+      <a href="#" class="tag-link" data-tag="<%= tag %>"><span class="tag <%= tag %>"><%= tag %> (<%= tag_counts[tag] %>)</span></a>
     </li>
   <% end %>
   <% min_ruby_versions.each do |min_ruby| %>
@@ -22,7 +36,7 @@ body_class: projects
                 src="/assets/images/Ruby.svg"
                 alt="Ruby >= <%= min_ruby %>"
                 class="language"
-        >Ruby >= <%= min_ruby %></span>
+        >Ruby >= <%= min_ruby %> (<%= min_ruby_counts[min_ruby] %>)</span>
       </a>
     </li>
   <% end %>
