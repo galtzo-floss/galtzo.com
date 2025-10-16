@@ -3,7 +3,7 @@
   --border-color: #eee;
   --background-light: #eee;
   --orange: rgba(255, 100, 0, 0.8);
-  --orange-light: rgba(255, 100, 0, 0.6);
+  --orange-light: rgba(255, 100, 0, 0.4);
   --orange-solid: #ff6400;
   --white: white;
   --transparent: transparent;
@@ -94,12 +94,28 @@ a {
         background-color: var(--background-light);
         border-radius: 9999px;
         padding: 0.3rem 0.75rem;
+        /*border-radius: 0 9999px 9999px 0;*/
+        /*padding: 0.3rem 0.75rem 0.3rem 0;*/
         font-size: 0.75rem;
         font-weight: 600;
         margin: 0;
         border: 2px solid var(--transparent);
         box-shadow: 0 0 10px var(--orange-light);
     }
+}
+
+.tag-link {
+  display: inline-block;
+  background-color: var(--background-light);
+  border-radius: 9999px;
+  padding: 0.3rem 0 0.3rem 0.75rem;
+  text-decoration: none;
+  color: inherit;
+  margin: 0 0.5rem 0 0;
+}
+
+.tag-link.active {
+  background-color: var(--orange);
 }
 
 .tag-link.active .tag {

@@ -26,17 +26,21 @@ body_class: projects
 <ul class="tag-list">
   <% tags.each do |tag| %>
     <li>
-      <a href="#" class="tag-link" data-tag="<%= tag %>"><span class="tag <%= tag %>"><%= tag %> (<%= tag_counts[tag] %>)</span></a>
+      <a href="#" class="tag-link" data-tag="<%= tag %>">
+        <%= tag_counts[tag] %>&nbsp;
+        <span class="tag <%= tag %>"><%= tag %> </span>
+      </a>
     </li>
   <% end %>
   <% min_ruby_versions.each do |min_ruby| %>
     <li>
       <a href="#" class="tag-link min_ruby-link" data-tag="Ruby >= <%= min_ruby %>">
+        <%= min_ruby_counts[min_ruby] %>&nbsp;
         <span class="tag min-language"><img
                 src="/assets/images/Ruby.svg"
                 alt="Ruby >= <%= min_ruby %>"
                 class="language"
-        >Ruby >= <%= min_ruby %> (<%= min_ruby_counts[min_ruby] %>)</span>
+        >Ruby >= <%= min_ruby %></span>
       </a>
     </li>
   <% end %>
