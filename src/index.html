@@ -121,7 +121,7 @@ body_class: projects
   <% end %>
   <% min_go_versions.each do |min_go| %>
   <li>
-    <a href="#" class="tag-link min_lang-link" data-tag="Go >= <%= min_go %>">
+    <a href="#" class="tag-link min_lang_link" data-tag="Go >= <%= min_go %>">
       <span class="count left"><%== min_go_counts[min_go].to_s.rjust(2, 'x').gsub('x', '&nbsp;') %></span>
       <span class="tag min-language"><img
               src="/assets/images/Go.svg"
@@ -134,7 +134,7 @@ body_class: projects
   <% end %>
   <% min_bash_versions.each do |min_bash| %>
   <li>
-    <a href="#" class="tag-link min_lang-link" data-tag="Bash >= <%= min_bash %>">
+    <a href="#" class="tag-link min_lang_link" data-tag="Bash >= <%= min_bash %>">
       <span class="count left"><%== min_bash_counts[min_bash].to_s.rjust(2, 'x').gsub('x', '&nbsp;') %></span>
       <span class="tag min-language"><img
               src="/assets/images/Bash.svg"

@@ -96,6 +96,7 @@ a {
     border: 1px solid var(--border-color);
     padding: 1rem;
     border-radius: 4px;
+    position: relative;
 
     .tag {
         display: inline-block;
@@ -117,6 +118,41 @@ a {
 
     .tag.contributor {
         box-shadow: 0 0 10px var(--contributor-color);
+    }
+
+    .banner {
+        position: absolute;
+        transform: rotate(45deg);
+        color: white;
+        padding: 0.25rem 2rem;
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-decoration: none;
+        z-index: 10;
+    }
+
+    .fork-banner {
+        top: 25px;
+        right: -25px;
+        background: blue;
+    }
+
+    .role-banner {
+        top: 50px;
+        right: -50px;
+    }
+
+    .role-banner.author {
+        background: var(--author-solid);
+    }
+
+    .role-banner.maintainer {
+        background: var(--maintainer-solid);
+    }
+
+    .role-banner.contributor {
+        background: var(--contributor-solid);
+        color: black;
     }
 }
 
