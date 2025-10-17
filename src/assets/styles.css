@@ -7,12 +7,17 @@
     --orange-solid: #ff6400;
     --white: white;
     --transparent: transparent;
-    --author-color: color-mix(in oklab, #8b5cf6 60%, white);
-    --author-solid: #8b5cf6;
-    --maintainer-color: color-mix(in oklab, #2563eb 45%, white);
-    --maintainer-solid: #2563eb;
-    --contributor-color: color-mix(in oklab, #facc15 80%, white);
-    --contributor-solid: #facc15;
+
+    /* Role color palette: base solids + lighter glow variants */
+    --author-solid: #dc2626; /* red */
+    --author-color: color-mix(in oklab, var(--author-solid) 90%, white);
+
+    --maintainer-solid: #16a34a; /* green */
+    --maintainer-color: color-mix(in oklab, var(--maintainer-solid) 90%, white);
+
+    --contributor-solid: #8b5cf6; /* purple */
+    --contributor-color: color-mix(in oklab, var(--contributor-solid) 90%, white);
+
     --ribbon-length: 1200px;           /* long enough to cover the card diagonally */
     --corner-gap: 10px;                /* small padding so text isn’t flush with corner */
     --ribbon-stack-gap: 28px;          /* distance between the two ribbons along the diagonal */
@@ -260,9 +265,15 @@ a {
 }
 
 /* Keep role-specific colors */
-.card .banner-role.author { background: linear-gradient(135deg, #8b0000 0%, #dc143c 50%, #b22222 100%); }
-.card .banner-role.maintainer { background: linear-gradient(135deg, #ff8c00 0%, #ffa500 50%, #ff9500 100%); }
-.card .banner-role.contributor { background: linear-gradient(135deg, #228b22 0%, #32cd32 50%, #2eb82e 100%); }
+.card .banner-role.author {
+    background: color-mix(in oklab, var(--author-color) 90%, black 10%);
+}
+.card .banner-role.maintainer {
+    background: color-mix(in oklab, var(--maintainer-color) 90%, black 10%);
+}
+.card .banner-role.contributor {
+    background: color-mix(in oklab, var(--contributor-color) 90%, black 10%);
+}
 
 .author {
     box-shadow: 0 0 10px var(--author-color);
