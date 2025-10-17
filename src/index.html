@@ -152,6 +152,18 @@ body_class: projects
   <% raise "Project #{project['name']} has no role!" if project['role'].nil? %>
   <% raise "Project #{project['name']} has invalid role #{project['role']}!" unless allowed_roles.include?(project['role']) %>
   <li class="card <%= project['role'] %>">
+    <% gh_forge = project["forges"].find { |f| f["type"] == "GitHub" } %>
+    <% first_forge = project["forges"].first %>
+    <div class="corner-anchor fork">
+      <% if gh_forge %>
+        <a href="<%= gh_forge['url'] %>/fork" class="corner-banner banner-fork" target="_blank" rel="noopener">Fork Me</a>
+      <% elsif first_forge %>
+        <a href="<%= first_forge['url'] %>" class="corner-banner banner-fork" target="_blank" rel="noopener">Clone Me</a>
+      <% end %>
+    </div>
+    <div class="corner-anchor role">
+      <span class="corner-banner banner-role <%= project['role'] %>"><%= project['role'].capitalize %></span>
+    </div>
     <h2>
       <a href="https://bestgems.org/gems/<%= project['name'] %>" class="gem-link" target="_blank" rel="noopener">
         <%= project["name"] %>

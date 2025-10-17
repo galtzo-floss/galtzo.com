@@ -1365,8 +1365,8 @@
   - type: Liberapay
     url: https://liberapay.com/pboling
   forges:
-  - type: GitLab
-    url: https://gitlab.com/rubocop-lts/rubocop-lts
+  - type: GitHub
+    url: https://github.com/rubocop-lts/rubocop-lts
   - type: GitLab
     url: https://gitlab.com/rubocop-lts/rubocop-lts
   - type: Codeberg

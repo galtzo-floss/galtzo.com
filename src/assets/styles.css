@@ -13,6 +13,16 @@
     --maintainer-solid: #2563eb;
     --contributor-color: color-mix(in oklab, #facc15 80%, white);
     --contributor-solid: #facc15;
+    --ribbon-length: 1200px;           /* long enough to cover the card diagonally */
+    --corner-gap: 10px;                /* small padding so text isn’t flush with corner */
+    --ribbon-stack-gap: 28px;          /* distance between the two ribbons along the diagonal */
+    --ribbon-width: 720px;      /* length of each ribbon */
+    --ribbon-top: 12px;         /* distance from top edge for the first ribbon */
+    --ribbon-right: -332px;     /* center horizontally ~40px inside along diagonal */
+    --ribbon-gap: 20px;         /* vertical gap between the two ribbons */
+    /* Role-specific fine-tuning */
+    --role-gap-extra: 10px;     /* extra separation from the fork banner */
+    --role-right-adjust: 10px;   /* keep aligned horizontally with the fork banner */
 }
 
 body {
@@ -97,6 +107,7 @@ a {
     padding: 1rem;
     border-radius: 4px;
     position: relative;
+    overflow: hidden;
 
     .tag {
         display: inline-block;
@@ -119,42 +130,55 @@ a {
     .tag.contributor {
         box-shadow: 0 0 10px var(--contributor-color);
     }
-
-    .banner {
-        position: absolute;
-        transform: rotate(45deg);
-        color: white;
-        padding: 0.25rem 2rem;
-        font-size: 0.75rem;
-        font-weight: 600;
-        text-decoration: none;
-        z-index: 10;
-    }
-
-    .fork-banner {
-        top: 25px;
-        right: -25px;
-        background: blue;
-    }
-
-    .role-banner {
-        top: 50px;
-        right: -50px;
-    }
-
-    .role-banner.author {
-        background: var(--author-solid);
-    }
-
-    .role-banner.maintainer {
-        background: var(--maintainer-solid);
-    }
-
-    .role-banner.contributor {
-        background: var(--contributor-solid);
-        color: black;
-    }
 }
+
+/* Project card positioning for corner banners */
+.card {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Absolute + rotate recipe anchored to the card */
+.card .corner-banner {
+  position: absolute;
+  width: var(--ribbon-width);
+  padding: 9px 0;
+  text-align: center;
+  font-weight: 700;
+  font-size: 14px;
+  color: #fff;
+  text-decoration: none;
+  transform: rotate(45deg);
+  transform-origin: 50% 50%;
+  white-space: nowrap;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  z-index: 10;
+  /* Center content precisely */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+/* Fork/Clone (closest to corner) */
+.card .banner-fork {
+  top: var(--ribbon-top);
+  right: var(--ribbon-right);
+  background: linear-gradient(135deg, #1e5799 0%, #2989d8 50%, #207cca 100%);
+  z-index: 11;
+}
+
+/* Role ribbon stacked underneath */
+.card .banner-role {
+  top: calc(var(--ribbon-top) + var(--ribbon-gap) + var(--role-gap-extra));
+  right: calc(var(--ribbon-right) + var(--role-right-adjust));
+  z-index: 10;
+}
+
+/* Keep role-specific colors */
+.card .banner-role.author { background: linear-gradient(135deg, #8b0000 0%, #dc143c 50%, #b22222 100%); }
+.card .banner-role.maintainer { background: linear-gradient(135deg, #ff8c00 0%, #ffa500 50%, #ff9500 100%); }
+.card .banner-role.contributor { background: linear-gradient(135deg, #228b22 0%, #32cd32 50%, #2eb82e 100%); }
 
 .author {
     box-shadow: 0 0 10px var(--author-color);
