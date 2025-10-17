@@ -291,6 +291,14 @@ a {
     max-width: none;
 }
 
+/* Slightly raise only the role filter pills placed inside the H1 */
+h1 .tag-list {
+    /* lift ~8px for better vertical alignment with the heading text */
+    transform: translateY(-8px);
+    /* add some space between the heading text and the pills */
+    margin-left: 1rem;
+}
+
 .tag-list {
     display: inline-flex;
     flex-wrap: wrap;
