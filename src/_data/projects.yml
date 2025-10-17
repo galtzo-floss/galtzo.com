@@ -379,7 +379,7 @@
     url: https://gitlab.com/galtzo-floss/destination_errors
   tags:
   - rails
-  - presenters
+  - presenter
   - error-handle
 - name: dry_views
   description: 'Provides extensions to ActionView::Helpers::CaptureHelper: content_for_with_default,
@@ -400,7 +400,7 @@
     url: https://git.sr.ht/~galtzo/dry_views
   tags:
   - rails
-  - views
+  - view
 - name: dynamoid
   description: Dynamoid is an ORM for Amazon's DynamoDB that supports offline development,
     associations, querying, and everything else you'd expect from an ActiveRecord-style
@@ -662,6 +662,7 @@
   tags:
   - harness
   - test
+  - rspec
 - name: letter_group
   description: Organize data results from raw sql queries (as with PGresult, or Dossier)
     intelligently.
@@ -678,7 +679,8 @@
     url: https://github.com/galtzo-floss/letter_group
     owner: galtzo-floss
   tags:
-  - stale
+    - hash
+    - stale
 - name: library_tree
   description: Builds a tree of module inclusion of a target module into other modules
   language: Ruby
@@ -1002,7 +1004,7 @@
     owner: galtzo-floss
   tags:
   - rack
-  - views
+  - view
   - stale
 - name: rack-openid
   description: Provides a more HTTPish API around the ruby-openid library
@@ -1067,7 +1069,7 @@
     owner: galtzo-floss
   tags:
   - rack
-  - views
+  - view
   - stale
 - name: rails_env_local
   description: |2
@@ -1108,7 +1110,7 @@
   tags:
   - rails
   - react
-  - views
+  - view
   - stale
 - name: remit
   description: An API for using the Amazon Flexible Payment Service (FPS).
@@ -1627,6 +1629,7 @@
   - openid
   - auth
   - security
+  - api
 - name: ruby-openid2
   description: Originally a fork. Has been merged back to the original gem.
   language: Ruby
@@ -1649,6 +1652,7 @@
   - openid
   - auth
   - security
+  - api
 - name: sanitize_email
   description: |2
       Email Condom for your Ruby Server.
@@ -1674,6 +1678,8 @@
   tags:
   - rails
   - email
+  - test
+  - rspec
 - name: seed_migration
   description: Rails gem for Data Migrations
   language: Ruby
@@ -1798,6 +1804,7 @@
   tags:
   - test
   - log
+  - rspec
 - name: simple_column-scopes
   description: Dynamic modules which define dynamic methods for scopes based on a
     dynamic array of column names
@@ -1918,8 +1925,8 @@
     url: https://git.sr.ht/~galtzo/status_tag
   tags:
   - rails
-  - presenters
-  - views
+  - presenter
+  - view
 - name: stone_checksums
   description: "\U0001F5FF Generate both SHA256 & SHA512 checksums into the checksums
     directory, and git commit them.\n  gem install stone_checksums\nThen, use the
@@ -2042,6 +2049,7 @@
     url: https://git.sr.ht/~galtzo/version_gem
   tags:
   - semver
+  - release
 - name: warden_oauth
   description: warden_oauth will help you create oauth authentication strategies using
     the oauth helper method on the Warden::Manager config setup
@@ -2061,6 +2069,7 @@
   - oauth
   - auth
   - security
+  - api
 - name: yacs
   description: Yet Another Crypto Scanner, Alternative Front End Demo for DEX
   language: TypeScript
