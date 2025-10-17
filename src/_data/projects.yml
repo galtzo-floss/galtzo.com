@@ -208,6 +208,23 @@
     owner: galtzo-floss
   tags:
   - stale
+- name: awesome-sponsorships
+  description: "💖 An Open Source Funding How To Awesome List: checklist and inspiration to earn more as a FLOSS developer"
+  language: Ruby
+  minimum_version: 3.4
+  role: author
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/floss_funding
+    - type: Liberapay
+      url: https://liberapay.com/pboling
+  forges:
+    - type: GitHub
+      url: https://github.com/floss-funding/awesome-sponsorships
+      owner: galtzo-floss
+  tags:
+    - funding
+    - markdown
 - name: bash_step
   description: Bash Step Function Library
   language: Bash
