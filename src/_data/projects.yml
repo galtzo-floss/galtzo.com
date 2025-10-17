@@ -169,6 +169,30 @@
       url: https://github.com/galtzo-floss/awesome_search
   tags:
     - stale
+- name: bash_step
+  description: Bash Step Function Library
+  language: Bash
+  minimum_version: 4.0
+  funding_sites:
+    - type: Liberapay
+      url: https://liberapay.com/pboling
+  forges:
+    - type: GitHub
+      url: https://github.com/pboling/bash_step
+  tags:
+    - shell
+- name: bsfl
+  description: Bash Script Function Library
+  language: Bash
+  minimum_version: 4.0
+  funding_sites:
+    - type: Liberapay
+      url: https://liberapay.com/pboling
+  forges:
+    - type: GitHub
+      url: https://github.com/pboling/bsfl
+  tags:
+    - shell
 - name: cacheable_flash
   description: |-
     Allows caching of pages with flash messages by rendering flash
@@ -1819,3 +1843,17 @@
     - oauth
     - auth
     - security
+- name: yacs
+  description: Yet Another Crypto Scanner, Alternative Front End Demo for DEX
+  language: TypeScript
+  minimum_version: 5.8
+  funding_sites:
+    - type: Liberapay
+      url: https://liberapay.com/pboling
+  forges:
+    - type: GitHub
+      url: https://github.com/pboling/yacs
+  tags:
+    - websocket
+    - api
+    - react

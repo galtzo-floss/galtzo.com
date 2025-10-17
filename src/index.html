@@ -15,14 +15,37 @@ body_class: projects
     <% tag_counts[tag] += 1 %>
   <% end %>
 <% end %>
-<% min_ruby_versions = site.data.projects.select {|p| p["language"] == "Ruby" }.flat_map { |project| project["minimum_version"] || [] }.uniq.sort %>
-<% min_ruby_counts = {} %>
-<% site.data.projects.select {|p| p["language"] == "Ruby" }.each do |project| %>
+
+<% bash_projects = site.data.projects.select {|p| p["language"] == "Bash" } %>
+<% min_bash_versions = bash_projects.flat_map { |project| project["minimum_version"] || [] }.uniq.sort %>
+<% min_bash_counts = {} %>
+<% bash_projects.each do |project| %>
   <% if project["minimum_version"] %>
-    <% min_ruby_counts[project["minimum_version"]] ||= 0 %>
-    <% min_ruby_counts[project["minimum_version"]] += 1 %>
+    <% min_bash_counts[project["minimum_version"]] ||= 0 %>
+    <% min_bash_counts[project["minimum_version"]] += 1 %>
   <% end %>
 <% end %>
+
+<% ts_projects = site.data.projects.select {|p| p["language"] == "TypeScript" } %>
+<% min_ts_versions = ts_projects.flat_map { |project| project["minimum_version"] || [] }.uniq.sort %>
+<% min_ts_counts = {} %>
+<% ts_projects.each do |project| %>
+  <% if project["minimum_version"] %>
+    <% min_ts_counts[project["minimum_version"]] ||= 0 %>
+    <% min_ts_counts[project["minimum_version"]] += 1 %>
+  <% end %>
+<% end %>
+
+<% rb_projects = site.data.projects.select {|p| p["language"] == "Ruby" } %>
+<% min_rb_versions = rb_projects.flat_map { |project| project["minimum_version"] || [] }.uniq.sort %>
+<% min_rb_counts = {} %>
+<% rb_projects.each do |project| %>
+  <% if project["minimum_version"] %>
+    <% min_rb_counts[project["minimum_version"]] ||= 0 %>
+    <% min_rb_counts[project["minimum_version"]] += 1 %>
+  <% end %>
+<% end %>
+
 <ul class="tag-list">
   <% tags.each do |tag| %>
     <li>
@@ -33,18 +56,44 @@ body_class: projects
       </a>
     </li>
   <% end %>
-  <% min_ruby_versions.each do |min_ruby| %>
+  <% min_rb_versions.each do |min_ruby| %>
     <li>
-      <a href="#" class="tag-link min_ruby-link" data-tag="Ruby >= <%= min_ruby %>">
-        <span class="count left"><%== min_ruby_counts[min_ruby].to_s.rjust(2, 'x').gsub('x', '&nbsp;') %></span>
+      <a href="#" class="tag-link min_lang-link" data-tag="Ruby >= <%= min_ruby %>">
+        <span class="count left"><%== min_rb_counts[min_ruby].to_s.rjust(2, 'x').gsub('x', '&nbsp;') %></span>
         <span class="tag min-language"><img
                 src="/assets/images/Ruby.svg"
                 alt="Ruby >= <%= min_ruby %>"
                 class="language"
         >Min Ruby v<%= min_ruby %></span>
-        <span class="count right"><%== min_ruby_counts[min_ruby].to_s.ljust(2, 'x').gsub('x', '&nbsp;') %></span>
+        <span class="count right"><%== min_rb_counts[min_ruby].to_s.ljust(2, 'x').gsub('x', '&nbsp;') %></span>
       </a>
     </li>
+  <% end %>
+  <% min_ts_versions.each do |min_ts| %>
+    <li>
+      <a href="#" class="tag-link min_lang-link" data-tag="TypeScript >= <%= min_ts %>">
+        <span class="count left"><%== min_ts_counts[min_ts].to_s.rjust(2, 'x').gsub('x', '&nbsp;') %></span>
+        <span class="tag min-language"><img
+                src="/assets/images/TypeScript.svg"
+                alt="TypeScript >= <%= min_ts %>"
+                class="language"
+        >Min TS v<%= min_ts %></span>
+        <span class="count right"><%== min_ts_counts[min_ts].to_s.ljust(2, 'x').gsub('x', '&nbsp;') %></span>
+      </a>
+    </li>
+  <% end %>
+  <% min_bash_versions.each do |min_bash| %>
+  <li>
+    <a href="#" class="tag-link min_lang-link" data-tag="Bash >= <%= min_bash %>">
+      <span class="count left"><%== min_bash_counts[min_bash].to_s.rjust(2, 'x').gsub('x', '&nbsp;') %></span>
+      <span class="tag min-language"><img
+              src="/assets/images/Bash.svg"
+              alt="TypeScript >= <%= min_bash %>"
+              class="language"
+      >Min Bash v<%= min_bash %></span>
+      <span class="count right"><%== min_bash_counts[min_bash].to_s.ljust(2, 'x').gsub('x', '&nbsp;') %></span>
+    </a>
+  </li>
   <% end %>
 </ul>
 
