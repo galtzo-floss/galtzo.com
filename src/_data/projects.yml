@@ -3,6 +3,11 @@
   description: Disallow insecure, unscoped, finds
   language: Ruby
   minimum_version: 2.7
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/galtzo-floss
+    - type: Liberapay
+      url: https://liberapay.com/pboling
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/active_security
@@ -16,16 +21,27 @@
     etc.
   language: Ruby
   minimum_version: 2.2
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/galtzo-floss
+    - type: Liberapay
+      url: https://liberapay.com/pboling
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/activerecord-tablefree
   tags:
     - rails
     - activerecord
+    - validate
 - name: activerecord-transactionable
   description: Getting transactions right is hard, and this gem makes it easier.
   language: Ruby
   minimum_version: 2.5
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/galtzo-floss
+    - type: Liberapay
+      url: https://liberapay.com/pboling
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/activerecord-transactionable
@@ -43,40 +59,60 @@
     v5.2+ & Ruby 2.7+
   language: Ruby
   minimum_version: 2.7
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/galtzo-floss
+    - type: Liberapay
+      url: https://liberapay.com/pboling
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/activesupport-broadcast_logger
   tags:
     - rails
     - activesupport
-    - logging
+    - log
 - name: activesupport-logger
   description: Rails v8 ActiveSupport::Logger backported to Rails v5.2+ & Ruby 2.7+
   language: Ruby
   minimum_version: 2.7
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/galtzo-floss
+    - type: Liberapay
+      url: https://liberapay.com/pboling
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/activesupport-logger
   tags:
     - rails
     - activesupport
-    - logging
+    - log
 - name: activesupport-tagged_logging
   description: Rails v8 ActiveSupport::TaggedLogging, fixed & backported to Rails
     v5.2+ & Ruby 2.7+
   language: Ruby
   minimum_version: 2.7
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/galtzo-floss
+    - type: Liberapay
+      url: https://liberapay.com/pboling
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/activesupport-tagged_logging
   tags:
     - rails
     - activesupport
-    - logging
+    - log
 - name: anonymous_active_record
   description: Replacement for broken Class.new(ActiveRecord::Base)
   language: Ruby
   minimum_version: 2.4
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/galtzo-floss
+    - type: Liberapay
+      url: https://liberapay.com/pboling
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/anonymous_active_record
@@ -88,6 +124,11 @@
     different versions of dependencies in repeatable scenarios called "appraisals."
   language: Ruby
   minimum_version: 1.8
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/appraisal-rb
+    - type: Liberapay
+      url: https://liberapay.com/pboling
   forges:
     - type: GitHub
       url: https://github.com/appraisal-rb/appraisal2
@@ -96,25 +137,38 @@
     - type: Codeberg
       url: https://codeberg.org/appraisal-rb/appraisal2
   tags:
-    - testing
+    - test
+    - harness
+    - bundler
 - name: archivist-client
   description: archivist-client queries archive.org for book data and downloads some
     things.
   language: Ruby
+  minimum_version: 2.4
+  funding_sites:
+    - type: Liberapay
+      url: https://liberapay.com/pboling
   forges:
     - type: GitHub
       url: https://github.com/wordtreefoundation/archivist-client
   tags:
     - archival
+    - shell
+    - api
 - name: awesome_search
   description: Organize complicated search results
   language: Ruby
   minimum_version: 1.8
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/galtzo-floss
+    - type: Liberapay
+      url: https://liberapay.com/pboling
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/awesome_search
   tags:
-    - unmaintained
+    - stale
 - name: cacheable_flash
   description: |-
     Allows caching of pages with flash messages by rendering flash
@@ -123,58 +177,78 @@
     a cookie by an after_filter (default) or a Rack Middleware (option).
   language: Ruby
   minimum_version: 1.8
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/galtzo-floss
+    - type: Liberapay
+      url: https://liberapay.com/pboling
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/cacheable_flash
   tags:
-    - unmaintained
+    - stale
     - toast
 - name: capistrano_mailer
   description: Capistrano Deployment Email Notification.  Keep the whole team informed
     of each release!
   language: Ruby
   minimum_version: 1.8
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/galtzo-floss
+    - type: Liberapay
+      url: https://liberapay.com/pboling
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/capistrano_mailer
     - type: SourceHut
       url: https://git.sr.ht/~galtzo/capistrano_mailer
   tags:
-    - capistrano
+    - release
     - email
-    - deployment
 - name: celluloid-io-pg-listener
   description: Asynchronously LISTEN for Postgresql NOTIFY messages with payloads
     and Do Something
   language: Ruby
   minimum_version: 1.8
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/galtzo-floss
+    - type: Liberapay
+      url: https://liberapay.com/pboling
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/celluloid-io-pg-listener
     - type: SourceHut
       url: https://git.sr.ht/~galtzo/celluloid-io-pg-listener
   tags:
-    - postgresql
-    - pub-sub
     - async
-    - celluloid
 - name: controller_validator
   description: Use the familiar ActiveModel::Errors pattern for controller validations
   language: Ruby
   minimum_version: 1.8
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/galtzo-floss
+    - type: Liberapay
+      url: https://liberapay.com/pboling
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/controller_validator
   tags:
     - rails
-    - controllers
-    - validation
+    - validate
 - name: csv_pirate
   description: |-
     CsvPirate is the easy way to create a CSV of essentially anything in Ruby, in full pirate regalia.
     It works better if you are wearing a tricorne!
   language: Ruby
   minimum_version: 1.8
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/galtzo-floss
+    - type: Liberapay
+      url: https://liberapay.com/pboling
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/csv_pirate
@@ -184,14 +258,17 @@
     - rails
     - activerecord
     - csv
-    - export
-    - import
 - name: debug_logging
   description: |
     Unobtrusive debug logging for Ruby.  NO LITTERING.
     Automatically log selected methods and their arguments as they are called at runtime!
   language: Ruby
   minimum_version: 3.1
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/galtzo-floss
+    - type: Liberapay
+      url: https://liberapay.com/pboling
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/debug_logging
@@ -202,14 +279,18 @@
     - type: SourceHut
       url: https://git.sr.ht/~galtzo/debug_logging
   tags:
-    - logging
-    - debugging
-    - decorator
+    - log
+    - debug
 - name: destination_errors
   description: Useful when a presenter deals with multiple objects that may enter
     into error states, and the errors need to be collected at a single point.
   language: Ruby
   minimum_version: 1.8
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/galtzo-floss
+    - type: Liberapay
+      url: https://liberapay.com/pboling
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/destination_errors
@@ -218,12 +299,17 @@
   tags:
     - rails
     - presenters
-    - error-handling
+    - error-handle
 - name: dry_views
   description: 'Provides extensions to ActionView::Helpers::CaptureHelper: content_for_with_default,
     no_content_for, and an enhanced content_for that plays nice with friends'
   language: Ruby
   minimum_version: 1.8
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/galtzo-floss
+    - type: Liberapay
+      url: https://liberapay.com/pboling
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/dry_views
@@ -238,17 +324,27 @@
     replacement.
   language: Ruby
   minimum_version: 2.3
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/dynamoid
+    - type: Liberapay
+      url: https://liberapay.com/pboling
   forges:
     - type: GitHub
       url: https://github.com/Dynamoid/dynamoid
   tags:
     - dynamodb
-    - orm
     - aws
+    - api
 - name: each_in_batches
   description: Batch Processing of Records with Blocks in Rails
   language: Ruby
   minimum_version: 1.8
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/galtzo-floss
+    - type: Liberapay
+      url: https://liberapay.com/pboling
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/each_in_batches
@@ -257,12 +353,16 @@
   tags:
     - rails
     - activerecord
-    - batch
 - name: flag_shih_tzu
   description: Bit fields for ActiveRecord - store multiple boolean flags in a single
     integer column
   language: Ruby
   minimum_version: 1.9
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/galtzo-floss
+    - type: Liberapay
+      url: https://liberapay.com/pboling
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/flag_shih_tzu
@@ -281,12 +381,16 @@
     stack, and the dev dependencies - by funding them.
   language: Ruby
   minimum_version: 1.9
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/floss_funding
+    - type: Liberapay
+      url: https://liberapay.com/pboling
   forges:
     - type: GitHub
-      url: https://github.com/galtzo-floss/floss_funding
+      url: https://github.com/floss-funding/floss_funding
   tags:
     - funding
-    - open-source
 - name: gem_bench
   description: |-
     * Benchmark different versions of same or similar gems
@@ -296,61 +400,87 @@
     * Trim down app load times by keeping your worst players on the bench (useful for beating Heroku slug load time cutoff)
   language: Ruby
   minimum_version: 2.3
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/galtzo-floss
+    - type: Liberapay
+      url: https://liberapay.com/pboling
   forges:
     - type: GitHub
-      url: https://github.com/pboling/gem_bench
+      url: https://github.com/galtzo-floss/gem_bench
     - type: SourceHut
       url: https://git.sr.ht/~galtzo/gem_bench
   tags:
-    - performance
-    - benchmarking
-    - debugging
+    - perf
+    - benchmark
+    - debug
+    - bundler
+    - regex
 - name: gitmoji-regex
   description: "\U0001F61C A regular expression matching Gitmoji (a subset of Unicode
     Emoji) symbolsFund overlooked open source projects - bottom of stack, dev/test
     dependencies: floss-funding.dev"
   language: Ruby
   minimum_version: 2.4
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/galtzo-floss
+    - type: Liberapay
+      url: https://liberapay.com/pboling
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/gitmoji-regex
     - type: SourceHut
       url: https://git.sr.ht/~galtzo/gitmoji-regex
   tags:
-    - emoji
     - git
     - regex
 - name: humorous_log_formatter
   description: Humorous Log Levels and Color For Rails.  Customizable!
   language: Ruby
   minimum_version: 1.8
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/galtzo-floss
+    - type: Liberapay
+      url: https://liberapay.com/pboling
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/humorous_log_formatter
   tags:
-    - unmaintained
-    - logging
+    - stale
+    - log
 - name: include_with_respect
   description: Find out if your Module include/extend hooks are misbehaving!
   language: Ruby
   minimum_version: 1.8
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/galtzo-floss
+    - type: Liberapay
+      url: https://liberapay.com/pboling
   forges:
     - type: GitHub
-      url: https://github.com/pboling/include_with_respect
+      url: https://github.com/galtzo-floss/include_with_respect
     - type: SourceHut
       url: https://git.sr.ht/~galtzo/include_with_respect
   tags:
-    - testing
+    - test
 - name: json_schemer-fuzz
   description: Fuzz generator for json_schemer
   language: Ruby
   minimum_version: 2.5
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/galtzo-floss
+    - type: Liberapay
+      url: https://liberapay.com/pboling
   forges:
     - type: GitHub
-      url: https://github.com/pboling/json_schemer-fuzz
+      url: https://github.com/galtzo-floss/json_schemer-fuzz
   tags:
-    - testing
-    - fuzzing
+    - test
+    - fuzz
 - name: kettle-dev
   description: "\U0001F372 Kettle::Dev is a meta tool from kettle-rb to streamline
     development and testing. Acts as a shim dependency, pulling in many other dependencies,
@@ -360,6 +490,11 @@
     dependencies: floss-funding.dev"
   language: Ruby
   minimum_version: 2.7
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/kettle-rb
+    - type: Liberapay
+      url: https://liberapay.com/pboling
   forges:
     - type: GitHub
       url: https://github.com/kettle-rb/kettle-dev
@@ -369,11 +504,9 @@
       url: https://codeberg.org/kettle-rb/kettle-dev
   tags:
     - harness
-    - template
     - release
-    - changelog
-    - documentation
-    - git-hooks
+    - markdown
+    - git
     - GHA
 - name: kettle-soup-cover
   description: |
@@ -382,6 +515,11 @@
     for every CI platform, batteries included.
   language: Ruby
   minimum_version: 2.7
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/kettle-rb
+    - type: Liberapay
+      url: https://liberapay.com/pboling
   forges:
     - type: GitHub
       url: https://github.com/kettle-rb/kettle-soup-cover
@@ -390,7 +528,7 @@
     - type: Codeberg
       url: https://codeberg.org/kettle-rb/kettle-soup-cover
   tags:
-    - testing
+    - test
     - coverage
 - name: kettle-test
   description: "\U0001F372 Kettle::Test is a meta tool from kettle-rb to streamline
@@ -402,6 +540,11 @@
     floss-funding.dev"
   language: Ruby
   minimum_version: 2.7
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/kettle-rb
+    - type: Liberapay
+      url: https://liberapay.com/pboling
   forges:
     - type: GitHub
       url: https://github.com/kettle-rb/kettle-test
@@ -411,32 +554,47 @@
       url: https://codeberg.org/kettle-rb/kettle-test
   tags:
     - harness
-    - testing
+    - test
 - name: letter_group
   description: Organize data results from raw sql queries (as with PGresult, or Dossier)
     intelligently.
   language: Ruby
   minimum_version: 1.8
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/galtzo-floss
+    - type: Liberapay
+      url: https://liberapay.com/pboling
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/letter_group
   tags:
-    - unmaintained
+    - stale
 - name: library_tree
   description: Builds a tree of module inclusion of a target module into other modules
   language: Ruby
   minimum_version: 1.9
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/galtzo-floss
+    - type: Liberapay
+      url: https://liberapay.com/pboling
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/library_tree
   tags:
-    - experimental
+    - wip
 - name: masq
   description: Masq supports OpenID 2.0 and supports SReg, AX (fetch and store requests)
     and PAPE as well as some custom additions like multi-factor authentication using
     a yubikey
   language: Ruby
   minimum_version: 2.7
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/ruby-openid
+    - type: Liberapay
+      url: https://liberapay.com/pboling
   forges:
     - type: GitHub
       url: https://github.com/ruby-openid/masq
@@ -448,10 +606,16 @@
     - openid
     - auth
     - security
+    - api
 - name: masq2
   description: Originally a fork. Has been merged back to the original gem.
   language: Ruby
   minimum_version: 2.7
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/ruby-openid
+    - type: Liberapay
+      url: https://liberapay.com/pboling
   forges:
     - type: GitHub
       url: https://github.com/ruby-openid/masq
@@ -463,10 +627,16 @@
     - openid
     - auth
     - security
+    - api
 - name: month-serializer
   description: Serialize Month objects to Integer
   language: Ruby
   minimum_version: 1.9
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/galtzo-floss
+    - type: Liberapay
+      url: https://liberapay.com/pboling
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/month-serializer
@@ -475,11 +645,16 @@
   tags:
     - time
     - math
-    - serializer
+    - serialize
 - name: oauth
   description: "\U0001F511 A Ruby wrapper for the original OAuth 1.0 / 1.0a spec."
   language: Ruby
   minimum_version: 2.3
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/ruby-oauth
+    - type: Liberapay
+      url: https://liberapay.com/pboling
   forges:
     - type: GitHub
       url: https://github.com/ruby-oauth/oauth
@@ -491,10 +666,16 @@
     - oauth
     - auth
     - security
+    - api
 - name: oauth-tty
   description: "\U0001F5A5️ OAuth 1.0 / 1.0a TTY Command Line Interface"
   language: Ruby
   minimum_version: 2.3
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/ruby-oauth
+    - type: Liberapay
+      url: https://liberapay.com/pboling
   forges:
     - type: GitHub
       url: https://github.com/ruby-oauth/oauth-tty
@@ -507,10 +688,16 @@
     - auth
     - security
     - tty
+    - api
 - name: oauth2
   description: Ruby OAuth 2.0 framework for building OAuth providers and clients
   language: Ruby
   minimum_version: 2.2
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/ruby-oauth
+    - type: Liberapay
+      url: https://liberapay.com/pboling
   forges:
     - type: GitHub
       url: https://github.com/ruby-oauth/oauth2
@@ -522,50 +709,72 @@
     - oauth
     - auth
     - security
+    - api
 - name: omniauth-identity
   description: Traditional username/password based authentication system for OmniAuth
   language: Ruby
   minimum_version: 2.4
+  funding_sites:
+    - type: Liberapay
+      url: https://liberapay.com/pboling
   forges:
     - type: GitHub
       url: https://github.com/omniauth/omniauth-identity
   tags:
     - auth
     - security
+    - api
 - name: omniauth-jwt
   description: An OmniAuth strategy to accept JWT-based single sign-on.
   language: Ruby
   minimum_version: 2.2
+  funding_sites:
+    - type: Liberapay
+      url: https://liberapay.com/pboling
   forges:
     - type: GitHub
       url: https://github.com/omniauth/omniauth-jwt
   tags:
     - auth
     - security
+    - api
 - name: omniauth-jwt2
   description: Originally a fork. Has been merged back to the original gem.
   language: Ruby
   minimum_version: 2.2
+  funding_sites:
+    - type: Liberapay
+      url: https://liberapay.com/pboling
   forges:
     - type: GitHub
       url: https://github.com/omniauth/omniauth-jwt2
   tags:
     - auth
     - security
+    - api
 - name: omniauth-ldap
   description: A LDAP strategy for OmniAuth.
   language: Ruby
   minimum_version: 1.8
+  funding_sites:
+    - type: Liberapay
+      url: https://liberapay.com/pboling
   forges:
     - type: GitHub
       url: https://github.com/omniauth/omniauth-ldap
   tags:
     - auth
     - security
+    - api
 - name: omniauth-openid
   description: OpenID (not OIDC) strategy for OmniAuth.
   language: Ruby
   minimum_version: 2.4
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/ruby-openid
+    - type: Liberapay
+      url: https://liberapay.com/pboling
   forges:
     - type: GitHub
       url: https://github.com/ruby-openid/omniauth-openid
@@ -577,10 +786,16 @@
     - openid
     - auth
     - security
+    - api
 - name: open_id_authentication
   description: Provides a thin wrapper around the excellent rack-openid2 gem.
   language: Ruby
   minimum_version: 2.7
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/ruby-openid
+    - type: Liberapay
+      url: https://liberapay.com/pboling
   forges:
     - type: GitHub
       url: https://github.com/ruby-openid/open_id_authentication
@@ -592,6 +807,7 @@
     - openid
     - auth
     - security
+    - api
 - name: pretty_feed
   description: |
     PrettyFeed provides a modulizer you can include in a job, worker, class, rake task, etc,
@@ -599,41 +815,63 @@
     Defaults are `truthy: 'green'` and `falsey: 'red'`.
   language: Ruby
   minimum_version: 2.6
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/galtzo-floss
+    - type: Liberapay
+      url: https://liberapay.com/pboling
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/pretty_feed
     - type: SourceHut
       url: https://git.sr.ht/~galtzo/pretty_feed
   tags:
-    - logging
-    - debugging
+    - log
+    - debug
 - name: qfill
   description: Advanced Queue Transformation
   language: Ruby
   minimum_version: 1.8
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/galtzo-floss
+    - type: Liberapay
+      url: https://liberapay.com/pboling
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/qfill
     - type: SourceHut
       url: https://git.sr.ht/~galtzo/qfill
   tags:
-    - queues
+    - queue
+    - math
 - name: rack-insight
   description: |-
     Debugging toolbar for Rack applications implemented as middleware.
         Based on logical-insight and rack-bug.
   language: Ruby
   minimum_version: 1.8
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/galtzo-floss
+    - type: Liberapay
+      url: https://liberapay.com/pboling
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/rack-insight
   tags:
-    - rack-middleware
-    - unmaintained
+    - rack
+    - views
+    - stale
 - name: rack-openid
   description: Provides a more HTTPish API around the ruby-openid library
   language: Ruby
   minimum_version: 2.7
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/ruby-openid
+    - type: Liberapay
+      url: https://liberapay.com/pboling
   forges:
     - type: GitHub
       url: https://github.com/ruby-openid/rack-openid
@@ -645,10 +883,16 @@
     - openid
     - auth
     - security
+    - api
 - name: rack-openid2
   description: Originally a fork. Has been merged back to the original gem.
   language: Ruby
   minimum_version: 2.7
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/ruby-openid
+    - type: Liberapay
+      url: https://liberapay.com/pboling
   forges:
     - type: GitHub
       url: https://github.com/ruby-openid/rack-openid2
@@ -660,17 +904,24 @@
     - openid
     - auth
     - security
+    - api
 - name: rack-toolbar
   description: Provides an easy way to create Rack Middleware that injects things
     into the response body. Extracted from rack-insight.
   language: Ruby
   minimum_version: 1.8
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/galtzo-floss
+    - type: Liberapay
+      url: https://liberapay.com/pboling
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/rack-toolbar
   tags:
-    - rack-middleware
-    - unmaintained
+    - rack
+    - views
+    - stale
 - name: rails_env_local
   description: |2
       "development" is not always the best name for the local environment.
@@ -678,40 +929,63 @@
       when "dev", or "develop", is used as a deployed environment.
   language: Ruby
   minimum_version: 1.8
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/galtzo-floss
+    - type: Liberapay
+      url: https://liberapay.com/pboling
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/rails_env_local
   tags:
     - rails
-    - unmaintained
+    - env
+    - stale
 - name: react-rails-benchmark_renderer
   description: Concern::Instrumentation Plugin for React::Rails Render Benchmarking
     with a reference implementation
   language: Ruby
   minimum_version: 1.8
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/galtzo-floss
+    - type: Liberapay
+      url: https://liberapay.com/pboling
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/react-rails-benchmark_renderer
   tags:
     - rails
     - react
-    - unmaintained
+    - views
+    - stale
 - name: remit
   description: An API for using the Amazon Flexible Payment Service (FPS).
   language: Ruby
   minimum_version: 1.8
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/galtzo-floss
+    - type: Liberapay
+      url: https://liberapay.com/pboling
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/remit
   tags:
-    - unmaintained
-    - payments
+    - stale
+    - payment
     - aws
+    - api
 - name: require_bench
   description: Ruby app loading slowly, or never? Discover bootstrapping issues in
     Ruby by logging/benchmarking/timing-out/rescuing 'Kernel.require' & 'load'
   language: Ruby
   minimum_version: 2.2
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/galtzo-floss
+    - type: Liberapay
+      url: https://liberapay.com/pboling
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/remit
@@ -722,8 +996,11 @@
     - type: SourceHut
       url: https://git.sr.ht/~galtzo/require_bench
   tags:
-    - performance
-    - debugging
+    - perf
+    - benchmark
+    - debug
+    - log
+    - error-handle
 - name: resque-lonely_job
   description: |
     Ensures that for a given queue, only one worker is working on a job at any given time.
@@ -739,12 +1016,17 @@
       end
   language: Ruby
   minimum_version: 1.8
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/resque
+    - type: Liberapay
+      url: https://liberapay.com/pboling
   forges:
     - type: GitHub
       url: https://github.com/resque/resque-lonely_job
   tags:
-    - queues
-    - uniqueness
+    - queue
+    - uniq
 - name: resque-unique_at_runtime
   description: |
     Ensures that for a given queue, only one worker is working on a job at any given time.
@@ -760,35 +1042,50 @@
       end
   language: Ruby
   minimum_version: 2.3
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/resque
+    - type: Liberapay
+      url: https://liberapay.com/pboling
   forges:
     - type: GitHub
       url: https://github.com/resque/resque-unique_at_runtime
   tags:
-    - queues
-    - uniqueness
+    - queue
+    - uniq
 - name: resque-unique_by_arity
   description: Configure resque-unique_in_queue and resque-unique_at_runtime uniqueness
     by arity of perform method, with automated cleanup tools
   language: Ruby
   minimum_version: 2.3
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/resque
+    - type: Liberapay
+      url: https://liberapay.com/pboling
   forges:
     - type: GitHub
       url: https://github.com/resque/resque-unique_by_arity
     - type: SourceHut
       url: https://git.sr.ht/~galtzo/resque-unique_by_arity
   tags:
-    - queues
-    - uniqueness
+    - queue
+    - uniq
 - name: resque-unique_in_queue
   description: A resque plugin that ensures job uniqueness at enqueue time.
   language: Ruby
   minimum_version: 2.3
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/resque
+    - type: Liberapay
+      url: https://liberapay.com/pboling
   forges:
     - type: GitHub
       url: https://github.com/resque/resque-unique_in_queue
   tags:
-    - queues
-    - uniqueness
+    - queue
+    - uniq
 - name: rots
   description: |
     Ruby OpenID Test Server (ROTS) provides a basic OpenID server made in top of the Rack gem.
@@ -796,6 +1093,11 @@
     the success of the response will depend on a parameter given on the URL of the authentication request.
   language: Ruby
   minimum_version: 2.7
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/ruby-openid
+    - type: Liberapay
+      url: https://liberapay.com/pboling
   forges:
     - type: GitHub
       url: https://github.com/ruby-openid/rots
@@ -807,11 +1109,16 @@
     - openid
     - auth
     - security
-    - testing
+    - test
 - name: rspec-block_is_expected
   description: subject { Integer(nil) }; it('raises') { block_is_expected.to raise_error(TypeError) }
   language: Ruby
   minimum_version: 1.8
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/galtzo-floss
+    - type: Liberapay
+      url: https://liberapay.com/pboling
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/rspec-block_is_expected
@@ -823,13 +1130,19 @@
       url: https://git.sr.ht/~galtzo/rspec-block_is_expected
   tags:
     - rspec
-    - testing
+    - test
+    - error-handle
 - name: rspec-pending_for
   description: "⏳️ Mark specs pending or skipped for specific Ruby engine (e.g. MRI
     or JRuby) & versions, or version ranges. Fund overlooked open source projects
     - bottom of stack, dev/test dependencies: floss-funding.dev"
   language: Ruby
   minimum_version: 1.8
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/galtzo-floss
+    - type: Liberapay
+      url: https://liberapay.com/pboling
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/rspec-pending_for
@@ -841,7 +1154,7 @@
       url: https://git.sr.ht/~galtzo/rspec-pending_for
   tags:
     - rspec
-    - testing
+    - test
 - name: rspec-stubbed_env
   description: |
     Stub or hide environment variables in a scoped context for testing
@@ -849,6 +1162,11 @@
     hide_env('SESSION_SECRET')
   language: Ruby
   minimum_version: 1.8
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/galtzo-floss
+    - type: Liberapay
+      url: https://liberapay.com/pboling
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/rspec-stubbed_env
@@ -860,11 +1178,17 @@
       url: https://git.sr.ht/~galtzo/rspec-stubbed_env
   tags:
     - rspec
-    - testing
+    - test
+    - env
 - name: rubocop-lts
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby code
   language: Ruby
   minimum_version: 3.2
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/rubocop-lts
+    - type: Liberapay
+      url: https://liberapay.com/pboling
   forges:
     - type: GitLab
       url: https://gitlab.com/rubocop-lts/rubocop-lts
@@ -878,6 +1202,11 @@
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 1.8 code
   language: Ruby
   minimum_version: 3.2
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/rubocop-lts
+    - type: Liberapay
+      url: https://liberapay.com/pboling
   forges:
     - type: GitHub
       url: https://github.com/rubocop-lts/rubocop-ruby1_8
@@ -889,6 +1218,11 @@
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 1.9 code
   language: Ruby
   minimum_version: 3.2
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/rubocop-lts
+    - type: Liberapay
+      url: https://liberapay.com/pboling
   forges:
     - type: GitHub
       url: https://github.com/rubocop-lts/rubocop-ruby1_9
@@ -900,6 +1234,11 @@
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 2.0 code
   language: Ruby
   minimum_version: 3.2
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/rubocop-lts
+    - type: Liberapay
+      url: https://liberapay.com/pboling
   forges:
     - type: GitHub
       url: https://github.com/rubocop-lts/rubocop-ruby2_0
@@ -911,6 +1250,11 @@
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 2.1 code
   language: Ruby
   minimum_version: 3.2
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/rubocop-lts
+    - type: Liberapay
+      url: https://liberapay.com/pboling
   forges:
     - type: GitHub
       url: https://github.com/rubocop-lts/rubocop-ruby2_1
@@ -922,6 +1266,11 @@
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 2.2 code
   language: Ruby
   minimum_version: 3.2
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/rubocop-lts
+    - type: Liberapay
+      url: https://liberapay.com/pboling
   forges:
     - type: GitHub
       url: https://github.com/rubocop-lts/rubocop-ruby2_2
@@ -933,6 +1282,11 @@
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 2.3 code
   language: Ruby
   minimum_version: 3.2
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/rubocop-lts
+    - type: Liberapay
+      url: https://liberapay.com/pboling
   forges:
     - type: GitHub
       url: https://github.com/rubocop-lts/rubocop-ruby2_3
@@ -944,6 +1298,11 @@
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 2.4 code
   language: Ruby
   minimum_version: 3.2
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/rubocop-lts
+    - type: Liberapay
+      url: https://liberapay.com/pboling
   forges:
     - type: GitHub
       url: https://github.com/rubocop-lts/rubocop-ruby2_4
@@ -955,6 +1314,11 @@
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 2.5 code
   language: Ruby
   minimum_version: 3.2
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/rubocop-lts
+    - type: Liberapay
+      url: https://liberapay.com/pboling
   forges:
     - type: GitHub
       url: https://github.com/rubocop-lts/rubocop-ruby2_5
@@ -966,6 +1330,11 @@
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 2.6 code
   language: Ruby
   minimum_version: 3.2
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/rubocop-lts
+    - type: Liberapay
+      url: https://liberapay.com/pboling
   forges:
     - type: GitHub
       url: https://github.com/rubocop-lts/rubocop-ruby2_6
@@ -977,6 +1346,11 @@
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 2.7 code
   language: Ruby
   minimum_version: 3.2
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/rubocop-lts
+    - type: Liberapay
+      url: https://liberapay.com/pboling
   forges:
     - type: GitHub
       url: https://github.com/rubocop-lts/rubocop-ruby2_7
@@ -988,6 +1362,11 @@
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 3.0 code
   language: Ruby
   minimum_version: 3.2
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/rubocop-lts
+    - type: Liberapay
+      url: https://liberapay.com/pboling
   forges:
     - type: GitHub
       url: https://github.com/rubocop-lts/rubocop-ruby3_0
@@ -1001,6 +1380,11 @@
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 3.1 code
   language: Ruby
   minimum_version: 3.2
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/rubocop-lts
+    - type: Liberapay
+      url: https://liberapay.com/pboling
   forges:
     - type: GitHub
       url: https://github.com/rubocop-lts/rubocop-ruby3_1
@@ -1012,6 +1396,9 @@
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 3.2 code
   language: Ruby
   minimum_version: 3.2
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/rubocop-lts
   forges:
     - type: GitHub
       url: https://github.com/rubocop-lts/rubocop-ruby3_2
@@ -1023,6 +1410,11 @@
   description: A library for consuming and serving OpenID identities.
   language: Ruby
   minimum_version: 2.7
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/ruby-openid
+    - type: Liberapay
+      url: https://liberapay.com/pboling
   forges:
     - type: GitHub
       url: https://github.com/ruby-openid/ruby-openid
@@ -1038,6 +1430,11 @@
   description: Originally a fork. Has been merged back to the original gem.
   language: Ruby
   minimum_version: 2.7
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/ruby-openid
+    - type: Liberapay
+      url: https://liberapay.com/pboling
   forges:
     - type: GitHub
       url: https://github.com/ruby-openid/ruby-openid
@@ -1055,6 +1452,11 @@
     In Rails, Sinatra, et al, or simply the mail gem: Aids in development, testing, qa, and production troubleshooting of email issues without worrying that emails will get sent to actual live addresses.
   language: Ruby
   minimum_version: 2.3
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/galtzo-floss
+    - type: Liberapay
+      url: https://liberapay.com/pboling
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/sanitize_email
@@ -1071,6 +1473,11 @@
   description: Rails gem for Data Migrations
   language: Ruby
   minimum_version: 1.8
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/galtzo-floss
+    - type: Liberapay
+      url: https://liberapay.com/pboling
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/seed_migration
@@ -1078,23 +1485,33 @@
       url: https://git.sr.ht/~galtzo/seed_migration
   tags:
     - rails
-    - seed
     - migration
 - name: sequential_file
   description: Create Files Named Sequentially Intelligently
   language: Ruby
   minimum_version: 1.8
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/galtzo-floss
+    - type: Liberapay
+      url: https://liberapay.com/pboling
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/sequential_file
     - type: SourceHut
       url: https://git.sr.ht/~galtzo/sequential_file
   tags:
-    - unmaintained
+    - shell
+    - stale
 - name: service_actor-promptable
   description: TTY Prompt plugin for your service objects for your application logic
   language: Ruby
   minimum_version: 2.6
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/galtzo-floss
+    - type: Liberapay
+      url: https://liberapay.com/pboling
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/service_actor-promptable
@@ -1109,6 +1526,11 @@
     => "[![RubyGems Total Downloads](https://img.shields.io/gem/dt/rails?)](https://rubygems.org/gems/rails)"
   language: Ruby
   minimum_version: 3.1
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/galtzo-floss
+    - type: Liberapay
+      url: https://liberapay.com/pboling
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/shields-badge
@@ -1117,14 +1539,17 @@
     - type: Codeberg
       url: https://codeberg.org/galtzo-floss/shields-badge
   tags:
-    - badges
-    - shields
     - markdown
 - name: shiftable
   description: Move single records (has_one) or collections (has_many) from one parent
     (belongs_to) to another
   language: Ruby
   minimum_version: 2.5
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/galtzo-floss
+    - type: Liberapay
+      url: https://liberapay.com/pboling
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/shiftable
@@ -1139,6 +1564,11 @@
     dependencies: floss-funding.dev"
   language: Ruby
   minimum_version: 2.3
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/galtzo-floss
+    - type: Liberapay
+      url: https://liberapay.com/pboling
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/silent_stream
@@ -1149,13 +1579,18 @@
     - type: SourceHut
       url: https://git.sr.ht/~galtzo/silent_stream
   tags:
-    - testing
-    - logging
+    - test
+    - log
 - name: simple_column-scopes
   description: Dynamic modules which define dynamic methods for scopes based on a
     dynamic array of column names
   language: Ruby
   minimum_version: 2.3
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/galtzo-floss
+    - type: Liberapay
+      url: https://liberapay.com/pboling
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/simple_column-scopes
@@ -1166,6 +1601,11 @@
   description: 'A Hashie::Mash joint to make #snakelife better'
   language: Ruby
   minimum_version: 2.2
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/ruby-oauth
+    - type: Liberapay
+      url: https://liberapay.com/pboling
   forges:
     - type: GitHub
       url: https://github.com/ruby-oauth/snaky_hash
@@ -1174,28 +1614,38 @@
     - type: Codeberg
       url: https://codeberg.org/ruby-oauth/snaky_hash
   tags:
-    - hashie
-    - snake_case
+    - serialize
 - name: spyke-connection_lambda
   description: Dynamic Spyke API connection plugin for the Enterprise Cloud
   language: Ruby
   minimum_version: 2.3
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/galtzo-floss
+    - type: Liberapay
+      url: https://liberapay.com/pboling
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/spyke-connection_lambda
   tags:
-    - spyke
+    - rails
+    - activerecord
     - api
 - name: stackable_flash
   description: Allows flashes to stack intelligently, while preserving existing behavior
     of the Rails FlashHash
   language: Ruby
   minimum_version: 1.8
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/galtzo-floss
+    - type: Liberapay
+      url: https://liberapay.com/pboling
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/stackable_flash
   tags:
-    - unmaintained
+    - stale
     - toast
 - name: standard-rubocop-lts
   description: |
@@ -1203,6 +1653,11 @@
     Part of the rubocop-lts family.
   language: Ruby
   minimum_version: 3.2
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/galtzo-floss
+    - type: Liberapay
+      url: https://liberapay.com/pboling
   forges:
     - type: GitHub
       url: https://github.com/rubocop-lts/standard-rubocop-lts
@@ -1211,7 +1666,6 @@
     - type: Codeberg
       url: https://codeberg.org/rubocop-lts/standard-rubocop-lts
   tags:
-    - standard
     - rubocop
 - name: status_tag
   description: |-
@@ -1219,6 +1673,11 @@
     Also includes a presenter base class to allow any Ruby web framework to create logic around HTML tags
   language: Ruby
   minimum_version: 1.8
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/galtzo-floss
+    - type: Liberapay
+      url: https://liberapay.com/pboling
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/status_tag
@@ -1231,6 +1690,7 @@
   tags:
     - rails
     - presenters
+    - views
 - name: stone_checksums
   description: "\U0001F5FF Generate both SHA256 & SHA512 checksums into the checksums
     directory, and git commit them.\n  gem install stone_checksums\nThen, use the
@@ -1239,6 +1699,11 @@
     stack, dev/test dependencies: floss-funding.dev"
   language: Ruby
   minimum_version: 2.2
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/galtzo-floss
+    - type: Liberapay
+      url: https://liberapay.com/pboling
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/stone_checksums
@@ -1247,7 +1712,6 @@
     - type: Codeberg
       url: https://codeberg.org/galtzo-floss/stone_checksums
   tags:
-    - checksums
     - security
     - release
 - name: strict_states
@@ -1255,6 +1719,11 @@
     typos.  Compatible with all Ruby state machine libraries.
   language: Ruby
   minimum_version: 1.8
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/galtzo-floss
+    - type: Liberapay
+      url: https://liberapay.com/pboling
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/strict_states
@@ -1262,16 +1731,24 @@
       url: https://git.sr.ht/~galtzo/strict_states
   tags:
     - state-machine
+    - validate
 - name: super_exception_notifier
   description: In the Rails v2 era, this was a popular fork of exception_notification,
     with many extra features.  It is now deprecated in favor of the original gem.
   language: Ruby
   minimum_version: 1.8
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/galtzo-floss
+    - type: Liberapay
+      url: https://liberapay.com/pboling
   forges:
     - type: GitHub
       url: https://github.com/pboling/exception_notification
   tags:
-    - unmaintained
+    - stale
+    - email
+    - error-handle
 - name: timecop-rspec
   description: "⌚️ Timecop::Rspec provides Timecop time-machines for RSpec that allow
     youto time-travel test examples, context/describes, and/or your entire test suite.
@@ -1279,26 +1756,40 @@
     projects - bottom of stack, dev/test dependencies: floss-funding.dev"
   language: Ruby
   minimum_version: 1.9
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/galtzo-floss
+    - type: Liberapay
+      url: https://liberapay.com/pboling
   forges:
     - type: GitHub
       url: https://github.com/galtzo-floss/timecop-rspec
   tags:
     - rspec
-    - testing
+    - test
+    - time
 - name: undrive_google
   description: "\U0001F3F4 Liberate files from your Google Drive with transformations"
   language: Ruby
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/galtzo-floss
   minimum_version: 1.9
   forges:
     - type: SourceHut
       url: https://git.sr.ht/~galtzo/undrive_google
   tags:
-    - google
-    - drive
+    - api
+    - shell
 - name: version_gem
   description: "\U0001F516 Versions are good. Versions are cool. Versions will win."
   language: Ruby
   minimum_version: 2.2
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/ruby-oauth
+    - type: Liberapay
+      url: https://liberapay.com/pboling
   doc_site: https://version-gem.galtzo.com
   forges:
     - type: GitHub
@@ -1310,18 +1801,21 @@
     - type: SourceHut
       url: https://git.sr.ht/~galtzo/version_gem
   tags:
-    - versioning
     - semver
-    - epoch
 - name: warden_oauth
   description: warden_oauth will help you create oauth authentication strategies
     using the oauth helper method on the Warden::Manager config setup
   language: Ruby
   minimum_version: 1.8
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/ruby-oauth
+    - type: Liberapay
+      url: https://liberapay.com/pboling
   forges:
     - type: GitHub
       url: https://github.com/ruby-oauth/warden_oauth
   tags:
     - oauth
     - auth
-    - warden
+    - security

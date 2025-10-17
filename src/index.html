@@ -61,15 +61,34 @@ body_class: projects
         <img
                 src="/assets/images/<%= project['language'] %>.svg"
                 alt="language: <%= project['language'] %>"
-                class="language"
+                class="link-icon language"
         >
       </a>
-      <% if project["doc_site"] %>
+      <% if !project["funding_sites"].nil? %>
+        <% project["funding_sites"].each do |funding_site| %>
+          <a href="<%= funding_site['url'] %>" class="funding-link" target="_blank" rel="noopener">
+            <img
+                    src="/assets/images/<%= funding_site['type'] %>.svg"
+                    alt="Documentation Website (<%= funding_site['url'] %>)"
+                    class="link-icon funding-site"
+            >
+          </a>
+        <% end %>
+      <% else %>
+        <a href="https://liberapay.com/pboling" class="funding-link" target="_blank" rel="noopener">
+          <img
+                  src="/assets/images/Liberapay.svg"
+                  alt="This project has no funding links. Please donate to me directly!"
+                  class="link-icon funding-site"
+          >
+        </a>
+      <% end %>
+      <% if !project["doc_site"].nil? %>
         <a href="<%= project['doc_site'] %>" class="doc-link" target="_blank" rel="noopener">
           <img
                   src="/assets/images/Read-the-Docs.svg"
                   alt="Documentation Website (<%= project['doc_site'] %>)"
-                  class="doc-site"
+                  class="link-icon doc-site"
           >
         </a>
       <% end %>
@@ -78,7 +97,7 @@ body_class: projects
           <img
                   src="/assets/images/<%= forge['type'] %>.svg"
                   alt="forge: <%= forge['type'] %> (<%= forge['url'] %>)"
-                  class="forge"
+                  class="link-icon forge"
           >
         </a>
       <% end %>
@@ -100,6 +119,21 @@ body_class: projects
       <% end %>
     </p>
     <p><%= project["description"] %></p>
+    <p>
+      Financially support <%= project["name"] %> via:
+      <% if !project["funding_sites"].nil? %>
+        <% last_comma_index = project["funding_sites"].size - 1 %>
+        <% project["funding_sites"].each_with_index do |funding_site, i| %>
+          <a href="<%= funding_site['url'] %>" class="text-link" target="_blank" rel="noopener">
+            <%= funding_site['type'] %>
+          </a><%= i <= last_comma_index - 1 ? ", " : "" %><%= i == last_comma_index - 1 ? "or" : "" %>
+        <% end %>
+      <% else %>
+        <a href="https://liberapay.com/pboling" class="text-link" target="_blank" rel="noopener">
+          Liberapay
+        </a>
+      <% end %>
+    </p>
   </li>
   <% end %>
 </ul>

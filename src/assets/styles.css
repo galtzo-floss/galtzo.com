@@ -27,17 +27,36 @@ h1 {
     padding-bottom: .25rem;
 }
 
-li {
-    margin: 1rem 0;
+h2 {
+    margin-top: 0.2rem;
+    margin-bottom: 0.1rem;
 }
 
-.language {
+li {
+    margin: 0;
+}
+
+a.text-link {
+    display: inline-block;
+    text-decoration: underline;
+    color: var(--orange-solid);
+}
+
+.link-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    text-decoration: none;
+    color: inherit;
+    font-size: 0.875rem;
+    font-weight: 600;
     width: 20px;
     height: 20px;
-    padding: 0.3rem 0.75rem;
-    margin-right: 0.5rem;
     box-shadow: 0 0 10px var(--orange);
     background-color: var(--orange);
+    padding: 0.3rem 0.5rem;
+    margin-right: 0.5rem;
 }
 
 .min-language {
@@ -57,28 +76,10 @@ a {
     color: inherit;
 }
 
-.forge {
-    width: 20px;
-    height: 20px;
-    padding: 0.3rem 0.75rem;
-    margin-right: 0.5rem;
-    box-shadow: 0 0 10px var(--orange);
-    background-color: var(--orange);
-}
-
-.doc-site {
-    width: 20px;
-    height: 20px;
-    padding: 0.3rem 0.75rem;
-    margin-right: 0.5rem;
-    box-shadow: 0 0 10px var(--orange);
-    background-color: var(--orange);
-}
-
 .project-list {
     display: flex;
     flex-wrap: wrap;
-    gap: 1rem;
+    gap: 0.7rem 1rem;
     list-style: none;
     padding: 0;
 }
@@ -109,7 +110,7 @@ a {
 .tag-list {
     display: flex;
     flex-wrap: wrap;
-    gap: 1.25rem 1rem;
+    gap: 1.1rem 0.8rem;
     list-style: none;
     padding: 0;
 
@@ -129,7 +130,6 @@ a {
         border: 2px solid var(--transparent);
         box-shadow: 0 0 10px var(--orange-light);
         transition: margin-left 0.3s ease;
-        transition: margin-right 0.3s ease;
     }
 
     .tag-link {
