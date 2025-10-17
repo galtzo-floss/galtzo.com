@@ -4,11 +4,6 @@ title: Open Source Projects
 permalink: /
 body_class: projects
 ---
-
-<h1><%= (page.respond_to?(:data) && page.data["title"]) || "Open Source Projects" %></h1>
-
-<p>I develop open source full-time, with a focus on improving your developer experience.</p>
-
 <% allowed_roles = %w(author maintainer contributor) %>
 
 <% tags = site.data.projects.flat_map { |project| project["tags"] || [] }.uniq.sort %>
@@ -58,6 +53,23 @@ body_class: projects
   <% end %>
 <% end %>
 
+<h1>
+  <%= (page.respond_to?(:data) && page.data["title"]) || "Open Source Projects" %>
+  <span class="tag-list">
+    <% allowed_roles.each do |role| %>
+    <span>
+      <a href="#" class="tag-link role-link <%= role %>" data-tag="<%= role %>">
+        <span class="count left"><%== role_counts[role].to_s.rjust(2, 'x').gsub('x', '&nbsp;') %></span>
+        <span class="tag <%= role %>"><%= role %></span>
+        <span class="count right"><%== role_counts[role].to_s.ljust(2, 'x').gsub('x', '&nbsp;') %></span>
+      </a>
+    </span>
+    <% end %>
+  </span>
+</h1>
+
+<p>I develop open source full-time, with a focus on improving your developer experience.</p>
+
 <ul class="tag-list">
   <% tags.each do |tag| %>
     <li>
@@ -104,15 +116,6 @@ body_class: projects
               class="language"
       >Min Bash v<%= min_bash %></span>
       <span class="count right"><%== min_bash_counts[min_bash].to_s.ljust(2, 'x').gsub('x', '&nbsp;') %></span>
-    </a>
-  </li>
-  <% end %>
-  <% allowed_roles.each do |role| %>
-  <li>
-    <a href="#" class="tag-link role-link <%= role %>" data-tag="<%= role %>">
-      <span class="count left"><%== role_counts[role].to_s.rjust(2, 'x').gsub('x', '&nbsp;') %></span>
-      <span class="tag <%= role %>"><%= role %></span>
-      <span class="count right"><%== role_counts[role].to_s.ljust(2, 'x').gsub('x', '&nbsp;') %></span>
     </a>
   </li>
   <% end %>

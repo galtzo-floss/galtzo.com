@@ -137,13 +137,13 @@ a {
 }
 
 .tag-list {
-    display: flex;
+    display: inline-flex;
     flex-wrap: wrap;
     gap: 1.1rem 0.8rem;
     list-style: none;
     padding: 0;
 
-    li {
+    > * {
         margin: 0;
     }
 
