@@ -133,7 +133,7 @@
   tags:
   - rails
   - activerecord
-- name: Apache SkyWalking Eyes
+- name: skywalking-eyes
   description: |
     A full-featured license tool to check and fix license headers and resolve dependencies' licenses.
     I added compatibility with rubygems and bundler.
