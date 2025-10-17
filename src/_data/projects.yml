@@ -133,6 +133,25 @@
   tags:
   - rails
   - activerecord
+- name: Apache SkyWalking Eyes
+  description: |
+    A full-featured license tool to check and fix license headers and resolve dependencies' licenses.
+    I added compatibility with rubygems and bundler.
+    Enhanced the license checker dataset to include all licenses on spdx.org.
+    Added configurations for ASF Category A and B licenses.
+    Enabled specification of FSF Free/Libre and OSI Approved requirements.
+    <a href="https://dev.to/galtzo/how-to-check-license-compatibility-41h0" class="text-link" target="_blank" rel="noopener">Learn how</a> to add it to your project!
+  language: Go
+  minimum_version: 1.23
+  role: contributor
+  funding_sites: []
+  forges:
+    - type: GitHub
+      url: https://github.com/apache/skywalking-eyes
+      owner: apache
+  tags:
+    - license
+    - GHA
 - name: appraisal2
   description: Appraisal2 integrates with bundler and rake to test your library against
     different versions of dependencies in repeatable scenarios called "appraisals."

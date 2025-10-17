@@ -45,6 +45,16 @@ body_class: projects
   <% end %>
 <% end %>
 
+<% go_projects = site.data.projects.select {|p| p["language"] == "Go" } %>
+<% min_go_versions = go_projects.flat_map { |project| project["minimum_version"] || [] }.uniq.sort %>
+<% min_go_counts = {} %>
+<% go_projects.each do |project| %>
+  <% if project["minimum_version"] %>
+    <% min_go_counts[project["minimum_version"]] ||= 0 %>
+    <% min_go_counts[project["minimum_version"]] += 1 %>
+  <% end %>
+<% end %>
+
 <% role_counts = {} %>
 <% site.data.projects.each do |project| %>
   <% if project["role"] %>
@@ -68,7 +78,10 @@ body_class: projects
   </span>
 </h1>
 
-<p>I develop open source full-time, with a focus on improving your developer experience.</p>
+<p>
+  I develop open source full-time, with a focus on improving your developer experience.
+  I would appreciate your <a href="https://github.com/sponsors/pboling" class="text-link" target="_blank" rel="noopener">financial support</a>.
+</p>
 
 <ul class="tag-list">
   <% tags.each do |tag| %>
@@ -105,6 +118,19 @@ body_class: projects
         <span class="count right"><%== min_ts_counts[min_ts].to_s.ljust(2, 'x').gsub('x', '&nbsp;') %></span>
       </a>
     </li>
+  <% end %>
+  <% min_go_versions.each do |min_go| %>
+  <li>
+    <a href="#" class="tag-link min_lang-link" data-tag="Go >= <%= min_go %>">
+      <span class="count left"><%== min_go_counts[min_go].to_s.rjust(2, 'x').gsub('x', '&nbsp;') %></span>
+      <span class="tag min-language"><img
+              src="/assets/images/Go.svg"
+              alt="Go >= <%= min_go %>"
+              class="language"
+      >Min Go v<%= min_go %></span>
+      <span class="count right"><%== min_go_counts[min_go].to_s.ljust(2, 'x').gsub('x', '&nbsp;') %></span>
+    </a>
+  </li>
   <% end %>
   <% min_bash_versions.each do |min_bash| %>
   <li>
@@ -206,25 +232,21 @@ body_class: projects
         <% end %>
       <% end %>
     </p>
-    <p><%= project["description"] %></p>
+    <p><%== project["description"] %></p>
+    <% if project["funding_sites"].any? %>
     <p>
       Financially support <%= project["name"] %> via:
-      <% if !project["funding_sites"].nil? %>
-        <% last_comma_index = project["funding_sites"].size - 1 %>
-        <% project["funding_sites"].each_with_index do |funding_site, i| %>
-          <a href="<%= funding_site['url'] %>" class="text-link" target="_blank" rel="noopener">
-            <% if funding_site['type'] == 'OpenCollective' %>
-              "<%= funding_site['url'].split("/")[-1] %>"
-            <% end %>
-            <%= funding_site['type'] %>
-          </a><%= i <= last_comma_index - 1 ? ", " : "" %><%= i == last_comma_index - 1 ? "or" : "" %>
-        <% end %>
-      <% else %>
-        <a href="https://liberapay.com/pboling" class="text-link" target="_blank" rel="noopener">
-          Liberapay
-        </a>
+      <% last_comma_index = project["funding_sites"].size - 1 %>
+      <% project["funding_sites"].each_with_index do |funding_site, i| %>
+        <a href="<%= funding_site['url'] %>" class="text-link" target="_blank" rel="noopener">
+          <% if funding_site['type'] == 'OpenCollective' %>
+            "<%= funding_site['url'].split("/")[-1] %>"
+          <% end %>
+          <%= funding_site['type'] %>
+        </a><%= i <= last_comma_index - 1 ? ", " : "" %><%= i == last_comma_index - 1 ? "or" : "" %>
       <% end %>
     </p>
+    <% end %>
   </li>
   <% end %>
 </ul>
