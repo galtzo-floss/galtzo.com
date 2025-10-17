@@ -168,6 +168,7 @@ body_class: projects
       <% else %>
         <% raise "Project #{project['name']} has no tags!" %>
       <% end %>
+      <span class="tag <%= project['role'] %>"><%= project['role'] %></span>
     </p>
     <p>
       <% gh_forge = project["forges"].find { |f| f["type"] == "GitHub" } %>

@@ -7,6 +7,9 @@
     --orange-solid: #ff6400;
     --white: white;
     --transparent: transparent;
+    --author-color: color-mix(in oklab, #8b5cf6 60%, white);
+    --maintainer-color: color-mix(in oklab, #2563eb 45%, white);
+    --contributor-color: #facc15;
 }
 
 body {
@@ -101,6 +104,29 @@ a {
         margin: -0.1rem 0.5rem 0 0;
         box-shadow: 0 0 10px var(--orange-light);
     }
+    .tag.author {
+        box-shadow: 0 0 10px var(--author-color);
+    }
+
+    .tag.maintainer {
+        box-shadow: 0 0 10px var(--maintainer-color);
+    }
+
+    .tag.contributor {
+        box-shadow: 0 0 10px var(--contributor-color);
+    }
+}
+
+.author {
+    box-shadow: 0 0 10px var(--author-color);
+}
+
+.maintainer {
+    box-shadow: 0 0 10px var(--maintainer-color);
+}
+
+.contributor {
+    box-shadow: 0 0 10px var(--contributor-color);
 }
 
 .projects {
