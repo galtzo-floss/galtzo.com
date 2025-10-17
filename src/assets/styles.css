@@ -8,8 +8,11 @@
     --white: white;
     --transparent: transparent;
     --author-color: color-mix(in oklab, #8b5cf6 60%, white);
+    --author-solid: #8b5cf6;
     --maintainer-color: color-mix(in oklab, #2563eb 45%, white);
-    --contributor-color: #facc15;
+    --maintainer-solid: #2563eb;
+    --contributor-color: color-mix(in oklab, #facc15 80%, white);
+    --contributor-solid: #facc15;
 }
 
 body {
@@ -158,6 +161,18 @@ a {
         transition: margin-left 0.3s ease;
     }
 
+    .tag.author {
+        box-shadow: 0 0 10px var(--author-color);
+    }
+
+    .tag.maintainer {
+        box-shadow: 0 0 10px var(--maintainer-color);
+    }
+
+    .tag.contributor {
+        box-shadow: 0 0 10px var(--contributor-color);
+    }
+
     .tag-link {
         display: inline-block;
         background-color: var(--background-light);
@@ -170,14 +185,62 @@ a {
         position: relative;
     }
 
+    .tag-link.author {
+        box-shadow: 0 0 10px var(--author-color);
+    }
+
+    .tag-link.maintainer {
+        box-shadow: 0 0 10px var(--maintainer-color);
+    }
+
+    .tag-link.contributor {
+        box-shadow: 0 0 10px var(--contributor-color);
+    }
+
     .tag-link.active {
         background-color: var(--orange);
+    }
+
+    .tag-link.author.active {
+        background-color: var(--author-color);
+    }
+
+    .tag-link.maintainer.active {
+        background-color: var(--maintainer-color);
+    }
+
+    .tag-link.contributor.active {
+        background-color: var(--contributor-color);
     }
 
     .tag-link.active .tag {
         background-color: var(--orange);
         color: var(--white);
         border: 2px solid var(--orange-solid);
+        margin-left: 0;
+        margin-right: 1.5rem;
+    }
+
+    .tag-link.author.active .tag.author {
+        background-color: var(--author-color);
+        color: var(--white);
+        border: 2px solid var(--author-solid);
+        margin-left: 0;
+        margin-right: 1.5rem;
+    }
+
+    .tag-link.maintainer.active .tag.maintainer {
+        background-color: var(--maintainer-color);
+        color: var(--white);
+        border: 2px solid var(--maintainer-solid);
+        margin-left: 0;
+        margin-right: 1.5rem;
+    }
+
+    .tag-link.contributor.active .tag.contributor {
+        background-color: var(--contributor-color);
+        color: var(--text-color);
+        border: 2px solid var(--contributor-solid);
         margin-left: 0;
         margin-right: 1.5rem;
     }

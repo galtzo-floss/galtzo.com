@@ -7,6 +7,10 @@ body_class: projects
 
 <h1><%= (page.respond_to?(:data) && page.data["title"]) || "Open Source Projects" %></h1>
 
+<p>I develop open source full-time, with a focus on improving your developer experience.</p>
+
+<% allowed_roles = %w(author maintainer contributor) %>
+
 <% tags = site.data.projects.flat_map { |project| project["tags"] || [] }.uniq.sort %>
 <% tag_counts = {} %>
 <% site.data.projects.each do |project| %>
@@ -43,6 +47,14 @@ body_class: projects
   <% if project["minimum_version"] %>
     <% min_rb_counts[project["minimum_version"]] ||= 0 %>
     <% min_rb_counts[project["minimum_version"]] += 1 %>
+  <% end %>
+<% end %>
+
+<% role_counts = {} %>
+<% site.data.projects.each do |project| %>
+  <% if project["role"] %>
+    <% role_counts[project["role"]] ||= 0 %>
+    <% role_counts[project["role"]] += 1 %>
   <% end %>
 <% end %>
 
@@ -95,12 +107,21 @@ body_class: projects
     </a>
   </li>
   <% end %>
+  <% allowed_roles.each do |role| %>
+  <li>
+    <a href="#" class="tag-link role-link <%= role %>" data-tag="<%= role %>">
+      <span class="count left"><%== role_counts[role].to_s.rjust(2, 'x').gsub('x', '&nbsp;') %></span>
+      <span class="tag <%= role %>"><%= role %></span>
+      <span class="count right"><%== role_counts[role].to_s.ljust(2, 'x').gsub('x', '&nbsp;') %></span>
+    </a>
+  </li>
+  <% end %>
 </ul>
 
 <ul class="project-list">
   <% site.data.projects.each do |project| %>
   <% raise "Project #{project['name']} has no role!" if project['role'].nil? %>
-  <% raise "Project #{project['name']} has invalid role #{project['role']}!" unless %w(author maintainer contributor).include?(project['role']) %>
+  <% raise "Project #{project['name']} has invalid role #{project['role']}!" unless allowed_roles.include?(project['role']) %>
   <li class="card <%= project['role'] %>">
     <h2>
       <a href="https://bestgems.org/gems/<%= project['name'] %>" class="gem-link" target="_blank" rel="noopener">
