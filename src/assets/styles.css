@@ -394,7 +394,7 @@ a {
 
     .tag-link.contributor.active .tag.contributor {
         background-color: var(--contributor-color);
-        color: var(--text-color);
+        color: var(--white);
         border: 2px solid var(--contributor-solid);
         margin-left: 0;
         margin-right: 1.5rem;
