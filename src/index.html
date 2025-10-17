@@ -99,7 +99,9 @@ body_class: projects
 
 <ul class="project-list">
   <% site.data.projects.each do |project| %>
-  <li class="card">
+  <% raise "Project #{project['name']} has no role!" if project['role'].nil? %>
+  <% raise "Project #{project['name']} has invalid role #{project['role']}!" unless %w(author maintainer contributor).include?(project['role']) %>
+  <li class="card <%= project['role'] %>">
     <h2>
       <a href="https://bestgems.org/gems/<%= project['name'] %>" class="gem-link" target="_blank" rel="noopener">
         <%= project["name"] %>
@@ -164,7 +166,7 @@ body_class: projects
           <span class="tag <%= tag %>"><%= tag %></span>
         <% end %>
       <% else %>
-        <span class="tag oops">Oops</span>
+        <% raise "Project #{project['name']} has no tags!" %>
       <% end %>
     </p>
     <p>
@@ -186,6 +188,9 @@ body_class: projects
         <% last_comma_index = project["funding_sites"].size - 1 %>
         <% project["funding_sites"].each_with_index do |funding_site, i| %>
           <a href="<%= funding_site['url'] %>" class="text-link" target="_blank" rel="noopener">
+            <% if funding_site['type'] == 'OpenCollective' %>
+              "<%= funding_site['url'].split("/")[-1] %>"
+            <% end %>
             <%= funding_site['type'] %>
           </a><%= i <= last_comma_index - 1 ? ", " : "" %><%= i == last_comma_index - 1 ? "or" : "" %>
         <% end %>
