@@ -9,58 +9,58 @@ body_class: projects
 <% tags = site.data.projects.flat_map { |project| project["tags"] || [] }.uniq.sort %>
 <% tag_counts = {} %>
 <% site.data.projects.each do |project| %>
-  <% (project["tags"] || []).each do |tag| %>
-    <% tag_counts[tag] ||= 0 %>
-    <% tag_counts[tag] += 1 %>
-  <% end %>
+<% (project["tags"] || []).each do |tag| %>
+<% tag_counts[tag] ||= 0 %>
+<% tag_counts[tag] += 1 %>
+<% end %>
 <% end %>
 
 <% bash_projects = site.data.projects.select {|p| p["language"] == "Bash" } %>
 <% min_bash_versions = bash_projects.flat_map { |project| project["minimum_version"] || [] }.uniq.sort %>
 <% min_bash_counts = {} %>
 <% bash_projects.each do |project| %>
-  <% if project["minimum_version"] %>
-    <% min_bash_counts[project["minimum_version"]] ||= 0 %>
-    <% min_bash_counts[project["minimum_version"]] += 1 %>
-  <% end %>
+<% if project["minimum_version"] %>
+<% min_bash_counts[project["minimum_version"]] ||= 0 %>
+<% min_bash_counts[project["minimum_version"]] += 1 %>
+<% end %>
 <% end %>
 
 <% ts_projects = site.data.projects.select {|p| p["language"] == "TypeScript" } %>
 <% min_ts_versions = ts_projects.flat_map { |project| project["minimum_version"] || [] }.uniq.sort %>
 <% min_ts_counts = {} %>
 <% ts_projects.each do |project| %>
-  <% if project["minimum_version"] %>
-    <% min_ts_counts[project["minimum_version"]] ||= 0 %>
-    <% min_ts_counts[project["minimum_version"]] += 1 %>
-  <% end %>
+<% if project["minimum_version"] %>
+<% min_ts_counts[project["minimum_version"]] ||= 0 %>
+<% min_ts_counts[project["minimum_version"]] += 1 %>
+<% end %>
 <% end %>
 
 <% rb_projects = site.data.projects.select {|p| p["language"] == "Ruby" } %>
 <% min_rb_versions = rb_projects.flat_map { |project| project["minimum_version"] || [] }.uniq.sort %>
 <% min_rb_counts = {} %>
 <% rb_projects.each do |project| %>
-  <% if project["minimum_version"] %>
-    <% min_rb_counts[project["minimum_version"]] ||= 0 %>
-    <% min_rb_counts[project["minimum_version"]] += 1 %>
-  <% end %>
+<% if project["minimum_version"] %>
+<% min_rb_counts[project["minimum_version"]] ||= 0 %>
+<% min_rb_counts[project["minimum_version"]] += 1 %>
+<% end %>
 <% end %>
 
 <% go_projects = site.data.projects.select {|p| p["language"] == "Go" } %>
 <% min_go_versions = go_projects.flat_map { |project| project["minimum_version"] || [] }.uniq.sort %>
 <% min_go_counts = {} %>
 <% go_projects.each do |project| %>
-  <% if project["minimum_version"] %>
-    <% min_go_counts[project["minimum_version"]] ||= 0 %>
-    <% min_go_counts[project["minimum_version"]] += 1 %>
-  <% end %>
+<% if project["minimum_version"] %>
+<% min_go_counts[project["minimum_version"]] ||= 0 %>
+<% min_go_counts[project["minimum_version"]] += 1 %>
+<% end %>
 <% end %>
 
 <% role_counts = {} %>
 <% site.data.projects.each do |project| %>
-  <% if project["role"] %>
-    <% role_counts[project["role"]] ||= 0 %>
-    <% role_counts[project["role"]] += 1 %>
-  <% end %>
+<% if project["role"] %>
+<% role_counts[project["role"]] ||= 0 %>
+<% role_counts[project["role"]] += 1 %>
+<% end %>
 <% end %>
 
 <h1>
@@ -86,39 +86,39 @@ body_class: projects
 
 <ul class="tag-list">
   <% tags.each do |tag| %>
-    <li>
-      <a href="#" class="tag-link" data-tag="<%= tag %>">
-        <span class="count left"><%== tag_counts[tag].to_s.rjust(2, 'x').gsub('x', '&nbsp;') %></span>
-        <span class="tag <%= tag %>"><%= tag %></span>
-        <span class="count right"><%== tag_counts[tag].to_s.ljust(2, 'x').gsub('x', '&nbsp;') %></span>
-      </a>
-    </li>
+  <li>
+    <a href="#" class="tag-link" data-tag="<%= tag %>">
+      <span class="count left"><%== tag_counts[tag].to_s.rjust(2, 'x').gsub('x', '&nbsp;') %></span>
+      <span class="tag <%= tag %>"><%= tag %></span>
+      <span class="count right"><%== tag_counts[tag].to_s.ljust(2, 'x').gsub('x', '&nbsp;') %></span>
+    </a>
+  </li>
   <% end %>
   <% min_rb_versions.each do |min_ruby| %>
-    <li>
-      <a href="#" class="tag-link min_lang-link" data-tag="Ruby >= <%= min_ruby %>">
-        <span class="count left"><%== min_rb_counts[min_ruby].to_s.rjust(2, 'x').gsub('x', '&nbsp;') %></span>
-        <span class="tag min-language"><img
-                src="/assets/images/Ruby.svg"
-                alt="Ruby >= <%= min_ruby %>"
-                class="language"
-        >Min Ruby v<%= min_ruby %></span>
-        <span class="count right"><%== min_rb_counts[min_ruby].to_s.ljust(2, 'x').gsub('x', '&nbsp;') %></span>
-      </a>
-    </li>
+  <li>
+    <a href="#" class="tag-link min_lang-link" data-tag="Ruby >= <%= min_ruby %>">
+      <span class="count left"><%== min_rb_counts[min_ruby].to_s.rjust(2, 'x').gsub('x', '&nbsp;') %></span>
+      <span class="tag min-language"><img
+              src="/assets/images/Ruby.svg"
+              alt="Ruby >= <%= min_ruby %>"
+              class="language"
+      >Min Ruby v<%= min_ruby %></span>
+      <span class="count right"><%== min_rb_counts[min_ruby].to_s.ljust(2, 'x').gsub('x', '&nbsp;') %></span>
+    </a>
+  </li>
   <% end %>
   <% min_ts_versions.each do |min_ts| %>
-    <li>
-      <a href="#" class="tag-link min_lang-link" data-tag="TypeScript >= <%= min_ts %>">
-        <span class="count left"><%== min_ts_counts[min_ts].to_s.rjust(2, 'x').gsub('x', '&nbsp;') %></span>
-        <span class="tag min-language"><img
-                src="/assets/images/TypeScript.svg"
-                alt="TypeScript >= <%= min_ts %>"
-                class="language"
-        >Min TS v<%= min_ts %></span>
-        <span class="count right"><%== min_ts_counts[min_ts].to_s.ljust(2, 'x').gsub('x', '&nbsp;') %></span>
-      </a>
-    </li>
+  <li>
+    <a href="#" class="tag-link min_lang-link" data-tag="TypeScript >= <%= min_ts %>">
+      <span class="count left"><%== min_ts_counts[min_ts].to_s.rjust(2, 'x').gsub('x', '&nbsp;') %></span>
+      <span class="tag min-language"><img
+              src="/assets/images/TypeScript.svg"
+              alt="TypeScript >= <%= min_ts %>"
+              class="language"
+      >Min TS v<%= min_ts %></span>
+      <span class="count right"><%== min_ts_counts[min_ts].to_s.ljust(2, 'x').gsub('x', '&nbsp;') %></span>
+    </a>
+  </li>
   <% end %>
   <% min_go_versions.each do |min_go| %>
   <li>
@@ -150,45 +150,51 @@ body_class: projects
 
 <ul class="project-list">
   <% site.data.projects.each do |project| %>
-  <% raise "Project #{project['name']} has no role!" if project['role'].nil? %>
-  <% raise "Project #{project['name']} has invalid role #{project['role']}!" unless allowed_roles.include?(project['role']) %>
-  <li class="card <%= project['role'] %>">
+    <% raise "Project #{project['name']} has no role!" if project['role'].nil? %>
+    <% raise "Project #{project['name']} has invalid role #{project['role']}!" unless allowed_roles.include?(project['role']) %>
     <% gh_forge = project["forges"].find { |f| f["type"] == "GitHub" } %>
     <% first_forge = project["forges"].first %>
-    <div class="corner-anchor fork">
-      <% if gh_forge %>
+    <li class="card <%= project['role'] %>">
+      <div class="corner-anchor fork">
+        <% if gh_forge %>
         <a href="<%= gh_forge['url'] %>/fork" class="corner-banner banner-fork" target="_blank" rel="noopener">Fork Me</a>
-      <% elsif first_forge %>
+        <% elsif first_forge %>
         <a href="<%= first_forge['url'] %>" class="corner-banner banner-fork" target="_blank" rel="noopener">Clone Me</a>
-      <% end %>
-    </div>
-    <div class="corner-anchor role">
-      <span class="corner-banner banner-role <%= project['role'] %>"><%= project['role'].capitalize %></span>
-    </div>
-    <h2>
-      <a href="https://bestgems.org/gems/<%= project['name'] %>" class="gem-link" target="_blank" rel="noopener">
-        <%= project["name"] %>
-      </a>
-    </h2>
-    <p>
-      <a href="https://bestgems.org/gems/<%= project['name'] %>" class="gem-link" target="_blank" rel="noopener">
-        <img
-                src="/assets/images/<%= project['language'] %>.svg"
-                alt="language: <%= project['language'] %>"
-                class="link-icon language"
-        >
-      </a>
-      <% if !project["funding_sites"].nil? %>
-        <% project["funding_sites"].each do |funding_site| %>
-          <a href="<%= funding_site['url'] %>" class="funding-link" target="_blank" rel="noopener">
-            <img
-                    src="/assets/images/<%= funding_site['type'] %>.svg"
-                    alt="Documentation Website (<%= funding_site['url'] %>)"
-                    class="link-icon funding-site"
-            >
-          </a>
         <% end %>
-      <% else %>
+      </div>
+      <div class="corner-anchor role">
+        <% if gh_forge %>
+        <a href="<%= gh_forge['url'] %>/commits?author=pboling" class="corner-banner banner-role <%= project['role'] %>" target="_blank" rel="noopener">
+          <%= project['role'].capitalize %>
+        </a>
+        <% else %>
+        <span class="corner-banner banner-role <%= project['role'] %>"><%= project['role'].capitalize %></span>
+        <% end %>
+      </div>
+      <h2>
+        <a href="https://bestgems.org/gems/<%= project['name'] %>" class="gem-link" target="_blank" rel="noopener">
+          <%= project["name"] %>
+        </a>
+      </h2>
+      <p>
+        <a href="https://bestgems.org/gems/<%= project['name'] %>" class="gem-link" target="_blank" rel="noopener">
+          <img
+                  src="/assets/images/<%= project['language'] %>.svg"
+                  alt="language: <%= project['language'] %>"
+                  class="link-icon language"
+          >
+        </a>
+        <% if !project["funding_sites"].nil? %>
+        <% project["funding_sites"].each do |funding_site| %>
+        <a href="<%= funding_site['url'] %>" class="funding-link" target="_blank" rel="noopener">
+          <img
+                  src="/assets/images/<%= funding_site['type'] %>.svg"
+                  alt="Documentation Website (<%= funding_site['url'] %>)"
+                  class="link-icon funding-site"
+          >
+        </a>
+        <% end %>
+        <% else %>
         <a href="https://liberapay.com/pboling" class="funding-link" target="_blank" rel="noopener">
           <img
                   src="/assets/images/Liberapay.svg"
@@ -196,8 +202,8 @@ body_class: projects
                   class="link-icon funding-site"
           >
         </a>
-      <% end %>
-      <% if !project["doc_site"].nil? %>
+        <% end %>
+        <% if !project["doc_site"].nil? %>
         <a href="<%= project['doc_site'] %>" class="doc-link" target="_blank" rel="noopener">
           <img
                   src="/assets/images/Read-the-Docs.svg"
@@ -205,8 +211,8 @@ body_class: projects
                   class="link-icon doc-site"
           >
         </a>
-      <% end %>
-      <% project["forges"].each do |forge| %>
+        <% end %>
+        <% project["forges"].each do |forge| %>
         <a href="<%= forge['url'] %>" class="forge-link" target="_blank" rel="noopener">
           <img
                   src="/assets/images/<%= forge['type'] %>.svg"
@@ -214,76 +220,81 @@ body_class: projects
                   class="link-icon forge"
           >
         </a>
-      <% end %>
-    </p>
-    <p>
-      <% if !project["minimum_version"].nil? %>
+        <% end %>
+      </p>
+      <p>
+        <% if !project["minimum_version"].nil? %>
         <span class="tag min-language"><img
                 src="/assets/images/<%= project['language'] %>.svg"
                 alt="<%= project['language'] %> >= <%= project['minimum_version'] %>"
                 class="language"
         ><%= project["language"] %> >= <%= project["minimum_version"] %></span>
-      <% end %>
-      <% if project["tags"] && project["tags"].any? %>
-        <% project["tags"].each do |tag| %>
-          <span class="tag <%= tag %>"><%= tag %></span>
         <% end %>
-      <% else %>
+        <% if project["tags"] && project["tags"].any? %>
+        <% project["tags"].each do |tag| %>
+        <span class="tag <%= tag %>"><%= tag %></span>
+        <% end %>
+        <% else %>
         <% raise "Project #{project['name']} has no tags!" %>
-      <% end %>
-      <span class="tag <%= project['role'] %>"><%= project['role'] %></span>
-    </p>
-    <p>
-      <% gh_forge = project["forges"].find { |f| f["type"] == "GitHub" } %>
-      <% if gh_forge %>
+        <% end %>
+        <% if gh_forge %>
+        <a href="<%= gh_forge['url'] %>/commits?author=pboling" class="tag <%= project['role'] %>" target="_blank" rel="noopener">
+          <%= project['role'] %>
+        </a>
+        <% else %>
+        <span class="tag <%= project['role'] %>"><%= project['role'] %></span>
+        <% end %>
+      </p>
+      <p>
+        <% if gh_forge %>
         <img alt="<%= project['name'] %> GitHub License" src="https://img.shields.io/github/license/<%= gh_forge['owner'] %>/<%= project['name'] %>?style=social">
         <img alt="<%= project['name'] %> GitHub stars" src="https://img.shields.io/github/stars/<%= gh_forge['owner'] %>/<%= project['name'] %>?style=social">
         <img alt="<%= project['name'] %> GitHub commit activity" src="https://img.shields.io/github/commit-activity/m/<%= gh_forge['owner'] %>/<%= project['name'] %>?style=social">
         <% if project["language"] == "Ruby" %>
-          <img alt="<%= project['name'] %> GitHub commits since latest release" src="https://img.shields.io/github/commits-since/<%= gh_forge['owner'] %>/<%= project['name'] %>/latest?style=social">
-          <img alt="<%= project['name'] %> Gem Total Downloads" src="https://img.shields.io/gem/dt/<%= project['name'] %>?style=social">
+        <img alt="<%= project['name'] %> GitHub commits since latest release" src="https://img.shields.io/github/commits-since/<%= gh_forge['owner'] %>/<%= project['name'] %>/latest?style=social">
+        <img alt="<%= project['name'] %> Gem Total Downloads" src="https://img.shields.io/gem/dt/<%= project['name'] %>?style=social">
         <% end %>
-      <% end %>
-    </p>
-    <p><%== project["description"] %></p>
-    <% if project["funding_sites"].any? %>
-    <p>
-      Financially support <%= project["name"] %> via:
-      <% last_comma_index = project["funding_sites"].size - 1 %>
-      <% project["funding_sites"].each_with_index do |funding_site, i| %>
+        <% end %>
+      </p>
+      <p><%== project["description"] %></p>
+      <% if project["funding_sites"].any? %>
+      <p>
+        Financially support <%= project["name"] %> via:
+        <% last_comma_index = project["funding_sites"].size - 1 %>
+        <% project["funding_sites"].each_with_index do |funding_site, i| %>
         <a href="<%= funding_site['url'] %>" class="text-link" target="_blank" rel="noopener">
           <% if funding_site['type'] == 'OpenCollective' %>
-            "<%= funding_site['url'].split("/")[-1] %>"
+          "<%= funding_site['url'].split("/")[-1] %>"
           <% end %>
           <%= funding_site['type'] %>
         </a><%= i <= last_comma_index - 1 ? ", " : "" %><%= i == last_comma_index - 1 ? "or" : "" %>
+        <% end %>
+      </p>
       <% end %>
-    </p>
-    <% end %>
-  </li>
+    </li>
   <% end %>
 </ul>
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-  const tagLinks = document.querySelectorAll('.tag-link');
-  const cards = document.querySelectorAll('.card');
+  document.addEventListener('DOMContentLoaded', function() {
+    const tagLinks = document.querySelectorAll('.tag-link');
+    const cards = document.querySelectorAll('.card');
 
-  tagLinks.forEach(link => {
-    link.addEventListener('click', function(e) {
-      e.preventDefault();
-      this.classList.toggle('active');
-      filterProjects();
+    tagLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        this.classList.toggle('active');
+        filterProjects();
+      });
     });
+
+    function filterProjects() {
+      const activeTags = Array.from(document.querySelectorAll('.tag-link.active')).map(link => link.dataset.tag);
+      cards.forEach(card => {
+        const cardTags = Array.from(card.querySelectorAll('.tag')).map(span => span.textContent.trim());
+        const matches = activeTags.length === 0 || activeTags.every(tag => cardTags.includes(tag));
+        card.style.display = matches ? '' : 'none';
+      });
+    }
   });
-
-  function filterProjects() {
-    const activeTags = Array.from(document.querySelectorAll('.tag-link.active')).map(link => link.dataset.tag);
-    cards.forEach(card => {
-      const cardTags = Array.from(card.querySelectorAll('.tag')).map(span => span.textContent.trim());
-      const matches = activeTags.length === 0 || activeTags.every(tag => cardTags.includes(tag));
-      card.style.display = matches ? '' : 'none';
-    });
-  }
-});
 </script>
