@@ -4,12 +4,27 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="light dark">
   <title><%= (page.respond_to?(:data) && page.data["title"]) || site.metadata.title %></title>
+  <!-- Initialize theme before CSS to reduce flash -->
+  <script>
+    (function() {
+      try {
+        var stored = localStorage.getItem('theme');
+        if (stored === 'light' || stored === 'dark') {
+          document.documentElement.setAttribute('data-theme', stored);
+        } else {
+          document.documentElement.removeAttribute('data-theme');
+        }
+      } catch (e) { /* ignore */ }
+    })();
+  </script>
   <link rel="stylesheet" href="/assets/styles.css">
 </head>
 <body class="<%= page.data['body_class'] || '' %>">
   <header>
     <nav><a href="/"><%= site.metadata.title %></a></nav>
+    <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle theme" title="Toggle theme">🌙</button>
   </header>
 
   <main>
@@ -19,5 +34,75 @@
   <footer>
     <p>&copy; <%= Time.now.strftime("%Y") %> <%= site.metadata.title %></p>
   </footer>
+
+  <script>
+    (function() {
+      var btn = document.getElementById('theme-toggle');
+      if (!btn) return;
+
+      function systemPrefersDark() {
+        return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      }
+
+      function getOverride() {
+        try { return localStorage.getItem('theme'); } catch(e) { return null; }
+      }
+
+      function setOverride(val) {
+        try {
+          if (val === 'light' || val === 'dark') {
+            localStorage.setItem('theme', val);
+            document.documentElement.setAttribute('data-theme', val);
+          } else {
+            localStorage.removeItem('theme');
+            document.documentElement.removeAttribute('data-theme');
+          }
+        } catch(e) { /* ignore */ }
+        updateButton();
+      }
+
+      function effectiveTheme() {
+        var override = getOverride();
+        if (override === 'light' || override === 'dark') return override;
+        return systemPrefersDark() ? 'dark' : 'light';
+      }
+
+      function updateButton() {
+        var eff = effectiveTheme();
+        if (eff === 'dark') {
+          btn.textContent = '☀️';
+          btn.setAttribute('aria-label', 'Switch to light theme');
+          btn.setAttribute('title', 'Switch to light theme (Shift-click for System)');
+        } else {
+          btn.textContent = '🌙';
+          btn.setAttribute('aria-label', 'Switch to dark theme');
+          btn.setAttribute('title', 'Switch to dark theme (Shift-click for System)');
+        }
+      }
+
+      btn.addEventListener('click', function(e) {
+        if (e && (e.shiftKey || e.ctrlKey || e.metaKey)) {
+          // Clear override, return to system default
+          try { localStorage.removeItem('theme'); } catch(_) {}
+          document.documentElement.removeAttribute('data-theme');
+          updateButton();
+          return;
+        }
+        var current = effectiveTheme();
+        var next = current === 'dark' ? 'light' : 'dark';
+        setOverride(next);
+      });
+
+      // Keep in sync if the OS theme changes and no override is set
+      if (window.matchMedia) {
+        var mq = window.matchMedia('(prefers-color-scheme: dark)');
+        mq.addEventListener && mq.addEventListener('change', function() {
+          if (!getOverride()) updateButton();
+        });
+      }
+
+      updateButton();
+    })();
+  </script>
 </body>
 </html>
