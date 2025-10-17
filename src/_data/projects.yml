@@ -152,6 +152,8 @@
   tags:
     - license
     - GHA
+    - cli
+    - shell
 - name: appraisal2
   description: Appraisal2 integrates with bundler and rake to test your library against
     different versions of dependencies in repeatable scenarios called "appraisals."
@@ -192,6 +194,7 @@
   - archival
   - shell
   - api
+  - cli
 - name: awesome_search
   description: Organize complicated search results
   language: Ruby
@@ -239,6 +242,7 @@
     owner: pboling
   tags:
   - shell
+  - cli
 - name: bsfl
   description: Bash Script Function Library
   language: Bash
@@ -253,6 +257,7 @@
     owner: pboling
   tags:
   - shell
+  - cli
 - name: cacheable_flash
   description: |-
     Allows caching of pages with flash messages by rendering flash
@@ -628,6 +633,12 @@
   - markdown
   - git
   - GHA
+  - license
+  - rake
+  - env
+  - debug
+  - shell
+  - cli
 - name: kettle-soup-cover
   description: |
     A Covered Kettle of Test Coverage SOUP (Software of Unknown Provenance)
@@ -652,6 +663,7 @@
   tags:
   - test
   - coverage
+  - env
 - name: kettle-test
   description: "\U0001F372 Kettle::Test is a meta tool from kettle-rb to streamline
     testing. Acts as a shim dependency, pulling in many other dependencies, to give
@@ -680,6 +692,8 @@
   - harness
   - test
   - rspec
+  - rake
+  - env
 - name: letter_group
   description: Organize data results from raw sql queries (as with PGresult, or Dossier)
     intelligently.
@@ -1294,6 +1308,7 @@
   - auth
   - security
   - test
+  - mock
 - name: rspec-block_is_expected
   description: subject { Integer(nil) }; it('raises') { block_is_expected.to raise_error(TypeError)
     }
@@ -1371,6 +1386,7 @@
   - rspec
   - test
   - env
+  - mock
 - name: rubocop-lts
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby code
   language: Ruby
@@ -1969,6 +1985,8 @@
   tags:
   - security
   - release
+  - cli
+  - shell
 - name: strict_states
   description: Safely access state machine states with guarantee that there are no
     typos.  Compatible with all Ruby state machine libraries.
@@ -2043,6 +2061,7 @@
   tags:
   - api
   - shell
+  - cli
 - name: version_gem
   description: "\U0001F516 Versions are good. Versions are cool. Versions will win."
   language: Ruby
@@ -2067,6 +2086,7 @@
   tags:
   - semver
   - release
+  - test
 - name: warden_oauth
   description: warden_oauth will help you create oauth authentication strategies using
     the oauth helper method on the Warden::Manager config setup
