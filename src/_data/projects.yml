@@ -976,6 +976,20 @@
   - auth
   - security
   - api
+- name: os
+  description: Easily determine which OS your Ruby code is running on.
+  language: Ruby
+  minimum_version: 1.8
+  role: maintainer
+  funding_sites:
+    - type: Liberapay
+      url: https://liberapay.com/pboling
+  forges:
+    - type: GitHub
+      url: https://github.com/rdp/os
+      owner: rdp
+  tags:
+    - test
 - name: pretty_feed
   description: |
     PrettyFeed provides a modulizer you can include in a job, worker, class, rake task, etc,

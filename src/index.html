@@ -259,7 +259,7 @@ body_class: projects
       <p><%== project["description"] %></p>
       <% if project["funding_sites"].any? %>
       <p>
-        Financially support <%= project["name"] %> via:
+        Financially support my work on <pre><%= project["name"] %></pre> via:
         <% last_comma_index = project["funding_sites"].size - 1 %>
         <% project["funding_sites"].each_with_index do |funding_site, i| %>
         <a href="<%= funding_site['url'] %>" class="text-link" target="_blank" rel="noopener">
