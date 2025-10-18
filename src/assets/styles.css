@@ -455,3 +455,10 @@ h1 .tag-list {
         z-index: 1;
     }
 }
+
+/* On wide viewports, nudge H1 pills up slightly to align with x-height */
+@media (min-width: 51rem) {
+  h1 .tag-list {
+    transform: translateY(-6px);
+  }
+}
