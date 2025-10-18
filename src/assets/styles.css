@@ -296,7 +296,7 @@ a {
     max-width: none;
 }
 
-/* Make the H1 layout robust: align title + pills via flex with natural wrap */
+/* Consolidated H1 layout: flex with wrap and gaps */
 h1 {
   display: flex;
   align-items: baseline;   /* keep pills aligned with the text baseline on wide screens */
@@ -305,12 +305,13 @@ h1 {
   flex-wrap: wrap;         /* allow pills to drop below the title when needed */
 }
 
-/* Remove the upward shift/margin hack now that H1 is flex */
+/* Ensure pills don’t use any upward shift by default (helps small viewports) */
 h1 .tag-list {
   transform: none;
   margin-left: 0;
 }
 
+/* Remove duplicate H1 + tag-list rules below (consolidated above) */
 /* Remove mobile-specific overrides no longer needed due to flex wrapping */
 /* (intentionally left blank to avoid conflicting rules) */
 
@@ -457,8 +458,8 @@ h1 .tag-list {
 }
 
 /* On wide viewports, nudge H1 pills up slightly to align with x-height */
-@media (min-width: 51rem) {
+@media (min-width: 48rem) {
   h1 .tag-list {
-    transform: translateY(-6px);
+    transform: translateY(-3px);
   }
 }
