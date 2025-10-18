@@ -129,6 +129,11 @@ header {
 h1 {
     border-bottom: 1px solid var(--border-color);
     padding-bottom: .25rem;
+    display: flex;
+    align-items: baseline;   /* keep pills aligned with the text baseline on wide screens */
+    column-gap: 1rem;        /* space between title text and first pill */
+    row-gap: 0.5rem;         /* vertical gap when pills wrap to the next line */
+    flex-wrap: wrap;         /* allow pills to drop below the title when needed */
 }
 
 h2 {
@@ -291,13 +296,23 @@ a {
     max-width: none;
 }
 
-/* Slightly raise only the role filter pills placed inside the H1 */
-h1 .tag-list {
-    /* lift ~8px for better vertical alignment with the heading text */
-    transform: translateY(-8px);
-    /* add some space between the heading text and the pills */
-    margin-left: 1rem;
+/* Make the H1 layout robust: align title + pills via flex with natural wrap */
+h1 {
+  display: flex;
+  align-items: baseline;   /* keep pills aligned with the text baseline on wide screens */
+  column-gap: 1rem;        /* space between title text and first pill */
+  row-gap: 0.5rem;         /* vertical gap when pills wrap to the next line */
+  flex-wrap: wrap;         /* allow pills to drop below the title when needed */
 }
+
+/* Remove the upward shift/margin hack now that H1 is flex */
+h1 .tag-list {
+  transform: none;
+  margin-left: 0;
+}
+
+/* Remove mobile-specific overrides no longer needed due to flex wrapping */
+/* (intentionally left blank to avoid conflicting rules) */
 
 .tag-list {
     display: inline-flex;
@@ -314,7 +329,7 @@ h1 .tag-list {
         display: inline-block;
         background-color: var(--background-light);
         border-radius: 9999px;
-        padding: 0.3rem 1rem 0.3rem 1rem;
+        padding: 0.3rem 1rem 0.3rem 1.75rem;
         font-size: 0.75rem;
         font-weight: 600;
         margin-left: 1.5rem;
