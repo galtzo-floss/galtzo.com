@@ -296,22 +296,12 @@ a {
     max-width: none;
 }
 
-/* Consolidated H1 layout: flex with wrap and gaps */
-h1 {
-  display: flex;
-  align-items: baseline;   /* keep pills aligned with the text baseline on wide screens */
-  column-gap: 1rem;        /* space between title text and first pill */
-  row-gap: 0.5rem;         /* vertical gap when pills wrap to the next line */
-  flex-wrap: wrap;         /* allow pills to drop below the title when needed */
-}
-
 /* Ensure pills don’t use any upward shift by default (helps small viewports) */
 h1 .tag-list {
   transform: none;
   margin-left: 0;
 }
 
-/* Remove duplicate H1 + tag-list rules below (consolidated above) */
 /* Remove mobile-specific overrides no longer needed due to flex wrapping */
 /* (intentionally left blank to avoid conflicting rules) */
 
@@ -458,8 +448,8 @@ h1 .tag-list {
 }
 
 /* On wide viewports, nudge H1 pills up slightly to align with x-height */
-@media (min-width: 48rem) {
+@media (min-width: 51rem) {
   h1 .tag-list {
-    transform: translateY(-3px);
+    transform: translateY(-6px);
   }
 }
