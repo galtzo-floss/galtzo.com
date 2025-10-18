@@ -1208,14 +1208,14 @@
   minimum_version: 1.8
   role: maintainer
   funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/resque
     - type: Liberapay
       url: https://liberapay.com/pboling
   forges:
-    - type: OpenCollective
-      url: https://opencollective.com/resque
     - type: GitHub
       url: https://github.com/resque/resque
-      owner: rdp
+      owner: resque
   tags:
     - resque
     - queue
