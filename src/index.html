@@ -257,6 +257,7 @@ body_class: projects
         <% end %>
       </p>
       <p><%== project["description"] %></p>
+      <% raise "#{project['name']}" if project["funding_sites"].nil? %>
       <% if project["funding_sites"].any? %>
       <p>
         Financially support my work on <pre><%= project["name"] %></pre> via:

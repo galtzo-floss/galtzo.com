@@ -4,6 +4,8 @@
   language: Ruby
   minimum_version: 2.7
   role: author
+  first_commit_on: 2024/05/30
+  first_commit: https://github.com/galtzo-floss/active_security/commit/9caac884909193326b3f3318ad3db00ca754fabd
   funding_sites:
     - type: OpenCollective
       url: https://opencollective.com/galtzo-floss
@@ -24,6 +26,8 @@
   language: Ruby
   minimum_version: 2.2
   role: author
+  first_commit_on: 2017/11/08
+  first_commit: https://github.com/galtzo-floss/activerecord-tablefree/commit/167367318b42c77c8f7732243afdf90ba82a0387
   funding_sites:
     - type: OpenCollective
       url: https://opencollective.com/galtzo-floss
@@ -42,6 +46,8 @@
   language: Ruby
   minimum_version: 2.5
   role: author
+  first_commit_on: 2016/03/26
+  first_commit: https://github.com/galtzo-floss/activerecord-transactionable/commit/c40965018cee7546e62249006e2f41784cde8142
   funding_sites:
     - type: OpenCollective
       url: https://opencollective.com/galtzo-floss
@@ -66,6 +72,8 @@
   language: Ruby
   minimum_version: 2.7
   role: author
+  first_commit_on: 2024/11/20
+  first_commit: https://github.com/galtzo-floss/activesupport-broadcast_logger/commit/124104a29ed3c6bc1aa0468adba3cbf9f6f46296
   funding_sites:
     - type: OpenCollective
       url: https://opencollective.com/galtzo-floss
@@ -84,6 +92,8 @@
   language: Ruby
   minimum_version: 2.7
   role: author
+  first_commit_on: 2024/10/10
+  first_commit: https://github.com/galtzo-floss/activesupport-logger/commit/b76fe570a037738ff907dccd8af135cb14e87fa7
   funding_sites:
     - type: OpenCollective
       url: https://opencollective.com/galtzo-floss
@@ -103,6 +113,8 @@
   language: Ruby
   minimum_version: 2.7
   role: author
+  first_commit_on: 2024/10/10
+  first_commit: https://github.com/galtzo-floss/activesupport-tagged_logging/commit/af83665a4f6d44c1fa926e2db6b7a2fd4c79cdd9
   funding_sites:
     - type: OpenCollective
       url: https://opencollective.com/galtzo-floss
@@ -121,6 +133,8 @@
   language: Ruby
   minimum_version: 2.4
   role: author
+  first_commit_on: 2018/01/03
+  first_commit: https://github.com/galtzo-floss/anonymous_active_record/commit/6d9e24334d8800910efc7a8325494cbd6c08ff87
   funding_sites:
     - type: OpenCollective
       url: https://opencollective.com/galtzo-floss
@@ -144,6 +158,8 @@
   language: Go
   minimum_version: 1.23
   role: contributor
+  first_commit_on: 2025/09/11
+  first_commit: https://github.com/apache/skywalking-eyes/commit/3655e78854be6a56ae72a0c9a847aedd133c3b74
   funding_sites: []
   forges:
     - type: GitHub
@@ -160,6 +176,8 @@
   language: Ruby
   minimum_version: 1.8
   role: author
+  first_commit_on: 2017/11/20
+  first_commit: https://github.com/appraisal-rb/appraisal2/commit/dcfac430d75a86a89497ec45af39edf798228f9c
   funding_sites:
     - type: OpenCollective
       url: https://opencollective.com/appraisal-rb
@@ -183,6 +201,8 @@
   language: Ruby
   minimum_version: 2.4
   role: maintainer
+  first_commit_on: 2013/12/16
+  first_commit: https://github.com/wordtreefoundation/archivist-client/commit/404f1976722fa7b4444d7b5d750f438bebae1102
   funding_sites:
     - type: Liberapay
       url: https://liberapay.com/pboling
@@ -199,6 +219,8 @@
   language: Ruby
   minimum_version: 1.8
   role: author
+  first_commit_on: 2010/03/01
+  first_commit: https://github.com/galtzo-floss/awesome_search/commit/cc63ada6740695dd42007d62ed76d3d5e12803ae
   funding_sites:
     - type: OpenCollective
       url: https://opencollective.com/galtzo-floss
@@ -215,6 +237,8 @@
   language: Ruby
   minimum_version: 3.4
   role: author
+  first_commit_on: 2025/05/24
+  first_commit: https://github.com/floss-funding/awesome-sponsorships/commit/0b9a6354b971586d968735b28afef318b6c6ae03
   funding_sites:
     - type: OpenCollective
       url: https://opencollective.com/floss_funding
@@ -232,6 +256,8 @@
   language: Bash
   minimum_version: 4.0
   role: author
+  first_commit_on: 2013/11/08
+  first_commit: https://github.com/pboling/bash_step/commit/13446f1a24bef1dafb66e916bf8bb321c8162851
   funding_sites:
     - type: Liberapay
       url: https://liberapay.com/pboling
@@ -247,6 +273,8 @@
   language: Bash
   minimum_version: 4.0
   role: maintainer
+  first_commit_on: 2013/11/08
+  first_commit: https://github.com/pboling/bsfl/commit/27444edd62fb4df3da662e8254a86c083e25d55b
   funding_sites:
     - type: Liberapay
       url: https://liberapay.com/pboling
@@ -257,7 +285,7 @@
   tags:
     - shell
     - cli
-- name: cacheable_flash
+- name: cacheable-flash
   description: |-
     Allows caching of pages with flash messages by rendering flash
     messages from a cookie using JavaScript, instead of statically in your Rails
@@ -266,15 +294,13 @@
   language: Ruby
   minimum_version: 1.8
   role: maintainer
-  funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/galtzo-floss
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  first_commit_on: 2010/02/05
+  first_commit: https://github.com/pboling/cacheable-flash/commit/cb952b3338df3610ab993c944ee5c0cd894d3185
+  funding_sites: []
   forges:
     - type: GitHub
-      url: https://github.com/galtzo-floss/cacheable_flash
-      owner: galtzo-floss
+      url: https://github.com/pboling/cacheable-flash
+      owner: pboling
   tags:
     - stale
     - toast
@@ -284,6 +310,8 @@
   language: Ruby
   minimum_version: 1.8
   role: author
+  first_commit_on: 2008/11/15
+  first_commit: https://github.com/galtzo-floss/capistrano_mailer/commit/1afa8e2e6f86b6aeba539b4c080ae58b51a274e6
   funding_sites:
     - type: OpenCollective
       url: https://opencollective.com/galtzo-floss
@@ -304,6 +332,8 @@
   language: Ruby
   minimum_version: 1.8
   role: author
+  first_commit_on: 2015/10/06
+  first_commit: https://github.com/galtzo-floss/celluloid-io-pg-listener/commit/cae27c9014189475f9cc8fbccaa93993edcbe9a1
   funding_sites:
     - type: OpenCollective
       url: https://opencollective.com/galtzo-floss
@@ -322,6 +352,8 @@
   language: Ruby
   minimum_version: 1.8
   role: author
+  first_commit_on: 2014/11/19
+  first_commit: https://github.com/galtzo-floss/controller_validator/commit/3de78b69ead17f91fe1b25ea4e4f32dce195191a
   funding_sites:
     - type: OpenCollective
       url: https://opencollective.com/galtzo-floss
@@ -341,6 +373,8 @@
   language: Ruby
   minimum_version: 1.8
   role: author
+  first_commit_on: 2009/03/03
+  first_commit: https://github.com/galtzo-floss/csv_pirate/commit/40a411e06d6dac36b1a22ea58144cbe552b9e465
   funding_sites:
     - type: OpenCollective
       url: https://opencollective.com/galtzo-floss
@@ -363,6 +397,8 @@
   language: Ruby
   minimum_version: 3.1
   role: author
+  first_commit_on: 2017/03/25
+  first_commit: https://github.com/galtzo-floss/debug_logging/commit/f648ea6832aa85232d320b4c4acc4a84e44a83d3
   funding_sites:
     - type: OpenCollective
       url: https://opencollective.com/galtzo-floss
@@ -387,6 +423,8 @@
   language: Ruby
   minimum_version: 1.8
   role: author
+  first_commit_on: 2015/04/08
+  first_commit: https://github.com/galtzo-floss/destination_errors/commit/7c25111f4c12cb5d4bdb9ac2471939bf251bd58e
   funding_sites:
     - type: OpenCollective
       url: https://opencollective.com/galtzo-floss
@@ -408,6 +446,8 @@
   language: Ruby
   minimum_version: 1.8
   role: author
+  first_commit_on: 2012/08/14
+  first_commit: https://github.com/galtzo-floss/dry_views/commit/a69cf5e2d01f9027898c6c1849fcd1c5844ca261
   funding_sites:
     - type: OpenCollective
       url: https://opencollective.com/galtzo-floss
@@ -429,6 +469,8 @@
   language: Ruby
   minimum_version: 2.3
   role: maintainer
+  first_commit_on: 2016/05/24
+  first_commit: https://github.com/Dynamoid/dynamoid/commit/8fc879f2a216c9311c38589107fc6868a6076a3c
   funding_sites:
     - type: OpenCollective
       url: https://opencollective.com/dynamoid
@@ -447,6 +489,8 @@
   language: Ruby
   minimum_version: 1.8
   role: author
+  first_commit_on: 2008/11/15
+  first_commit: https://github.com/galtzo-floss/each_in_batches/commit/921f0a7a9048d4f0c46cb65566646a6edc8f66c4
   funding_sites:
     - type: OpenCollective
       url: https://opencollective.com/galtzo-floss
@@ -467,6 +511,8 @@
   language: Ruby
   minimum_version: 1.9
   role: maintainer
+  first_commit_on: 2009/10/20
+  first_commit: https://github.com/galtzo-floss/flag_shih_tzu/commit/e69a3c7ba53426dc8edecbaa0fb4bf3e2e8a242c
   funding_sites:
     - type: OpenCollective
       url: https://opencollective.com/galtzo-floss
@@ -492,6 +538,8 @@
   language: Ruby
   minimum_version: 1.9
   role: author
+  first_commit_on: 2025/08/09
+  first_commit: https://github.com/floss-funding/floss_funding/commit/389ece6fb9bd04013d11edca6fb6830139a84f4c
   funding_sites:
     - type: OpenCollective
       url: https://opencollective.com/floss_funding
@@ -513,6 +561,8 @@
   language: Ruby
   minimum_version: 2.3
   role: author
+  first_commit_on: 2013/04/05
+  first_commit: https://github.com/galtzo-floss/gem_bench/commit/b553f295f03eef7749d1faa811b0f27cc88288b5
   funding_sites:
     - type: OpenCollective
       url: https://opencollective.com/galtzo-floss
@@ -537,6 +587,8 @@
   language: Ruby
   minimum_version: 2.4
   role: author
+  first_commit_on: 2022/03/28
+  first_commit: https://github.com/galtzo-floss/gitmoji-regex/commit/e71c6c3dad5bfd59ae2509531eaea3a16e21cb63
   funding_sites:
     - type: OpenCollective
       url: https://opencollective.com/galtzo-floss
@@ -556,6 +608,8 @@
   language: Ruby
   minimum_version: 1.8
   role: author
+  first_commit_on: 2014/10/16
+  first_commit: https://github.com/galtzo-floss/humorous_log_formatter/commit/76769c572221791d415c036f139dc41349d8cfa8
   funding_sites:
     - type: OpenCollective
       url: https://opencollective.com/galtzo-floss
@@ -573,6 +627,8 @@
   language: Ruby
   minimum_version: 1.8
   role: author
+  first_commit_on: 2019/12/18
+  first_commit: https://github.com/galtzo-floss/include_with_respect/commit/f2dbc76c7facabc351a17fddf60d7ba0a27a3554
   funding_sites:
     - type: OpenCollective
       url: https://opencollective.com/galtzo-floss
@@ -591,6 +647,8 @@
   language: Ruby
   minimum_version: 2.5
   role: author
+  first_commit_on: 2023/10/24
+  first_commit: https://github.com/galtzo-floss/json_schemer-fuzz/commit/b9dd5e6f76d1de4c7f8fef4425126f645ae087f9
   funding_sites:
     - type: OpenCollective
       url: https://opencollective.com/galtzo-floss
@@ -613,6 +671,8 @@
   language: Ruby
   minimum_version: 2.7
   role: author
+  first_commit_on: 2023/08/16
+  first_commit: https://github.com/kettle-rb/kettle-dev/commit/a427c302df09cfe4253a7c8d400333f9a4c1a208
   funding_sites:
     - type: OpenCollective
       url: https://opencollective.com/kettle-rb
@@ -646,6 +706,8 @@
   language: Ruby
   minimum_version: 2.7
   role: author
+  first_commit_on: 2023/10/16
+  first_commit: https://github.com/kettle-rb/kettle-soup-cover/commit/97ddbbca309b87c7f6eed0137b08cad74ec81235
   funding_sites:
     - type: OpenCollective
       url: https://opencollective.com/kettle-rb
@@ -674,6 +736,8 @@
   language: Ruby
   minimum_version: 2.7
   role: author
+  first_commit_on: 2023/08/16
+  first_commit: https://github.com/kettle-rb/kettle-test/commit/baed02cf1ca1e0e8c75c11fd188edaf1a4f5f08b
   funding_sites:
     - type: OpenCollective
       url: https://opencollective.com/kettle-rb
@@ -699,6 +763,8 @@
   language: Ruby
   minimum_version: 1.8
   role: author
+  first_commit_on: 2015/04/15
+  first_commit: https://github.com/galtzo-floss/letter_group/commit/b18f959558011a49bf56d5e414ecb9b631097da0
   funding_sites:
     - type: OpenCollective
       url: https://opencollective.com/galtzo-floss
@@ -716,6 +782,8 @@
   language: Ruby
   minimum_version: 1.9
   role: author
+  first_commit_on: 2025/08/11
+  first_commit: https://github.com/galtzo-floss/library_tree/commit/e07550dfecf0719a91a03b9fbd29b97c3471b1d8
   funding_sites:
     - type: OpenCollective
       url: https://opencollective.com/galtzo-floss
@@ -734,6 +802,8 @@
   language: Ruby
   minimum_version: 2.7
   role: maintainer
+  first_commit_on: 2025/01/14
+  first_commit: https://github.com/ruby-openid/masq/commit/356d38447249cd9116e5a13ade4e34597a39a350
   funding_sites:
     - type: OpenCollective
       url: https://opencollective.com/ruby-openid
@@ -757,6 +827,8 @@
   language: Ruby
   minimum_version: 2.7
   role: maintainer
+  first_commit_on: 2025/01/14
+  first_commit: https://github.com/ruby-openid/masq/commit/356d38447249cd9116e5a13ade4e34597a39a350
   funding_sites:
     - type: OpenCollective
       url: https://opencollective.com/ruby-openid
@@ -780,6 +852,8 @@
   language: Ruby
   minimum_version: 1.9
   role: author
+  first_commit_on: 2018/10/16
+  first_commit: https://github.com/galtzo-floss/month-serializer/commit/b695d99e3ec49fedb1f3a50b3863956b58e7827b
   funding_sites:
     - type: OpenCollective
       url: https://opencollective.com/galtzo-floss
@@ -800,6 +874,8 @@
   language: Ruby
   minimum_version: 2.3
   role: maintainer
+  first_commit_on: 2018/03/01
+  first_commit: https://github.com/ruby-oauth/oauth/commit/cb9b9db64f520dc0ee87fe6e4fe82a7601cffb14
   funding_sites:
     - type: OpenCollective
       url: https://opencollective.com/ruby-oauth
@@ -823,6 +899,8 @@
   language: Ruby
   minimum_version: 2.3
   role: author
+  first_commit_on: 2022/08/23
+  first_commit: https://github.com/ruby-oauth/oauth-tty/commit/0580f942bf91e5ac54bf1662bea231e0a7a251cf
   funding_sites:
     - type: OpenCollective
       url: https://opencollective.com/ruby-oauth
@@ -847,6 +925,8 @@
   language: Ruby
   minimum_version: 2.2
   role: maintainer
+  first_commit_on: 2017/12/14
+  first_commit: https://github.com/ruby-oauth/oauth2/commit/dd43f5d1802ab80ac9355ca3d57fefda13cf2fc9
   funding_sites:
     - type: OpenCollective
       url: https://opencollective.com/ruby-oauth
@@ -870,6 +950,8 @@
   language: Ruby
   minimum_version: 2.4
   role: maintainer
+  first_commit_on: 2020/04/30
+  first_commit: https://github.com/omniauth/omniauth-identity/commit/79e402e17654955659078fea590b92e5f70ab3a6
   funding_sites:
     - type: Liberapay
       url: https://liberapay.com/pboling
@@ -886,6 +968,8 @@
   language: Ruby
   minimum_version: 2.2
   role: maintainer
+  first_commit_on: 2023/11/30
+  first_commit: https://github.com/omniauth/omniauth-jwt/commit/f960595dbb1464e7d0ac5df48ae708424ba95e5d
   funding_sites:
     - type: Liberapay
       url: https://liberapay.com/pboling
@@ -902,6 +986,8 @@
   language: Ruby
   minimum_version: 2.2
   role: author
+  first_commit_on: 2023/11/30
+  first_commit: https://github.com/omniauth/omniauth-jwt/commit/f960595dbb1464e7d0ac5df48ae708424ba95e5d
   funding_sites:
     - type: Liberapay
       url: https://liberapay.com/pboling
@@ -918,6 +1004,8 @@
   language: Ruby
   minimum_version: 1.8
   role: maintainer
+  first_commit_on: 2025/10/18
+  first_commit: https://github.com/omniauth/omniauth-ldap/commit/5ea8e97a1e729a21d4cb7f022af350c322d1406e
   funding_sites:
     - type: Liberapay
       url: https://liberapay.com/pboling
@@ -934,6 +1022,8 @@
   language: Ruby
   minimum_version: 2.4
   role: maintainer
+  first_commit_on: 2025/04/30
+  first_commit: https://github.com/ruby-openid/omniauth-openid/commit/d32dfab23fdca6089e649ee2efb7cc6ae4e8a334
   funding_sites:
     - type: OpenCollective
       url: https://opencollective.com/ruby-openid
@@ -957,6 +1047,8 @@
   language: Ruby
   minimum_version: 2.7
   role: maintainer
+  first_commit_on: 2024/09/04
+  first_commit: https://github.com/ruby-openid/open_id_authentication/commit/0ea7fa4517c2c4bf02ad44667f1a0b61dfeaad00
   funding_sites:
     - type: OpenCollective
       url: https://opencollective.com/ruby-openid
@@ -980,6 +1072,8 @@
   language: Ruby
   minimum_version: 1.8
   role: maintainer
+  first_commit_on: 2022/12/11
+  first_commit: https://github.com/rdp/os/commit/66bc609b4e53a9b822904b43ed08a8206364e7eb
   funding_sites:
     - type: Liberapay
       url: https://liberapay.com/pboling
@@ -997,6 +1091,8 @@
   language: Ruby
   minimum_version: 2.6
   role: author
+  first_commit_on: 2022/03/21
+  first_commit: https://github.com/galtzo-floss/pretty_feed/commit/cd45565324085939b680c8597599828b4c41511f
   funding_sites:
     - type: OpenCollective
       url: https://opencollective.com/galtzo-floss
@@ -1016,6 +1112,8 @@
   language: Ruby
   minimum_version: 1.8
   role: author
+  first_commit_on: 2013/02/28
+  first_commit: https://github.com/galtzo-floss/qfill/commit/e47fb5a5626f955ca791a12fd866c559bb72bdc3
   funding_sites:
     - type: OpenCollective
       url: https://opencollective.com/galtzo-floss
@@ -1037,6 +1135,8 @@
   language: Ruby
   minimum_version: 1.8
   role: author
+  first_commit_on: 2012/08/30
+  first_commit: https://github.com/pboling/rack-insight/commit/9238d48f12a4452dcb36bacac356097710fa2322
   funding_sites:
     - type: OpenCollective
       url: https://opencollective.com/galtzo-floss
@@ -1044,8 +1144,8 @@
       url: https://liberapay.com/pboling
   forges:
     - type: GitHub
-      url: https://github.com/galtzo-floss/rack-insight
-      owner: galtzo-floss
+      url: https://github.com/pboling/rack-insight
+      owner: pboling
   tags:
     - rack
     - view
@@ -1055,6 +1155,8 @@
   language: Ruby
   minimum_version: 2.7
   role: maintainer
+  first_commit_on: 2024/09/04
+  first_commit: https://github.com/ruby-openid/rack-openid/commit/c1b85ce8d3aef9bd0fcc70d5f1c13744fcc78b08
   funding_sites:
     - type: OpenCollective
       url: https://opencollective.com/ruby-openid
@@ -1078,6 +1180,8 @@
   language: Ruby
   minimum_version: 2.7
   role: author
+  first_commit_on: 2024/09/04
+  first_commit: https://github.com/ruby-openid/rack-openid2/commit/c1b85ce8d3aef9bd0fcc70d5f1c13744fcc78b08
   funding_sites:
     - type: OpenCollective
       url: https://opencollective.com/ruby-openid
@@ -1102,6 +1206,8 @@
   language: Ruby
   minimum_version: 1.8
   role: author
+  first_commit_on: 2015/04/12
+  first_commit: https://github.com/galtzo-floss/rack-toolbar/commit/a98bfb30ce9bc94822e43fce4889dbadce0daa6b
   funding_sites:
     - type: OpenCollective
       url: https://opencollective.com/galtzo-floss
@@ -1117,12 +1223,17 @@
     - stale
 - name: rails_env_local
   description: |2
-      "development" is not always the best name for the local environment.
-      An alternate environment name, like "localdev", will prevent confusion,
-      when "dev", or "develop", is used as a deployed environment.
+      If existing infrastructure for deployed environments
+      has names that conflict with Rails' default non-deployed environments,
+      e.g., "development" and "test", this gem allows renaming them locally.
+      You can rename "development" to "localdev", for example, to prevent confusion.
+      But before using this gem, consider whether renaming your existing environments
+      to remove the conflict might be a better long-term solution.
   language: Ruby
   minimum_version: 1.8
   role: author
+  first_commit_on: 2016/03/08
+  first_commit: https://github.com/pboling/rails_env_local/commit/beea3462666af45bf8df7b05d41cd843cacb9525
   funding_sites:
     - type: OpenCollective
       url: https://opencollective.com/galtzo-floss
@@ -1130,8 +1241,8 @@
       url: https://liberapay.com/pboling
   forges:
     - type: GitHub
-      url: https://github.com/galtzo-floss/rails_env_local
-      owner: galtzo-floss
+      url: https://github.com/pboling/rails_env_local
+      owner: pboling
   tags:
     - rails
     - env
@@ -1142,6 +1253,8 @@
   language: Ruby
   minimum_version: 1.8
   role: author
+  first_commit_on: 2015/06/21
+  first_commit: https://github.com/galtzo-floss/react-rails-benchmark_renderer/commit/8abb9c2faa925990527493cac93536c9928a2edf
   funding_sites:
     - type: OpenCollective
       url: https://opencollective.com/galtzo-floss
@@ -1161,6 +1274,8 @@
   language: Ruby
   minimum_version: 1.8
   role: maintainer
+  first_commit_on: 2010/11/01
+  first_commit: https://github.com/tylerhunt/remit/commit/aaec89c754b1d4c68dd6901ae5edf5887ae05cc7
   funding_sites:
     - type: OpenCollective
       url: https://opencollective.com/galtzo-floss
@@ -1168,8 +1283,8 @@
       url: https://liberapay.com/pboling
   forges:
     - type: GitHub
-      url: https://github.com/galtzo-floss/remit
-      owner: galtzo-floss
+      url: https://github.com/tylerhunt/remit
+      owner: tylerhunt
   tags:
     - stale
     - payment
@@ -1181,6 +1296,8 @@
   language: Ruby
   minimum_version: 2.2
   role: author
+  first_commit_on: 2018/09/21
+  first_commit: https://github.com/galtzo-floss/require_bench/commit/67e03119ddb8be7b04ae7fd12da62d0ea5b6fb74
   funding_sites:
     - type: OpenCollective
       url: https://opencollective.com/galtzo-floss
@@ -1188,7 +1305,7 @@
       url: https://liberapay.com/pboling
   forges:
     - type: GitHub
-      url: https://github.com/galtzo-floss/remit
+      url: https://github.com/galtzo-floss/require_bench
       owner: galtzo-floss
     - type: GitLab
       url: https://gitlab.com/galtzo-floss/require_bench
@@ -1207,6 +1324,8 @@
   language: Ruby
   minimum_version: 1.8
   role: maintainer
+  first_commit_on: 2024/05/16
+  first_commit: https://github.com/resque/resque/commit/fa72b7b30adbbe9cf15d48784df78367b0294e82
   funding_sites:
     - type: OpenCollective
       url: https://opencollective.com/resque
@@ -1237,6 +1356,8 @@
   language: Ruby
   minimum_version: 1.8
   role: maintainer
+  first_commit_on: 2025/10/18
+  first_commit: https://github.com/resque/resque-lonely_job/commit/b6b24441a1bbcab2724f9a805d3a85fc332ba65a
   funding_sites:
     - type: OpenCollective
       url: https://opencollective.com/resque
@@ -1267,6 +1388,8 @@
   language: Ruby
   minimum_version: 2.3
   role: author
+  first_commit_on: 2017/04/10
+  first_commit: https://github.com/resque/resque-unique_at_runtime/commit/78286c3de2116ddbc68b5fe0ace47f3c2dfa0a45
   funding_sites:
     - type: OpenCollective
       url: https://opencollective.com/resque
@@ -1286,6 +1409,8 @@
   language: Ruby
   minimum_version: 2.3
   role: author
+  first_commit_on: 2017/04/28
+  first_commit: https://github.com/resque/resque-unique_by_arity/commit/1765bbc873d8830ce982598bb129cd81208acd22
   funding_sites:
     - type: OpenCollective
       url: https://opencollective.com/resque
@@ -1306,6 +1431,8 @@
   language: Ruby
   minimum_version: 2.3
   role: author
+  first_commit_on: 2017/04/30
+  first_commit: https://github.com/resque/resque-unique_in_queue/commit/5bd03cba29b2261a5e8adb52a8281c0bf8455400
   funding_sites:
     - type: OpenCollective
       url: https://opencollective.com/resque
@@ -1327,6 +1454,8 @@
   language: Ruby
   minimum_version: 2.7
   role: maintainer
+  first_commit_on: 2024/09/18
+  first_commit: https://github.com/ruby-openid/rots/commit/98b35d352a938412f2e5d36e6e31320068f94c57
   funding_sites:
     - type: OpenCollective
       url: https://opencollective.com/ruby-openid
@@ -1352,6 +1481,8 @@
   language: Ruby
   minimum_version: 1.8
   role: author
+  first_commit_on: 2018/10/01
+  first_commit: https://github.com/galtzo-floss/rspec-block_is_expected/commit/90fc840a7f0f85c0b9701c7def57653287c923ee
   funding_sites:
     - type: OpenCollective
       url: https://opencollective.com/galtzo-floss
@@ -1378,6 +1509,8 @@
   language: Ruby
   minimum_version: 1.8
   role: author
+  first_commit_on: 2015/10/21
+  first_commit: https://github.com/galtzo-floss/rspec-pending_for/commit/3073eb933b48d3d11d07e2cf1e27040621010f78
   funding_sites:
     - type: OpenCollective
       url: https://opencollective.com/galtzo-floss
@@ -1404,6 +1537,8 @@
   language: Ruby
   minimum_version: 1.8
   role: author
+  first_commit_on: 2018/10/06
+  first_commit: https://github.com/galtzo-floss/rspec-stubbed_env/commit/c37abbc7d2a0cee5d99a6676588ea8b06fcdf966
   funding_sites:
     - type: OpenCollective
       url: https://opencollective.com/galtzo-floss
@@ -1429,6 +1564,8 @@
   language: Ruby
   minimum_version: 3.2
   role: author
+  first_commit_on: 2022/05/06
+  first_commit: https://github.com/rubocop-lts/rubocop-lts/commit/f0fcf8e7dbb4d884a01c7191e7f26ef8bf3b22af
   funding_sites:
     - type: OpenCollective
       url: https://opencollective.com/rubocop-lts
@@ -1448,6 +1585,8 @@
   language: Ruby
   minimum_version: 3.2
   role: author
+  first_commit_on: 2023/05/14
+  first_commit: https://github.com/rubocop-lts/rubocop-ruby1_8/commit/b1df7fff27e040c8dc7a7e63bf8eddbe456c7d18
   funding_sites:
     - type: OpenCollective
       url: https://opencollective.com/rubocop-lts
@@ -1466,6 +1605,8 @@
   language: Ruby
   minimum_version: 3.2
   role: author
+  first_commit_on: 2022/05/01
+  first_commit: https://github.com/rubocop-lts/rubocop-ruby1_9/commit/1668e34e9dbdb6e8b2062c05bfce35f0ac071a44
   funding_sites:
     - type: OpenCollective
       url: https://opencollective.com/rubocop-lts
@@ -1484,6 +1625,8 @@
   language: Ruby
   minimum_version: 3.2
   role: author
+  first_commit_on: 2022/05/01
+  first_commit: https://github.com/rubocop-lts/rubocop-ruby2_0/commit/8fb0f104adf43c5a0e3487b390f91881f79e4d89
   funding_sites:
     - type: OpenCollective
       url: https://opencollective.com/rubocop-lts
@@ -1502,6 +1645,8 @@
   language: Ruby
   minimum_version: 3.2
   role: author
+  first_commit_on: 2022/05/01
+  first_commit: https://github.com/rubocop-lts/rubocop-ruby2_1/commit/e23c1cb798e1198c7b2dcca40a586b5ad6294348
   funding_sites:
     - type: OpenCollective
       url: https://opencollective.com/rubocop-lts
@@ -1520,6 +1665,8 @@
   language: Ruby
   minimum_version: 3.2
   role: author
+  first_commit_on: 2022/04/30
+  first_commit: https://github.com/rubocop-lts/rubocop-ruby2_2/commit/b86f10e2f7a0ad4081b07782b3b924ef67acdeab
   funding_sites:
     - type: OpenCollective
       url: https://opencollective.com/rubocop-lts
@@ -1538,6 +1685,8 @@
   language: Ruby
   minimum_version: 3.2
   role: author
+  first_commit_on: 2022/04/30
+  first_commit: https://github.com/rubocop-lts/rubocop-ruby2_3/commit/496ae0431f229da4ce2ca472954773af32f27078
   funding_sites:
     - type: OpenCollective
       url: https://opencollective.com/rubocop-lts
@@ -1556,6 +1705,8 @@
   language: Ruby
   minimum_version: 3.2
   role: author
+  first_commit_on: 2022/04/30
+  first_commit: https://github.com/rubocop-lts/rubocop-ruby2_4/commit/69576e0c1884ab3c773394b5f30a9ebafe11a2a7
   funding_sites:
     - type: OpenCollective
       url: https://opencollective.com/rubocop-lts
@@ -1574,6 +1725,8 @@
   language: Ruby
   minimum_version: 3.2
   role: author
+  first_commit_on: 2022/04/30
+  first_commit: https://github.com/rubocop-lts/rubocop-ruby2_5/commit/78b4f8131d931354f76d4025ab0517fc9792fed2
   funding_sites:
     - type: OpenCollective
       url: https://opencollective.com/rubocop-lts
@@ -1592,6 +1745,8 @@
   language: Ruby
   minimum_version: 3.2
   role: author
+  first_commit_on: 2022/04/30
+  first_commit: https://github.com/rubocop-lts/rubocop-ruby2_6/commit/d21b64e4f7ab2d581ed6882c430dd042fe73769b
   funding_sites:
     - type: OpenCollective
       url: https://opencollective.com/rubocop-lts
@@ -1610,6 +1765,8 @@
   language: Ruby
   minimum_version: 3.2
   role: author
+  first_commit_on: 2022/04/30
+  first_commit: https://github.com/rubocop-lts/rubocop-ruby2_7/commit/70d9ab2660620916ed08d1f6057d10fc4f9aa731
   funding_sites:
     - type: OpenCollective
       url: https://opencollective.com/rubocop-lts
@@ -1628,6 +1785,8 @@
   language: Ruby
   minimum_version: 3.2
   role: author
+  first_commit_on: 2022/04/30
+  first_commit: https://github.com/rubocop-lts/rubocop-ruby3_0/commit/251b24f1147b3a42a16465663be1f08c93e8affc
   funding_sites:
     - type: OpenCollective
       url: https://opencollective.com/rubocop-lts
@@ -1648,6 +1807,8 @@
   language: Ruby
   minimum_version: 3.2
   role: author
+  first_commit_on: 2022/04/10
+  first_commit: https://github.com/rubocop-lts/rubocop-ruby3_1/commit/c4cc8fb6374d338e2c328812b4f74c78dfe5cfbd
   funding_sites:
     - type: OpenCollective
       url: https://opencollective.com/rubocop-lts
@@ -1666,6 +1827,8 @@
   language: Ruby
   minimum_version: 3.2
   role: author
+  first_commit_on: 2023/05/09
+  first_commit: https://github.com/rubocop-lts/rubocop-ruby3_2/commit/91d4f2ff323ce25ebe8476244d50bb786fbb78f9
   funding_sites:
     - type: OpenCollective
       url: https://opencollective.com/rubocop-lts
@@ -1682,6 +1845,8 @@
   language: Ruby
   minimum_version: 2.7
   role: maintainer
+  first_commit_on: 2024/08/30
+  first_commit: https://github.com/ruby-openid/ruby-openid/commit/273234be43a8ae407159db7d4f363e4abc6a713d
   funding_sites:
     - type: OpenCollective
       url: https://opencollective.com/ruby-openid
@@ -1705,6 +1870,8 @@
   language: Ruby
   minimum_version: 2.7
   role: author
+  first_commit_on: 2024/08/30
+  first_commit: https://github.com/ruby-openid/ruby-openid/commit/273234be43a8ae407159db7d4f363e4abc6a713d
   funding_sites:
     - type: OpenCollective
       url: https://opencollective.com/ruby-openid
@@ -1730,6 +1897,8 @@
   language: Ruby
   minimum_version: 2.3
   role: author
+  first_commit_on: 2008/11/15
+  first_commit: https://github.com/galtzo-floss/sanitize_email/commit/12110b5dc475166a5c90c4de11458b6bb8b299f7
   funding_sites:
     - type: OpenCollective
       url: https://opencollective.com/galtzo-floss
@@ -1755,6 +1924,8 @@
   language: Ruby
   minimum_version: 1.8
   role: maintainer
+  first_commit_on: 2023/02/21
+  first_commit: https://github.com/galtzo-floss/seed_migration/commit/c0669cf2066f504de055a7856f3d59e3cb02f06c
   funding_sites:
     - type: OpenCollective
       url: https://opencollective.com/galtzo-floss
@@ -1774,6 +1945,8 @@
   language: Ruby
   minimum_version: 1.8
   role: author
+  first_commit_on: 2014/02/25
+  first_commit: https://github.com/galtzo-floss/sequential_file/commit/61e1d80f2f9f5b7a23eaa3f5e3c49e3a0433bcc8
   funding_sites:
     - type: OpenCollective
       url: https://opencollective.com/galtzo-floss
@@ -1793,6 +1966,8 @@
   language: Ruby
   minimum_version: 2.6
   role: author
+  first_commit_on: 2022/06/09
+  first_commit: https://github.com/galtzo-floss/service_actor-promptable/commit/3079772bb43c02ebfca364d27d062e573acdb091
   funding_sites:
     - type: OpenCollective
       url: https://opencollective.com/galtzo-floss
@@ -1814,6 +1989,8 @@
   language: Ruby
   minimum_version: 3.1
   role: author
+  first_commit_on: 2025/05/29
+  first_commit: https://github.com/galtzo-floss/shields-badge/commit/316b6f3a310c8e1b2288ccd8e79a0a16242fb4c7
   funding_sites:
     - type: OpenCollective
       url: https://opencollective.com/galtzo-floss
@@ -1835,6 +2012,8 @@
   language: Ruby
   minimum_version: 2.5
   role: author
+  first_commit_on: 2021/10/22
+  first_commit: https://github.com/galtzo-floss/shiftable/commit/5b4f78de1f4f3a609096aed96b09017c6e94b490
   funding_sites:
     - type: OpenCollective
       url: https://opencollective.com/galtzo-floss
@@ -1856,6 +2035,8 @@
   language: Ruby
   minimum_version: 2.3
   role: author
+  first_commit_on: 2018/09/23
+  first_commit: https://github.com/galtzo-floss/silent_stream/commit/af1bf5c567872cf5abaed159e2ac48229ff7ce07
   funding_sites:
     - type: OpenCollective
       url: https://opencollective.com/galtzo-floss
@@ -1881,6 +2062,8 @@
   language: Ruby
   minimum_version: 2.3
   role: author
+  first_commit_on: 2017/06/12
+  first_commit: https://github.com/galtzo-floss/simple_column-scopes/commit/f2bce9c56122527d5d035d9f4bc7f7d13a2f8b57
   funding_sites:
     - type: OpenCollective
       url: https://opencollective.com/galtzo-floss
@@ -1898,6 +2081,8 @@
   language: Ruby
   minimum_version: 2.2
   role: author
+  first_commit_on: 2022/08/26
+  first_commit: https://github.com/ruby-oauth/snaky_hash/commit/0cd8e559cbd607272bac2d28c6f3aaf54c569e5a
   funding_sites:
     - type: OpenCollective
       url: https://opencollective.com/ruby-oauth
@@ -1918,6 +2103,8 @@
   language: Ruby
   minimum_version: 2.3
   role: author
+  first_commit_on: 2024/03/23
+  first_commit: https://github.com/galtzo-floss/spyke-connection_lambda/commit/53dee360b49a8d8cf70535220c1793b312fa538d
   funding_sites:
     - type: OpenCollective
       url: https://opencollective.com/galtzo-floss
@@ -1937,6 +2124,8 @@
   language: Ruby
   minimum_version: 1.8
   role: author
+  first_commit_on: 2012/08/16
+  first_commit: https://github.com/pboling/stackable_flash/commit/fb35ef55a590c1c9669ff9bfc32da2940764f6a5
   funding_sites:
     - type: OpenCollective
       url: https://opencollective.com/galtzo-floss
@@ -1944,8 +2133,8 @@
       url: https://liberapay.com/pboling
   forges:
     - type: GitHub
-      url: https://github.com/galtzo-floss/stackable_flash
-      owner: galtzo-floss
+      url: https://github.com/pboling/stackable_flash
+      owner: pboling
   tags:
     - stale
     - toast
@@ -1956,6 +2145,8 @@
   language: Ruby
   minimum_version: 3.2
   role: author
+  first_commit_on: 2023/05/15
+  first_commit: https://github.com/rubocop-lts/standard-rubocop-lts/commit/6dee58e53e54f60054da55d0802cbeea35b7e36c
   funding_sites:
     - type: OpenCollective
       url: https://opencollective.com/galtzo-floss
@@ -1978,6 +2169,8 @@
   language: Ruby
   minimum_version: 1.8
   role: author
+  first_commit_on: 2015/08/23
+  first_commit: https://github.com/galtzo-floss/status_tag/commit/5103f25a9b725bbeb9d55e5b11f8d90af5e086cd
   funding_sites:
     - type: OpenCollective
       url: https://opencollective.com/galtzo-floss
@@ -2006,6 +2199,8 @@
   language: Ruby
   minimum_version: 2.2
   role: author
+  first_commit_on: 2025/06/23
+  first_commit: https://github.com/galtzo-floss/stone_checksums/commit/1fd75630d9d3c4a1ef8fed384fda98755ae01d5e
   funding_sites:
     - type: OpenCollective
       url: https://opencollective.com/galtzo-floss
@@ -2030,6 +2225,8 @@
   language: Ruby
   minimum_version: 1.8
   role: author
+  first_commit_on: 2015/11/08
+  first_commit: https://github.com/galtzo-floss/strict_states/commit/8ae3b6c5d742f454790221dff021d869a2e3bfc2
   funding_sites:
     - type: OpenCollective
       url: https://opencollective.com/galtzo-floss
@@ -2050,6 +2247,8 @@
   language: Ruby
   minimum_version: 1.8
   role: author
+  first_commit_on: 2008/11/15
+  first_commit: https://github.com/pboling/super_exception_notifier/commit/f8dbf8ab4ab7a46129998cbb7bedf712369d5f03
   funding_sites:
     - type: OpenCollective
       url: https://opencollective.com/galtzo-floss
@@ -2057,7 +2256,7 @@
       url: https://liberapay.com/pboling
   forges:
     - type: GitHub
-      url: https://github.com/pboling/exception_notification
+      url: https://github.com/pboling/super_exception_notifier
       owner: pboling
   tags:
     - stale
@@ -2071,6 +2270,8 @@
   language: Ruby
   minimum_version: 1.9
   role: author
+  first_commit_on: 2025/08/16
+  first_commit: https://github.com/galtzo-floss/timecop-rspec/commit/78587509672afeb844bca46f967c24547e0a5d35
   funding_sites:
     - type: OpenCollective
       url: https://opencollective.com/galtzo-floss
@@ -2090,9 +2291,20 @@
   funding_sites:
     - type: OpenCollective
       url: https://opencollective.com/galtzo-floss
-  minimum_version: 1.9
+    - type: Liberapay
+      url: https://liberapay.com/pboling
+  minimum_version: 3.1
   role: author
+  first_commit_on: 2022/10/22
+  first_commit: https://github.com/galtzo-floss/undrive_google/commit/a4217d575b7094530339d627c00c8e6ce70144a8
   forges:
+    - type: GitHub
+      url: https://github.com/galtzo-floss/undrive_google
+      owner: galtzo-floss
+    - type: GitLab
+      url: https://gitlab.com/galtzo-floss/undrive_google
+    - type: Codeberg
+      url: https://codeberg.org/galtzo-floss/undrive_google
     - type: SourceHut
       url: https://git.sr.ht/~galtzo/undrive_google
   tags:
@@ -2104,6 +2316,8 @@
   language: Ruby
   minimum_version: 2.2
   role: author
+  first_commit_on: 2022/06/20
+  first_commit: https://github.com/ruby-oauth/version_gem/commit/a3055964517c159bf214712940982034b75264be
   funding_sites:
     - type: OpenCollective
       url: https://opencollective.com/ruby-oauth
@@ -2130,6 +2344,8 @@
   language: Ruby
   minimum_version: 1.8
   role: maintainer
+  first_commit_on: 2025/10/19
+  first_commit: https://github.com/ruby-oauth/warden_oauth/commit/5d81e50734b2ba5a2f650705bb72a8139049c131
   funding_sites:
     - type: OpenCollective
       url: https://opencollective.com/ruby-oauth
@@ -2145,10 +2361,12 @@
     - security
     - api
 - name: yacs
-  description: Yet Another Crypto Scanner, Alternative Front End Demo for DEX
+  description: Yet Another Crypto Scanner; Alternative Front End Demo for DEX
   language: TypeScript
   minimum_version: 5.8
   role: author
+  first_commit_on: 2025/09/23
+  first_commit: https://github.com/pboling/yacs/commit/1a1182a2d0949ea0a2170b9374983687d43539cf
   funding_sites:
     - type: Liberapay
       url: https://liberapay.com/pboling
