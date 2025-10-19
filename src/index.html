@@ -179,18 +179,29 @@ body_class: projects
         </div>
       </div>
       <h2>
-        <a href="https://bestgems.org/gems/<%= project['name'] %>" class="gem-link" target="_blank" rel="noopener">
-          <%= project["name"] %>
-        </a>
-      </h2>
-      <p>
+        <% if project["ecosystem"] %>
         <a href="https://bestgems.org/gems/<%= project['name'] %>" class="gem-link" target="_blank" rel="noopener">
           <img
                   src="/assets/images/<%= project['language'] %>.svg"
-                  alt="language: <%= project['language'] %>"
-                  class="link-icon language"
+                  alt="<%= project['language'] %>"
+                  class="language"
+                  height="24px"
           >
+          <%= project["name"] %>
         </a>
+        <% else %>
+        <span>
+          <img
+                  src="/assets/images/<%= project['language'] %>.svg"
+                  alt="<%= project['language'] %>"
+                  class="language"
+                  height="24px"
+          >
+          <%= project["name"] %>
+        </span>
+        <% end %>
+      </h2>
+      <p>
         <% if !project["funding_sites"].nil? %>
         <% project["funding_sites"].each do |funding_site| %>
         <a href="<%= funding_site['url'] %>" class="funding-link" target="_blank" rel="noopener">
