@@ -227,7 +227,7 @@ body_class: projects
           >
         </a>
         <% end %>
-        <% if !project["doc_site"].nil? %>
+        <% if !project["docs_site"].nil? %>
         <a href="<%= project['doc_site'] %>" class="doc-link" target="_blank" rel="noopener">
           <img
                   src="/assets/images/Read-the-Docs.svg"
@@ -300,5 +300,3 @@ body_class: projects
     </li>
   <% end %>
 </ul>
-
-<!-- Filter behavior moved to /assets/filter.js and included globally in the layout -->

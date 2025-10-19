@@ -19,6 +19,7 @@
   tags:
     - rails
     - activerecord
+  docs_site:
 - name: activerecord-tablefree
   description: ActiveRecord Tablefree Models provides a simple mixin for creating
     models that are not bound to the database. This approach is useful for taking
@@ -43,6 +44,7 @@
     - rails
     - activerecord
     - validate
+  docs_site:
 - name: activerecord-transactionable
   description: Getting transactions right is hard, and this gem makes it easier.
   language: Ruby
@@ -69,6 +71,7 @@
   tags:
     - rails
     - activerecord
+  docs_site:
 - name: activesupport-broadcast_logger
   description: Rails v8 ActiveSupport::BroadcastLogger, fixed & backported to Rails
     v5.2+ & Ruby 2.7+
@@ -91,6 +94,7 @@
     - rails
     - activesupport
     - log
+  docs_site:
 - name: activesupport-logger
   description: Rails v8 ActiveSupport::Logger backported to Rails v5.2+ & Ruby 2.7+
   language: Ruby
@@ -112,6 +116,7 @@
     - rails
     - activesupport
     - log
+  docs_site:
 - name: activesupport-tagged_logging
   description: Rails v8 ActiveSupport::TaggedLogging, fixed & backported to Rails
     v5.2+ & Ruby 2.7+
@@ -134,6 +139,7 @@
     - rails
     - activesupport
     - log
+  docs_site:
 - name: anonymous_active_record
   description: Replacement for broken Class.new(ActiveRecord::Base)
   language: Ruby
@@ -154,6 +160,7 @@
   tags:
     - rails
     - activerecord
+  docs_site:
 - name: skywalking-eyes
   description: |
     A full-featured license tool to check and fix license headers and resolve dependencies' licenses.
@@ -178,6 +185,7 @@
     - GHA
     - cli
     - shell
+  docs_site:
 - name: appraisal2
   description: Appraisal2 integrates with bundler and rake to test your library against
     different versions of dependencies in repeatable scenarios called "appraisals."
@@ -204,6 +212,7 @@
     - test
     - harness
     - bundler
+  docs_site: https://appraisal2.galtzo.com
 - name: archivist-client
   description: archivist-client queries archive.org for book data and downloads some
     things.
@@ -224,6 +233,7 @@
     - shell
     - api
     - cli
+  docs_site:
 - name: awesome_search
   description: Organize complicated search results
   language: Ruby
@@ -243,8 +253,10 @@
       owner: galtzo-floss
   tags:
     - stale
+  docs_site:
 - name: awesome-sponsorships
-  description: "💖 An Open Source Funding How To Awesome List: checklist and inspiration to earn more as a FLOSS developer"
+  description: "\U0001F496 An Open Source Funding How To Awesome List: checklist and
+    inspiration to earn more as a FLOSS developer"
   language: Ruby
   ecosystem: rubygems
   minimum_version: 3.4
@@ -263,6 +275,7 @@
   tags:
     - funding
     - markdown
+  docs_site: https://awesome-sponsorships.galtzo.com
 - name: bash_step
   description: Bash Step Function Library
   language: Bash
@@ -281,6 +294,7 @@
   tags:
     - shell
     - cli
+  docs_site:
 - name: bsfl
   description: Bash Script Function Library
   language: Bash
@@ -299,6 +313,7 @@
   tags:
     - shell
     - cli
+  docs_site:
 - name: cacheable-flash
   description: |-
     Allows caching of pages with flash messages by rendering flash
@@ -319,6 +334,7 @@
   tags:
     - stale
     - toast
+  docs_site:
 - name: capistrano_mailer
   description: Capistrano Deployment Email Notification.  Keep the whole team informed
     of each release!
@@ -342,6 +358,7 @@
   tags:
     - release
     - email
+  docs_site:
 - name: celluloid-io-pg-listener
   description: Asynchronously LISTEN for Postgresql NOTIFY messages with payloads
     and Do Something
@@ -364,6 +381,7 @@
       url: https://git.sr.ht/~galtzo/celluloid-io-pg-listener
   tags:
     - async
+  docs_site:
 - name: controller_validator
   description: Use the familiar ActiveModel::Errors pattern for controller validations
   language: Ruby
@@ -384,6 +402,7 @@
   tags:
     - rails
     - validate
+  docs_site:
 - name: csv_pirate
   description: |-
     CsvPirate is the easy way to create a CSV of essentially anything in Ruby, in full pirate regalia.
@@ -409,6 +428,7 @@
     - rails
     - activerecord
     - csv
+  docs_site:
 - name: debug_logging
   description: |
     Unobtrusive debug logging for Ruby.  NO LITTERING.
@@ -437,6 +457,7 @@
   tags:
     - log
     - debug
+  docs_site:
 - name: destination_errors
   description: Useful when a presenter deals with multiple objects that may enter
     into error states, and the errors need to be collected at a single point.
@@ -461,6 +482,7 @@
     - rails
     - presenter
     - error-handle
+  docs_site:
 - name: dry_views
   description: 'Provides extensions to ActionView::Helpers::CaptureHelper: content_for_with_default,
     no_content_for, and an enhanced content_for that plays nice with friends'
@@ -484,6 +506,7 @@
   tags:
     - rails
     - view
+  docs_site:
 - name: dynamoid
   description: Dynamoid is an ORM for Amazon's DynamoDB that supports offline development,
     associations, querying, and everything else you'd expect from an ActiveRecord-style
@@ -507,6 +530,7 @@
     - dynamodb
     - aws
     - api
+  docs_site:
 - name: each_in_batches
   description: Batch Processing of Records with Blocks in Rails
   language: Ruby
@@ -529,6 +553,7 @@
   tags:
     - rails
     - activerecord
+  docs_site:
 - name: flag_shih_tzu
   description: Bit fields for ActiveRecord - store multiple boolean flags in a single
     integer column
@@ -557,6 +582,7 @@
     - rails
     - activerecord
     - bitfields
+  docs_site:
 - name: floss_funding
   description: Help overlooked open source projects - the ones at the bottom of the
     stack, and the dev dependencies - by funding them.
@@ -577,6 +603,7 @@
       owner: floss-funding
   tags:
     - funding
+  docs_site: https://floss-funding.galtzo.com
 - name: gem_bench
   description: |-
     * Benchmark different versions of same or similar gems
@@ -607,6 +634,7 @@
     - debug
     - bundler
     - regex
+  docs_site:
 - name: gitmoji-regex
   description: "\U0001F61C A regular expression matching Gitmoji (a subset of Unicode
     Emoji) symbolsFund overlooked open source projects - bottom of stack, dev/test
@@ -631,6 +659,7 @@
   tags:
     - git
     - regex
+  docs_site:
 - name: humorous_log_formatter
   description: Humorous Log Levels and Color For Rails.  Customizable!
   language: Ruby
@@ -651,6 +680,7 @@
   tags:
     - stale
     - log
+  docs_site:
 - name: include_with_respect
   description: Find out if your Module include/extend hooks are misbehaving!
   language: Ruby
@@ -672,6 +702,7 @@
       url: https://git.sr.ht/~galtzo/include_with_respect
   tags:
     - test
+  docs_site:
 - name: json_schemer-fuzz
   description: Fuzz generator for json_schemer
   language: Ruby
@@ -692,6 +723,7 @@
   tags:
     - test
     - fuzz
+  docs_site:
 - name: kettle-dev
   description: "\U0001F372 Kettle::Dev is a meta tool from kettle-rb to streamline
     development and testing. Acts as a shim dependency, pulling in many other dependencies,
@@ -730,6 +762,7 @@
     - debug
     - shell
     - cli
+  docs_site: https://kettle-dev.galtzo.com
 - name: kettle-soup-cover
   description: |
     A Covered Kettle of Test Coverage SOUP (Software of Unknown Provenance)
@@ -758,6 +791,7 @@
     - test
     - coverage
     - env
+  docs_site: https://kettle-soup-cover.galtzo.com
 - name: kettle-test
   description: "\U0001F372 Kettle::Test is a meta tool from kettle-rb to streamline
     testing. Acts as a shim dependency, pulling in many other dependencies, to give
@@ -791,6 +825,7 @@
     - rspec
     - rake
     - env
+  docs_site: https://kettle-test.galtzo.com
 - name: letter_group
   description: Organize data results from raw sql queries (as with PGresult, or Dossier)
     intelligently.
@@ -812,6 +847,7 @@
   tags:
     - hash
     - stale
+  docs_site:
 - name: library_tree
   description: Builds a tree of module inclusion of a target module into other modules
   language: Ruby
@@ -831,6 +867,7 @@
       owner: galtzo-floss
   tags:
     - wip
+  docs_site:
 - name: masq
   description: Masq supports OpenID 2.0 and supports SReg, AX (fetch and store requests)
     and PAPE as well as some custom additions like multi-factor authentication using
@@ -859,6 +896,7 @@
     - auth
     - security
     - api
+  docs_site:
 - name: masq2
   description: Originally a fork. Has been merged back to the original gem.
   language: Ruby
@@ -885,6 +923,7 @@
     - auth
     - security
     - api
+  docs_site:
 - name: month-serializer
   description: Serialize Month objects to Integer
   language: Ruby
@@ -908,6 +947,7 @@
     - time
     - math
     - serialize
+  docs_site:
 - name: oauth
   description: "\U0001F511 A Ruby wrapper for the original OAuth 1.0 / 1.0a spec."
   language: Ruby
@@ -934,6 +974,7 @@
     - auth
     - security
     - api
+  docs_site: https://oauth.galtzo.com
 - name: oauth-tty
   description: "\U0001F5A5️ OAuth 1.0 / 1.0a TTY Command Line Interface"
   language: Ruby
@@ -961,6 +1002,7 @@
     - security
     - tty
     - api
+  docs_site: https://oauth-tty.galtzo.com
 - name: oauth2
   description: Ruby OAuth 2.0 framework for building OAuth providers and clients
   language: Ruby
@@ -987,6 +1029,7 @@
     - auth
     - security
     - api
+  docs_site: https://oauth2.galtzo.com
 - name: omniauth-identity
   description: Traditional username/password based authentication system for OmniAuth
   language: Ruby
@@ -1006,6 +1049,7 @@
     - auth
     - security
     - api
+  docs_site: https://omniauth-identity.galtzo.com
 - name: omniauth-jwt
   description: An OmniAuth strategy to accept JWT-based single sign-on.
   language: Ruby
@@ -1025,6 +1069,7 @@
     - auth
     - security
     - api
+  docs_site:
 - name: omniauth-jwt2
   description: Originally a fork. Has been merged back to the original gem.
   language: Ruby
@@ -1044,6 +1089,7 @@
     - auth
     - security
     - api
+  docs_site:
 - name: omniauth-ldap
   description: A LDAP strategy for OmniAuth.
   language: Ruby
@@ -1063,6 +1109,7 @@
     - auth
     - security
     - api
+  docs_site:
 - name: omniauth-openid
   description: OpenID (not OIDC) strategy for OmniAuth.
   language: Ruby
@@ -1089,6 +1136,7 @@
     - auth
     - security
     - api
+  docs_site: https://omniauth-openid.galtzo.com
 - name: open_id_authentication
   description: Provides a thin wrapper around the excellent rack-openid2 gem.
   language: Ruby
@@ -1115,6 +1163,7 @@
     - auth
     - security
     - api
+  docs_site: https://open-id-authentication.galtzo.com
 - name: os
   description: Easily determine which OS your Ruby code is running on.
   language: Ruby
@@ -1132,6 +1181,7 @@
       owner: rdp
   tags:
     - test
+  docs_site:
 - name: pretty_feed
   description: |
     PrettyFeed provides a modulizer you can include in a job, worker, class, rake task, etc,
@@ -1157,6 +1207,7 @@
   tags:
     - log
     - debug
+  docs_site:
 - name: qfill
   description: Advanced Queue Transformation
   language: Ruby
@@ -1179,6 +1230,7 @@
   tags:
     - queue
     - math
+  docs_site:
 - name: rack-insight
   description: |-
     Debugging toolbar for Rack applications implemented as middleware.
@@ -1202,6 +1254,7 @@
     - rack
     - view
     - stale
+  docs_site:
 - name: rack-openid
   description: Provides a more HTTPish API around the ruby-openid library
   language: Ruby
@@ -1228,6 +1281,7 @@
     - auth
     - security
     - api
+  docs_site:
 - name: rack-openid2
   description: Originally a fork. Has been merged back to the original gem.
   language: Ruby
@@ -1254,6 +1308,7 @@
     - auth
     - security
     - api
+  docs_site: https://rack-openid2.galtzo.com
 - name: rack-toolbar
   description: Provides an easy way to create Rack Middleware that injects things
     into the response body. Extracted from rack-insight.
@@ -1276,6 +1331,7 @@
     - rack
     - view
     - stale
+  docs_site:
 - name: rails_env_local
   description: |2
       If existing infrastructure for deployed environments
@@ -1303,6 +1359,7 @@
     - rails
     - env
     - stale
+  docs_site:
 - name: react-rails-benchmark_renderer
   description: Concern::Instrumentation Plugin for React::Rails Render Benchmarking
     with a reference implementation
@@ -1326,6 +1383,7 @@
     - react
     - view
     - stale
+  docs_site:
 - name: remit
   description: An API for using the Amazon Flexible Payment Service (FPS).
   language: Ruby
@@ -1348,6 +1406,7 @@
     - payment
     - aws
     - api
+  docs_site:
 - name: require_bench
   description: Ruby app loading slowly, or never? Discover bootstrapping issues in
     Ruby by logging/benchmarking/timing-out/rescuing 'Kernel.require' & 'load'
@@ -1378,8 +1437,10 @@
     - debug
     - log
     - error-handle
+  docs_site:
 - name: resque
-  description: Resque is a Redis-backed Ruby library for creating background jobs, placing them on multiple queues, and processing them later.
+  description: Resque is a Redis-backed Ruby library for creating background jobs,
+    placing them on multiple queues, and processing them later.
   language: Ruby
   ecosystem: rubygems
   minimum_version: 1.8
@@ -1400,6 +1461,7 @@
     - queue
     - shell
     - cli
+  docs_site:
 - name: resque-lonely_job
   description: |
     Ensures that for a given queue, only one worker is working on a job at any given time.
@@ -1433,6 +1495,7 @@
     - queue
     - uniq
     - stale
+  docs_site:
 - name: resque-unique_at_runtime
   description: |
     Ensures that for a given queue, only one worker is working on a job at any given time.
@@ -1465,6 +1528,7 @@
     - resque
     - queue
     - uniq
+  docs_site:
 - name: resque-unique_by_arity
   description: Configure resque-unique_in_queue and resque-unique_at_runtime uniqueness
     by arity of perform method, with automated cleanup tools
@@ -1489,6 +1553,7 @@
     - resque
     - queue
     - uniq
+  docs_site:
 - name: resque-unique_in_queue
   description: A resque plugin that ensures job uniqueness at enqueue time.
   language: Ruby
@@ -1510,6 +1575,7 @@
     - resque
     - queue
     - uniq
+  docs_site:
 - name: rots
   description: |
     Ruby OpenID Test Server (ROTS) provides a basic OpenID server made in top of the Rack gem.
@@ -1540,6 +1606,7 @@
     - security
     - test
     - mock
+  docs_site:
 - name: rspec-block_is_expected
   description: subject { Integer(nil) }; it('raises') { block_is_expected.to raise_error(TypeError)
     }
@@ -1568,6 +1635,7 @@
     - rspec
     - test
     - error-handle
+  docs_site:
 - name: rspec-pending_for
   description: "⏳️ Mark specs pending or skipped for specific Ruby engine (e.g. MRI
     or JRuby) & versions, or version ranges. Fund overlooked open source projects
@@ -1596,6 +1664,7 @@
   tags:
     - rspec
     - test
+  docs_site:
 - name: rspec-stubbed_env
   description: |
     Stub or hide environment variables in a scoped context for testing
@@ -1627,6 +1696,7 @@
     - test
     - env
     - mock
+  docs_site: https://rspec-stubbed-env.galtzo.com
 - name: rubocop-lts
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby code
   language: Ruby
@@ -1649,6 +1719,7 @@
       url: https://codeberg.org/rubocop-lts/rubocop-lts
   tags:
     - rubocop
+  docs_site:
 - name: rubocop-ruby1_8
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 1.8 code
   language: Ruby
@@ -1670,6 +1741,7 @@
       url: https://gitlab.com/rubocop-lts/rubocop-ruby1_8
   tags:
     - rubocop
+  docs_site:
 - name: rubocop-ruby1_9
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 1.9 code
   language: Ruby
@@ -1691,6 +1763,7 @@
       url: https://gitlab.com/rubocop-lts/rubocop-ruby1_9
   tags:
     - rubocop
+  docs_site:
 - name: rubocop-ruby2_0
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 2.0 code
   language: Ruby
@@ -1712,6 +1785,7 @@
       url: https://gitlab.com/rubocop-lts/rubocop-ruby2_0
   tags:
     - rubocop
+  docs_site:
 - name: rubocop-ruby2_1
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 2.1 code
   language: Ruby
@@ -1733,6 +1807,7 @@
       url: https://gitlab.com/rubocop-lts/rubocop-ruby2_1
   tags:
     - rubocop
+  docs_site:
 - name: rubocop-ruby2_2
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 2.2 code
   language: Ruby
@@ -1754,6 +1829,7 @@
       url: https://gitlab.com/rubocop-lts/rubocop-ruby2_2
   tags:
     - rubocop
+  docs_site:
 - name: rubocop-ruby2_3
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 2.3 code
   language: Ruby
@@ -1775,6 +1851,7 @@
       url: https://gitlab.com/rubocop-lts/rubocop-ruby2_3
   tags:
     - rubocop
+  docs_site:
 - name: rubocop-ruby2_4
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 2.4 code
   language: Ruby
@@ -1796,6 +1873,7 @@
       url: https://gitlab.com/rubocop-lts/rubocop-ruby2_4
   tags:
     - rubocop
+  docs_site:
 - name: rubocop-ruby2_5
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 2.5 code
   language: Ruby
@@ -1817,6 +1895,7 @@
       url: https://gitlab.com/rubocop-lts/rubocop-ruby2_5
   tags:
     - rubocop
+  docs_site:
 - name: rubocop-ruby2_6
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 2.6 code
   language: Ruby
@@ -1838,6 +1917,7 @@
       url: https://gitlab.com/rubocop-lts/rubocop-ruby2_6
   tags:
     - rubocop
+  docs_site:
 - name: rubocop-ruby2_7
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 2.7 code
   language: Ruby
@@ -1859,6 +1939,7 @@
       url: https://gitlab.com/rubocop-lts/rubocop-ruby2_7
   tags:
     - rubocop
+  docs_site:
 - name: rubocop-ruby3_0
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 3.0 code
   language: Ruby
@@ -1882,6 +1963,7 @@
       url: https://codeberg.org/rubocop-lts/rubocop-ruby3_0
   tags:
     - rubocop
+  docs_site:
 - name: rubocop-ruby3_1
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 3.1 code
   language: Ruby
@@ -1903,6 +1985,7 @@
       url: https://gitlab.com/rubocop-lts/rubocop-ruby3_1
   tags:
     - rubocop
+  docs_site:
 - name: rubocop-ruby3_2
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 3.2 code
   language: Ruby
@@ -1922,6 +2005,7 @@
       url: https://gitlab.com/rubocop-lts/rubocop-ruby3_2
   tags:
     - rubocop
+  docs_site:
 - name: ruby-openid
   description: A library for consuming and serving OpenID identities.
   language: Ruby
@@ -1948,6 +2032,7 @@
     - auth
     - security
     - api
+  docs_site:
 - name: ruby-openid2
   description: Originally a fork. Has been merged back to the original gem.
   language: Ruby
@@ -1974,6 +2059,7 @@
     - auth
     - security
     - api
+  docs_site:
 - name: sanitize_email
   description: |2
       Email Condom for your Ruby Server.
@@ -2004,6 +2090,7 @@
     - email
     - test
     - rspec
+  docs_site:
 - name: seed_migration
   description: Rails gem for Data Migrations
   language: Ruby
@@ -2026,6 +2113,7 @@
   tags:
     - rails
     - migration
+  docs_site:
 - name: sequential_file
   description: Create Files Named Sequentially Intelligently
   language: Ruby
@@ -2048,6 +2136,7 @@
   tags:
     - shell
     - stale
+  docs_site:
 - name: service_actor-promptable
   description: TTY Prompt plugin for your service objects for your application logic
   language: Ruby
@@ -2070,6 +2159,7 @@
   tags:
     - service-objects
     - tty
+  docs_site:
 - name: shields-badge
   description: |
     Shields::Badge.gem_total_downloads(path_parameters: {gem: 'rails'})
@@ -2095,6 +2185,7 @@
       url: https://codeberg.org/galtzo-floss/shields-badge
   tags:
     - markdown
+  docs_site: https://shields-badge.galtzo.com
 - name: shiftable
   description: Move single records (has_one) or collections (has_many) from one parent
     (belongs_to) to another
@@ -2118,6 +2209,7 @@
   tags:
     - rails
     - activerecord
+  docs_site:
 - name: silent_stream
   description: "\U0001F515 (formerly) ActiveSupport Kernel Reporting Detritus with
     a few enhancementsFund overlooked open source projects - bottom of stack, dev/test
@@ -2147,6 +2239,7 @@
     - test
     - log
     - rspec
+  docs_site: https://silent-stream.galtzo.com
 - name: simple_column-scopes
   description: Dynamic modules which define dynamic methods for scopes based on a
     dynamic array of column names
@@ -2168,6 +2261,7 @@
   tags:
     - rails
     - activerecord
+  docs_site:
 - name: snaky_hash
   description: 'A Hashie::Mash joint to make #snakelife better'
   language: Ruby
@@ -2191,6 +2285,7 @@
       url: https://codeberg.org/ruby-oauth/snaky_hash
   tags:
     - serialize
+  docs_site: https://snaky-hash.galtzo.com
 - name: spyke-connection_lambda
   description: Dynamic Spyke API connection plugin for the Enterprise Cloud
   language: Ruby
@@ -2212,6 +2307,7 @@
     - rails
     - activerecord
     - api
+  docs_site:
 - name: stackable_flash
   description: Allows flashes to stack intelligently, while preserving existing behavior
     of the Rails FlashHash
@@ -2233,6 +2329,7 @@
   tags:
     - stale
     - toast
+  docs_site:
 - name: standard-rubocop-lts
   description: |
     Enables Ruby projects to more confidently support even the most finely-aged Rubies.
@@ -2258,6 +2355,7 @@
       url: https://codeberg.org/rubocop-lts/standard-rubocop-lts
   tags:
     - rubocop
+  docs_site:
 - name: status_tag
   description: |-
     Provides content_tag_for method signature to create customizable and logic-gated labels from objects.
@@ -2287,6 +2385,7 @@
     - rails
     - presenter
     - view
+  docs_site:
 - name: stone_checksums
   description: "\U0001F5FF Generate both SHA256 & SHA512 checksums into the checksums
     directory, and git commit them.\n  gem install stone_checksums\nThen, use the
@@ -2317,6 +2416,7 @@
     - release
     - cli
     - shell
+  docs_site:
 - name: strict_states
   description: Safely access state machine states with guarantee that there are no
     typos.  Compatible with all Ruby state machine libraries.
@@ -2340,6 +2440,7 @@
   tags:
     - state-machine
     - validate
+  docs_site:
 - name: super_exception_notifier
   description: In the Rails v2 era, this was a popular fork of exception_notification,
     with many extra features.  It is now deprecated in favor of the original gem.
@@ -2362,6 +2463,7 @@
     - stale
     - email
     - error-handle
+  docs_site:
 - name: timecop-rspec
   description: "⌚️ Timecop::Rspec provides Timecop time-machines for RSpec that allow
     youto time-travel test examples, context/describes, and/or your entire test suite.
@@ -2386,6 +2488,7 @@
     - rspec
     - test
     - time
+  docs_site: https://timecop-rspec.galtzo.com
 - name: undrive_google
   description: "\U0001F3F4 Liberate files from your Google Drive with transformations"
   language: Ruby
@@ -2413,6 +2516,7 @@
     - api
     - shell
     - cli
+  docs_site:
 - name: version_gem
   description: "\U0001F516 Versions are good. Versions are cool. Versions will win."
   language: Ruby
@@ -2426,7 +2530,6 @@
       url: https://opencollective.com/ruby-oauth
     - type: Liberapay
       url: https://liberapay.com/pboling
-  doc_site: https://version-gem.galtzo.com
   forges:
     - type: GitHub
       url: https://github.com/ruby-oauth/version_gem
@@ -2441,6 +2544,7 @@
     - semver
     - release
     - test
+  docs_site: https://version-gem.galtzo.com
 - name: warden_oauth
   description: warden_oauth will help you create oauth authentication strategies using
     the oauth helper method on the Warden::Manager config setup
@@ -2464,6 +2568,7 @@
     - auth
     - security
     - api
+  docs_site:
 - name: yacs
   description: Yet Another Crypto Scanner; Alternative Front End Demo for DEX
   language: TypeScript
@@ -2483,3 +2588,4 @@
     - websocket
     - api
     - react
+  docs_site:
