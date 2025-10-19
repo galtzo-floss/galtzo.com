@@ -25,6 +25,16 @@ body_class: projects
 <% end %>
 <% end %>
 
+<% years = site.data.projects.map {|p| p['first_commit_on']&.to_s&.split('/')&.first }.compact.uniq.sort %>
+<% year_counts = {} %>
+<% site.data.projects.each do |project| %>
+  <% year = project['first_commit_on']&.to_s&.split('/')&.first %>
+  <% if year %>
+    <% year_counts[year] ||= 0 %>
+    <% year_counts[year] += 1 %>
+  <% end %>
+<% end %>
+
 <% ts_projects = site.data.projects.select {|p| p["language"] == "TypeScript" } %>
 <% min_ts_versions = ts_projects.flat_map { |project| project["minimum_version"] || [] }.uniq.sort %>
 <% min_ts_counts = {} %>
@@ -79,84 +89,158 @@ body_class: projects
 </h1>
 
 <p>
+  Hi, my name is Peter Boling, and I love to solve problems with code.
   Maintaining these projects, with a focus on improving developer experience,
   requires a great deal of time and energy.
   I would appreciate your <a href="https://github.com/sponsors/pboling" class="text-link" target="_blank" rel="noopener">financial support</a>.
+  Use the switches to filter projects by role, year, tags, and minimum language versions.
 </p>
 
-<ul class="tag-list">
-  <% tags.each do |tag| %>
-  <li>
-    <a href="#" class="tag-link" data-tag="<%= tag %>">
-      <span class="count left"><%== tag_counts[tag].to_s.rjust(2, 'x').gsub('x', '&nbsp;') %></span>
-      <span class="tag <%= tag %>"><%= tag %></span>
-      <span class="count right"><%== tag_counts[tag].to_s.ljust(2, 'x').gsub('x', '&nbsp;') %></span>
-    </a>
-  </li>
-  <% end %>
-  <% min_rb_versions.each do |min_ruby| %>
-  <li>
-    <a href="#" class="tag-link min_lang-link" data-tag="Ruby >= <%= min_ruby %>">
-      <span class="count left"><%== min_rb_counts[min_ruby].to_s.rjust(2, 'x').gsub('x', '&nbsp;') %></span>
-      <span class="tag min-language"><img
-              src="/assets/images/Ruby.svg"
-              alt="Ruby >= <%= min_ruby %>"
-              class="language"
-      >Min Ruby v<%= min_ruby %></span>
-      <span class="count right"><%== min_rb_counts[min_ruby].to_s.ljust(2, 'x').gsub('x', '&nbsp;') %></span>
-    </a>
-  </li>
-  <% end %>
-  <% min_ts_versions.each do |min_ts| %>
-  <li>
-    <a href="#" class="tag-link min_lang-link" data-tag="TypeScript >= <%= min_ts %>">
-      <span class="count left"><%== min_ts_counts[min_ts].to_s.rjust(2, 'x').gsub('x', '&nbsp;') %></span>
-      <span class="tag min-language"><img
-              src="/assets/images/TypeScript.svg"
-              alt="TypeScript >= <%= min_ts %>"
-              class="language"
-      >Min TS v<%= min_ts %></span>
-      <span class="count right"><%== min_ts_counts[min_ts].to_s.ljust(2, 'x').gsub('x', '&nbsp;') %></span>
-    </a>
-  </li>
-  <% end %>
-  <% min_go_versions.each do |min_go| %>
-  <li>
-    <a href="#" class="tag-link min_lang_link" data-tag="Go >= <%= min_go %>">
-      <span class="count left"><%== min_go_counts[min_go].to_s.rjust(2, 'x').gsub('x', '&nbsp;') %></span>
-      <span class="tag min-language"><img
-              src="/assets/images/Go.svg"
-              alt="Go >= <%= min_go %>"
-              class="language"
-      >Min Go v<%= min_go %></span>
-      <span class="count right"><%== min_go_counts[min_go].to_s.ljust(2, 'x').gsub('x', '&nbsp;') %></span>
-    </a>
-  </li>
-  <% end %>
-  <% min_bash_versions.each do |min_bash| %>
-  <li>
-    <a href="#" class="tag-link min_lang_link" data-tag="Bash >= <%= min_bash %>">
-      <span class="count left"><%== min_bash_counts[min_bash].to_s.rjust(2, 'x').gsub('x', '&nbsp;') %></span>
-      <span class="tag min-language"><img
-              src="/assets/images/Bash.svg"
-              alt="Bash >= <%= min_bash %>"
-              class="language"
-      >Min Bash v<%= min_bash %></span>
-      <span class="count right"><%== min_bash_counts[min_bash].to_s.ljust(2, 'x').gsub('x', '&nbsp;') %></span>
-    </a>
-  </li>
-  <% end %>
-</ul>
+<details>
+  <summary>
+    <ul class="tag-list">
+      <% years[0...6].each do |year| %>
+      <li>
+        <a href="#" class="tag-link" data-tag="<%= year %>">
+          <span class="count left"><%== year_counts[year].to_s.rjust(2, 'x').gsub('x', '&nbsp;') %></span>
+          <span class="tag <%= year %>"><%= year %></span>
+          <span class="count right"><%== year_counts[year].to_s.ljust(2, 'x').gsub('x', '&nbsp;') %></span>
+        </a>
+      </li>
+      <% end %>
+      <li>... (cont)</li>
+    </ul>
+  </summary>
+
+  <ul class="tag-list">
+    <% years[6..].each do |year| %>
+    <li>
+      <a href="#" class="tag-link" data-tag="<%= year %>">
+        <span class="count left"><%== year_counts[year].to_s.rjust(2, 'x').gsub('x', '&nbsp;') %></span>
+        <span class="tag <%= year %>"><%= year %></span>
+        <span class="count right"><%== year_counts[year].to_s.ljust(2, 'x').gsub('x', '&nbsp;') %></span>
+      </a>
+    </li>
+    <% end %>
+  </ul>
+</details>
+
+<details>
+  <summary>
+    <ul class="tag-list">
+      <% tags[0...5].each do |tag| %>
+      <li>
+        <a href="#" class="tag-link" data-tag="<%= tag %>">
+          <span class="count left"><%== tag_counts[tag].to_s.rjust(2, 'x').gsub('x', '&nbsp;') %></span>
+          <span class="tag <%= tag %>"><%= tag %></span>
+          <span class="count right"><%== tag_counts[tag].to_s.ljust(2, 'x').gsub('x', '&nbsp;') %></span>
+        </a>
+      </li>
+      <% end %>
+      <li>... (cont)</li>
+    </ul>
+  </summary>
+
+  <ul class="tag-list">
+    <% tags[5..].each do |tag| %>
+    <li>
+      <a href="#" class="tag-link" data-tag="<%= tag %>">
+        <span class="count left"><%== tag_counts[tag].to_s.rjust(2, 'x').gsub('x', '&nbsp;') %></span>
+        <span class="tag <%= tag %>"><%= tag %></span>
+        <span class="count right"><%== tag_counts[tag].to_s.ljust(2, 'x').gsub('x', '&nbsp;') %></span>
+      </a>
+    </li>
+    <% end %>
+  </ul>
+</details>
+
+<details>
+  <summary>
+    <ul class="tag-list">
+      <% min_ts_versions.each do |min_ts| %>
+      <li>
+        <a href="#" class="tag-link min_lang-link" data-tag="TypeScript >= <%= min_ts %>">
+          <span class="count left"><%== min_ts_counts[min_ts].to_s.rjust(2, 'x').gsub('x', '&nbsp;') %></span>
+          <span class="tag min-language"><img
+                  src="/assets/images/TypeScript.svg"
+                  alt="TypeScript >= <%= min_ts %>"
+                  class="language"
+          >>= v<%= min_ts %></span>
+          <span class="count right"><%== min_ts_counts[min_ts].to_s.ljust(2, 'x').gsub('x', '&nbsp;') %></span>
+        </a>
+      </li>
+      <% end %>
+      <% min_go_versions.each do |min_go| %>
+      <li>
+        <a href="#" class="tag-link min_lang_link" data-tag="Go >= <%= min_go %>">
+          <span class="count left"><%== min_go_counts[min_go].to_s.rjust(2, 'x').gsub('x', '&nbsp;') %></span>
+          <span class="tag min-language"><img
+                  src="/assets/images/Go.svg"
+                  alt="Go >= <%= min_go %>"
+                  class="language"
+          >>= v<%= min_go %></span>
+          <span class="count right"><%== min_go_counts[min_go].to_s.ljust(2, 'x').gsub('x', '&nbsp;') %></span>
+        </a>
+      </li>
+      <% end %>
+      <% min_bash_versions.each do |min_bash| %>
+      <li>
+        <a href="#" class="tag-link min_lang_link" data-tag="Bash >= <%= min_bash %>">
+          <span class="count left"><%== min_bash_counts[min_bash].to_s.rjust(2, 'x').gsub('x', '&nbsp;') %></span>
+          <span class="tag min-language"><img
+                  src="/assets/images/Bash.svg"
+                  alt="Bash >= <%= min_bash %>"
+                  class="language"
+          >>= v<%= min_bash %></span>
+          <span class="count right"><%== min_bash_counts[min_bash].to_s.ljust(2, 'x').gsub('x', '&nbsp;') %></span>
+        </a>
+      </li>
+      <% end %>
+      <% min_rb_versions[0...2].each do |min_ruby| %>
+      <li>
+        <a href="#" class="tag-link min_lang-link" data-tag="Ruby >= <%= min_ruby %>">
+          <span class="count left"><%== min_rb_counts[min_ruby].to_s.rjust(2, 'x').gsub('x', '&nbsp;') %></span>
+          <span class="tag min-language"><img
+                  src="/assets/images/Ruby.svg"
+                  alt="Ruby >= <%= min_ruby %>"
+                  class="language"
+          >>= v<%= min_ruby %></span>
+          <span class="count right"><%== min_rb_counts[min_ruby].to_s.ljust(2, 'x').gsub('x', '&nbsp;') %></span>
+        </a>
+      </li>
+      <% end %>
+      <li>...(cont)</li>
+    </ul>
+  </summary>
+
+  <ul class="tag-list">
+    <% min_rb_versions[2..].each do |min_ruby| %>
+    <li>
+      <a href="#" class="tag-link min_lang-link" data-tag="Ruby >= <%= min_ruby %>">
+        <span class="count left"><%== min_rb_counts[min_ruby].to_s.rjust(2, 'x').gsub('x', '&nbsp;') %></span>
+        <span class="tag min-language"><img
+                src="/assets/images/Ruby.svg"
+                alt="Ruby >= <%= min_ruby %>"
+                class="language"
+        >>= v<%= min_ruby %></span>
+        <span class="count right"><%== min_rb_counts[min_ruby].to_s.ljust(2, 'x').gsub('x', '&nbsp;') %></span>
+      </a>
+    </li>
+    <% end %>
+  </ul>
+</details>
 
 <ul class="project-list">
   <% site.data.projects.each do |project| %>
     <% raise "Project #{project['name']} has no role!" if project['role'].nil? %>
     <% raise "Project #{project['name']} has invalid role #{project['role']}!" unless allowed_roles.include?(project['role']) %>
+    <% year = project['first_commit_on']&.to_s&.split('/')&.first %>
     <% gh_forge = project["forges"].find { |f| f["type"] == "GitHub" } %>
     <% first_forge = project["forges"].first %>
     <%# Build a reusable list of tags for the card so filtering doesn't rely on visible DOM elements %>
     <% tags_for_card = (project['tags'] || []).dup %>
     <% tags_for_card << project['role'] %>
+    <% tags_for_card << year %>
     <% if project['minimum_version'] %>
       <% tags_for_card << "#{project['language']} >= #{project['minimum_version']}" %>
     <% end %>
@@ -169,7 +253,6 @@ body_class: projects
         <% end %>
       </div>
       <div class="corner-anchor role">
-        <% year = project['first_commit_on']&.to_s&.split('/')&.first %>
         <div class="corner-banner banner-role <%= project['role'] %>">
           <span class="role-label">
             <% if gh_forge %>
@@ -261,14 +344,6 @@ body_class: projects
         <% else %>
         <% raise "Project #{project['name']} has no tags!" %>
         <% end %>
--        <% if gh_forge %>
--        <a href="<%= gh_forge['url'] %>/commits?author=pboling" class="tag <%= project['role'] %> filter-hidden" target="_blank" rel="noopener">
--          <%= project['role'] %>
--        </a>
--        <% else %>
--        <span class="tag <%= project['role'] %> filter-hidden"><%= project['role'] %></span>
--        <% end %>
-+        <%# Role tag removed from the visible card markup; role is included in data-tags for filtering %>
       </p>
       <p>
         <% if gh_forge %>
