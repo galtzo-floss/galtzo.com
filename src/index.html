@@ -154,7 +154,13 @@ body_class: projects
     <% raise "Project #{project['name']} has invalid role #{project['role']}!" unless allowed_roles.include?(project['role']) %>
     <% gh_forge = project["forges"].find { |f| f["type"] == "GitHub" } %>
     <% first_forge = project["forges"].first %>
-    <li class="card <%= project['role'] %>">
+    <%# Build a reusable list of tags for the card so filtering doesn't rely on visible DOM elements %>
+    <% tags_for_card = (project['tags'] || []).dup %>
+    <% tags_for_card << project['role'] %>
+    <% if project['minimum_version'] %>
+      <% tags_for_card << "#{project['language']} >= #{project['minimum_version']}" %>
+    <% end %>
+    <li class="card <%= project['role'] %>" data-tags='<%= tags_for_card.to_json %>'>
       <div class="corner-anchor fork">
         <% if gh_forge %>
         <a href="<%= gh_forge['url'] %>/fork" class="corner-banner banner-fork" target="_blank" rel="noopener">Fork Me</a>
@@ -255,13 +261,14 @@ body_class: projects
         <% else %>
         <% raise "Project #{project['name']} has no tags!" %>
         <% end %>
-        <% if gh_forge %>
-        <a href="<%= gh_forge['url'] %>/commits?author=pboling" class="tag <%= project['role'] %> filter-hidden" target="_blank" rel="noopener">
-          <%= project['role'] %>
-        </a>
-        <% else %>
-        <span class="tag <%= project['role'] %> filter-hidden"><%= project['role'] %></span>
-        <% end %>
+-        <% if gh_forge %>
+-        <a href="<%= gh_forge['url'] %>/commits?author=pboling" class="tag <%= project['role'] %> filter-hidden" target="_blank" rel="noopener">
+-          <%= project['role'] %>
+-        </a>
+-        <% else %>
+-        <span class="tag <%= project['role'] %> filter-hidden"><%= project['role'] %></span>
+-        <% end %>
++        <%# Role tag removed from the visible card markup; role is included in data-tags for filtering %>
       </p>
       <p>
         <% if gh_forge %>
@@ -294,26 +301,4 @@ body_class: projects
   <% end %>
 </ul>
 
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const tagLinks = document.querySelectorAll('.tag-link');
-    const cards = document.querySelectorAll('.card');
-
-    tagLinks.forEach(link => {
-      link.addEventListener('click', function(e) {
-        e.preventDefault();
-        this.classList.toggle('active');
-        filterProjects();
-      });
-    });
-
-    function filterProjects() {
-      const activeTags = Array.from(document.querySelectorAll('.tag-link.active')).map(link => link.dataset.tag);
-      cards.forEach(card => {
-        const cardTags = Array.from(card.querySelectorAll('.tag')).map(span => span.textContent.trim());
-        const matches = activeTags.length === 0 || activeTags.every(tag => cardTags.includes(tag));
-        card.style.display = matches ? '' : 'none';
-      });
-    }
-  });
-</script>
+<!-- Filter behavior moved to /assets/filter.js and included globally in the layout -->
