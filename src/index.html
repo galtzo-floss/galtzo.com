@@ -6,6 +6,16 @@ body_class: projects
 ---
 <% allowed_roles = %w(author maintainer contributor) %>
 
+<% years = site.data.projects.map {|p| p['first_commit_on']&.to_s&.split('/')&.first }.compact.uniq.sort %>
+<% year_counts = {} %>
+<% site.data.projects.each do |project| %>
+<% year = project['first_commit_on']&.to_s&.split('/')&.first %>
+<% if year %>
+<% year_counts[year] ||= 0 %>
+<% year_counts[year] += 1 %>
+<% end %>
+<% end %>
+
 <% tags = site.data.projects.flat_map { |project| project["tags"] || [] }.uniq.sort %>
 <% tag_counts = {} %>
 <% site.data.projects.each do |project| %>
@@ -23,16 +33,6 @@ body_class: projects
 <% min_bash_counts[project["minimum_version"]] ||= 0 %>
 <% min_bash_counts[project["minimum_version"]] += 1 %>
 <% end %>
-<% end %>
-
-<% years = site.data.projects.map {|p| p['first_commit_on']&.to_s&.split('/')&.first }.compact.uniq.sort %>
-<% year_counts = {} %>
-<% site.data.projects.each do |project| %>
-  <% year = project['first_commit_on']&.to_s&.split('/')&.first %>
-  <% if year %>
-    <% year_counts[year] ||= 0 %>
-    <% year_counts[year] += 1 %>
-  <% end %>
 <% end %>
 
 <% ts_projects = site.data.projects.select {|p| p["language"] == "TypeScript" } %>
@@ -65,6 +65,8 @@ body_class: projects
 <% end %>
 <% end %>
 
+<% lanugage_count = min_go_versions.count + min_rb_counts.count + min_ts_counts.count + min_bash_counts.count %>
+
 <% role_counts = {} %>
 <% site.data.projects.each do |project| %>
 <% if project["role"] %>
@@ -78,15 +80,15 @@ body_class: projects
   <span class="tag-list">
     <% allowed_roles.each do |role| %>
     <span>
-      <a href="#" class="tag-link role-link <%= role %>" data-tag="<%= role %>">
+      <button type="button" class="tag-link role-link <%= role %>" data-tag="<%= role %>">
         <span class="count left"><%== role_counts[role].to_s.rjust(2, 'x').gsub('x', '&nbsp;') %></span>
         <span class="tag <%= role %>"><%= role %></span>
         <span class="count right"><%== role_counts[role].to_s.ljust(2, 'x').gsub('x', '&nbsp;') %></span>
-      </a>
-    </span>
-    <% end %>
-  </span>
-</h1>
+      </button>
+     </span>
+     <% end %>
+   </span>
+ </h1>
 
 <p>
   Hi, my name is Peter Boling, and I love to solve problems with code.
@@ -99,136 +101,136 @@ body_class: projects
 <details>
   <summary>
     <ul class="tag-list">
-      <% years[0...6].each do |year| %>
       <li>
-        <a href="#" class="tag-link" data-tag="<%= year %>">
-          <span class="count left"><%== year_counts[year].to_s.rjust(2, 'x').gsub('x', '&nbsp;') %></span>
-          <span class="tag <%= year %>"><%= year %></span>
-          <span class="count right"><%== year_counts[year].to_s.ljust(2, 'x').gsub('x', '&nbsp;') %></span>
-        </a>
+        <button type="button" class="tag-link">
+          <span class="count left"><%== year_counts.length.to_s.rjust(2, 'x').gsub('x', '&nbsp;') %></span>
+          <span class="tag">Filter by Start Year</span>
+          <span class="count right"><%== year_counts.length.to_s.ljust(2, 'x').gsub('x', '&nbsp;') %></span>
+        </button>
       </li>
-      <% end %>
-      <li>... (cont)</li>
     </ul>
   </summary>
 
   <ul class="tag-list">
-    <% years[6..].each do |year| %>
+    <% years.each do |year| %>
     <li>
-      <a href="#" class="tag-link" data-tag="<%= year %>">
+      <button type="button" class="tag-link" data-tag="<%= year %>">
         <span class="count left"><%== year_counts[year].to_s.rjust(2, 'x').gsub('x', '&nbsp;') %></span>
         <span class="tag <%= year %>"><%= year %></span>
         <span class="count right"><%== year_counts[year].to_s.ljust(2, 'x').gsub('x', '&nbsp;') %></span>
-      </a>
+      </button>
     </li>
     <% end %>
   </ul>
-</details>
+ </details>
 
-<details>
-  <summary>
-    <ul class="tag-list">
-      <% tags[0...5].each do |tag| %>
-      <li>
-        <a href="#" class="tag-link" data-tag="<%= tag %>">
-          <span class="count left"><%== tag_counts[tag].to_s.rjust(2, 'x').gsub('x', '&nbsp;') %></span>
-          <span class="tag <%= tag %>"><%= tag %></span>
-          <span class="count right"><%== tag_counts[tag].to_s.ljust(2, 'x').gsub('x', '&nbsp;') %></span>
-        </a>
-      </li>
-      <% end %>
-      <li>... (cont)</li>
-    </ul>
-  </summary>
+ <details>
+   <summary>
+     <ul class="tag-list">
+       <li>
+         <button type="button" class="tag-link">
+           <span class="count left"><%== tag_counts.length.to_s.rjust(2, 'x').gsub('x', '&nbsp;') %></span>
+           <span class="tag">Filter by Tag</span>
+           <span class="count right"><%== tag_counts.length.to_s.ljust(2, 'x').gsub('x', '&nbsp;') %></span>
+         </button>
+       </li>
+     </ul>
+   </summary>
 
-  <ul class="tag-list">
-    <% tags[5..].each do |tag| %>
-    <li>
-      <a href="#" class="tag-link" data-tag="<%= tag %>">
-        <span class="count left"><%== tag_counts[tag].to_s.rjust(2, 'x').gsub('x', '&nbsp;') %></span>
-        <span class="tag <%= tag %>"><%= tag %></span>
-        <span class="count right"><%== tag_counts[tag].to_s.ljust(2, 'x').gsub('x', '&nbsp;') %></span>
-      </a>
-    </li>
-    <% end %>
-  </ul>
-</details>
+   <ul class="tag-list">
+     <% tags.each do |tag| %>
+     <li>
+       <button type="button" class="tag-link" data-tag="<%= tag %>">
+         <span class="count left"><%== tag_counts[tag].to_s.rjust(2, 'x').gsub('x', '&nbsp;') %></span>
+         <span class="tag <%= tag %>"><%= tag %></span>
+         <span class="count right"><%== tag_counts[tag].to_s.ljust(2, 'x').gsub('x', '&nbsp;') %></span>
+       </button>
+     </li>
+     <% end %>
+   </ul>
+ </details>
 
-<details>
-  <summary>
-    <ul class="tag-list">
-      <% min_ts_versions.each do |min_ts| %>
-      <li>
-        <a href="#" class="tag-link min_lang-link" data-tag="TypeScript >= <%= min_ts %>">
-          <span class="count left"><%== min_ts_counts[min_ts].to_s.rjust(2, 'x').gsub('x', '&nbsp;') %></span>
-          <span class="tag min-language"><img
-                  src="/assets/images/TypeScript.svg"
-                  alt="TypeScript >= <%= min_ts %>"
-                  class="language"
-          >>= v<%= min_ts %></span>
-          <span class="count right"><%== min_ts_counts[min_ts].to_s.ljust(2, 'x').gsub('x', '&nbsp;') %></span>
-        </a>
-      </li>
-      <% end %>
-      <% min_go_versions.each do |min_go| %>
-      <li>
-        <a href="#" class="tag-link min_lang_link" data-tag="Go >= <%= min_go %>">
-          <span class="count left"><%== min_go_counts[min_go].to_s.rjust(2, 'x').gsub('x', '&nbsp;') %></span>
-          <span class="tag min-language"><img
-                  src="/assets/images/Go.svg"
-                  alt="Go >= <%= min_go %>"
-                  class="language"
-          >>= v<%= min_go %></span>
-          <span class="count right"><%== min_go_counts[min_go].to_s.ljust(2, 'x').gsub('x', '&nbsp;') %></span>
-        </a>
-      </li>
-      <% end %>
-      <% min_bash_versions.each do |min_bash| %>
-      <li>
-        <a href="#" class="tag-link min_lang_link" data-tag="Bash >= <%= min_bash %>">
-          <span class="count left"><%== min_bash_counts[min_bash].to_s.rjust(2, 'x').gsub('x', '&nbsp;') %></span>
-          <span class="tag min-language"><img
-                  src="/assets/images/Bash.svg"
-                  alt="Bash >= <%= min_bash %>"
-                  class="language"
-          >>= v<%= min_bash %></span>
-          <span class="count right"><%== min_bash_counts[min_bash].to_s.ljust(2, 'x').gsub('x', '&nbsp;') %></span>
-        </a>
-      </li>
-      <% end %>
-      <% min_rb_versions[0...2].each do |min_ruby| %>
-      <li>
-        <a href="#" class="tag-link min_lang-link" data-tag="Ruby >= <%= min_ruby %>">
-          <span class="count left"><%== min_rb_counts[min_ruby].to_s.rjust(2, 'x').gsub('x', '&nbsp;') %></span>
-          <span class="tag min-language"><img
-                  src="/assets/images/Ruby.svg"
-                  alt="Ruby >= <%= min_ruby %>"
-                  class="language"
-          >>= v<%= min_ruby %></span>
-          <span class="count right"><%== min_rb_counts[min_ruby].to_s.ljust(2, 'x').gsub('x', '&nbsp;') %></span>
-        </a>
-      </li>
-      <% end %>
-      <li>...(cont)</li>
-    </ul>
-  </summary>
+ <details>
+   <summary>
+     <ul class="tag-list">
+       <li>
+         <button type="button" class="tag-link">
+           <span class="count left"><%== lanugage_count.to_s.rjust(2, 'x').gsub('x', '&nbsp;') %></span>
+           <span class="tag">Filter by Minimum Version of Language</span>
+           <span class="count right"><%== lanugage_count.to_s.ljust(2, 'x').gsub('x', '&nbsp;') %></span>
+         </button>
+       </li>
+     </ul>
+   </summary>
 
-  <ul class="tag-list">
-    <% min_rb_versions[2..].each do |min_ruby| %>
-    <li>
-      <a href="#" class="tag-link min_lang-link" data-tag="Ruby >= <%= min_ruby %>">
-        <span class="count left"><%== min_rb_counts[min_ruby].to_s.rjust(2, 'x').gsub('x', '&nbsp;') %></span>
-        <span class="tag min-language"><img
-                src="/assets/images/Ruby.svg"
-                alt="Ruby >= <%= min_ruby %>"
-                class="language"
-        >>= v<%= min_ruby %></span>
-        <span class="count right"><%== min_rb_counts[min_ruby].to_s.ljust(2, 'x').gsub('x', '&nbsp;') %></span>
-      </a>
-    </li>
-    <% end %>
-  </ul>
-</details>
+   <ul class="tag-list">
+     <% min_ts_versions.each do |min_ts| %>
+     <li>
+       <button type="button" class="tag-link min_lang-link" data-tag="TypeScript >= <%= min_ts %>">
+         <span class="count left"><%== min_ts_counts[min_ts].to_s.rjust(2, 'x').gsub('x', '&nbsp;') %></span>
+         <span class="tag min-language"><img
+                 src="/assets/images/TypeScript.svg"
+                 alt="TypeScript >= <%= min_ts %>"
+                 class="language"
+         >>= v<%= min_ts %></span>
+         <span class="count right"><%== min_ts_counts[min_ts].to_s.ljust(2, 'x').gsub('x', '&nbsp;') %></span>
+       </button>
+     </li>
+     <% end %>
+     <% min_go_versions.each do |min_go| %>
+     <li>
+       <button type="button" class="tag-link min_lang_link" data-tag="Go >= <%= min_go %>">
+         <span class="count left"><%== min_go_counts[min_go].to_s.rjust(2, 'x').gsub('x', '&nbsp;') %></span>
+         <span class="tag min-language"><img
+                 src="/assets/images/Go.svg"
+                 alt="Go >= <%= min_go %>"
+                 class="language"
+         >>= v<%= min_go %></span>
+         <span class="count right"><%== min_go_counts[min_go].to_s.ljust(2, 'x').gsub('x', '&nbsp;') %></span>
+       </button>
+     </li>
+     <% end %>
+     <% min_bash_versions.each do |min_bash| %>
+     <li>
+       <button type="button" class="tag-link min_lang_link" data-tag="Bash >= <%= min_bash %>">
+         <span class="count left"><%== min_bash_counts[min_bash].to_s.rjust(2, 'x').gsub('x', '&nbsp;') %></span>
+         <span class="tag min-language"><img
+                 src="/assets/images/Bash.svg"
+                 alt="Bash >= <%= min_bash %>"
+                 class="language"
+         >>= v<%= min_bash %></span>
+         <span class="count right"><%== min_bash_counts[min_bash].to_s.ljust(2, 'x').gsub('x', '&nbsp;') %></span>
+       </button>
+     </li>
+     <% end %>
+     <% min_rb_versions[0...2].each do |min_ruby| %>
+     <li>
+       <button type="button" class="tag-link min_lang-link" data-tag="Ruby >= <%= min_ruby %>">
+         <span class="count left"><%== min_rb_counts[min_ruby].to_s.rjust(2, 'x').gsub('x', '&nbsp;') %></span>
+         <span class="tag min-language"><img
+                 src="/assets/images/Ruby.svg"
+                 alt="Ruby >= <%= min_ruby %>"
+                 class="language"
+         >>= v<%= min_ruby %></span>
+         <span class="count right"><%== min_rb_counts[min_ruby].to_s.ljust(2, 'x').gsub('x', '&nbsp;') %></span>
+       </button>
+     </li>
+     <% end %>
+     <% min_rb_versions[2..].each do |min_ruby| %>
+     <li>
+       <button type="button" class="tag-link min_lang-link" data-tag="Ruby >= <%= min_ruby %>">
+         <span class="count left"><%== min_rb_counts[min_ruby].to_s.rjust(2, 'x').gsub('x', '&nbsp;') %></span>
+         <span class="tag min-language"><img
+                 src="/assets/images/Ruby.svg"
+                 alt="Ruby >= <%= min_ruby %>"
+                 class="language"
+         >>= v<%= min_ruby %></span>
+         <span class="count right"><%== min_rb_counts[min_ruby].to_s.ljust(2, 'x').gsub('x', '&nbsp;') %></span>
+       </button>
+     </li>
+     <% end %>
+   </ul>
+ </details>
 
 <ul class="project-list">
   <% site.data.projects.each do |project| %>

@@ -457,6 +457,8 @@ h1 .tag-list {
         color: inherit;
         /*margin: 0 0.5rem 0 0;*/
         position: relative;
+
+        /* (restored original: no button normalization here) */
     }
 
     .tag-link.author {
@@ -558,3 +560,4 @@ h1 .tag-list {
     transform: translateY(-6px);
   }
 }
+
