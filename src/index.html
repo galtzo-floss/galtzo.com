@@ -245,11 +245,11 @@ body_class: projects
         <% raise "Project #{project['name']} has no tags!" %>
         <% end %>
         <% if gh_forge %>
-        <a href="<%= gh_forge['url'] %>/commits?author=pboling" class="tag <%= project['role'] %>" target="_blank" rel="noopener">
+        <a href="<%= gh_forge['url'] %>/commits?author=pboling" class="tag <%= project['role'] %> filter-hidden" target="_blank" rel="noopener">
           <%= project['role'] %>
         </a>
         <% else %>
-        <span class="tag <%= project['role'] %>"><%= project['role'] %></span>
+        <span class="tag <%= project['role'] %> filter-hidden"><%= project['role'] %></span>
         <% end %>
       </p>
       <p>
