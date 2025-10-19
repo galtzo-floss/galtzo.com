@@ -461,6 +461,13 @@ h1 .tag-list {
         /* (restored original: no button normalization here) */
     }
 
+    /* Make decorative summary controls show a pointer so they feel clickable
+       while remaining non-interactive elements that let summary handle the
+       native toggle behavior. */
+    .summary-control {
+        cursor: pointer;
+    }
+
     .tag-link.author {
         box-shadow: 0 0 10px var(--author-color);
     }
@@ -560,4 +567,3 @@ h1 .tag-list {
     transform: translateY(-6px);
   }
 }
-
