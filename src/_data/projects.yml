@@ -22,9 +22,8 @@
   docs_site:
 - name: activerecord-tablefree
   description: ActiveRecord Tablefree Models provides a simple mixin for creating
-    models that are not bound to the database. This approach is useful for taking
-    advantage of the features of ActiveRecord such as validation, relationships, nested_attributes,
-    etc.
+    models that are not bound to the database.
+    Take advantage of ActiveRecord features like validation, relationships, and nested_attributes.
   language: Ruby
   ecosystem: rubygems
   minimum_version: 2.2
