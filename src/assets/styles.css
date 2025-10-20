@@ -824,7 +824,8 @@ h1 .tag-list {
     background-image: linear-gradient(var(--orange-active), var(--orange-active)), linear-gradient(to bottom, var(--orange-top-active), var(--orange-bottom-active));
     background-origin: border-box;
     background-clip: padding-box, border-box;
-    box-shadow: 0 0 10px var(--orange-light);
+    /* previously used a glow here which caused square cutoff issues; remove it */
+    box-shadow: none;
 }
 
 /* Make the inner .tag behave exactly like the .tag inside a .tag-link.active */
@@ -857,12 +858,25 @@ h1 .tag-list {
     border-top-color: currentColor;
 }
 
-/* Focus ring: keep it subtle but visible on the active summary */
+/* Remove focus treatment on summary controls to avoid square/cornered rings that
+   can be clipped by scrollers. This intentionally clears both outline and box-shadow
+   for focused summary elements (active and non-active). */
+.filters > details > summary:focus,
+.filters > details > summary:focus-visible {
+    outline: none;
+    box-shadow: none;
+}
+
+/* Also ensure any focus rules targeting the active summary-control don't add a
+   glow — keep active visuals but remove focus-generated box-shadow. */
 .filters > details.has-active-filter > summary:focus-visible .summary-control,
 .filters > details.has-active-filter > summary:focus .summary-control {
-    /* Use a rounded box-shadow instead of outline so the ring follows the pill's
-       border-radius and doesn't draw rectangular edges where a scroller clipped
-       glow previously made a hard rectangle visible. */
     outline: none;
-    box-shadow: 0 0 0 3px color-mix(in oklab, var(--orange-active-solid) 30%, white 10%);
+    box-shadow: none;
+}
+
+/* Remove glow from tags inside non-active summary controls to avoid the
+   square/cutoff glow when the summary sits over a scroller or clipped area. */
+.filters > details > summary .summary-control .tag {
+    box-shadow: none;
 }
