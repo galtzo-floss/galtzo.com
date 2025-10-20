@@ -867,6 +867,28 @@
   tags:
     - wip
   docs_site:
+- name: logos
+  description: 🪵 A resource for logos, with proper attribution information, including license and copyright,
+    for open source projects I care about.
+  language: Ruby
+  ecosystem:
+  minimum_version: 3.4
+  role: author
+  first_commit_on: 2025/07/30
+  first_commit: https://github.com/galtzo-floss/logos/commit/f49edc669a52ecf3e28a63d8205c6028383d37df
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/galtzo-floss
+    - type: Liberapay
+      url: https://liberapay.com/pboling
+  forges:
+    - type: GitHub
+      url: https://github.com/galtzo-floss/logos
+      owner: galtzo-floss
+  tags:
+    - markdown
+    - license
+  docs_site: https://logos.galtzo.com/
 - name: masq
   description: Masq supports OpenID 2.0 and supports SReg, AX (fetch and store requests)
     and PAPE as well as some custom additions like multi-factor authentication using
