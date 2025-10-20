@@ -151,7 +151,9 @@
 
     /* Tag negative margin for card tags */
     --tag-card-margin: -0.1rem 0.5rem 0 0;
-    --count-right-nudge: -0.85rem; /* negative moves the right count left; tuned to sit between inner pill and caret */
+    --summary-count-nudge: -0.85rem; /* negative moves the right count left; tuned to sit between inner pill and caret */
+    /* Reserve extra horizontal space for right counts on non-summary pills when active */
+    --count-reserve: 1.2rem; /* increased to move non-summary right counts further right */
 
     /* =========================================================================
        TAG-LIST & FILTERS
@@ -744,6 +746,7 @@ h1 .tag-list {
     font-weight: var(--font-weight-normal);
     padding: var(--count-padding);
     color: var(--text-color);
+    /* Do NOT include transform here — only summary controls use the horizontal nudge. */
     transition: opacity var(--transition-fast), z-index 0s var(--transition-fast);
 }
 
@@ -757,11 +760,23 @@ h1 .tag-list {
     right: 0;
     opacity: 0;
     z-index: -1;
-    /* Nudge the right count horizontally (negative value moves it left). This lets us
-       precisely position the number between the inner pill and the caret without
-       moving the caret itself. JS may set inline left values; the transform will
-       apply on top of whatever absolute coordinate is used. */
-    transform: translateX(var(--count-right-nudge));
+    /* No transform nudge here — kept scoped to summary controls only. */
+}
+
+/* Ensure non-summary pills expand to make room for their right counts when active. */
+.pill-outer:not(.summary-control).active {
+    padding-right: var(--count-reserve);
+    transition: padding-right var(--transition-fast);
+}
+
+/* Scoped nudge for right count only inside filter details' summary controls */
+.filters > details > summary .summary-control .count.right {
+    /* maintain the same baseline coordinates but nudge visually so the
+       number sits between the inner pill and the caret without moving the caret */
+    right: 0;
+    opacity: 0;
+    z-index: -1;
+    transform: translateX(var(--summary-count-nudge));
     transition: opacity var(--transition-fast), transform var(--transition-fast), z-index 0s var(--transition-fast);
 }
 
