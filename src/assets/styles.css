@@ -430,6 +430,10 @@ a.text-link {
 }
 
 .min-language {
+    display: inline-flex;
+    align-items: center;
+    padding-top: 0.15rem;
+
     .language {
         width: var(--icon-size-sm);
         height: var(--icon-size-sm);
@@ -438,7 +442,6 @@ a.text-link {
         margin-bottom: var(--icon-margin-bottom-sm);
         box-shadow: none;
         background-color: var(--transparent);
-        vertical-align: -0.1rem;
     }
 }
 
@@ -931,4 +934,12 @@ h1 .tag-list {
 .filters > details.has-active-filter > summary:focus .summary-control {
     outline: none;
     box-shadow: none;
+}
+
+/* Fine-tune count badge positioning for minimum language version buttons.
+   The inline-flex container with padding-top shifts the baseline, so we need
+   to compensate by moving the counts down to align with the text. */
+.pill-outer.min_lang-link .count,
+.pill-outer.min_lang_link .count {
+    top: 0.65rem;
 }
