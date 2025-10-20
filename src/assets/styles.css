@@ -609,23 +609,22 @@ button,
     border: 0 !important;
 }
 
-.author {
-    box-shadow: 0 0 10px var(--author-color);
+/* =========================================================================
+   UTILITY CLASSES
+   ========================================================================= */
+
+/* Consolidated: standalone role classes with scoped variables
+   These provide glows for elements that have role classes but aren't nested */
+:is(.author, .maintainer, .contributor) {
+    box-shadow: 0 0 10px var(--current-role-color);
 }
 
-.maintainer {
-    box-shadow: 0 0 10px var(--maintainer-color);
-}
-
-.contributor {
-    box-shadow: 0 0 10px var(--contributor-color);
-}
-
+/* Projects container */
 .projects {
     max-width: none;
 }
 
-/* Ensure pills don’t use any upward shift by default (helps small viewports) */
+/* Ensure pills don't use any upward shift by default (helps small viewports) */
 h1 .tag-list {
     transform: none;
     margin-left: 0;
@@ -633,6 +632,10 @@ h1 .tag-list {
 
 /* Remove mobile-specific overrides no longer needed due to flex wrapping */
 /* (intentionally left blank to avoid conflicting rules) */
+
+/* =========================================================================
+   TAG-LIST SYSTEM (Filter Pills)
+   ========================================================================= */
 
 .tag-list {
     display: inline-flex;
@@ -1020,29 +1023,4 @@ h1 .tag-list {
 .filters > details.has-active-filter > summary:focus .summary-control {
     outline: none;
     box-shadow: none;
-}
-
-/* Remove any remaining glows inside non-active summary rows. We target the
-   common selector shapes used for tags and tag-links that can appear in the
-   summary row (including the scroll wrapper). Use !important to ensure these
-   overrides take precedence and prevent clipped corner glows. */
-.filters > details > summary .tag,
-.filters > details > summary .tag-list .tag,
-.filters > details > summary .tag-list .tag-scroll .tag,
-.filters > details > summary .tag-scroll .tag,
-.filters > details > summary .tag-link,
-.filters > details > summary .tag-link .tag,
-.filters > details > summary .summary-control .tag {
-    box-shadow: none !important;
-}
-
-/* Very broad override: remove any box-shadow on any element or pseudo-element
-   inside non-active summary rows. This is intentionally aggressive but scoped
-   to `.filters > details > summary` so it only affects the horizontal filter
-   control row. It ensures no glows will be visible or clipped in the summary. */
-.filters > details > summary,
-.filters > details > summary *,
-.filters > details > summary *::before,
-.filters > details > summary *::after {
-    box-shadow: none !important;
 }
