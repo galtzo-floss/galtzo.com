@@ -31,13 +31,70 @@ document.addEventListener('DOMContentLoaded', function() {
     // Pointerdown (unified for mouse/pen/touch) for snappy responses on
     // touch devices. We set a short flag so the following synthetic click
     // (if any) is ignored to avoid duplicate actions.
+    // Updated behavior: for touch pointers, don't toggle immediately on
+    // pointerdown because a touch that starts a scroll should not toggle
+    // the filter. Instead, track pointer movement and only toggle on
+    // pointerup if movement is within a small threshold. For mouse/pen,
+    // keep the original immediate toggle for snappy response.
     link.addEventListener('pointerdown', function(e) {
-      this.dataset._handledPointer = '1';
-      this.classList.toggle('active');
-      filterProjects();
-      // Keep summary visuals in sync
-      updateDetailsActiveState();
-      setTimeout(() => { try { delete this.dataset._handledPointer; } catch (e) {} }, 500);
+      const el = this;
+
+      // If not a touch pointer, behave as before (immediate toggle)
+      if (e.pointerType !== 'touch') {
+        el.dataset._handledPointer = '1';
+        el.classList.toggle('active');
+        filterProjects();
+        // Keep summary visuals in sync
+        updateDetailsActiveState();
+        setTimeout(() => { try { delete el.dataset._handledPointer; } catch (err) {} }, 500);
+        return;
+      }
+
+      // For touch: track movement and only treat as a tap if the touch
+      // doesn't move beyond the threshold.
+      const startX = e.clientX;
+      const startY = e.clientY;
+      const pointerId = e.pointerId;
+      const MOVE_THRESHOLD = 10; // pixels
+      let cancelled = false;
+
+      function cleanup() {
+        document.removeEventListener('pointermove', onMove, { passive: true });
+        document.removeEventListener('pointerup', onUp, { passive: true });
+        document.removeEventListener('pointercancel', onUp, { passive: true });
+      }
+
+      function onMove(ev) {
+        if (ev.pointerId !== pointerId) return;
+        const dx = Math.abs(ev.clientX - startX);
+        const dy = Math.abs(ev.clientY - startY);
+        if (dx > MOVE_THRESHOLD || dy > MOVE_THRESHOLD) {
+          // Consider this a scroll/drag — cancel the pending tap
+          cancelled = true;
+          cleanup();
+        }
+      }
+
+      function onUp(ev) {
+        if (ev.pointerId !== pointerId) return;
+        cleanup();
+        if (!cancelled) {
+          // Treat as an intentional tap: toggle and mark handled so the
+          // subsequent synthetic click is ignored by the click handler.
+          el.dataset._handledPointer = '1';
+          el.classList.toggle('active');
+          filterProjects();
+          updateDetailsActiveState();
+          setTimeout(() => { try { delete el.dataset._handledPointer; } catch (err) {} }, 500);
+        }
+      }
+
+      // Listen globally so we still observe move/up even if the finger
+      // moves off the element during the gesture.
+      document.addEventListener('pointermove', onMove, { passive: true });
+      document.addEventListener('pointerup', onUp, { passive: true });
+      document.addEventListener('pointercancel', onUp, { passive: true });
+
     }, { passive: true });
   });
 
