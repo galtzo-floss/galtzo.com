@@ -1,0 +1,255 @@
+---
+- name: active_security
+  description: Disallow insecure, unscoped, finds
+  language: Ruby
+  ecosystem: rubygems
+  minimum_version: 2.7
+  role: author
+  first_commit_on: 2024/05/30
+  first_commit: https://github.com/galtzo-floss/active_security/commit/9caac884909193326b3f3318ad3db00ca754fabd
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/galtzo-floss
+    - type: Liberapay
+      url: https://liberapay.com/pboling
+  forges:
+    - type: GitHub
+      url: https://github.com/galtzo-floss/active_security
+      owner: galtzo-floss
+  tags:
+    - rails
+    - activerecord
+  docs_site:
+- name: activerecord-tablefree
+  description: ActiveRecord Tablefree Models provides a simple mixin for creating
+    models that are not bound to the database.
+    Take advantage of ActiveRecord features like validation, relationships, and nested_attributes.
+  language: Ruby
+  ecosystem: rubygems
+  minimum_version: 2.2
+  role: author
+  first_commit_on: 2017/11/08
+  first_commit: https://github.com/galtzo-floss/activerecord-tablefree/commit/167367318b42c77c8f7732243afdf90ba82a0387
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/galtzo-floss
+    - type: Liberapay
+      url: https://liberapay.com/pboling
+  forges:
+    - type: GitHub
+      url: https://github.com/galtzo-floss/activerecord-tablefree
+      owner: galtzo-floss
+  tags:
+    - rails
+    - activerecord
+    - validate
+  docs_site:
+- name: activerecord-transactionable
+  description: Getting transactions right is hard, and this gem makes it easier.
+  language: Ruby
+  ecosystem: rubygems
+  minimum_version: 2.5
+  role: author
+  first_commit_on: 2016/03/26
+  first_commit: https://github.com/galtzo-floss/activerecord-transactionable/commit/c40965018cee7546e62249006e2f41784cde8142
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/galtzo-floss
+    - type: Liberapay
+      url: https://liberapay.com/pboling
+  forges:
+    - type: GitHub
+      url: https://github.com/galtzo-floss/activerecord-transactionable
+      owner: galtzo-floss
+    - type: GitLab
+      url: https://gitlab.com/galtzo-floss/activerecord-transactionable
+    - type: Codeberg
+      url: https://codeberg.org/galtzo-floss/activerecord-transactionable
+    - type: SourceHut
+      url: https://git.sr.ht/~galtzo/activerecord-transactionable
+  tags:
+    - rails
+    - activerecord
+  docs_site:
+- name: activesupport-broadcast_logger
+  description: Rails v8 ActiveSupport::BroadcastLogger, fixed & backported to Rails
+    v5.2+ & Ruby 2.7+
+  language: Ruby
+  ecosystem: rubygems
+  minimum_version: 2.7
+  role: author
+  first_commit_on: 2024/11/20
+  first_commit: https://github.com/galtzo-floss/activesupport-broadcast_logger/commit/124104a29ed3c6bc1aa0468adba3cbf9f6f46296
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/galtzo-floss
+    - type: Liberapay
+      url: https://liberapay.com/pboling
+  forges:
+    - type: GitHub
+      url: https://github.com/galtzo-floss/activesupport-broadcast_logger
+      owner: galtzo-floss
+  tags:
+    - rails
+    - activesupport
+    - log
+  docs_site:
+- name: activesupport-logger
+  description: Rails v8 ActiveSupport::Logger backported to Rails v5.2+ & Ruby 2.7+
+  language: Ruby
+  ecosystem: rubygems
+  minimum_version: 2.7
+  role: author
+  first_commit_on: 2024/10/10
+  first_commit: https://github.com/galtzo-floss/activesupport-logger/commit/b76fe570a037738ff907dccd8af135cb14e87fa7
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/galtzo-floss
+    - type: Liberapay
+      url: https://liberapay.com/pboling
+  forges:
+    - type: GitHub
+      url: https://github.com/galtzo-floss/activesupport-logger
+      owner: galtzo-floss
+  tags:
+    - rails
+    - activesupport
+    - log
+  docs_site:
+- name: activesupport-tagged_logging
+  description: Rails v8 ActiveSupport::TaggedLogging, fixed & backported to Rails
+    v5.2+ & Ruby 2.7+
+  language: Ruby
+  ecosystem: rubygems
+  minimum_version: 2.7
+  role: author
+  first_commit_on: 2024/10/10
+  first_commit: https://github.com/galtzo-floss/activesupport-tagged_logging/commit/af83665a4f6d44c1fa926e2db6b7a2fd4c79cdd9
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/galtzo-floss
+    - type: Liberapay
+      url: https://liberapay.com/pboling
+  forges:
+    - type: GitHub
+      url: https://github.com/galtzo-floss/activesupport-tagged_logging
+      owner: galtzo-floss
+  tags:
+    - rails
+    - activesupport
+    - log
+  docs_site:
+- name: anonymous_active_record
+  description: Replacement for broken Class.new(ActiveRecord::Base)
+  language: Ruby
+  ecosystem: rubygems
+  minimum_version: 2.4
+  role: author
+  first_commit_on: 2018/01/03
+  first_commit: https://github.com/galtzo-floss/anonymous_active_record/commit/6d9e24334d8800910efc7a8325494cbd6c08ff87
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/galtzo-floss
+    - type: Liberapay
+      url: https://liberapay.com/pboling
+  forges:
+    - type: GitHub
+      url: https://github.com/galtzo-floss/anonymous_active_record
+      owner: galtzo-floss
+  tags:
+    - rails
+    - activerecord
+  docs_site:
+- name: skywalking-eyes
+  description: |
+    A full-featured license tool to check and fix license headers and resolve dependencies' licenses.
+    I added compatibility with rubygems and bundler.
+    Enhanced the license checker dataset to include all licenses on spdx.org.
+    Added configurations for ASF Category A and B licenses.
+    Enabled specification of FSF Free/Libre and OSI Approved requirements.
+    <a href="https://dev.to/galtzo/how-to-check-license-compatibility-41h0" class="text-link" target="_blank" rel="noopener">Learn how</a> to add it to your project!
+  language: Go
+  ecosystem:
+  minimum_version: 1.23
+  role: contributor
+  first_commit_on: 2025/09/11
+  first_commit: https://github.com/apache/skywalking-eyes/commit/3655e78854be6a56ae72a0c9a847aedd133c3b74
+  funding_sites: []
+  forges:
+    - type: GitHub
+      url: https://github.com/apache/skywalking-eyes
+      owner: apache
+  tags:
+    - license
+    - GHA
+    - cli
+    - shell
+  docs_site:
+- name: appraisal2
+  description: Appraisal2 integrates with bundler and rake to test your library against
+    different versions of dependencies in repeatable scenarios called "appraisals."
+  language: Ruby
+  ecosystem: rubygems
+  minimum_version: 1.8
+  role: author
+  first_commit_on: 2017/11/20
+  first_commit: https://github.com/appraisal-rb/appraisal2/commit/dcfac430d75a86a89497ec45af39edf798228f9c
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/appraisal-rb
+    - type: Liberapay
+      url: https://liberapay.com/pboling
+  forges:
+    - type: GitHub
+      url: https://github.com/appraisal-rb/appraisal2
+      owner: appraisal-rb
+    - type: GitLab
+      url: https://gitlab.com/appraisal-rb/appraisal2
+    - type: Codeberg
+      url: https://codeberg.org/appraisal-rb/appraisal2
+  tags:
+    - test
+    - harness
+    - bundler
+  docs_site: https://appraisal2.galtzo.com
+- name: archivist-client
+  description: archivist-client queries archive.org for book data and downloads some
+    things.
+  language: Ruby
+  ecosystem: rubygems
+  minimum_version: 2.4
+  role: maintainer
+  first_commit_on: 2013/12/16
+  first_commit: https://github.com/wordtreefoundation/archivist-client/commit/404f1976722fa7b4444d7b5d750f438bebae1102
+  funding_sites:
+    - type: Liberapay
+      url: https://liberapay.com/pboling
+  forges:
+    - type: GitHub
+      url: https://github.com/wordtreefoundation/archivist-client
+      owner: wordtreefoundation
+  tags:
+    - shell
+    - api
+    - cli
+  docs_site:
+- name: awesome_search
+  description: Organize complicated search results
+  language: Ruby
+  ecosystem: rubygems
+  minimum_version: 1.8
+  role: author
+  first_commit_on: 2010/03/01
+  first_commit: https://github.com/galtzo-floss/awesome_search/commit/cc63ada6740695dd42007d62ed76d3d5e12803ae
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/galtzo-floss
+    - type: Liberapay
+      url: https://liberapay.com/pboling
+  forges:
+    - type: GitHub
+      url: https://github.com/galtzo-floss/awesome_search
+      owner: galtzo-floss
+  tags:
+    - stale
+  docs_site:
