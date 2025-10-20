@@ -438,6 +438,7 @@ a.text-link {
         margin-bottom: var(--icon-margin-bottom-sm);
         box-shadow: none;
         background-color: var(--transparent);
+        vertical-align: -0.1rem;
     }
 }
 
