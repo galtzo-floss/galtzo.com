@@ -172,7 +172,7 @@ body_class: projects
           <span class="tag min-language"><img
                   src="/assets/images/TypeScript.svg"
                   alt="TypeScript >= <%= min_ts %>"
-                  class="language"
+                  class="language typescript"
           >>=&nbsp;v<%= min_ts %></span>
           <span class="count right"><%== min_ts_counts[min_ts].to_s.ljust(2, 'x').gsub('x', '&nbsp;') %></span>
         </button>
@@ -185,7 +185,7 @@ body_class: projects
           <span class="tag min-language"><img
                   src="/assets/images/Go.svg"
                   alt="Go >= <%= min_go %>"
-                  class="language"
+                  class="language go"
           >>=&nbsp;v<%= min_go %></span>
           <span class="count right"><%== min_go_counts[min_go].to_s.ljust(2, 'x').gsub('x', '&nbsp;') %></span>
         </button>
@@ -198,7 +198,7 @@ body_class: projects
           <span class="tag min-language"><img
                   src="/assets/images/Bash.svg"
                   alt="Bash >= <%= min_bash %>"
-                  class="language"
+                  class="language bash"
           >>=&nbsp;v<%= min_bash %></span>
           <span class="count right"><%== min_bash_counts[min_bash].to_s.ljust(2, 'x').gsub('x', '&nbsp;') %></span>
         </button>
@@ -211,7 +211,7 @@ body_class: projects
           <span class="tag min-language"><img
                   src="/assets/images/Ruby.svg"
                   alt="Ruby >= <%= min_ruby %>"
-                  class="language"
+                  class="language ruby"
           >>=&nbsp;v<%= min_ruby %></span>
           <span class="count right"><%== min_rb_counts[min_ruby].to_s.ljust(2, 'x').gsub('x', '&nbsp;') %></span>
         </button>
@@ -224,7 +224,7 @@ body_class: projects
           <span class="tag min-language"><img
                   src="/assets/images/Ruby.svg"
                   alt="Ruby >= <%= min_ruby %>"
-                  class="language"
+                  class="language ruby"
           >>=&nbsp;v<%= min_ruby %></span>
           <span class="count right"><%== min_rb_counts[min_ruby].to_s.ljust(2, 'x').gsub('x', '&nbsp;') %></span>
         </button>
@@ -272,7 +272,7 @@ body_class: projects
       </div>
     </div>
     <h2>
-      <% if project["ecosystem"] %>
+      <% if project["ecosystem"] == "rubygems" %>
       <a href="https://bestgems.org/gems/<%= project['name'] %>" class="gem-link" target="_blank" rel="noopener">
         <img
                 src="/assets/images/<%= project['language'] %>.svg"
