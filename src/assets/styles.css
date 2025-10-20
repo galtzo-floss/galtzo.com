@@ -138,12 +138,17 @@
 
     /* Tag padding (inner pills) */
     --tag-padding-card: 0.3rem 0.75rem;  /* tags inside cards */
-    --tag-padding-filter: 0.3rem 1rem 0.3rem 1.75rem; /* tags in filter lists */
+    --tag-padding-filter: 0.3rem 0.8rem 0.3rem 0.8rem; /* tags in filter lists - symmetric padding */
 
-    /* Tag margins for slide animation */
-    --tag-margin-inactive: 1.5rem;  /* left margin when not active */
-    --tag-margin-active-left: 0;    /* slides left when active */
-    --tag-margin-active-right: 0.5rem; /* right margin when active (tuned to reduce wasted space) */
+    /* Tag margins for slide animation - these physically move the pill position */
+    --tag-margin-inactive-left: 1.5rem;  /* push pill to the right when inactive */
+    --tag-margin-inactive-right: 0;  /* no right margin when inactive */
+    --tag-margin-active-left: 0;    /* pill on left when active */
+    --tag-margin-active-right: 1.5rem;   /* matching right margin when active to keep total width same */
+
+    /* Outer pill padding for count badge area */
+    --pill-padding-inactive: 0.5rem;  /* reserve space on right when inactive */
+    --pill-padding-active: 0.5rem;    /* reserve space on right when active */
 
     /* Summary / caret spacing tuning for filter details */
     --summary-control-pad-right: 0.35rem; /* padding on summary-control to avoid caret overlapping count */
@@ -664,12 +669,12 @@ h1 .tag-list {
         padding: var(--tag-padding-filter);
         font-size: var(--font-size-xs);
         font-weight: var(--font-weight-normal);
-        margin-left: 1.5rem;
-        margin-right: 0;
+        margin-left: var(--tag-margin-inactive-left);
+        margin-right: var(--tag-margin-inactive-right);
         border: var(--border-width-tag) solid var(--transparent);
         /* keep the outer orange glow but make inner subtle to distinguish layers */
         box-shadow: var(--shadow-glow-md) rgba(0,0,0,0.04), 0 0 10px var(--orange-light);
-        transition: margin-left 0.3s ease;
+        transition: margin-left 0.3s ease, margin-right 0.3s ease;
     }
 
     /* Consolidated: role-colored tags in tag-list using scoped variables */
@@ -702,6 +707,8 @@ h1 .tag-list {
     color: inherit;
     position: relative;
     box-sizing: border-box;
+    /* Always reserve space for count to prevent size jump - NO TRANSITION */
+    padding-right: var(--count-reserve);
 
     /* two-tone border using layered backgrounds and background-clip */
     border: var(--border-width-tag) solid transparent;
@@ -714,6 +721,7 @@ h1 .tag-list {
 .pill-outer.active {
     background-image: linear-gradient(var(--orange-active), var(--orange-active)), linear-gradient(to bottom, var(--orange-top-active), var(--orange-bottom-active));
     color: var(--white);
+    /* Maintain same padding-right (already set on base .pill-outer) */
 }
 
 /* Role-colored pill outer containers */
@@ -731,7 +739,7 @@ h1 .tag-list {
     background-color: var(--orange-active);
     color: var(--white);
     border: var(--border-width-tag) solid var(--orange-active-solid);
-    margin-left: 0;
+    margin-left: var(--tag-margin-active-left);
     margin-right: var(--tag-margin-active-right);
 }
 
@@ -767,11 +775,12 @@ h1 .tag-list {
     /* No transform nudge here — kept scoped to summary controls only. */
 }
 
-/* Ensure non-summary pills expand to make room for their right counts when active. */
-.pill-outer:not(.summary-control).active {
+/* Note: padding-right is now applied to ALL .pill-outer elements to prevent layout shift.
+   The padding-right rule below is no longer needed but kept for documentation. */
+/* .pill-outer:not(.summary-control).active {
     padding-right: var(--count-reserve);
     transition: padding-right var(--transition-fast);
-}
+} */
 
 /* Scoped nudge for right count only inside filter details' summary controls */
 .filters > details > summary .summary-control .count.right {
