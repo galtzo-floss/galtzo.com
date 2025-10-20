@@ -71,74 +71,6 @@
     - rails
     - activerecord
   docs_site:
-- name: activesupport-broadcast_logger
-  description: Rails v8 ActiveSupport::BroadcastLogger, fixed & backported to Rails
-    v5.2+ & Ruby 2.7+
-  language: Ruby
-  ecosystem: rubygems
-  minimum_version: 2.7
-  role: author
-  first_commit_on: 2024/11/20
-  first_commit: https://github.com/galtzo-floss/activesupport-broadcast_logger/commit/124104a29ed3c6bc1aa0468adba3cbf9f6f46296
-  funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/galtzo-floss
-    - type: Liberapay
-      url: https://liberapay.com/pboling
-  forges:
-    - type: GitHub
-      url: https://github.com/galtzo-floss/activesupport-broadcast_logger
-      owner: galtzo-floss
-  tags:
-    - rails
-    - activesupport
-    - log
-  docs_site:
-- name: activesupport-logger
-  description: Rails v8 ActiveSupport::Logger backported to Rails v5.2+ & Ruby 2.7+
-  language: Ruby
-  ecosystem: rubygems
-  minimum_version: 2.7
-  role: author
-  first_commit_on: 2024/10/10
-  first_commit: https://github.com/galtzo-floss/activesupport-logger/commit/b76fe570a037738ff907dccd8af135cb14e87fa7
-  funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/galtzo-floss
-    - type: Liberapay
-      url: https://liberapay.com/pboling
-  forges:
-    - type: GitHub
-      url: https://github.com/galtzo-floss/activesupport-logger
-      owner: galtzo-floss
-  tags:
-    - rails
-    - activesupport
-    - log
-  docs_site:
-- name: activesupport-tagged_logging
-  description: Rails v8 ActiveSupport::TaggedLogging, fixed & backported to Rails
-    v5.2+ & Ruby 2.7+
-  language: Ruby
-  ecosystem: rubygems
-  minimum_version: 2.7
-  role: author
-  first_commit_on: 2024/10/10
-  first_commit: https://github.com/galtzo-floss/activesupport-tagged_logging/commit/af83665a4f6d44c1fa926e2db6b7a2fd4c79cdd9
-  funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/galtzo-floss
-    - type: Liberapay
-      url: https://liberapay.com/pboling
-  forges:
-    - type: GitHub
-      url: https://github.com/galtzo-floss/activesupport-tagged_logging
-      owner: galtzo-floss
-  tags:
-    - rails
-    - activesupport
-    - log
-  docs_site:
 - name: anonymous_active_record
   description: Replacement for broken Class.new(ActiveRecord::Base)
   language: Ruby
@@ -252,4 +184,42 @@
       owner: galtzo-floss
   tags:
     - stale
+  docs_site:
+- name: bash_step
+  description: Bash Step Function Library
+  language: Bash
+  ecosystem:
+  minimum_version: 4.0
+  role: author
+  first_commit_on: 2013/11/08
+  first_commit: https://github.com/pboling/bash_step/commit/13446f1a24bef1dafb66e916bf8bb321c8162851
+  funding_sites:
+    - type: Liberapay
+      url: https://liberapay.com/pboling
+  forges:
+    - type: GitHub
+      url: https://github.com/pboling/bash_step
+      owner: pboling
+  tags:
+    - shell
+    - cli
+  docs_site:
+- name: bsfl
+  description: Bash Script Function Library
+  language: Bash
+  ecosystem:
+  minimum_version: 4.0
+  role: maintainer
+  first_commit_on: 2013/11/08
+  first_commit: https://github.com/pboling/bsfl/commit/27444edd62fb4df3da662e8254a86c083e25d55b
+  funding_sites:
+    - type: Liberapay
+      url: https://liberapay.com/pboling
+  forges:
+    - type: GitHub
+      url: https://github.com/pboling/bsfl
+      owner: pboling
+  tags:
+    - shell
+    - cli
   docs_site:

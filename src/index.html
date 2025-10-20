@@ -273,22 +273,20 @@ body_class: projects
     </div>
     <h2>
       <% if project["ecosystem"] == "rubygems" %>
-      <a href="https://bestgems.org/gems/<%= project['name'] %>" class="gem-link" target="_blank" rel="noopener">
+      <a href="https://bestgems.org/gems/<%= project['name'] %>" class="project-language gem-link" target="_blank" rel="noopener">
         <img
                 src="/assets/images/<%= project['language'] %>.svg"
                 alt="<%= project['language'] %>"
-                class="language"
-                height="24px"
+                class="language <%= project['language'].downcase %>"
         >
         <%= project["name"] %>
       </a>
       <% else %>
-      <span>
+      <span class="project-language">
         <img
                 src="/assets/images/<%= project['language'] %>.svg"
                 alt="<%= project['language'] %>"
-                class="language"
-                height="24px"
+                class="language <%= project['language'].downcase %>"
         >
         <%= project["name"] %>
       </span>
@@ -338,7 +336,7 @@ body_class: projects
       <span class="tag min-language"><img
               src="/assets/images/<%= project['language'] %>.svg"
               alt="<%= project['language'] %> >= <%= project['minimum_version'] %>"
-              class="language"
+              class="language <%= project['language'].downcase %>"
       ><%= project["language"] %>&nbsp;>=&nbsp;<%= project["minimum_version"] %></span>
       <% end %>
       <% if project["tags"] && project["tags"].any? %>
