@@ -88,7 +88,7 @@ body_class: projects
      </span>
      <% end %>
    </span>
- </h1>
+</h1>
 
 <p>
   Hi, my name is Peter Boling, and I love to solve problems with code.
@@ -98,30 +98,29 @@ body_class: projects
   Use the switches to filter projects by role, year, tags, and minimum language versions.
 </p>
 
-<details>
-  <summary>
-    <ul class="tag-list">
-      <li>
-        <span class="tag-link summary-control">
-           <span class="count left"><%== year_counts.length.to_s.rjust(2, 'x').gsub('x', '&nbsp;') %></span>
-           <span class="tag">Filter by Start Year</span>
-           <span class="count right"><%== year_counts.length.to_s.ljust(2, 'x').gsub('x', '&nbsp;') %></span>
-        </span>
-       </li>
-     </ul>
-   </summary>
+<div class="filters">
+  <details>
+    <summary>
+      <div class="tag-list">
+      <span class="tag-link summary-control">
+         <span class="count left"><%== year_counts.length.to_s.rjust(2, 'x').gsub('x', '&nbsp;') %></span>
+         <span class="tag">Filter by Start Year</span>
+         <span class="count right"><%== year_counts.length.to_s.ljust(2, 'x').gsub('x', '&nbsp;') %></span>
+      </span>
+      </div>
+    </summary>
 
-   <ul class="tag-list">
-     <% years.each do |year| %>
-     <li>
-       <button type="button" class="tag-link" data-tag="<%= year %>">
-         <span class="count left"><%== year_counts[year].to_s.rjust(2, 'x').gsub('x', '&nbsp;') %></span>
-         <span class="tag <%= year %>"><%= year %></span>
-         <span class="count right"><%== year_counts[year].to_s.ljust(2, 'x').gsub('x', '&nbsp;') %></span>
-       </button>
-     </li>
-     <% end %>
-   </ul>
+    <ul class="tag-list">
+      <% years.each do |year| %>
+      <li>
+        <button type="button" class="tag-link" data-tag="<%= year %>">
+          <span class="count left"><%== year_counts[year].to_s.rjust(2, 'x').gsub('x', '&nbsp;') %></span>
+          <span class="tag <%= year %>"><%= year %></span>
+          <span class="count right"><%== year_counts[year].to_s.ljust(2, 'x').gsub('x', '&nbsp;') %></span>
+        </button>
+      </li>
+      <% end %>
+    </ul>
   </details>
 
   <details>
@@ -231,31 +230,32 @@ body_class: projects
       <% end %>
     </ul>
   </details>
+</div>
 
 <ul class="project-list">
   <% site.data.projects.each do |project| %>
-    <% raise "Project #{project['name']} has no role!" if project['role'].nil? %>
-    <% raise "Project #{project['name']} has invalid role #{project['role']}!" unless allowed_roles.include?(project['role']) %>
-    <% year = project['first_commit_on']&.to_s&.split('/')&.first %>
-    <% gh_forge = project["forges"].find { |f| f["type"] == "GitHub" } %>
-    <% first_forge = project["forges"].first %>
-    <%# Build a reusable list of tags for the card so filtering doesn't rely on visible DOM elements %>
-    <% tags_for_card = (project['tags'] || []).dup %>
-    <% tags_for_card << project['role'] %>
-    <% tags_for_card << year %>
-    <% if project['minimum_version'] %>
-      <% tags_for_card << "#{project['language']} >= #{project['minimum_version']}" %>
-    <% end %>
-    <li class="card <%= project['role'] %>" data-tags='<%= tags_for_card.to_json %>'>
-      <div class="corner-anchor fork">
-        <% if gh_forge %>
-        <a href="<%= gh_forge['url'] %>/fork" class="corner-banner banner-fork" target="_blank" rel="noopener">Fork Me</a>
-        <% elsif first_forge %>
-        <a href="<%= first_forge['url'] %>" class="corner-banner banner-fork" target="_blank" rel="noopener">Clone Me</a>
-        <% end %>
-      </div>
-      <div class="corner-anchor role">
-        <div class="corner-banner banner-role <%= project['role'] %>">
+  <% raise "Project #{project['name']} has no role!" if project['role'].nil? %>
+  <% raise "Project #{project['name']} has invalid role #{project['role']}!" unless allowed_roles.include?(project['role']) %>
+  <% year = project['first_commit_on']&.to_s&.split('/')&.first %>
+  <% gh_forge = project["forges"].find { |f| f["type"] == "GitHub" } %>
+  <% first_forge = project["forges"].first %>
+  <%# Build a reusable list of tags for the card so filtering doesn't rely on visible DOM elements %>
+  <% tags_for_card = (project['tags'] || []).dup %>
+  <% tags_for_card << project['role'] %>
+  <% tags_for_card << year %>
+  <% if project['minimum_version'] %>
+  <% tags_for_card << "#{project['language']} >= #{project['minimum_version']}" %>
+  <% end %>
+  <li class="card <%= project['role'] %>" data-tags='<%= tags_for_card.to_json %>'>
+    <div class="corner-anchor fork">
+      <% if gh_forge %>
+      <a href="<%= gh_forge['url'] %>/fork" class="corner-banner banner-fork" target="_blank" rel="noopener">Fork Me</a>
+      <% elsif first_forge %>
+      <a href="<%= first_forge['url'] %>" class="corner-banner banner-fork" target="_blank" rel="noopener">Clone Me</a>
+      <% end %>
+    </div>
+    <div class="corner-anchor role">
+      <div class="corner-banner banner-role <%= project['role'] %>">
           <span class="role-label">
             <% if gh_forge %>
             <a href="<%= gh_forge['url'] %>/commits?author=pboling" target="_blank" rel="noopener"><%= project['role'].capitalize %></a>
@@ -267,21 +267,21 @@ body_class: projects
             <a href="<%= project['first_commit'] %>" class="role-start" target="_blank" rel="noopener">since <%= year %></a>
             <% end %>
           </span>
-        </div>
       </div>
-      <h2>
-        <% if project["ecosystem"] %>
-        <a href="https://bestgems.org/gems/<%= project['name'] %>" class="gem-link" target="_blank" rel="noopener">
-          <img
-                  src="/assets/images/<%= project['language'] %>.svg"
-                  alt="<%= project['language'] %>"
-                  class="language"
-                  height="24px"
-          >
-          <%= project["name"] %>
-        </a>
-        <% else %>
-        <span>
+    </div>
+    <h2>
+      <% if project["ecosystem"] %>
+      <a href="https://bestgems.org/gems/<%= project['name'] %>" class="gem-link" target="_blank" rel="noopener">
+        <img
+                src="/assets/images/<%= project['language'] %>.svg"
+                alt="<%= project['language'] %>"
+                class="language"
+                height="24px"
+        >
+        <%= project["name"] %>
+      </a>
+      <% else %>
+      <span>
           <img
                   src="/assets/images/<%= project['language'] %>.svg"
                   alt="<%= project['language'] %>"
@@ -290,90 +290,93 @@ body_class: projects
           >
           <%= project["name"] %>
         </span>
-        <% end %>
-      </h2>
-      <p>
-        <% if !project["funding_sites"].nil? %>
-        <% project["funding_sites"].each do |funding_site| %>
-        <a href="<%= funding_site['url'] %>" class="funding-link" target="_blank" rel="noopener">
-          <img
-                  src="/assets/images/<%= funding_site['type'] %>.svg"
-                  alt="Documentation Website (<%= funding_site['url'] %>)"
-                  class="link-icon funding-site"
-          >
-        </a>
-        <% end %>
-        <% else %>
-        <a href="https://liberapay.com/pboling" class="funding-link" target="_blank" rel="noopener">
-          <img
-                  src="/assets/images/Liberapay.svg"
-                  alt="This project has no funding links. Please donate to me directly!"
-                  class="link-icon funding-site"
-          >
-        </a>
-        <% end %>
-        <% if !project["docs_site"].nil? %>
-        <a href="<%= project['doc_site'] %>" class="doc-link" target="_blank" rel="noopener">
-          <img
-                  src="/assets/images/Read-the-Docs.svg"
-                  alt="Documentation Website (<%= project['doc_site'] %>)"
-                  class="link-icon doc-site"
-          >
-        </a>
-        <% end %>
-        <% project["forges"].each do |forge| %>
-        <a href="<%= forge['url'] %>" class="forge-link" target="_blank" rel="noopener">
-          <img
-                  src="/assets/images/<%= forge['type'] %>.svg"
-                  alt="forge: <%= forge['type'] %> (<%= forge['url'] %>)"
-                  class="link-icon forge"
-          >
-        </a>
-        <% end %>
-      </p>
-      <p>
-        <% if !project["minimum_version"].nil? %>
-        <span class="tag min-language"><img
-                src="/assets/images/<%= project['language'] %>.svg"
-                alt="<%= project['language'] %> >= <%= project['minimum_version'] %>"
-                class="language"
-        ><%= project["language"] %> >= <%= project["minimum_version"] %></span>
-        <% end %>
-        <% if project["tags"] && project["tags"].any? %>
-        <% project["tags"].each do |tag| %>
-        <span class="tag <%= tag %>"><%= tag %></span>
-        <% end %>
-        <% else %>
-        <% raise "Project #{project['name']} has no tags!" %>
-        <% end %>
-      </p>
-      <p>
-        <% if gh_forge %>
-        <img alt="<%= project['name'] %> GitHub License" src="https://img.shields.io/github/license/<%= gh_forge['owner'] %>/<%= project['name'] %>?style=social">
-        <img alt="<%= project['name'] %> GitHub stars" src="https://img.shields.io/github/stars/<%= gh_forge['owner'] %>/<%= project['name'] %>?style=social">
-        <img alt="<%= project['name'] %> GitHub commit activity" src="https://img.shields.io/github/commit-activity/m/<%= gh_forge['owner'] %>/<%= project['name'] %>?style=social">
-        <% if project["language"] == "Ruby" %>
-        <img alt="<%= project['name'] %> GitHub commits since latest release" src="https://img.shields.io/github/commits-since/<%= gh_forge['owner'] %>/<%= project['name'] %>/latest?style=social">
-        <img alt="<%= project['name'] %> Gem Total Downloads" src="https://img.shields.io/gem/dt/<%= project['name'] %>?style=social">
-        <% end %>
-        <% end %>
-      </p>
-      <p><%== project["description"] %></p>
-      <% raise "#{project['name']}" if project["funding_sites"].nil? %>
-      <% if project["funding_sites"].any? %>
-      <p>
-        Financially support my work on <pre><%= project["name"] %></pre> via:
-        <% last_comma_index = project["funding_sites"].size - 1 %>
-        <% project["funding_sites"].each_with_index do |funding_site, i| %>
-        <a href="<%= funding_site['url'] %>" class="text-link" target="_blank" rel="noopener">
-          <% if funding_site['type'] == 'OpenCollective' %>
-          "<%= funding_site['url'].split("/")[-1] %>"
-          <% end %>
-          <%= funding_site['type'] %>
-        </a><%= i <= last_comma_index - 1 ? ", " : "" %><%= i == last_comma_index - 1 ? "or" : "" %>
-        <% end %>
-      </p>
       <% end %>
-    </li>
+    </h2>
+    <p>
+      <% if !project["funding_sites"].nil? %>
+      <% project["funding_sites"].each do |funding_site| %>
+      <a href="<%= funding_site['url'] %>" class="funding-link" target="_blank" rel="noopener">
+        <img
+                src="/assets/images/<%= funding_site['type'] %>.svg"
+                alt="Documentation Website (<%= funding_site['url'] %>)"
+                class="link-icon funding-site"
+        >
+      </a>
+      <% end %>
+      <% else %>
+      <a href="https://liberapay.com/pboling" class="funding-link" target="_blank" rel="noopener">
+        <img
+                src="/assets/images/Liberapay.svg"
+                alt="This project has no funding links. Please donate to me directly!"
+                class="link-icon funding-site"
+        >
+      </a>
+      <% end %>
+      <% if !project["docs_site"].nil? %>
+      <a href="<%= project['doc_site'] %>" class="doc-link" target="_blank" rel="noopener">
+        <img
+                src="/assets/images/Read-the-Docs.svg"
+                alt="Documentation Website (<%= project['doc_site'] %>)"
+                class="link-icon doc-site"
+        >
+      </a>
+      <% end %>
+      <% project["forges"].each do |forge| %>
+      <a href="<%= forge['url'] %>" class="forge-link" target="_blank" rel="noopener">
+        <img
+                src="/assets/images/<%= forge['type'] %>.svg"
+                alt="forge: <%= forge['type'] %> (<%= forge['url'] %>)"
+                class="link-icon forge"
+        >
+      </a>
+      <% end %>
+    </p>
+    <p>
+      <% if !project["minimum_version"].nil? %>
+      <span class="tag min-language"><img
+              src="/assets/images/<%= project['language'] %>.svg"
+              alt="<%= project['language'] %> >= <%= project['minimum_version'] %>"
+              class="language"
+      ><%= project["language"] %> >= <%= project["minimum_version"] %></span>
+      <% end %>
+      <% if project["tags"] && project["tags"].any? %>
+      <% project["tags"].each do |tag| %>
+      <span class="tag <%= tag %>"><%= tag %></span>
+      <% end %>
+      <% else %>
+      <% raise "Project #{project['name']} has no tags!" %>
+      <% end %>
+    </p>
+    <p>
+      <% if gh_forge %>
+      <img alt="<%= project['name'] %> GitHub License" src="https://img.shields.io/github/license/<%= gh_forge['owner'] %>/<%= project['name'] %>?style=social">
+      <img alt="<%= project['name'] %> GitHub stars" src="https://img.shields.io/github/stars/<%= gh_forge['owner'] %>/<%= project['name'] %>?style=social">
+      <img alt="<%= project['name'] %> GitHub commit activity" src="https://img.shields.io/github/commit-activity/m/<%= gh_forge['owner'] %>/<%= project['name'] %>?style=social">
+      <% if project["language"] == "Ruby" %>
+      <img alt="<%= project['name'] %> GitHub commits since latest release" src="https://img.shields.io/github/commits-since/<%= gh_forge['owner'] %>/<%= project['name'] %>/latest?style=social">
+      <img alt="<%= project['name'] %> Gem Total Downloads" src="https://img.shields.io/gem/dt/<%= project['name'] %>?style=social">
+      <% end %>
+      <% end %>
+    </p>
+    <p><%== project["description"] %></p>
+    <% raise "#{project['name']}" if project["funding_sites"].nil? %>
+    <% if project["funding_sites"].any? %>
+    <p>
+      Financially support my work on <pre><%= project["name"] %></pre> via:
+    <% last_comma_index = project["funding_sites"].size - 1 %>
+    <% project["funding_sites"].each_with_index do |funding_site, i| %>
+    <a href="<%= funding_site['url'] %>" class="text-link" target="_blank" rel="noopener">
+      <% if funding_site['type'] == 'OpenCollective' %>
+      "<%= funding_site['url'].split("/")[-1] %>"
+      <% end %>
+      <%= funding_site['type'] %>
+    </a><%= i <= last_comma_index - 1 ? ", " : "" %><%= i == last_comma_index - 1 ? "or" : "" %>
+    <% end %>
+    </p>
+    <% end %>
+  </li>
   <% end %>
 </ul>
+
+<!-- Inline script handles layout adjustments so expanded filter panels don't overlap the project list -->
+<!-- removed: script previously adjusted filters.style.paddingBottom; panels now push content via CSS -->

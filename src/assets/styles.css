@@ -62,12 +62,52 @@
 
 /* System default: dark mode variables */
 @media (prefers-color-scheme: dark) {
-  :root {
+    :root {
+        --text-color: #e5e7eb;
+        --border-color: #2a2f3a;
+        --background-light: #1f2730;
+
+        /* Wire dark visual system to the centralized dark orange variants */
+        --orange: var(--orange-base-dark);
+        --orange-light: var(--orange-light-base-dark);
+        --orange-solid: var(--orange-solid-dark);
+
+        --page-bg: #0b0f14;
+        --card-bg: #111827;
+        --muted-bg: #111827;
+        --control-bg: #1f2937;
+        --control-hover-bg: #374151;
+        --control-border: #334155;
+        --control-text: #e5e7eb;
+    }
+}
+
+/* Forced overrides via attribute on <html> */
+:root[data-theme="light"] {
+    --text-color: #111;
+    --border-color: #eee;
+    --background-light: #eee;
+
+    /* Explicit light theme maps back to the centralized light base values */
+    --orange: var(--orange-base);
+    --orange-light: var(--orange-light-base);
+    --orange-solid: var(--orange-solid-base);
+
+    --page-bg: #ffffff;
+    --card-bg: #ffffff;
+    --muted-bg: #f6f7f9;
+    --control-bg: #f1f5f9;
+    --control-hover-bg: #e2e8f0;
+    --control-border: #cbd5e1;
+    --control-text: #0f172a;
+}
+
+:root[data-theme="dark"] {
     --text-color: #e5e7eb;
     --border-color: #2a2f3a;
     --background-light: #1f2730;
 
-    /* Wire dark visual system to the centralized dark orange variants */
+    /* Explicit dark theme maps to the centralized dark base values */
     --orange: var(--orange-base-dark);
     --orange-light: var(--orange-light-base-dark);
     --orange-solid: var(--orange-solid-dark);
@@ -79,46 +119,6 @@
     --control-hover-bg: #374151;
     --control-border: #334155;
     --control-text: #e5e7eb;
-  }
-}
-
-/* Forced overrides via attribute on <html> */
-:root[data-theme="light"] {
-  --text-color: #111;
-  --border-color: #eee;
-  --background-light: #eee;
-
-  /* Explicit light theme maps back to the centralized light base values */
-  --orange: var(--orange-base);
-  --orange-light: var(--orange-light-base);
-  --orange-solid: var(--orange-solid-base);
-
-  --page-bg: #ffffff;
-  --card-bg: #ffffff;
-  --muted-bg: #f6f7f9;
-  --control-bg: #f1f5f9;
-  --control-hover-bg: #e2e8f0;
-  --control-border: #cbd5e1;
-  --control-text: #0f172a;
-}
-
-:root[data-theme="dark"] {
-  --text-color: #e5e7eb;
-  --border-color: #2a2f3a;
-  --background-light: #1f2730;
-
-  /* Explicit dark theme maps to the centralized dark base values */
-  --orange: var(--orange-base-dark);
-  --orange-light: var(--orange-light-base-dark);
-  --orange-solid: var(--orange-solid-dark);
-
-  --page-bg: #0b0f14;
-  --card-bg: #111827;
-  --muted-bg: #111827;
-  --control-bg: #1f2937;
-  --control-hover-bg: #374151;
-  --control-border: #334155;
-  --control-text: #e5e7eb;
 }
 
 body {
@@ -257,84 +257,84 @@ a {
 
 /* Project card positioning for corner banners */
 .card {
-  position: relative;
-  overflow: hidden;
+    position: relative;
+    overflow: hidden;
 }
 
 /* Absolute + rotate recipe anchored to the card */
 .card .corner-banner {
-  position: absolute;
-  width: var(--ribbon-width);
-  padding: 9px 0;
-  text-align: center;
-  font-weight: 700;
-  font-size: 14px;
-  color: #fff;
-  text-decoration: none;
-  transform: rotate(45deg);
-  transform-origin: 50% 50%;
-  white-space: nowrap;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
-  z-index: 10;
-  /* Center content precisely */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  line-height: 1;
+    position: absolute;
+    width: var(--ribbon-width);
+    padding: 9px 0;
+    text-align: center;
+    font-weight: 700;
+    font-size: 14px;
+    color: #fff;
+    text-decoration: none;
+    transform: rotate(45deg);
+    transform-origin: 50% 50%;
+    white-space: nowrap;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    z-index: 10;
+    /* Center content precisely */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
 }
 
 /* Fork/Clone (closest to corner) */
 .card .banner-fork {
-  top: var(--ribbon-top);
-  right: var(--ribbon-right);
-  background: linear-gradient(135deg, #1e5799 0%, #2989d8 50%, #207cca 100%);
-  z-index: 11;
+    top: var(--ribbon-top);
+    right: var(--ribbon-right);
+    background: linear-gradient(135deg, #1e5799 0%, #2989d8 50%, #207cca 100%);
+    z-index: 11;
 }
 
 /* Role banner: convert to a full-width horizontal bar across the top of the card */
 .card .banner-role {
-  /* override ribbon defaults */
-  transform: none;
-  transform-origin: initial;
-  white-space: normal;
+    /* override ribbon defaults */
+    transform: none;
+    transform-origin: initial;
+    white-space: normal;
 
-  /* full-width bar at top */
-  top: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
-  height: var(--rolebar-height);
-  /* extra right padding to avoid fork ribbon overlap visually */
-  padding: 0 calc(0.75rem + var(--fork-notch)) 0 0.75rem;
+    /* full-width bar at top */
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: var(--rolebar-height);
+    /* extra right padding to avoid fork ribbon overlap visually */
+    padding: 0 calc(0.75rem + var(--fork-notch)) 0 0.75rem;
 
-  /* reset size from ribbon values */
-  font-size: 0.9rem;
-  line-height: var(--rolebar-height);
+    /* reset size from ribbon values */
+    font-size: 0.9rem;
+    line-height: var(--rolebar-height);
 
-  /* layout contents: label left, since-year right */
-  justify-content: space-between;
+    /* layout contents: label left, since-year right */
+    justify-content: space-between;
 
-  /* layering: must sit under the fork ribbon on the right */
-  z-index: 10;
+    /* layering: must sit under the fork ribbon on the right */
+    z-index: 10;
 
-  /* shape to match card corners */
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
+    /* shape to match card corners */
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
 }
 
 /* Role bar content styles */
 .card .banner-role .role-label,
 .card .banner-role .role-start {
-  display: inline-flex;
-  align-items: center;
-  line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    line-height: 1;
 }
 .card .banner-role a {
-  color: inherit; /* uses white from corner-banner */
-  text-decoration: none;
+    color: inherit; /* uses white from corner-banner */
+    text-decoration: none;
 }
 .card .banner-role a:hover {
-  text-decoration: underline;
+    text-decoration: underline;
 }
 
 /* New: subtle role tint for the horizontal bar. Use small color mixes
@@ -342,52 +342,52 @@ a {
    by letting links inherit the computed color. */
 .card.author.banner-role,
 .card.author .banner-role {
-  /* very subtle tint from the author solid color mixed with card background */
-  background: color-mix(in oklab, var(--author-solid) 8%, var(--card-bg));
-  /* soft inner glow on the bar's lower edge using the role color */
-  box-shadow: inset 0 -6px 12px -8px var(--author-color);
-  color: var(--text-color);
+    /* very subtle tint from the author solid color mixed with card background */
+    background: color-mix(in oklab, var(--author-solid) 8%, var(--card-bg));
+    /* soft inner glow on the bar's lower edge using the role color */
+    box-shadow: inset 0 -6px 12px -8px var(--author-color);
+    color: var(--text-color);
 }
 
 .card.maintainer.banner-role,
 .card.maintainer .banner-role {
-  background: color-mix(in oklab, var(--maintainer-solid) 8%, var(--card-bg));
-  box-shadow: inset 0 -6px 12px -8px var(--maintainer-color);
-  color: var(--text-color);
+    background: color-mix(in oklab, var(--maintainer-solid) 8%, var(--card-bg));
+    box-shadow: inset 0 -6px 12px -8px var(--maintainer-color);
+    color: var(--text-color);
 }
 
 .card.contributor.banner-role,
 .card.contributor .banner-role {
-  background: color-mix(in oklab, var(--contributor-solid) 8%, var(--card-bg));
-  box-shadow: inset 0 -6px 12px -8px var(--contributor-color);
-  color: var(--text-color);
+    background: color-mix(in oklab, var(--contributor-solid) 8%, var(--card-bg));
+    box-shadow: inset 0 -6px 12px -8px var(--contributor-color);
+    color: var(--text-color);
 }
 
 /* Small left accent stripe to reinforce the role color on wider screens */
 .card .banner-role::before {
-  content: "";
-  position: absolute;
-  left: 0.25rem;
-  top: 0.375rem;
-  bottom: 0.375rem;
-  width: 6px;
-  border-radius: 3px;
-  /* default transparent; role-specific rules below will override */
-  background: transparent;
-  z-index: 11; /* sit above the bar but below the fork ribbon */
+    content: "";
+    position: absolute;
+    left: 0.25rem;
+    top: 0.375rem;
+    bottom: 0.375rem;
+    width: 6px;
+    border-radius: 3px;
+    /* default transparent; role-specific rules below will override */
+    background: transparent;
+    z-index: 11; /* sit above the bar but below the fork ribbon */
 }
 
 .card.author .banner-role::before {
-  background: var(--author-solid);
-  opacity: 0.12;
+    background: var(--author-solid);
+    opacity: 0.12;
 }
 .card.maintainer .banner-role::before {
-  background: var(--maintainer-solid);
-  opacity: 0.12;
+    background: var(--maintainer-solid);
+    opacity: 0.12;
 }
 .card.contributor .banner-role::before {
-  background: var(--contributor-solid);
-  opacity: 0.12;
+    background: var(--contributor-solid);
+    opacity: 0.12;
 }
 
 /* Hide cartain tags inside project cards but keep them in the DOM for filtering.
@@ -395,16 +395,16 @@ a {
    still access the text if needed. Can be added to any tag to hide it visually while
    keeping it available to scripts. Use on .tag elements: <span class="tag foo filter-hidden"> */
 .tag.filter-hidden {
-  position: absolute !important;
-  width: 1px !important;
-  height: 1px !important;
-  padding: 0 !important;
-  margin: -1px !important;
-  overflow: hidden !important;
-  clip: rect(0 0 0 0) !important;
-  clip-path: inset(50%) !important;
-  white-space: nowrap !important;
-  border: 0 !important;
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0 0 0 0) !important;
+    clip-path: inset(50%) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
 }
 
 .author {
@@ -425,8 +425,8 @@ a {
 
 /* Ensure pills don’t use any upward shift by default (helps small viewports) */
 h1 .tag-list {
-  transform: none;
-  margin-left: 0;
+    transform: none;
+    margin-left: 0;
 }
 
 /* Remove mobile-specific overrides no longer needed due to flex wrapping */
@@ -481,11 +481,11 @@ h1 .tag-list {
         position: relative;
 
         /* (restored original: no button normalization here) */
-       /* two-tone border using layered backgrounds and background-clip */
-       border: 2px solid transparent; /* keep a physical border width for layout */
-       background-image: linear-gradient(var(--background-light), var(--background-light)), linear-gradient(to bottom, var(--orange-top), var(--orange-bottom));
-       background-origin: border-box;
-       background-clip: padding-box, border-box;
+        /* two-tone border using layered backgrounds and background-clip */
+        border: 2px solid transparent; /* keep a physical border width for layout */
+        background-image: linear-gradient(var(--background-light), var(--background-light)), linear-gradient(to bottom, var(--orange-top), var(--orange-bottom));
+        background-origin: border-box;
+        background-clip: padding-box, border-box;
     }
 
     /* When active, inner background is orange while border remains two-tone orange */
@@ -503,75 +503,75 @@ h1 .tag-list {
     /* Summary / Details: show summary contents in a single horizontal row, with
        the expanded details panel appearing below the same row when open. */
     details {
-      display: block;
-      margin: 0;
+        display: block;
+        margin: 0;
     }
 
     /* Base summary reset so we can control layout precisely */
     details > summary {
-      list-style: none; /* remove marker spacing */
-      cursor: pointer;
-      padding: 0;
-      margin: 0;
-      display: block;
+        list-style: none; /* remove marker spacing */
+        cursor: pointer;
+        padding: 0;
+        margin: 0;
+        display: block;
     }
 
     /* Hide the default disclosure triangle across browsers */
     details > summary::-webkit-details-marker,
     details > summary::marker {
-      display: none;
+        display: none;
     }
 
     /* Force the tag-list inside the summary to be a single non-wrapping row */
     details > summary .tag-list {
-      display: flex;
-      flex-wrap: nowrap;        /* keep items in a single row */
-      gap: 0.6rem 0.9rem;
-      align-items: center;
-      overflow-x: auto;        /* allow horizontal scrolling on small viewports */
-      -webkit-overflow-scrolling: touch;
-      padding: 0;
-      margin: 0;
+        display: flex;
+        flex-wrap: nowrap;        /* keep items in a single row */
+        gap: 0.6rem 0.9rem;
+        align-items: center;
+        overflow-x: auto;        /* allow horizontal scrolling on small viewports */
+        -webkit-overflow-scrolling: touch;
+        padding: 0;
+        margin: 0;
     }
 
     /* Prevent individual tag-links from wrapping internally */
     details > summary .tag-link {
-      white-space: nowrap;
+        white-space: nowrap;
     }
 
     /* When the details are expanded, present the following tag-list as a
        full-width panel below the summary row */
-    details > ul.tag-list {
-      margin-top: 0.6rem;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.7rem 1rem;
-      list-style: none;
-      padding: 0;
+    details > .tag-list {
+        margin-top: 0.6rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.7rem 1rem;
+        list-style: none;
+        padding: 0;
     }
 
     /* Small caret indicator on the summary-control (keeps the DOM semantics) */
     details > summary .summary-control {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
     }
 
     details > summary .summary-control::after {
-      content: "";
-      display: inline-block;
-      width: 0;
-      height: 0;
-      border-left: 6px solid transparent;
-      border-right: 6px solid transparent;
-      border-top: 6px solid currentColor;
-      transition: transform 0.18s ease;
-      margin-left: 0.25rem;
+        content: "";
+        display: inline-block;
+        width: 0;
+        height: 0;
+        border-left: 6px solid transparent;
+        border-right: 6px solid transparent;
+        border-top: 6px solid currentColor;
+        transition: transform 0.18s ease;
+        margin-left: 0.25rem;
     }
 
     /* Rotate caret when open */
     details[open] > summary .summary-control::after {
-      transform: rotate(180deg);
+        transform: rotate(180deg);
     }
 
     .tag-link.author {
@@ -667,9 +667,94 @@ h1 .tag-list {
     }
 }
 
+/* Filters container: lay out the details summaries in a single horizontal row */
+.filters {
+    position: relative; /* positioning context for absolute panels */
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+    justify-content: flex-start;
+    /* keep filters visually grouped from surrounding content */
+    margin-bottom: 0.75rem;
+}
+
+/* Each <details> becomes a compact flex item so its <summary> sits inline in the row */
+.filters > details {
+    flex: 0 0 auto; /* size to content, don't grow */
+}
+
+/* Make the summary's tag-list a single-row control */
+.filters > details > summary .tag-list {
+    display: inline-flex;
+    flex-wrap: nowrap;
+    gap: 0.6rem 0.9rem;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+}
+
+/* Panels (the <ul> after the summary) were previously absolutely positioned under the .filters row
+   and removed from the document flow so opening them wouldn't push content down. Switch to a
+   flow-based layout: the panels are hidden by collapsing max-height and expand with a transition
+   so they visually slide open and push the page content down instead of overlapping it. */
+.filters > details > .tag-list {
+    position: static; /* participate in the document flow so panels push content down */
+    margin-top: 0.6rem;
+    /* background + rounded box similar to previous design */
+    background: var(--muted-bg);
+    border-radius: 8px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    z-index: 20;
+
+    /* Layout as a wrapping flex container when open */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem 1rem;
+    list-style: none;
+
+    /* Collapsed state: hide by limiting height and removing internal padding */
+    overflow: hidden;
+    max-height: 0;
+    padding: 0 0.6rem; /* left/right padding preserved; top/bottom added only when open */
+
+    /* Smooth slide-down/up animation */
+    transition: max-height 240ms cubic-bezier(.2,.8,.2,1), padding-top 180ms ease, padding-bottom 180ms ease;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+/* Show the panel when the details element is open by expanding max-height and restoring padding */
+.filters > details[open] > .tag-list {
+    /* a large enough max-height to accommodate expected content; it's fine if higher than needed */
+    max-height: 600px;
+    padding-top: 0.6rem;
+    padding-bottom: 0.6rem;
+}
+
+/* Allow horizontal scrolling for long summary rows on small screens */
+.filters > details > summary .tag-list {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Ensure the decorative summary-control caret and spacing remain as before */
+.filters > details > summary .summary-control {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Respect users who prefer reduced motion: disable the slide transition and allow instant show/hide */
+@media (prefers-reduced-motion: reduce) {
+    .filters > details > .tag-list {
+        transition: none !important;
+        max-height: none !important; /* let content size naturally when open */
+    }
+}
+
 /* On wide viewports, nudge H1 pills up slightly to align with x-height */
 @media (min-width: 51rem) {
-  h1 .tag-list {
-    transform: translateY(-6px);
-  }
+    h1 .tag-list {
+        transform: translateY(-6px);
+    }
 }
