@@ -37,6 +37,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // pointerup if movement is within a small threshold. For mouse/pen,
     // keep the original immediate toggle for snappy response.
     link.addEventListener('pointerdown', function(e) {
+      // Only handle primary button (left-click) to avoid interfering with right-click context menu
+      if (e.button !== 0) return;
+
       const el = this;
 
       // If not a touch pointer, behave as before (immediate toggle)
