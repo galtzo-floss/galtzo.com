@@ -71,8 +71,11 @@ document.addEventListener('DOMContentLoaded', function() {
     if (details.length <= 1) return;
 
     // Store outside-click handlers so we can remove them when panels close
-    const outsideHandlers = new WeakMap();
+    // const outsideHandlers = new WeakMap();
 
+    // Global outside-click handler: attach once (after the open event tick)
+    // and close any open details when clicking/tapping outside of them.
+    let outsideHandlerAttached = false;
     function positionPanel(detail) {
       const panel = detail.querySelector('.tag-list');
       if (!panel) return;
@@ -90,27 +93,30 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     }
 
-    function addOutsideClose(detail) {
-      // Remove any existing handler first
-      removeOutsideClose(detail);
-      const handler = function(e) {
-        // If click/pointer event is inside this detail, ignore
-        if (detail.contains(e.target)) return;
-        detail.open = false;
-        removeOutsideClose(detail);
-      };
+    function ensureOutsideHandler() {
+      if (outsideHandlerAttached) return;
       // Attach after a tick so the pointerdown that opened the panel doesn't
       // immediately trigger the handler and close it.
-      setTimeout(() => document.addEventListener('pointerdown', handler), 0);
-      outsideHandlers.set(detail, handler);
+      setTimeout(() => {
+        document.addEventListener('pointerdown', docOutsideHandler);
+        outsideHandlerAttached = true;
+      }, 0);
     }
 
-    function removeOutsideClose(detail) {
-      const handler = outsideHandlers.get(detail);
-      if (handler) {
-        document.removeEventListener('pointerdown', handler);
-        outsideHandlers.delete(detail);
+    function removeOutsideHandler() {
+      if (!outsideHandlerAttached) return;
+      document.removeEventListener('pointerdown', docOutsideHandler);
+      outsideHandlerAttached = false;
+    }
+
+    function docOutsideHandler(e) {
+      // If the event target is inside any open detail, do nothing.
+      for (const d of details) {
+        if (d.open && d.contains(e.target)) return;
       }
+      // Otherwise close all open details and remove the handler.
+      details.forEach(d => { if (d.open) d.open = false; });
+      removeOutsideHandler();
     }
 
     // When a <details> toggles open, close the rest, position the panel,
@@ -119,8 +125,9 @@ document.addEventListener('DOMContentLoaded', function() {
       detail.addEventListener('toggle', function() {
         if (!this.open) {
           // closed: cleanup
-          removeOutsideClose(this);
+          // If no other detail is open, remove the global outside handler
           this.classList.remove('align-right');
+          if (!details.some(d => d.open)) removeOutsideHandler();
           return;
         }
 
@@ -132,8 +139,8 @@ document.addEventListener('DOMContentLoaded', function() {
         // Position the panel (may add .align-right)
         positionPanel(this);
 
-        // Add a click-outside-to-close handler
-        addOutsideClose(this);
+        // Ensure the document-level outside handler is installed
+        ensureOutsideHandler();
       });
     });
 
