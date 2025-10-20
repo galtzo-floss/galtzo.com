@@ -556,7 +556,10 @@ h1 .tag-list {
         cursor: pointer;
         padding: 0;
         margin: 0;
-        display: block;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0;
         /* Ensure summary allows child glows/shadows to show outside its box */
         overflow: visible;
     }
@@ -752,13 +755,13 @@ h1 .tag-list {
    width is very small. By default we keep horizontal scrolling, but allow a
    fallback to wrap on extremely narrow screens. */
 .filters > details > summary .tag-list {
-    display: inline-flex;
-    flex-wrap: nowrap;
+    display: flex;
+    flex-wrap: wrap;
     gap: 0.6rem 0.9rem;
     align-items: center;
     padding: 0;
     margin: 0;
-    overflow-x: auto;            /* allow horizontal scrolling */
+    overflow-x: visible;        /* remove horizontal scrolling to allow wrapping */
     overflow-y: visible;         /* ensure vertical overflow (e.g. box-shadow) isn't clipped */
     -webkit-overflow-scrolling: touch;
 }
@@ -912,4 +915,3 @@ h1 .tag-list {
 .filters > details > summary *::after {
     box-shadow: none !important;
 }
-

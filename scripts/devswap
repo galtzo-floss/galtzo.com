@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Script to swap projects.yml with either projects_dev.yml or projects_prod.yml
+
+if [ -f src/_data/projects_dev.yml ]; then
+    mv src/_data/projects.yml src/_data/projects_prod.yml
+    mv src/_data/projects_dev.yml src/_data/projects.yml
+    echo "Swapped to dev: projects_dev.yml -> projects.yml, projects.yml -> projects_prod.yml"
+elif [ -f src/_data/projects_prod.yml ]; then
+    mv src/_data/projects.yml src/_data/projects_dev.yml
+    mv src/_data/projects_prod.yml src/_data/projects.yml
+    echo "Swapped to prod: projects_prod.yml -> projects.yml, projects.yml -> projects_dev.yml"
+else
+    echo "No projects_dev.yml or projects_prod.yml found to swap with projects.yml"
+fi
