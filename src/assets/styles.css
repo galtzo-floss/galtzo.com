@@ -541,6 +541,8 @@ h1 .tag-list {
     details {
         display: block;
         margin: 0;
+        /* Ensure summary allows child glows/shadows to show outside its box */
+        overflow: visible;
     }
 
     /* Base summary reset so we can control layout precisely */
