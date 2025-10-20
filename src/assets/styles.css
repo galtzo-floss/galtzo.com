@@ -703,17 +703,18 @@ h1 .tag-list {
     position: absolute; /* overlay other content */
     top: calc(100% + 0.6rem);
     left: 0;
-    min-width: 14rem; /* reasonable minimum so content isn't cramped */
-    max-width: 42rem; /* keep panels from becoming overly wide */
+    /* responsive width: never wider than the page column but allow space for multiple columns */
+    width: min(48rem, calc(100vw - 2rem));
     background: var(--muted-bg);
     border-radius: 8px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.12);
     z-index: 60; /* sit above page content */
 
-    /* Layout as a wrapping flex container */
-    display: none; /* hidden when details not open */
-    flex-wrap: wrap;
-    gap: 0.7rem 1rem;
+    /* Use a responsive grid so several tags can sit on a row */
+    display: grid; /* changed from flex to grid */
+    grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+    column-gap: 1rem;
+    row-gap: 0.7rem;
     list-style: none;
     padding: 0.6rem; /* consistent internal padding */
     box-sizing: border-box;
@@ -722,7 +723,14 @@ h1 .tag-list {
 
 /* Show overlay when the details element is open */
 .filters > details[open] > .tag-list {
-    display: flex;
+    display: grid;
+}
+
+/* On very small viewports, reduce the min column width so at least two columns can fit */
+@media (max-width: 36rem) {
+    .filters > details > .tag-list {
+        grid-template-columns: repeat(auto-fit, minmax(7.5rem, 1fr));
+    }
 }
 
 /* Ensure the decorative summary-control caret and spacing remain as before */
