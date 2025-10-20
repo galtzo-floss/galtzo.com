@@ -676,11 +676,13 @@ h1 .tag-list {
     justify-content: flex-start;
     /* keep filters visually grouped from surrounding content */
     margin-bottom: 0.75rem;
+    overflow: visible; /* ensure overlays and shadows are visible */
 }
 
 /* Each <details> becomes a compact flex item so its <summary> sits inline in the row */
 .filters > details {
     flex: 0 0 auto; /* size to content, don't grow */
+    position: relative; /* positioning context for its absolutely-positioned panel */
 }
 
 /* Make the summary's tag-list a single-row control */
@@ -691,50 +693,36 @@ h1 .tag-list {
     align-items: center;
     padding: 0;
     margin: 0;
+    overflow-x: auto;            /* allow horizontal scrolling */
+    overflow-y: visible;         /* ensure vertical overflow (e.g. box-shadow) isn't clipped */
+    -webkit-overflow-scrolling: touch;
 }
 
-/* Panels (the <ul> after the summary) were previously absolutely positioned under the .filters row
-   and removed from the document flow so opening them wouldn't push content down. Switch to a
-   flow-based layout: the panels are hidden by collapsing max-height and expand with a transition
-   so they visually slide open and push the page content down instead of overlapping it. */
+/* Panels: position as overlays so opening them won't push content down */
 .filters > details > .tag-list {
-    position: static; /* participate in the document flow so panels push content down */
-    margin-top: 0.6rem;
-    /* background + rounded box similar to previous design */
+    position: absolute; /* overlay other content */
+    top: calc(100% + 0.6rem);
+    left: 0;
+    min-width: 14rem; /* reasonable minimum so content isn't cramped */
+    max-width: 42rem; /* keep panels from becoming overly wide */
     background: var(--muted-bg);
     border-radius: 8px;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-    z-index: 20;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+    z-index: 60; /* sit above page content */
 
-    /* Layout as a wrapping flex container when open */
-    display: flex;
+    /* Layout as a wrapping flex container */
+    display: none; /* hidden when details not open */
     flex-wrap: wrap;
     gap: 0.7rem 1rem;
     list-style: none;
-
-    /* Collapsed state: hide by limiting height and removing internal padding */
-    overflow: hidden;
-    max-height: 0;
-    padding: 0 0.6rem; /* left/right padding preserved; top/bottom added only when open */
-
-    /* Smooth slide-down/up animation */
-    transition: max-height 240ms cubic-bezier(.2,.8,.2,1), padding-top 180ms ease, padding-bottom 180ms ease;
-    padding-top: 0;
-    padding-bottom: 0;
+    padding: 0.6rem; /* consistent internal padding */
+    box-sizing: border-box;
+    overflow: auto; /* allow internal scrolling when needed */
 }
 
-/* Show the panel when the details element is open by expanding max-height and restoring padding */
+/* Show overlay when the details element is open */
 .filters > details[open] > .tag-list {
-    /* a large enough max-height to accommodate expected content; it's fine if higher than needed */
-    max-height: 600px;
-    padding-top: 0.6rem;
-    padding-bottom: 0.6rem;
-}
-
-/* Allow horizontal scrolling for long summary rows on small screens */
-.filters > details > summary .tag-list {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
+    display: flex;
 }
 
 /* Ensure the decorative summary-control caret and spacing remain as before */
@@ -744,13 +732,7 @@ h1 .tag-list {
     gap: 0.5rem;
 }
 
-/* Respect users who prefer reduced motion: disable the slide transition and allow instant show/hide */
-@media (prefers-reduced-motion: reduce) {
-    .filters > details > .tag-list {
-        transition: none !important;
-        max-height: none !important; /* let content size naturally when open */
-    }
-}
+/* Respect users who prefer reduced motion: no animations here, so nothing to change */
 
 /* On wide viewports, nudge H1 pills up slightly to align with x-height */
 @media (min-width: 51rem) {
