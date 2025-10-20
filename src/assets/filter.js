@@ -55,7 +55,8 @@ document.addEventListener('DOMContentLoaded', function() {
       const startX = e.clientX;
       const startY = e.clientY;
       const pointerId = e.pointerId;
-      const MOVE_THRESHOLD = 10; // pixels
+
+      const MOVE_THRESHOLD = 6; // pixels — stricter: small movements cancel the tap
       let cancelled = false;
 
       function cleanup() {
@@ -66,10 +67,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
       function onMove(ev) {
         if (ev.pointerId !== pointerId) return;
-        const dx = Math.abs(ev.clientX - startX);
+        // Directional threshold: treat primarily vertical movement as a
+        // scroll. Small horizontal movement (e.g. when a horizontal tag
+        // list is scrolled) won't cancel an intended tap.
         const dy = Math.abs(ev.clientY - startY);
-        if (dx > MOVE_THRESHOLD || dy > MOVE_THRESHOLD) {
-          // Consider this a scroll/drag — cancel the pending tap
+          // Consider this a vertical scroll/drag — cancel the pending tap
+        if (dy > MOVE_THRESHOLD) {
           cancelled = true;
           cleanup();
         }

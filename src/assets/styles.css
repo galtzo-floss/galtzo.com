@@ -516,7 +516,12 @@ h1 .tag-list {
         /*margin: 0 0.5rem 0 0;*/
         position: relative;
 
-        /* (restored original: no button normalization here) */
+        /* Let the browser handle vertical panning natively: improves
+           touch gesture detection and prevents accidental taps during
+           vertical scroll. This is intentionally set on the source CSS
+           only; do not modify generated files. */
+        touch-action: pan-y;
+
         /* two-tone border using layered backgrounds and background-clip */
         border: 2px solid transparent; /* keep a physical border width for layout */
         background-image: linear-gradient(var(--tag-outer-bg), var(--tag-outer-bg)), linear-gradient(to bottom, var(--orange-top), var(--orange-bottom));
