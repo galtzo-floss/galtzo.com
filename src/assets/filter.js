@@ -107,8 +107,13 @@ document.addEventListener('DOMContentLoaded', function() {
     if (!filterContainer) return;
     const details = Array.from(filterContainer.querySelectorAll('details'));
     details.forEach(d => {
-      const hasActive = !!d.querySelector('.tag-link.active');
+      const hasActive = !!d.querySelector('.tag-link.active[data-tag]');
       d.classList.toggle('has-active-filter', hasActive);
+      // Also toggle .active on the summary-control so it inherits .pill-outer.active styles
+      const summaryControl = d.querySelector('.summary-control');
+      if (summaryControl) {
+        summaryControl.classList.toggle('active', hasActive);
+      }
     });
   }
 

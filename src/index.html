@@ -80,7 +80,7 @@ body_class: projects
   <span class="tag-list">
     <% allowed_roles.each do |role| %>
     <span>
-      <button type="button" class="tag-link role-link <%= role %>" data-tag="<%= role %>">
+      <button type="button" class="tag-link pill-outer role-link <%= role %>" data-tag="<%= role %>">
         <span class="count left"><%== role_counts[role].to_s.rjust(2, 'x').gsub('x', '&nbsp;') %></span>
         <span class="tag <%= role %>"><%= role %></span>
         <span class="count right"><%== role_counts[role].to_s.ljust(2, 'x').gsub('x', '&nbsp;') %></span>
@@ -103,7 +103,7 @@ body_class: projects
     <summary>
       <span class="tag-list">
         <span class="tag-scroll">
-          <span class="tag-link summary-control">
+          <span class="tag-link pill-outer summary-control">
              <span class="count left"><%== year_counts.length.to_s.rjust(2, 'x').gsub('x', '&nbsp;') %></span>
              <span class="tag">Filter by Start Year</span>
              <span class="count right"><%== year_counts.length.to_s.ljust(2, 'x').gsub('x', '&nbsp;') %></span>
@@ -115,7 +115,7 @@ body_class: projects
     <ul class="tag-list">
       <% years.each do |year| %>
       <li>
-        <button type="button" class="tag-link" data-tag="<%= year %>">
+        <button type="button" class="tag-link pill-outer" data-tag="<%= year %>">
           <span class="count left"><%== year_counts[year].to_s.rjust(2, 'x').gsub('x', '&nbsp;') %></span>
           <span class="tag <%= year %>"><%= year %></span>
           <span class="count right"><%== year_counts[year].to_s.ljust(2, 'x').gsub('x', '&nbsp;') %></span>
@@ -129,7 +129,7 @@ body_class: projects
     <summary>
       <span class="tag-list">
         <span class="tag-scroll">
-          <span class="tag-link summary-control">
+          <span class="tag-link pill-outer summary-control">
             <span class="count left"><%== tag_counts.length.to_s.rjust(2, 'x').gsub('x', '&nbsp;') %></span>
             <span class="tag">Filter by Tag</span>
             <span class="count right"><%== tag_counts.length.to_s.ljust(2, 'x').gsub('x', '&nbsp;') %></span>
@@ -141,7 +141,7 @@ body_class: projects
     <ul class="tag-list">
       <% tags.each do |tag| %>
       <li>
-        <button type="button" class="tag-link" data-tag="<%= tag %>">
+        <button type="button" class="tag-link pill-outer" data-tag="<%= tag %>">
           <span class="count left"><%== tag_counts[tag].to_s.rjust(2, 'x').gsub('x', '&nbsp;') %></span>
           <span class="tag <%= tag %>"><%= tag %></span>
           <span class="count right"><%== tag_counts[tag].to_s.ljust(2, 'x').gsub('x', '&nbsp;') %></span>
@@ -155,7 +155,7 @@ body_class: projects
     <summary>
       <span class="tag-list">
         <span class="tag-scroll">
-          <span class="tag-link summary-control">
+          <span class="tag-link pill-outer summary-control">
             <span class="count left"><%== lanugage_count.to_s.rjust(2, 'x').gsub('x', '&nbsp;') %></span>
             <span class="tag">Filter by Minimum Version of Language</span>
             <span class="count right"><%== lanugage_count.to_s.ljust(2, 'x').gsub('x', '&nbsp;') %></span>
@@ -167,7 +167,7 @@ body_class: projects
     <ul class="tag-list">
       <% min_ts_versions.each do |min_ts| %>
       <li>
-        <button type="button" class="tag-link min_lang-link" data-tag="TypeScript >= <%= min_ts %>">
+        <button type="button" class="tag-link pill-outer min_lang-link" data-tag="TypeScript >= <%= min_ts %>">
           <span class="count left"><%== min_ts_counts[min_ts].to_s.rjust(2, 'x').gsub('x', '&nbsp;') %></span>
           <span class="tag min-language"><img
                   src="/assets/images/TypeScript.svg"
@@ -180,7 +180,7 @@ body_class: projects
       <% end %>
       <% min_go_versions.each do |min_go| %>
       <li>
-        <button type="button" class="tag-link min_lang_link" data-tag="Go >= <%= min_go %>">
+        <button type="button" class="tag-link pill-outer min_lang_link" data-tag="Go >= <%= min_go %>">
           <span class="count left"><%== min_go_counts[min_go].to_s.rjust(2, 'x').gsub('x', '&nbsp;') %></span>
           <span class="tag min-language"><img
                   src="/assets/images/Go.svg"
@@ -193,7 +193,7 @@ body_class: projects
       <% end %>
       <% min_bash_versions.each do |min_bash| %>
       <li>
-        <button type="button" class="tag-link min_lang_link" data-tag="Bash >= <%= min_bash %>">
+        <button type="button" class="tag-link pill-outer min_lang_link" data-tag="Bash >= <%= min_bash %>">
           <span class="count left"><%== min_bash_counts[min_bash].to_s.rjust(2, 'x').gsub('x', '&nbsp;') %></span>
           <span class="tag min-language"><img
                   src="/assets/images/Bash.svg"
@@ -206,7 +206,7 @@ body_class: projects
       <% end %>
       <% min_rb_versions[0...2].each do |min_ruby| %>
       <li>
-        <button type="button" class="tag-link min_lang-link" data-tag="Ruby >= <%= min_ruby %>">
+        <button type="button" class="tag-link pill-outer min_lang-link" data-tag="Ruby >= <%= min_ruby %>">
           <span class="count left"><%== min_rb_counts[min_ruby].to_s.rjust(2, 'x').gsub('x', '&nbsp;') %></span>
           <span class="tag min-language"><img
                   src="/assets/images/Ruby.svg"
@@ -219,7 +219,7 @@ body_class: projects
       <% end %>
       <% min_rb_versions[2..].each do |min_ruby| %>
       <li>
-        <button type="button" class="tag-link min_lang-link" data-tag="Ruby >= <%= min_ruby %>">
+        <button type="button" class="tag-link pill-outer min_lang-link" data-tag="Ruby >= <%= min_ruby %>">
           <span class="count left"><%== min_rb_counts[min_ruby].to_s.rjust(2, 'x').gsub('x', '&nbsp;') %></span>
           <span class="tag min-language"><img
                   src="/assets/images/Ruby.svg"

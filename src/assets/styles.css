@@ -669,104 +669,114 @@ h1 .tag-list {
     }
 
     .tag-link {
-        display: inline-block;
-        background-color: var(--tag-outer-bg);
-        border-radius: var(--border-radius-pill);
-        /*padding: 0.3rem 1rem 0.3rem 1.75rem;*/
-        box-shadow: 0 0 10px var(--orange-light);
-        text-decoration: none;
-        color: inherit;
-        /*margin: 0 0.5rem 0 0;*/
-        position: relative;
+        /* Extend the shared pill-outer class styles */
+        /* (all base pill styling now comes from .pill-outer above) */
 
         /* Let the browser handle vertical panning natively: improves
            touch gesture detection and prevents accidental taps during
            vertical scroll. This is intentionally set on the source CSS
            only; do not modify generated files. */
         touch-action: pan-y;
-
-        /* two-tone border using layered backgrounds and background-clip */
-        border: var(--border-width-tag) solid transparent; /* keep a physical border width for layout */
-        background-image: linear-gradient(var(--tag-outer-bg), var(--tag-outer-bg)), linear-gradient(to bottom, var(--orange-top), var(--orange-bottom));
-        background-origin: border-box;
-        background-clip: padding-box, border-box;
     }
 
-    /* When active, inner background is orange while border remains two-tone orange */
-    .tag-link.active {
-        background-image: linear-gradient(var(--orange-active), var(--orange-active)), linear-gradient(to bottom, var(--orange-top-active), var(--orange-bottom-active));
-    }
-
-
-    /* Consolidated: role-colored tag-links using scoped variables */
-    .tag-link:is(.author, .maintainer, .contributor) {
-        box-shadow: 0 0 10px var(--current-role-color);
-    }
-
-    .tag-link.active {
-        background-color: var(--orange-active);
-    }
-
-    /* Consolidated: active role-colored tag-links using scoped variables */
-    .tag-link:is(.author, .maintainer, .contributor).active {
-        background-color: var(--current-role-color);
-    }
-
-    .tag-link.active .tag {
-        background-color: var(--orange-active);
-        color: var(--white);
-        border: var(--border-width-tag) solid var(--orange-active-solid);
-        margin-left: 0;
-        margin-right: 1.5rem;
-    }
-
-    /* Consolidated: active role-colored inner tags using scoped variables */
-    .tag-link:is(.author, .maintainer, .contributor).active .tag:is(.author, .maintainer, .contributor) {
-        background-color: var(--current-role-color);
-        color: var(--white);
-        border: var(--border-width-tag) solid var(--current-role-solid);
-        margin-left: 0;
-        margin-right: 1.5rem;
-    }
-
-    .count {
-        position: absolute;
-        top: var(--count-top);
-        font-size: var(--font-size-xs);
-        font-weight: var(--font-weight-normal);
-        padding: var(--count-padding);
-        color: var(--text-color);
-    }
-
-    .count.left {
-        left: 0;
-        opacity: 1;
-        z-index: 1;
-    }
-
-    .count.right {
-        right: 0;
-        opacity: 1;
-        z-index: -1;
-    }
-
-    .tag-link.active .count.left {
-        opacity: 0;
-        z-index: -1;
-    }
-
-    .tag-link.active .count.right {
-        opacity: 1;
-        color: var(--white);
-        z-index: 1;
-    }
+    /* Remove duplicate active styles - now handled by .pill-outer.active */
 }
+
+/* Shared pill outer container styles - applies to both .tag-link and .summary-control */
+.pill-outer {
+    display: inline-flex;
+    align-items: center;
+    background-color: var(--tag-outer-bg);
+    border-radius: var(--border-radius-pill);
+    box-shadow: 0 0 10px var(--orange-light);
+    text-decoration: none;
+    color: inherit;
+    position: relative;
+    box-sizing: border-box;
+
+    /* two-tone border using layered backgrounds and background-clip */
+    border: var(--border-width-tag) solid transparent;
+    background-image: linear-gradient(var(--tag-outer-bg), var(--tag-outer-bg)), linear-gradient(to bottom, var(--orange-top), var(--orange-bottom));
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+}
+
+/* Shared active pill outer container styles */
+.pill-outer.active {
+    background-image: linear-gradient(var(--orange-active), var(--orange-active)), linear-gradient(to bottom, var(--orange-top-active), var(--orange-bottom-active));
+    color: var(--white);
+}
+
+/* Role-colored pill outer containers */
+.pill-outer:is(.author, .maintainer, .contributor) {
+    box-shadow: 0 0 10px var(--current-role-color);
+}
+
+/* Role-colored active pills */
+.pill-outer:is(.author, .maintainer, .contributor).active {
+    background-color: var(--current-role-color);
+}
+
+/* Shared inner tag styles when parent pill is active */
+.pill-outer.active .tag {
+    background-color: var(--orange-active);
+    color: var(--white);
+    border: var(--border-width-tag) solid var(--orange-active-solid);
+    margin-left: 0;
+    margin-right: 1.5rem;
+}
+
+/* Role-colored active inner tags */
+.pill-outer:is(.author, .maintainer, .contributor).active .tag:is(.author, .maintainer, .contributor) {
+    background-color: var(--current-role-color);
+    color: var(--white);
+    border: var(--border-width-tag) solid var(--current-role-solid);
+}
+
+/* Shared count badge positioning and transitions */
+.pill-outer .count {
+    position: absolute;
+    top: var(--count-top);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-normal);
+    padding: var(--count-padding);
+    color: var(--text-color);
+    transition: opacity var(--transition-fast), z-index 0s var(--transition-fast);
+}
+
+.pill-outer .count.left {
+    left: 0;
+    opacity: 1;
+    z-index: 1;
+}
+
+.pill-outer .count.right {
+    right: 0;
+    opacity: 0;
+    z-index: -1;
+}
+
+/* Swap counts when active */
+.pill-outer.active .count.left {
+    opacity: 0;
+    z-index: -1;
+}
+
+.pill-outer.active .count.right {
+    opacity: 1;
+    color: var(--white);
+    z-index: 1;
+}
+
+/* =========================================================================
+   FILTERS CONTAINER & PANELS
+   ========================================================================= */
 
 /* Filters container: lay out the details summaries in a single horizontal row */
 .filters {
     position: relative; /* positioning context for absolute panels */
     display: flex;
-    gap: 0.75rem;
+    gap: var(--filters-gap);
     align-items: flex-start;
     justify-content: flex-start;
     /* keep filters visually grouped from surrounding content */
@@ -796,47 +806,26 @@ h1 .tag-list {
     display: none;
 }
 
-/* Small tweak: allow the summary's inline tag-list to wrap if the available
-   width is very small. By default we keep horizontal scrolling, but allow a
-   fallback to wrap on extremely narrow screens. */
-.filters > details > summary .tag-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--tag-list-summary-gap);
-    align-items: center;
-    padding: 0;
-    margin: 0;
-    overflow-x: visible;        /* remove horizontal scrolling to allow wrapping */
-    overflow-y: visible;         /* ensure vertical overflow (e.g. box-shadow) isn't clipped */
-    -webkit-overflow-scrolling: touch;
-}
-
-/* Panels: position as overlays so opening them won't push content down */
+/* The dropdown panel: a tag-list inside the details becomes an overlay when open.
+   By default it's hidden; when the details is open, CSS makes it visible. */
 .filters > details > .tag-list {
-    position: absolute; /* overlay other content */
-    top: calc(100% + 0.6rem);
+    display: none; /* hidden by default */
+    position: absolute;
+    top: calc(100% + var(--filter-panel-offset));
     left: 0;
-    /* responsive width: never wider than the page column but allow space for multiple columns */
-    width: min(48rem, calc(100vw - 2rem));
-    background: var(--muted-bg);
-    border-radius: var(--border-radius-panel);
-    box-shadow: var(--shadow-panel);
     z-index: var(--z-filter-panel);
-
-    /* Use a responsive grid so several tags can sit on a row */
-    display: grid; /* changed from flex to grid */
+    background: var(--card-bg);
+    border: var(--border-width-thin) solid var(--border-color);
+    border-radius: var(--border-radius-panel);
+    padding: var(--filter-panel-padding);
+    box-shadow: var(--shadow-panel);
+    /* Grid layout for the filter tags inside the panel */
     grid-template-columns: repeat(auto-fit, minmax(var(--filter-panel-col-min), 1fr));
-    column-gap: var(--filter-panel-gap);
-    row-gap: var(--filter-panel-gap);
-    list-style: none;
-    padding: var(--filter-panel-padding); /* consistent internal padding */
-    box-sizing: border-box;
-
-    /* viewport-safe: don't exceed 60% of viewport height; allow internal scrolling */
+    gap: var(--filter-panel-gap);
     max-height: var(--filter-panel-max-height);
-    overflow: auto; /* allow internal scrolling when needed */
-    -webkit-overflow-scrolling: touch;
-    overscroll-behavior: contain;
+    overflow-y: auto;
+    /* Prevent panel from being too narrow on small screens */
+    min-width: max-content;
 }
 
 /* Right-aligned variant: used when JS decides panel would overflow the right edge */
@@ -882,57 +871,11 @@ h1 .tag-list {
     transform: rotate(180deg);
 }
 
-/* When any tag inside a details is active, give the summary-control the same
-   'active' treatment so it reads like the filter pills. The JS toggles
-   `has-active-filter` on the <details>. */
-.filters > details.has-active-filter > summary .summary-control {
-    /* Match the active pill visuals driven by the --orange-active variables */
-    display: inline-flex; /* ensure same layout as .tag-link */
-    align-items: center;
-    gap: 0.5rem;
-    /* Remove outer padding — let the inner .tag provide the vertical sizing so
-       the summary-control doesn't change the row height when toggled. */
-    padding: 0;
-    box-sizing: border-box;
-    border-radius: var(--border-radius-pill);
-    color: var(--white);
-    text-decoration: none;
-    vertical-align: middle;
-    /* two-tone border + inner background like .tag-link.active */
-    border: var(--border-width-tag) solid transparent;
-    background-image: linear-gradient(var(--orange-active), var(--orange-active)), linear-gradient(to bottom, var(--orange-top-active), var(--orange-bottom-active));
-    background-origin: border-box;
-    background-clip: padding-box, border-box;
-    /* previously used a glow here which caused square cutoff issues; remove it */
-    box-shadow: none;
-}
+/* When any tag inside a details is active, the summary-control inherits the
+   active pill styling via the shared .pill-outer.active classes. The JS adds
+   .active to .summary-control when has-active-filter is set on <details>. */
 
-/* Make the inner .tag behave exactly like the .tag inside a .tag-link.active */
-.filters > details.has-active-filter > summary .summary-control .tag {
-    background-color: var(--orange-active);
-    color: var(--white);
-    border: var(--border-width-tag) solid var(--orange-active-solid);
-    margin-left: 0;          /* slide left into the host pill */
-    margin-right: 1.5rem;    /* same spacing as active tags */
-    /* ensure the same transition exists so it animates like the real tag */
-    transition: var(--transition-tag-margin), background-color var(--transition-tag-colors);
-    /* Match the inner padding used by regular .tag so sizing is consistent */
-    padding: var(--tag-padding-filter);
-    border-radius: var(--border-radius-pill);
-}
-
-/* Counts should swap like on .tag-link.active */
-.filters > details.has-active-filter > summary .summary-control .count.left {
-    opacity: 0;
-    z-index: -1;
-}
-.filters > details.has-active-filter > summary .summary-control .count.right {
-    opacity: 1;
-    color: var(--white);
-    z-index: 1;
-}
-
-/* Ensure caret color follows the summary-control color (often white on active) */
+/* Ensure caret color follows the summary-control color (white when active) */
 .filters > details.has-active-filter > summary .summary-control::after {
     border-top-color: currentColor;
 }
