@@ -875,8 +875,28 @@ h1 .tag-list {
     box-shadow: none;
 }
 
-/* Remove glow from tags inside non-active summary controls to avoid the
-   square/cutoff glow when the summary sits over a scroller or clipped area. */
+/* Remove any remaining glows inside non-active summary rows. We target the
+   common selector shapes used for tags and tag-links that can appear in the
+   summary row (including the scroll wrapper). Use !important to ensure these
+   overrides take precedence and prevent clipped corner glows. */
+.filters > details > summary .tag,
+.filters > details > summary .tag-list .tag,
+.filters > details > summary .tag-list .tag-scroll .tag,
+.filters > details > summary .tag-scroll .tag,
+.filters > details > summary .tag-link,
+.filters > details > summary .tag-link .tag,
 .filters > details > summary .summary-control .tag {
-    box-shadow: none;
+    box-shadow: none !important;
 }
+
+/* Very broad override: remove any box-shadow on any element or pseudo-element
+   inside non-active summary rows. This is intentionally aggressive but scoped
+   to `.filters > details > summary` so it only affects the horizontal filter
+   control row. It ensures no glows will be visible or clipped in the summary. */
+.filters > details > summary,
+.filters > details > summary *,
+.filters > details > summary *::before,
+.filters > details > summary *::after {
+    box-shadow: none !important;
+}
+
