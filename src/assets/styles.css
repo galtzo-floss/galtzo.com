@@ -536,6 +536,36 @@ button,
     right: var(--ribbon-right);
     background: linear-gradient(135deg, #1e5799 0%, #2989d8 50%, #207cca 100%);
     z-index: var(--z-fork-banner);
+    color: var(--white); /* ensure readable by default */
+    transition: background var(--transition-medium), color var(--transition-medium);
+}
+
+/* Default: show the word "Me" and hide the emoji; small spacing for emoji when shown */
+.card .banner-fork .fork-me-emoji {
+    display: none;
+    margin-left: 0.25rem;
+}
+.card .banner-fork .fork-me-text {
+    display: inline;
+}
+
+/* Hover & keyboard-focus: switch visual style and swap text->emoji */
+.card .banner-fork:hover,
+.card .banner-fork:focus,
+.card .banner-fork:focus-visible {
+    background: #000 !important; /* black background on hover/focus */
+    color: #ffd600 !important;    /* yellow text on hover/focus */
+    text-decoration: none;
+}
+.card .banner-fork:hover .fork-me-text,
+.card .banner-fork:focus .fork-me-text,
+.card .banner-fork:focus-visible .fork-me-text {
+    display: none;
+}
+.card .banner-fork:hover .fork-me-emoji,
+.card .banner-fork:focus .fork-me-emoji,
+.card .banner-fork:focus-visible .fork-me-emoji {
+    display: inline;
 }
 
 /* Role banner: convert to a full-width horizontal bar across the top of the card */

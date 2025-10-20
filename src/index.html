@@ -167,7 +167,7 @@ body_class: projects
     <ul class="tag-list">
       <% min_ts_versions.each do |min_ts| %>
       <li>
-        <button type="button" class="tag-link pill-outer min_lang-link" data-tag="TypeScript >= <%= min_ts %>">
+        <button type="button" class="tag-link pill-outer min_lang_link" data-tag="TypeScript >= <%= min_ts %>">
           <span class="count left"><%== min_ts_counts[min_ts].to_s.rjust(2, 'x').gsub('x', '&nbsp;') %></span>
           <span class="tag min-language"><img
                   src="/assets/images/TypeScript.svg"
@@ -251,9 +251,9 @@ body_class: projects
   <li class="card <%= project['role'] %>" data-tags='<%= tags_for_card.to_json %>'>
     <div class="corner-anchor fork">
       <% if gh_forge %>
-      <a href="<%= gh_forge['url'] %>/fork" class="corner-banner banner-fork" target="_blank" rel="noopener">Fork Me</a>
+      <a href="<%= gh_forge['url'] %>/fork" class="corner-banner banner-fork" target="_blank" rel="noopener">Fork&nbsp;<span class="fork-me-text">Me</span><span class="fork-me-emoji" aria-hidden="true">🔀</span></a>
       <% elsif first_forge %>
-      <a href="<%= first_forge['url'] %>" class="corner-banner banner-fork" target="_blank" rel="noopener">Clone Me</a>
+      <a href="<%= first_forge['url'] %>" class="corner-banner banner-fork" target="_blank" rel="noopener">Clone&nbsp;<span class="fork-me-text">Me</span><span class="fork-me-emoji" aria-hidden="true">🔀</span></a>
       <% end %>
     </div>
     <div class="corner-anchor role">
