@@ -7,11 +7,16 @@
     /* Make inner pill a touch closer to the control surface so it reads as a separate layer
        but still adapts to light/dark themes via --card-bg and --control-border. */
     --tag-inner-bg: color-mix(in oklab, var(--card-bg) 88%, var(--control-border) 12%);
+    /* Strong left edge color for the inner pill (used as border-left) */
+    --tag-inner-edge: color-mix(in oklab, var(--control-border) 75%, black 5%);
 
     /* Centralized orange variables (edit these to change orange across themes) */
     --orange-base: rgba(204, 74, 0, 0.8);      /* darker than previous rgba(255,100,0,0.8) */
     --orange-light-base: rgba(204, 74, 0, 0.4);
     --orange-solid-base: #cc4a00; /* darker than #e05500 (light-theme solid) */
+    /* Two-tone orange border stops (top, bottom) derived from the active solid by default */
+    --orange-top: color-mix(in oklab, var(--orange-solid) 20%, white);
+    --orange-bottom: color-mix(in oklab, var(--orange-solid) 85%, black 10%);
 
     /* Dark-theme orange variants (used when dark visuals are active) */
     --orange-base-dark: rgba(184, 134, 0, 0.35); /* darker warm amber for dark theme */
@@ -782,11 +787,63 @@ h1 .tag-list {
     gap: 0.5rem;
 }
 
-/* Respect users who prefer reduced motion: no animations here, so nothing to change */
+/* When any tag inside a details is active, give the summary-control the same
+   'active' treatment so it reads like the filter pills. The JS toggles
+   `has-active-filter` on the <details>. */
+.filters > details.has-active-filter > summary .summary-control {
+    /* Match the active pill visuals driven by the --orange-active variables */
+    display: inline-flex; /* ensure same layout as .tag-link */
+    align-items: center;
+    gap: 0.5rem;
+    /* Remove outer padding — let the inner .tag provide the vertical sizing so
+       the summary-control doesn't change the row height when toggled. */
+    padding: 0;
+    box-sizing: border-box;
+    border-radius: 9999px;
+    color: var(--white);
+    text-decoration: none;
+    vertical-align: middle;
+    /* two-tone border + inner background like .tag-link.active */
+    border: 2px solid transparent;
+    background-image: linear-gradient(var(--orange-active), var(--orange-active)), linear-gradient(to bottom, var(--orange-top-active), var(--orange-bottom-active));
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    box-shadow: 0 0 10px var(--orange-light);
+}
 
-/* On wide viewports, nudge H1 pills up slightly to align with x-height */
-@media (min-width: 51rem) {
-    h1 .tag-list {
-        transform: translateY(-6px);
-    }
+/* Make the inner .tag behave exactly like the .tag inside a .tag-link.active */
+.filters > details.has-active-filter > summary .summary-control .tag {
+    background-color: var(--orange-active);
+    color: var(--white);
+    border: 2px solid var(--orange-active-solid);
+    margin-left: 0;          /* slide left into the host pill */
+    margin-right: 1.5rem;    /* same spacing as active tags */
+    /* ensure the same transition exists so it animates like the real tag */
+    transition: margin-left 0.3s ease, background-color 150ms linear, border-color 150ms linear;
+    /* Match the inner padding used by regular .tag so sizing is consistent */
+    padding: 0.3rem 1rem 0.3rem 1.75rem;
+    border-radius: 9999px;
+}
+
+/* Counts should swap like on .tag-link.active */
+.filters > details.has-active-filter > summary .summary-control .count.left {
+    opacity: 0;
+    z-index: -1;
+}
+.filters > details.has-active-filter > summary .summary-control .count.right {
+    opacity: 1;
+    color: var(--white);
+    z-index: 1;
+}
+
+/* Ensure caret color follows the summary-control color (often white on active) */
+.filters > details.has-active-filter > summary .summary-control::after {
+    border-top-color: currentColor;
+}
+
+/* Focus ring: keep it subtle but visible on the active summary */
+.filters > details.has-active-filter > summary:focus-visible .summary-control,
+.filters > details.has-active-filter > summary:focus .summary-control {
+    outline: 3px solid color-mix(in oklab, var(--orange-active-solid) 30%, white 10%);
+    outline-offset: 2px;
 }

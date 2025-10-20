@@ -24,6 +24,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
       this.classList.toggle('active');
       filterProjects();
+      // Reflect filter state on the parent <details> so the summary-control can look active
+      updateDetailsActiveState();
     });
 
     // Pointerdown (unified for mouse/pen/touch) for snappy responses on
@@ -33,9 +35,25 @@ document.addEventListener('DOMContentLoaded', function() {
       this.dataset._handledPointer = '1';
       this.classList.toggle('active');
       filterProjects();
+      // Keep summary visuals in sync
+      updateDetailsActiveState();
       setTimeout(() => { try { delete this.dataset._handledPointer; } catch (e) {} }, 500);
     }, { passive: true });
   });
+
+  // Ensure each <details> knows whether any of its tag-links are active.
+  function updateDetailsActiveState() {
+    const filterContainer = document.querySelector('.filters');
+    if (!filterContainer) return;
+    const details = Array.from(filterContainer.querySelectorAll('details'));
+    details.forEach(d => {
+      const hasActive = !!d.querySelector('.tag-link.active');
+      d.classList.toggle('has-active-filter', hasActive);
+    });
+  }
+
+  // Run once on load to reflect any initial active state
+  updateDetailsActiveState();
 
   function parseCardTags(card) {
     var cardTags = [];
@@ -99,6 +117,7 @@ document.addEventListener('DOMContentLoaded', function() {
       // immediately trigger the handler and close it.
       setTimeout(() => {
         document.addEventListener('pointerdown', docOutsideHandler);
+        document.addEventListener('keydown', docKeyHandler);
         outsideHandlerAttached = true;
       }, 0);
     }
@@ -106,6 +125,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function removeOutsideHandler() {
       if (!outsideHandlerAttached) return;
       document.removeEventListener('pointerdown', docOutsideHandler);
+      document.removeEventListener('keydown', docKeyHandler);
       outsideHandlerAttached = false;
     }
 
@@ -116,6 +136,21 @@ document.addEventListener('DOMContentLoaded', function() {
       }
       // Otherwise close all open details and remove the handler.
       details.forEach(d => { if (d.open) d.open = false; });
+      removeOutsideHandler();
+    }
+
+    // Close the first open details on Escape and focus its summary.
+    function docKeyHandler(e) {
+      if (e.key !== 'Escape' && e.key !== 'Esc') return;
+      // Find the first open details (panels are mutually exclusive so usually one)
+      const openDetail = details.find(d => d.open);
+      if (!openDetail) return;
+      // Close it and move focus back to its summary for accessibility
+      openDetail.open = false;
+      const summary = openDetail.querySelector('summary');
+      if (summary && typeof summary.focus === 'function') {
+        summary.focus();
+      }
       removeOutsideHandler();
     }
 
