@@ -17,7 +17,7 @@
     --tag-inner-edge: color-mix(in oklab, var(--control-border) 75%, black 5%);
 
     /* Centralized orange variables (edit these to change orange across themes) */
-    --orange-base: rgba(204, 74, 0, 0.8);      /* darker than previous rgba(255,100,0,0.8) */
+    --orange-base: rgba(204, 74, 0, 0.8);      /* slightly darker orange base for contrast */
     --orange-light-base: rgba(204, 74, 0, 0.4);
     --orange-solid-base: #cc4a00; /* darker than #e05500 (light-theme solid) */
     /* Two-tone orange border stops (top, bottom) derived from the active solid by default */
@@ -163,6 +163,7 @@
     --filter-panel-max-height: 60vh;
     --filter-panel-col-min: 9rem;   /* min column width in grid */
     --filter-panel-col-min-mobile: 7.5rem; /* smaller on mobile */
+    --filter-panel-width: 44vw;     /* default width for floating panels (viewport relative) */
 
     /* =========================================================================
        COUNT BADGES
@@ -348,7 +349,7 @@
    ========================================================================= */
 
 body {
-    font-family: var(--font-family-base);
+    font-family: var(--font-family-base), sans-serif;
     max-width: var(--page-max-width);
     margin: var(--page-margin-y) auto;
     padding: 0 var(--page-padding-x);
@@ -630,9 +631,6 @@ h1 .tag-list {
     margin-left: 0;
 }
 
-/* Remove mobile-specific overrides no longer needed due to flex wrapping */
-/* (intentionally left blank to avoid conflicting rules) */
-
 /* =========================================================================
    TAG-LIST SYSTEM (Filter Pills)
    ========================================================================= */
@@ -793,12 +791,16 @@ h1 .tag-list {
     /* size to content, allow shrinking so long summaries won't force overflow */
     flex: 0 1 auto;
     min-width: 0; /* enable flex children to shrink properly */
-    position: relative; /* positioning context for its absolutely-positioned panel */
+    position: static;
 }
 
-/* Hide the default disclosure marker for filter details */
+/* Hide the default disclosure marker for filter details and keep summary inline */
 .filters > details > summary {
     list-style: none;
+    display: inline-flex;       /* keep summary controls inline horizontally */
+    align-items: center;
+    gap: 0.35rem;
+    cursor: pointer;
 }
 
 .filters > details > summary::-webkit-details-marker,
@@ -810,22 +812,25 @@ h1 .tag-list {
    By default it's hidden; when the details is open, CSS makes it visible. */
 .filters > details > .tag-list {
     display: none; /* hidden by default */
-    position: absolute;
+    position: absolute; /* position against the nearest positioned ancestor (.filters) */
     top: calc(100% + var(--filter-panel-offset));
-    left: 0;
+    left: 0; /* align to the left edge of the .filters container */
     z-index: var(--z-filter-panel);
     background: var(--card-bg);
     border: var(--border-width-thin) solid var(--border-color);
     border-radius: var(--border-radius-panel);
     padding: var(--filter-panel-padding);
     box-shadow: var(--shadow-panel);
+    /* Pane sizing: use viewport percentage so panels size consistently across the row */
+    width: var(--filter-panel-width);
+    max-width: 90vw;            /* ensure it never overflows the viewport */
+    min-width: max-content;     /* preserve natural minimum for the tag grid */
+
     /* Grid layout for the filter tags inside the panel */
     grid-template-columns: repeat(auto-fit, minmax(var(--filter-panel-col-min), 1fr));
     gap: var(--filter-panel-gap);
     max-height: var(--filter-panel-max-height);
     overflow-y: auto;
-    /* Prevent panel from being too narrow on small screens */
-    min-width: max-content;
 }
 
 /* Right-aligned variant: used when JS decides panel would overflow the right edge */
@@ -843,6 +848,7 @@ h1 .tag-list {
 @media (max-width: 36rem) {
     .filters > details > .tag-list {
         grid-template-columns: repeat(auto-fit, minmax(var(--filter-panel-col-min-mobile), 1fr));
+        width: 90vw; /* use most of viewport on small screens for usability */
     }
 }
 
