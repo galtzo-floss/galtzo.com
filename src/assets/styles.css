@@ -550,6 +550,8 @@ h1 .tag-list {
         padding: 0;
         margin: 0;
         display: block;
+        /* Ensure summary allows child glows/shadows to show outside its box */
+        overflow: visible;
     }
 
     /* Hide the default disclosure triangle across browsers */
@@ -564,15 +566,27 @@ h1 .tag-list {
         flex-wrap: nowrap;        /* keep items in a single row */
         gap: 0.6rem 0.9rem;
         align-items: center;
-        overflow-x: auto;        /* allow horizontal scrolling on small viewports */
-        -webkit-overflow-scrolling: touch;
+        /* Allow overflow so box-shadows and glows aren't clipped by a scroll container's rectangle */
+        overflow: visible;
         padding: 0;
         margin: 0;
     }
 
-    /* Prevent individual tag-links from wrapping internally */
-    details > summary .tag-link {
-        white-space: nowrap;
+    /* Inner scroll wrapper: enables horizontal scrolling when needed while providing
+       vertical padding to prevent glows from being clipped by the scroller's box. */
+    details > summary .tag-list .tag-scroll {
+        display: flex;
+        gap: 0.6rem 0.9rem;
+        align-items: center;
+        flex-wrap: nowrap;        /* keep items in a single row inside the scroller */
+        overflow-x: auto;        /* allow horizontal scrolling on small viewports */
+        overflow-y: visible;     /* try to avoid vertical clipping where possible */
+        -webkit-overflow-scrolling: touch;
+        /* Increased vertical padding so box-shadow / glow has room to render outside
+           the tag content without being clipped by the scroller's rectangle. Also
+           add horizontal padding so tag shadows don't overflow the scroller's left/right edges. */
+        padding: 0.75rem 0.9rem;      /* vertical 0.75rem, horizontal 0.9rem */
+        margin: 0;
     }
 
     /* When the details are expanded, present the following tag-list as a
@@ -844,6 +858,9 @@ h1 .tag-list {
 /* Focus ring: keep it subtle but visible on the active summary */
 .filters > details.has-active-filter > summary:focus-visible .summary-control,
 .filters > details.has-active-filter > summary:focus .summary-control {
-    outline: 3px solid color-mix(in oklab, var(--orange-active-solid) 30%, white 10%);
-    outline-offset: 2px;
+    /* Use a rounded box-shadow instead of outline so the ring follows the pill's
+       border-radius and doesn't draw rectangular edges where a scroller clipped
+       glow previously made a hard rectangle visible. */
+    outline: none;
+    box-shadow: 0 0 0 3px color-mix(in oklab, var(--orange-active-solid) 30%, white 10%);
 }

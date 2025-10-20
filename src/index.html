@@ -101,13 +101,15 @@ body_class: projects
 <div class="filters">
   <details>
     <summary>
-      <div class="tag-list">
-      <span class="tag-link summary-control">
-         <span class="count left"><%== year_counts.length.to_s.rjust(2, 'x').gsub('x', '&nbsp;') %></span>
-         <span class="tag">Filter by Start Year</span>
-         <span class="count right"><%== year_counts.length.to_s.ljust(2, 'x').gsub('x', '&nbsp;') %></span>
+      <span class="tag-list">
+        <span class="tag-scroll">
+          <span class="tag-link summary-control">
+             <span class="count left"><%== year_counts.length.to_s.rjust(2, 'x').gsub('x', '&nbsp;') %></span>
+             <span class="tag">Filter by Start Year</span>
+             <span class="count right"><%== year_counts.length.to_s.ljust(2, 'x').gsub('x', '&nbsp;') %></span>
+          </span>
+        </span>
       </span>
-      </div>
     </summary>
 
     <ul class="tag-list">
@@ -125,15 +127,15 @@ body_class: projects
 
   <details>
     <summary>
-      <ul class="tag-list">
-        <li>
+      <span class="tag-list">
+        <span class="tag-scroll">
           <span class="tag-link summary-control">
             <span class="count left"><%== tag_counts.length.to_s.rjust(2, 'x').gsub('x', '&nbsp;') %></span>
             <span class="tag">Filter by Tag</span>
             <span class="count right"><%== tag_counts.length.to_s.ljust(2, 'x').gsub('x', '&nbsp;') %></span>
           </span>
-        </li>
-      </ul>
+        </span>
+      </span>
     </summary>
 
     <ul class="tag-list">
@@ -151,15 +153,15 @@ body_class: projects
 
   <details>
     <summary>
-      <ul class="tag-list">
-        <li>
+      <span class="tag-list">
+        <span class="tag-scroll">
           <span class="tag-link summary-control">
             <span class="count left"><%== lanugage_count.to_s.rjust(2, 'x').gsub('x', '&nbsp;') %></span>
             <span class="tag">Filter by Minimum Version of Language</span>
             <span class="count right"><%== lanugage_count.to_s.ljust(2, 'x').gsub('x', '&nbsp;') %></span>
           </span>
-        </li>
-      </ul>
+        </span>
+      </span>
     </summary>
 
     <ul class="tag-list">
