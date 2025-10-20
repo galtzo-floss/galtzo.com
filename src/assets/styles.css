@@ -2,6 +2,11 @@
     --text-color: #111;
     --border-color: #eee;
     --background-light: #eee;
+    /* Tag contrast tuning: outer pill (host) vs inner pill (label) and the left edge */
+    --tag-outer-bg: var(--background-light);
+    /* Make inner pill a touch closer to the control surface so it reads as a separate layer
+       but still adapts to light/dark themes via --card-bg and --control-border. */
+    --tag-inner-bg: color-mix(in oklab, var(--card-bg) 88%, var(--control-border) 12%);
 
     /* Centralized orange variables (edit these to change orange across themes) */
     --orange-base: rgba(204, 74, 0, 0.8);      /* darker than previous rgba(255,100,0,0.8) */
@@ -17,10 +22,14 @@
     --orange: var(--orange-base);
     --orange-light: var(--orange-light-base);
     --orange-solid: var(--orange-solid-base);
-
-    /* Two-tone orange border stops (top, bottom) */
-    --orange-top: color-mix(in oklab, var(--orange-solid) 20%, white);
-    --orange-bottom: color-mix(in oklab, var(--orange-solid) 85%, black 10%);
+    /* Active state palette: default to the dark-mode orange variants so
+       light-mode uses the same visual for active pills as dark mode. */
+    --orange-active: var(--orange-base-dark);
+    --orange-active-light: var(--orange-light-base-dark);
+    --orange-active-solid: var(--orange-solid-dark);
+    /* Two-tone stops for the active border (derived from active-solid) */
+    --orange-top-active: color-mix(in oklab, var(--orange-active-solid) 20%, white);
+    --orange-bottom-active: color-mix(in oklab, var(--orange-active-solid) 85%, black 10%);
     --white: white;
     --transparent: transparent;
 
@@ -71,6 +80,12 @@
         --orange: var(--orange-base-dark);
         --orange-light: var(--orange-light-base-dark);
         --orange-solid: var(--orange-solid-dark);
+        /* In dark mode the active palette should follow the dark orange values */
+        --orange-active: var(--orange);
+        --orange-active-light: var(--orange-light);
+        --orange-active-solid: var(--orange-solid);
+        --orange-top-active: color-mix(in oklab, var(--orange-active-solid) 20%, white);
+        --orange-bottom-active: color-mix(in oklab, var(--orange-active-solid) 85%, black 10%);
 
         --page-bg: #0b0f14;
         --card-bg: #111827;
@@ -92,6 +107,12 @@
     --orange: var(--orange-base);
     --orange-light: var(--orange-light-base);
     --orange-solid: var(--orange-solid-base);
+    /* Make active pills in light mode use the dark-mode active colors */
+    --orange-active: var(--orange-base-dark);
+    --orange-active-light: var(--orange-light-base-dark);
+    --orange-active-solid: var(--orange-solid-dark);
+    --orange-top-active: color-mix(in oklab, var(--orange-active-solid) 20%, white);
+    --orange-bottom-active: color-mix(in oklab, var(--orange-active-solid) 85%, black 10%);
 
     --page-bg: #ffffff;
     --card-bg: #ffffff;
@@ -111,6 +132,12 @@
     --orange: var(--orange-base-dark);
     --orange-light: var(--orange-light-base-dark);
     --orange-solid: var(--orange-solid-dark);
+    /* Ensure active palette follows dark values as well */
+    --orange-active: var(--orange);
+    --orange-active-light: var(--orange-light);
+    --orange-active-solid: var(--orange-solid);
+    --orange-top-active: color-mix(in oklab, var(--orange-active-solid) 20%, white);
+    --orange-bottom-active: color-mix(in oklab, var(--orange-active-solid) 85%, black 10%);
 
     --page-bg: #0b0f14;
     --card-bg: #111827;
@@ -234,13 +261,16 @@ a {
 
     .tag {
         display: inline-block;
-        background-color: var(--background-light);
+        /* inner pill sits visually above the host pill */
+        background-color: var(--tag-inner-bg);
         border-radius: 9999px;
         padding: 0.3rem 0.75rem;
         font-size: 0.75rem;
         font-weight: 600;
         margin: -0.1rem 0.5rem 0 0;
-        box-shadow: 0 0 10px var(--orange-light);
+        /* subtle glow and a thin left edge to separate from the outer pill */
+        box-shadow: 0 0 8px rgba(0,0,0,0.04), 0 0 10px var(--orange-light);
+        border-left: 3px solid var(--tag-inner-edge);
     }
     .tag.author {
         box-shadow: 0 0 10px var(--author-color);
@@ -445,7 +475,7 @@ h1 .tag-list {
 
     .tag {
         display: inline-block;
-        background-color: var(--background-light);
+        background-color: var(--tag-inner-bg);
         border-radius: 9999px;
         padding: 0.3rem 1rem 0.3rem 1.75rem;
         font-size: 0.75rem;
@@ -453,7 +483,8 @@ h1 .tag-list {
         margin-left: 1.5rem;
         margin-right: 0;
         border: 2px solid var(--transparent);
-        box-shadow: 0 0 10px var(--orange-light);
+        /* keep the outer orange glow but make inner subtle to distinguish layers */
+        box-shadow: 0 0 8px rgba(0,0,0,0.04), 0 0 10px var(--orange-light);
         transition: margin-left 0.3s ease;
     }
 
@@ -471,7 +502,7 @@ h1 .tag-list {
 
     .tag-link {
         display: inline-block;
-        background-color: var(--background-light);
+        background-color: var(--tag-outer-bg);
         border-radius: 9999px;
         /*padding: 0.3rem 1rem 0.3rem 1.75rem;*/
         box-shadow: 0 0 10px var(--orange-light);
@@ -483,14 +514,14 @@ h1 .tag-list {
         /* (restored original: no button normalization here) */
         /* two-tone border using layered backgrounds and background-clip */
         border: 2px solid transparent; /* keep a physical border width for layout */
-        background-image: linear-gradient(var(--background-light), var(--background-light)), linear-gradient(to bottom, var(--orange-top), var(--orange-bottom));
+        background-image: linear-gradient(var(--tag-outer-bg), var(--tag-outer-bg)), linear-gradient(to bottom, var(--orange-top), var(--orange-bottom));
         background-origin: border-box;
         background-clip: padding-box, border-box;
     }
 
     /* When active, inner background is orange while border remains two-tone orange */
     .tag-link.active {
-        background-image: linear-gradient(var(--orange), var(--orange)), linear-gradient(to bottom, var(--orange-top), var(--orange-bottom));
+        background-image: linear-gradient(var(--orange-active), var(--orange-active)), linear-gradient(to bottom, var(--orange-top-active), var(--orange-bottom-active));
     }
 
     /* Make decorative summary controls show a pointer so they feel clickable
@@ -587,7 +618,7 @@ h1 .tag-list {
     }
 
     .tag-link.active {
-        background-color: var(--orange);
+        background-color: var(--orange-active);
     }
 
     .tag-link.author.active {
@@ -603,9 +634,9 @@ h1 .tag-list {
     }
 
     .tag-link.active .tag {
-        background-color: var(--orange);
+        background-color: var(--orange-active);
         color: var(--white);
-        border: 2px solid var(--orange-solid);
+        border: 2px solid var(--orange-active-solid);
         margin-left: 0;
         margin-right: 1.5rem;
     }
