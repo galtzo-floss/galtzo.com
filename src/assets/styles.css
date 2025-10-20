@@ -157,8 +157,8 @@
     /* Tag negative margin for card tags */
     --tag-card-margin: -0.1rem 0.5rem 0 0;
     --summary-count-nudge: -0.85rem; /* negative moves the right count left; tuned to sit between inner pill and caret */
-    /* Reserve extra horizontal space for right counts - adjusted to balance 1.5rem inner pill slide */
-    --count-reserve: 1.5rem; /* matches inner pill margin to keep total width constant */
+    /* Reserve small equal space on right - balances with 1.5rem inner pill margin to create equal gaps on both sides */
+    --count-reserve: 0.2rem; /* small padding creates equal gap on left (inactive) and right (active) */
 
     /* =========================================================================
        TAG-LIST & FILTERS
