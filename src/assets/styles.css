@@ -718,7 +718,18 @@ h1 .tag-list {
     list-style: none;
     padding: 0.6rem; /* consistent internal padding */
     box-sizing: border-box;
+
+    /* viewport-safe: don't exceed 60% of viewport height; allow internal scrolling */
+    max-height: 60vh;
     overflow: auto; /* allow internal scrolling when needed */
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+}
+
+/* Right-aligned variant: used when JS decides panel would overflow the right edge */
+.filters > details.align-right > .tag-list {
+    left: auto;
+    right: 0;
 }
 
 /* Show overlay when the details element is open */

@@ -70,15 +70,79 @@ document.addEventListener('DOMContentLoaded', function() {
     const details = Array.from(filterContainer.querySelectorAll('details'));
     if (details.length <= 1) return;
 
-    // When a <details> toggles open, close the rest. No inline style
-    // manipulation is performed so we keep JS minimal and avoid layout
-    // thrash. Panels show/hide through CSS using the [open] selector.
+    // Store outside-click handlers so we can remove them when panels close
+    const outsideHandlers = new WeakMap();
+
+    function positionPanel(detail) {
+      const panel = detail.querySelector('.tag-list');
+      if (!panel) return;
+      // Panel is displayed via CSS when detail.open is true. Use rAF so
+      // measurements occur after layout and the panel is rendered.
+      requestAnimationFrame(() => {
+        const rect = panel.getBoundingClientRect();
+        const pad = 8; // small padding from viewport edge
+        // If the panel's right edge would overflow the viewport, align to the right
+        if (rect.right > window.innerWidth - pad) {
+          detail.classList.add('align-right');
+        } else {
+          detail.classList.remove('align-right');
+        }
+      });
+    }
+
+    function addOutsideClose(detail) {
+      // Remove any existing handler first
+      removeOutsideClose(detail);
+      const handler = function(e) {
+        // If click/pointer event is inside this detail, ignore
+        if (detail.contains(e.target)) return;
+        detail.open = false;
+        removeOutsideClose(detail);
+      };
+      // Attach after a tick so the pointerdown that opened the panel doesn't
+      // immediately trigger the handler and close it.
+      setTimeout(() => document.addEventListener('pointerdown', handler), 0);
+      outsideHandlers.set(detail, handler);
+    }
+
+    function removeOutsideClose(detail) {
+      const handler = outsideHandlers.get(detail);
+      if (handler) {
+        document.removeEventListener('pointerdown', handler);
+        outsideHandlers.delete(detail);
+      }
+    }
+
+    // When a <details> toggles open, close the rest, position the panel,
+    // and attach an outside-close handler. When it closes, clean up.
     details.forEach(detail => {
       detail.addEventListener('toggle', function() {
-        if (!this.open) return; // only act when opening
+        if (!this.open) {
+          // closed: cleanup
+          removeOutsideClose(this);
+          this.classList.remove('align-right');
+          return;
+        }
+
+        // Close siblings
         details.forEach(other => {
           if (other !== this && other.open) other.open = false;
         });
+
+        // Position the panel (may add .align-right)
+        positionPanel(this);
+
+        // Add a click-outside-to-close handler
+        addOutsideClose(this);
+      });
+    });
+
+    // Recalculate alignment on resize for any open panels
+    let resizeRaf = null;
+    window.addEventListener('resize', function() {
+      if (resizeRaf) cancelAnimationFrame(resizeRaf);
+      resizeRaf = requestAnimationFrame(() => {
+        details.forEach(d => { if (d.open) positionPanel(d); });
       });
     });
   })();
