@@ -1,7 +1,13 @@
 :root {
+    /* =========================================================================
+       COLOR SYSTEM
+       ========================================================================= */
+
+    /* Base colors */
     --text-color: #111;
     --border-color: #eee;
     --background-light: #eee;
+
     /* Tag contrast tuning: outer pill (host) vs inner pill (label) and the left edge */
     --tag-outer-bg: var(--background-light);
     /* Make inner pill a touch closer to the control surface so it reads as a separate layer
@@ -48,22 +54,6 @@
     --contributor-solid: #8b5cf6; /* purple */
     --contributor-color: color-mix(in oklab, var(--contributor-solid) 90%, white);
 
-    --ribbon-length: 1200px;           /* long enough to cover the card diagonally */
-    --corner-gap: 10px;                /* small padding so text isn’t flush with corner */
-    --ribbon-stack-gap: 28px;          /* distance between the two ribbons along the diagonal */
-    --ribbon-width: 720px;      /* length of each ribbon */
-    --ribbon-top: 12px;         /* distance from top edge for the first ribbon */
-    --ribbon-right: -332px;     /* center horizontally ~40px inside along diagonal */
-    --ribbon-gap: 18px;         /* vertical gap between the two ribbons */
-    /* Role-specific fine-tuning */
-    --role-gap-extra: 9px;     /* extra separation from the fork banner */
-    --role-right-adjust: 9px;   /* keep aligned horizontally with the fork banner */
-
-    /* New: horizontal role bar height */
-    --rolebar-height: 2.25rem; /* controls the height of the horizontal role bar */
-    /* New: space reserved on the right under the fork ribbon so text doesn’t clash visually */
-    --fork-notch: 3.5rem;
-
     /* Theme surfaces (light default) */
     --page-bg: #ffffff;
     --card-bg: #ffffff;
@@ -72,6 +62,186 @@
     --control-hover-bg: #e2e8f0;
     --control-border: #cbd5e1;
     --control-text: #0f172a;
+
+    /* =========================================================================
+       TYPOGRAPHY
+       ========================================================================= */
+
+    --font-family-base: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    --font-size-xs: 0.75rem;        /* 12px - tags, counts, small text */
+    --font-size-sm: 0.875rem;       /* 14px - link icons, secondary text */
+    --font-size-base: 0.9rem;       /* 14.4px - role banner, theme toggle */
+    --font-size-corner-banner: 14px; /* corner banners (fork/clone) */
+    --font-weight-normal: 600;      /* default weight for tags and controls */
+    --font-weight-bold: 700;        /* corner banners */
+    --line-height-tight: 1;         /* compact elements */
+
+    /* =========================================================================
+       SPACING & LAYOUT
+       ========================================================================= */
+
+    /* Page layout */
+    --page-max-width: 48rem;        /* 768px - main content column width */
+    --page-margin-y: 2rem;          /* top/bottom margin for body */
+    --page-padding-x: 1rem;         /* left/right padding for body */
+
+    /* Component spacing */
+    --header-margin-bottom: 1rem;
+    --h1-padding-bottom: 0.25rem;
+    --h1-column-gap: 1rem;          /* space between title text and first pill */
+    --h1-row-gap: 0.5rem;           /* vertical gap when pills wrap */
+    --h2-margin-top: 0.2rem;
+    --h2-margin-bottom: 0.1rem;
+
+    /* Card system */
+    --card-width: 450px;
+    --card-padding: 1rem;
+    --card-border-width: 1px;
+    --card-border-radius: 4px;
+    --card-gap: 0.7rem 1rem;        /* row-gap column-gap for project-list */
+
+    /* =========================================================================
+       BORDER & RADIUS
+       ========================================================================= */
+
+    --border-width-thin: 1px;
+    --border-width-tag: 2px;
+    --border-width-tag-edge: 3px;   /* left edge of inner pill */
+    --border-radius-sm: 4px;
+    --border-radius-pill: 9999px;
+    --border-radius-panel: 8px;
+    --border-radius-accent: 3px;    /* banner role accent stripe */
+
+    /* =========================================================================
+       SHADOWS & GLOWS
+       ========================================================================= */
+
+    --shadow-glow-sm: 0 0 8px;      /* subtle inner shadow */
+    --shadow-glow-md: 0 0 10px;     /* standard glow for tags/controls */
+    --shadow-corner-banner: 0 2px 4px rgba(0,0,0,0.3);
+    --shadow-panel: 0 10px 30px rgba(0,0,0,0.12); /* filter dropdown panels */
+    --shadow-inner-role: inset 0 -6px 12px -8px; /* role banner inner glow */
+
+    /* =========================================================================
+       TRANSITIONS & ANIMATIONS
+       ========================================================================= */
+
+    --transition-fast: 150ms linear;
+    --transition-medium: 0.3s ease;
+    --transition-caret: 0.18s ease;
+    --transition-tag-margin: margin-left 0.3s ease;
+    --transition-tag-colors: background-color 150ms linear, border-color 150ms linear;
+
+    /* =========================================================================
+       TAG SYSTEM
+       ========================================================================= */
+
+    /* Tag padding (inner pills) */
+    --tag-padding-card: 0.3rem 0.75rem;  /* tags inside cards */
+    --tag-padding-filter: 0.3rem 1rem 0.3rem 1.75rem; /* tags in filter lists */
+
+    /* Tag margins for slide animation */
+    --tag-margin-inactive: 1.5rem;  /* left margin when not active */
+    --tag-margin-active-left: 0;    /* slides left when active */
+    --tag-margin-active-right: 1.5rem; /* right margin when active */
+
+    /* Tag negative margin for card tags */
+    --tag-card-margin: -0.1rem 0.5rem 0 0;
+
+    /* =========================================================================
+       TAG-LIST & FILTERS
+       ========================================================================= */
+
+    --tag-list-gap: 1.1rem 0.8rem;  /* row-gap column-gap */
+    --tag-list-summary-gap: 0.6rem 0.9rem; /* inside summary controls */
+    --tag-list-scroll-padding: 0.75rem 0.9rem; /* vertical horizontal */
+    --filters-gap: 0.75rem;
+    --filters-margin-bottom: 0.75rem;
+    --filter-panel-offset: 0.6rem;  /* gap between summary and dropdown */
+    --filter-panel-padding: 0.6rem;
+    --filter-panel-gap: 0.7rem 1rem; /* row-gap column-gap inside panels */
+    --filter-panel-max-height: 60vh;
+    --filter-panel-col-min: 9rem;   /* min column width in grid */
+    --filter-panel-col-min-mobile: 7.5rem; /* smaller on mobile */
+
+    /* =========================================================================
+       COUNT BADGES
+       ========================================================================= */
+
+    --count-top: 0.5rem;
+    --count-padding: 0 0.5rem;
+    --count-z-visible: 1;
+    --count-z-hidden: -1;
+    --count-opacity-visible: 1;
+    --count-opacity-hidden: 0;
+
+    /* =========================================================================
+       ICON SIZING
+       ========================================================================= */
+
+    --icon-size-md: 20px;           /* link icons */
+    --icon-size-sm: 14px;           /* language icons */
+    --icon-padding-md: 0.3rem 0.5rem; /* link icons */
+    --icon-padding-sm: 0.1rem 0.1rem; /* language icons */
+    --icon-margin-right: 0.5rem;
+    --icon-margin-right-sm: 0.1rem;
+    --icon-margin-bottom-sm: -0.2rem;
+
+    /* =========================================================================
+       CARET INDICATOR (summary controls)
+       ========================================================================= */
+
+    --caret-size: 6px;
+    --caret-gap: 0.5rem;
+    --caret-margin: 0.25rem;
+
+    /* =========================================================================
+       THEME TOGGLE BUTTON
+       ========================================================================= */
+
+    --toggle-padding: 0.375rem 0.625rem;
+
+    /* =========================================================================
+       BANNER RIBBONS (corner & role bars)
+       ========================================================================= */
+
+    --ribbon-length: 1200px;           /* long enough to cover the card diagonally */
+    --corner-gap: 10px;                /* small padding so text isn't flush with corner */
+    --ribbon-stack-gap: 28px;          /* distance between the two ribbons along the diagonal */
+    --ribbon-width: 720px;      /* length of each ribbon */
+    --ribbon-top: 12px;         /* distance from top edge for the first ribbon */
+    --ribbon-right: -332px;     /* center horizontally ~40px inside along diagonal */
+    --ribbon-gap: 18px;         /* vertical gap between the two ribbons */
+    --ribbon-padding: 9px 0;    /* vertical padding for corner banners */
+
+    /* Role-specific fine-tuning */
+    --role-gap-extra: 9px;     /* extra separation from the fork banner */
+    --role-right-adjust: 9px;   /* keep aligned horizontally with the fork banner */
+
+    /* Role bar (horizontal banner at top of card) */
+    --rolebar-height: 2.25rem; /* controls the height of the horizontal role bar */
+    --rolebar-padding-x: 0.75rem; /* left/right padding */
+    --fork-notch: 3.5rem;      /* space reserved on the right under fork ribbon */
+
+    /* Role bar accent stripe */
+    --role-accent-left: 0.25rem;
+    --role-accent-top: 0.375rem;
+    --role-accent-bottom: 0.375rem;
+    --role-accent-width: 6px;
+    --role-accent-opacity: 0.12;
+    --role-accent-z: 11;
+
+    /* Role color mixing percentages */
+    --role-bg-mix: 8%;          /* how much role color to mix with card bg */
+
+    /* =========================================================================
+       Z-INDEX LAYERS
+       ========================================================================= */
+
+    --z-corner-banner: 10;
+    --z-fork-banner: 11;
+    --z-role-banner: 10;
+    --z-filter-panel: 60;
 }
 
 /* System default: dark mode variables */
@@ -154,10 +324,10 @@
 }
 
 body {
-    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-    max-width: 48rem;
-    margin: 2rem auto;
-    padding: 0 1rem;
+    font-family: var(--font-family-base);
+    max-width: var(--page-max-width);
+    margin: var(--page-margin-y) auto;
+    padding: 0 var(--page-padding-x);
     color: var(--text-color);
     background: var(--page-bg);
 }
@@ -166,38 +336,38 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 1rem;
+    margin-bottom: var(--header-margin-bottom);
 }
 
 .theme-toggle {
     appearance: none;
     background: var(--control-bg);
     color: var(--control-text);
-    border: 1px solid var(--control-border);
-    border-radius: 9999px;
-    padding: 0.375rem 0.625rem;
-    font-size: 0.9rem;
+    border: var(--border-width-thin) solid var(--control-border);
+    border-radius: var(--border-radius-pill);
+    padding: var(--toggle-padding);
+    font-size: var(--font-size-base);
     line-height: 1;
     cursor: pointer;
-    box-shadow: 0 0 8px var(--orange-light);
+    box-shadow: var(--shadow-glow-md) var(--orange-light);
 }
 .theme-toggle:hover {
     background: var(--control-hover-bg);
 }
 
 h1 {
-    border-bottom: 1px solid var(--border-color);
-    padding-bottom: .25rem;
+    border-bottom: var(--border-width-thin) solid var(--border-color);
+    padding-bottom: var(--h1-padding-bottom);
     display: flex;
     align-items: baseline;   /* keep pills aligned with the text baseline on wide screens */
-    column-gap: 1rem;        /* space between title text and first pill */
-    row-gap: 0.5rem;         /* vertical gap when pills wrap to the next line */
+    column-gap: var(--h1-column-gap);        /* space between title text and first pill */
+    row-gap: var(--h1-row-gap);         /* vertical gap when pills wrap to the next line */
     flex-wrap: wrap;         /* allow pills to drop below the title when needed */
 }
 
 h2 {
-    margin-top: 0.2rem;
-    margin-bottom: 0.1rem;
+    margin-top: var(--h2-margin-top);
+    margin-bottom: var(--h2-margin-bottom);
 }
 
 li {
@@ -214,26 +384,26 @@ a.text-link {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    border-radius: 4px;
+    border-radius: var(--border-radius-sm);
     text-decoration: none;
     color: inherit;
-    font-size: 0.875rem;
-    font-weight: 600;
-    width: 20px;
-    height: 20px;
-    box-shadow: 0 0 10px var(--orange);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-normal);
+    width: var(--icon-size-md);
+    height: var(--icon-size-md);
+    box-shadow: var(--shadow-glow-md) var(--orange);
     background-color: var(--orange);
-    padding: 0.3rem 0.5rem;
-    margin-right: 0.5rem;
+    padding: var(--icon-padding-md);
+    margin-right: var(--icon-margin-right);
 }
 
 .min-language {
     .language {
-        width: 14px;
-        height: 14px;
-        padding: 0.1rem 0.1rem;
-        margin-right: 0.1rem;
-        margin-bottom: -0.2rem;
+        width: var(--icon-size-sm);
+        height: var(--icon-size-sm);
+        padding: var(--icon-padding-sm);
+        margin-right: var(--icon-margin-right-sm);
+        margin-bottom: var(--icon-margin-bottom-sm);
         box-shadow: none;
         background-color: var(--transparent);
     }
@@ -244,22 +414,28 @@ a {
     color: inherit;
 }
 
+/* Prevent wrapping inside all buttons and button-like elements */
+button,
+.tag-link {
+    white-space: nowrap;
+}
+
 .project-list {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.7rem 1rem;
+    gap: var(--card-gap);
     list-style: none;
     padding: 0;
 }
 
 .card {
-    width: 450px;
+    width: var(--card-width);
     box-sizing: border-box;
-    border: 1px solid var(--border-color);
-    padding: 1rem;
+    border: var(--border-width-thin) solid var(--border-color);
+    padding: var(--card-padding);
     /* Ensure content clears the horizontal role bar at the top */
-    padding-top: calc(1rem + var(--rolebar-height));
-    border-radius: 4px;
+    padding-top: calc(var(--card-padding) + var(--rolebar-height));
+    border-radius: var(--border-radius-sm);
     position: relative;
     overflow: hidden;
     background: var(--card-bg);
@@ -268,14 +444,14 @@ a {
         display: inline-block;
         /* inner pill sits visually above the host pill */
         background-color: var(--tag-inner-bg);
-        border-radius: 9999px;
-        padding: 0.3rem 0.75rem;
-        font-size: 0.75rem;
-        font-weight: 600;
-        margin: -0.1rem 0.5rem 0 0;
+        border-radius: var(--border-radius-pill);
+        padding: var(--tag-padding-card);
+        font-size: var(--font-size-xs);
+        font-weight: var(--font-weight-normal);
+        margin: var(--tag-card-margin);
         /* subtle glow and a thin left edge to separate from the outer pill */
-        box-shadow: 0 0 8px rgba(0,0,0,0.04), 0 0 10px var(--orange-light);
-        border-left: 3px solid var(--tag-inner-edge);
+        box-shadow: var(--shadow-glow-md) rgba(0,0,0,0.04), 0 0 10px var(--orange-light);
+        border-left: var(--border-width-tag-edge) solid var(--tag-inner-edge);
     }
     .tag.author {
         box-shadow: 0 0 10px var(--author-color);
@@ -300,17 +476,17 @@ a {
 .card .corner-banner {
     position: absolute;
     width: var(--ribbon-width);
-    padding: 9px 0;
+    padding: var(--ribbon-padding);
     text-align: center;
-    font-weight: 700;
-    font-size: 14px;
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-corner-banner);
     color: #fff;
     text-decoration: none;
     transform: rotate(45deg);
     transform-origin: 50% 50%;
     white-space: nowrap;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
-    z-index: 10;
+    box-shadow: var(--shadow-corner-banner);
+    z-index: var(--z-corner-banner);
     /* Center content precisely */
     display: flex;
     align-items: center;
@@ -323,7 +499,7 @@ a {
     top: var(--ribbon-top);
     right: var(--ribbon-right);
     background: linear-gradient(135deg, #1e5799 0%, #2989d8 50%, #207cca 100%);
-    z-index: 11;
+    z-index: var(--z-fork-banner);
 }
 
 /* Role banner: convert to a full-width horizontal bar across the top of the card */
@@ -350,11 +526,11 @@ a {
     justify-content: space-between;
 
     /* layering: must sit under the fork ribbon on the right */
-    z-index: 10;
+    z-index: var(--z-role-banner);
 
     /* shape to match card corners */
-    border-top-left-radius: 4px;
-    border-top-right-radius: 4px;
+    border-top-left-radius: var(--border-radius-sm);
+    border-top-right-radius: var(--border-radius-sm);
 }
 
 /* Role bar content styles */
@@ -470,7 +646,7 @@ h1 .tag-list {
 .tag-list {
     display: inline-flex;
     flex-wrap: wrap;
-    gap: 1.1rem 0.8rem;
+    gap: var(--tag-list-gap);
     list-style: none;
     padding: 0;
 
@@ -481,15 +657,15 @@ h1 .tag-list {
     .tag {
         display: inline-block;
         background-color: var(--tag-inner-bg);
-        border-radius: 9999px;
-        padding: 0.3rem 1rem 0.3rem 1.75rem;
-        font-size: 0.75rem;
-        font-weight: 600;
+        border-radius: var(--border-radius-pill);
+        padding: var(--tag-padding-filter);
+        font-size: var(--font-size-xs);
+        font-weight: var(--font-weight-normal);
         margin-left: 1.5rem;
         margin-right: 0;
-        border: 2px solid var(--transparent);
+        border: var(--border-width-tag) solid var(--transparent);
         /* keep the outer orange glow but make inner subtle to distinguish layers */
-        box-shadow: 0 0 8px rgba(0,0,0,0.04), 0 0 10px var(--orange-light);
+        box-shadow: var(--shadow-glow-md) rgba(0,0,0,0.04), 0 0 10px var(--orange-light);
         transition: margin-left 0.3s ease;
     }
 
@@ -508,7 +684,7 @@ h1 .tag-list {
     .tag-link {
         display: inline-block;
         background-color: var(--tag-outer-bg);
-        border-radius: 9999px;
+        border-radius: var(--border-radius-pill);
         /*padding: 0.3rem 1rem 0.3rem 1.75rem;*/
         box-shadow: 0 0 10px var(--orange-light);
         text-decoration: none;
@@ -523,7 +699,7 @@ h1 .tag-list {
         touch-action: pan-y;
 
         /* two-tone border using layered backgrounds and background-clip */
-        border: 2px solid transparent; /* keep a physical border width for layout */
+        border: var(--border-width-tag) solid transparent; /* keep a physical border width for layout */
         background-image: linear-gradient(var(--tag-outer-bg), var(--tag-outer-bg)), linear-gradient(to bottom, var(--orange-top), var(--orange-bottom));
         background-origin: border-box;
         background-clip: padding-box, border-box;
@@ -574,7 +750,7 @@ h1 .tag-list {
     details > summary .tag-list {
         display: flex;
         flex-wrap: nowrap;        /* keep items in a single row */
-        gap: 0.6rem 0.9rem;
+        gap: var(--tag-list-summary-gap);
         align-items: center;
         /* Allow overflow so box-shadows and glows aren't clipped by a scroll container's rectangle */
         overflow: visible;
@@ -586,7 +762,7 @@ h1 .tag-list {
        vertical padding to prevent glows from being clipped by the scroller's box. */
     details > summary .tag-list .tag-scroll {
         display: flex;
-        gap: 0.6rem 0.9rem;
+        gap: var(--tag-list-summary-gap);
         align-items: center;
         flex-wrap: nowrap;        /* keep items in a single row inside the scroller */
         overflow-x: auto;        /* allow horizontal scrolling on small viewports */
@@ -595,7 +771,7 @@ h1 .tag-list {
         /* Increased vertical padding so box-shadow / glow has room to render outside
            the tag content without being clipped by the scroller's rectangle. Also
            add horizontal padding so tag shadows don't overflow the scroller's left/right edges. */
-        padding: 0.75rem 0.9rem;      /* vertical 0.75rem, horizontal 0.9rem */
+        padding: var(--tag-list-scroll-padding);
         margin: 0;
     }
 
@@ -605,7 +781,7 @@ h1 .tag-list {
         margin-top: 0.6rem;
         display: flex;
         flex-wrap: wrap;
-        gap: 0.7rem 1rem;
+        gap: var(--card-gap);
         list-style: none;
         padding: 0;
     }
@@ -620,13 +796,13 @@ h1 .tag-list {
     details > summary .summary-control::after {
         content: "";
         display: inline-block;
-        width: 0;
-        height: 0;
+        width: var(--caret-size);
+        height: var(--caret-size);
         border-left: 6px solid transparent;
         border-right: 6px solid transparent;
         border-top: 6px solid currentColor;
-        transition: transform 0.18s ease;
-        margin-left: 0.25rem;
+        transition: transform var(--transition-caret);
+        margin-left: var(--caret-margin);
     }
 
     /* Rotate caret when open */
@@ -665,7 +841,7 @@ h1 .tag-list {
     .tag-link.active .tag {
         background-color: var(--orange-active);
         color: var(--white);
-        border: 2px solid var(--orange-active-solid);
+        border: var(--border-width-tag) solid var(--orange-active-solid);
         margin-left: 0;
         margin-right: 1.5rem;
     }
@@ -673,7 +849,7 @@ h1 .tag-list {
     .tag-link.author.active .tag.author {
         background-color: var(--author-color);
         color: var(--white);
-        border: 2px solid var(--author-solid);
+        border: var(--border-width-tag) solid var(--author-solid);
         margin-left: 0;
         margin-right: 1.5rem;
     }
@@ -681,7 +857,7 @@ h1 .tag-list {
     .tag-link.maintainer.active .tag.maintainer {
         background-color: var(--maintainer-color);
         color: var(--white);
-        border: 2px solid var(--maintainer-solid);
+        border: var(--border-width-tag) solid var(--maintainer-solid);
         margin-left: 0;
         margin-right: 1.5rem;
     }
@@ -689,17 +865,17 @@ h1 .tag-list {
     .tag-link.contributor.active .tag.contributor {
         background-color: var(--contributor-color);
         color: var(--white);
-        border: 2px solid var(--contributor-solid);
+        border: var(--border-width-tag) solid var(--contributor-solid);
         margin-left: 0;
         margin-right: 1.5rem;
     }
 
     .count {
         position: absolute;
-        top: 0.5rem;
-        font-size: 0.75rem;
-        font-weight: 600;
-        padding: 0 0.5rem;
+        top: var(--count-top);
+        font-size: var(--font-size-xs);
+        font-weight: var(--font-weight-normal);
+        padding: var(--count-padding);
         color: var(--text-color);
     }
 
@@ -735,7 +911,7 @@ h1 .tag-list {
     align-items: flex-start;
     justify-content: flex-start;
     /* keep filters visually grouped from surrounding content */
-    margin-bottom: 0.75rem;
+    margin-bottom: var(--filters-margin-bottom);
     overflow: visible; /* ensure overlays and shadows are visible */
     /* Allow the filters row to wrap to multiple lines on narrow viewports so it
        doesn't push the page horizontally. This mirrors the behavior used in the
@@ -757,7 +933,7 @@ h1 .tag-list {
 .filters > details > summary .tag-list {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.6rem 0.9rem;
+    gap: var(--tag-list-summary-gap);
     align-items: center;
     padding: 0;
     margin: 0;
@@ -774,21 +950,21 @@ h1 .tag-list {
     /* responsive width: never wider than the page column but allow space for multiple columns */
     width: min(48rem, calc(100vw - 2rem));
     background: var(--muted-bg);
-    border-radius: 8px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.12);
-    z-index: 60; /* sit above page content */
+    border-radius: var(--border-radius-panel);
+    box-shadow: var(--shadow-panel);
+    z-index: var(--z-filter-panel);
 
     /* Use a responsive grid so several tags can sit on a row */
     display: grid; /* changed from flex to grid */
-    grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
-    column-gap: 1rem;
-    row-gap: 0.7rem;
+    grid-template-columns: repeat(auto-fit, minmax(var(--filter-panel-col-min), 1fr));
+    column-gap: var(--filter-panel-gap);
+    row-gap: var(--filter-panel-gap);
     list-style: none;
-    padding: 0.6rem; /* consistent internal padding */
+    padding: var(--filter-panel-padding); /* consistent internal padding */
     box-sizing: border-box;
 
     /* viewport-safe: don't exceed 60% of viewport height; allow internal scrolling */
-    max-height: 60vh;
+    max-height: var(--filter-panel-max-height);
     overflow: auto; /* allow internal scrolling when needed */
     -webkit-overflow-scrolling: touch;
     overscroll-behavior: contain;
@@ -808,7 +984,7 @@ h1 .tag-list {
 /* On very small viewports, reduce the min column width so at least two columns can fit */
 @media (max-width: 36rem) {
     .filters > details > .tag-list {
-        grid-template-columns: repeat(auto-fit, minmax(7.5rem, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(var(--filter-panel-col-min-mobile), 1fr));
     }
 }
 
@@ -831,12 +1007,12 @@ h1 .tag-list {
        the summary-control doesn't change the row height when toggled. */
     padding: 0;
     box-sizing: border-box;
-    border-radius: 9999px;
+    border-radius: var(--border-radius-pill);
     color: var(--white);
     text-decoration: none;
     vertical-align: middle;
     /* two-tone border + inner background like .tag-link.active */
-    border: 2px solid transparent;
+    border: var(--border-width-tag) solid transparent;
     background-image: linear-gradient(var(--orange-active), var(--orange-active)), linear-gradient(to bottom, var(--orange-top-active), var(--orange-bottom-active));
     background-origin: border-box;
     background-clip: padding-box, border-box;
@@ -848,14 +1024,14 @@ h1 .tag-list {
 .filters > details.has-active-filter > summary .summary-control .tag {
     background-color: var(--orange-active);
     color: var(--white);
-    border: 2px solid var(--orange-active-solid);
+    border: var(--border-width-tag) solid var(--orange-active-solid);
     margin-left: 0;          /* slide left into the host pill */
     margin-right: 1.5rem;    /* same spacing as active tags */
     /* ensure the same transition exists so it animates like the real tag */
-    transition: margin-left 0.3s ease, background-color 150ms linear, border-color 150ms linear;
+    transition: var(--transition-tag-margin), background-color var(--transition-tag-colors);
     /* Match the inner padding used by regular .tag so sizing is consistent */
-    padding: 0.3rem 1rem 0.3rem 1.75rem;
-    border-radius: 9999px;
+    padding: var(--tag-padding-filter);
+    border-radius: var(--border-radius-pill);
 }
 
 /* Counts should swap like on .tag-link.active */

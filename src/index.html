@@ -173,7 +173,7 @@ body_class: projects
                   src="/assets/images/TypeScript.svg"
                   alt="TypeScript >= <%= min_ts %>"
                   class="language"
-          >>= v<%= min_ts %></span>
+          >>=&nbsp;v<%= min_ts %></span>
           <span class="count right"><%== min_ts_counts[min_ts].to_s.ljust(2, 'x').gsub('x', '&nbsp;') %></span>
         </button>
       </li>
@@ -186,7 +186,7 @@ body_class: projects
                   src="/assets/images/Go.svg"
                   alt="Go >= <%= min_go %>"
                   class="language"
-          >>= v<%= min_go %></span>
+          >>=&nbsp;v<%= min_go %></span>
           <span class="count right"><%== min_go_counts[min_go].to_s.ljust(2, 'x').gsub('x', '&nbsp;') %></span>
         </button>
       </li>
@@ -199,7 +199,7 @@ body_class: projects
                   src="/assets/images/Bash.svg"
                   alt="Bash >= <%= min_bash %>"
                   class="language"
-          >>= v<%= min_bash %></span>
+          >>=&nbsp;v<%= min_bash %></span>
           <span class="count right"><%== min_bash_counts[min_bash].to_s.ljust(2, 'x').gsub('x', '&nbsp;') %></span>
         </button>
       </li>
@@ -212,7 +212,7 @@ body_class: projects
                   src="/assets/images/Ruby.svg"
                   alt="Ruby >= <%= min_ruby %>"
                   class="language"
-          >>= v<%= min_ruby %></span>
+          >>=&nbsp;v<%= min_ruby %></span>
           <span class="count right"><%== min_rb_counts[min_ruby].to_s.ljust(2, 'x').gsub('x', '&nbsp;') %></span>
         </button>
       </li>
@@ -225,7 +225,7 @@ body_class: projects
                   src="/assets/images/Ruby.svg"
                   alt="Ruby >= <%= min_ruby %>"
                   class="language"
-          >>= v<%= min_ruby %></span>
+          >>=&nbsp;v<%= min_ruby %></span>
           <span class="count right"><%== min_rb_counts[min_ruby].to_s.ljust(2, 'x').gsub('x', '&nbsp;') %></span>
         </button>
       </li>
@@ -284,14 +284,14 @@ body_class: projects
       </a>
       <% else %>
       <span>
-          <img
-                  src="/assets/images/<%= project['language'] %>.svg"
-                  alt="<%= project['language'] %>"
-                  class="language"
-                  height="24px"
-          >
-          <%= project["name"] %>
-        </span>
+        <img
+                src="/assets/images/<%= project['language'] %>.svg"
+                alt="<%= project['language'] %>"
+                class="language"
+                height="24px"
+        >
+        <%= project["name"] %>
+      </span>
       <% end %>
     </h2>
     <p>
@@ -339,7 +339,7 @@ body_class: projects
               src="/assets/images/<%= project['language'] %>.svg"
               alt="<%= project['language'] %> >= <%= project['minimum_version'] %>"
               class="language"
-      ><%= project["language"] %> >= <%= project["minimum_version"] %></span>
+      ><%= project["language"] %>&nbsp;>=&nbsp;<%= project["minimum_version"] %></span>
       <% end %>
       <% if project["tags"] && project["tags"].any? %>
       <% project["tags"].each do |tag| %>
