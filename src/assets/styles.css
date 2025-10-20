@@ -734,15 +734,23 @@ h1 .tag-list {
     /* keep filters visually grouped from surrounding content */
     margin-bottom: 0.75rem;
     overflow: visible; /* ensure overlays and shadows are visible */
+    /* Allow the filters row to wrap to multiple lines on narrow viewports so it
+       doesn't push the page horizontally. This mirrors the behavior used in the
+       h1 role filters and improves mobile UX. */
+    flex-wrap: wrap;
 }
 
 /* Each <details> becomes a compact flex item so its <summary> sits inline in the row */
 .filters > details {
-    flex: 0 0 auto; /* size to content, don't grow */
+    /* size to content, allow shrinking so long summaries won't force overflow */
+    flex: 0 1 auto;
+    min-width: 0; /* enable flex children to shrink properly */
     position: relative; /* positioning context for its absolutely-positioned panel */
 }
 
-/* Make the summary's tag-list a single-row control */
+/* Small tweak: allow the summary's inline tag-list to wrap if the available
+   width is very small. By default we keep horizontal scrolling, but allow a
+   fallback to wrap on extremely narrow screens. */
 .filters > details > summary .tag-list {
     display: inline-flex;
     flex-wrap: nowrap;
