@@ -361,13 +361,15 @@ body_class: projects
     <p><%== project["description"] %></p>
     <% raise "#{project['name']}" if project["funding_sites"].nil? %>
     <% if project["funding_sites"].any? %>
+    <% funding_sites = project["funding_sites"].dup %>
+    <% funding_sites << {"type" => "GitHub Sponsors", "url" => "https://github.com/sponsors/pboling"} unless funding_sites.any? { |fs| fs["type"] == "GitHub Sponsors" } %>
     <p>
-      Financially support my work on <pre><%= project["name"] %></pre> via:
-    <% last_comma_index = project["funding_sites"].size - 1 %>
-    <% project["funding_sites"].each_with_index do |funding_site, i| %>
-    <a href="<%= funding_site['url'] %>" class="text-link" target="_blank" rel="noopener">
+      Financially support my work on <em><%= project["name"] %></em> via:
+    <% last_comma_index = funding_sites.size - 1 %>
+    <% funding_sites.each_with_index do |funding_site, i| %>
+    <a href="<%= funding_site['url'] %>" class="text-link <%= funding_site['type'].gsub(' ', '-').downcase %>" target="_blank" rel="noopener">
       <% if funding_site['type'] == 'OpenCollective' %>
-      "<%= funding_site['url'].split("/")[-1] %>"
+      <em><%= funding_site['url'].split("/")[-1] %></em>
       <% end %>
       <%= funding_site['type'] %>
     </a><%= i <= last_comma_index - 1 ? ", " : "" %><%= i == last_comma_index - 1 ? "or" : "" %>
