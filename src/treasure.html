@@ -5,7 +5,7 @@ permalink: /treasure.html
 ---
 
 <div class="ruby-pile">
-<% 10.times do %>
-<img src="/assets/images/ruby.svg" alt="ruby" class="ruby" width="32" height="32">
-<% end %>
+    <% site.data.projects.select {|p| p["language"] == "Ruby" }.each do |_project| %>
+    <img src="/assets/images/Ruby.svg" alt="ruby" class="ruby" width="32" height="32">
+    <% end %>
 </div>
