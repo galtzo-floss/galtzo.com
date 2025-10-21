@@ -75,8 +75,18 @@ body_class: projects
 <% end %>
 <% end %>
 
+<p>
+  Hi, my name is Peter Boling, and I love to solve problems with code.
+  Maintaining these projects, with a focus on improving developer experience,
+  requires a great deal of time and energy.
+  I would appreciate your <a href="https://github.com/sponsors/pboling" class="text-link" target="_blank" rel="noopener">financial support</a>.
+  Use the switches to filter projects by role, year, tags, and minimum language versions.
+  Join the <a href="https://discord.gg/3qme4XHNKN" target="_blank" rel="noopener" class="text-link">Discord</a>
+  if you need support, or would like to chat, about any of these projects.
+</p>
+
 <h1>
-  <%= (page.respond_to?(:data) && page.data["title"]) || "Open Source Projects" %>
+  <span class="title-text"><%= (page.respond_to?(:data) && page.data["title"]) || "Open Source Projects" %></span>
   <span class="tag-list">
     <% allowed_roles.each do |role| %>
     <span>
@@ -85,18 +95,10 @@ body_class: projects
         <span class="tag <%= role %>"><%= role %></span>
         <span class="count right"><%== role_counts[role].to_s.ljust(2, 'x').gsub('x', '&nbsp;') %></span>
       </button>
-     </span>
-     <% end %>
-   </span>
+    </span>
+    <% end %>
+  </span>
 </h1>
-
-<p>
-  Hi, my name is Peter Boling, and I love to solve problems with code.
-  Maintaining these projects, with a focus on improving developer experience,
-  requires a great deal of time and energy.
-  I would appreciate your <a href="https://github.com/sponsors/pboling" class="text-link" target="_blank" rel="noopener">financial support</a>.
-  Use the switches to filter projects by role, year, tags, and minimum language versions.
-</p>
 
 <div class="filters">
   <details  id="year-filters">

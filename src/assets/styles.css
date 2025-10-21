@@ -397,10 +397,17 @@ h1 {
     border-bottom: var(--border-width-thin) solid var(--border-color);
     padding-bottom: var(--h1-padding-bottom);
     display: flex;
-    align-items: baseline;   /* keep pills aligned with the text baseline on wide screens */
+    align-items: center;   /* center filters and action buttons vertically */
     column-gap: var(--h1-column-gap);        /* space between title text and first pill */
     row-gap: var(--h1-row-gap);         /* vertical gap when pills wrap to the next line */
     flex-wrap: wrap;         /* allow pills to drop below the title when needed */
+}
+
+/* Keep the visual baseline alignment for the title text while allowing
+   other h1 children (filters, buttons) to center vertically. */
+.title-text {
+    align-self: baseline;
+    display: inline-block; /* ensure align-self behaves predictably */
 }
 
 h2 {
@@ -674,8 +681,12 @@ button,
 
 /* Ensure pills don't use any upward shift by default (helps small viewports) */
 h1 .tag-list {
-    transform: none;
+    /* Slight upward nudge to visually align the filter pills with the
+       title baseline. Use a very small translation so touch targets
+       and layout don't change. */
+    transform: translateY(-0.12rem);
     margin-left: 0;
+    align-self: center; /* keep vertically centered in the h1 row */
 }
 
 /* =========================================================================
