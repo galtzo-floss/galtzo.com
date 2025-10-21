@@ -117,7 +117,7 @@
        ========================================================================= */
 
     --shadow-glow-sm: 0 0 8px;      /* subtle inner shadow */
-    --shadow-glow-md: 0 0 10px;     /* standard glow for tags/controls */
+    --shadow-glow-md: 0 0 5px;     /* standard glow for tags/controls (reduced by 50%) */
     --shadow-corner-banner: 0 2px 4px rgba(0,0,0,0.3);
     --shadow-panel: 0 10px 30px rgba(0,0,0,0.12); /* filter dropdown panels */
     --shadow-inner-role: inset 0 -6px 12px -8px; /* role banner inner glow */
@@ -525,13 +525,13 @@ button,
         font-weight: var(--font-weight-normal);
         margin: var(--tag-card-margin);
         /* subtle glow and a thin left edge to separate from the outer pill */
-        box-shadow: var(--shadow-glow-md) rgba(0,0,0,0.04), 0 0 10px var(--orange-light);
+        box-shadow: var(--shadow-glow-md) rgba(0,0,0,0.04), 0 0 5px var(--orange-light);
         border-left: var(--border-width-tag-edge) solid var(--tag-inner-edge);
     }
 
     /* Consolidated: role-colored tags using scoped variables */
     .tag:is(.author, .maintainer, .contributor) {
-        box-shadow: 0 0 10px var(--current-role-color);
+        box-shadow: 0 0 5px var(--current-role-color);
     }
 }
 
@@ -697,7 +697,7 @@ button,
 /* Consolidated: standalone role classes with scoped variables
    These provide glows for elements that have role classes but aren't nested */
 :is(.author, .maintainer, .contributor) {
-    box-shadow: 0 0 10px var(--current-role-color);
+    box-shadow: 0 0 5px var(--current-role-color);
 }
 
 /* Projects container */
@@ -741,13 +741,13 @@ h1 .tag-list {
         margin-right: var(--tag-margin-inactive-right);
         border: var(--border-width-tag) solid var(--transparent);
         /* keep the outer orange glow but make inner subtle to distinguish layers */
-        box-shadow: var(--shadow-glow-md) rgba(0,0,0,0.04), 0 0 10px var(--orange-light);
+        box-shadow: var(--shadow-glow-md) rgba(0,0,0,0.04), 0 0 5px var(--orange-light);
         transition: margin-left 0.3s ease, margin-right 0.3s ease;
     }
 
     /* Consolidated: role-colored tags in tag-list using scoped variables */
     .tag:is(.author, .maintainer, .contributor) {
-        box-shadow: 0 0 10px var(--current-role-color);
+        box-shadow: 0 0 5px var(--current-role-color);
     }
 
     .tag-link {
@@ -770,7 +770,7 @@ h1 .tag-list {
     align-items: center;
     background-color: var(--tag-outer-bg);
     border-radius: var(--border-radius-pill);
-    box-shadow: 0 0 10px var(--orange-light);
+    box-shadow: 0 0 5px var(--orange-light);
     text-decoration: none;
     color: inherit;
     position: relative;
@@ -794,7 +794,7 @@ h1 .tag-list {
 
 /* Role-colored pill outer containers */
 .pill-outer:is(.author, .maintainer, .contributor) {
-    box-shadow: 0 0 10px var(--current-role-color);
+    box-shadow: 0 0 5px var(--current-role-color);
 }
 
 /* Role-colored active pills */
