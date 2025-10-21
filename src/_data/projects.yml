@@ -1,5 +1,5 @@
 ---
-- name: 🌹 Peter Boling, team leader, web architect, security researcher, and rubyist. Building the web since 2004.  🌹
+- name: 🌹 Peter Boling, team leader, web architect, security researcher, and rubyist. Building for web since 2004.  🌹
   description: |
     <span class="intro">
     Hi! I love to solve problems with code.
@@ -19,11 +19,11 @@
   role: author
   first_commit_on: 2004/01/01
   first_commit: https://github.com/galtzo-floss/galtzo.com/commit/23b15c81cfe20eb53117efbcba8d76d7c2959290
-  funding_sites: []
-  #    - type: OpenCollective
-  #      url: https://opencollective.com/galtzo-floss
-  #    - type: Liberapay
-  #      url: https://liberapay.com/pboling
+  funding_sites:
+    - type: OpenCollective
+      url: https://opencollective.com/galtzo-floss
+    - type: Liberapay
+      url: https://liberapay.com/pboling
   forges:
     - type: GitHub
       url: https://github.com/pboling
@@ -40,8 +40,33 @@
   tags:
     - bridgetown
     - markdown
+    - roda
+    - hanami
+    - sinatra
+    - rails
+    - sidekiq
+    - resque
+    - rspec
+    - minitest
+    - docker
+    - k8s
     - html
     - javascript
+    - typescript
+    - websockets
+    - react
+    - svelte
+    - jquery
+    - oauth
+    - openid
+    - api
+    - graphql
+    - mysql
+    - postgres
+    - sqlite3
+    - ci/cd
+    - bash
+    - go
     - css
   docs_site: https://galtzo.com
 - name: active_security

@@ -98,7 +98,9 @@
     --card-padding: 1rem;
     --card-border-width: 1px;
     --card-border-radius: 4px;
-    --card-gap: 0.7rem 1rem;        /* row-gap column-gap for project-list */
+    /* Define column gap explicitly for calculations while keeping shorthand for layout */
+    --card-gap-col: 1rem;      /* horizontal gap between cards */
+    --card-gap: 0.7rem var(--card-gap-col);        /* row-gap column-gap for project-list */
 
     /* =========================================================================
        BORDER & RADIUS
@@ -539,8 +541,9 @@ button,
 
 /* Full-width card variant for aspect="wide" projects */
 .card.card-wide {
-    width: 100%;
-    flex-basis: 100%;
+    /* Span up to three normal card columns including the two internal column gaps */
+    width: min(100%, calc((var(--card-width) * 3) + (var(--card-gap-col, 1rem) * 2)));
+    flex: 0 0 auto; /* don't let flexbox stretch or shrink beyond the set width */
 }
 
 /* Project card positioning for corner banners */

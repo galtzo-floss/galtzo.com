@@ -242,6 +242,8 @@ body_class: projects
   <% if project['minimum_version'] %>
   <% tags_for_card << "#{project['language']} >= #{project['minimum_version']}" %>
   <% end %>
+  <% tags_for_card.sort! %>
+  <% sorted_tags = (project['tags'] || []).sort %>
   <% aspect_class = project['aspect'].nil? ? '' : "card-#{project['aspect']}" %>
   <li class="card <%= aspect_class %> <%= project['role'] %>" data-tags='<%= tags_for_card.to_json %>'>
     <div class="corner-anchor fork">
@@ -339,7 +341,7 @@ body_class: projects
       ><%= project["language"] %>&nbsp;>=&nbsp;<%= project["minimum_version"] %></span>
       <% end %>
       <% if project["tags"] && project["tags"].any? %>
-      <% project["tags"].each do |tag| %>
+      <% sorted_tags.each do |tag| %>
       <span class="tag <%= tag %>"><%= tag %></span>
       <% end %>
       <% else %>
@@ -363,7 +365,13 @@ body_class: projects
     <% funding_sites = project["funding_sites"].dup %>
     <% funding_sites << {"type" => "GitHub Sponsors", "url" => "https://github.com/sponsors/pboling"} unless funding_sites.any? { |fs| fs["type"] == "GitHub Sponsors" } %>
     <p>
-      Financially support my work on <em><%= project["name"] %></em> via:
+      Financially support
+      <% if project["type"] == "person" %>
+      my open source work
+      <% else %>
+      my work on <em><%= project["name"] %></em>
+      <% end %>
+      via:
     <% last_comma_index = funding_sites.size - 1 %>
     <% funding_sites.each_with_index do |funding_site, i| %>
     <a href="<%= funding_site['url'] %>" class="text-link <%= funding_site['type'].gsub(' ', '-').downcase %>" target="_blank" rel="noopener">
