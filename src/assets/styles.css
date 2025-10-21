@@ -1021,6 +1021,56 @@ h1 .tag-list {
     top: 0.65rem;
 }
 
+/* Increase the nav title and intro paragraph size as requested */
+header nav,
+header nav a {
+    /* Use percentage to double whatever the inherited size is */
+    font-size: 150%;
+    line-height: 1;
+}
+
+/* Layout & spacing for nav anchors: make nav an inline-flex row and add gap
+   so multiple anchors have consistent spacing between them. */
+header nav {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem; /* spacing between anchors */
+}
+
+/* Ensure any image inside the nav matches the link line-height (1 * font-size).
+   Using 1em ties the image height to the current font-size, which in combination
+   with line-height:1 makes the image visually match the link height. */
+header nav img,
+header nav a img {
+    height: 1em;
+    width: auto;
+    vertical-align: middle; /* keep baseline alignment with text */
+}
+
+.intro {
+    /* Double the intro paragraph text size */
+    font-size: 150%;
+    line-height: 1.25;
+}
+
+/* Prevent the doubled sizes from overwhelming very small screens */
+@media (max-width: 36rem) {
+    header nav,
+    header nav a,
+    .intro {
+        font-size: 120%;
+    }
+    /* Ensure nav images remain proportional on small screens */
+    header nav img,
+    header nav a img {
+        height: 1em; /* still tied to the (reduced) font-size */
+    }
+    /* Slightly reduce the gap on small viewports so it fits better */
+    header nav {
+        gap: 0.6rem;
+    }
+}
+
 /* =========================================================================
    LANGUAGE-SPECIFIC STYLES
    ========================================================================= */
