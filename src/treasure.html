@@ -5,7 +5,10 @@ permalink: /treasure.html
 ---
 
 <div class="ruby-pile">
-    <% site.data.projects.select {|p| p["language"] == "Ruby" }.each do |_project| %>
-    <img src="/assets/images/Ruby.svg" alt="ruby" class="ruby" width="32" height="32">
+    <% site.data.projects.select {|p| p["language"] == "Ruby" }.each do |project| %>
+    <% gh_forge = project["forges"].find { |f| f["type"] == "GitHub" } %>
+    <a href="<%= project['url'] %>" target="_blank" rel="noopener">
+        <img src="/assets/images/Ruby.svg" alt="<%= project['name'] %>" title="<%= project['name'] %>" class="ruby" width="32" height="32">
+    </a>
     <% end %>
 </div>
