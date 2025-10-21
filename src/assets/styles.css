@@ -1115,3 +1115,53 @@ header nav a img {
             drop-shadow(0 0 14px rgba(255, 255, 255, 0.4))
             drop-shadow(0 0 16px rgba(255, 255, 255, 0.1));
 }
+
+/* =========================================================================
+   BADGE / SHIELD (img.shields.io) DARK-MODE TREATMENT
+   ========================================================================= */
+
+:root {
+    /* Tunable filter stack for dark-mode rendering of external shields
+       Primary knob: --shield-darkness (used for brightness())
+       Optional knobs: --shield-contrast and --shield-saturate
+       Tip: Increase --shield-darkness slightly (>1) to lighten near-black backgrounds
+            or reduce contrast to better match a dark-but-not-black page background. */
+    --shield-darkness: 1.05;   /* brightness multiplier (lower = darker, higher = lighter) */
+    --shield-contrast: 0.75;   /* overall contrast; lower can soften harsh blacks */
+    --shield-saturate: 1.15;   /* color saturation adjustment */
+
+    /* Compose the full filter from the knobs above. Keep the invert+rotate base to adapt
+       light-only shields to dark contexts, then fine-tune via variables. */
+    --shield-filter-dark: invert(1)
+                           hue-rotate(180deg)
+                           saturate(var(--shield-saturate))
+                           contrast(var(--shield-contrast))
+                           brightness(var(--shield-darkness));
+}
+
+/* Smoothly animate when the theme toggles */
+img[src*="img.shields.io"] {
+    transition: filter 600ms ease, opacity 600ms ease;
+}
+
+/* System dark mode */
+@media (prefers-color-scheme: dark) {
+    img[src*="img.shields.io"] {
+        filter: var(--shield-filter-dark);
+    }
+}
+
+/* Explicit dark theme override via data-theme */
+:root[data-theme="dark"] img[src*="img.shields.io"] {
+    filter: var(--shield-filter-dark);
+}
+
+/* Explicit light theme override clears any filter */
+:root[data-theme="light"] img[src*="img.shields.io"] {
+    filter: none;
+}
+
+/* Opt-out: add class="no-dark-filter" to skip adjustments for specific shields */
+img[src*="img.shields.io"].no-dark-filter {
+    filter: none !important;
+}
