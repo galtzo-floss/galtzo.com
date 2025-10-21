@@ -1,5 +1,6 @@
 ---
-- name: 🌹 Peter Boling, team leader, web architect, security researcher, and rubyist. Building for web since 2004.  🌹
+- name: "\U0001F339 Peter Boling, team leader, web architect, security researcher,
+    and rubyist. Building for web since 2004.  \U0001F339"
   description: |
     <span class="intro">
     Hi! I love to solve problems with code.
@@ -20,54 +21,51 @@
   first_commit_on: 2004/01/01
   first_commit: https://github.com/galtzo-floss/galtzo.com/commit/23b15c81cfe20eb53117efbcba8d76d7c2959290
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/galtzo-floss
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/pboling
-      owner: pboling
-    - type: GitLab
-      url: https://gitlab.com/pboling
-    - type: Codeberg
-      url: https://codeberg.org/pboling
-    - type: SourceHut
-      url: https://sr.ht/~galtzo/
-  #    - type: GitHub
-  #      url: https://github.com/galtzo-floss/galtzo.com
-  #      owner: galtzo-floss
+  - type: GitHub
+    url: https://github.com/pboling
+    owner: pboling
+  - type: GitLab
+    url: https://gitlab.com/pboling
+  - type: Codeberg
+    url: https://codeberg.org/pboling
+  - type: SourceHut
+    url: https://sr.ht/~galtzo/
   tags:
-    - bridgetown
-    - markdown
-    - roda
-    - hanami
-    - sinatra
-    - rails
-    - sidekiq
-    - resque
-    - rspec
-    - minitest
-    - docker
-    - k8s
-    - html
-    - javascript
-    - typescript
-    - websockets
-    - react
-    - svelte
-    - jquery
-    - oauth
-    - openid
-    - api
-    - graphql
-    - mysql
-    - postgres
-    - sqlite3
-    - ci/cd
-    - bash
-    - go
-    - css
+  - bridgetown
+  - markdown
+  - roda
+  - hanami
+  - sinatra
+  - rails
+  - sidekiq
+  - resque
+  - rspec
+  - minitest
+  - docker
+  - k8s
+  - html
+  - javascript
+  - typescript
+  - websockets
+  - react
+  - svelte
+  - jquery
+  - oauth
+  - openid
+  - api
+  - graphql
+  - mysql
+  - postgres
+  - sqlite3
+  - ci/cd
+  - bash
+  - go
+  - css
   docs_site: https://galtzo.com
 - name: active_security
   description: Disallow insecure, unscoped, finds
@@ -78,22 +76,30 @@
   first_commit_on: 2024/05/30
   first_commit: https://github.com/galtzo-floss/active_security/commit/9caac884909193326b3f3318ad3db00ca754fabd
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/galtzo-floss
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/galtzo-floss/active_security
-      owner: galtzo-floss
+  - type: GitHub
+    url: https://github.com/galtzo-floss/active_security
+    owner: galtzo-floss
   tags:
-    - rails
-    - activerecord
+  - rails
+  - activerecord
   docs_site:
+  github_stars: 7
+  total_downloads: 1881
+  daily_downloads: 0
+  release_downloads: 1521
+  release_date: 2024/07/05
+  last_commit_on: 2025/08/20
+  status: active
+  last_scrape_at: '2025-10-21T22:09:52Z'
 - name: activerecord-tablefree
   description: ActiveRecord Tablefree Models provides a simple mixin for creating
-    models that are not bound to the database.
-    Take advantage of ActiveRecord features like validation, relationships, and nested_attributes.
+    models that are not bound to the database. Take advantage of ActiveRecord features
+    like validation, relationships, and nested_attributes.
   language: Ruby
   ecosystem: rubygems
   minimum_version: 2.2
@@ -101,19 +107,27 @@
   first_commit_on: 2017/11/08
   first_commit: https://github.com/galtzo-floss/activerecord-tablefree/commit/167367318b42c77c8f7732243afdf90ba82a0387
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/galtzo-floss
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/galtzo-floss/activerecord-tablefree
-      owner: galtzo-floss
+  - type: GitHub
+    url: https://github.com/galtzo-floss/activerecord-tablefree
+    owner: galtzo-floss
   tags:
-    - rails
-    - activerecord
-    - validate
+  - rails
+  - activerecord
+  - validate
   docs_site:
+  github_stars: 2
+  total_downloads: 107609
+  daily_downloads: 0
+  release_downloads: 83422
+  release_date: 2018/09/23
+  last_commit_on: 2025/08/06
+  status: active
+  last_scrape_at: '2025-10-21T22:09:55Z'
 - name: activerecord-transactionable
   description: Getting transactions right is hard, and this gem makes it easier.
   language: Ruby
@@ -123,24 +137,34 @@
   first_commit_on: 2016/03/26
   first_commit: https://github.com/galtzo-floss/activerecord-transactionable/commit/c40965018cee7546e62249006e2f41784cde8142
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/galtzo-floss
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/galtzo-floss/activerecord-transactionable
-      owner: galtzo-floss
-    - type: GitLab
-      url: https://gitlab.com/galtzo-floss/activerecord-transactionable
-    - type: Codeberg
-      url: https://codeberg.org/galtzo-floss/activerecord-transactionable
-    - type: SourceHut
-      url: https://git.sr.ht/~galtzo/activerecord-transactionable
+  - type: GitHub
+    url: https://github.com/galtzo-floss/activerecord-transactionable
+    owner: galtzo-floss
+  - type: GitLab
+    url: https://gitlab.com/galtzo-floss/activerecord-transactionable
+  - type: Codeberg
+    url: https://codeberg.org/galtzo-floss/activerecord-transactionable
+  - type: SourceHut
+    url: https://git.sr.ht/~galtzo/activerecord-transactionable
   tags:
-    - rails
-    - activerecord
+  - rails
+  - activerecord
   docs_site:
+  github_stars: 11
+  gitlab_stars: 0
+  codeberg_stars: 0
+  total_downloads: 55340
+  daily_downloads: 0
+  release_downloads: 1845
+  release_date: 2024/03/06
+  last_commit_on: 2025/08/13
+  status: active
+  last_scrape_at: '2025-10-21T22:09:58Z'
 - name: anonymous_active_record
   description: Replacement for broken Class.new(ActiveRecord::Base)
   language: Ruby
@@ -150,18 +174,26 @@
   first_commit_on: 2018/01/03
   first_commit: https://github.com/galtzo-floss/anonymous_active_record/commit/6d9e24334d8800910efc7a8325494cbd6c08ff87
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/galtzo-floss
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/galtzo-floss/anonymous_active_record
-      owner: galtzo-floss
+  - type: GitHub
+    url: https://github.com/galtzo-floss/anonymous_active_record
+    owner: galtzo-floss
   tags:
-    - rails
-    - activerecord
+  - rails
+  - activerecord
   docs_site:
+  github_stars: 12
+  total_downloads: 290778
+  daily_downloads: 0
+  release_downloads: 235925
+  release_date: 2024/09/18
+  last_commit_on: 2025/08/13
+  status: active
+  last_scrape_at: '2025-10-21T22:10:08Z'
 - name: skywalking-eyes
   description: |
     A full-featured license tool to check and fix license headers and resolve dependencies' licenses.
@@ -178,15 +210,20 @@
   first_commit: https://github.com/apache/skywalking-eyes/commit/3655e78854be6a56ae72a0c9a847aedd133c3b74
   funding_sites: []
   forges:
-    - type: GitHub
-      url: https://github.com/apache/skywalking-eyes
-      owner: apache
+  - type: GitHub
+    url: https://github.com/apache/skywalking-eyes
+    owner: apache
   tags:
-    - license
-    - GHA
-    - cli
-    - shell
+  - license
+  - GHA
+  - cli
+  - shell
   docs_site:
+  github_stars: 286
+  release_date: 2025/02/13
+  last_commit_on: 2025/09/14
+  status: active
+  last_scrape_at: '2025-10-21T22:10:10Z'
 - name: appraisal2
   description: Appraisal2 integrates with bundler and rake to test your library against
     different versions of dependencies in repeatable scenarios called "appraisals."
@@ -197,23 +234,33 @@
   first_commit_on: 2017/11/20
   first_commit: https://github.com/appraisal-rb/appraisal2/commit/dcfac430d75a86a89497ec45af39edf798228f9c
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/appraisal-rb
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/appraisal-rb
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/appraisal-rb/appraisal2
-      owner: appraisal-rb
-    - type: GitLab
-      url: https://gitlab.com/appraisal-rb/appraisal2
-    - type: Codeberg
-      url: https://codeberg.org/appraisal-rb/appraisal2
+  - type: GitHub
+    url: https://github.com/appraisal-rb/appraisal2
+    owner: appraisal-rb
+  - type: GitLab
+    url: https://gitlab.com/appraisal-rb/appraisal2
+  - type: Codeberg
+    url: https://codeberg.org/appraisal-rb/appraisal2
   tags:
-    - test
-    - harness
-    - bundler
+  - test
+  - harness
+  - bundler
   docs_site: https://appraisal2.galtzo.com
+  github_stars: 12
+  gitlab_stars: 0
+  codeberg_stars: 0
+  total_downloads: 25389
+  daily_downloads: 0
+  release_downloads: 25389
+  release_date: 2025/07/28
+  last_commit_on: 2025/08/14
+  status: active
+  last_scrape_at: '2025-10-21T22:10:14Z'
 - name: archivist-client
   description: archivist-client queries archive.org for book data and downloads some
     things.
@@ -224,17 +271,25 @@
   first_commit_on: 2013/12/16
   first_commit: https://github.com/wordtreefoundation/archivist-client/commit/404f1976722fa7b4444d7b5d750f438bebae1102
   funding_sites:
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/wordtreefoundation/archivist-client
-      owner: wordtreefoundation
+  - type: GitHub
+    url: https://github.com/wordtreefoundation/archivist-client
+    owner: wordtreefoundation
   tags:
-    - shell
-    - api
-    - cli
+  - shell
+  - api
+  - cli
   docs_site:
+  github_stars: 16
+  total_downloads: 37071
+  daily_downloads: 0
+  release_downloads: 2848
+  release_date: 2018/09/04
+  last_commit_on: 2019/12/26
+  status: stale
+  last_scrape_at: '2025-10-21T22:10:16Z'
 - name: awesome_search
   description: Organize complicated search results
   language: Ruby
@@ -244,17 +299,25 @@
   first_commit_on: 2010/03/01
   first_commit: https://github.com/galtzo-floss/awesome_search/commit/cc63ada6740695dd42007d62ed76d3d5e12803ae
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/galtzo-floss
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/galtzo-floss/awesome_search
-      owner: galtzo-floss
+  - type: GitHub
+    url: https://github.com/galtzo-floss/awesome_search
+    owner: galtzo-floss
   tags:
-    - stale
+  - stale
   docs_site:
+  github_stars: 8
+  total_downloads: 11069
+  daily_downloads: 0
+  release_downloads: 6129
+  release_date: 2010/06/22
+  last_commit_on: 2025/08/13
+  status: active
+  last_scrape_at: '2025-10-21T22:10:19Z'
 - name: bash_step
   description: Bash Step Function Library
   language: Bash
@@ -264,16 +327,21 @@
   first_commit_on: 2013/11/08
   first_commit: https://github.com/pboling/bash_step/commit/13446f1a24bef1dafb66e916bf8bb321c8162851
   funding_sites:
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/pboling/bash_step
-      owner: pboling
+  - type: GitHub
+    url: https://github.com/pboling/bash_step
+    owner: pboling
   tags:
-    - shell
-    - cli
+  - shell
+  - cli
   docs_site:
+  github_stars: 6
+  release_date:
+  last_commit_on: 2021/12/07
+  status: stale
+  last_scrape_at: '2025-10-21T22:10:23Z'
 - name: bsfl
   description: Bash Script Function Library
   language: Bash
@@ -283,13 +351,18 @@
   first_commit_on: 2013/11/08
   first_commit: https://github.com/pboling/bsfl/commit/27444edd62fb4df3da662e8254a86c083e25d55b
   funding_sites:
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/pboling/bsfl
-      owner: pboling
+  - type: GitHub
+    url: https://github.com/pboling/bsfl
+    owner: pboling
   tags:
-    - shell
-    - cli
+  - shell
+  - cli
   docs_site:
+  github_stars: 4
+  release_date:
+  last_commit_on: 2021/12/07
+  status: stale
+  last_scrape_at: '2025-10-21T22:10:25Z'

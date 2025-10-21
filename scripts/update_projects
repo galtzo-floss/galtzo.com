@@ -1,0 +1,568 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require 'yaml'
+require 'net/http'
+require 'json'
+require 'uri'
+require 'date'
+require 'time'
+
+class ProjectUpdater
+  PROJECTS_FILE = File.expand_path('../src/_data/projects.yml', __dir__)
+  PROJECTS_DEV_FILE = File.expand_path('../src/_data/projects_dev.yml', __dir__)
+
+  # API tokens from environment (optional but recommended to avoid rate limits)
+  GITHUB_TOKEN = ENV['GITHUB_TOKEN']
+  GITLAB_TOKEN = ENV['GITLAB_TOKEN']
+
+  # Skip projects scraped within the last 24 hours
+  SCRAPE_THRESHOLD_HOURS = 24
+
+  # Valid fields for surgical updates
+  VALID_SURGICAL_FIELDS = %w[
+    github_stars gitlab_stars codeberg_stars
+    total_downloads daily_downloads release_downloads
+    release_date last_commit_on status
+  ]
+
+  def initialize(surgical_field: nil)
+    @projects = load_yaml(PROJECTS_FILE)
+    @projects_dev = load_yaml(PROJECTS_DEV_FILE) if File.exist?(PROJECTS_DEV_FILE)
+    @rate_limit_delay = 1 # seconds between API calls
+    @errors = [] # Track errors for summary
+    @surgical_field = surgical_field
+
+    if @surgical_field && !VALID_SURGICAL_FIELDS.include?(@surgical_field)
+      raise "Invalid surgical field: #{@surgical_field}. Valid fields: #{VALID_SURGICAL_FIELDS.join(', ')}"
+    end
+  end
+
+  def run
+    puts "Starting project update..."
+    if @surgical_field
+      puts "🔬 SURGICAL UPDATE MODE: Only updating '#{@surgical_field}' field"
+      puts "   (Ignoring last_scrape_at timestamps)"
+    end
+    puts "Processing #{@projects.size} projects from #{PROJECTS_FILE}"
+    puts "GitHub Token: #{GITHUB_TOKEN ? '✅ Set' : '❌ Not set'}"
+    puts "GitLab Token: #{GITLAB_TOKEN ? '✅ Set' : '❌ Not set'}"
+
+    skipped_count = 0
+    updated_count = 0
+
+    @projects.each_with_index do |project, index|
+      # Skip the person entry
+      if project['type'] == 'person'
+        puts "[#{index + 1}/#{@projects.size}] Skipping person entry: #{project['name']}"
+        next
+      end
+
+      # Check if project was recently scraped (skip this check in surgical mode)
+      if !@surgical_field && recently_scraped?(project)
+        puts "[#{index + 1}/#{@projects.size}] ⏭️  Skipping (scraped #{time_ago(project['last_scrape_at'])}): #{project['name']}"
+        skipped_count += 1
+        next
+      end
+
+      puts "\n[#{index + 1}/#{@projects.size}] Processing: #{project['name']}"
+
+      begin
+        if @surgical_field
+          update_single_field(project, @surgical_field)
+        else
+          update_project(project)
+          # Set the scrape timestamp only for full updates
+          project['last_scrape_at'] = Time.now.utc.iso8601
+        end
+
+        # If this project exists in projects_dev, sync it
+        sync_to_dev(project) if @projects_dev
+
+        updated_count += 1
+        sleep(@rate_limit_delay) # Rate limiting
+      rescue => e
+        error_msg = "#{project['name']}: #{e.message}"
+        @errors << error_msg
+        puts "  ❌ ERROR: #{e.message}"
+        puts "  #{e.backtrace.first}"
+      end
+    end
+
+    save_yaml(PROJECTS_FILE, @projects)
+    save_yaml(PROJECTS_DEV_FILE, @projects_dev) if @projects_dev
+
+    puts "\n" + "="*80
+    puts "📊 Summary"
+    puts "="*80
+    puts "Updated: #{updated_count}"
+    puts "Skipped (recent): #{skipped_count}"
+    puts "Errors: #{@errors.size}"
+
+    if @errors.any?
+      puts "\n⚠️  Problems Encountered:"
+      @errors.each do |error|
+        puts "  • #{error}"
+      end
+    end
+
+    puts "\n✅ Update complete!"
+  end
+
+  private
+
+  def update_single_field(project, field)
+    forges = project['forges'] || []
+    github_forge = forges.find { |f| f['type'] == 'GitHub' }
+    gitlab_forge = forges.find { |f| f['type'] == 'GitLab' }
+    codeberg_forge = forges.find { |f| f['type'] == 'Codeberg' }
+
+    case field
+    when 'github_stars'
+      raise "Missing GitHub forge for project: #{project['name']}" unless github_forge
+      github_info = fetch_github_info(github_forge['url'])
+      project['github_stars'] = github_info[:stars]
+      puts "  ⭐ GitHub stars: #{github_info[:stars]}"
+
+    when 'gitlab_stars'
+      if gitlab_forge
+        gitlab_stars = fetch_gitlab_stars(gitlab_forge['url'])
+        project['gitlab_stars'] = gitlab_stars
+        puts "  ⭐ GitLab stars: #{gitlab_stars}"
+      else
+        puts "  ⏭️  No GitLab forge for this project"
+      end
+
+    when 'codeberg_stars'
+      if codeberg_forge
+        codeberg_stars = fetch_codeberg_stars(codeberg_forge['url'])
+        project['codeberg_stars'] = codeberg_stars
+        puts "  ⭐ Codeberg stars: #{codeberg_stars}"
+      else
+        puts "  ⏭️  No Codeberg forge for this project"
+      end
+
+    when 'total_downloads', 'daily_downloads', 'release_downloads'
+      if project['language'] == 'Ruby' && project['ecosystem'] == 'rubygems'
+        gem_name = project['name']
+        gem_info = fetch_rubygems_info(gem_name)
+        if gem_info
+          project['total_downloads'] = gem_info[:total_downloads]
+          project['daily_downloads'] = gem_info[:daily_downloads]
+          project['release_downloads'] = gem_info[:release_downloads]
+          puts "  📦 #{field}: #{gem_info[field.to_sym]}"
+        end
+      else
+        puts "  ⏭️  Not a RubyGem"
+      end
+
+    when 'release_date'
+      if project['language'] == 'Ruby' && project['ecosystem'] == 'rubygems'
+        gem_name = project['name']
+        release_date = fetch_rubygems_release_date(gem_name)
+        project['release_date'] = release_date
+        puts "  📅 Release date (RubyGems): #{release_date}"
+      else
+        raise "Missing GitHub forge for project: #{project['name']}" unless github_forge
+        release_date = fetch_github_release_date(github_forge['url'])
+        project['release_date'] = release_date
+        puts "  📅 Release date (GitHub): #{release_date || 'N/A'}"
+      end
+
+    when 'last_commit_on'
+      raise "Missing GitHub forge for project: #{project['name']}" unless github_forge
+      github_info = fetch_github_info(github_forge['url'])
+      last_commit = github_info[:last_commit]
+      project['last_commit_on'] = last_commit
+      puts "  🔨 Last commit: #{last_commit || 'N/A'}"
+
+    when 'status'
+      raise "Missing GitHub forge for project: #{project['name']}" unless github_forge
+      github_info = fetch_github_info(github_forge['url'])
+      last_commit = github_info[:last_commit]
+
+      if github_info[:archived]
+        project['status'] = 'archived'
+        puts "  📦 Status: archived"
+      elsif last_commit.nil? || days_since(last_commit) > 365
+        project['status'] = 'stale'
+        puts "  ⚠️  Status: stale"
+      else
+        project['status'] = 'active'
+        puts "  ✅ Status: active"
+      end
+    end
+  end
+
+  def update_project(project)
+    forges = project['forges'] || []
+    github_forge = forges.find { |f| f['type'] == 'GitHub' }
+    gitlab_forge = forges.find { |f| f['type'] == 'GitLab' }
+    codeberg_forge = forges.find { |f| f['type'] == 'Codeberg' }
+
+    # Step 1: GitHub stars (required)
+    raise "Missing GitHub forge for project: #{project['name']}" unless github_forge
+
+    github_info = fetch_github_info(github_forge['url'])
+    project['github_stars'] = github_info[:stars]
+    puts "  ⭐ GitHub stars: #{github_info[:stars]}"
+
+    # Step 2: GitLab stars (if present)
+    if gitlab_forge
+      gitlab_stars = fetch_gitlab_stars(gitlab_forge['url'])
+      project['gitlab_stars'] = gitlab_stars
+      puts "  ⭐ GitLab stars: #{gitlab_stars}"
+    end
+
+    # Step 3: Codeberg stars (if present)
+    if codeberg_forge
+      codeberg_stars = fetch_codeberg_stars(codeberg_forge['url'])
+      project['codeberg_stars'] = codeberg_stars
+      puts "  ⭐ Codeberg stars: #{codeberg_stars}"
+    end
+
+    # Steps 4-6: RubyGems download statistics (for Ruby gems only)
+    if project['language'] == 'Ruby' && project['ecosystem'] == 'rubygems'
+      gem_name = project['name']
+      gem_info = fetch_rubygems_info(gem_name)
+
+      if gem_info
+        project['total_downloads'] = gem_info[:total_downloads]
+        project['daily_downloads'] = gem_info[:daily_downloads]
+        project['release_downloads'] = gem_info[:release_downloads]
+
+        puts "  📦 Total downloads: #{gem_info[:total_downloads]}"
+        if gem_info[:daily_downloads]
+          puts "  📊 Daily downloads: #{gem_info[:daily_downloads]}"
+        else
+          puts "  📊 Daily downloads: N/A (not available via public API)"
+        end
+        puts "  📥 Release downloads: #{gem_info[:release_downloads]}"
+      end
+    end
+
+    # Step 7: Latest release date
+    if project['language'] == 'Ruby' && project['ecosystem'] == 'rubygems'
+      # Prefer RubyGems release date
+      gem_name = project['name']
+      release_date = fetch_rubygems_release_date(gem_name)
+      project['release_date'] = release_date
+      puts "  📅 Release date (RubyGems): #{release_date}"
+    else
+      # Use GitHub release date
+      release_date = fetch_github_release_date(github_forge['url'])
+      project['release_date'] = release_date
+      puts "  📅 Release date (GitHub): #{release_date || 'N/A'}"
+    end
+
+    # Step 8: Last commit date
+    last_commit = github_info[:last_commit]
+    project['last_commit_on'] = last_commit
+    puts "  🔨 Last commit: #{last_commit || 'N/A'}"
+
+    # Step 9-10: Determine status (archived, stale, or active)
+    if github_info[:archived]
+      project['status'] = 'archived'
+      puts "  📦 Status: archived"
+    elsif last_commit.nil? || days_since(last_commit) > 365
+      project['status'] = 'stale'
+      puts "  ⚠️  Status: stale (#{days_since(last_commit)} days since last commit)"
+    else
+      project['status'] = 'active'
+      puts "  ✅ Status: active"
+    end
+  end
+
+  def sync_to_dev(project)
+    return unless @projects_dev
+
+    dev_project = @projects_dev.find { |p| p['name'] == project['name'] }
+    return unless dev_project
+
+    # Sync the computed fields
+    sync_fields = %w[
+      github_stars gitlab_stars codeberg_stars
+      total_downloads daily_downloads release_downloads
+      release_date last_commit_on status last_scrape_at
+    ]
+
+    sync_fields.each do |field|
+      dev_project[field] = project[field] if project.key?(field)
+    end
+
+    puts "  🔄 Synced to projects_dev.yml"
+  end
+
+  def recently_scraped?(project)
+    return false unless project['last_scrape_at']
+
+    begin
+      last_scrape = Time.parse(project['last_scrape_at'])
+      hours_ago = (Time.now.utc - last_scrape) / 3600
+      hours_ago < SCRAPE_THRESHOLD_HOURS
+    rescue
+      false
+    end
+  end
+
+  def time_ago(timestamp)
+    return "unknown time" unless timestamp
+
+    begin
+      last_scrape = Time.parse(timestamp)
+      hours_ago = ((Time.now.utc - last_scrape) / 3600).round(1)
+
+      if hours_ago < 1
+        "#{(hours_ago * 60).round} minutes ago"
+      else
+        "#{hours_ago} hours ago"
+      end
+    rescue
+      "unknown time"
+    end
+  end
+
+  def fetch_github_info(url)
+    repo_path = extract_repo_path(url)
+    api_url = "https://api.github.com/repos/#{repo_path}"
+
+    data = github_api_request(api_url)
+
+    # Fetch last commit date
+    commits_url = "https://api.github.com/repos/#{repo_path}/commits"
+    commits_data = github_api_request(commits_url)
+    last_commit = nil
+    if commits_data.is_a?(Array) && commits_data.any?
+      commit_date = commits_data.first.dig('commit', 'committer', 'date')
+      last_commit = Date.parse(commit_date).strftime('%Y/%m/%d') if commit_date
+    end
+
+    {
+      stars: data['stargazers_count'] || 0,
+      archived: data['archived'] || false,
+      last_commit: last_commit
+    }
+  rescue => e
+    error_msg = "Failed to fetch GitHub info: #{e.message}"
+    @errors << error_msg unless @errors.include?(error_msg)
+    puts "    ⚠️  #{error_msg}"
+    { stars: 0, archived: false, last_commit: nil }
+  end
+
+  def fetch_github_release_date(url)
+    repo_path = extract_repo_path(url)
+    api_url = "https://api.github.com/repos/#{repo_path}/releases/latest"
+
+    data = github_api_request(api_url)
+    return nil unless data && data['published_at']
+
+    Date.parse(data['published_at']).strftime('%Y/%m/%d')
+  rescue => e
+    error_msg = "Failed to fetch GitHub release date from #{url}: #{e.message}"
+    @errors << error_msg unless @errors.include?(error_msg)
+    puts "    ⚠️  #{error_msg}"
+    nil
+  end
+
+  def fetch_gitlab_stars(url)
+    # Extract project path from GitLab URL
+    # Format: https://gitlab.com/owner/project
+    path = url.gsub('https://gitlab.com/', '')
+    encoded_path = URI.encode_www_form_component(path)
+    api_url = "https://gitlab.com/api/v4/projects/#{encoded_path}"
+
+    data = gitlab_api_request(api_url)
+    return 0 unless data
+
+    data['star_count'] || 0
+  rescue => e
+    error_msg = "Failed to fetch GitLab stars from #{url}: #{e.message}"
+    @errors << error_msg unless @errors.include?(error_msg)
+    puts "    ⚠️  #{error_msg}"
+    0
+  end
+
+  def fetch_codeberg_stars(url)
+    # Codeberg uses Gitea API
+    # Format: https://codeberg.org/owner/project
+    match = url.match(%r{codeberg\.org/([^/]+)/([^/]+)})
+    return 0 unless match
+
+    owner, repo = match[1], match[2]
+    api_url = "https://codeberg.org/api/v1/repos/#{owner}/#{repo}"
+
+    data = api_request(api_url)
+    return 0 unless data
+
+    data['stars_count'] || 0
+  rescue => e
+    error_msg = "Failed to fetch Codeberg stars from #{url}: #{e.message}"
+    @errors << error_msg unless @errors.include?(error_msg)
+    puts "    ⚠️  #{error_msg}"
+    0
+  end
+
+  def fetch_rubygems_info(gem_name)
+    # Fetch gem stats - this includes all download data available via public API
+    api_url = "https://rubygems.org/api/v1/gems/#{gem_name}.json"
+    data = api_request(api_url)
+
+    return nil unless data
+
+    total_downloads = data['downloads'] || 0
+    version_downloads = data['version_downloads'] || 0
+
+    # Note: RubyGems public API does not provide daily/weekly/monthly download statistics
+    # We'll set this to nil to indicate it's not available
+    daily_downloads = nil
+
+    {
+      total_downloads: total_downloads,
+      daily_downloads: daily_downloads,
+      release_downloads: version_downloads
+    }
+  rescue => e
+    error_msg = "Failed to fetch RubyGems info for #{gem_name}: #{e.message}"
+    @errors << error_msg unless @errors.include?(error_msg)
+    puts "    ⚠️  #{error_msg}"
+    nil
+  end
+
+  def fetch_rubygems_release_date(gem_name)
+    # The versions endpoint returns an array of all versions, with the latest first
+    api_url = "https://rubygems.org/api/v1/versions/#{gem_name}.json"
+    data = api_request(api_url)
+
+    return nil unless data && data.is_a?(Array) && data.any?
+
+    # Get the first non-prerelease version
+    latest_version = data.find { |v| !v['prerelease'] }
+    return nil unless latest_version && latest_version['created_at']
+
+    Date.parse(latest_version['created_at']).strftime('%Y/%m/%d')
+  rescue => e
+    error_msg = "Failed to fetch RubyGems release date for #{gem_name}: #{e.message}"
+    @errors << error_msg unless @errors.include?(error_msg)
+    puts "    ⚠️  #{error_msg}"
+    nil
+  end
+
+  def github_api_request(url)
+    uri = URI(url)
+    request = Net::HTTP::Get.new(uri)
+    request['Accept'] = 'application/vnd.github.v3+json'
+    request['Authorization'] = "token #{GITHUB_TOKEN}" if GITHUB_TOKEN
+    request['User-Agent'] = 'Galtzo-Project-Updater'
+
+    response = Net::HTTP.start(uri.hostname, uri.port, use_ssl: true) do |http|
+      http.request(request)
+    end
+
+    if response.code.to_i == 404
+      return nil
+    elsif response.code.to_i != 200
+      raise "GitHub API error: #{response.code} - #{response.body[0..200]}"
+    end
+
+    JSON.parse(response.body)
+  end
+
+  def gitlab_api_request(url)
+    uri = URI(url)
+    request = Net::HTTP::Get.new(uri)
+    request['Authorization'] = "Bearer #{GITLAB_TOKEN}" if GITLAB_TOKEN
+    request['User-Agent'] = 'Galtzo-Project-Updater'
+
+    response = Net::HTTP.start(uri.hostname, uri.port, use_ssl: true) do |http|
+      http.request(request)
+    end
+
+    if response.code.to_i == 404
+      return nil
+    elsif response.code.to_i != 200
+      raise "GitLab API error: #{response.code} - #{response.body[0..200]}"
+    end
+
+    JSON.parse(response.body)
+  end
+
+  def api_request(url)
+    uri = URI(url)
+    request = Net::HTTP::Get.new(uri)
+    request['User-Agent'] = 'Galtzo-Project-Updater'
+
+    response = Net::HTTP.start(uri.hostname, uri.port, use_ssl: true) do |http|
+      http.request(request)
+    end
+
+    if response.code.to_i == 404
+      return nil
+    elsif response.code.to_i != 200
+      raise "API error: #{response.code} - #{response.body[0..200]}"
+    end
+
+    JSON.parse(response.body)
+  end
+
+  def extract_repo_path(url)
+    # Extract owner/repo from GitHub URL
+    # Handles: https://github.com/owner/repo or https://github.com/owner/repo.git
+    match = url.match(%r{github\.com[/:]([^/]+)/([^/\.]+)})
+    return nil unless match
+    "#{match[1]}/#{match[2]}"
+  end
+
+  def days_since(date_string)
+    return Float::INFINITY if date_string.nil?
+
+    date = Date.parse(date_string.gsub('/', '-'))
+    (Date.today - date).to_i
+  rescue
+    Float::INFINITY
+  end
+
+  def load_yaml(file_path)
+    YAML.load_file(file_path) || []
+  end
+
+  def save_yaml(file_path, data)
+    File.write(file_path, YAML.dump(data))
+    puts "\n💾 Saved: #{file_path}"
+  end
+end
+
+# Run the updater
+if __FILE__ == $0
+  # Parse command-line arguments
+  surgical_field = nil
+
+  if ARGV.length > 0
+    if ARGV[0] == '--help' || ARGV[0] == '-h'
+      puts "Usage: #{$0} [FIELD]"
+      puts ""
+      puts "Update all project data, or surgically update a specific field."
+      puts ""
+      puts "Options:"
+      puts "  --help, -h     Show this help message"
+      puts ""
+      puts "Surgical Update Fields:"
+      ProjectUpdater::VALID_SURGICAL_FIELDS.each do |field|
+        puts "  #{field}"
+      end
+      puts ""
+      puts "Examples:"
+      puts "  #{$0}                    # Full update (respects last_scrape_at)"
+      puts "  #{$0} release_date       # Update only release_date for all projects"
+      puts "  #{$0} github_stars       # Update only github_stars for all projects"
+      exit 0
+    else
+      surgical_field = ARGV[0]
+    end
+  end
+
+  updater = ProjectUpdater.new(surgical_field: surgical_field)
+  updater.run
+end
+
+
+

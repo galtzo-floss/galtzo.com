@@ -1,5 +1,6 @@
 ---
-- name: 🌹 Peter Boling, team leader, web architect, security researcher, and rubyist. Building for web since 2004.  🌹
+- name: "\U0001F339 Peter Boling, team leader, web architect, security researcher,
+    and rubyist. Building for web since 2004.  \U0001F339"
   description: |
     <span class="intro">
     Hi! I love to solve problems with code.
@@ -20,54 +21,51 @@
   first_commit_on: 2004/01/01
   first_commit: https://github.com/galtzo-floss/galtzo.com/commit/23b15c81cfe20eb53117efbcba8d76d7c2959290
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/galtzo-floss
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/pboling
-      owner: pboling
-    - type: GitLab
-      url: https://gitlab.com/pboling
-    - type: Codeberg
-      url: https://codeberg.org/pboling
-    - type: SourceHut
-      url: https://sr.ht/~galtzo/
-  #    - type: GitHub
-  #      url: https://github.com/galtzo-floss/galtzo.com
-  #      owner: galtzo-floss
+  - type: GitHub
+    url: https://github.com/pboling
+    owner: pboling
+  - type: GitLab
+    url: https://gitlab.com/pboling
+  - type: Codeberg
+    url: https://codeberg.org/pboling
+  - type: SourceHut
+    url: https://sr.ht/~galtzo/
   tags:
-    - bridgetown
-    - markdown
-    - roda
-    - hanami
-    - sinatra
-    - rails
-    - sidekiq
-    - resque
-    - rspec
-    - minitest
-    - docker
-    - k8s
-    - html
-    - javascript
-    - typescript
-    - websockets
-    - react
-    - svelte
-    - jquery
-    - oauth
-    - openid
-    - api
-    - graphql
-    - mysql
-    - postgres
-    - sqlite3
-    - ci/cd
-    - bash
-    - go
-    - css
+  - bridgetown
+  - markdown
+  - roda
+  - hanami
+  - sinatra
+  - rails
+  - sidekiq
+  - resque
+  - rspec
+  - minitest
+  - docker
+  - k8s
+  - html
+  - javascript
+  - typescript
+  - websockets
+  - react
+  - svelte
+  - jquery
+  - oauth
+  - openid
+  - api
+  - graphql
+  - mysql
+  - postgres
+  - sqlite3
+  - ci/cd
+  - bash
+  - go
+  - css
   docs_site: https://galtzo.com
 - name: active_security
   description: Disallow insecure, unscoped, finds
@@ -78,22 +76,30 @@
   first_commit_on: 2024/05/30
   first_commit: https://github.com/galtzo-floss/active_security/commit/9caac884909193326b3f3318ad3db00ca754fabd
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/galtzo-floss
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/galtzo-floss/active_security
-      owner: galtzo-floss
+  - type: GitHub
+    url: https://github.com/galtzo-floss/active_security
+    owner: galtzo-floss
   tags:
-    - rails
-    - activerecord
+  - rails
+  - activerecord
   docs_site:
+  github_stars: 7
+  total_downloads: 1881
+  daily_downloads: 0
+  release_downloads: 1521
+  release_date: 2024/07/05
+  last_commit_on: 2025/08/20
+  status: active
+  last_scrape_at: '2025-10-21T22:09:52Z'
 - name: activerecord-tablefree
   description: ActiveRecord Tablefree Models provides a simple mixin for creating
-    models that are not bound to the database.
-    Take advantage of ActiveRecord features like validation, relationships, and nested_attributes.
+    models that are not bound to the database. Take advantage of ActiveRecord features
+    like validation, relationships, and nested_attributes.
   language: Ruby
   ecosystem: rubygems
   minimum_version: 2.2
@@ -101,19 +107,27 @@
   first_commit_on: 2017/11/08
   first_commit: https://github.com/galtzo-floss/activerecord-tablefree/commit/167367318b42c77c8f7732243afdf90ba82a0387
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/galtzo-floss
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/galtzo-floss/activerecord-tablefree
-      owner: galtzo-floss
+  - type: GitHub
+    url: https://github.com/galtzo-floss/activerecord-tablefree
+    owner: galtzo-floss
   tags:
-    - rails
-    - activerecord
-    - validate
+  - rails
+  - activerecord
+  - validate
   docs_site:
+  github_stars: 2
+  total_downloads: 107609
+  daily_downloads: 0
+  release_downloads: 83422
+  release_date: 2018/09/23
+  last_commit_on: 2025/08/06
+  status: active
+  last_scrape_at: '2025-10-21T22:09:55Z'
 - name: activerecord-transactionable
   description: Getting transactions right is hard, and this gem makes it easier.
   language: Ruby
@@ -123,24 +137,34 @@
   first_commit_on: 2016/03/26
   first_commit: https://github.com/galtzo-floss/activerecord-transactionable/commit/c40965018cee7546e62249006e2f41784cde8142
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/galtzo-floss
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/galtzo-floss/activerecord-transactionable
-      owner: galtzo-floss
-    - type: GitLab
-      url: https://gitlab.com/galtzo-floss/activerecord-transactionable
-    - type: Codeberg
-      url: https://codeberg.org/galtzo-floss/activerecord-transactionable
-    - type: SourceHut
-      url: https://git.sr.ht/~galtzo/activerecord-transactionable
+  - type: GitHub
+    url: https://github.com/galtzo-floss/activerecord-transactionable
+    owner: galtzo-floss
+  - type: GitLab
+    url: https://gitlab.com/galtzo-floss/activerecord-transactionable
+  - type: Codeberg
+    url: https://codeberg.org/galtzo-floss/activerecord-transactionable
+  - type: SourceHut
+    url: https://git.sr.ht/~galtzo/activerecord-transactionable
   tags:
-    - rails
-    - activerecord
+  - rails
+  - activerecord
   docs_site:
+  github_stars: 11
+  gitlab_stars: 0
+  codeberg_stars: 0
+  total_downloads: 55340
+  daily_downloads: 0
+  release_downloads: 1845
+  release_date: 2024/03/06
+  last_commit_on: 2025/08/13
+  status: active
+  last_scrape_at: '2025-10-21T22:09:58Z'
 - name: activesupport-broadcast_logger
   description: Rails v8 ActiveSupport::BroadcastLogger, fixed & backported to Rails
     v5.2+ & Ruby 2.7+
@@ -151,19 +175,27 @@
   first_commit_on: 2024/11/20
   first_commit: https://github.com/galtzo-floss/activesupport-broadcast_logger/commit/124104a29ed3c6bc1aa0468adba3cbf9f6f46296
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/galtzo-floss
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/galtzo-floss/activesupport-broadcast_logger
-      owner: galtzo-floss
+  - type: GitHub
+    url: https://github.com/galtzo-floss/activesupport-broadcast_logger
+    owner: galtzo-floss
   tags:
-    - rails
-    - activesupport
-    - log
+  - rails
+  - activesupport
+  - log
   docs_site:
+  github_stars: 8
+  total_downloads: 6190
+  daily_downloads: 0
+  release_downloads: 3568
+  release_date: 2025/02/25
+  last_commit_on: 2025/08/12
+  status: active
+  last_scrape_at: '2025-10-21T22:10:01Z'
 - name: activesupport-logger
   description: Rails v8 ActiveSupport::Logger backported to Rails v5.2+ & Ruby 2.7+
   language: Ruby
@@ -173,19 +205,27 @@
   first_commit_on: 2024/10/10
   first_commit: https://github.com/galtzo-floss/activesupport-logger/commit/b76fe570a037738ff907dccd8af135cb14e87fa7
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/galtzo-floss
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/galtzo-floss/activesupport-logger
-      owner: galtzo-floss
+  - type: GitHub
+    url: https://github.com/galtzo-floss/activesupport-logger
+    owner: galtzo-floss
   tags:
-    - rails
-    - activesupport
-    - log
+  - rails
+  - activesupport
+  - log
   docs_site:
+  github_stars: 9
+  total_downloads: 8983
+  daily_downloads: 0
+  release_downloads: 5027
+  release_date: 2024/11/22
+  last_commit_on: 2025/07/27
+  status: active
+  last_scrape_at: '2025-10-21T22:10:03Z'
 - name: activesupport-tagged_logging
   description: Rails v8 ActiveSupport::TaggedLogging, fixed & backported to Rails
     v5.2+ & Ruby 2.7+
@@ -196,19 +236,27 @@
   first_commit_on: 2024/10/10
   first_commit: https://github.com/galtzo-floss/activesupport-tagged_logging/commit/af83665a4f6d44c1fa926e2db6b7a2fd4c79cdd9
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/galtzo-floss
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/galtzo-floss/activesupport-tagged_logging
-      owner: galtzo-floss
+  - type: GitHub
+    url: https://github.com/galtzo-floss/activesupport-tagged_logging
+    owner: galtzo-floss
   tags:
-    - rails
-    - activesupport
-    - log
+  - rails
+  - activesupport
+  - log
   docs_site:
+  github_stars: 9
+  total_downloads: 3587
+  daily_downloads: 0
+  release_downloads: 1989
+  release_date: 2024/11/22
+  last_commit_on: 2025/08/12
+  status: active
+  last_scrape_at: '2025-10-21T22:10:05Z'
 - name: anonymous_active_record
   description: Replacement for broken Class.new(ActiveRecord::Base)
   language: Ruby
@@ -218,18 +266,26 @@
   first_commit_on: 2018/01/03
   first_commit: https://github.com/galtzo-floss/anonymous_active_record/commit/6d9e24334d8800910efc7a8325494cbd6c08ff87
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/galtzo-floss
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/galtzo-floss/anonymous_active_record
-      owner: galtzo-floss
+  - type: GitHub
+    url: https://github.com/galtzo-floss/anonymous_active_record
+    owner: galtzo-floss
   tags:
-    - rails
-    - activerecord
+  - rails
+  - activerecord
   docs_site:
+  github_stars: 12
+  total_downloads: 290778
+  daily_downloads: 0
+  release_downloads: 235925
+  release_date: 2024/09/18
+  last_commit_on: 2025/08/13
+  status: active
+  last_scrape_at: '2025-10-21T22:10:08Z'
 - name: skywalking-eyes
   description: |
     A full-featured license tool to check and fix license headers and resolve dependencies' licenses.
@@ -246,15 +302,20 @@
   first_commit: https://github.com/apache/skywalking-eyes/commit/3655e78854be6a56ae72a0c9a847aedd133c3b74
   funding_sites: []
   forges:
-    - type: GitHub
-      url: https://github.com/apache/skywalking-eyes
-      owner: apache
+  - type: GitHub
+    url: https://github.com/apache/skywalking-eyes
+    owner: apache
   tags:
-    - license
-    - GHA
-    - cli
-    - shell
+  - license
+  - GHA
+  - cli
+  - shell
   docs_site:
+  github_stars: 286
+  release_date: 2025/02/13
+  last_commit_on: 2025/09/14
+  status: active
+  last_scrape_at: '2025-10-21T22:10:10Z'
 - name: appraisal2
   description: Appraisal2 integrates with bundler and rake to test your library against
     different versions of dependencies in repeatable scenarios called "appraisals."
@@ -265,23 +326,33 @@
   first_commit_on: 2017/11/20
   first_commit: https://github.com/appraisal-rb/appraisal2/commit/dcfac430d75a86a89497ec45af39edf798228f9c
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/appraisal-rb
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/appraisal-rb
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/appraisal-rb/appraisal2
-      owner: appraisal-rb
-    - type: GitLab
-      url: https://gitlab.com/appraisal-rb/appraisal2
-    - type: Codeberg
-      url: https://codeberg.org/appraisal-rb/appraisal2
+  - type: GitHub
+    url: https://github.com/appraisal-rb/appraisal2
+    owner: appraisal-rb
+  - type: GitLab
+    url: https://gitlab.com/appraisal-rb/appraisal2
+  - type: Codeberg
+    url: https://codeberg.org/appraisal-rb/appraisal2
   tags:
-    - test
-    - harness
-    - bundler
+  - test
+  - harness
+  - bundler
   docs_site: https://appraisal2.galtzo.com
+  github_stars: 12
+  gitlab_stars: 0
+  codeberg_stars: 0
+  total_downloads: 25389
+  daily_downloads: 0
+  release_downloads: 25389
+  release_date: 2025/07/28
+  last_commit_on: 2025/08/14
+  status: active
+  last_scrape_at: '2025-10-21T22:10:14Z'
 - name: archivist-client
   description: archivist-client queries archive.org for book data and downloads some
     things.
@@ -292,17 +363,25 @@
   first_commit_on: 2013/12/16
   first_commit: https://github.com/wordtreefoundation/archivist-client/commit/404f1976722fa7b4444d7b5d750f438bebae1102
   funding_sites:
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/wordtreefoundation/archivist-client
-      owner: wordtreefoundation
+  - type: GitHub
+    url: https://github.com/wordtreefoundation/archivist-client
+    owner: wordtreefoundation
   tags:
-    - shell
-    - api
-    - cli
+  - shell
+  - api
+  - cli
   docs_site:
+  github_stars: 16
+  total_downloads: 37071
+  daily_downloads: 0
+  release_downloads: 2848
+  release_date: 2018/09/04
+  last_commit_on: 2019/12/26
+  status: stale
+  last_scrape_at: '2025-10-21T22:10:16Z'
 - name: awesome_search
   description: Organize complicated search results
   language: Ruby
@@ -312,17 +391,25 @@
   first_commit_on: 2010/03/01
   first_commit: https://github.com/galtzo-floss/awesome_search/commit/cc63ada6740695dd42007d62ed76d3d5e12803ae
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/galtzo-floss
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/galtzo-floss/awesome_search
-      owner: galtzo-floss
-  tags:
-    - stale
+  - type: GitHub
+    url: https://github.com/galtzo-floss/awesome_search
+    owner: galtzo-floss
+  tags: []
+  adoptable: true
   docs_site:
+  github_stars: 8
+  total_downloads: 11069
+  daily_downloads: 0
+  release_downloads: 6129
+  release_date: 2010/06/22
+  last_commit_on: 2025/08/13
+  status: active
+  last_scrape_at: '2025-10-21T22:10:19Z'
 - name: awesome-sponsorships
   description: "\U0001F496 An Open Source Funding How To Awesome List: checklist and
     inspiration to earn more as a FLOSS developer"
@@ -333,18 +420,23 @@
   first_commit_on: 2025/05/24
   first_commit: https://github.com/floss-funding/awesome-sponsorships/commit/0b9a6354b971586d968735b28afef318b6c6ae03
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/floss_funding
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/floss_funding
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/floss-funding/awesome-sponsorships
-      owner: galtzo-floss
+  - type: GitHub
+    url: https://github.com/floss-funding/awesome-sponsorships
+    owner: galtzo-floss
   tags:
-    - funding
-    - markdown
+  - funding
+  - markdown
   docs_site: https://awesome-sponsorships.galtzo.com
+  github_stars: 5
+  release_date:
+  last_commit_on: 2025/09/12
+  status: active
+  last_scrape_at: '2025-10-21T22:10:21Z'
 - name: bash_step
   description: Bash Step Function Library
   language: Bash
@@ -354,16 +446,21 @@
   first_commit_on: 2013/11/08
   first_commit: https://github.com/pboling/bash_step/commit/13446f1a24bef1dafb66e916bf8bb321c8162851
   funding_sites:
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/pboling/bash_step
-      owner: pboling
+  - type: GitHub
+    url: https://github.com/pboling/bash_step
+    owner: pboling
   tags:
-    - shell
-    - cli
+  - shell
+  - cli
   docs_site:
+  github_stars: 6
+  release_date:
+  last_commit_on: 2021/12/07
+  status: stale
+  last_scrape_at: '2025-10-21T22:10:23Z'
 - name: bsfl
   description: Bash Script Function Library
   language: Bash
@@ -373,16 +470,21 @@
   first_commit_on: 2013/11/08
   first_commit: https://github.com/pboling/bsfl/commit/27444edd62fb4df3da662e8254a86c083e25d55b
   funding_sites:
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/pboling/bsfl
-      owner: pboling
+  - type: GitHub
+    url: https://github.com/pboling/bsfl
+    owner: pboling
   tags:
-    - shell
-    - cli
+  - shell
+  - cli
   docs_site:
+  github_stars: 4
+  release_date:
+  last_commit_on: 2021/12/07
+  status: stale
+  last_scrape_at: '2025-10-21T22:10:25Z'
 - name: cacheable-flash
   description: |-
     Allows caching of pages with flash messages by rendering flash
@@ -397,13 +499,18 @@
   first_commit: https://github.com/pboling/cacheable-flash/commit/cb952b3338df3610ab993c944ee5c0cd894d3185
   funding_sites: []
   forges:
-    - type: GitHub
-      url: https://github.com/pboling/cacheable-flash
-      owner: pboling
+  - type: GitHub
+    url: https://github.com/pboling/cacheable-flash
+    owner: pboling
   tags:
-    - stale
-    - toast
+  - toast
+  adoptable: true
   docs_site:
+  github_stars: 101
+  release_date:
+  last_commit_on: 2020/11/15
+  status: archived
+  last_scrape_at: '2025-10-21T22:10:28Z'
 - name: capistrano_mailer
   description: Capistrano Deployment Email Notification.  Keep the whole team informed
     of each release!
@@ -414,20 +521,28 @@
   first_commit_on: 2008/11/15
   first_commit: https://github.com/galtzo-floss/capistrano_mailer/commit/1afa8e2e6f86b6aeba539b4c080ae58b51a274e6
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/galtzo-floss
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/galtzo-floss/capistrano_mailer
-      owner: galtzo-floss
-    - type: SourceHut
-      url: https://git.sr.ht/~galtzo/capistrano_mailer
+  - type: GitHub
+    url: https://github.com/galtzo-floss/capistrano_mailer
+    owner: galtzo-floss
+  - type: SourceHut
+    url: https://git.sr.ht/~galtzo/capistrano_mailer
   tags:
-    - release
-    - email
+  - release
+  - email
   docs_site:
+  github_stars: 49
+  total_downloads: 96707
+  daily_downloads: 0
+  release_downloads: 13880
+  release_date: 2013/01/22
+  last_commit_on: 2025/08/18
+  status: active
+  last_scrape_at: '2025-10-21T22:10:30Z'
 - name: celluloid-io-pg-listener
   description: Asynchronously LISTEN for Postgresql NOTIFY messages with payloads
     and Do Something
@@ -438,19 +553,27 @@
   first_commit_on: 2015/10/06
   first_commit: https://github.com/galtzo-floss/celluloid-io-pg-listener/commit/cae27c9014189475f9cc8fbccaa93993edcbe9a1
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/galtzo-floss
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/galtzo-floss/celluloid-io-pg-listener
-      owner: galtzo-floss
-    - type: SourceHut
-      url: https://git.sr.ht/~galtzo/celluloid-io-pg-listener
+  - type: GitHub
+    url: https://github.com/galtzo-floss/celluloid-io-pg-listener
+    owner: galtzo-floss
+  - type: SourceHut
+    url: https://git.sr.ht/~galtzo/celluloid-io-pg-listener
   tags:
-    - async
+  - async
   docs_site:
+  github_stars: 11
+  total_downloads: 21713
+  daily_downloads: 0
+  release_downloads: 3573
+  release_date: 2015/11/30
+  last_commit_on: 2025/08/12
+  status: active
+  last_scrape_at: '2025-10-21T22:10:32Z'
 - name: controller_validator
   description: Use the familiar ActiveModel::Errors pattern for controller validations
   language: Ruby
@@ -460,18 +583,26 @@
   first_commit_on: 2014/11/19
   first_commit: https://github.com/galtzo-floss/controller_validator/commit/3de78b69ead17f91fe1b25ea4e4f32dce195191a
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/galtzo-floss
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/galtzo-floss/controller_validator
-      owner: galtzo-floss
+  - type: GitHub
+    url: https://github.com/galtzo-floss/controller_validator
+    owner: galtzo-floss
   tags:
-    - rails
-    - validate
+  - rails
+  - validate
   docs_site:
+  github_stars: 8
+  total_downloads: 6042
+  daily_downloads: 0
+  release_downloads: 6042
+  release_date: 2014/11/20
+  last_commit_on: 2025/08/13
+  status: active
+  last_scrape_at: '2025-10-21T22:10:35Z'
 - name: csv_pirate
   description: |-
     CsvPirate is the easy way to create a CSV of essentially anything in Ruby, in full pirate regalia.
@@ -483,21 +614,29 @@
   first_commit_on: 2009/03/03
   first_commit: https://github.com/galtzo-floss/csv_pirate/commit/40a411e06d6dac36b1a22ea58144cbe552b9e465
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/galtzo-floss
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/galtzo-floss/csv_pirate
-      owner: galtzo-floss
-    - type: SourceHut
-      url: https://git.sr.ht/~galtzo/csv_pirate
+  - type: GitHub
+    url: https://github.com/galtzo-floss/csv_pirate
+    owner: galtzo-floss
+  - type: SourceHut
+    url: https://git.sr.ht/~galtzo/csv_pirate
   tags:
-    - rails
-    - activerecord
-    - csv
+  - rails
+  - activerecord
+  - csv
   docs_site:
+  github_stars: 34
+  total_downloads: 147173
+  daily_downloads: 0
+  release_downloads: 5515
+  release_date: 2013/11/26
+  last_commit_on: 2025/08/18
+  status: active
+  last_scrape_at: '2025-10-21T22:10:37Z'
 - name: debug_logging
   description: |
     Unobtrusive debug logging for Ruby.  NO LITTERING.
@@ -509,24 +648,34 @@
   first_commit_on: 2017/03/25
   first_commit: https://github.com/galtzo-floss/debug_logging/commit/f648ea6832aa85232d320b4c4acc4a84e44a83d3
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/galtzo-floss
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/galtzo-floss/debug_logging
-      owner: galtzo-floss
-    - type: GitLab
-      url: https://gitlab.com/galtzo-floss/debug_logging
-    - type: Codeberg
-      url: https://codeberg.org/galtzo-floss/debug_logging
-    - type: SourceHut
-      url: https://git.sr.ht/~galtzo/debug_logging
+  - type: GitHub
+    url: https://github.com/galtzo-floss/debug_logging
+    owner: galtzo-floss
+  - type: GitLab
+    url: https://gitlab.com/galtzo-floss/debug_logging
+  - type: Codeberg
+    url: https://codeberg.org/galtzo-floss/debug_logging
+  - type: SourceHut
+    url: https://git.sr.ht/~galtzo/debug_logging
   tags:
-    - log
-    - debug
+  - log
+  - debug
   docs_site:
+  github_stars: 18
+  gitlab_stars: 0
+  codeberg_stars: 0
+  total_downloads: 81398
+  daily_downloads: 0
+  release_downloads: 2840
+  release_date: 2024/05/12
+  last_commit_on: 2024/11/09
+  status: active
+  last_scrape_at: '2025-10-21T22:10:41Z'
 - name: destination_errors
   description: Useful when a presenter deals with multiple objects that may enter
     into error states, and the errors need to be collected at a single point.
@@ -537,21 +686,30 @@
   first_commit_on: 2015/04/08
   first_commit: https://github.com/galtzo-floss/destination_errors/commit/7c25111f4c12cb5d4bdb9ac2471939bf251bd58e
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/galtzo-floss
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/galtzo-floss/destination_errors
-      owner: galtzo-floss
-    - type: GitLab
-      url: https://gitlab.com/galtzo-floss/destination_errors
+  - type: GitHub
+    url: https://github.com/galtzo-floss/destination_errors
+    owner: galtzo-floss
+  - type: GitLab
+    url: https://gitlab.com/galtzo-floss/destination_errors
   tags:
-    - rails
-    - presenter
-    - error-handle
+  - rails
+  - presenter
+  - error-handle
   docs_site:
+  github_stars: 3
+  gitlab_stars: 0
+  total_downloads: 17427
+  daily_downloads: 0
+  release_downloads: 4189
+  release_date: 2015/05/20
+  last_commit_on: 2025/08/12
+  status: active
+  last_scrape_at: '2025-10-21T22:10:43Z'
 - name: dry_views
   description: 'Provides extensions to ActionView::Helpers::CaptureHelper: content_for_with_default,
     no_content_for, and an enhanced content_for that plays nice with friends'
@@ -562,20 +720,28 @@
   first_commit_on: 2012/08/14
   first_commit: https://github.com/galtzo-floss/dry_views/commit/a69cf5e2d01f9027898c6c1849fcd1c5844ca261
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/galtzo-floss
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/galtzo-floss/dry_views
-      owner: galtzo-floss
-    - type: SourceHut
-      url: https://git.sr.ht/~galtzo/dry_views
+  - type: GitHub
+    url: https://github.com/galtzo-floss/dry_views
+    owner: galtzo-floss
+  - type: SourceHut
+    url: https://git.sr.ht/~galtzo/dry_views
   tags:
-    - rails
-    - view
+  - rails
+  - view
   docs_site:
+  github_stars: 11
+  total_downloads: 9905
+  daily_downloads: 0
+  release_downloads: 6313
+  release_date: 2012/08/15
+  last_commit_on: 2024/09/21
+  status: stale
+  last_scrape_at: '2025-10-21T22:10:45Z'
 - name: dynamoid
   description: Dynamoid is an ORM for Amazon's DynamoDB that supports offline development,
     associations, querying, and everything else you'd expect from an ActiveRecord-style
@@ -587,19 +753,27 @@
   first_commit_on: 2016/05/24
   first_commit: https://github.com/Dynamoid/dynamoid/commit/8fc879f2a216c9311c38589107fc6868a6076a3c
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/dynamoid
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/dynamoid
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/Dynamoid/dynamoid
-      owner: Dynamoid
+  - type: GitHub
+    url: https://github.com/Dynamoid/dynamoid
+    owner: Dynamoid
   tags:
-    - dynamodb
-    - aws
-    - api
+  - dynamodb
+  - aws
+  - api
   docs_site:
+  github_stars: 600
+  total_downloads: 10043677
+  daily_downloads: 0
+  release_downloads: 60181
+  release_date: 2025/08/23
+  last_commit_on: 2025/10/10
+  status: active
+  last_scrape_at: '2025-10-21T22:10:48Z'
 - name: each_in_batches
   description: Batch Processing of Records with Blocks in Rails
   language: Ruby
@@ -609,20 +783,28 @@
   first_commit_on: 2008/11/15
   first_commit: https://github.com/galtzo-floss/each_in_batches/commit/921f0a7a9048d4f0c46cb65566646a6edc8f66c4
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/galtzo-floss
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/galtzo-floss/each_in_batches
-      owner: galtzo-floss
-    - type: SourceHut
-      url: https://git.sr.ht/~galtzo/each_in_batches
+  - type: GitHub
+    url: https://github.com/galtzo-floss/each_in_batches
+    owner: galtzo-floss
+  - type: SourceHut
+    url: https://git.sr.ht/~galtzo/each_in_batches
   tags:
-    - rails
-    - activerecord
+  - rails
+  - activerecord
   docs_site:
+  github_stars: 12
+  total_downloads: 14459
+  daily_downloads: 0
+  release_downloads: 6539
+  release_date: 2016/06/01
+  last_commit_on: 2025/08/13
+  status: active
+  last_scrape_at: '2025-10-21T22:10:50Z'
 - name: flag_shih_tzu
   description: Bit fields for ActiveRecord - store multiple boolean flags in a single
     integer column
@@ -633,25 +815,35 @@
   first_commit_on: 2009/10/20
   first_commit: https://github.com/galtzo-floss/flag_shih_tzu/commit/e69a3c7ba53426dc8edecbaa0fb4bf3e2e8a242c
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/galtzo-floss
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/galtzo-floss/flag_shih_tzu
-      owner: galtzo-floss
-    - type: GitLab
-      url: https://gitlab.com/galtzo-floss/flag_shih_tzu
-    - type: Codeberg
-      url: https://codeberg.org/galtzo-floss/flag_shih_tzu
-    - type: SourceHut
-      url: https://git.sr.ht/~galtzo/flag_shih_tzu
+  - type: GitHub
+    url: https://github.com/galtzo-floss/flag_shih_tzu
+    owner: galtzo-floss
+  - type: GitLab
+    url: https://gitlab.com/galtzo-floss/flag_shih_tzu
+  - type: Codeberg
+    url: https://codeberg.org/galtzo-floss/flag_shih_tzu
+  - type: SourceHut
+    url: https://git.sr.ht/~galtzo/flag_shih_tzu
   tags:
-    - rails
-    - activerecord
-    - bitfields
+  - rails
+  - activerecord
+  - bitfields
   docs_site:
+  github_stars: 506
+  gitlab_stars: 0
+  codeberg_stars: 0
+  total_downloads: 4054339
+  daily_downloads: 0
+  release_downloads: 3139782
+  release_date: 2018/11/30
+  last_commit_on: 2025/08/18
+  status: active
+  last_scrape_at: '2025-10-21T22:10:54Z'
 - name: floss_funding
   description: Help overlooked open source projects - the ones at the bottom of the
     stack, and the dev dependencies - by funding them.
@@ -662,17 +854,25 @@
   first_commit_on: 2025/08/09
   first_commit: https://github.com/floss-funding/floss_funding/commit/389ece6fb9bd04013d11edca6fb6830139a84f4c
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/floss_funding
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/floss_funding
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/floss-funding/floss_funding
-      owner: floss-funding
+  - type: GitHub
+    url: https://github.com/floss-funding/floss_funding
+    owner: floss-funding
   tags:
-    - funding
+  - funding
   docs_site: https://floss-funding.galtzo.com
+  github_stars: 3
+  total_downloads: 357
+  daily_downloads: 0
+  release_downloads: 190
+  release_date:
+  last_commit_on: 2025/10/09
+  status: active
+  last_scrape_at: '2025-10-21T22:10:56Z'
 - name: gem_bench
   description: |-
     * Benchmark different versions of same or similar gems
@@ -687,23 +887,31 @@
   first_commit_on: 2013/04/05
   first_commit: https://github.com/galtzo-floss/gem_bench/commit/b553f295f03eef7749d1faa811b0f27cc88288b5
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/galtzo-floss
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/galtzo-floss/gem_bench
-      owner: galtzo-floss
-    - type: SourceHut
-      url: https://git.sr.ht/~galtzo/gem_bench
+  - type: GitHub
+    url: https://github.com/galtzo-floss/gem_bench
+    owner: galtzo-floss
+  - type: SourceHut
+    url: https://git.sr.ht/~galtzo/gem_bench
   tags:
-    - perf
-    - benchmark
-    - debug
-    - bundler
-    - regex
+  - perf
+  - benchmark
+  - debug
+  - bundler
+  - regex
   docs_site:
+  github_stars: 92
+  total_downloads: 2935576
+  daily_downloads: 0
+  release_downloads: 11891
+  release_date: 2024/09/22
+  last_commit_on: 2025/08/18
+  status: active
+  last_scrape_at: '2025-10-21T22:10:59Z'
 - name: gitmoji-regex
   description: "\U0001F61C A regular expression matching Gitmoji (a subset of Unicode
     Emoji) symbolsFund overlooked open source projects - bottom of stack, dev/test
@@ -715,20 +923,28 @@
   first_commit_on: 2022/03/28
   first_commit: https://github.com/galtzo-floss/gitmoji-regex/commit/e71c6c3dad5bfd59ae2509531eaea3a16e21cb63
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/galtzo-floss
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/galtzo-floss/gitmoji-regex
-      owner: galtzo-floss
-    - type: SourceHut
-      url: https://git.sr.ht/~galtzo/gitmoji-regex
+  - type: GitHub
+    url: https://github.com/galtzo-floss/gitmoji-regex
+    owner: galtzo-floss
+  - type: SourceHut
+    url: https://git.sr.ht/~galtzo/gitmoji-regex
   tags:
-    - git
-    - regex
+  - git
+  - regex
   docs_site:
+  github_stars: 12
+  total_downloads: 22976
+  daily_downloads: 0
+  release_downloads: 15624
+  release_date: 2025/08/20
+  last_commit_on: 2025/10/09
+  status: active
+  last_scrape_at: '2025-10-21T22:11:01Z'
 - name: humorous_log_formatter
   description: Humorous Log Levels and Color For Rails.  Customizable!
   language: Ruby
@@ -738,18 +954,26 @@
   first_commit_on: 2014/10/16
   first_commit: https://github.com/galtzo-floss/humorous_log_formatter/commit/76769c572221791d415c036f139dc41349d8cfa8
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/galtzo-floss
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/galtzo-floss/humorous_log_formatter
-      owner: galtzo-floss
+  - type: GitHub
+    url: https://github.com/galtzo-floss/humorous_log_formatter
+    owner: galtzo-floss
   tags:
-    - stale
-    - log
+  - log
+  adoptable: true
   docs_site:
+  github_stars: 8
+  total_downloads: 7048
+  daily_downloads: 0
+  release_downloads: 4457
+  release_date: 2014/10/18
+  last_commit_on: 2025/08/13
+  status: active
+  last_scrape_at: '2025-10-21T22:11:03Z'
 - name: include_with_respect
   description: Find out if your Module include/extend hooks are misbehaving!
   language: Ruby
@@ -759,19 +983,27 @@
   first_commit_on: 2019/12/18
   first_commit: https://github.com/galtzo-floss/include_with_respect/commit/f2dbc76c7facabc351a17fddf60d7ba0a27a3554
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/galtzo-floss
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/galtzo-floss/include_with_respect
-      owner: galtzo-floss
-    - type: SourceHut
-      url: https://git.sr.ht/~galtzo/include_with_respect
+  - type: GitHub
+    url: https://github.com/galtzo-floss/include_with_respect
+    owner: galtzo-floss
+  - type: SourceHut
+    url: https://git.sr.ht/~galtzo/include_with_respect
   tags:
-    - test
+  - test
   docs_site:
+  github_stars: 6
+  total_downloads: 7906
+  daily_downloads: 0
+  release_downloads: 6037
+  release_date: 2020/02/14
+  last_commit_on: 2025/08/12
+  status: active
+  last_scrape_at: '2025-10-21T22:11:06Z'
 - name: json_schemer-fuzz
   description: Fuzz generator for json_schemer
   language: Ruby
@@ -781,18 +1013,26 @@
   first_commit_on: 2023/10/24
   first_commit: https://github.com/galtzo-floss/json_schemer-fuzz/commit/b9dd5e6f76d1de4c7f8fef4425126f645ae087f9
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/galtzo-floss
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/galtzo-floss/json_schemer-fuzz
-      owner: galtzo-floss
+  - type: GitHub
+    url: https://github.com/galtzo-floss/json_schemer-fuzz
+    owner: galtzo-floss
   tags:
-    - test
-    - fuzz
+  - test
+  - fuzz
   docs_site:
+  github_stars: 6
+  total_downloads: 733
+  daily_downloads: 0
+  release_downloads: 733
+  release_date: 2023/10/26
+  last_commit_on: 2025/08/13
+  status: active
+  last_scrape_at: '2025-10-21T22:11:08Z'
 - name: kettle-dev
   description: "\U0001F372 Kettle::Dev is a meta tool from kettle-rb to streamline
     development and testing. Acts as a shim dependency, pulling in many other dependencies,
@@ -807,31 +1047,41 @@
   first_commit_on: 2023/08/16
   first_commit: https://github.com/kettle-rb/kettle-dev/commit/a427c302df09cfe4253a7c8d400333f9a4c1a208
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/kettle-rb
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/kettle-rb
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/kettle-rb/kettle-dev
-      owner: kettle-rb
-    - type: GitLab
-      url: https://gitlab.com/kettle-rb/kettle-dev
-    - type: Codeberg
-      url: https://codeberg.org/kettle-rb/kettle-dev
+  - type: GitHub
+    url: https://github.com/kettle-rb/kettle-dev
+    owner: kettle-rb
+  - type: GitLab
+    url: https://gitlab.com/kettle-rb/kettle-dev
+  - type: Codeberg
+    url: https://codeberg.org/kettle-rb/kettle-dev
   tags:
-    - harness
-    - release
-    - markdown
-    - git
-    - GHA
-    - license
-    - rake
-    - env
-    - debug
-    - shell
-    - cli
+  - harness
+  - release
+  - markdown
+  - git
+  - GHA
+  - license
+  - rake
+  - env
+  - debug
+  - shell
+  - cli
   docs_site: https://kettle-dev.galtzo.com
+  github_stars: 2
+  gitlab_stars: 0
+  codeberg_stars: 0
+  total_downloads: 21140
+  daily_downloads: 0
+  release_downloads: 81
+  release_date: 2025/10/21
+  last_commit_on: 2025/10/21
+  status: active
+  last_scrape_at: '2025-10-21T22:11:12Z'
 - name: kettle-soup-cover
   description: |
     A Covered Kettle of Test Coverage SOUP (Software of Unknown Provenance)
@@ -844,23 +1094,33 @@
   first_commit_on: 2023/10/16
   first_commit: https://github.com/kettle-rb/kettle-soup-cover/commit/97ddbbca309b87c7f6eed0137b08cad74ec81235
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/kettle-rb
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/kettle-rb
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/kettle-rb/kettle-soup-cover
-      owner: kettle-rb
-    - type: GitLab
-      url: https://gitlab.com/kettle-rb/kettle-soup-cover
-    - type: Codeberg
-      url: https://codeberg.org/kettle-rb/kettle-soup-cover
+  - type: GitHub
+    url: https://github.com/kettle-rb/kettle-soup-cover
+    owner: kettle-rb
+  - type: GitLab
+    url: https://gitlab.com/kettle-rb/kettle-soup-cover
+  - type: Codeberg
+    url: https://codeberg.org/kettle-rb/kettle-soup-cover
   tags:
-    - test
-    - coverage
-    - env
+  - test
+  - coverage
+  - env
   docs_site: https://kettle-soup-cover.galtzo.com
+  github_stars: 10
+  gitlab_stars: 1
+  codeberg_stars: 0
+  total_downloads: 26561
+  daily_downloads: 0
+  release_downloads: 4995
+  release_date: 2025/07/15
+  last_commit_on: 2025/10/09
+  status: active
+  last_scrape_at: '2025-10-21T22:11:15Z'
 - name: kettle-test
   description: "\U0001F372 Kettle::Test is a meta tool from kettle-rb to streamline
     testing. Acts as a shim dependency, pulling in many other dependencies, to give
@@ -876,25 +1136,35 @@
   first_commit_on: 2023/08/16
   first_commit: https://github.com/kettle-rb/kettle-test/commit/baed02cf1ca1e0e8c75c11fd188edaf1a4f5f08b
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/kettle-rb
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/kettle-rb
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/kettle-rb/kettle-test
-      owner: kettle-rb
-    - type: GitLab
-      url: https://gitlab.com/kettle-rb/kettle-test
-    - type: Codeberg
-      url: https://codeberg.org/kettle-rb/kettle-test
+  - type: GitHub
+    url: https://github.com/kettle-rb/kettle-test
+    owner: kettle-rb
+  - type: GitLab
+    url: https://gitlab.com/kettle-rb/kettle-test
+  - type: Codeberg
+    url: https://codeberg.org/kettle-rb/kettle-test
   tags:
-    - harness
-    - test
-    - rspec
-    - rake
-    - env
+  - harness
+  - test
+  - rspec
+  - rake
+  - env
   docs_site: https://kettle-test.galtzo.com
+  github_stars: 1
+  gitlab_stars: 0
+  codeberg_stars: 0
+  total_downloads: 16140
+  daily_downloads: 0
+  release_downloads: 86
+  release_date: 2025/10/21
+  last_commit_on: 2025/10/21
+  status: active
+  last_scrape_at: '2025-10-21T22:11:19Z'
 - name: letter_group
   description: Organize data results from raw sql queries (as with PGresult, or Dossier)
     intelligently.
@@ -905,18 +1175,26 @@
   first_commit_on: 2015/04/15
   first_commit: https://github.com/galtzo-floss/letter_group/commit/b18f959558011a49bf56d5e414ecb9b631097da0
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/galtzo-floss
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/galtzo-floss/letter_group
-      owner: galtzo-floss
+  - type: GitHub
+    url: https://github.com/galtzo-floss/letter_group
+    owner: galtzo-floss
   tags:
-    - hash
-    - stale
+  - hash
+  adoptable: true
   docs_site:
+  github_stars: 3
+  total_downloads: 11659
+  daily_downloads: 0
+  release_downloads: 6810
+  release_date: 2015/04/11
+  last_commit_on: 2025/08/13
+  status: active
+  last_scrape_at: '2025-10-21T22:11:22Z'
 - name: library_tree
   description: Builds a tree of module inclusion of a target module into other modules
   language: Ruby
@@ -926,20 +1204,28 @@
   first_commit_on: 2025/08/11
   first_commit: https://github.com/galtzo-floss/library_tree/commit/e07550dfecf0719a91a03b9fbd29b97c3471b1d8
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/galtzo-floss
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/galtzo-floss/library_tree
-      owner: galtzo-floss
+  - type: GitHub
+    url: https://github.com/galtzo-floss/library_tree
+    owner: galtzo-floss
   tags:
-    - wip
+  - wip
   docs_site:
+  github_stars: 2
+  total_downloads: 259
+  daily_downloads: 0
+  release_downloads: 259
+  release_date: 2025/08/12
+  last_commit_on: 2025/10/09
+  status: active
+  last_scrape_at: '2025-10-21T22:11:25Z'
 - name: logos
-  description: 🪵 A resource for logos, with proper attribution information, including license and copyright,
-    for open source projects I care about.
+  description: "\U0001FAB5 A resource for logos, with proper attribution information,
+    including license and copyright, for open source projects I care about."
   language: Ruby
   ecosystem:
   minimum_version: 3.4
@@ -947,18 +1233,23 @@
   first_commit_on: 2025/07/30
   first_commit: https://github.com/galtzo-floss/logos/commit/f49edc669a52ecf3e28a63d8205c6028383d37df
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/galtzo-floss
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/galtzo-floss/logos
-      owner: galtzo-floss
+  - type: GitHub
+    url: https://github.com/galtzo-floss/logos
+    owner: galtzo-floss
   tags:
-    - markdown
-    - license
+  - markdown
+  - license
   docs_site: https://logos.galtzo.com/
+  github_stars: 2
+  release_date:
+  last_commit_on: 2025/09/12
+  status: active
+  last_scrape_at: '2025-10-21T22:11:27Z'
 - name: masq
   description: Masq supports OpenID 2.0 and supports SReg, AX (fetch and store requests)
     and PAPE as well as some custom additions like multi-factor authentication using
@@ -970,24 +1261,31 @@
   first_commit_on: 2025/01/14
   first_commit: https://github.com/ruby-openid/masq/commit/356d38447249cd9116e5a13ade4e34597a39a350
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/ruby-openid
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/ruby-openid
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/ruby-openid/masq
-      owner: ruby-openid
-    - type: GitLab
-      url: https://gitlab.com/ruby-openid/masq
-    - type: Codeberg
-      url: https://codeberg.org/ruby-openid/masq
+  - type: GitHub
+    url: https://github.com/ruby-openid/masq
+    owner: ruby-openid
+  - type: GitLab
+    url: https://gitlab.com/ruby-openid/masq
+  - type: Codeberg
+    url: https://codeberg.org/ruby-openid/masq
   tags:
-    - openid
-    - auth
-    - security
-    - api
+  - openid
+  - auth
+  - security
+  - api
   docs_site:
+  github_stars: 10
+  gitlab_stars: 0
+  codeberg_stars: 0
+  release_date:
+  last_commit_on: 2025/08/14
+  status: active
+  last_scrape_at: '2025-10-21T22:11:30Z'
 - name: masq2
   description: Originally a fork. Has been merged back to the original gem.
   language: Ruby
@@ -997,24 +1295,34 @@
   first_commit_on: 2025/01/14
   first_commit: https://github.com/ruby-openid/masq/commit/356d38447249cd9116e5a13ade4e34597a39a350
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/ruby-openid
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/ruby-openid
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/ruby-openid/masq
-      owner: ruby-openid
-    - type: GitLab
-      url: https://gitlab.com/ruby-openid/masq
-    - type: Codeberg
-      url: https://codeberg.org/ruby-openid/masq
+  - type: GitHub
+    url: https://github.com/ruby-openid/masq
+    owner: ruby-openid
+  - type: GitLab
+    url: https://gitlab.com/ruby-openid/masq
+  - type: Codeberg
+    url: https://codeberg.org/ruby-openid/masq
   tags:
-    - openid
-    - auth
-    - security
-    - api
+  - openid
+  - auth
+  - security
+  - api
   docs_site:
+  github_stars: 10
+  gitlab_stars: 0
+  codeberg_stars: 0
+  total_downloads: 406
+  daily_downloads: 0
+  release_downloads: 406
+  release_date: 2025/04/04
+  last_commit_on: 2025/08/14
+  status: active
+  last_scrape_at: '2025-10-21T22:11:33Z'
 - name: month-serializer
   description: Serialize Month objects to Integer
   language: Ruby
@@ -1024,21 +1332,29 @@
   first_commit_on: 2018/10/16
   first_commit: https://github.com/galtzo-floss/month-serializer/commit/b695d99e3ec49fedb1f3a50b3863956b58e7827b
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/galtzo-floss
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/galtzo-floss/month-serializer
-      owner: galtzo-floss
-    - type: SourceHut
-      url: https://git.sr.ht/~galtzo/month-serializer
+  - type: GitHub
+    url: https://github.com/galtzo-floss/month-serializer
+    owner: galtzo-floss
+  - type: SourceHut
+    url: https://git.sr.ht/~galtzo/month-serializer
   tags:
-    - time
-    - math
-    - serialize
+  - time
+  - math
+  - serialize
   docs_site:
+  github_stars: 6
+  total_downloads: 8886
+  daily_downloads: 0
+  release_downloads: 7081
+  release_date: 2018/10/29
+  last_commit_on: 2025/10/09
+  status: active
+  last_scrape_at: '2025-10-21T22:11:36Z'
 - name: oauth
   description: "\U0001F511 A Ruby wrapper for the original OAuth 1.0 / 1.0a spec."
   language: Ruby
@@ -1048,24 +1364,34 @@
   first_commit_on: 2018/03/01
   first_commit: https://github.com/ruby-oauth/oauth/commit/cb9b9db64f520dc0ee87fe6e4fe82a7601cffb14
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/ruby-oauth
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/ruby-oauth
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/ruby-oauth/oauth
-      owner: ruby-oauth
-    - type: GitLab
-      url: https://gitlab.com/ruby-oauth/oauth
-    - type: Codeberg
-      url: https://codeberg.org/ruby-oauth/oauth
+  - type: GitHub
+    url: https://github.com/ruby-oauth/oauth
+    owner: ruby-oauth
+  - type: GitLab
+    url: https://gitlab.com/ruby-oauth/oauth
+  - type: Codeberg
+    url: https://codeberg.org/ruby-oauth/oauth
   tags:
-    - oauth
-    - auth
-    - security
-    - api
+  - oauth
+  - auth
+  - security
+  - api
   docs_site: https://oauth.galtzo.com
+  github_stars: 677
+  gitlab_stars: 5
+  codeberg_stars: 0
+  total_downloads: 150017752
+  daily_downloads: 0
+  release_downloads: 160098
+  release_date: 2025/09/22
+  last_commit_on: 2025/10/13
+  status: active
+  last_scrape_at: '2025-10-21T22:11:40Z'
 - name: oauth-tty
   description: "\U0001F5A5️ OAuth 1.0 / 1.0a TTY Command Line Interface"
   language: Ruby
@@ -1075,25 +1401,35 @@
   first_commit_on: 2022/08/23
   first_commit: https://github.com/ruby-oauth/oauth-tty/commit/0580f942bf91e5ac54bf1662bea231e0a7a251cf
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/ruby-oauth
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/ruby-oauth
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/ruby-oauth/oauth-tty
-      owner: ruby-oauth
-    - type: GitLab
-      url: https://gitlab.com/ruby-oauth/oauth-tty
-    - type: Codeberg
-      url: https://codeberg.org/ruby-oauth/oauth-tty
+  - type: GitHub
+    url: https://github.com/ruby-oauth/oauth-tty
+    owner: ruby-oauth
+  - type: GitLab
+    url: https://gitlab.com/ruby-oauth/oauth-tty
+  - type: Codeberg
+    url: https://codeberg.org/ruby-oauth/oauth-tty
   tags:
-    - oauth
-    - auth
-    - security
-    - tty
-    - api
+  - oauth
+  - auth
+  - security
+  - tty
+  - api
   docs_site: https://oauth-tty.galtzo.com
+  github_stars: 6
+  gitlab_stars: 1
+  codeberg_stars: 1
+  total_downloads: 13483254
+  daily_downloads: 0
+  release_downloads: 192742
+  release_date: 2025/09/21
+  last_commit_on: 2025/10/13
+  status: active
+  last_scrape_at: '2025-10-21T22:11:43Z'
 - name: oauth2
   description: Ruby OAuth 2.0 framework for building OAuth providers and clients
   language: Ruby
@@ -1103,24 +1439,34 @@
   first_commit_on: 2017/12/14
   first_commit: https://github.com/ruby-oauth/oauth2/commit/dd43f5d1802ab80ac9355ca3d57fefda13cf2fc9
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/ruby-oauth
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/ruby-oauth
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/ruby-oauth/oauth2
-      owner: ruby-oauth
-    - type: GitLab
-      url: https://gitlab.com/ruby-oauth/oauth2
-    - type: Codeberg
-      url: https://codeberg.org/ruby-oauth/oauth2
+  - type: GitHub
+    url: https://github.com/ruby-oauth/oauth2
+    owner: ruby-oauth
+  - type: GitLab
+    url: https://gitlab.com/ruby-oauth/oauth2
+  - type: Codeberg
+    url: https://codeberg.org/ruby-oauth/oauth2
   tags:
-    - oauth
-    - auth
-    - security
-    - api
+  - oauth
+  - auth
+  - security
+  - api
   docs_site: https://oauth2.galtzo.com
+  github_stars: 2153
+  gitlab_stars: 22
+  codeberg_stars: 1
+  total_downloads: 236350600
+  daily_downloads: 0
+  release_downloads: 521545
+  release_date: 2025/09/16
+  last_commit_on: 2025/10/13
+  status: active
+  last_scrape_at: '2025-10-21T22:11:46Z'
 - name: omniauth-identity
   description: Traditional username/password based authentication system for OmniAuth
   language: Ruby
@@ -1130,17 +1476,25 @@
   first_commit_on: 2020/04/30
   first_commit: https://github.com/omniauth/omniauth-identity/commit/79e402e17654955659078fea590b92e5f70ab3a6
   funding_sites:
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/omniauth/omniauth-identity
-      owner: omniauth
+  - type: GitHub
+    url: https://github.com/omniauth/omniauth-identity
+    owner: omniauth
   tags:
-    - auth
-    - security
-    - api
+  - auth
+  - security
+  - api
   docs_site: https://omniauth-identity.galtzo.com
+  github_stars: 361
+  total_downloads: 2029780
+  daily_downloads: 0
+  release_downloads: 515
+  release_date: 2025/10/14
+  last_commit_on: 2025/10/21
+  status: active
+  last_scrape_at: '2025-10-21T22:11:49Z'
 - name: omniauth-jwt
   description: An OmniAuth strategy to accept JWT-based single sign-on.
   language: Ruby
@@ -1150,17 +1504,25 @@
   first_commit_on: 2023/11/30
   first_commit: https://github.com/omniauth/omniauth-jwt/commit/f960595dbb1464e7d0ac5df48ae708424ba95e5d
   funding_sites:
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/omniauth/omniauth-jwt
-      owner: omniauth
+  - type: GitHub
+    url: https://github.com/omniauth/omniauth-jwt
+    owner: omniauth
   tags:
-    - auth
-    - security
-    - api
+  - auth
+  - security
+  - api
   docs_site:
+  github_stars: 101
+  total_downloads: 146507
+  daily_downloads: 0
+  release_downloads: 143591
+  release_date: 2013/10/19
+  last_commit_on: 2025/09/11
+  status: active
+  last_scrape_at: '2025-10-21T22:11:51Z'
 - name: omniauth-jwt2
   description: Originally a fork. Has been merged back to the original gem.
   language: Ruby
@@ -1170,17 +1532,25 @@
   first_commit_on: 2023/11/30
   first_commit: https://github.com/omniauth/omniauth-jwt/commit/f960595dbb1464e7d0ac5df48ae708424ba95e5d
   funding_sites:
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/omniauth/omniauth-jwt2
-      owner: omniauth
+  - type: GitHub
+    url: https://github.com/omniauth/omniauth-jwt2
+    owner: omniauth
   tags:
-    - auth
-    - security
-    - api
+  - auth
+  - security
+  - api
   docs_site:
+  github_stars: 6
+  total_downloads: 1812
+  daily_downloads: 0
+  release_downloads: 1812
+  release_date: 2023/12/07
+  last_commit_on: 2023/12/07
+  status: stale
+  last_scrape_at: '2025-10-21T22:11:54Z'
 - name: omniauth-ldap
   description: A LDAP strategy for OmniAuth.
   language: Ruby
@@ -1190,17 +1560,25 @@
   first_commit_on: 2025/10/18
   first_commit: https://github.com/omniauth/omniauth-ldap/commit/5ea8e97a1e729a21d4cb7f022af350c322d1406e
   funding_sites:
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/omniauth/omniauth-ldap
-      owner: omniauth
+  - type: GitHub
+    url: https://github.com/omniauth/omniauth-ldap
+    owner: omniauth
   tags:
-    - auth
-    - security
-    - api
+  - auth
+  - security
+  - api
   docs_site:
+  github_stars: 147
+  total_downloads: 739013
+  daily_downloads: 0
+  release_downloads: 136987
+  release_date: 2018/01/09
+  last_commit_on: 2025/10/18
+  status: active
+  last_scrape_at: '2025-10-21T22:11:56Z'
 - name: omniauth-openid
   description: OpenID (not OIDC) strategy for OmniAuth.
   language: Ruby
@@ -1210,24 +1588,34 @@
   first_commit_on: 2025/04/30
   first_commit: https://github.com/ruby-openid/omniauth-openid/commit/d32dfab23fdca6089e649ee2efb7cc6ae4e8a334
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/ruby-openid
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/ruby-openid
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/ruby-openid/omniauth-openid
-      owner: ruby-openid
-    - type: GitLab
-      url: https://gitlab.com/ruby-openid/omniauth-openid
-    - type: Codeberg
-      url: https://codeberg.org/ruby-openid/omniauth-openid
+  - type: GitHub
+    url: https://github.com/ruby-openid/omniauth-openid
+    owner: ruby-openid
+  - type: GitLab
+    url: https://gitlab.com/ruby-openid/omniauth-openid
+  - type: Codeberg
+    url: https://codeberg.org/ruby-openid/omniauth-openid
   tags:
-    - openid
-    - auth
-    - security
-    - api
+  - openid
+  - auth
+  - security
+  - api
   docs_site: https://omniauth-openid.galtzo.com
+  github_stars: 96
+  gitlab_stars: 0
+  codeberg_stars: 0
+  total_downloads: 4157102
+  daily_downloads: 0
+  release_downloads: 17220
+  release_date: 2025/06/08
+  last_commit_on: 2025/08/14
+  status: active
+  last_scrape_at: '2025-10-21T22:12:00Z'
 - name: open_id_authentication
   description: Provides a thin wrapper around the excellent rack-openid2 gem.
   language: Ruby
@@ -1237,24 +1625,34 @@
   first_commit_on: 2024/09/04
   first_commit: https://github.com/ruby-openid/open_id_authentication/commit/0ea7fa4517c2c4bf02ad44667f1a0b61dfeaad00
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/ruby-openid
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/ruby-openid
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/ruby-openid/open_id_authentication
-      owner: ruby-openid
-    - type: GitLab
-      url: https://gitlab.com/ruby-openid/open_id_authentication
-    - type: Codeberg
-      url: https://codeberg.org/ruby-openid/open_id_authentication
+  - type: GitHub
+    url: https://github.com/ruby-openid/open_id_authentication
+    owner: ruby-openid
+  - type: GitLab
+    url: https://gitlab.com/ruby-openid/open_id_authentication
+  - type: Codeberg
+    url: https://codeberg.org/ruby-openid/open_id_authentication
   tags:
-    - openid
-    - auth
-    - security
-    - api
+  - openid
+  - auth
+  - security
+  - api
   docs_site: https://open-id-authentication.galtzo.com
+  github_stars: 10
+  gitlab_stars: 0
+  codeberg_stars: 0
+  total_downloads: 122650
+  daily_downloads: 0
+  release_downloads: 3914
+  release_date: 2024/09/25
+  last_commit_on: 2025/06/10
+  status: active
+  last_scrape_at: '2025-10-21T22:12:03Z'
 - name: os
   description: Easily determine which OS your Ruby code is running on.
   language: Ruby
@@ -1264,15 +1662,23 @@
   first_commit_on: 2022/12/11
   first_commit: https://github.com/rdp/os/commit/66bc609b4e53a9b822904b43ed08a8206364e7eb
   funding_sites:
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/rdp/os
-      owner: rdp
+  - type: GitHub
+    url: https://github.com/rdp/os
+    owner: rdp
   tags:
-    - test
+  - test
   docs_site:
+  github_stars: 153
+  total_downloads: 387550106
+  daily_downloads: 0
+  release_downloads: 210175721
+  release_date: 2021/11/07
+  last_commit_on: 2025/06/08
+  status: active
+  last_scrape_at: '2025-10-21T22:12:05Z'
 - name: pretty_feed
   description: |
     PrettyFeed provides a modulizer you can include in a job, worker, class, rake task, etc,
@@ -1285,20 +1691,28 @@
   first_commit_on: 2022/03/21
   first_commit: https://github.com/galtzo-floss/pretty_feed/commit/cd45565324085939b680c8597599828b4c41511f
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/galtzo-floss
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/galtzo-floss/pretty_feed
-      owner: galtzo-floss
-    - type: SourceHut
-      url: https://git.sr.ht/~galtzo/pretty_feed
+  - type: GitHub
+    url: https://github.com/galtzo-floss/pretty_feed
+    owner: galtzo-floss
+  - type: SourceHut
+    url: https://git.sr.ht/~galtzo/pretty_feed
   tags:
-    - log
-    - debug
+  - log
+  - debug
   docs_site:
+  github_stars: 6
+  total_downloads: 18245
+  daily_downloads: 0
+  release_downloads: 4100
+  release_date: 2023/10/18
+  last_commit_on: 2025/08/13
+  status: active
+  last_scrape_at: '2025-10-21T22:12:08Z'
 - name: qfill
   description: Advanced Queue Transformation
   language: Ruby
@@ -1308,20 +1722,28 @@
   first_commit_on: 2013/02/28
   first_commit: https://github.com/galtzo-floss/qfill/commit/e47fb5a5626f955ca791a12fd866c559bb72bdc3
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/galtzo-floss
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/galtzo-floss/qfill
-      owner: galtzo-floss
-    - type: SourceHut
-      url: https://git.sr.ht/~galtzo/qfill
+  - type: GitHub
+    url: https://github.com/galtzo-floss/qfill
+    owner: galtzo-floss
+  - type: SourceHut
+    url: https://git.sr.ht/~galtzo/qfill
   tags:
-    - queue
-    - math
+  - queue
+  - math
   docs_site:
+  github_stars: 6
+  total_downloads: 35098
+  daily_downloads: 0
+  release_downloads: 11303
+  release_date: 2022/02/25
+  last_commit_on: 2025/08/13
+  status: active
+  last_scrape_at: '2025-10-21T22:12:10Z'
 - name: rack-insight
   description: |-
     Debugging toolbar for Rack applications implemented as middleware.
@@ -1333,19 +1755,27 @@
   first_commit_on: 2012/08/30
   first_commit: https://github.com/pboling/rack-insight/commit/9238d48f12a4452dcb36bacac356097710fa2322
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/galtzo-floss
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/pboling/rack-insight
-      owner: pboling
+  - type: GitHub
+    url: https://github.com/pboling/rack-insight
+    owner: pboling
   tags:
-    - rack
-    - view
-    - stale
+  - rack
+  - view
+  adoptable: true
   docs_site:
+  github_stars: 151
+  total_downloads: 131207
+  daily_downloads: 0
+  release_downloads: 22529
+  release_date: 2015/11/29
+  last_commit_on: 2016/04/27
+  status: stale
+  last_scrape_at: '2025-10-21T22:12:12Z'
 - name: rack-openid
   description: Provides a more HTTPish API around the ruby-openid library
   language: Ruby
@@ -1355,24 +1785,34 @@
   first_commit_on: 2024/09/04
   first_commit: https://github.com/ruby-openid/rack-openid/commit/c1b85ce8d3aef9bd0fcc70d5f1c13744fcc78b08
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/ruby-openid
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/ruby-openid
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/ruby-openid/rack-openid
-      owner: ruby-openid
-    - type: GitLab
-      url: https://gitlab.com/ruby-openid/rack-openid
-    - type: Codeberg
-      url: https://codeberg.org/ruby-openid/rack-openid
+  - type: GitHub
+    url: https://github.com/ruby-openid/rack-openid
+    owner: ruby-openid
+  - type: GitLab
+    url: https://gitlab.com/ruby-openid/rack-openid
+  - type: Codeberg
+    url: https://codeberg.org/ruby-openid/rack-openid
   tags:
-    - openid
-    - auth
-    - security
-    - api
+  - openid
+  - auth
+  - security
+  - api
   docs_site:
+  github_stars: 5
+  gitlab_stars: 0
+  codeberg_stars: 0
+  total_downloads: 7835727
+  daily_downloads: 0
+  release_downloads: 3697118
+  release_date: 2014/01/20
+  last_commit_on: 2025/09/14
+  status: active
+  last_scrape_at: '2025-10-21T22:12:15Z'
 - name: rack-openid2
   description: Originally a fork. Has been merged back to the original gem.
   language: Ruby
@@ -1382,24 +1822,34 @@
   first_commit_on: 2024/09/04
   first_commit: https://github.com/ruby-openid/rack-openid2/commit/c1b85ce8d3aef9bd0fcc70d5f1c13744fcc78b08
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/ruby-openid
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/ruby-openid
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/ruby-openid/rack-openid2
-      owner: ruby-openid
-    - type: GitLab
-      url: https://gitlab.com/ruby-openid/rack-openid
-    - type: Codeberg
-      url: https://codeberg.org/ruby-openid/rack-openid
+  - type: GitHub
+    url: https://github.com/ruby-openid/rack-openid2
+    owner: ruby-openid
+  - type: GitLab
+    url: https://gitlab.com/ruby-openid/rack-openid
+  - type: Codeberg
+    url: https://codeberg.org/ruby-openid/rack-openid
   tags:
-    - openid
-    - auth
-    - security
-    - api
+  - openid
+  - auth
+  - security
+  - api
   docs_site: https://rack-openid2.galtzo.com
+  github_stars: 10
+  gitlab_stars: 0
+  codeberg_stars: 0
+  total_downloads: 5582
+  daily_downloads: 0
+  release_downloads: 4188
+  release_date: 2024/09/25
+  last_commit_on: 2025/06/07
+  status: active
+  last_scrape_at: '2025-10-21T22:12:19Z'
 - name: rack-toolbar
   description: Provides an easy way to create Rack Middleware that injects things
     into the response body. Extracted from rack-insight.
@@ -1410,19 +1860,27 @@
   first_commit_on: 2015/04/12
   first_commit: https://github.com/galtzo-floss/rack-toolbar/commit/a98bfb30ce9bc94822e43fce4889dbadce0daa6b
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/galtzo-floss
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/galtzo-floss/rack-toolbar
-      owner: galtzo-floss
+  - type: GitHub
+    url: https://github.com/galtzo-floss/rack-toolbar
+    owner: galtzo-floss
   tags:
-    - rack
-    - view
-    - stale
+  - rack
+  - view
+  adoptable: true
   docs_site:
+  github_stars: 12
+  total_downloads: 36873
+  daily_downloads: 0
+  release_downloads: 27381
+  release_date: 2015/04/13
+  last_commit_on: 2025/08/13
+  status: active
+  last_scrape_at: '2025-10-21T22:12:21Z'
 - name: rails_env_local
   description: |2
       If existing infrastructure for deployed environments
@@ -1438,19 +1896,27 @@
   first_commit_on: 2016/03/08
   first_commit: https://github.com/pboling/rails_env_local/commit/beea3462666af45bf8df7b05d41cd843cacb9525
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/galtzo-floss
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/pboling/rails_env_local
-      owner: pboling
+  - type: GitHub
+    url: https://github.com/pboling/rails_env_local
+    owner: pboling
   tags:
-    - rails
-    - env
-    - stale
+  - rails
+  - env
+  adoptable: true
   docs_site:
+  github_stars: 2
+  total_downloads: 16069
+  daily_downloads: 0
+  release_downloads: 6610
+  release_date: 2016/03/11
+  last_commit_on: 2025/08/04
+  status: archived
+  last_scrape_at: '2025-10-21T22:12:24Z'
 - name: react-rails-benchmark_renderer
   description: Concern::Instrumentation Plugin for React::Rails Render Benchmarking
     with a reference implementation
@@ -1461,20 +1927,28 @@
   first_commit_on: 2015/06/21
   first_commit: https://github.com/galtzo-floss/react-rails-benchmark_renderer/commit/8abb9c2faa925990527493cac93536c9928a2edf
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/galtzo-floss
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/galtzo-floss/react-rails-benchmark_renderer
-      owner: galtzo-floss
+  - type: GitHub
+    url: https://github.com/galtzo-floss/react-rails-benchmark_renderer
+    owner: galtzo-floss
   tags:
-    - rails
-    - react
-    - view
-    - stale
+  - rails
+  - react
+  - view
+  adoptable: true
   docs_site:
+  github_stars: 19
+  total_downloads: 3374
+  daily_downloads: 0
+  release_downloads: 3374
+  release_date: 2015/06/21
+  last_commit_on: 2025/08/13
+  status: active
+  last_scrape_at: '2025-10-21T22:12:26Z'
 - name: remit
   description: An API for using the Amazon Flexible Payment Service (FPS).
   language: Ruby
@@ -1484,20 +1958,28 @@
   first_commit_on: 2010/11/01
   first_commit: https://github.com/tylerhunt/remit/commit/aaec89c754b1d4c68dd6901ae5edf5887ae05cc7
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/galtzo-floss
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/tylerhunt/remit
-      owner: tylerhunt
+  - type: GitHub
+    url: https://github.com/tylerhunt/remit
+    owner: tylerhunt
   tags:
-    - stale
-    - payment
-    - aws
-    - api
+  - payment
+  - aws
+  - api
+  adoptable: true
   docs_site:
+  github_stars: 158
+  total_downloads: 64098
+  daily_downloads: 0
+  release_downloads: 34566
+  release_date: 2011/08/14
+  last_commit_on: 2013/03/27
+  status: stale
+  last_scrape_at: '2025-10-21T22:12:28Z'
 - name: require_bench
   description: Ruby app loading slowly, or never? Discover bootstrapping issues in
     Ruby by logging/benchmarking/timing-out/rescuing 'Kernel.require' & 'load'
@@ -1508,27 +1990,37 @@
   first_commit_on: 2018/09/21
   first_commit: https://github.com/galtzo-floss/require_bench/commit/67e03119ddb8be7b04ae7fd12da62d0ea5b6fb74
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/galtzo-floss
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/galtzo-floss/require_bench
-      owner: galtzo-floss
-    - type: GitLab
-      url: https://gitlab.com/galtzo-floss/require_bench
-    - type: Codeberg
-      url: https://codeberg.org/galtzo-floss/require_bench
-    - type: SourceHut
-      url: https://git.sr.ht/~galtzo/require_bench
+  - type: GitHub
+    url: https://github.com/galtzo-floss/require_bench
+    owner: galtzo-floss
+  - type: GitLab
+    url: https://gitlab.com/galtzo-floss/require_bench
+  - type: Codeberg
+    url: https://codeberg.org/galtzo-floss/require_bench
+  - type: SourceHut
+    url: https://git.sr.ht/~galtzo/require_bench
   tags:
-    - perf
-    - benchmark
-    - debug
-    - log
-    - error-handle
+  - perf
+  - benchmark
+  - debug
+  - log
+  - error-handle
   docs_site:
+  github_stars: 7
+  gitlab_stars: 0
+  codeberg_stars: 0
+  total_downloads: 64709
+  daily_downloads: 0
+  release_downloads: 19266
+  release_date: 2023/10/10
+  last_commit_on: 2025/08/13
+  status: active
+  last_scrape_at: '2025-10-21T22:12:31Z'
 - name: resque
   description: Resque is a Redis-backed Ruby library for creating background jobs,
     placing them on multiple queues, and processing them later.
@@ -1539,20 +2031,28 @@
   first_commit_on: 2024/05/16
   first_commit: https://github.com/resque/resque/commit/fa72b7b30adbbe9cf15d48784df78367b0294e82
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/resque
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/resque
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/resque/resque
-      owner: resque
+  - type: GitHub
+    url: https://github.com/resque/resque
+    owner: resque
   tags:
-    - resque
-    - queue
-    - shell
-    - cli
+  - resque
+  - queue
+  - shell
+  - cli
   docs_site:
+  github_stars: 9471
+  total_downloads: 48786508
+  daily_downloads: 0
+  release_downloads: 899882
+  release_date: 2024/12/30
+  last_commit_on: 2025/08/23
+  status: active
+  last_scrape_at: '2025-10-21T22:12:34Z'
 - name: resque-lonely_job
   description: |
     Ensures that for a given queue, only one worker is working on a job at any given time.
@@ -1573,20 +2073,28 @@
   first_commit_on: 2025/10/18
   first_commit: https://github.com/resque/resque-lonely_job/commit/b6b24441a1bbcab2724f9a805d3a85fc332ba65a
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/resque
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/resque
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/resque/resque-lonely_job
-      owner: resque
+  - type: GitHub
+    url: https://github.com/resque/resque-lonely_job
+    owner: resque
   tags:
-    - resque
-    - queue
-    - uniq
-    - stale
+  - resque
+  - queue
+  - uniq
+  adoptable: true
   docs_site:
+  github_stars: 6
+  total_downloads: 299806
+  daily_downloads: 0
+  release_downloads: 196807
+  release_date: 2014/08/13
+  last_commit_on: 2025/10/18
+  status: active
+  last_scrape_at: '2025-10-21T22:12:36Z'
 - name: resque-unique_at_runtime
   description: |
     Ensures that for a given queue, only one worker is working on a job at any given time.
@@ -1607,19 +2115,27 @@
   first_commit_on: 2017/04/10
   first_commit: https://github.com/resque/resque-unique_at_runtime/commit/78286c3de2116ddbc68b5fe0ace47f3c2dfa0a45
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/resque
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/resque
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/resque/resque-unique_at_runtime
-      owner: resque
+  - type: GitHub
+    url: https://github.com/resque/resque-unique_at_runtime
+    owner: resque
   tags:
-    - resque
-    - queue
-    - uniq
+  - resque
+  - queue
+  - uniq
   docs_site:
+  github_stars: 8
+  total_downloads: 81923
+  daily_downloads: 0
+  release_downloads: 65852
+  release_date: 2018/11/15
+  last_commit_on: 2025/08/22
+  status: active
+  last_scrape_at: '2025-10-21T22:12:38Z'
 - name: resque-unique_by_arity
   description: Configure resque-unique_in_queue and resque-unique_at_runtime uniqueness
     by arity of perform method, with automated cleanup tools
@@ -1630,21 +2146,29 @@
   first_commit_on: 2017/04/28
   first_commit: https://github.com/resque/resque-unique_by_arity/commit/1765bbc873d8830ce982598bb129cd81208acd22
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/resque
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/resque
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/resque/resque-unique_by_arity
-      owner: resque
-    - type: SourceHut
-      url: https://git.sr.ht/~galtzo/resque-unique_by_arity
+  - type: GitHub
+    url: https://github.com/resque/resque-unique_by_arity
+    owner: resque
+  - type: SourceHut
+    url: https://git.sr.ht/~galtzo/resque-unique_by_arity
   tags:
-    - resque
-    - queue
-    - uniq
+  - resque
+  - queue
+  - uniq
   docs_site:
+  github_stars: 9
+  total_downloads: 41835
+  daily_downloads: 0
+  release_downloads: 6279
+  release_date: 2018/11/17
+  last_commit_on: 2025/08/22
+  status: active
+  last_scrape_at: '2025-10-21T22:12:40Z'
 - name: resque-unique_in_queue
   description: A resque plugin that ensures job uniqueness at enqueue time.
   language: Ruby
@@ -1654,19 +2178,27 @@
   first_commit_on: 2017/04/30
   first_commit: https://github.com/resque/resque-unique_in_queue/commit/5bd03cba29b2261a5e8adb52a8281c0bf8455400
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/resque
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/resque
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/resque/resque-unique_in_queue
-      owner: resque
+  - type: GitHub
+    url: https://github.com/resque/resque-unique_in_queue
+    owner: resque
   tags:
-    - resque
-    - queue
-    - uniq
+  - resque
+  - queue
+  - uniq
   docs_site:
+  github_stars: 8
+  total_downloads: 111695
+  daily_downloads: 0
+  release_downloads: 103158
+  release_date: 2018/11/15
+  last_commit_on: 2025/08/22
+  status: active
+  last_scrape_at: '2025-10-21T22:12:43Z'
 - name: rots
   description: |
     Ruby OpenID Test Server (ROTS) provides a basic OpenID server made in top of the Rack gem.
@@ -1679,25 +2211,35 @@
   first_commit_on: 2024/09/18
   first_commit: https://github.com/ruby-openid/rots/commit/98b35d352a938412f2e5d36e6e31320068f94c57
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/ruby-openid
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/ruby-openid
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/ruby-openid/rots
-      owner: ruby-openid
-    - type: GitLab
-      url: https://gitlab.com/ruby-openid/rots
-    - type: Codeberg
-      url: https://codeberg.org/ruby-openid/rots
+  - type: GitHub
+    url: https://github.com/ruby-openid/rots
+    owner: ruby-openid
+  - type: GitLab
+    url: https://gitlab.com/ruby-openid/rots
+  - type: Codeberg
+    url: https://codeberg.org/ruby-openid/rots
   tags:
-    - openid
-    - auth
-    - security
-    - test
-    - mock
+  - openid
+  - auth
+  - security
+  - test
+  - mock
   docs_site:
+  github_stars: 35
+  gitlab_stars: 1
+  codeberg_stars: 0
+  total_downloads: 710
+  daily_downloads: 0
+  release_downloads: 710
+  release_date: 2024/09/25
+  last_commit_on: 2025/10/18
+  status: active
+  last_scrape_at: '2025-10-21T22:12:47Z'
 - name: rspec-block_is_expected
   description: subject { Integer(nil) }; it('raises') { block_is_expected.to raise_error(TypeError)
     }
@@ -1708,25 +2250,35 @@
   first_commit_on: 2018/10/01
   first_commit: https://github.com/galtzo-floss/rspec-block_is_expected/commit/90fc840a7f0f85c0b9701c7def57653287c923ee
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/galtzo-floss
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/galtzo-floss/rspec-block_is_expected
-      owner: galtzo-floss
-    - type: GitLab
-      url: https://gitlab.com/galtzo-floss/rspec-block_is_expected
-    - type: Codeberg
-      url: https://codeberg.org/galtzo-floss/rspec-block_is_expected
-    - type: SourceHut
-      url: https://git.sr.ht/~galtzo/rspec-block_is_expected
+  - type: GitHub
+    url: https://github.com/galtzo-floss/rspec-block_is_expected
+    owner: galtzo-floss
+  - type: GitLab
+    url: https://gitlab.com/galtzo-floss/rspec-block_is_expected
+  - type: Codeberg
+    url: https://codeberg.org/galtzo-floss/rspec-block_is_expected
+  - type: SourceHut
+    url: https://git.sr.ht/~galtzo/rspec-block_is_expected
   tags:
-    - rspec
-    - test
-    - error-handle
+  - rspec
+  - test
+  - error-handle
   docs_site:
+  github_stars: 8
+  gitlab_stars: 1
+  codeberg_stars: 0
+  total_downloads: 277014
+  daily_downloads: 0
+  release_downloads: 175461
+  release_date: 2024/06/23
+  last_commit_on: 2025/07/27
+  status: active
+  last_scrape_at: '2025-10-21T22:12:50Z'
 - name: rspec-pending_for
   description: "⏳️ Mark specs pending or skipped for specific Ruby engine (e.g. MRI
     or JRuby) & versions, or version ranges. Fund overlooked open source projects
@@ -1738,24 +2290,34 @@
   first_commit_on: 2015/10/21
   first_commit: https://github.com/galtzo-floss/rspec-pending_for/commit/3073eb933b48d3d11d07e2cf1e27040621010f78
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/galtzo-floss
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/galtzo-floss/rspec-pending_for
-      owner: galtzo-floss
-    - type: GitLab
-      url: https://gitlab.com/galtzo-floss/rspec-pending_for
-    - type: Codeberg
-      url: https://codeberg.org/galtzo-floss/rspec-pending_for
-    - type: SourceHut
-      url: https://git.sr.ht/~galtzo/rspec-pending_for
+  - type: GitHub
+    url: https://github.com/galtzo-floss/rspec-pending_for
+    owner: galtzo-floss
+  - type: GitLab
+    url: https://gitlab.com/galtzo-floss/rspec-pending_for
+  - type: Codeberg
+    url: https://codeberg.org/galtzo-floss/rspec-pending_for
+  - type: SourceHut
+    url: https://git.sr.ht/~galtzo/rspec-pending_for
   tags:
-    - rspec
-    - test
+  - rspec
+  - test
   docs_site:
+  github_stars: 12
+  gitlab_stars: 1
+  codeberg_stars: 0
+  total_downloads: 136799
+  daily_downloads: 0
+  release_downloads: 9402
+  release_date: 2025/09/05
+  last_commit_on: 2025/10/13
+  status: active
+  last_scrape_at: '2025-10-21T22:12:53Z'
 - name: rspec-stubbed_env
   description: |
     Stub or hide environment variables in a scoped context for testing
@@ -1768,26 +2330,36 @@
   first_commit_on: 2018/10/06
   first_commit: https://github.com/galtzo-floss/rspec-stubbed_env/commit/c37abbc7d2a0cee5d99a6676588ea8b06fcdf966
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/galtzo-floss
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/galtzo-floss/rspec-stubbed_env
-      owner: galtzo-floss
-    - type: GitLab
-      url: https://gitlab.com/galtzo-floss/rspec-stubbed_env
-    - type: Codeberg
-      url: https://codeberg.org/galtzo-floss/rspec-stubbed_env
-    - type: SourceHut
-      url: https://git.sr.ht/~galtzo/rspec-stubbed_env
+  - type: GitHub
+    url: https://github.com/galtzo-floss/rspec-stubbed_env
+    owner: galtzo-floss
+  - type: GitLab
+    url: https://gitlab.com/galtzo-floss/rspec-stubbed_env
+  - type: Codeberg
+    url: https://codeberg.org/galtzo-floss/rspec-stubbed_env
+  - type: SourceHut
+    url: https://git.sr.ht/~galtzo/rspec-stubbed_env
   tags:
-    - rspec
-    - test
-    - env
-    - mock
+  - rspec
+  - test
+  - env
+  - mock
   docs_site: https://rspec-stubbed-env.galtzo.com
+  github_stars: 15
+  gitlab_stars: 1
+  codeberg_stars: 0
+  total_downloads: 325433
+  daily_downloads: 0
+  release_downloads: 21579
+  release_date: 2025/08/05
+  last_commit_on: 2025/10/09
+  status: active
+  last_scrape_at: '2025-10-21T22:12:57Z'
 - name: rubocop-lts
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby code
   language: Ruby
@@ -1797,20 +2369,30 @@
   first_commit_on: 2022/05/06
   first_commit: https://github.com/rubocop-lts/rubocop-lts/commit/f0fcf8e7dbb4d884a01c7191e7f26ef8bf3b22af
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/rubocop-lts
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/rubocop-lts
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/rubocop-lts/rubocop-lts
-    - type: GitLab
-      url: https://gitlab.com/rubocop-lts/rubocop-lts
-    - type: Codeberg
-      url: https://codeberg.org/rubocop-lts/rubocop-lts
+  - type: GitHub
+    url: https://github.com/rubocop-lts/rubocop-lts
+  - type: GitLab
+    url: https://gitlab.com/rubocop-lts/rubocop-lts
+  - type: Codeberg
+    url: https://codeberg.org/rubocop-lts/rubocop-lts
   tags:
-    - rubocop
+  - rubocop
   docs_site:
+  github_stars: 12
+  gitlab_stars: 1
+  codeberg_stars: 0
+  total_downloads: 228168
+  daily_downloads: 0
+  release_downloads: 4487
+  release_date: 2023/05/30
+  last_commit_on: 2025/07/15
+  status: active
+  last_scrape_at: '2025-10-21T22:13:01Z'
 - name: rubocop-ruby1_8
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 1.8 code
   language: Ruby
@@ -1820,19 +2402,28 @@
   first_commit_on: 2023/05/14
   first_commit: https://github.com/rubocop-lts/rubocop-ruby1_8/commit/b1df7fff27e040c8dc7a7e63bf8eddbe456c7d18
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/rubocop-lts
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/rubocop-lts
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/rubocop-lts/rubocop-ruby1_8
-      owner: rubocop-lts
-    - type: GitLab
-      url: https://gitlab.com/rubocop-lts/rubocop-ruby1_8
+  - type: GitHub
+    url: https://github.com/rubocop-lts/rubocop-ruby1_8
+    owner: rubocop-lts
+  - type: GitLab
+    url: https://gitlab.com/rubocop-lts/rubocop-ruby1_8
   tags:
-    - rubocop
+  - rubocop
   docs_site:
+  github_stars: 6
+  gitlab_stars: 1
+  total_downloads: 4996
+  daily_downloads: 0
+  release_downloads: 2581
+  release_date: 2023/06/14
+  last_commit_on: 2025/08/06
+  status: active
+  last_scrape_at: '2025-10-21T22:13:04Z'
 - name: rubocop-ruby1_9
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 1.9 code
   language: Ruby
@@ -1842,19 +2433,28 @@
   first_commit_on: 2022/05/01
   first_commit: https://github.com/rubocop-lts/rubocop-ruby1_9/commit/1668e34e9dbdb6e8b2062c05bfce35f0ac071a44
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/rubocop-lts
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/rubocop-lts
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/rubocop-lts/rubocop-ruby1_9
-      owner: rubocop-lts
-    - type: GitLab
-      url: https://gitlab.com/rubocop-lts/rubocop-ruby1_9
+  - type: GitHub
+    url: https://github.com/rubocop-lts/rubocop-ruby1_9
+    owner: rubocop-lts
+  - type: GitLab
+    url: https://gitlab.com/rubocop-lts/rubocop-ruby1_9
   tags:
-    - rubocop
+  - rubocop
   docs_site:
+  github_stars: 6
+  gitlab_stars: 1
+  total_downloads: 10171
+  daily_downloads: 0
+  release_downloads: 1074
+  release_date: 2023/06/14
+  last_commit_on: 2025/08/06
+  status: active
+  last_scrape_at: '2025-10-21T22:13:07Z'
 - name: rubocop-ruby2_0
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 2.0 code
   language: Ruby
@@ -1864,19 +2464,28 @@
   first_commit_on: 2022/05/01
   first_commit: https://github.com/rubocop-lts/rubocop-ruby2_0/commit/8fb0f104adf43c5a0e3487b390f91881f79e4d89
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/rubocop-lts
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/rubocop-lts
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/rubocop-lts/rubocop-ruby2_0
-      owner: rubocop-lts
-    - type: GitLab
-      url: https://gitlab.com/rubocop-lts/rubocop-ruby2_0
+  - type: GitHub
+    url: https://github.com/rubocop-lts/rubocop-ruby2_0
+    owner: rubocop-lts
+  - type: GitLab
+    url: https://gitlab.com/rubocop-lts/rubocop-ruby2_0
   tags:
-    - rubocop
+  - rubocop
   docs_site:
+  github_stars: 6
+  gitlab_stars: 1
+  total_downloads: 9025
+  daily_downloads: 0
+  release_downloads: 845
+  release_date: 2023/06/13
+  last_commit_on: 2025/08/06
+  status: active
+  last_scrape_at: '2025-10-21T22:13:10Z'
 - name: rubocop-ruby2_1
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 2.1 code
   language: Ruby
@@ -1886,19 +2495,28 @@
   first_commit_on: 2022/05/01
   first_commit: https://github.com/rubocop-lts/rubocop-ruby2_1/commit/e23c1cb798e1198c7b2dcca40a586b5ad6294348
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/rubocop-lts
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/rubocop-lts
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/rubocop-lts/rubocop-ruby2_1
-      owner: rubocop-lts
-    - type: GitLab
-      url: https://gitlab.com/rubocop-lts/rubocop-ruby2_1
+  - type: GitHub
+    url: https://github.com/rubocop-lts/rubocop-ruby2_1
+    owner: rubocop-lts
+  - type: GitLab
+    url: https://gitlab.com/rubocop-lts/rubocop-ruby2_1
   tags:
-    - rubocop
+  - rubocop
   docs_site:
+  github_stars: 6
+  gitlab_stars: 1
+  total_downloads: 17721
+  daily_downloads: 0
+  release_downloads: 9849
+  release_date: 2023/06/13
+  last_commit_on: 2025/08/06
+  status: active
+  last_scrape_at: '2025-10-21T22:13:13Z'
 - name: rubocop-ruby2_2
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 2.2 code
   language: Ruby
@@ -1908,19 +2526,28 @@
   first_commit_on: 2022/04/30
   first_commit: https://github.com/rubocop-lts/rubocop-ruby2_2/commit/b86f10e2f7a0ad4081b07782b3b924ef67acdeab
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/rubocop-lts
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/rubocop-lts
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/rubocop-lts/rubocop-ruby2_2
-      owner: rubocop-lts
-    - type: GitLab
-      url: https://gitlab.com/rubocop-lts/rubocop-ruby2_2
+  - type: GitHub
+    url: https://github.com/rubocop-lts/rubocop-ruby2_2
+    owner: rubocop-lts
+  - type: GitLab
+    url: https://gitlab.com/rubocop-lts/rubocop-ruby2_2
   tags:
-    - rubocop
+  - rubocop
   docs_site:
+  github_stars: 6
+  gitlab_stars: 1
+  total_downloads: 30977
+  daily_downloads: 0
+  release_downloads: 3304
+  release_date: 2023/06/13
+  last_commit_on: 2025/08/06
+  status: active
+  last_scrape_at: '2025-10-21T22:13:16Z'
 - name: rubocop-ruby2_3
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 2.3 code
   language: Ruby
@@ -1930,19 +2557,28 @@
   first_commit_on: 2022/04/30
   first_commit: https://github.com/rubocop-lts/rubocop-ruby2_3/commit/496ae0431f229da4ce2ca472954773af32f27078
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/rubocop-lts
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/rubocop-lts
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/rubocop-lts/rubocop-ruby2_3
-      owner: rubocop-lts
-    - type: GitLab
-      url: https://gitlab.com/rubocop-lts/rubocop-ruby2_3
+  - type: GitHub
+    url: https://github.com/rubocop-lts/rubocop-ruby2_3
+    owner: rubocop-lts
+  - type: GitLab
+    url: https://gitlab.com/rubocop-lts/rubocop-ruby2_3
   tags:
-    - rubocop
+  - rubocop
   docs_site:
+  github_stars: 6
+  gitlab_stars: 1
+  total_downloads: 11596
+  daily_downloads: 0
+  release_downloads: 3471
+  release_date: 2023/06/13
+  last_commit_on: 2025/08/06
+  status: active
+  last_scrape_at: '2025-10-21T22:13:19Z'
 - name: rubocop-ruby2_4
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 2.4 code
   language: Ruby
@@ -1952,19 +2588,28 @@
   first_commit_on: 2022/04/30
   first_commit: https://github.com/rubocop-lts/rubocop-ruby2_4/commit/69576e0c1884ab3c773394b5f30a9ebafe11a2a7
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/rubocop-lts
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/rubocop-lts
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/rubocop-lts/rubocop-ruby2_4
-      owner: rubocop-lts
-    - type: GitLab
-      url: https://gitlab.com/rubocop-lts/rubocop-ruby2_4
+  - type: GitHub
+    url: https://github.com/rubocop-lts/rubocop-ruby2_4
+    owner: rubocop-lts
+  - type: GitLab
+    url: https://gitlab.com/rubocop-lts/rubocop-ruby2_4
   tags:
-    - rubocop
+  - rubocop
   docs_site:
+  github_stars: 6
+  gitlab_stars: 1
+  total_downloads: 53040
+  daily_downloads: 0
+  release_downloads: 1314
+  release_date: 2023/06/13
+  last_commit_on: 2025/08/06
+  status: active
+  last_scrape_at: '2025-10-21T22:13:21Z'
 - name: rubocop-ruby2_5
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 2.5 code
   language: Ruby
@@ -1974,19 +2619,28 @@
   first_commit_on: 2022/04/30
   first_commit: https://github.com/rubocop-lts/rubocop-ruby2_5/commit/78b4f8131d931354f76d4025ab0517fc9792fed2
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/rubocop-lts
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/rubocop-lts
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/rubocop-lts/rubocop-ruby2_5
-      owner: rubocop-lts
-    - type: GitLab
-      url: https://gitlab.com/rubocop-lts/rubocop-ruby2_5
+  - type: GitHub
+    url: https://github.com/rubocop-lts/rubocop-ruby2_5
+    owner: rubocop-lts
+  - type: GitLab
+    url: https://gitlab.com/rubocop-lts/rubocop-ruby2_5
   tags:
-    - rubocop
+  - rubocop
   docs_site:
+  github_stars: 6
+  gitlab_stars: 1
+  total_downloads: 7233
+  daily_downloads: 0
+  release_downloads: 1110
+  release_date: 2023/06/13
+  last_commit_on: 2025/08/06
+  status: active
+  last_scrape_at: '2025-10-21T22:13:25Z'
 - name: rubocop-ruby2_6
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 2.6 code
   language: Ruby
@@ -1996,19 +2650,28 @@
   first_commit_on: 2022/04/30
   first_commit: https://github.com/rubocop-lts/rubocop-ruby2_6/commit/d21b64e4f7ab2d581ed6882c430dd042fe73769b
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/rubocop-lts
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/rubocop-lts
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/rubocop-lts/rubocop-ruby2_6
-      owner: rubocop-lts
-    - type: GitLab
-      url: https://gitlab.com/rubocop-lts/rubocop-ruby2_6
+  - type: GitHub
+    url: https://github.com/rubocop-lts/rubocop-ruby2_6
+    owner: rubocop-lts
+  - type: GitLab
+    url: https://gitlab.com/rubocop-lts/rubocop-ruby2_6
   tags:
-    - rubocop
+  - rubocop
   docs_site:
+  github_stars: 6
+  gitlab_stars: 1
+  total_downloads: 11398
+  daily_downloads: 0
+  release_downloads: 1549
+  release_date: 2023/06/13
+  last_commit_on: 2025/08/06
+  status: active
+  last_scrape_at: '2025-10-21T22:13:28Z'
 - name: rubocop-ruby2_7
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 2.7 code
   language: Ruby
@@ -2018,19 +2681,28 @@
   first_commit_on: 2022/04/30
   first_commit: https://github.com/rubocop-lts/rubocop-ruby2_7/commit/70d9ab2660620916ed08d1f6057d10fc4f9aa731
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/rubocop-lts
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/rubocop-lts
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/rubocop-lts/rubocop-ruby2_7
-      owner: rubocop-lts
-    - type: GitLab
-      url: https://gitlab.com/rubocop-lts/rubocop-ruby2_7
+  - type: GitHub
+    url: https://github.com/rubocop-lts/rubocop-ruby2_7
+    owner: rubocop-lts
+  - type: GitLab
+    url: https://gitlab.com/rubocop-lts/rubocop-ruby2_7
   tags:
-    - rubocop
+  - rubocop
   docs_site:
+  github_stars: 6
+  gitlab_stars: 1
+  total_downloads: 88910
+  daily_downloads: 0
+  release_downloads: 67321
+  release_date: 2023/06/13
+  last_commit_on: 2025/08/06
+  status: active
+  last_scrape_at: '2025-10-21T22:13:31Z'
 - name: rubocop-ruby3_0
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 3.0 code
   language: Ruby
@@ -2040,21 +2712,31 @@
   first_commit_on: 2022/04/30
   first_commit: https://github.com/rubocop-lts/rubocop-ruby3_0/commit/251b24f1147b3a42a16465663be1f08c93e8affc
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/rubocop-lts
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/rubocop-lts
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/rubocop-lts/rubocop-ruby3_0
-      owner: rubocop-lts
-    - type: GitLab
-      url: https://gitlab.com/rubocop-lts/rubocop-ruby3_0
-    - type: Codeberg
-      url: https://codeberg.org/rubocop-lts/rubocop-ruby3_0
+  - type: GitHub
+    url: https://github.com/rubocop-lts/rubocop-ruby3_0
+    owner: rubocop-lts
+  - type: GitLab
+    url: https://gitlab.com/rubocop-lts/rubocop-ruby3_0
+  - type: Codeberg
+    url: https://codeberg.org/rubocop-lts/rubocop-ruby3_0
   tags:
-    - rubocop
+  - rubocop
   docs_site:
+  github_stars: 6
+  gitlab_stars: 1
+  codeberg_stars: 0
+  total_downloads: 12347
+  daily_downloads: 0
+  release_downloads: 950
+  release_date: 2023/06/13
+  last_commit_on: 2025/08/06
+  status: active
+  last_scrape_at: '2025-10-21T22:13:34Z'
 - name: rubocop-ruby3_1
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 3.1 code
   language: Ruby
@@ -2064,19 +2746,28 @@
   first_commit_on: 2022/04/10
   first_commit: https://github.com/rubocop-lts/rubocop-ruby3_1/commit/c4cc8fb6374d338e2c328812b4f74c78dfe5cfbd
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/rubocop-lts
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/rubocop-lts
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/rubocop-lts/rubocop-ruby3_1
-      owner: rubocop-lts
-    - type: GitLab
-      url: https://gitlab.com/rubocop-lts/rubocop-ruby3_1
+  - type: GitHub
+    url: https://github.com/rubocop-lts/rubocop-ruby3_1
+    owner: rubocop-lts
+  - type: GitLab
+    url: https://gitlab.com/rubocop-lts/rubocop-ruby3_1
   tags:
-    - rubocop
+  - rubocop
   docs_site:
+  github_stars: 6
+  gitlab_stars: 1
+  total_downloads: 24082
+  daily_downloads: 0
+  release_downloads: 10474
+  release_date: 2023/06/13
+  last_commit_on: 2025/08/06
+  status: active
+  last_scrape_at: '2025-10-21T22:13:38Z'
 - name: rubocop-ruby3_2
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 3.2 code
   language: Ruby
@@ -2086,17 +2777,26 @@
   first_commit_on: 2023/05/09
   first_commit: https://github.com/rubocop-lts/rubocop-ruby3_2/commit/91d4f2ff323ce25ebe8476244d50bb786fbb78f9
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/rubocop-lts
+  - type: OpenCollective
+    url: https://opencollective.com/rubocop-lts
   forges:
-    - type: GitHub
-      url: https://github.com/rubocop-lts/rubocop-ruby3_2
-      owner: rubocop-lts
-    - type: GitLab
-      url: https://gitlab.com/rubocop-lts/rubocop-ruby3_2
+  - type: GitHub
+    url: https://github.com/rubocop-lts/rubocop-ruby3_2
+    owner: rubocop-lts
+  - type: GitLab
+    url: https://gitlab.com/rubocop-lts/rubocop-ruby3_2
   tags:
-    - rubocop
+  - rubocop
   docs_site:
+  github_stars: 7
+  gitlab_stars: 1
+  total_downloads: 62447
+  daily_downloads: 0
+  release_downloads: 59680
+  release_date: 2023/06/13
+  last_commit_on: 2025/08/06
+  status: active
+  last_scrape_at: '2025-10-21T22:13:41Z'
 - name: ruby-openid
   description: A library for consuming and serving OpenID identities.
   language: Ruby
@@ -2106,24 +2806,34 @@
   first_commit_on: 2024/08/30
   first_commit: https://github.com/ruby-openid/ruby-openid/commit/273234be43a8ae407159db7d4f363e4abc6a713d
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/ruby-openid
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/ruby-openid
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/ruby-openid/ruby-openid
-      owner: ruby-openid
-    - type: GitLab
-      url: https://gitlab.com/ruby-openid/ruby-openid
-    - type: Codeberg
-      url: https://codeberg.org/ruby-openid/ruby-openid
+  - type: GitHub
+    url: https://github.com/ruby-openid/ruby-openid
+    owner: ruby-openid
+  - type: GitLab
+    url: https://gitlab.com/ruby-openid/ruby-openid
+  - type: Codeberg
+    url: https://codeberg.org/ruby-openid/ruby-openid
   tags:
-    - openid
-    - auth
-    - security
-    - api
+  - openid
+  - auth
+  - security
+  - api
   docs_site:
+  github_stars: 12
+  gitlab_stars: 0
+  codeberg_stars: 0
+  total_downloads: 11677378
+  daily_downloads: 0
+  release_downloads: 4854762
+  release_date: 2019/10/16
+  last_commit_on: 2025/08/14
+  status: active
+  last_scrape_at: '2025-10-21T22:13:45Z'
 - name: ruby-openid2
   description: Originally a fork. Has been merged back to the original gem.
   language: Ruby
@@ -2133,24 +2843,34 @@
   first_commit_on: 2024/08/30
   first_commit: https://github.com/ruby-openid/ruby-openid/commit/273234be43a8ae407159db7d4f363e4abc6a713d
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/ruby-openid
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/ruby-openid
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/ruby-openid/ruby-openid
-      owner: ruby-openid
-    - type: GitLab
-      url: https://gitlab.com/ruby-openid/ruby-openid
-    - type: Codeberg
-      url: https://codeberg.org/ruby-openid/ruby-openid
+  - type: GitHub
+    url: https://github.com/ruby-openid/ruby-openid
+    owner: ruby-openid
+  - type: GitLab
+    url: https://gitlab.com/ruby-openid/ruby-openid
+  - type: Codeberg
+    url: https://codeberg.org/ruby-openid/ruby-openid
   tags:
-    - openid
-    - auth
-    - security
-    - api
+  - openid
+  - auth
+  - security
+  - api
   docs_site:
+  github_stars: 12
+  gitlab_stars: 0
+  codeberg_stars: 0
+  total_downloads: 7686
+  daily_downloads: 0
+  release_downloads: 5933
+  release_date: 2024/09/25
+  last_commit_on: 2025/08/14
+  status: active
+  last_scrape_at: '2025-10-21T22:13:48Z'
 - name: sanitize_email
   description: |2
       Email Condom for your Ruby Server.
@@ -2162,26 +2882,36 @@
   first_commit_on: 2008/11/15
   first_commit: https://github.com/galtzo-floss/sanitize_email/commit/12110b5dc475166a5c90c4de11458b6bb8b299f7
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/galtzo-floss
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/galtzo-floss/sanitize_email
-      owner: galtzo-floss
-    - type: GitLab
-      url: https://gitlab.com/galtzo-floss/sanitize_email
-    - type: Codeberg
-      url: https://codeberg.org/galtzo-floss/sanitize_email
-    - type: SourceHut
-      url: https://git.sr.ht/~galtzo/sanitize_email
+  - type: GitHub
+    url: https://github.com/galtzo-floss/sanitize_email
+    owner: galtzo-floss
+  - type: GitLab
+    url: https://gitlab.com/galtzo-floss/sanitize_email
+  - type: Codeberg
+    url: https://codeberg.org/galtzo-floss/sanitize_email
+  - type: SourceHut
+    url: https://git.sr.ht/~galtzo/sanitize_email
   tags:
-    - rails
-    - email
-    - test
-    - rspec
+  - rails
+  - email
+  - test
+  - rspec
   docs_site:
+  github_stars: 174
+  gitlab_stars: 0
+  codeberg_stars: 0
+  total_downloads: 2471459
+  daily_downloads: 0
+  release_downloads: 62870
+  release_date: 2024/11/09
+  last_commit_on: 2025/09/22
+  status: active
+  last_scrape_at: '2025-10-21T22:13:51Z'
 - name: seed_migration
   description: Rails gem for Data Migrations
   language: Ruby
@@ -2191,20 +2921,28 @@
   first_commit_on: 2023/02/21
   first_commit: https://github.com/galtzo-floss/seed_migration/commit/c0669cf2066f504de055a7856f3d59e3cb02f06c
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/galtzo-floss
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/galtzo-floss/seed_migration
-      owner: galtzo-floss
-    - type: SourceHut
-      url: https://git.sr.ht/~galtzo/seed_migration
+  - type: GitHub
+    url: https://github.com/galtzo-floss/seed_migration
+    owner: galtzo-floss
+  - type: SourceHut
+    url: https://git.sr.ht/~galtzo/seed_migration
   tags:
-    - rails
-    - migration
+  - rails
+  - migration
   docs_site:
+  github_stars: 383
+  total_downloads: 1548060
+  daily_downloads: 0
+  release_downloads: 1167317
+  release_date: 2017/08/01
+  last_commit_on: 2025/08/18
+  status: active
+  last_scrape_at: '2025-10-21T22:13:54Z'
 - name: sequential_file
   description: Create Files Named Sequentially Intelligently
   language: Ruby
@@ -2214,20 +2952,28 @@
   first_commit_on: 2014/02/25
   first_commit: https://github.com/galtzo-floss/sequential_file/commit/61e1d80f2f9f5b7a23eaa3f5e3c49e3a0433bcc8
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/galtzo-floss
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/galtzo-floss/sequential_file
-      owner: galtzo-floss
-    - type: SourceHut
-      url: https://git.sr.ht/~galtzo/sequential_file
+  - type: GitHub
+    url: https://github.com/galtzo-floss/sequential_file
+    owner: galtzo-floss
+  - type: SourceHut
+    url: https://git.sr.ht/~galtzo/sequential_file
   tags:
-    - shell
-    - stale
+  - shell
+  adoptable: true
   docs_site:
+  github_stars: 6
+  total_downloads: 3828
+  daily_downloads: 0
+  release_downloads: 3828
+  release_date: 2014/02/26
+  last_commit_on: 2025/08/13
+  status: active
+  last_scrape_at: '2025-10-21T22:13:56Z'
 - name: service_actor-promptable
   description: TTY Prompt plugin for your service objects for your application logic
   language: Ruby
@@ -2237,20 +2983,28 @@
   first_commit_on: 2022/06/09
   first_commit: https://github.com/galtzo-floss/service_actor-promptable/commit/3079772bb43c02ebfca364d27d062e573acdb091
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/galtzo-floss
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/galtzo-floss/service_actor-promptable
-      owner: galtzo-floss
-    - type: SourceHut
-      url: https://git.sr.ht/~galtzo/service_actor-promptable
+  - type: GitHub
+    url: https://github.com/galtzo-floss/service_actor-promptable
+    owner: galtzo-floss
+  - type: SourceHut
+    url: https://git.sr.ht/~galtzo/service_actor-promptable
   tags:
-    - service-objects
-    - tty
+  - service-objects
+  - tty
   docs_site:
+  github_stars: 8
+  total_downloads: 14290
+  daily_downloads: 0
+  release_downloads: 11792
+  release_date: 2022/07/03
+  last_commit_on: 2025/08/13
+  status: active
+  last_scrape_at: '2025-10-21T22:13:59Z'
 - name: shields-badge
   description: |
     Shields::Badge.gem_total_downloads(path_parameters: {gem: 'rails'})
@@ -2262,21 +3016,31 @@
   first_commit_on: 2025/05/29
   first_commit: https://github.com/galtzo-floss/shields-badge/commit/316b6f3a310c8e1b2288ccd8e79a0a16242fb4c7
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/galtzo-floss
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/galtzo-floss/shields-badge
-      owner: galtzo-floss
-    - type: GitLab
-      url: https://gitlab.com/galtzo-floss/shields-badge
-    - type: Codeberg
-      url: https://codeberg.org/galtzo-floss/shields-badge
+  - type: GitHub
+    url: https://github.com/galtzo-floss/shields-badge
+    owner: galtzo-floss
+  - type: GitLab
+    url: https://gitlab.com/galtzo-floss/shields-badge
+  - type: Codeberg
+    url: https://codeberg.org/galtzo-floss/shields-badge
   tags:
-    - markdown
+  - markdown
   docs_site: https://shields-badge.galtzo.com
+  github_stars: 11
+  gitlab_stars: 1
+  codeberg_stars: 1
+  total_downloads: 311
+  daily_downloads: 0
+  release_downloads: 311
+  release_date: 2025/05/30
+  last_commit_on: 2025/08/18
+  status: active
+  last_scrape_at: '2025-10-21T22:14:02Z'
 - name: shiftable
   description: Move single records (has_one) or collections (has_many) from one parent
     (belongs_to) to another
@@ -2287,20 +3051,28 @@
   first_commit_on: 2021/10/22
   first_commit: https://github.com/galtzo-floss/shiftable/commit/5b4f78de1f4f3a609096aed96b09017c6e94b490
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/galtzo-floss
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/galtzo-floss/shiftable
-      owner: galtzo-floss
-    - type: SourceHut
-      url: https://git.sr.ht/~galtzo/shiftable
+  - type: GitHub
+    url: https://github.com/galtzo-floss/shiftable
+    owner: galtzo-floss
+  - type: SourceHut
+    url: https://git.sr.ht/~galtzo/shiftable
   tags:
-    - rails
-    - activerecord
+  - rails
+  - activerecord
   docs_site:
+  github_stars: 7
+  total_downloads: 27092
+  daily_downloads: 0
+  release_downloads: 12066
+  release_date: 2021/11/15
+  last_commit_on: 2025/08/13
+  status: active
+  last_scrape_at: '2025-10-21T22:14:04Z'
 - name: silent_stream
   description: "\U0001F515 (formerly) ActiveSupport Kernel Reporting Detritus with
     a few enhancementsFund overlooked open source projects - bottom of stack, dev/test
@@ -2312,25 +3084,35 @@
   first_commit_on: 2018/09/23
   first_commit: https://github.com/galtzo-floss/silent_stream/commit/af1bf5c567872cf5abaed159e2ac48229ff7ce07
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/galtzo-floss
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/galtzo-floss/silent_stream
-      owner: galtzo-floss
-    - type: GitLab
-      url: https://gitlab.com/galtzo-floss/silent_stream
-    - type: Codeberg
-      url: https://codeberg.org/galtzo-floss/silent_stream
-    - type: SourceHut
-      url: https://git.sr.ht/~galtzo/silent_stream
+  - type: GitHub
+    url: https://github.com/galtzo-floss/silent_stream
+    owner: galtzo-floss
+  - type: GitLab
+    url: https://gitlab.com/galtzo-floss/silent_stream
+  - type: Codeberg
+    url: https://codeberg.org/galtzo-floss/silent_stream
+  - type: SourceHut
+    url: https://git.sr.ht/~galtzo/silent_stream
   tags:
-    - test
-    - log
-    - rspec
+  - test
+  - log
+  - rspec
   docs_site: https://silent-stream.galtzo.com
+  github_stars: 7
+  gitlab_stars: 0
+  codeberg_stars: 0
+  total_downloads: 153447
+  daily_downloads: 0
+  release_downloads: 17047
+  release_date: 2025/08/21
+  last_commit_on: 2025/10/09
+  status: active
+  last_scrape_at: '2025-10-21T22:14:09Z'
 - name: simple_column-scopes
   description: Dynamic modules which define dynamic methods for scopes based on a
     dynamic array of column names
@@ -2341,18 +3123,26 @@
   first_commit_on: 2017/06/12
   first_commit: https://github.com/galtzo-floss/simple_column-scopes/commit/f2bce9c56122527d5d035d9f4bc7f7d13a2f8b57
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/galtzo-floss
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/galtzo-floss/simple_column-scopes
-      owner: galtzo-floss
+  - type: GitHub
+    url: https://github.com/galtzo-floss/simple_column-scopes
+    owner: galtzo-floss
   tags:
-    - rails
-    - activerecord
+  - rails
+  - activerecord
   docs_site:
+  github_stars: 2
+  total_downloads: 3002
+  daily_downloads: 0
+  release_downloads: 3002
+  release_date: 2017/06/20
+  last_commit_on: 2025/08/12
+  status: active
+  last_scrape_at: '2025-10-21T22:14:11Z'
 - name: snaky_hash
   description: 'A Hashie::Mash joint to make #snakelife better'
   language: Ruby
@@ -2362,21 +3152,31 @@
   first_commit_on: 2022/08/26
   first_commit: https://github.com/ruby-oauth/snaky_hash/commit/0cd8e559cbd607272bac2d28c6f3aaf54c569e5a
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/ruby-oauth
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/ruby-oauth
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/ruby-oauth/snaky_hash
-      owner: ruby-oauth
-    - type: GitLab
-      url: https://gitlab.com/ruby-oauth/snaky_hash
-    - type: Codeberg
-      url: https://codeberg.org/ruby-oauth/snaky_hash
+  - type: GitHub
+    url: https://github.com/ruby-oauth/snaky_hash
+    owner: ruby-oauth
+  - type: GitLab
+    url: https://gitlab.com/ruby-oauth/snaky_hash
+  - type: Codeberg
+    url: https://codeberg.org/ruby-oauth/snaky_hash
   tags:
-    - serialize
+  - serialize
   docs_site: https://snaky-hash.galtzo.com
+  github_stars: 6
+  gitlab_stars: 2
+  codeberg_stars: 2
+  total_downloads: 88272364
+  daily_downloads: 0
+  release_downloads: 5480704
+  release_date: 2025/05/23
+  last_commit_on: 2025/08/21
+  status: active
+  last_scrape_at: '2025-10-21T22:14:14Z'
 - name: spyke-connection_lambda
   description: Dynamic Spyke API connection plugin for the Enterprise Cloud
   language: Ruby
@@ -2386,19 +3186,27 @@
   first_commit_on: 2024/03/23
   first_commit: https://github.com/galtzo-floss/spyke-connection_lambda/commit/53dee360b49a8d8cf70535220c1793b312fa538d
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/galtzo-floss
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/galtzo-floss/spyke-connection_lambda
-      owner: galtzo-floss
+  - type: GitHub
+    url: https://github.com/galtzo-floss/spyke-connection_lambda
+    owner: galtzo-floss
   tags:
-    - rails
-    - activerecord
-    - api
+  - rails
+  - activerecord
+  - api
   docs_site:
+  github_stars: 3
+  total_downloads: 604
+  daily_downloads: 0
+  release_downloads: 604
+  release_date: 2024/03/23
+  last_commit_on: 2025/08/13
+  status: active
+  last_scrape_at: '2025-10-21T22:14:16Z'
 - name: stackable_flash
   description: Allows flashes to stack intelligently, while preserving existing behavior
     of the Rails FlashHash
@@ -2409,18 +3217,26 @@
   first_commit_on: 2012/08/16
   first_commit: https://github.com/pboling/stackable_flash/commit/fb35ef55a590c1c9669ff9bfc32da2940764f6a5
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/galtzo-floss
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/pboling/stackable_flash
-      owner: pboling
+  - type: GitHub
+    url: https://github.com/pboling/stackable_flash
+    owner: pboling
   tags:
-    - stale
-    - toast
+  - toast
+  adoptable: true
   docs_site:
+  github_stars: 7
+  total_downloads: 368595
+  daily_downloads: 0
+  release_downloads: 185150
+  release_date: 2017/05/31
+  last_commit_on: 2025/08/04
+  status: archived
+  last_scrape_at: '2025-10-21T22:14:19Z'
 - name: standard-rubocop-lts
   description: |
     Enables Ruby projects to more confidently support even the most finely-aged Rubies.
@@ -2432,21 +3248,31 @@
   first_commit_on: 2023/05/15
   first_commit: https://github.com/rubocop-lts/standard-rubocop-lts/commit/6dee58e53e54f60054da55d0802cbeea35b7e36c
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/galtzo-floss
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/rubocop-lts/standard-rubocop-lts
-      owner: rubocop-lts
-    - type: GitLab
-      url: https://gitlab.com/rubocop-lts/standard-rubocop-lts
-    - type: Codeberg
-      url: https://codeberg.org/rubocop-lts/standard-rubocop-lts
+  - type: GitHub
+    url: https://github.com/rubocop-lts/standard-rubocop-lts
+    owner: rubocop-lts
+  - type: GitLab
+    url: https://gitlab.com/rubocop-lts/standard-rubocop-lts
+  - type: Codeberg
+    url: https://codeberg.org/rubocop-lts/standard-rubocop-lts
   tags:
-    - rubocop
+  - rubocop
   docs_site:
+  github_stars: 6
+  gitlab_stars: 1
+  codeberg_stars: 0
+  total_downloads: 144097
+  daily_downloads: 0
+  release_downloads: 607
+  release_date: 2025/04/17
+  last_commit_on: 2025/08/14
+  status: active
+  last_scrape_at: '2025-10-21T22:14:22Z'
 - name: status_tag
   description: |-
     Provides content_tag_for method signature to create customizable and logic-gated labels from objects.
@@ -2458,25 +3284,35 @@
   first_commit_on: 2015/08/23
   first_commit: https://github.com/galtzo-floss/status_tag/commit/5103f25a9b725bbeb9d55e5b11f8d90af5e086cd
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/galtzo-floss
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/galtzo-floss/status_tag
-      owner: galtzo-floss
-    - type: GitLab
-      url: https://gitlab.com/galtzo-floss/status_tag
-    - type: Codeberg
-      url: https://codeberg.org/galtzo-floss/status_tag
-    - type: SourceHut
-      url: https://git.sr.ht/~galtzo/status_tag
+  - type: GitHub
+    url: https://github.com/galtzo-floss/status_tag
+    owner: galtzo-floss
+  - type: GitLab
+    url: https://gitlab.com/galtzo-floss/status_tag
+  - type: Codeberg
+    url: https://codeberg.org/galtzo-floss/status_tag
+  - type: SourceHut
+    url: https://git.sr.ht/~galtzo/status_tag
   tags:
-    - rails
-    - presenter
-    - view
+  - rails
+  - presenter
+  - view
   docs_site:
+  github_stars: 9
+  gitlab_stars: 0
+  codeberg_stars: 0
+  total_downloads: 12755
+  daily_downloads: 0
+  release_downloads: 3983
+  release_date: 2015/08/24
+  last_commit_on: 2025/08/13
+  status: active
+  last_scrape_at: '2025-10-21T22:14:25Z'
 - name: stone_checksums
   description: "\U0001F5FF Generate both SHA256 & SHA512 checksums into the checksums
     directory, and git commit them.\n  gem install stone_checksums\nThen, use the
@@ -2490,24 +3326,34 @@
   first_commit_on: 2025/06/23
   first_commit: https://github.com/galtzo-floss/stone_checksums/commit/1fd75630d9d3c4a1ef8fed384fda98755ae01d5e
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/galtzo-floss
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/galtzo-floss/stone_checksums
-      owner: galtzo-floss
-    - type: GitLab
-      url: https://gitlab.com/galtzo-floss/stone_checksums
-    - type: Codeberg
-      url: https://codeberg.org/galtzo-floss/stone_checksums
+  - type: GitHub
+    url: https://github.com/galtzo-floss/stone_checksums
+    owner: galtzo-floss
+  - type: GitLab
+    url: https://gitlab.com/galtzo-floss/stone_checksums
+  - type: Codeberg
+    url: https://codeberg.org/galtzo-floss/stone_checksums
   tags:
-    - security
-    - release
-    - cli
-    - shell
+  - security
+  - release
+  - cli
+  - shell
   docs_site:
+  github_stars: 6
+  gitlab_stars: 0
+  codeberg_stars: 0
+  total_downloads: 41061
+  daily_downloads: 0
+  release_downloads: 13813
+  release_date: 2025/08/27
+  last_commit_on: 2025/10/13
+  status: active
+  last_scrape_at: '2025-10-21T22:14:29Z'
 - name: strict_states
   description: Safely access state machine states with guarantee that there are no
     typos.  Compatible with all Ruby state machine libraries.
@@ -2518,20 +3364,28 @@
   first_commit_on: 2015/11/08
   first_commit: https://github.com/galtzo-floss/strict_states/commit/8ae3b6c5d742f454790221dff021d869a2e3bfc2
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/galtzo-floss
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/galtzo-floss/strict_states
-      owner: galtzo-floss
-    - type: SourceHut
-      url: https://git.sr.ht/~galtzo/strict_states
+  - type: GitHub
+    url: https://github.com/galtzo-floss/strict_states
+    owner: galtzo-floss
+  - type: SourceHut
+    url: https://git.sr.ht/~galtzo/strict_states
   tags:
-    - state-machine
-    - validate
+  - state-machine
+  - validate
   docs_site:
+  github_stars: 5
+  total_downloads: 3260
+  daily_downloads: 0
+  release_downloads: 3260
+  release_date: 2015/11/09
+  last_commit_on: 2025/08/12
+  status: active
+  last_scrape_at: '2025-10-21T22:14:31Z'
 - name: super_exception_notifier
   description: In the Rails v2 era, this was a popular fork of exception_notification,
     with many extra features.  It is now deprecated in favor of the original gem.
@@ -2542,19 +3396,27 @@
   first_commit_on: 2008/11/15
   first_commit: https://github.com/pboling/super_exception_notifier/commit/f8dbf8ab4ab7a46129998cbb7bedf712369d5f03
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/galtzo-floss
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/pboling/super_exception_notifier
-      owner: pboling
+  - type: GitHub
+    url: https://github.com/pboling/super_exception_notifier
+    owner: pboling
   tags:
-    - stale
-    - email
-    - error-handle
+  - email
+  - error-handle
+  adoptable: true
   docs_site:
+  github_stars: 65
+  total_downloads: 95891
+  daily_downloads: 0
+  release_downloads: 4080
+  release_date: 2014/01/19
+  last_commit_on: 2014/01/19
+  status: stale
+  last_scrape_at: '2025-10-21T22:14:34Z'
 - name: timecop-rspec
   description: "⌚️ Timecop::Rspec provides Timecop time-machines for RSpec that allow
     youto time-travel test examples, context/describes, and/or your entire test suite.
@@ -2567,19 +3429,27 @@
   first_commit_on: 2025/08/16
   first_commit: https://github.com/galtzo-floss/timecop-rspec/commit/78587509672afeb844bca46f967c24547e0a5d35
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/galtzo-floss
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/galtzo-floss/timecop-rspec
-      owner: galtzo-floss
+  - type: GitHub
+    url: https://github.com/galtzo-floss/timecop-rspec
+    owner: galtzo-floss
   tags:
-    - rspec
-    - test
-    - time
+  - rspec
+  - test
+  - time
   docs_site: https://timecop-rspec.galtzo.com
+  github_stars: 4
+  total_downloads: 15825
+  daily_downloads: 0
+  release_downloads: 14970
+  release_date: 2025/08/20
+  last_commit_on: 2025/10/09
+  status: active
+  last_scrape_at: '2025-10-21T22:14:36Z'
 - name: undrive_google
   description: "\U0001F3F4 Liberate files from your Google Drive with transformations"
   language: Ruby
@@ -2589,25 +3459,35 @@
   first_commit_on: 2022/10/22
   first_commit: https://github.com/galtzo-floss/undrive_google/commit/a4217d575b7094530339d627c00c8e6ce70144a8
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/galtzo-floss
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/galtzo-floss/undrive_google
-      owner: galtzo-floss
-    - type: GitLab
-      url: https://gitlab.com/galtzo-floss/undrive_google
-    - type: Codeberg
-      url: https://codeberg.org/galtzo-floss/undrive_google
-    - type: SourceHut
-      url: https://git.sr.ht/~galtzo/undrive_google
+  - type: GitHub
+    url: https://github.com/galtzo-floss/undrive_google
+    owner: galtzo-floss
+  - type: GitLab
+    url: https://gitlab.com/galtzo-floss/undrive_google
+  - type: Codeberg
+    url: https://codeberg.org/galtzo-floss/undrive_google
+  - type: SourceHut
+    url: https://git.sr.ht/~galtzo/undrive_google
   tags:
-    - api
-    - shell
-    - cli
+  - api
+  - shell
+  - cli
   docs_site:
+  github_stars: 1
+  gitlab_stars: 0
+  codeberg_stars: 0
+  total_downloads: 4225
+  daily_downloads: 0
+  release_downloads: 55
+  release_date: 2025/10/21
+  last_commit_on: 2025/10/21
+  status: active
+  last_scrape_at: '2025-10-21T22:14:39Z'
 - name: version_gem
   description: "\U0001F516 Versions are good. Versions are cool. Versions will win."
   language: Ruby
@@ -2617,25 +3497,35 @@
   first_commit_on: 2022/06/20
   first_commit: https://github.com/ruby-oauth/version_gem/commit/a3055964517c159bf214712940982034b75264be
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/ruby-oauth
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/ruby-oauth
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/ruby-oauth/version_gem
-      owner: ruby-oauth
-    - type: GitLab
-      url: https://gitlab.com/ruby-oauth/version_gem
-    - type: Codeberg
-      url: https://codeberg.org/ruby-oauth/version_gem
-    - type: SourceHut
-      url: https://git.sr.ht/~galtzo/version_gem
+  - type: GitHub
+    url: https://github.com/ruby-oauth/version_gem
+    owner: ruby-oauth
+  - type: GitLab
+    url: https://gitlab.com/ruby-oauth/version_gem
+  - type: Codeberg
+    url: https://codeberg.org/ruby-oauth/version_gem
+  - type: SourceHut
+    url: https://git.sr.ht/~galtzo/version_gem
   tags:
-    - semver
-    - release
-    - test
+  - semver
+  - release
+  - test
   docs_site: https://version-gem.galtzo.com
+  github_stars: 10
+  gitlab_stars: 1
+  codeberg_stars: 0
+  total_downloads: 101086444
+  daily_downloads: 0
+  release_downloads: 1489688
+  release_date: 2025/09/02
+  last_commit_on: 2025/10/13
+  status: active
+  last_scrape_at: '2025-10-21T22:14:42Z'
 - name: warden_oauth
   description: warden_oauth will help you create oauth authentication strategies using
     the oauth helper method on the Warden::Manager config setup
@@ -2646,20 +3536,28 @@
   first_commit_on: 2025/10/19
   first_commit: https://github.com/ruby-oauth/warden_oauth/commit/5d81e50734b2ba5a2f650705bb72a8139049c131
   funding_sites:
-    - type: OpenCollective
-      url: https://opencollective.com/ruby-oauth
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: OpenCollective
+    url: https://opencollective.com/ruby-oauth
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/ruby-oauth/warden_oauth
-      owner: ruby-oauth
+  - type: GitHub
+    url: https://github.com/ruby-oauth/warden_oauth
+    owner: ruby-oauth
   tags:
-    - oauth
-    - auth
-    - security
-    - api
+  - oauth
+  - auth
+  - security
+  - api
   docs_site:
+  github_stars: 58
+  total_downloads: 31133
+  daily_downloads: 0
+  release_downloads: 23904
+  release_date: 2010/02/01
+  last_commit_on: 2025/10/19
+  status: active
+  last_scrape_at: '2025-10-21T22:14:45Z'
 - name: yacs
   description: Yet Another Crypto Scanner; Alternative Front End Demo for DEX
   language: TypeScript
@@ -2669,14 +3567,19 @@
   first_commit_on: 2025/09/23
   first_commit: https://github.com/pboling/yacs/commit/1a1182a2d0949ea0a2170b9374983687d43539cf
   funding_sites:
-    - type: Liberapay
-      url: https://liberapay.com/pboling
+  - type: Liberapay
+    url: https://liberapay.com/pboling
   forges:
-    - type: GitHub
-      url: https://github.com/pboling/yacs
-      owner: pboling
+  - type: GitHub
+    url: https://github.com/pboling/yacs
+    owner: pboling
   tags:
-    - websocket
-    - api
-    - react
+  - websocket
+  - api
+  - react
   docs_site:
+  github_stars: 0
+  release_date:
+  last_commit_on: 2025/10/06
+  status: active
+  last_scrape_at: '2025-10-21T22:14:47Z'
