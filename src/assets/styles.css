@@ -535,6 +535,12 @@ button,
     }
 }
 
+/* Full-width card variant for aspect="wide" projects */
+.card.card-wide {
+    width: 100%;
+    flex-basis: 100%;
+}
+
 /* Project card positioning for corner banners */
 .card {
     position: relative;
@@ -703,6 +709,15 @@ button,
 /* Projects container */
 .projects {
     max-width: none;
+}
+
+/* Center the footer content and constrain to the same main-column width
+   so it aligns with the header and main content blocks. */
+footer {
+    max-width: var(--page-max-width);
+    margin: var(--page-margin-y) auto 0; /* top/bottom margin: match body spacing, center horizontally */
+    padding: 0 var(--page-padding-x);
+    text-align: center;
 }
 
 /* Ensure pills don't use any upward shift by default (helps small viewports) */

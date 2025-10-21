@@ -6,9 +6,11 @@ body_class: projects
 ---
 <% allowed_roles = %w(author maintainer contributor) %>
 
-<% years = site.data.projects.map {|p| p['first_commit_on']&.to_s&.split('/')&.first }.compact.uniq.sort %>
+<% non_person_projects = site.data.projects.reject {|p| p["type"] == "person" } %>
+
+<% years = non_person_projects.map {|p| p['first_commit_on']&.to_s&.split('/')&.first }.compact.uniq.sort %>
 <% year_counts = {} %>
-<% site.data.projects.each do |project| %>
+<% non_person_projects.each do |project| %>
 <% year = project['first_commit_on']&.to_s&.split('/')&.first %>
 <% if year %>
 <% year_counts[year] ||= 0 %>
@@ -16,16 +18,16 @@ body_class: projects
 <% end %>
 <% end %>
 
-<% tags = site.data.projects.flat_map { |project| project["tags"] || [] }.uniq.sort %>
+<% tags = non_person_projects.flat_map { |project| project["tags"] || [] }.uniq.sort %>
 <% tag_counts = {} %>
-<% site.data.projects.each do |project| %>
+<% non_person_projects.each do |project| %>
 <% (project["tags"] || []).each do |tag| %>
 <% tag_counts[tag] ||= 0 %>
 <% tag_counts[tag] += 1 %>
 <% end %>
 <% end %>
 
-<% bash_projects = site.data.projects.select {|p| p["language"] == "Bash" } %>
+<% bash_projects = non_person_projects.select {|p| p["language"] == "Bash" } %>
 <% min_bash_versions = bash_projects.flat_map { |project| project["minimum_version"] || [] }.uniq.sort %>
 <% min_bash_counts = {} %>
 <% bash_projects.each do |project| %>
@@ -35,7 +37,7 @@ body_class: projects
 <% end %>
 <% end %>
 
-<% ts_projects = site.data.projects.select {|p| p["language"] == "TypeScript" } %>
+<% ts_projects = non_person_projects.select {|p| p["language"] == "TypeScript" } %>
 <% min_ts_versions = ts_projects.flat_map { |project| project["minimum_version"] || [] }.uniq.sort %>
 <% min_ts_counts = {} %>
 <% ts_projects.each do |project| %>
@@ -45,7 +47,7 @@ body_class: projects
 <% end %>
 <% end %>
 
-<% rb_projects = site.data.projects.select {|p| p["language"] == "Ruby" } %>
+<% rb_projects = non_person_projects.select {|p| p["language"] == "Ruby" } %>
 <% min_rb_versions = rb_projects.flat_map { |project| project["minimum_version"] || [] }.uniq.sort %>
 <% min_rb_counts = {} %>
 <% rb_projects.each do |project| %>
@@ -55,7 +57,7 @@ body_class: projects
 <% end %>
 <% end %>
 
-<% go_projects = site.data.projects.select {|p| p["language"] == "Go" } %>
+<% go_projects = non_person_projects.select {|p| p["language"] == "Go" } %>
 <% min_go_versions = go_projects.flat_map { |project| project["minimum_version"] || [] }.uniq.sort %>
 <% min_go_counts = {} %>
 <% go_projects.each do |project| %>
@@ -68,23 +70,12 @@ body_class: projects
 <% lanugage_count = min_go_versions.count + min_rb_counts.count + min_ts_counts.count + min_bash_counts.count %>
 
 <% role_counts = {} %>
-<% site.data.projects.each do |project| %>
+<% non_person_projects.each do |project| %>
 <% if project["role"] %>
 <% role_counts[project["role"]] ||= 0 %>
 <% role_counts[project["role"]] += 1 %>
 <% end %>
 <% end %>
-
-<p class="intro">
-  Hi, my name is Peter Boling, and I love to solve problems with code.
-  Maintaining these projects, with a focus on improving developer experience,
-  requires a great deal of time and energy.
-  I would appreciate your <a href="https://github.com/sponsors/pboling" class="text-link" target="_blank" rel="noopener">financial support</a>.
-  Use the switches to filter projects by role, year, tags, and minimum language versions.
-  Join the <a href="https://discord.gg/3qme4XHNKN" target="_blank" rel="noopener" class="text-link">Discord</a>
-  if you need support, or would like to chat, about any of these projects.
-  If you need an expert, <a href="https://docs.google.com/document/d/1H9fYtkMFmnkQO1sucrFPt5E3dvhozgVtI31LgpNLmJ4/pub" target="_blank" rel="noopener" class="text-link">hire me</a>.
-</p>
 
 <h1>
   <span class="title-text"><%= (page.respond_to?(:data) && page.data["title"]) || "Open Source Projects" %></span>
@@ -251,12 +242,17 @@ body_class: projects
   <% if project['minimum_version'] %>
   <% tags_for_card << "#{project['language']} >= #{project['minimum_version']}" %>
   <% end %>
-  <li class="card <%= project['role'] %>" data-tags='<%= tags_for_card.to_json %>'>
+  <% aspect_class = project['aspect'].nil? ? '' : "card-#{project['aspect']}" %>
+  <li class="card <%= aspect_class %> <%= project['role'] %>" data-tags='<%= tags_for_card.to_json %>'>
     <div class="corner-anchor fork">
+      <% if project["type"] == "person" %>
+      <a href="<%= gh_forge['url'] %>" class="corner-banner banner-fork" target="_blank" rel="noopener">Follow&nbsp;<span class="fork-me-text">Me</span><span class="fork-me-emoji" aria-hidden="true">🔮</span></a>
+      <% else %>
       <% if gh_forge %>
       <a href="<%= gh_forge['url'] %>/fork" class="corner-banner banner-fork" target="_blank" rel="noopener">Fork&nbsp;<span class="fork-me-text">Me</span><span class="fork-me-emoji" aria-hidden="true">🔀</span></a>
       <% elsif first_forge %>
       <a href="<%= first_forge['url'] %>" class="corner-banner banner-fork" target="_blank" rel="noopener">Clone&nbsp;<span class="fork-me-text">Me</span><span class="fork-me-emoji" aria-hidden="true">🔀</span></a>
+      <% end %>
       <% end %>
     </div>
     <div class="corner-anchor role">
@@ -351,7 +347,7 @@ body_class: projects
       <% end %>
     </p>
     <p>
-      <% if gh_forge %>
+      <% if project["type"] != "person" && gh_forge %>
       <img alt="<%= project['name'] %> GitHub License" src="https://img.shields.io/github/license/<%= gh_forge['owner'] %>/<%= project['name'] %>?style=social">
       <img alt="<%= project['name'] %> GitHub stars" src="https://img.shields.io/github/stars/<%= gh_forge['owner'] %>/<%= project['name'] %>?style=social">
       <img alt="<%= project['name'] %> GitHub commit activity" src="https://img.shields.io/github/commit-activity/m/<%= gh_forge['owner'] %>/<%= project['name'] %>?style=social">
