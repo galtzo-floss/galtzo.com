@@ -260,10 +260,14 @@ body_class: projects
     <div class="corner-anchor role">
       <div class="corner-banner banner-role <%= project['role'] %>">
           <span class="role-label">
+            <% if project["type"] == "person" %>
+            <a href="<%= gh_forge['url'] %>" target="_blank" rel="noopener">Human</a>
+            <% else %>
             <% if gh_forge %>
             <a href="<%= gh_forge['url'] %>/commits?author=pboling" target="_blank" rel="noopener"><%= project['role'].capitalize %></a>
             <% else %>
             <span><%= project['role'].capitalize %></span>
+            <% end %>
             <% end %>
             <% if project['first_commit'] && year %>
             &nbsp;|&nbsp;
