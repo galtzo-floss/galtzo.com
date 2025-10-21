@@ -219,18 +219,20 @@
        BANNER RIBBONS (corner & role bars)
        ========================================================================= */
 
-    --ribbon-length: 1200px;           /* long enough to cover the card diagonally */
-    --corner-gap: 10px;                /* small padding so text isn't flush with corner */
-    --ribbon-stack-gap: 28px;          /* distance between the two ribbons along the diagonal */
+    /* text padding along the ribbon's right edge;
+       does affect position, and probably should not be used */
+    --corner-gap: 0px;
+
+    /* base geometry for the corner ribbon */
     --ribbon-width: 720px;      /* length of each ribbon */
     --ribbon-top: 12px;         /* distance from top edge for the first ribbon */
-    --ribbon-right: -332px;     /* center horizontally ~40px inside along diagonal */
-    --ribbon-gap: 18px;         /* vertical gap between the two ribbons */
+    --ribbon-right: -332px;     /* negative to anchor along the diagonal */
     --ribbon-padding: 9px 0;    /* vertical padding for corner banners */
 
-    /* Role-specific fine-tuning */
-    --role-gap-extra: 9px;     /* extra separation from the fork banner */
-    --role-right-adjust: 9px;   /* keep aligned horizontally with the fork banner */
+    /* Offsets to move the corner ribbon away from the corner (position only) */
+    --ribbon-corner-offset: 12px;                 /* equal movement on both axes */
+    --ribbon-top-offset: var(--ribbon-corner-offset);   /* vertical-only override */
+    --ribbon-right-offset: var(--ribbon-corner-offset); /* horizontal-only override */
 
     /* Role bar (horizontal banner at top of card) */
     --rolebar-height: 2.25rem; /* controls the height of the horizontal role bar */
@@ -571,8 +573,14 @@ button,
 
 /* Fork/Clone (closest to corner) */
 .card .banner-fork {
-    top: var(--ribbon-top);
-    right: var(--ribbon-right);
+    /* Dedicated positional offsets (inward movement with positive values) */
+    top: calc(var(--ribbon-top) + var(--ribbon-top-offset));
+    right: calc(var(--ribbon-right) + var(--ribbon-right-offset));
+
+    /* Text padding along the ribbon length (does not change position) */
+    padding-left: var(--corner-gap);
+    padding-right: var(--corner-gap);
+
     background: linear-gradient(135deg, #1e5799 0%, #2989d8 50%, #207cca 100%);
     z-index: var(--z-fork-banner);
     color: var(--white); /* ensure readable by default */
