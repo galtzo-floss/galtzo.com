@@ -284,11 +284,12 @@
     --avoid-tape-opacity: 0.25;
     --avoid-tape-width: 60px;
 
-    /* Family stack */
-    --family-stack-overlap: 5%;
-    --family-stack-gap: 0.5rem;
-    --family-transition: 300ms ease;
-    --family-z-base: 20;
+    /* Family theme - stacked cards */
+    --family-overlap: 0.15;              /* 15% overlap for horizontal stacking */
+    --family-transition: 0.3s ease-out;  /* smooth transition for hover effects */
+    --family-z-base: 20;                 /* base z-index for family cards */
+    --card-min-height: 400px;            /* minimum height for family cards */
+    --card-spacing: 1rem;                /* spacing around family stacks */
 
     /* Holiday decorations */
     --holiday-garland-height: 8px;
@@ -886,6 +887,135 @@ button,
 /* Top-right to bottom-left diagonal */
 .card.theme-avoid-me::after {
     transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+/* =========================================================================
+   PHASE 4: FAMILY THEME - Stacked Cards Layout
+   ========================================================================= */
+
+/* Family stack container - holds multiple cards that overlap horizontally */
+.card-family-stack {
+    position: relative;
+    display: inline-block;
+    list-style: none;
+    margin: var(--card-spacing);
+    /* Width calculation: first card + (n-1 cards × overlap amount) */
+    /* This will be set dynamically by JavaScript based on family size */
+    min-width: var(--card-width);
+    min-height: var(--card-min-height);
+}
+
+/* Cards within a family stack */
+.card-family-stack .card-in-family {
+    position: absolute;
+    top: 0;
+    left: 0; /* Default, will be overridden by JS */
+    width: var(--card-width);
+    min-height: var(--card-min-height);
+    transition: transform var(--family-transition);
+    cursor: pointer;
+    /* Create a new stacking context to contain corner banners */
+    isolation: isolate;
+    /* Ensure consistent box model */
+    box-sizing: border-box;
+    /* Prevent any vertical baseline shifting */
+    vertical-align: top;
+    /* Position and z-index will be set dynamically by JavaScript */
+    /* Add subtle fade for cards further back to give depth perception */
+    /* This will be enhanced by JavaScript for cards beyond position 5 */
+}
+
+/* Subtle visual depth for cards in the stack */
+.card-family-stack .card-in-family[data-family-index="3"],
+.card-family-stack .card-in-family[data-family-index="4"] {
+    opacity: 0.95;
+}
+
+/* For families with 6+ cards, JavaScript will set opacity dynamically */
+
+/* Hover expansion - when hovering a card, expand cards after it */
+.card-family-stack .card-in-family:hover {
+    z-index: 100;
+    transform: translateY(-8px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Focus state for keyboard navigation */
+.card-family-stack .card-in-family:focus-within {
+    z-index: 100;
+    transform: translateY(-8px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Family badge - displayed on each card in the family */
+.family-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    margin-top: 1rem;
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(168, 85, 247, 0.1));
+    border-left: 3px solid rgba(139, 92, 246, 0.5);
+    border-radius: 4px;
+    font-size: 0.875rem;
+}
+
+.family-badge .family-icon {
+    font-size: 1.2rem;
+}
+
+.family-badge .family-label {
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.family-badge .family-count {
+    color: var(--text-color);
+    opacity: 0.7;
+    font-size: 0.8rem;
+}
+
+/* Mobile responsive - switch to vertical stacking on small screens */
+@media (max-width: 768px) {
+    .card-family-stack {
+        display: flex;
+        flex-direction: column;
+        width: 100% !important; /* Override JS-set width */
+        min-width: auto;
+        /* For large families, allow natural height expansion */
+        min-height: auto;
+    }
+
+    .card-family-stack .card-in-family {
+        position: relative !important;
+        left: 0 !important;
+        width: 100%;
+        margin-bottom: 1rem;
+        /* Reset z-index for vertical stacking */
+        z-index: auto !important;
+    }
+
+    /* Last card in family shouldn't have bottom margin */
+    .card-family-stack .card-in-family:last-child {
+        margin-bottom: 0;
+    }
+
+    .card-family-stack .card-in-family:hover,
+    .card-family-stack .card-in-family:focus-within {
+        transform: translateY(0);
+    }
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+    .card-family-stack .card-in-family {
+        transition: none;
+    }
+
+    .card-family-stack .card-in-family:hover,
+    .card-family-stack .card-in-family:focus-within {
+        transform: none;
+    }
 }
 
 /* Hide cartain tags inside project cards but keep them in the DOM for filtering.

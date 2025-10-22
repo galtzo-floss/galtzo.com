@@ -313,6 +313,194 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log('Initialized theme:', projectData.theme, 'for card');
       }
     });
+
+    // Initialize family stacks
+    initFamilyStacks();
+  }
+
+  // ============================================================================
+  // PHASE 4: FAMILY THEME - Stacked Cards Interaction
+  // ============================================================================
+
+  /**
+   * Initialize family stack interactions
+   * Sets up hover effects and dynamic width calculations for family card stacks
+   * Fully dynamic - supports any number of cards (tested up to 20+)
+   */
+  function initFamilyStacks() {
+    const familyStacks = document.querySelectorAll('.card-family-stack');
+
+    if (!familyStacks.length) return;
+
+    familyStacks.forEach(stack => {
+      const cards = stack.querySelectorAll('.card-in-family');
+      const familySize = parseInt(stack.dataset.familySize) || cards.length;
+
+      // Get CSS variable values
+      const cardWidth = parseInt(getComputedStyle(document.documentElement)
+        .getPropertyValue('--card-width')) || 450;
+      const overlap = parseFloat(getComputedStyle(document.documentElement)
+        .getPropertyValue('--family-overlap')) || 0.15;
+
+      // Calculate and set the stack container width dynamically
+      setFamilyStackWidth(stack, familySize, cardWidth, overlap);
+
+      // Position each card dynamically with decreasing z-index
+      cards.forEach((card, index) => {
+        // Position: each card offset by (cardWidth * overlap * index)
+        const leftPosition = cardWidth * overlap * index;
+        card.style.left = `${leftPosition}px`;
+
+        // Ensure consistent top alignment for all cards
+        card.style.top = '0';
+
+        // Z-index: first card highest (100), decreasing for each subsequent card
+        const zIndex = 100 - index;
+        card.style.zIndex = zIndex;
+
+        // First card should be relative, others absolute
+        if (index === 0) {
+          card.style.position = 'relative';
+        } else {
+          card.style.position = 'absolute';
+        }
+
+        // Apply opacity fade to all cards behind the front card
+        // Front card (index 0): full opacity (1.0)
+        // Cards behind: fade from 0.7 down to 0.6 for very deep stacks
+        if (index === 0) {
+          card.style.opacity = '1.0';
+        } else {
+          // Cards 1-3: 0.7 opacity
+          // Cards 4+: gradually fade to 0.6
+          const baseOpacity = 0.7;
+          const minOpacity = 0.6;
+          if (index <= 3) {
+            card.style.opacity = baseOpacity.toString();
+          } else {
+            const fadeStep = (baseOpacity - minOpacity) / Math.max(familySize - 3, 10);
+            const opacity = Math.max(minOpacity, baseOpacity - ((index - 3) * fadeStep));
+            card.style.opacity = opacity.toString();
+          }
+        }
+
+        // Set up hover interactions for each card
+        // Hover: lift card and push subsequent cards
+        card.addEventListener('mouseenter', () => {
+          handleFamilyCardHover(stack, index, cardWidth);
+        });
+
+        // Mouse leave: reset all cards in this stack
+        card.addEventListener('mouseleave', () => {
+          resetFamilyStack(stack);
+        });
+
+        // Keyboard navigation: focus state triggers same visual as hover
+        card.addEventListener('focus', () => {
+          handleFamilyCardHover(stack, index, cardWidth);
+        }, true);
+
+        card.addEventListener('blur', () => {
+          resetFamilyStack(stack);
+        }, true);
+      });
+    });
+  }
+
+  /**
+   * Calculate and set the width of a family stack container
+   * Formula: card_width + (family_size - 1) * card_width * overlap
+   * @param {HTMLElement} stack - The family stack container
+   * @param {number} familySize - Number of cards in the family
+   * @param {number} cardWidth - Width of each card in pixels
+   * @param {number} overlap - Overlap percentage (0.15 = 15%)
+   */
+  function setFamilyStackWidth(stack, familySize, cardWidth, overlap) {
+    // Calculate total width
+    const totalWidth = cardWidth + ((familySize - 1) * cardWidth * overlap);
+
+    // Set the container width
+    stack.style.width = `${totalWidth}px`;
+  }
+
+  /**
+   * Handle hover on a family card - bring to top and expand
+   * The hovered card rises to the top of the stack and lifts up
+   * All non-hovered cards are faded
+   * @param {HTMLElement} stack - The family stack container
+   * @param {number} hoveredIndex - Index of the hovered card
+   * @param {number} cardWidth - Width of each card in pixels
+   */
+  function handleFamilyCardHover(stack, hoveredIndex, cardWidth) {
+    const cards = stack.querySelectorAll('.card-in-family');
+    const familySize = cards.length;
+
+    // Adaptive expansion: smaller push for larger families
+    // Small families (2-5): 10% push
+    // Medium families (6-10): 7% push
+    // Large families (11+): 5% push
+    let expansionPercent = 0.10;
+    if (familySize >= 11) {
+      expansionPercent = 0.05;
+    } else if (familySize >= 6) {
+      expansionPercent = 0.07;
+    }
+
+    cards.forEach((card, index) => {
+      if (index === hoveredIndex) {
+        // Hovered card: bring to top (z-index 200), lift up, full brightness
+        card.style.zIndex = '200';
+        card.style.transform = 'translateY(-12px)';
+        card.style.opacity = '1.0';
+        // Add stronger shadow for lifted card
+        card.style.boxShadow = '0 12px 24px rgba(0, 0, 0, 0.3)';
+      } else {
+        // All other cards: fade to indicate they're not active
+        card.style.opacity = '0.7';
+
+        if (index > hoveredIndex) {
+          // Cards after the hovered card: shift right to reveal space
+          const additionalOffset = cardWidth * expansionPercent;
+          card.style.transform = `translateX(${additionalOffset}px)`;
+        }
+      }
+      // Cards before the hovered card: no transform change (stay in their positions)
+    });
+  }
+
+  /**
+   * Reset all cards in a family stack to their default positions
+   * Restores original stacking order and opacity fade
+   * @param {HTMLElement} stack - The family stack container
+   */
+  function resetFamilyStack(stack) {
+    const cards = stack.querySelectorAll('.card-in-family');
+    const familySize = cards.length;
+
+    cards.forEach((card, index) => {
+      // Reset transform
+      card.style.transform = '';
+      // Reset z-index to original stacking order (highest = first card)
+      card.style.zIndex = (100 - index).toString();
+      // Reset box-shadow
+      card.style.boxShadow = '';
+
+      // Restore original opacity fade: front card full brightness, back cards faded
+      if (index === 0) {
+        card.style.opacity = '1.0';
+      } else {
+        // Same fade pattern as initialization
+        const baseOpacity = 0.7;
+        const minOpacity = 0.6;
+        if (index <= 3) {
+          card.style.opacity = baseOpacity.toString();
+        } else {
+          const fadeStep = (baseOpacity - minOpacity) / Math.max(familySize - 3, 10);
+          const opacity = Math.max(minOpacity, baseOpacity - ((index - 3) * fadeStep));
+          card.style.opacity = opacity.toString();
+        }
+      }
+    });
   }
 
   // Initialize themes on page load
