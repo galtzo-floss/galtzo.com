@@ -77,6 +77,9 @@ body_class: projects
 <% end %>
 <% end %>
 
+<% adoptable_count = non_person_projects.count { |p| p["adoptable"] } %>
+<% archived_count = non_person_projects.count { |p| p["status"] == "archived" } %>
+
 <h1>
   <span class="title-text"><%= (page.respond_to?(:data) && page.data["title"]) || "Open Source Projects" %></span>
   <span class="tag-list">
@@ -89,6 +92,20 @@ body_class: projects
       </button>
     </span>
     <% end %>
+    <span>
+      <button type="button" class="tag-link pill-outer special-filter" data-tag="adoptable" data-special-filter="adoptable-family">
+        <span class="count left"><%== adoptable_count.to_s.rjust(2, 'x').gsub('x', '&nbsp;') %></span>
+        <span class="tag">👁️ Adoptable</span>
+        <span class="count right"><%== adoptable_count.to_s.ljust(2, 'x').gsub('x', '&nbsp;') %></span>
+      </button>
+    </span>
+    <span>
+      <button type="button" class="tag-link pill-outer special-filter" data-tag="archived" data-special-filter="archived-family">
+        <span class="count left"><%== archived_count.to_s.rjust(2, 'x').gsub('x', '&nbsp;') %></span>
+        <span class="tag">👁️ Archived</span>
+        <span class="count right"><%== archived_count.to_s.ljust(2, 'x').gsub('x', '&nbsp;') %></span>
+      </button>
+    </span>
   </span>
 </h1>
 
@@ -284,6 +301,9 @@ body_class: projects
           <% if project['minimum_version'] %>
             <% tags_for_card << "#{project['language']} >= #{project['minimum_version']}" %>
           <% end %>
+          <% # Add special filter tags %>
+          <% tags_for_card << "adoptable" if project['adoptable'] %>
+          <% tags_for_card << "archived" if project['status'] == 'archived' %>
           <% tags_for_card.sort! %>
           <% sorted_tags = (project['tags'] || []).sort %>
           <% aspect_class = project['aspect'].nil? ? '' : "card-#{project['aspect']}" %>
@@ -298,7 +318,7 @@ body_class: projects
                data-family-index="<%= index %>"
                data-is-primary="<%= project['family_primary'] ? 'true' : 'false' %>">
     <div class="corner-anchor fork">
-      <% if project['theme'] == 'avoid-me' %>
+      <% if project['status'] == 'archived' || project['theme'] == 'avoid-me' %>
       <%# Avoid-me projects - Uses caution tape X overlay on card, no corner banner %>
       <% elsif project['adoptable'] || project['theme'] == 'adopt-me' %>
       <%# Adoptable projects - Replace Fork banner with Adopt Me banner %>
@@ -499,6 +519,9 @@ body_class: projects
       <% if project['minimum_version'] %>
         <% tags_for_card << "#{project['language']} >= #{project['minimum_version']}" %>
       <% end %>
+      <% # Add special filter tags %>
+      <% tags_for_card << "adoptable" if project['adoptable'] %>
+      <% tags_for_card << "archived" if project['status'] == 'archived' %>
       <% tags_for_card.sort! %>
       <% sorted_tags = (project['tags'] || []).sort %>
       <% aspect_class = project['aspect'].nil? ? '' : "card-#{project['aspect']}" %>
@@ -509,7 +532,7 @@ body_class: projects
           data-tags='<%= tags_for_card.to_json %>'
           <% if project['theme'] %>data-theme="<%= project['theme'] %>"<% end %>>
     <div class="corner-anchor fork">
-      <% if project['archived'] || project['theme'] == 'avoid-me' %>
+      <% if project['status'] == 'archived' || project['theme'] == 'avoid-me' %>
       <%# Archived projects - Uses caution tape X overlay on card, no corner banner %>
       <% elsif project['adoptable'] || project['theme'] == 'adopt-me' %>
       <%# Adoptable projects - Replace Fork banner with Adopt Me banner %>

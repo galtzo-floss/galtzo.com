@@ -854,9 +854,9 @@ button,
    Can be used with family stacks and any other theme
    ========================================================================= */
 
-/* Reduce opacity of archived cards to indicate deprecated status */
+/* Darken archived cards to indicate deprecated status (without transparency) */
 .card.archived {
-    opacity: var(--avoid-card-opacity);
+    filter: brightness(0.75);
     position: relative;
 }
 
@@ -908,6 +908,12 @@ button,
     min-height: var(--card-min-height);
     /* Prevent family stacks from forcing other cards in the same flex row to stretch */
     align-self: flex-start;
+}
+
+/* Hide adoptable-family and archived-family by default */
+.card-family-stack[data-family-id="adoptable-family"],
+.card-family-stack[data-family-id="archived-family"] {
+    display: none;
 }
 
 /* Cards within a family stack */

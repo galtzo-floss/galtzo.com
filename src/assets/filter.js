@@ -140,6 +140,10 @@ document.addEventListener('DOMContentLoaded', function() {
   function filterProjects() {
     var activeTags = Array.from(document.querySelectorAll('.tag-link.active[data-tag]')).map(function(link) { return link.dataset.tag; });
 
+    // Check if special filters are active
+    var adoptableFilterActive = activeTags.indexOf('adoptable') !== -1;
+    var archivedFilterActive = activeTags.indexOf('archived') !== -1;
+
     // Handle regular cards (not in family stacks)
     cards.forEach(function(card) {
       // Skip cards that are inside family stacks - they'll be handled separately
@@ -153,6 +157,23 @@ document.addEventListener('DOMContentLoaded', function() {
     // Handle family stacks: filter individual cards within each stack
     var familyStacks = document.querySelectorAll('.card-family-stack');
     familyStacks.forEach(function(stack) {
+      var familyId = stack.getAttribute('data-family-id');
+      var isAdoptableFamily = familyId === 'adoptable-family';
+      var isArchivedFamily = familyId === 'archived-family';
+
+      // Special families should be hidden by default, but shown when their filter is active
+      var shouldHideSpecialFamily = false;
+      if (isAdoptableFamily && !adoptableFilterActive) {
+        shouldHideSpecialFamily = true;
+      } else if (isArchivedFamily && !archivedFilterActive) {
+        shouldHideSpecialFamily = true;
+      }
+
+      if (shouldHideSpecialFamily) {
+        stack.style.display = 'none';
+        return;
+      }
+
       var familyCards = stack.querySelectorAll('.card-in-family');
       var visibleCount = 0;
 
@@ -171,7 +192,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
       // Hide the entire family stack container only if NO cards match the filter
       // If at least one card matches, keep the stack visible (but with filtered cards)
-      stack.style.display = visibleCount > 0 ? '' : 'none';
+      // For special families that are shown, use 'inline-block' to override CSS
+      if (visibleCount > 0) {
+        stack.style.display = (isAdoptableFamily || isArchivedFamily) ? 'inline-block' : '';
+      } else {
+        stack.style.display = 'none';
+      }
 
       // Reposition visible cards to close gaps left by hidden cards
       if (visibleCount > 0) {

@@ -470,6 +470,7 @@
   tags:
   - funding
   - markdown
+  - awesome-list
   docs_site: https://awesome-sponsorships.galtzo.com
   github_stars: 5
   release_date:
@@ -3704,6 +3705,7 @@
   - release
   - cli
   - shell
+  - rubygems
   docs_site:
   github_stars: 6
   gitlab_stars: 0
