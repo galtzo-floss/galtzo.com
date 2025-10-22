@@ -39,8 +39,8 @@
 #     animation: snowfall | confetti | sparkle
 # ============================================================================
 
-- name: "Peter Boling, team leader, web architect, security researcher,
-    and rubyist. Building for web since 2004. 🧰"
+- name: "Peter Boling, team leader, web architect, security researcher, and rubyist.
+    Building for web since 2004. \U0001F9F0"
   description: |
     <span class="intro">
     Hi! I love to solve problems with code.
@@ -374,14 +374,9 @@
   last_commit_on: 2021/12/07
   status: stale
   last_scrape_at: '2025-10-21T22:10:25Z'
-
-# ============================================================================
-# THEME TEST PROJECTS - For testing the five theme variants
-# ============================================================================
-
-# ADOPT-ME THEME TEST
 - name: test-adopt-me-gem
-  description: This project is available for adoption. Looking for a new maintainer who can take it forward!
+  description: This project is available for adoption. Looking for a new maintainer
+    who can take it forward!
   language: Ruby
   ecosystem: rubygems
   minimum_version: 2.7
@@ -408,10 +403,9 @@
   release_date: 2022/06/01
   last_commit_on: 2023/03/15
   status: available-for-adoption
-
-# UPDATE-ME THEME TEST
 - name: test-update-me-lib
-  description: This library needs updates - dependencies are stale and security patches are needed.
+  description: This library needs updates - dependencies are stale and security patches
+    are needed.
   language: Ruby
   ecosystem: rubygems
   minimum_version: 2.5
@@ -419,7 +413,7 @@
   first_commit_on: 2019/05/20
   first_commit: https://github.com/galtzo-floss/test-update-me-lib/commit/def456
   theme: update-me
-  stale_since: "2023-06-15"
+  stale_since: '2023-06-15'
   update_priority: high
   funding_sites:
   - type: OpenCollective
@@ -439,10 +433,9 @@
   release_date: 2023/06/15
   last_commit_on: 2023/06/15
   status: stale
-
-# AVOID-ME THEME TEST
 - name: test-avoid-me-deprecated
-  description: This project is deprecated and archived. Please use the new replacement project instead.
+  description: This project is deprecated and archived. Please use the new replacement
+    project instead.
   language: Ruby
   ecosystem: rubygems
   minimum_version: 2.3
@@ -451,7 +444,7 @@
   first_commit: https://github.com/galtzo-floss/test-avoid-me-deprecated/commit/ghi789
   theme: avoid-me
   archived: true
-  deprecation_reason: "Superseded by modern-alternative-gem with better performance"
+  deprecation_reason: Superseded by modern-alternative-gem with better performance
   replacement_url: https://github.com/galtzo-floss/modern-alternative-gem
   funding_sites:
   - type: Liberapay
@@ -471,10 +464,9 @@
   release_date: 2018/12/31
   last_commit_on: 2019/01/05
   status: archived
-
-# FAMILY THEME TEST - Project 1 (Primary)
 - name: test-family-auth-core
-  description: Core authentication library for Rails - part of the authentication family
+  description: Core authentication library for Rails - part of the authentication
+    family
   language: Ruby
   ecosystem: rubygems
   minimum_version: 2.7
@@ -483,7 +475,7 @@
   first_commit: https://github.com/galtzo-floss/test-family-auth-core/commit/jkl012
   theme: family
   family_id: rails-auth-suite
-  family_name: "Rails Authentication Suite"
+  family_name: Rails Authentication Suite
   family_position: 1
   family_primary: true
   funding_sites:
@@ -505,8 +497,6 @@
   release_date: 2024/09/15
   last_commit_on: 2025/10/10
   status: active
-
-# FAMILY THEME TEST - Project 2
 - name: test-family-auth-oauth
   description: OAuth integration for the Rails authentication suite
   language: Ruby
@@ -517,7 +507,7 @@
   first_commit: https://github.com/galtzo-floss/test-family-auth-oauth/commit/mno345
   theme: family
   family_id: rails-auth-suite
-  family_name: "Rails Authentication Suite"
+  family_name: Rails Authentication Suite
   family_position: 2
   funding_sites:
   - type: OpenCollective
@@ -538,8 +528,6 @@
   release_date: 2024/08/20
   last_commit_on: 2025/09/25
   status: active
-
-# FAMILY THEME TEST - Project 3
 - name: test-family-auth-2fa
   description: Two-factor authentication for the Rails authentication suite
   language: Ruby
@@ -550,7 +538,7 @@
   first_commit: https://github.com/galtzo-floss/test-family-auth-2fa/commit/pqr678
   theme: family
   family_id: rails-auth-suite
-  family_name: "Rails Authentication Suite"
+  family_name: Rails Authentication Suite
   family_position: 3
   funding_sites:
   - type: OpenCollective
@@ -571,8 +559,6 @@
   release_date: 2024/07/10
   last_commit_on: 2025/08/30
   status: active
-
-# HOLIDAY THEME TEST - Christmas
 - name: test-holiday-christmas
   description: A festive project celebrating the winter season!
   language: Ruby
@@ -583,11 +569,14 @@
   first_commit: https://github.com/galtzo-floss/test-holiday-christmas/commit/stu901
   theme: holiday
   holiday_type: christmas
-  holiday_date_start: "2025-12-01"
-  holiday_date_end: "2025-12-31"
+  holiday_date_start: '2025-12-01'
+  holiday_date_end: '2025-12-31'
   holiday_decorations:
     garland: true
-    popouts: ["🎄", "⛄", "🎁"]
+    popouts:
+    - "\U0001F384"
+    - "⛄"
+    - "\U0001F381"
     animation: snowfall
   funding_sites:
   - type: Liberapay
@@ -607,4 +596,35 @@
   release_date: 2024/12/01
   last_commit_on: 2025/01/10
   status: active
-
+- name: cacheable_flash
+  description: |-
+    Allows caching of pages with flash messages by rendering flash
+    messages from a cookie using JavaScript, instead of statically in your Rails
+    view template.  Flash contents are converted to JSON and placed in
+    a cookie by an after_filter (default) or a Rack Middleware (option).
+  language: Ruby
+  ecosystem: rubygems
+  minimum_version: '2.7'
+  role: author
+  first_commit_on: 2017/04/11
+  first_commit:
+  funding_sites:
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  - type: Liberapay
+    url: https://liberapay.com/pboling
+  forges:
+  - type: GitHub
+    url: http://github.com/pivotal/cacheable-flash
+    owner: pivotal
+  tags:
+  - rails
+  docs_site: https://www.rubydoc.info/gems/cacheable_flash/1.0.0
+  total_downloads: 461101
+  daily_downloads:
+  release_downloads: 176696
+  release_date: 2017/04/11
+  github_stars: 0
+  last_commit_on:
+  status: stale
+  last_scrape_at: '2025-10-22T19:54:49Z'

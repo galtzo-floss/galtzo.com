@@ -1,6 +1,6 @@
 ---
-- name: "Peter Boling, team leader, web architect, security researcher,
-    and rubyist. Building for web since 2004. 🧰"
+- name: "Peter Boling, team leader, web architect, security researcher, and rubyist.
+    Building for web since 2004. \U0001F9F0"
   description: |
     <span class="intro">
     Hi! I love to solve problems with code.
@@ -73,7 +73,7 @@
   ecosystem: rubygems
   theme: family
   family_id: active-record
-  family_name: "ActiveRecord Plugins"
+  family_name: ActiveRecord Plugins
   family_position: 2
   minimum_version: 2.7
   role: author
@@ -108,7 +108,7 @@
   ecosystem: rubygems
   theme: family
   family_id: active-record
-  family_name: "ActiveRecord Plugins"
+  family_name: ActiveRecord Plugins
   family_position: 3
   minimum_version: 2.2
   role: author
@@ -142,7 +142,7 @@
   ecosystem: rubygems
   theme: family
   family_id: active-record
-  family_name: "ActiveRecord Plugins"
+  family_name: ActiveRecord Plugins
   family_position: 4
   minimum_version: 2.5
   role: author
@@ -184,7 +184,7 @@
   ecosystem: rubygems
   theme: family
   family_id: logging-family
-  family_name: "Logging Tools"
+  family_name: Logging Tools
   family_position: 4
   minimum_version: 2.7
   role: author
@@ -218,7 +218,7 @@
   ecosystem: rubygems
   theme: family
   family_id: logging-family
-  family_name: "Logging Tools"
+  family_name: Logging Tools
   family_position: 3
   minimum_version: 2.7
   role: author
@@ -253,7 +253,7 @@
   ecosystem: rubygems
   theme: family
   family_id: logging-family
-  family_name: "Logging Tools"
+  family_name: Logging Tools
   family_position: 5
   minimum_version: 2.7
   role: author
@@ -287,7 +287,7 @@
   ecosystem: rubygems
   theme: family
   family_id: active-record
-  family_name: "ActiveRecord Plugins"
+  family_name: ActiveRecord Plugins
   family_position: 5
   minimum_version: 2.4
   role: author
@@ -351,7 +351,7 @@
   ecosystem: rubygems
   theme: family
   family_id: rspec-family
-  family_name: "RSpec Plugins"
+  family_name: RSpec Plugins
   family_position: 1
   minimum_version: 1.8
   role: author
@@ -420,7 +420,7 @@
   ecosystem: rubygems
   theme: family
   family_id: adoptable-family
-  family_name: "Looking for Maintainers!"
+  family_name: Looking for Maintainers!
   family_position: 7
   minimum_version: 1.8
   role: author
@@ -436,8 +436,7 @@
     url: https://github.com/galtzo-floss/awesome_search
     owner: galtzo-floss
   tags:
-    - search
-  #  adoption_url: "https://..." # Optional: custom adoption page (defaults to issues)
+  - search
   adoptable: true
   archived: true
   docs_site:
@@ -525,7 +524,7 @@
   last_commit_on: 2021/12/07
   status: stale
   last_scrape_at: '2025-10-21T22:10:25Z'
-- name: cacheable-flash
+- name: cacheable_flash
   description: |-
     Allows caching of pages with flash messages by rendering flash
     messages from a cookie using JavaScript, instead of statically in your Rails
@@ -535,7 +534,7 @@
   ecosystem: rubygems
   theme: family
   family_id: archived-family
-  family_name: "Thanks for the Memories!"
+  family_name: Thanks for the Memories!
   family_position: 1
   minimum_version: 1.8
   role: maintainer
@@ -548,12 +547,16 @@
     owner: pboling
   tags:
   - toast
+  - rails
+  total_downloads: 461101
+  daily_downloads:
+  release_downloads: 176696
   adoptable: false
   archived: true
-  deprecation_reason: "Incompatible with modern Rails"
-  docs_site:
+  deprecation_reason: Incompatible with modern Rails
+  docs_site: https://www.rubydoc.info/gems/cacheable_flash/1.0.0
   github_stars: 101
-  release_date:
+  release_date: 2017/04/11
   last_commit_on: 2020/11/15
   status: archived
   last_scrape_at: '2025-10-21T22:10:28Z'
@@ -564,7 +567,7 @@
   ecosystem: rubygems
   theme: family
   family_id: adoptable-family
-  family_name: "Looking for Maintainers!"
+  family_name: Looking for Maintainers!
   family_position: 3
   minimum_version: 1.8
   role: author
@@ -584,7 +587,6 @@
   tags:
   - release
   - email
-  #  adoption_url: "https://..." # Optional: custom adoption page (defaults to issues)
   adoptable: true
   archived: true
   docs_site:
@@ -603,7 +605,7 @@
   ecosystem: rubygems
   theme: family
   family_id: adoptable-family
-  family_name: "Looking for Maintainers!"
+  family_name: Looking for Maintainers!
   family_position: 5
   minimum_version: 1.8
   role: author
@@ -622,7 +624,6 @@
     url: https://git.sr.ht/~galtzo/celluloid-io-pg-listener
   tags:
   - async
-  #  adoption_url: "https://..." # Optional: custom adoption page (defaults to issues)
   adoptable: true
   archived: true
   docs_site:
@@ -640,7 +641,7 @@
   ecosystem: rubygems
   theme: family
   family_id: rails-family
-  family_name: "Rails Plugins"
+  family_name: Rails Plugins
   family_position: 4
   minimum_version: 1.8
   role: author
@@ -675,7 +676,7 @@
   ecosystem: rubygems
   theme: family
   family_id: active-record
-  family_name: "ActiveRecord Plugins"
+  family_name: ActiveRecord Plugins
   family_position: 6
   minimum_version: 1.8
   role: author
@@ -713,7 +714,7 @@
   ecosystem: rubygems
   theme: family
   family_id: logging-family
-  family_name: "Logging Tools"
+  family_name: Logging Tools
   family_position: 1
   minimum_version: 3.1
   role: author
@@ -755,7 +756,7 @@
   ecosystem: rubygems
   theme: family
   family_id: active-record
-  family_name: "ActiveRecord Plugins"
+  family_name: ActiveRecord Plugins
   family_position: 11
   minimum_version: 1.8
   role: author
@@ -794,7 +795,7 @@
   ecosystem: rubygems
   theme: family
   family_id: rails-family
-  family_name: "Rails Plugins"
+  family_name: Rails Plugins
   family_position: 2
   minimum_version: 1.8
   role: author
@@ -861,7 +862,7 @@
   ecosystem: rubygems
   theme: family
   family_id: active-record
-  family_name: "ActiveRecord Plugins"
+  family_name: ActiveRecord Plugins
   family_position: 7
   minimum_version: 1.8
   role: author
@@ -897,7 +898,7 @@
   ecosystem: rubygems
   theme: family
   family_id: active-record
-  family_name: "ActiveRecord Plugins"
+  family_name: ActiveRecord Plugins
   family_position: 1
   minimum_version: 1.9
   role: maintainer
@@ -1040,7 +1041,7 @@
   ecosystem: rubygems
   theme: family
   family_id: logging-family
-  family_name: "Logging Tools"
+  family_name: Logging Tools
   family_position: 8
   minimum_version: 1.8
   role: author
@@ -1073,7 +1074,7 @@
   ecosystem: rubygems
   theme: family
   family_id: adoptable-family
-  family_name: "Looking for Maintainers!"
+  family_name: Looking for Maintainers!
   family_position: 8
   minimum_version: 1.8
   role: author
@@ -1092,7 +1093,6 @@
     url: https://git.sr.ht/~galtzo/include_with_respect
   tags:
   - test
-  #  adoption_url: "https://..." # Optional: custom adoption page (defaults to issues)
   adoptable: true
   archived: true
   docs_site:
@@ -1144,7 +1144,7 @@
   ecosystem: rubygems
   theme: family
   family_id: kettle-rb-family
-  family_name: "Kettle-RB Family"
+  family_name: Kettle-RB Family
   family_position: 1
   minimum_version: 2.7
   role: author
@@ -1195,7 +1195,7 @@
   ecosystem: rubygems
   theme: family
   family_id: kettle-rb-family
-  family_name: "Kettle-RB Family"
+  family_name: Kettle-RB Family
   family_position: 3
   minimum_version: 2.7
   role: author
@@ -1241,7 +1241,7 @@
   ecosystem: rubygems
   theme: family
   family_id: kettle-rb-family
-  family_name: "Kettle-RB Family"
+  family_name: Kettle-RB Family
   family_position: 2
   minimum_version: 2.7
   role: author
@@ -1284,7 +1284,7 @@
   ecosystem: rubygems
   theme: family
   family_id: adoptable-family
-  family_name: "Looking for Maintainers!"
+  family_name: Looking for Maintainers!
   family_position: 6
   minimum_version: 1.8
   role: author
@@ -1301,7 +1301,6 @@
     owner: galtzo-floss
   tags:
   - hash
-  #  adoption_url: "https://..." # Optional: custom adoption page (defaults to issues)
   adoptable: true
   archived: true
   docs_site:
@@ -1376,7 +1375,7 @@
   ecosystem: rubygems
   theme: family
   family_id: ruby-openid
-  family_name: "Ruby OpenID Family"
+  family_name: Ruby OpenID Family
   family_position: 5
   minimum_version: 2.7
   role: maintainer
@@ -1414,7 +1413,7 @@
   ecosystem: rubygems
   theme: family
   family_id: ruby-openid
-  family_name: "Ruby OpenID Family"
+  family_name: Ruby OpenID Family
   family_position: 9
   minimum_version: 2.7
   role: author
@@ -1487,7 +1486,7 @@
   ecosystem: rubygems
   theme: family
   family_id: ruby-oauth
-  family_name: "Ruby OAuth Family"
+  family_name: Ruby OAuth Family
   family_position: 2
   minimum_version: 2.3
   role: maintainer
@@ -1528,7 +1527,7 @@
   ecosystem: rubygems
   theme: family
   family_id: ruby-oauth
-  family_name: "Ruby OAuth Family"
+  family_name: Ruby OAuth Family
   family_position: 3
   minimum_version: 2.3
   role: author
@@ -1570,7 +1569,7 @@
   ecosystem: rubygems
   theme: family
   family_id: ruby-oauth
-  family_name: "Ruby OAuth Family"
+  family_name: Ruby OAuth Family
   family_position: 1
   minimum_version: 2.2
   role: maintainer
@@ -1611,7 +1610,7 @@
   ecosystem: rubygems
   theme: family
   family_id: omniauth-family
-  family_name: "OmniAuth Family"
+  family_name: OmniAuth Family
   family_position: 1
   minimum_version: 2.4
   role: maintainer
@@ -1643,7 +1642,7 @@
   ecosystem: rubygems
   theme: family
   family_id: omniauth-family
-  family_name: "OmniAuth Family"
+  family_name: OmniAuth Family
   family_position: 3
   minimum_version: 2.2
   role: maintainer
@@ -1675,7 +1674,7 @@
   ecosystem: rubygems
   theme: family
   family_id: omniauth-family
-  family_name: "OmniAuth Family"
+  family_name: OmniAuth Family
   family_position: 4
   minimum_version: 2.2
   role: author
@@ -1707,7 +1706,7 @@
   ecosystem: rubygems
   theme: family
   family_id: omniauth-family
-  family_name: "OmniAuth Family"
+  family_name: OmniAuth Family
   family_position: 2
   minimum_version: 1.8
   role: maintainer
@@ -1739,7 +1738,7 @@
   ecosystem: rubygems
   theme: family
   family_id: ruby-openid
-  family_name: "Ruby OpenID Family"
+  family_name: Ruby OpenID Family
   family_position: 3
   minimum_version: 2.4
   role: maintainer
@@ -1780,7 +1779,7 @@
   ecosystem: rubygems
   theme: family
   family_id: ruby-openid
-  family_name: "Ruby OpenID Family"
+  family_name: Ruby OpenID Family
   family_position: 4
   minimum_version: 2.7
   role: maintainer
@@ -1850,7 +1849,7 @@
   ecosystem: rubygems
   theme: family
   family_id: logging-family
-  family_name: "Logging Tools"
+  family_name: Logging Tools
   family_position: 6
   minimum_version: 2.6
   role: author
@@ -1885,7 +1884,7 @@
   ecosystem: rubygems
   theme: family
   family_id: resque-family
-  family_name: "Resque Family"
+  family_name: Resque Family
   family_position: 6
   minimum_version: 1.8
   role: author
@@ -1923,7 +1922,7 @@
   ecosystem: rubygems
   theme: family
   family_id: adoptable-family
-  family_name: "Looking for Maintainers!"
+  family_name: Looking for Maintainers!
   family_position: 1
   minimum_version: 1.8
   role: author
@@ -1941,7 +1940,6 @@
   tags:
   - rack
   - view
-  #  adoption_url: "https://..." # Optional: custom adoption page (defaults to issues)
   adoptable: true
   archived: true
   docs_site:
@@ -1959,7 +1957,7 @@
   ecosystem: rubygems
   theme: family
   family_id: ruby-openid
-  family_name: "Ruby OpenID Family"
+  family_name: Ruby OpenID Family
   family_position: 2
   minimum_version: 2.7
   role: maintainer
@@ -2000,7 +1998,7 @@
   ecosystem: rubygems
   theme: family
   family_id: ruby-openid
-  family_name: "Ruby OpenID Family"
+  family_name: Ruby OpenID Family
   family_position: 8
   minimum_version: 2.7
   role: author
@@ -2042,7 +2040,7 @@
   ecosystem: rubygems
   theme: family
   family_id: adoptable-family
-  family_name: "Looking for Maintainers!"
+  family_name: Looking for Maintainers!
   family_position: 2
   minimum_version: 1.8
   role: author
@@ -2060,7 +2058,6 @@
   tags:
   - rack
   - view
-  #  adoption_url: "https://..." # Optional: custom adoption page (defaults to issues)
   adoptable: true
   archived: true
   docs_site:
@@ -2084,7 +2081,7 @@
   ecosystem: rubygems
   theme: family
   family_id: rails-family
-  family_name: "Rails Plugins"
+  family_name: Rails Plugins
   family_position: 5
   minimum_version: 1.8
   role: author
@@ -2104,7 +2101,7 @@
   - env
   adoptable: false
   archived: true
-  deprecation_reason: "Incompatible with modern Rails"
+  deprecation_reason: Incompatible with modern Rails
   docs_site:
   github_stars: 2
   total_downloads: 16069
@@ -2121,7 +2118,7 @@
   ecosystem: rubygems
   theme: family
   family_id: logging-family
-  family_name: "Logging Tools"
+  family_name: Logging Tools
   family_position: 7
   minimum_version: 1.8
   role: author
@@ -2157,7 +2154,7 @@
   ecosystem: rubygems
   theme: family
   family_id: adoptable-family
-  family_name: "Looking for Maintainers!"
+  family_name: Looking for Maintainers!
   family_position: 4
   minimum_version: 1.8
   role: maintainer
@@ -2176,7 +2173,6 @@
   - payment
   - aws
   - api
-  #  adoption_url: "https://..." # Optional: custom adoption page (defaults to issues)
   adoptable: true
   archived: true
   docs_site:
@@ -2195,7 +2191,7 @@
   ecosystem: rubygems
   theme: family
   family_id: logging-family
-  family_name: "Logging Tools"
+  family_name: Logging Tools
   family_position: 2
   minimum_version: 2.2
   role: author
@@ -2240,7 +2236,7 @@
   ecosystem: rubygems
   theme: family
   family_id: resque-family
-  family_name: "Resque Family"
+  family_name: Resque Family
   family_position: 1
   minimum_version: 1.8
   role: maintainer
@@ -2286,7 +2282,7 @@
   ecosystem: rubygems
   theme: family
   family_id: resque-family
-  family_name: "Resque Family"
+  family_name: Resque Family
   family_position: 5
   minimum_version: 1.8
   role: maintainer
@@ -2332,7 +2328,7 @@
   ecosystem: rubygems
   theme: family
   family_id: resque-family
-  family_name: "Resque Family"
+  family_name: Resque Family
   family_position: 3
   minimum_version: 2.3
   role: author
@@ -2367,7 +2363,7 @@
   ecosystem: rubygems
   theme: family
   family_id: resque-family
-  family_name: "Resque Family"
+  family_name: Resque Family
   family_position: 4
   minimum_version: 2.3
   role: author
@@ -2403,7 +2399,7 @@
   ecosystem: rubygems
   theme: family
   family_id: resque-family
-  family_name: "Resque Family"
+  family_name: Resque Family
   family_position: 2
   minimum_version: 2.3
   role: author
@@ -2440,7 +2436,7 @@
   ecosystem: rubygems
   theme: family
   family_id: ruby-openid
-  family_name: "Ruby OpenID Family"
+  family_name: Ruby OpenID Family
   family_position: 6
   minimum_version: 2.7
   role: maintainer
@@ -2483,7 +2479,7 @@
   ecosystem: rubygems
   theme: family
   family_id: rspec-family
-  family_name: "RSpec Plugins"
+  family_name: RSpec Plugins
   family_position: 4
   minimum_version: 1.8
   role: author
@@ -2527,7 +2523,7 @@
   ecosystem: rubygems
   theme: family
   family_id: rspec-family
-  family_name: "RSpec Plugins"
+  family_name: RSpec Plugins
   family_position: 5
   minimum_version: 1.8
   role: author
@@ -2571,7 +2567,7 @@
   ecosystem: rubygems
   theme: family
   family_id: rspec-family
-  family_name: "RSpec Plugins"
+  family_name: RSpec Plugins
   family_position: 2
   minimum_version: 1.8
   role: author
@@ -2614,7 +2610,7 @@
   ecosystem: rubygems
   theme: family
   family_id: rubocop-lts
-  family_name: "RuboCop-LTS Family"
+  family_name: RuboCop-LTS Family
   family_position: 1
   minimum_version: 3.2
   role: author
@@ -2652,7 +2648,7 @@
   ecosystem: rubygems
   theme: family
   family_id: rubocop-lts
-  family_name: "RuboCop-LTS Family"
+  family_name: RuboCop-LTS Family
   family_position: 2
   minimum_version: 3.2
   role: author
@@ -2687,7 +2683,7 @@
   ecosystem: rubygems
   theme: family
   family_id: rubocop-lts
-  family_name: "RuboCop-LTS Family"
+  family_name: RuboCop-LTS Family
   family_position: 3
   minimum_version: 3.2
   role: author
@@ -2722,7 +2718,7 @@
   ecosystem: rubygems
   theme: family
   family_id: rubocop-lts
-  family_name: "RuboCop-LTS Family"
+  family_name: RuboCop-LTS Family
   family_position: 4
   minimum_version: 3.2
   role: author
@@ -2757,7 +2753,7 @@
   ecosystem: rubygems
   theme: family
   family_id: rubocop-lts
-  family_name: "RuboCop-LTS Family"
+  family_name: RuboCop-LTS Family
   family_position: 5
   minimum_version: 3.2
   role: author
@@ -2792,7 +2788,7 @@
   ecosystem: rubygems
   theme: family
   family_id: rubocop-lts
-  family_name: "RuboCop-LTS Family"
+  family_name: RuboCop-LTS Family
   family_position: 6
   minimum_version: 3.2
   role: author
@@ -2827,7 +2823,7 @@
   ecosystem: rubygems
   theme: family
   family_id: rubocop-lts
-  family_name: "RuboCop-LTS Family"
+  family_name: RuboCop-LTS Family
   family_position: 7
   minimum_version: 3.2
   role: author
@@ -2862,7 +2858,7 @@
   ecosystem: rubygems
   theme: family
   family_id: rubocop-lts
-  family_name: "RuboCop-LTS Family"
+  family_name: RuboCop-LTS Family
   family_position: 8
   minimum_version: 3.2
   role: author
@@ -2897,7 +2893,7 @@
   ecosystem: rubygems
   theme: family
   family_id: rubocop-lts
-  family_name: "RuboCop-LTS Family"
+  family_name: RuboCop-LTS Family
   family_position: 9
   minimum_version: 3.2
   role: author
@@ -2932,7 +2928,7 @@
   ecosystem: rubygems
   theme: family
   family_id: rubocop-lts
-  family_name: "RuboCop-LTS Family"
+  family_name: RuboCop-LTS Family
   family_position: 10
   minimum_version: 3.2
   role: author
@@ -2967,7 +2963,7 @@
   ecosystem: rubygems
   theme: family
   family_id: rubocop-lts
-  family_name: "RuboCop-LTS Family"
+  family_name: RuboCop-LTS Family
   family_position: 11
   minimum_version: 3.2
   role: author
@@ -3002,7 +2998,7 @@
   ecosystem: rubygems
   theme: family
   family_id: rubocop-lts
-  family_name: "RuboCop-LTS Family"
+  family_name: RuboCop-LTS Family
   family_position: 12
   minimum_version: 3.2
   role: author
@@ -3040,7 +3036,7 @@
   ecosystem: rubygems
   theme: family
   family_id: rubocop-lts
-  family_name: "RuboCop-LTS Family"
+  family_name: RuboCop-LTS Family
   family_position: 13
   minimum_version: 3.2
   role: author
@@ -3075,7 +3071,7 @@
   ecosystem: rubygems
   theme: family
   family_id: rubocop-lts
-  family_name: "RuboCop-LTS Family"
+  family_name: RuboCop-LTS Family
   family_position: 14
   minimum_version: 3.2
   role: author
@@ -3108,7 +3104,7 @@
   ecosystem: rubygems
   theme: family
   family_id: ruby-openid
-  family_name: "Ruby OpenID Family"
+  family_name: Ruby OpenID Family
   family_position: 1
   minimum_version: 2.7
   role: maintainer
@@ -3149,7 +3145,7 @@
   ecosystem: rubygems
   theme: family
   family_id: ruby-openid
-  family_name: "Ruby OpenID Family"
+  family_name: Ruby OpenID Family
   family_position: 7
   minimum_version: 2.7
   role: author
@@ -3192,7 +3188,7 @@
   ecosystem: rubygems
   theme: family
   family_id: rails-family
-  family_name: "Rails Plugins"
+  family_name: Rails Plugins
   family_position: 1
   minimum_version: 2.3
   role: author
@@ -3235,7 +3231,7 @@
   ecosystem: rubygems
   theme: family
   family_id: active-record
-  family_name: "ActiveRecord Plugins"
+  family_name: ActiveRecord Plugins
   family_position: 9
   minimum_version: 1.8
   role: maintainer
@@ -3271,7 +3267,7 @@
   ecosystem: rubygems
   theme: family
   family_id: adoptable-family
-  family_name: "Looking for Maintainers!"
+  family_name: Looking for Maintainers!
   family_position: 9
   minimum_version: 1.8
   role: author
@@ -3290,7 +3286,6 @@
     url: https://git.sr.ht/~galtzo/sequential_file
   tags:
   - shell
-  #  adoption_url: "https://..." # Optional: custom adoption page (defaults to issues)
   adoptable: true
   archived: true
   docs_site:
@@ -3376,7 +3371,7 @@
   ecosystem: rubygems
   theme: family
   family_id: active-record
-  family_name: "ActiveRecord Plugins"
+  family_name: ActiveRecord Plugins
   family_position: 8
   minimum_version: 2.5
   role: author
@@ -3413,7 +3408,7 @@
   ecosystem: rubygems
   theme: family
   family_id: rspec-family
-  family_name: "RSpec Plugins"
+  family_name: RSpec Plugins
   family_position: 6
   minimum_version: 2.3
   role: author
@@ -3456,7 +3451,7 @@
   ecosystem: rubygems
   theme: family
   family_id: active-record
-  family_name: "ActiveRecord Plugins"
+  family_name: ActiveRecord Plugins
   family_position: 9
   minimum_version: 2.3
   role: author
@@ -3489,7 +3484,7 @@
   ecosystem: rubygems
   theme: family
   family_id: ruby-oauth
-  family_name: "Ruby OAuth Family"
+  family_name: Ruby OAuth Family
   family_position: 5
   minimum_version: 2.2
   role: author
@@ -3527,7 +3522,7 @@
   ecosystem: rubygems
   theme: family
   family_id: active-record
-  family_name: "ActiveRecord Plugins"
+  family_name: ActiveRecord Plugins
   family_position: 10
   minimum_version: 2.3
   role: author
@@ -3562,7 +3557,7 @@
   ecosystem: rubygems
   theme: family
   family_id: archived-family
-  family_name: "Thanks for the Memories!"
+  family_name: Thanks for the Memories!
   family_position: 2
   minimum_version: 1.8
   role: author
@@ -3581,7 +3576,8 @@
   - toast
   adoptable: false
   archived: true
-  deprecation_reason: "If you need to use something like this, do your best to rename your deployed environments instead"
+  deprecation_reason: If you need to use something like this, do your best to rename
+    your deployed environments instead
   docs_site:
   github_stars: 7
   total_downloads: 368595
@@ -3599,7 +3595,7 @@
   ecosystem: rubygems
   theme: family
   family_id: rubocop-lts
-  family_name: "RuboCop-LTS Family"
+  family_name: RuboCop-LTS Family
   family_position: 15
   minimum_version: 3.2
   role: author
@@ -3639,7 +3635,7 @@
   ecosystem: rubygems
   theme: family
   family_id: rails-family
-  family_name: "Rails Plugins"
+  family_name: Rails Plugins
   family_position: 3
   minimum_version: 1.8
   role: author
@@ -3756,7 +3752,7 @@
   ecosystem: rubygems
   theme: family
   family_id: rails-family
-  family_name: "Rails Plugins"
+  family_name: Rails Plugins
   family_position: 6
   minimum_version: 1.8
   role: author
@@ -3774,7 +3770,6 @@
   tags:
   - email
   - error-handle
-#  adoption_url: "https://..." # Optional: custom adoption page (defaults to issues)
   adoptable: true
   archived: true
   docs_site:
@@ -3795,7 +3790,7 @@
   ecosystem: rubygems
   theme: family
   family_id: rspec-family
-  family_name: "RSpec Plugins"
+  family_name: RSpec Plugins
   family_position: 3
   minimum_version: 1.9
   role: author
@@ -3867,7 +3862,7 @@
   ecosystem: rubygems
   theme: family
   family_id: ruby-oauth
-  family_name: "Ruby OAuth Family"
+  family_name: Ruby OAuth Family
   family_position: 6
   minimum_version: 2.2
   role: author
@@ -3910,7 +3905,7 @@
   ecosystem: rubygems
   theme: family
   family_id: ruby-oauth
-  family_name: "Ruby OAuth Family"
+  family_name: Ruby OAuth Family
   family_position: 4
   minimum_version: 1.8
   role: maintainer
