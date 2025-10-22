@@ -367,6 +367,35 @@ body_class: projects
           </span>
       </div>
     </div>
+    <% if project['release_date'] || project['total_downloads'] %>
+    <div class="bottom-anchor stats">
+      <div class="bottom-banner banner-stats <%= project['role'] %>">
+        <span class="stats-label">
+          <% if project['release_date'] %>
+          <span class="stat-item">Last Release: <%= project['release_date'] %></span>
+          <% end %>
+          <% if project['release_date'] && project['total_downloads'] %>
+          &nbsp;|&nbsp;
+          <% end %>
+          <% if project['total_downloads'] %>
+          <%
+            downloads = project['total_downloads']
+            formatted_downloads = if downloads >= 1_000_000_000
+              "#{(downloads / 1_000_000_000.0).round(1)}B"
+            elsif downloads >= 1_000_000
+              "#{(downloads / 1_000_000.0).round(1)}M"
+            elsif downloads >= 1_000
+              "#{(downloads / 1_000.0).round(1)}K"
+            else
+              downloads.to_s
+            end
+          %>
+          <span class="stat-item">Downloads: <%= formatted_downloads %></span>
+          <% end %>
+        </span>
+      </div>
+    </div>
+    <% end %>
     <h2>
       <% if project["ecosystem"] == "rubygems" %>
       <a href="https://bestgems.org/gems/<%= project['name'] %>" class="project-language gem-link" target="_blank" rel="noopener">
@@ -581,6 +610,35 @@ body_class: projects
           </span>
       </div>
     </div>
+    <% if project['release_date'] || project['total_downloads'] %>
+    <div class="bottom-anchor stats">
+      <div class="bottom-banner banner-stats <%= project['role'] %>">
+        <span class="stats-label">
+          <% if project['release_date'] %>
+          <span class="stat-item">Last Release: <%= project['release_date'] %></span>
+          <% end %>
+          <% if project['release_date'] && project['total_downloads'] %>
+          &nbsp;|&nbsp;
+          <% end %>
+          <% if project['total_downloads'] %>
+          <%
+            downloads = project['total_downloads']
+            formatted_downloads = if downloads >= 1_000_000_000
+              "#{(downloads / 1_000_000_000.0).round(1)}B"
+            elsif downloads >= 1_000_000
+              "#{(downloads / 1_000_000.0).round(1)}M"
+            elsif downloads >= 1_000
+              "#{(downloads / 1_000.0).round(1)}K"
+            else
+              downloads.to_s
+            end
+          %>
+          <span class="stat-item">Downloads: <%= formatted_downloads %></span>
+          <% end %>
+        </span>
+      </div>
+    </div>
+    <% end %>
     <h2>
       <% if project["ecosystem"] == "rubygems" %>
       <a href="https://bestgems.org/gems/<%= project['name'] %>" class="project-language gem-link" target="_blank" rel="noopener">
