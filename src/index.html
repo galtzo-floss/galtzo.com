@@ -245,9 +245,29 @@ body_class: projects
   <% tags_for_card.sort! %>
   <% sorted_tags = (project['tags'] || []).sort %>
   <% aspect_class = project['aspect'].nil? ? '' : "card-#{project['aspect']}" %>
-  <li class="card <%= aspect_class %> <%= project['role'] %>" data-tags='<%= tags_for_card.to_json %>'>
+  <% theme_class = project['theme'] ? "theme-#{project['theme']}" : '' %>
+  <li class="card <%= aspect_class %> <%= project['role'] %> <%= theme_class %>"
+      data-tags='<%= tags_for_card.to_json %>'
+      <% if project['theme'] %>data-theme="<%= project['theme'] %>"<% end %>
+      <% if project['family_id'] %>data-family-id="<%= project['family_id'] %>" data-family-position="<%= project['family_position'] %>"<% end %>>
     <div class="corner-anchor fork">
-      <% if project["type"] == "person" %>
+      <% if project['theme'] == 'adopt-me' %>
+      <%# THEME: Adopt Me - Replace Fork banner with Adopt Me banner %>
+      <a href="<%= project['adoption_url'] || (gh_forge ? "#{gh_forge['url']}/issues" : first_forge['url']) %>"
+         class="corner-banner banner-adopt"
+         target="_blank" rel="noopener">
+        Adopt&nbsp;<span class="adopt-text">Me</span><span class="adopt-emoji" aria-hidden="true">🤝</span>
+      </a>
+      <% elsif project['theme'] == 'update-me' %>
+      <%# THEME: Update Me - Replace Fork banner with Update Me banner %>
+      <a href="<%= gh_forge ? "#{gh_forge['url']}/issues" : (first_forge ? first_forge['url'] : '#') %>"
+         class="corner-banner banner-update"
+         target="_blank" rel="noopener">
+        Update&nbsp;<span class="update-text">Me</span><span class="update-emoji" aria-hidden="true">🔧</span>
+      </a>
+      <% elsif project['theme'] == 'avoid-me' %>
+      <%# THEME: Avoid Me - Uses caution tape X overlay on card, no corner banner %>
+      <% elsif project["type"] == "person" %>
       <a href="<%= gh_forge['url'] %>" class="corner-banner banner-fork" target="_blank" rel="noopener">Follow&nbsp;<span class="fork-me-text">Me</span><span class="fork-me-emoji" aria-hidden="true">🔮</span></a>
       <% else %>
       <% if gh_forge %>
@@ -272,6 +292,10 @@ body_class: projects
             <% if project['first_commit'] && year %>
             &nbsp;|&nbsp;
             <a href="<%= project['first_commit'] %>" class="role-start" target="_blank" rel="noopener">since <%= year %></a>
+            <% end %>
+            <% if project['archived'] %>
+            &nbsp;|&nbsp;
+            <span>Archived</span>
             <% end %>
           </span>
       </div>
@@ -298,6 +322,9 @@ body_class: projects
       <% end %>
     </h2>
     <p>
+      <% if project['archived'] %>
+      <% # No reason to show funding links for archived projects %>
+      <% else %>
       <% if !project["funding_sites"].nil? %>
       <% project["funding_sites"].each do |funding_site| %>
       <a href="<%= funding_site['url'] %>" class="funding-link" target="_blank" rel="noopener">
@@ -316,6 +343,7 @@ body_class: projects
                 class="link-icon funding-site"
         >
       </a>
+      <% end %>
       <% end %>
       <% if !project["docs_site"].nil? %>
       <a href="<%= project['doc_site'] %>" class="doc-link" target="_blank" rel="noopener">
@@ -352,8 +380,10 @@ body_class: projects
       <% raise "Project #{project['name']} has no tags!" %>
       <% end %>
     </p>
+    <% if project['archived'] %>
+    <% # No reason to show GitHub stats for archived projects %>
+    <% elsif project["type"] != "person" && gh_forge %>
     <p>
-      <% if project["type"] != "person" && gh_forge %>
       <img alt="<%= project['name'] %> GitHub License" src="https://img.shields.io/github/license/<%= gh_forge['owner'] %>/<%= project['name'] %>?style=social">
       <img alt="<%= project['name'] %> GitHub stars" src="https://img.shields.io/github/stars/<%= gh_forge['owner'] %>/<%= project['name'] %>?style=social">
       <img alt="<%= project['name'] %> GitHub commit activity" src="https://img.shields.io/github/commit-activity/m/<%= gh_forge['owner'] %>/<%= project['name'] %>?style=social">
@@ -361,11 +391,16 @@ body_class: projects
       <img alt="<%= project['name'] %> GitHub commits since latest release" src="https://img.shields.io/github/commits-since/<%= gh_forge['owner'] %>/<%= project['name'] %>/latest?style=social">
       <img alt="<%= project['name'] %> Gem Total Downloads" src="https://img.shields.io/gem/dt/<%= project['name'] %>?style=social">
       <% end %>
-      <% end %>
     </p>
+    <% end %>
     <p><%== project["description"] %></p>
     <% raise "#{project['name']}" if project["funding_sites"].nil? %>
-    <% if project["funding_sites"].any? %>
+    <% if project['archived'] %>
+    <% # No reason to show funding links for archived projects %>
+    <p>
+      This project is archived and no longer maintained.
+    </p>
+    <% elsif project["funding_sites"].any? %>
     <% funding_sites = project["funding_sites"].dup %>
     <% funding_sites << {"type" => "GitHub Sponsors", "url" => "https://github.com/sponsors/pboling"} unless funding_sites.any? { |fs| fs["type"] == "GitHub Sponsors" } %>
     <p>

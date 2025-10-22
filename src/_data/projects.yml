@@ -399,7 +399,8 @@
   - type: GitHub
     url: https://github.com/galtzo-floss/awesome_search
     owner: galtzo-floss
-  tags: []
+  tags:
+    - search
   adoptable: true
   docs_site:
   github_stars: 8
@@ -2364,6 +2365,10 @@
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby code
   language: Ruby
   ecosystem: rubygems
+  theme: family
+  family_id: rubocop-lts
+  family_name: "RuboCop-LTS"
+  family_position: 1
   minimum_version: 3.2
   role: author
   first_commit_on: 2022/05/06
@@ -2397,6 +2402,10 @@
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 1.8 code
   language: Ruby
   ecosystem: rubygems
+  theme: family
+  family_id: rubocop-lts
+  family_name: "RuboCop-LTS"
+  family_position: 2
   minimum_version: 3.2
   role: author
   first_commit_on: 2023/05/14
@@ -2428,6 +2437,10 @@
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 1.9 code
   language: Ruby
   ecosystem: rubygems
+  theme: family
+  family_id: rubocop-lts
+  family_name: "RuboCop-LTS"
+  family_position: 3
   minimum_version: 3.2
   role: author
   first_commit_on: 2022/05/01
@@ -2459,6 +2472,10 @@
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 2.0 code
   language: Ruby
   ecosystem: rubygems
+  theme: family
+  family_id: rubocop-lts
+  family_name: "RuboCop-LTS"
+  family_position: 4
   minimum_version: 3.2
   role: author
   first_commit_on: 2022/05/01
@@ -2490,6 +2507,10 @@
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 2.1 code
   language: Ruby
   ecosystem: rubygems
+  theme: family
+  family_id: rubocop-lts
+  family_name: "RuboCop-LTS"
+  family_position: 5
   minimum_version: 3.2
   role: author
   first_commit_on: 2022/05/01
@@ -2521,6 +2542,10 @@
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 2.2 code
   language: Ruby
   ecosystem: rubygems
+  theme: family
+  family_id: rubocop-lts
+  family_name: "RuboCop-LTS"
+  family_position: 6
   minimum_version: 3.2
   role: author
   first_commit_on: 2022/04/30
@@ -2552,6 +2577,10 @@
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 2.3 code
   language: Ruby
   ecosystem: rubygems
+  theme: family
+  family_id: rubocop-lts
+  family_name: "RuboCop-LTS"
+  family_position: 7
   minimum_version: 3.2
   role: author
   first_commit_on: 2022/04/30
@@ -2583,6 +2612,10 @@
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 2.4 code
   language: Ruby
   ecosystem: rubygems
+  theme: family
+  family_id: rubocop-lts
+  family_name: "RuboCop-LTS"
+  family_position: 8
   minimum_version: 3.2
   role: author
   first_commit_on: 2022/04/30
@@ -2614,6 +2647,10 @@
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 2.5 code
   language: Ruby
   ecosystem: rubygems
+  theme: family
+  family_id: rubocop-lts
+  family_name: "RuboCop-LTS"
+  family_position: 9
   minimum_version: 3.2
   role: author
   first_commit_on: 2022/04/30
@@ -2645,6 +2682,10 @@
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 2.6 code
   language: Ruby
   ecosystem: rubygems
+  theme: family
+  family_id: rubocop-lts
+  family_name: "RuboCop-LTS"
+  family_position: 10
   minimum_version: 3.2
   role: author
   first_commit_on: 2022/04/30
@@ -2676,6 +2717,10 @@
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 2.7 code
   language: Ruby
   ecosystem: rubygems
+  theme: family
+  family_id: rubocop-lts
+  family_name: "RuboCop-LTS"
+  family_position: 11
   minimum_version: 3.2
   role: author
   first_commit_on: 2022/04/30
@@ -2707,6 +2752,10 @@
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 3.0 code
   language: Ruby
   ecosystem: rubygems
+  theme: family
+  family_id: rubocop-lts
+  family_name: "RuboCop-LTS"
+  family_position: 12
   minimum_version: 3.2
   role: author
   first_commit_on: 2022/04/30
@@ -2741,6 +2790,10 @@
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 3.1 code
   language: Ruby
   ecosystem: rubygems
+  theme: family
+  family_id: rubocop-lts
+  family_name: "RuboCop-LTS"
+  family_position: 13
   minimum_version: 3.2
   role: author
   first_commit_on: 2022/04/10
@@ -2772,6 +2825,10 @@
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 3.2 code
   language: Ruby
   ecosystem: rubygems
+  theme: family
+  family_id: rubocop-lts
+  family_name: "RuboCop-LTS"
+  family_position: 14
   minimum_version: 3.2
   role: author
   first_commit_on: 2023/05/09
@@ -3243,6 +3300,10 @@
     Part of the rubocop-lts family.
   language: Ruby
   ecosystem: rubygems
+  theme: family
+  family_id: rubocop-lts
+  family_name: "RuboCop-LTS"
+  family_position: 15
   minimum_version: 3.2
   role: author
   first_commit_on: 2023/05/15

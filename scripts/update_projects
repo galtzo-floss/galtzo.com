@@ -195,6 +195,9 @@ class ProjectUpdater
   end
 
   def update_project(project)
+    # Validate theme configuration first
+    validate_project_theme(project)
+
     forges = project['forges'] || []
     github_forge = forges.find { |f| f['type'] == 'GitHub' }
     gitlab_forge = forges.find { |f| f['type'] == 'GitLab' }
@@ -528,6 +531,130 @@ class ProjectUpdater
   def save_yaml(file_path, data)
     File.write(file_path, YAML.dump(data))
     puts "\n💾 Saved: #{file_path}"
+  end
+
+  # ============================================================================
+  # THEME VALIDATION METHODS
+  # ============================================================================
+
+  # Validate theme field and theme-specific configuration
+  def validate_project_theme(project)
+    theme = project['theme']
+
+    # Theme is optional
+    return true if theme.nil?
+
+    valid_themes = %w[adopt-me update-me avoid-me family holiday]
+
+    unless valid_themes.include?(theme)
+      raise "Invalid theme '#{theme}' for project '#{project['name']}'. Valid themes: #{valid_themes.join(', ')}"
+    end
+
+    # Validate theme-specific fields
+    case theme
+    when 'family'
+      validate_family_theme(project)
+    when 'holiday'
+      validate_holiday_theme(project)
+    when 'adopt-me'
+      validate_adopt_me_theme(project)
+    when 'update-me'
+      validate_update_me_theme(project)
+    when 'avoid-me'
+      validate_avoid_me_theme(project)
+    end
+
+    true
+  end
+
+  def validate_family_theme(project)
+    required_fields = %w[family_id family_name family_position]
+    missing_fields = required_fields.select { |field| project[field].nil? }
+
+    if missing_fields.any?
+      raise "Family theme requires fields: #{missing_fields.join(', ')} for project '#{project['name']}'"
+    end
+
+    unless project['family_position'].is_a?(Integer) && project['family_position'] > 0
+      raise "family_position must be a positive integer for project '#{project['name']}'"
+    end
+
+    true
+  end
+
+  def validate_holiday_theme(project)
+    valid_types = %w[christmas halloween newyear birthday celebration]
+    holiday_type = project['holiday_type']
+
+    if holiday_type.nil?
+      raise "Holiday theme requires 'holiday_type' field for project '#{project['name']}'"
+    end
+
+    unless valid_types.include?(holiday_type)
+      raise "Invalid holiday_type '#{holiday_type}' for project '#{project['name']}'. Valid types: #{valid_types.join(', ')}"
+    end
+
+    # Validate date format if provided
+    if project['holiday_date_start']
+      begin
+        Date.parse(project['holiday_date_start'])
+      rescue
+        raise "Invalid holiday_date_start format for project '#{project['name']}'. Use YYYY-MM-DD"
+      end
+    end
+
+    if project['holiday_date_end']
+      begin
+        Date.parse(project['holiday_date_end'])
+      rescue
+        raise "Invalid holiday_date_end format for project '#{project['name']}'. Use YYYY-MM-DD"
+      end
+    end
+
+    true
+  end
+
+  def validate_adopt_me_theme(project)
+    # adoption_url is optional, no required fields
+    if project['adoption_url'] && !project['adoption_url'].start_with?('http')
+      raise "adoption_url must be a valid URL for project '#{project['name']}'"
+    end
+    true
+  end
+
+  def validate_update_me_theme(project)
+    # stale_since validation
+    if project['stale_since']
+      begin
+        Date.parse(project['stale_since'])
+      rescue
+        raise "Invalid stale_since format for project '#{project['name']}'. Use YYYY-MM-DD"
+      end
+    end
+
+    # update_priority validation
+    if project['update_priority']
+      valid_priorities = %w[low medium high]
+      unless valid_priorities.include?(project['update_priority'])
+        raise "Invalid update_priority '#{project['update_priority']}' for project '#{project['name']}'. Valid: #{valid_priorities.join(', ')}"
+      end
+    end
+
+    true
+  end
+
+  def validate_avoid_me_theme(project)
+    # archived should be boolean if present
+    if project['archived'] && ![true, false].include?(project['archived'])
+      raise "archived must be true or false for project '#{project['name']}'"
+    end
+
+    # replacement_url validation
+    if project['replacement_url'] && !project['replacement_url'].start_with?('http')
+      raise "replacement_url must be a valid URL for project '#{project['name']}'"
+    end
+
+    true
   end
 end
 

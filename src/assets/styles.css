@@ -260,6 +260,40 @@
     --z-fork-banner: 11;
     --z-role-banner: 10;
     --z-filter-panel: 60;
+
+    /* =========================================================================
+       THEME SYSTEM - Project Card Themes
+       ========================================================================= */
+
+    /* Adopt Me theme */
+    --adopt-gradient-start: #8b5cf6;
+    --adopt-gradient-end: #a78bfa;
+    --adopt-hover: #6d28d9;
+
+    /* Update Me theme - darkened for better contrast with white text */
+    --update-gradient-start: #d97706;
+    --update-gradient-end: #f59e0b;
+    --update-hover: #b45309;
+
+    /* Avoid Me theme */
+    --avoid-stripe-yellow: #fbbf24;
+    --avoid-stripe-black: #000000;
+    --avoid-hover: #dc2626;
+    --avoid-stripe-width: 20px;
+    --avoid-card-opacity: 0.6;
+    --avoid-tape-opacity: 0.25;
+    --avoid-tape-width: 60px;
+
+    /* Family stack */
+    --family-stack-overlap: 5%;
+    --family-stack-gap: 0.5rem;
+    --family-transition: 300ms ease;
+    --family-z-base: 20;
+
+    /* Holiday decorations */
+    --holiday-garland-height: 8px;
+    --holiday-popout-size: 2rem;
+    --holiday-animation-duration: 5s;
 }
 
 /* System default: dark mode variables */
@@ -688,6 +722,170 @@ button,
 .card:is(.author, .maintainer, .contributor) .banner-role::before {
     background: var(--current-role-solid);
     opacity: 0.12;
+}
+
+/* =========================================================================
+   THEME: ADOPT ME
+   Banner replacement theme for projects available for adoption
+   ========================================================================= */
+
+.card .banner-adopt {
+    /* Use same positioning as fork banner */
+    top: calc(var(--ribbon-top) + var(--ribbon-top-offset));
+    right: calc(var(--ribbon-right) + var(--ribbon-right-offset));
+    padding-left: var(--corner-gap);
+    padding-right: var(--corner-gap);
+
+    /* Purple gradient background */
+    background: linear-gradient(135deg, var(--adopt-gradient-start) 0%, var(--adopt-gradient-end) 100%);
+    z-index: var(--z-fork-banner);
+    color: var(--white);
+    transition: background var(--transition-medium), color var(--transition-medium);
+}
+
+/* Default: show "Me" text, hide emoji */
+.card .banner-adopt .adopt-emoji {
+    display: none;
+    margin-left: 0.25rem;
+}
+
+.card .banner-adopt .adopt-text {
+    display: inline;
+}
+
+/* Hover & focus: darker purple background with white text, swap to emoji */
+.card .banner-adopt:hover,
+.card .banner-adopt:focus,
+.card .banner-adopt:focus-visible {
+    background: var(--adopt-hover) !important;
+    color: var(--white) !important;
+    text-decoration: none;
+}
+
+.card .banner-adopt:hover .adopt-text,
+.card .banner-adopt:focus .adopt-text,
+.card .banner-adopt:focus-visible .adopt-text {
+    display: none;
+}
+
+.card .banner-adopt:hover .adopt-emoji,
+.card .banner-adopt:focus .adopt-emoji,
+.card .banner-adopt:focus-visible .adopt-emoji {
+    display: inline;
+}
+
+/* =========================================================================
+   THEME: UPDATE ME
+   Banner replacement theme for stale projects that need updates
+   ========================================================================= */
+
+.card .banner-update {
+    /* Use same positioning as fork banner */
+    top: calc(var(--ribbon-top) + var(--ribbon-top-offset));
+    right: calc(var(--ribbon-right) + var(--ribbon-right-offset));
+    padding-left: var(--corner-gap);
+    padding-right: var(--corner-gap);
+
+    /* Amber/orange gradient background */
+    background: linear-gradient(135deg, var(--update-gradient-start) 0%, var(--update-gradient-end) 100%);
+    z-index: var(--z-fork-banner);
+    color: var(--white);
+    transition: background var(--transition-medium), color var(--transition-medium);
+
+    /* Subtle pulse animation to draw attention */
+    animation: subtle-pulse 2s ease-in-out infinite;
+}
+
+/* Pulse animation - subtle opacity shift */
+@keyframes subtle-pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.85;
+    }
+}
+
+/* Default: show "Me" text, hide emoji */
+.card .banner-update .update-emoji {
+    display: none;
+    margin-left: 0.25rem;
+}
+
+.card .banner-update .update-text {
+    display: inline;
+}
+
+/* Hover & focus: darker amber background with white text, swap to emoji, stop animation */
+.card .banner-update:hover,
+.card .banner-update:focus,
+.card .banner-update:focus-visible {
+    background: var(--update-hover) !important;
+    color: var(--white) !important;
+    text-decoration: none;
+    animation: none; /* Stop pulse on interaction */
+}
+
+.card .banner-update:hover .update-text,
+.card .banner-update:focus .update-text,
+.card .banner-update:focus-visible .update-text {
+    display: none;
+}
+
+.card .banner-update:hover .update-emoji,
+.card .banner-update:focus .update-emoji,
+.card .banner-update:focus-visible .update-emoji {
+    display: inline;
+}
+
+/* Respect reduced motion preference - disable pulse animation */
+@media (prefers-reduced-motion: reduce) {
+    .card .banner-update {
+        animation: none;
+    }
+}
+
+/* =========================================================================
+   THEME: AVOID ME
+   Static caution tape X overlay for archived/deprecated projects
+   ========================================================================= */
+
+/* Reduce opacity of avoided/archived cards to indicate deprecated status */
+.card.theme-avoid-me {
+    opacity: var(--avoid-card-opacity);
+    position: relative;
+}
+
+/* Caution tape X overlay - diagonal stripes from corners */
+.card.theme-avoid-me::before,
+.card.theme-avoid-me::after {
+    content: '';
+    position: absolute;
+    width: var(--avoid-tape-width);
+    height: 141.4%; /* sqrt(2) * 100% to cover diagonal */
+    top: 50%;
+    left: 50%;
+    opacity: var(--avoid-tape-opacity);
+    pointer-events: none;
+
+    /* Caution tape pattern - diagonal yellow/black stripes perpendicular to tape direction */
+    background: repeating-linear-gradient(
+        -45deg,
+        var(--avoid-stripe-yellow),
+        var(--avoid-stripe-yellow) var(--avoid-stripe-width),
+        var(--avoid-stripe-black) var(--avoid-stripe-width),
+        var(--avoid-stripe-black) calc(var(--avoid-stripe-width) * 2)
+    );
+}
+
+/* Top-left to bottom-right diagonal */
+.card.theme-avoid-me::before {
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+/* Top-right to bottom-left diagonal */
+.card.theme-avoid-me::after {
+    transform: translate(-50%, -50%) rotate(-45deg);
 }
 
 /* Hide cartain tags inside project cards but keep them in the DOM for filtering.

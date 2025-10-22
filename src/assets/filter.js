@@ -257,4 +257,65 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   })();
 
+  // ============================================================================
+  // THEME SYSTEM - Helper Utilities
+  // ============================================================================
+
+  /**
+   * Extract project data from a card element's data attributes
+   * @param {HTMLElement} card - The card element
+   * @returns {Object} Project data object
+   */
+  window.getProjectDataForCard = function(card) {
+    return {
+      theme: card.dataset.theme || null,
+      familyId: card.dataset.familyId || null,
+      familyPosition: parseInt(card.dataset.familyPosition) || null,
+      tags: (() => {
+        try {
+          return JSON.parse(card.dataset.tags || '[]');
+        } catch (e) {
+          return [];
+        }
+      })()
+    };
+  };
+
+  /**
+   * Apply theme-specific classes to a card
+   * @param {HTMLElement} card - The card element
+   * @param {string} theme - Theme name
+   */
+  window.applyThemeClasses = function(card, theme) {
+    // Remove any existing theme classes
+    const themeClasses = ['theme-adopt-me', 'theme-update-me', 'theme-avoid-me', 'theme-family', 'theme-holiday'];
+    themeClasses.forEach(cls => card.classList.remove(cls));
+
+    // Add new theme class if specified
+    if (theme) {
+      card.classList.add('theme-' + theme);
+    }
+  };
+
+  /**
+   * Initialize theme-specific features
+   */
+  function initThemes() {
+    const themedCards = document.querySelectorAll('.card[data-theme]');
+
+    themedCards.forEach(card => {
+      const projectData = window.getProjectDataForCard(card);
+
+      // Theme-specific initialization can be added here
+      // For now, this is a placeholder for future theme features
+
+      if (projectData.theme) {
+        console.log('Initialized theme:', projectData.theme, 'for card');
+      }
+    });
+  }
+
+  // Initialize themes on page load
+  initThemes();
+
 });

@@ -1,6 +1,46 @@
 ---
-- name: "\U0001F339 Peter Boling, team leader, web architect, security researcher,
-    and rubyist. Building for web since 2004.  \U0001F339"
+# ============================================================================
+# PROJECT CARD THEMES SCHEMA
+# ============================================================================
+# Optional theme field enables special visual treatments for project cards.
+# Valid values: adopt-me | update-me | avoid-me | family | holiday
+#
+# ADOPT-ME THEME:
+#   theme: adopt-me
+#   adoption_url: "https://..." # Optional: custom adoption page (defaults to issues)
+#
+# UPDATE-ME THEME:
+#   theme: update-me
+#   stale_since: "YYYY-MM-DD" # Optional: date of last significant update
+#   update_priority: low | medium | high # Optional: priority level
+#
+# AVOID-ME THEME:
+#   theme: avoid-me
+#   archived: true # Optional: boolean flag
+#   deprecation_reason: "Superseded by ProjectX" # Optional: explanation
+#   replacement_url: "https://..." # Optional: link to replacement project
+#
+# FAMILY THEME (grouped/stacked cards):
+#   theme: family
+#   family_id: "unique-family-identifier" # Required: groups related projects
+#   family_name: "Display Name" # Required: human-readable family name
+#   family_position: 1 # Required: order in stack (1 = primary/leftmost)
+#   family_primary: true # Optional: mark as primary card (only one per family)
+#
+# HOLIDAY THEME (seasonal decorations):
+#   theme: holiday
+#   holiday_type: christmas | halloween | newyear | birthday | celebration # Required
+#   holiday_colors: ["#hex", "#hex"] # Optional: custom colors
+#   holiday_date_start: "YYYY-MM-DD" # Optional: auto-enable start date
+#   holiday_date_end: "YYYY-MM-DD" # Optional: auto-enable end date
+#   holiday_decorations: # Optional: custom decoration config
+#     garland: true
+#     popouts: ["🎄", "⛄", "🎁"]
+#     animation: snowfall | confetti | sparkle
+# ============================================================================
+
+- name: "Peter Boling, team leader, web architect, security researcher,
+    and rubyist. Building for web since 2004. 🧰"
   description: |
     <span class="intro">
     Hi! I love to solve problems with code.
@@ -96,38 +136,6 @@
   last_commit_on: 2025/08/20
   status: active
   last_scrape_at: '2025-10-21T22:09:52Z'
-- name: activerecord-tablefree
-  description: ActiveRecord Tablefree Models provides a simple mixin for creating
-    models that are not bound to the database. Take advantage of ActiveRecord features
-    like validation, relationships, and nested_attributes.
-  language: Ruby
-  ecosystem: rubygems
-  minimum_version: 2.2
-  role: author
-  first_commit_on: 2017/11/08
-  first_commit: https://github.com/galtzo-floss/activerecord-tablefree/commit/167367318b42c77c8f7732243afdf90ba82a0387
-  funding_sites:
-  - type: OpenCollective
-    url: https://opencollective.com/galtzo-floss
-  - type: Liberapay
-    url: https://liberapay.com/pboling
-  forges:
-  - type: GitHub
-    url: https://github.com/galtzo-floss/activerecord-tablefree
-    owner: galtzo-floss
-  tags:
-  - rails
-  - activerecord
-  - validate
-  docs_site:
-  github_stars: 2
-  total_downloads: 107609
-  daily_downloads: 0
-  release_downloads: 83422
-  release_date: 2018/09/23
-  last_commit_on: 2025/08/06
-  status: active
-  last_scrape_at: '2025-10-21T22:09:55Z'
 - name: activerecord-transactionable
   description: Getting transactions right is hard, and this gem makes it easier.
   language: Ruby
@@ -308,7 +316,7 @@
     url: https://github.com/galtzo-floss/awesome_search
     owner: galtzo-floss
   tags:
-  - stale
+  - search
   docs_site:
   github_stars: 8
   total_downloads: 11069
@@ -366,3 +374,237 @@
   last_commit_on: 2021/12/07
   status: stale
   last_scrape_at: '2025-10-21T22:10:25Z'
+
+# ============================================================================
+# THEME TEST PROJECTS - For testing the five theme variants
+# ============================================================================
+
+# ADOPT-ME THEME TEST
+- name: test-adopt-me-gem
+  description: This project is available for adoption. Looking for a new maintainer who can take it forward!
+  language: Ruby
+  ecosystem: rubygems
+  minimum_version: 2.7
+  role: author
+  first_commit_on: 2020/01/15
+  first_commit: https://github.com/galtzo-floss/test-adopt-me-gem/commit/abc123
+  theme: adopt-me
+  adoption_url: https://github.com/galtzo-floss/test-adopt-me-gem/issues?q=label%3Agood-first-issue
+  funding_sites:
+  - type: Liberapay
+    url: https://liberapay.com/pboling
+  forges:
+  - type: GitHub
+    url: https://github.com/galtzo-floss/test-adopt-me-gem
+    owner: galtzo-floss
+  tags:
+  - rails
+  - testing
+  docs_site:
+  github_stars: 25
+  total_downloads: 5000
+  daily_downloads: 10
+  release_downloads: 2000
+  release_date: 2022/06/01
+  last_commit_on: 2023/03/15
+  status: available-for-adoption
+
+# UPDATE-ME THEME TEST
+- name: test-update-me-lib
+  description: This library needs updates - dependencies are stale and security patches are needed.
+  language: Ruby
+  ecosystem: rubygems
+  minimum_version: 2.5
+  role: maintainer
+  first_commit_on: 2019/05/20
+  first_commit: https://github.com/galtzo-floss/test-update-me-lib/commit/def456
+  theme: update-me
+  stale_since: "2023-06-15"
+  update_priority: high
+  funding_sites:
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  forges:
+  - type: GitHub
+    url: https://github.com/galtzo-floss/test-update-me-lib
+    owner: galtzo-floss
+  tags:
+  - activerecord
+  - database
+  docs_site:
+  github_stars: 42
+  total_downloads: 15000
+  daily_downloads: 5
+  release_downloads: 8000
+  release_date: 2023/06/15
+  last_commit_on: 2023/06/15
+  status: stale
+
+# AVOID-ME THEME TEST
+- name: test-avoid-me-deprecated
+  description: This project is deprecated and archived. Please use the new replacement project instead.
+  language: Ruby
+  ecosystem: rubygems
+  minimum_version: 2.3
+  role: author
+  first_commit_on: 2015/03/10
+  first_commit: https://github.com/galtzo-floss/test-avoid-me-deprecated/commit/ghi789
+  theme: avoid-me
+  archived: true
+  deprecation_reason: "Superseded by modern-alternative-gem with better performance"
+  replacement_url: https://github.com/galtzo-floss/modern-alternative-gem
+  funding_sites:
+  - type: Liberapay
+    url: https://liberapay.com/pboling
+  forges:
+  - type: GitHub
+    url: https://github.com/galtzo-floss/test-avoid-me-deprecated
+    owner: galtzo-floss
+  tags:
+  - legacy
+  - deprecated
+  docs_site:
+  github_stars: 150
+  total_downloads: 100000
+  daily_downloads: 0
+  release_downloads: 50000
+  release_date: 2018/12/31
+  last_commit_on: 2019/01/05
+  status: archived
+
+# FAMILY THEME TEST - Project 1 (Primary)
+- name: test-family-auth-core
+  description: Core authentication library for Rails - part of the authentication family
+  language: Ruby
+  ecosystem: rubygems
+  minimum_version: 2.7
+  role: author
+  first_commit_on: 2021/08/01
+  first_commit: https://github.com/galtzo-floss/test-family-auth-core/commit/jkl012
+  theme: family
+  family_id: rails-auth-suite
+  family_name: "Rails Authentication Suite"
+  family_position: 1
+  family_primary: true
+  funding_sites:
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  forges:
+  - type: GitHub
+    url: https://github.com/galtzo-floss/test-family-auth-core
+    owner: galtzo-floss
+  tags:
+  - rails
+  - authentication
+  - security
+  docs_site:
+  github_stars: 200
+  total_downloads: 50000
+  daily_downloads: 50
+  release_downloads: 25000
+  release_date: 2024/09/15
+  last_commit_on: 2025/10/10
+  status: active
+
+# FAMILY THEME TEST - Project 2
+- name: test-family-auth-oauth
+  description: OAuth integration for the Rails authentication suite
+  language: Ruby
+  ecosystem: rubygems
+  minimum_version: 2.7
+  role: author
+  first_commit_on: 2021/09/15
+  first_commit: https://github.com/galtzo-floss/test-family-auth-oauth/commit/mno345
+  theme: family
+  family_id: rails-auth-suite
+  family_name: "Rails Authentication Suite"
+  family_position: 2
+  funding_sites:
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  forges:
+  - type: GitHub
+    url: https://github.com/galtzo-floss/test-family-auth-oauth
+    owner: galtzo-floss
+  tags:
+  - rails
+  - oauth
+  - authentication
+  docs_site:
+  github_stars: 85
+  total_downloads: 20000
+  daily_downloads: 20
+  release_downloads: 10000
+  release_date: 2024/08/20
+  last_commit_on: 2025/09/25
+  status: active
+
+# FAMILY THEME TEST - Project 3
+- name: test-family-auth-2fa
+  description: Two-factor authentication for the Rails authentication suite
+  language: Ruby
+  ecosystem: rubygems
+  minimum_version: 2.7
+  role: author
+  first_commit_on: 2022/01/10
+  first_commit: https://github.com/galtzo-floss/test-family-auth-2fa/commit/pqr678
+  theme: family
+  family_id: rails-auth-suite
+  family_name: "Rails Authentication Suite"
+  family_position: 3
+  funding_sites:
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  forges:
+  - type: GitHub
+    url: https://github.com/galtzo-floss/test-family-auth-2fa
+    owner: galtzo-floss
+  tags:
+  - rails
+  - 2fa
+  - security
+  docs_site:
+  github_stars: 65
+  total_downloads: 15000
+  daily_downloads: 15
+  release_downloads: 7500
+  release_date: 2024/07/10
+  last_commit_on: 2025/08/30
+  status: active
+
+# HOLIDAY THEME TEST - Christmas
+- name: test-holiday-christmas
+  description: A festive project celebrating the winter season!
+  language: Ruby
+  ecosystem: rubygems
+  minimum_version: 2.7
+  role: author
+  first_commit_on: 2020/12/01
+  first_commit: https://github.com/galtzo-floss/test-holiday-christmas/commit/stu901
+  theme: holiday
+  holiday_type: christmas
+  holiday_date_start: "2025-12-01"
+  holiday_date_end: "2025-12-31"
+  holiday_decorations:
+    garland: true
+    popouts: ["🎄", "⛄", "🎁"]
+    animation: snowfall
+  funding_sites:
+  - type: Liberapay
+    url: https://liberapay.com/pboling
+  forges:
+  - type: GitHub
+    url: https://github.com/galtzo-floss/test-holiday-christmas
+    owner: galtzo-floss
+  tags:
+  - fun
+  - seasonal
+  docs_site:
+  github_stars: 10
+  total_downloads: 1000
+  daily_downloads: 5
+  release_downloads: 500
+  release_date: 2024/12/01
+  last_commit_on: 2025/01/10
+  status: active
+
