@@ -504,7 +504,7 @@ body_class: projects
     <% if project['archived'] %>
     <% # No reason to show funding links for archived projects %>
     <p>
-      This project is archived and no longer maintained.
+      This project is in the to-be-archived queue. It is no longer maintained, so speak up if you use it!
     </p>
     <% elsif project["funding_sites"].any? %>
     <% funding_sites = project["funding_sites"].dup %>
@@ -757,7 +757,7 @@ body_class: projects
     <% if project['archived'] %>
     <% # No reason to show funding links for archived projects %>
     <p>
-      This project is archived and no longer maintained.
+      This project is in the to-be-archived queue. It is no longer maintained, so speak up if you use it!
     </p>
     <% elsif project["funding_sites"].any? %>
     <% funding_sites = project["funding_sites"].dup %>

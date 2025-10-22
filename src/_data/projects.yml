@@ -2312,7 +2312,7 @@
   - resque
   - queue
   - uniq
-  adoptable: true
+  adoptable: false
   docs_site:
   github_stars: 6
   total_downloads: 299806
@@ -3733,6 +3733,10 @@
     typos.  Compatible with all Ruby state machine libraries.
   language: Ruby
   ecosystem: rubygems
+  theme: family
+  family_id: adoptable-family
+  family_name: Looking for Maintainers!
+  family_position: 10
   minimum_version: 1.8
   role: author
   first_commit_on: 2015/11/08
