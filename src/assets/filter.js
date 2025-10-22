@@ -266,18 +266,23 @@ document.addEventListener('DOMContentLoaded', function() {
 
       // Calculate total stack height and positions
       let currentTop = 0;
-      let totalHeight = cardHeights[0] || 0; // Start with first card's full height
 
       // Calculate offsets for each card
       let cardOffsets = [0]; // First card at top (0)
+      let previousCardBottom = cardHeights[0]; // Bottom of first card
+
       for (let i = 1; i < cardHeights.length; i++) {
-        // Each card shows a portion of itself: use overlap percentage but ensure at least 60px is visible
-        const visiblePortion = cardHeights[i - 1] * overlap; // 0.25 = 25% visible
-        const nextOffset = Math.max(visiblePortion, mobileTouchSpacing);
-        currentTop += nextOffset;
-        cardOffsets.push(currentTop);
-        totalHeight = currentTop + cardHeights[i];
+        // Position next card so its bottom is exactly mobileTouchSpacing (60px) below the previous card's bottom
+        // Next card bottom = previous card bottom + 60px
+        // Next card top = next card bottom - next card height
+        const nextCardBottom = previousCardBottom + mobileTouchSpacing;
+        const nextCardTop = nextCardBottom - cardHeights[i];
+        cardOffsets.push(nextCardTop);
+        previousCardBottom = nextCardBottom;
       }
+
+      // Calculate total height: last card's bottom position
+      const totalHeight = previousCardBottom;
 
       // Set stack dimensions
       stack.style.height = totalHeight + 'px';
@@ -627,18 +632,23 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Calculate total stack height and positions
         let currentTop = 0;
-        let totalHeight = cardHeights[0] || 0; // Start with first card's full height
 
         // Calculate offsets for each card
         let cardOffsets = [0]; // First card at top (0)
+        let previousCardBottom = cardHeights[0]; // Bottom of first card
+
         for (let i = 1; i < cardHeights.length; i++) {
-          // Each card shows a portion of itself: use overlap percentage but ensure at least 60px is visible
-          const visiblePortion = cardHeights[i - 1] * overlap; // 0.25 = 25% visible
-          const nextOffset = Math.max(visiblePortion, mobileTouchSpacing);
-          currentTop += nextOffset;
-          cardOffsets.push(currentTop);
-          totalHeight = currentTop + cardHeights[i];
+          // Position next card so its bottom is exactly mobileTouchSpacing (60px) below the previous card's bottom
+          // Next card bottom = previous card bottom + 60px
+          // Next card top = next card bottom - next card height
+          const nextCardBottom = previousCardBottom + mobileTouchSpacing;
+          const nextCardTop = nextCardBottom - cardHeights[i];
+          cardOffsets.push(nextCardTop);
+          previousCardBottom = nextCardBottom;
         }
+
+        // Calculate total height: last card's bottom position
+        const totalHeight = previousCardBottom;
 
         // Set stack dimensions
         stack.style.height = `${totalHeight}px`;
@@ -675,6 +685,8 @@ document.addEventListener('DOMContentLoaded', function() {
           // Apply darkening effect to cards behind the front card
           if (index === 0) {
             card.style.filter = 'none';
+            // Mark first card as active
+            card.classList.add('active-card');
           } else {
             const baseBrightness = 0.8;
             const minBrightness = 0.6;
@@ -687,6 +699,27 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             card.style.filter = `brightness(${brightness})`;
           }
+
+          // Add hover overlay and "Click to View" message to each card
+          if (!card.querySelector('.card-hover-overlay')) {
+            const overlay = document.createElement('div');
+            overlay.className = 'card-hover-overlay';
+            card.appendChild(overlay);
+          }
+
+          if (!card.querySelector('.card-click-message')) {
+            const message = document.createElement('div');
+            message.className = 'card-click-message';
+            message.textContent = 'Click to View';
+            card.appendChild(message);
+          }
+
+          // Set up click handler to bring card to front and make it active
+          card.addEventListener('click', (e) => {
+            // Prevent event bubbling
+            e.stopPropagation();
+            bringCardToFront(stack, index);
+          });
         });
       } else {
         // DESKTOP: Horizontal stacking with vertical offsets (existing behavior)
@@ -730,6 +763,8 @@ document.addEventListener('DOMContentLoaded', function() {
           // Cards behind: darken progressively without transparency
           if (index === 0) {
             card.style.filter = 'none';
+            // Mark first card as active
+            card.classList.add('active-card');
           } else {
             // Cards 1-3: 80% brightness
             // Cards 4+: gradually darken to 60%
@@ -745,25 +780,26 @@ document.addEventListener('DOMContentLoaded', function() {
             card.style.filter = `brightness(${brightness})`;
           }
 
-          // Set up hover interactions for each card
-          // Hover: lift card and push subsequent cards
-          card.addEventListener('mouseenter', () => {
-            handleFamilyCardHover(stack, index, cardWidth);
+          // Add hover overlay and "Click to View" message to each card
+          if (!card.querySelector('.card-hover-overlay')) {
+            const overlay = document.createElement('div');
+            overlay.className = 'card-hover-overlay';
+            card.appendChild(overlay);
+          }
+
+          if (!card.querySelector('.card-click-message')) {
+            const message = document.createElement('div');
+            message.className = 'card-click-message';
+            message.textContent = 'Click to View';
+            card.appendChild(message);
+          }
+
+          // Set up click handler to bring card to front and make it active
+          card.addEventListener('click', (e) => {
+            // Prevent event bubbling
+            e.stopPropagation();
+            bringCardToFront(stack, index);
           });
-
-          // Mouse leave: reset all cards in this stack
-          card.addEventListener('mouseleave', () => {
-            resetFamilyStack(stack);
-          });
-
-          // Keyboard navigation: focus state triggers same visual as hover
-          card.addEventListener('focus', () => {
-            handleFamilyCardHover(stack, index, cardWidth);
-          }, true);
-
-          card.addEventListener('blur', () => {
-            resetFamilyStack(stack);
-          }, true);
         });
       }
     });
@@ -786,80 +822,43 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   /**
-   * Handle hover on a family card - bring to top and expand
-   * The hovered card rises to the top of the stack and lifts up
-   * All non-hovered cards are faded
+   * Bring a clicked card to the front of the stack and make it active
+   * Updates z-index and brightness without any movement
    * @param {HTMLElement} stack - The family stack container
-   * @param {number} hoveredIndex - Index of the hovered card
-   * @param {number} cardWidth - Width of each card in pixels
+   * @param {number} clickedIndex - Index of the clicked card
    */
-  function handleFamilyCardHover(stack, hoveredIndex, cardWidth) {
+  function bringCardToFront(stack, clickedIndex) {
     const cards = stack.querySelectorAll('.card-in-family');
     const familySize = cards.length;
+    const clickedCard = cards[clickedIndex];
 
-    // Adaptive expansion: smaller push for larger families
-    // Small families (2-5): 10% push
-    // Medium families (6-10): 7% push
-    // Large families (11+): 5% push
-    let expansionPercent = 0.10;
-    if (familySize >= 11) {
-      expansionPercent = 0.05;
-    } else if (familySize >= 6) {
-      expansionPercent = 0.07;
-    }
+    // Remove active class from all cards
+    cards.forEach(card => card.classList.remove('active-card'));
 
+    // Mark clicked card as active
+    clickedCard.classList.add('active-card');
+
+    // Reorder z-index: clicked card gets highest, others maintain relative order
     cards.forEach((card, index) => {
-      if (index === hoveredIndex) {
-        // Hovered card: bring to top (z-index 200), lift up, full brightness
-        card.style.zIndex = '200';
-        card.style.transform = 'translateY(-12px)';
-        card.style.filter = 'none';
-        // Add stronger shadow for lifted card
-        card.style.boxShadow = '0 12px 24px rgba(0, 0, 0, 0.3)';
+      if (index === clickedIndex) {
+        // Clicked card goes to the front
+        card.style.zIndex = 100;
+        card.style.filter = 'none'; // Full brightness
       } else {
-        // All other cards: darken to indicate they're not active (opaque, not transparent)
-        card.style.filter = 'brightness(0.7)';
+        // Other cards: assign z-index based on their position relative to clicked card
+        // Cards before clicked card get lower z-index than cards after
+        const relativePosition = index < clickedIndex ? index : index - 1;
+        card.style.zIndex = 99 - relativePosition;
 
-        if (index > hoveredIndex) {
-          // Cards after the hovered card: shift right to reveal space
-          const additionalOffset = cardWidth * expansionPercent;
-          card.style.transform = `translateX(${additionalOffset}px)`;
-        }
-      }
-      // Cards before the hovered card: no transform change (stay in their positions)
-    });
-  }
-
-  /**
-   * Reset all cards in a family stack to their default positions
-   * Restores original stacking order and opacity fade
-   * @param {HTMLElement} stack - The family stack container
-   */
-  function resetFamilyStack(stack) {
-    const cards = stack.querySelectorAll('.card-in-family');
-    const familySize = cards.length;
-
-    cards.forEach((card, index) => {
-      // Reset transform
-      card.style.transform = '';
-      // Reset z-index to original stacking order (highest = first card)
-      card.style.zIndex = (100 - index).toString();
-      // Reset box-shadow
-      card.style.boxShadow = '';
-
-      // Restore original brightness fade: front card full brightness, back cards darkened
-      if (index === 0) {
-        card.style.filter = 'none';
-      } else {
-        // Same brightness pattern as initialization
+        // Apply darkening to non-active cards
         const baseBrightness = 0.8;
         const minBrightness = 0.6;
         let brightness;
-        if (index <= 3) {
+        if (relativePosition <= 2) {
           brightness = baseBrightness;
         } else {
           const fadeStep = (baseBrightness - minBrightness) / Math.max(familySize - 3, 10);
-          brightness = Math.max(minBrightness, baseBrightness - ((index - 3) * fadeStep));
+          brightness = Math.max(minBrightness, baseBrightness - ((relativePosition - 2) * fadeStep));
         }
         card.style.filter = `brightness(${brightness})`;
       }

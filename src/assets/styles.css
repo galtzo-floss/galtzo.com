@@ -1026,18 +1026,76 @@ button,
 
 /* For families with 6+ cards, JavaScript will set opacity dynamically */
 
-/* Hover expansion - when hovering a card, expand cards after it */
+/* Hover state - no movement, handled by JavaScript overlay */
 .card-family-stack .card-in-family:hover {
-    z-index: 100;
-    transform: translateY(-8px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
 }
 
-/* Focus state for keyboard navigation */
+/* Focus state for keyboard navigation - no movement */
 .card-family-stack .card-in-family:focus-within {
-    z-index: 100;
-    transform: translateY(-8px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+/* Hover overlay - darkens the visible area of the card */
+.card-hover-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    pointer-events: none;
+    z-index: 10;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.card-family-stack .card-in-family:hover .card-hover-overlay {
+    opacity: 1;
+}
+
+/* Active card should not show hover overlay */
+.card-family-stack .card-in-family.active-card:hover .card-hover-overlay {
+    opacity: 0;
+}
+
+/* "Click to View" message - appears on hover */
+.card-click-message {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    z-index: 11;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+
+    /* Styling similar to family-badge */
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.95), rgba(168, 85, 247, 0.95));
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: white;
+    white-space: nowrap;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+/* Active card should not show "Click to View" message */
+.card-family-stack .card-in-family.active-card:hover .card-click-message {
+    opacity: 0;
+}
+
+
+.card-family-stack .card-in-family:hover .card-click-message {
+    opacity: 1;
+}
+
+/* Active card indicator - no visual change except possibly a subtle highlight */
+.card-family-stack .card-in-family.active-card {
+    /* The active card is the one currently on top of the stack */
 }
 
 /* Family badge - displayed on each card in the family */
@@ -1087,11 +1145,10 @@ button,
         /* to create vertical stack with horizontal offsets */
     }
 
-    /* Hover effects adjusted for mobile - subtle lift instead of translateY */
+    /* Hover effects adjusted for mobile - no movement */
     .card-family-stack .card-in-family:hover,
     .card-family-stack .card-in-family:focus-within {
-        transform: scale(1.02);
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        cursor: pointer;
     }
 }
 
