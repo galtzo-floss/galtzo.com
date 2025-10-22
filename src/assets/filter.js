@@ -345,25 +345,60 @@ document.addEventListener('DOMContentLoaded', function() {
       // Calculate and set the stack container width dynamically
       setFamilyStackWidth(stack, familySize, cardWidth, overlap);
 
-      // Position each card dynamically with decreasing z-index
-      cards.forEach((card, index) => {
-        // Position: each card offset by (cardWidth * overlap * index)
-        const leftPosition = cardWidth * overlap * index;
-        card.style.left = `${leftPosition}px`;
+      // Get the role banner height for vertical stagger calculation
+      // Role banner is typically around 28-32px, but we'll measure it
+      const firstCard = cards[0];
+      const roleBanner = firstCard ? firstCard.querySelector('.banner-role') : null;
+      const roleBannerHeight = roleBanner ? roleBanner.offsetHeight : 30; // fallback to 30px
 
-        // Ensure consistent top alignment for all cards
-        card.style.top = '0';
+      // Use 1.5x the role banner height for stagger to avoid visual alignment
+      // issues where card tops align perfectly with role banner bottoms
+      const staggerOffset = roleBannerHeight * 1.5;
+
+      // Calculate the maximum height of all cards in the stack
+      // This ensures all cards have uniform height like in a grid row
+      // We need to account for the stagger when calculating max height
+      let maxHeight = 0;
+      cards.forEach(card => {
+        // Temporarily remove any inline height to get natural height
+        const currentHeight = card.style.height;
+        card.style.height = '';
+        const naturalHeight = card.offsetHeight;
+        maxHeight = Math.max(maxHeight, naturalHeight);
+        // Restore previous height
+        if (currentHeight) card.style.height = currentHeight;
+      });
+
+      // Adjust container height to account for stagger (using 1.5x multiplier)
+      const containerHeight = maxHeight + staggerOffset;
+      stack.style.height = `${containerHeight}px`;
+
+      // Position each card dynamically with decreasing z-index
+      // Stack orientation: right to left (top card on right, stack extends left)
+      cards.forEach((card, index) => {
+        // Set all cards to the same height (tallest card's height)
+        card.style.height = `${maxHeight}px`;
+
+        // Position: cards stack from right to left
+        // First card (index 0) is on the far right
+        // Each subsequent card is positioned to the left of the previous one
+        // Calculate right position instead of left position
+        const rightPosition = cardWidth * overlap * index;
+        card.style.right = `${rightPosition}px`;
+        card.style.left = 'auto'; // Clear any left positioning
+
+        // Alternating vertical stagger: even cards shift up, odd cards shift down
+        // Using 1.5x role banner height creates better visual separation
+        const isEven = index % 2 === 0;
+        const verticalOffset = isEven ? 0 : staggerOffset;
+        card.style.top = `${verticalOffset}px`;
 
         // Z-index: first card highest (100), decreasing for each subsequent card
         const zIndex = 100 - index;
         card.style.zIndex = zIndex;
 
-        // First card should be relative, others absolute
-        if (index === 0) {
-          card.style.position = 'relative';
-        } else {
-          card.style.position = 'absolute';
-        }
+        // All cards need to be absolute for right-to-left positioning to work
+        card.style.position = 'absolute';
 
         // Apply opacity fade to all cards behind the front card
         // Front card (index 0): full opacity (1.0)

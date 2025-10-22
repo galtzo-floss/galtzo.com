@@ -909,7 +909,8 @@ button,
 .card-family-stack .card-in-family {
     position: absolute;
     top: 0;
-    left: 0; /* Default, will be overridden by JS */
+    right: 0; /* Changed from left: 0 for right-to-left stacking */
+    left: auto;
     width: var(--card-width);
     min-height: var(--card-min-height);
     transition: transform var(--family-transition);
@@ -921,8 +922,7 @@ button,
     /* Prevent any vertical baseline shifting */
     vertical-align: top;
     /* Position and z-index will be set dynamically by JavaScript */
-    /* Add subtle fade for cards further back to give depth perception */
-    /* This will be enhanced by JavaScript for cards beyond position 5 */
+    /* Stack orientation: right to left (top card on right) */
 }
 
 /* Subtle visual depth for cards in the stack */
