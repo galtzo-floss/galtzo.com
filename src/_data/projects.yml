@@ -939,6 +939,10 @@
     stack, and the dev dependencies - by funding them.
   language: Ruby
   ecosystem: rubygems
+  theme: family
+  family_id: rubygems-bundler-family
+  family_name: RubyGems/Bundler Plugins
+  family_position: 3
   minimum_version: 1.9
   role: author
   first_commit_on: 2025/08/09
@@ -954,6 +958,8 @@
     owner: floss-funding
   tags:
   - funding
+  - wip
+  - experimental
   docs_site: https://floss-funding.galtzo.com
   github_stars: 3
   total_downloads: 357
@@ -972,6 +978,10 @@
     * Trim down app load times by keeping your worst players on the bench (useful for beating Heroku slug load time cutoff)
   language: Ruby
   ecosystem: rubygems
+  theme: family
+  family_id: rubygems-bundler-family
+  family_name: RubyGems/Bundler Plugins
+  family_position: 2
   minimum_version: 2.3
   role: author
   first_commit_on: 2013/04/05
@@ -1331,6 +1341,7 @@
     owner: galtzo-floss
   tags:
   - wip
+  - experimental
   docs_site:
   github_stars: 2
   total_downloads: 259
@@ -3679,6 +3690,10 @@
     stack, dev/test dependencies: floss-funding.dev"
   language: Ruby
   ecosystem: rubygems
+  theme: family
+  family_id: rubygems-bundler-family
+  family_name: RubyGems/Bundler Plugins
+  family_position: 1
   minimum_version: 2.2
   role: author
   first_commit_on: 2025/06/23
@@ -3737,6 +3752,8 @@
   - state-machine
   - validate
   docs_site:
+  adoptable: true
+  archived: true
   github_stars: 5
   total_downloads: 3260
   daily_downloads: 0
