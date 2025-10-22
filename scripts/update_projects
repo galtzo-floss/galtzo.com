@@ -28,12 +28,38 @@ class ProjectUpdater
   ]
 
   def initialize(surgical_field: nil, discover_rubygems: false)
+    # SAFETY CHECK: projects_dev.yml must exist
+    # If it doesn't exist, it means scripts/devswap was run but not run again to restore prod
+    # This risks deploying dev/test projects to production
+    unless File.exist?(PROJECTS_DEV_FILE)
+      abort <<~ERROR
+        
+        ❌ FATAL ERROR: projects_dev.yml does not exist!
+        
+        This indicates that scripts/devswap has been run to swap dev and prod projects,
+        but has not been run again to restore the production projects.yml file.
+        
+        Running this script now would risk deploying dev/test projects to production.
+        
+        To fix this issue:
+          1. Run: scripts/devswap
+             (This will swap the files back to the correct state)
+          2. Then run this script again
+        
+        Aborting to prevent accidental deployment of dev/test data.
+      ERROR
+    end
+
     @projects = load_yaml(PROJECTS_FILE)
-    @projects_dev = load_yaml(PROJECTS_DEV_FILE) if File.exist?(PROJECTS_DEV_FILE)
+    @projects_dev = load_yaml(PROJECTS_DEV_FILE)
     @rate_limit_delay = 1 # seconds between API calls
     @errors = [] # Track errors for summary
     @surgical_field = surgical_field
     @discover_rubygems = discover_rubygems
+
+    # Preserve header comments from YAML files
+    @projects_header = extract_yaml_header(PROJECTS_FILE)
+    @projects_dev_header = extract_yaml_header(PROJECTS_DEV_FILE)
 
     if @surgical_field && !VALID_SURGICAL_FIELDS.include?(@surgical_field)
       raise "Invalid surgical field: #{@surgical_field}. Valid fields: #{VALID_SURGICAL_FIELDS.join(', ')}"
@@ -85,7 +111,7 @@ class ProjectUpdater
         end
 
         # If this project exists in projects_dev, sync it
-        sync_to_dev(project) if @projects_dev
+        sync_to_dev(project)
 
         updated_count += 1
         sleep(@rate_limit_delay) # Rate limiting
@@ -98,7 +124,7 @@ class ProjectUpdater
     end
 
     save_yaml(PROJECTS_FILE, @projects)
-    save_yaml(PROJECTS_DEV_FILE, @projects_dev) if @projects_dev
+    save_yaml(PROJECTS_DEV_FILE, @projects_dev)
 
     puts "\n" + "="*80
     puts "📊 Summary"
@@ -166,11 +192,9 @@ class ProjectUpdater
         @projects << new_project
         puts "  ✅ Added #{gem_name}"
 
-        # Also add to projects_dev if it exists
-        if @projects_dev
-          @projects_dev << new_project.dup
-          puts "  🔄 Synced to projects_dev.yml"
-        end
+        # Also add to projects_dev
+        @projects_dev << new_project.dup
+        puts "  🔄 Synced to projects_dev.yml"
 
         sleep(@rate_limit_delay) # Rate limiting
       rescue => e
@@ -578,7 +602,6 @@ class ProjectUpdater
   end
 
   def sync_to_dev(project)
-    return unless @projects_dev
 
     dev_project = @projects_dev.find { |p| p['name'] == project['name'] }
     return unless dev_project
@@ -829,8 +852,61 @@ class ProjectUpdater
     YAML.load_file(file_path) || []
   end
 
+  def extract_yaml_header(file_path)
+    return "" unless File.exist?(file_path)
+
+    header_lines = []
+    in_header = false
+
+    File.readlines(file_path).each do |line|
+      # Start capturing after the --- document marker
+      if line.strip == '---'
+        in_header = true
+        next
+      end
+
+      # Stop when we hit the first non-comment, non-empty line (start of data)
+      if in_header
+        if line.strip.start_with?('#') || line.strip.empty?
+          header_lines << line
+        else
+          # We've reached the data section
+          break
+        end
+      end
+    end
+
+    # Return the header with a trailing newline if we found comments
+    header_lines.empty? ? "" : header_lines.join
+  end
+
   def save_yaml(file_path, data)
-    File.write(file_path, YAML.dump(data))
+    yaml_content = YAML.dump(data)
+
+    # Determine which header to use based on the file path
+    header = if file_path == PROJECTS_DEV_FILE
+      @projects_dev_header
+    elsif file_path == PROJECTS_FILE
+      @projects_header
+    else
+      ""
+    end
+
+    # Combine header with YAML content
+    if header && !header.empty?
+      # The YAML.dump already includes '---' at the start
+      # We need to insert the header after the '---' line
+      yaml_lines = yaml_content.lines
+      if yaml_lines.first&.strip == '---'
+        final_content = yaml_lines.first + header + yaml_lines[1..-1].join
+      else
+        final_content = "---\n" + header + yaml_content
+      end
+    else
+      final_content = yaml_content
+    end
+
+    File.write(file_path, final_content)
     puts "\n💾 Saved: #{file_path}"
   end
 
