@@ -15,6 +15,7 @@ class ProjectUpdater
   # API tokens from environment (optional but recommended to avoid rate limits)
   GITHUB_TOKEN = ENV['GITHUB_TOKEN']
   GITLAB_TOKEN = ENV['GITLAB_TOKEN']
+  RUBYGEMS_HANDLE = ENV['RUBYGEMS_HANDLE']
 
   # Skip projects scraped within the last 24 hours
   SCRAPE_THRESHOLD_HOURS = 24
@@ -26,12 +27,13 @@ class ProjectUpdater
     release_date last_commit_on status
   ]
 
-  def initialize(surgical_field: nil)
+  def initialize(surgical_field: nil, discover_rubygems: false)
     @projects = load_yaml(PROJECTS_FILE)
     @projects_dev = load_yaml(PROJECTS_DEV_FILE) if File.exist?(PROJECTS_DEV_FILE)
     @rate_limit_delay = 1 # seconds between API calls
     @errors = [] # Track errors for summary
     @surgical_field = surgical_field
+    @discover_rubygems = discover_rubygems
 
     if @surgical_field && !VALID_SURGICAL_FIELDS.include?(@surgical_field)
       raise "Invalid surgical field: #{@surgical_field}. Valid fields: #{VALID_SURGICAL_FIELDS.join(', ')}"
@@ -39,6 +41,11 @@ class ProjectUpdater
   end
 
   def run
+    # First, discover and add missing RubyGems if requested
+    if @discover_rubygems
+      discover_and_add_missing_gems
+    end
+
     puts "Starting project update..."
     if @surgical_field
       puts "🔬 SURGICAL UPDATE MODE: Only updating '#{@surgical_field}' field"
@@ -47,6 +54,7 @@ class ProjectUpdater
     puts "Processing #{@projects.size} projects from #{PROJECTS_FILE}"
     puts "GitHub Token: #{GITHUB_TOKEN ? '✅ Set' : '❌ Not set'}"
     puts "GitLab Token: #{GITLAB_TOKEN ? '✅ Set' : '❌ Not set'}"
+    puts "RubyGems Handle: #{RUBYGEMS_HANDLE ? "✅ Set (#{RUBYGEMS_HANDLE})" : '❌ Not set'}"
 
     skipped_count = 0
     updated_count = 0
@@ -110,6 +118,299 @@ class ProjectUpdater
   end
 
   private
+
+  def discover_and_add_missing_gems
+    unless RUBYGEMS_HANDLE
+      puts "❌ ERROR: RUBYGEMS_HANDLE environment variable is not set!"
+      puts "   Please set it in .env.local to use this feature."
+      return
+    end
+
+    puts "\n" + "="*80
+    puts "🔍 DISCOVERING RUBYGEMS FOR: #{RUBYGEMS_HANDLE}"
+    puts "="*80
+
+    # Fetch all gems owned by the user
+    rubygems = fetch_user_rubygems(RUBYGEMS_HANDLE)
+
+    if rubygems.empty?
+      puts "No gems found for user: #{RUBYGEMS_HANDLE}"
+      return
+    end
+
+    puts "Found #{rubygems.size} gems owned by #{RUBYGEMS_HANDLE}"
+
+    # Get list of existing gem names in projects
+    existing_gems = @projects
+      .select { |p| p['language'] == 'Ruby' && p['ecosystem'] == 'rubygems' }
+      .map { |p| p['name'] }
+
+    # Find missing gems
+    missing_gems = rubygems.reject { |gem_name| existing_gems.include?(gem_name) }
+
+    if missing_gems.empty?
+      puts "✅ All gems are already in projects.yml!"
+      return
+    end
+
+    puts "\n📦 Found #{missing_gems.size} missing gems:"
+    missing_gems.each { |name| puts "  • #{name}" }
+
+    puts "\n🔨 Adding missing gems to projects.yml..."
+
+    missing_gems.each_with_index do |gem_name, index|
+      puts "\n[#{index + 1}/#{missing_gems.size}] Adding: #{gem_name}"
+
+      begin
+        new_project = build_project_from_rubygem(gem_name)
+        @projects << new_project
+        puts "  ✅ Added #{gem_name}"
+
+        # Also add to projects_dev if it exists
+        if @projects_dev
+          @projects_dev << new_project.dup
+          puts "  🔄 Synced to projects_dev.yml"
+        end
+
+        sleep(@rate_limit_delay) # Rate limiting
+      rescue => e
+        error_msg = "Failed to add #{gem_name}: #{e.message}"
+        @errors << error_msg
+        puts "  ❌ ERROR: #{e.message}"
+      end
+    end
+
+    # Save the updated projects files
+    save_yaml(PROJECTS_FILE, @projects)
+    save_yaml(PROJECTS_DEV_FILE, @projects_dev) if @projects_dev
+
+    puts "\n✅ Discovery complete! Added #{missing_gems.size - @errors.select { |e| e.include?('Failed to add') }.size} new gems."
+  end
+
+  def fetch_user_rubygems(handle)
+    api_url = "https://rubygems.org/api/v1/owners/#{handle}/gems.json"
+
+    puts "  Fetching gems from: #{api_url}"
+    data = api_request(api_url)
+
+    return [] unless data && data.is_a?(Array)
+
+    # The API returns an array of gem objects with 'name' field
+    data.map { |gem| gem['name'] }.compact
+  rescue => e
+    error_msg = "Failed to fetch RubyGems for #{handle}: #{e.message}"
+    @errors << error_msg
+    puts "  ❌ #{error_msg}"
+    []
+  end
+
+  def build_project_from_rubygem(gem_name)
+    # Fetch gem metadata
+    gem_info = fetch_rubygems_info(gem_name)
+    api_url = "https://rubygems.org/api/v1/gems/#{gem_name}.json"
+    gem_data = api_request(api_url)
+
+    unless gem_data
+      raise "Failed to fetch gem metadata"
+    end
+
+    # Extract key information
+    description = gem_data['info'] || gem_data['summary'] || "Ruby gem: #{gem_name}"
+    homepage_uri = gem_data['homepage_uri'] || ""
+    source_code_uri = gem_data['source_code_uri'] || gem_data['source_code'] || ""
+
+    # Try to determine GitHub URL
+    github_url = nil
+    github_owner = nil
+
+    # Check various URI fields for GitHub
+    [source_code_uri, homepage_uri, gem_data['project_uri']].compact.each do |uri|
+      if uri.include?('github.com')
+        github_url = uri.sub(/\.git$/, '').sub(%r{/tree/.*}, '').sub(%r{/blob/.*}, '')
+        if match = github_url.match(%r{github\.com/([^/]+)/})
+          github_owner = match[1]
+        end
+        break
+      end
+    end
+
+    # Build forges array
+    forges = []
+    if github_url
+      forges << {
+        'type' => 'GitHub',
+        'url' => github_url,
+        'owner' => github_owner
+      }
+    end
+
+    # Get release date
+    release_date = fetch_rubygems_release_date(gem_name)
+
+    # Determine minimum Ruby version
+    required_ruby_version = gem_data['required_ruby_version'] || '>= 0'
+    min_version = extract_minimum_version(required_ruby_version)
+
+    # Build the project hash
+    project = {
+      'name' => gem_name,
+      'description' => description,
+      'language' => 'Ruby',
+      'ecosystem' => 'rubygems',
+      'minimum_version' => min_version,
+      'role' => 'author', # Assume author since it's owned by the user
+      'first_commit_on' => release_date, # Use first release date as placeholder
+      'first_commit' => nil, # Will need to be filled manually or via GitHub API
+      'funding_sites' => [
+        { 'type' => 'OpenCollective', 'url' => 'https://opencollective.com/galtzo-floss' },
+        { 'type' => 'Liberapay', 'url' => 'https://liberapay.com/pboling' }
+      ],
+      'forges' => forges,
+      'tags' => determine_tags_from_gem(gem_data),
+      'docs_site' => gem_data['documentation_uri'] || nil
+    }
+
+    # Add download stats if available
+    if gem_info
+      project['total_downloads'] = gem_info[:total_downloads]
+      project['daily_downloads'] = gem_info[:daily_downloads]
+      project['release_downloads'] = gem_info[:release_downloads]
+    end
+
+    project['release_date'] = release_date
+
+    # Fetch GitHub info if available
+    if github_url
+      begin
+        github_info = fetch_github_info(github_url)
+        project['github_stars'] = github_info[:stars]
+        project['last_commit_on'] = github_info[:last_commit]
+        project['status'] = github_info[:archived] ? 'archived' : 'active'
+
+        # Try to get first commit info
+        repo_path = extract_repo_path(github_url)
+        if repo_path
+          first_commit = fetch_first_commit(repo_path)
+          project['first_commit'] = first_commit[:url] if first_commit
+          project['first_commit_on'] = first_commit[:date] if first_commit
+        end
+      rescue => e
+        puts "    ⚠️  Could not fetch GitHub info: #{e.message}"
+        project['github_stars'] = 0
+        project['status'] = 'active'
+      end
+    else
+      puts "    ⚠️  No GitHub URL found - will need manual configuration"
+      project['github_stars'] = 0
+      project['status'] = 'active'
+    end
+
+    project
+  end
+
+  def fetch_first_commit(repo_path)
+    # Fetch the first commit using the API
+    api_url = "https://api.github.com/repos/#{repo_path}/commits?per_page=1&sha=HEAD"
+
+    # We need to paginate backwards to find the first commit
+    # This is a simplified approach - we'll get the last page
+    response_data = github_api_request_with_headers(api_url)
+
+    return nil unless response_data[:data] && response_data[:data].is_a?(Array) && response_data[:data].any?
+
+    # Check if there are more pages by looking at Link header
+    last_page_url = response_data[:last_page_url]
+
+    if last_page_url
+      # Fetch the last page (which contains the first commit)
+      last_page_data = github_api_request(last_page_url)
+      first_commit = last_page_data.last if last_page_data.is_a?(Array)
+    else
+      # Only one page, so the last commit is the first
+      first_commit = response_data[:data].last
+    end
+
+    if first_commit
+      commit_date = first_commit.dig('commit', 'committer', 'date')
+      {
+        url: first_commit['html_url'],
+        date: commit_date ? Date.parse(commit_date).strftime('%Y/%m/%d') : nil
+      }
+    else
+      nil
+    end
+  rescue => e
+    puts "    ⚠️  Could not fetch first commit: #{e.message}"
+    nil
+  end
+
+  def github_api_request_with_headers(url)
+    uri = URI(url)
+    request = Net::HTTP::Get.new(uri)
+    request['Accept'] = 'application/vnd.github.v3+json'
+    request['Authorization'] = "token #{GITHUB_TOKEN}" if GITHUB_TOKEN
+    request['User-Agent'] = 'Galtzo-Project-Updater'
+
+    response = Net::HTTP.start(uri.hostname, uri.port, use_ssl: true) do |http|
+      http.request(request)
+    end
+
+    if response.code.to_i == 404
+      return { data: nil, last_page_url: nil }
+    elsif response.code.to_i != 200
+      raise "GitHub API error: #{response.code} - #{response.body[0..200]}"
+    end
+
+    # Parse Link header to find last page
+    link_header = response['Link']
+    last_page_url = nil
+
+    if link_header
+      # Extract last page URL from Link header
+      # Format: <url>; rel="last"
+      if match = link_header.match(/<([^>]+)>;\s*rel="last"/)
+        last_page_url = match[1]
+      end
+    end
+
+    {
+      data: JSON.parse(response.body),
+      last_page_url: last_page_url
+    }
+  end
+
+  def extract_minimum_version(version_string)
+    # Parse version string like ">= 2.7.0" or "~> 3.0"
+    # Return just the major.minor version
+    if match = version_string.match(/(\d+\.\d+)/)
+      match[1]
+    else
+      '2.7' # Default to a reasonable version
+    end
+  end
+
+  def determine_tags_from_gem(gem_data)
+    tags = []
+
+    # Check description and summary for common keywords
+    text = "#{gem_data['info']} #{gem_data['summary']}".downcase
+
+    # Common tag patterns
+    tags << 'rails' if text.include?('rails') || text.include?('activerecord')
+    tags << 'activerecord' if text.include?('activerecord')
+    tags << 'rspec' if text.include?('rspec')
+    tags << 'testing' if text.include?('test') || text.include?('spec')
+    tags << 'api' if text.include?('api')
+    tags << 'cli' if text.include?('cli') || text.include?('command line')
+    tags << 'security' if text.include?('security') || text.include?('auth')
+    tags << 'performance' if text.include?('performance') || text.include?('optimization')
+    tags << 'debugging' if text.include?('debug') || text.include?('logging')
+
+    # At least return a generic 'ruby' tag
+    tags << 'ruby' if tags.empty?
+
+    tags.uniq.sort
+  end
 
   def update_single_field(project, field)
     forges = project['forges'] || []
@@ -662,15 +963,19 @@ end
 if __FILE__ == $0
   # Parse command-line arguments
   surgical_field = nil
+  discover_rubygems = false
 
-  if ARGV.length > 0
-    if ARGV[0] == '--help' || ARGV[0] == '-h'
-      puts "Usage: #{$0} [FIELD]"
+  ARGV.each do |arg|
+    case arg
+    when '--help', '-h'
+      puts "Usage: #{$0} [OPTIONS] [FIELD]"
       puts ""
       puts "Update all project data, or surgically update a specific field."
       puts ""
       puts "Options:"
-      puts "  --help, -h     Show this help message"
+      puts "  --help, -h              Show this help message"
+      puts "  --discover-rubygems     Discover and add missing RubyGems to projects.yml"
+      puts "                          (Uses RUBYGEMS_HANDLE from environment)"
       puts ""
       puts "Surgical Update Fields:"
       ProjectUpdater::VALID_SURGICAL_FIELDS.each do |field|
@@ -678,16 +983,21 @@ if __FILE__ == $0
       end
       puts ""
       puts "Examples:"
-      puts "  #{$0}                    # Full update (respects last_scrape_at)"
-      puts "  #{$0} release_date       # Update only release_date for all projects"
-      puts "  #{$0} github_stars       # Update only github_stars for all projects"
+      puts "  #{$0}                          # Full update (respects last_scrape_at)"
+      puts "  #{$0} --discover-rubygems      # Find and add missing RubyGems"
+      puts "  #{$0} release_date             # Update only release_date for all projects"
+      puts "  #{$0} github_stars             # Update only github_stars for all projects"
+      puts "  #{$0} --discover-rubygems release_date  # Discover gems, then update release_date"
       exit 0
+    when '--discover-rubygems'
+      discover_rubygems = true
     else
-      surgical_field = ARGV[0]
+      # Assume it's a surgical field
+      surgical_field = arg unless arg.start_with?('--')
     end
   end
 
-  updater = ProjectUpdater.new(surgical_field: surgical_field)
+  updater = ProjectUpdater.new(surgical_field: surgical_field, discover_rubygems: discover_rubygems)
   updater.run
 end
 
