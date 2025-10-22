@@ -1002,8 +1002,8 @@ button,
 .card-family-stack .card-in-family {
     position: absolute;
     top: 0;
-    right: 0; /* Changed from left: 0 for right-to-left stacking */
-    left: auto;
+    left: 0; /* Left-to-right stacking */
+    right: auto;
     width: var(--card-width);
     min-height: var(--card-min-height);
     transition: transform var(--family-transition);
@@ -1015,7 +1015,7 @@ button,
     /* Prevent any vertical baseline shifting */
     vertical-align: top;
     /* Position and z-index will be set dynamically by JavaScript */
-    /* Stack orientation: right to left (top card on right) */
+    /* Stack orientation: left to right (top card on left) */
 }
 
 /* Subtle visual depth for cards in the stack */

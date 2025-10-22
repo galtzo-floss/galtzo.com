@@ -333,9 +333,9 @@ document.addEventListener('DOMContentLoaded', function() {
         card.style.height = maxVisibleHeight + 'px';
 
         // Position based on visual index (position in the visible sequence)
-        const rightPosition = cardWidth * overlap * visualIndex;
-        card.style.right = rightPosition + 'px';
-        card.style.left = 'auto';
+        const leftPosition = cardWidth * overlap * visualIndex;
+        card.style.left = leftPosition + 'px';
+        card.style.right = 'auto';
 
         // Update z-index based on visual position
         card.style.zIndex = (100 - visualIndex).toString();
@@ -695,17 +695,17 @@ document.addEventListener('DOMContentLoaded', function() {
         stack.style.height = `${containerHeight}px`;
 
         // Position each card dynamically with decreasing z-index
-        // Stack orientation: right to left (top card on right, stack extends left)
+        // Stack orientation: left to right (top card on left, stack extends right)
         cards.forEach((card, index) => {
           // Set all cards to the same height (tallest card's height)
           card.style.height = `${maxHeight}px`;
 
-          // Position: cards stack from right to left
-          // First card (index 0) is on the far right
-          // Each subsequent card is positioned to the left of the previous one
-          const rightPosition = cardWidth * overlap * index;
-          card.style.right = `${rightPosition}px`;
-          card.style.left = 'auto'; // Clear any left positioning
+          // Position: cards stack from left to right
+          // First card (index 0) is on the far left
+          // Each subsequent card is positioned to the right of the previous one
+          const leftPosition = cardWidth * overlap * index;
+          card.style.left = `${leftPosition}px`;
+          card.style.right = 'auto'; // Clear any right positioning
 
           // Three-layer vertical wave pattern
           // Pattern: 0, stagger/2, stagger, stagger/2, 0, stagger/2, stagger, stagger/2...
