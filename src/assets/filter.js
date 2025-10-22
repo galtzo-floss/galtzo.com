@@ -139,11 +139,124 @@ document.addEventListener('DOMContentLoaded', function() {
 
   function filterProjects() {
     var activeTags = Array.from(document.querySelectorAll('.tag-link.active[data-tag]')).map(function(link) { return link.dataset.tag; });
+
+    // Handle regular cards (not in family stacks)
     cards.forEach(function(card) {
+      // Skip cards that are inside family stacks - they'll be handled separately
+      if (card.classList.contains('card-in-family')) return;
+
       var cardTags = parseCardTags(card);
       var matches = activeTags.length === 0 ? true : activeTags.every(function(tag) { return cardTags.indexOf(tag) !== -1; });
       card.style.display = matches ? '' : 'none';
     });
+
+    // Handle family stacks: filter individual cards within each stack
+    var familyStacks = document.querySelectorAll('.card-family-stack');
+    familyStacks.forEach(function(stack) {
+      var familyCards = stack.querySelectorAll('.card-in-family');
+      var visibleCount = 0;
+
+      // Filter each card individually within the family stack
+      familyCards.forEach(function(card) {
+        var cardTags = parseCardTags(card);
+        var matches = activeTags.length === 0 ? true : activeTags.every(function(tag) { return cardTags.indexOf(tag) !== -1; });
+
+        // Hide/show individual cards based on filter match
+        card.style.display = matches ? '' : 'none';
+
+        if (matches) {
+          visibleCount++;
+        }
+      });
+
+      // Hide the entire family stack container only if NO cards match the filter
+      // If at least one card matches, keep the stack visible (but with filtered cards)
+      stack.style.display = visibleCount > 0 ? '' : 'none';
+
+      // Reposition visible cards to close gaps left by hidden cards
+      if (visibleCount > 0) {
+        repositionFamilyStack(stack);
+      }
+    });
+  }
+
+  /**
+   * Reposition visible cards in a family stack after filtering
+   * This closes gaps left by hidden cards and recalculates height
+   * @param {HTMLElement} stack - The family stack container
+   */
+  function repositionFamilyStack(stack) {
+    var allCards = stack.querySelectorAll('.card-in-family');
+    var visibleCards = Array.from(allCards).filter(function(card) {
+      return card.style.display !== 'none';
+    });
+
+    if (visibleCards.length === 0) return;
+
+    // Get CSS variable values
+    const cardWidth = parseInt(getComputedStyle(document.documentElement)
+      .getPropertyValue('--card-width')) || 450;
+    const overlap = parseFloat(getComputedStyle(document.documentElement)
+      .getPropertyValue('--family-overlap')) || 0.15;
+
+    // Get the role banner height for stagger calculation
+    const roleBanner = visibleCards[0] ? visibleCards[0].querySelector('.banner-role') : null;
+    const roleBannerHeight = roleBanner ? roleBanner.offsetHeight : 30;
+    const staggerOffset = roleBannerHeight * 1.5;
+
+    // Recalculate maximum height based ONLY on visible cards
+    // First, temporarily clear heights to get natural content heights
+    let maxVisibleHeight = 0;
+    visibleCards.forEach(function(card) {
+      const currentHeight = card.style.height;
+      card.style.height = '';
+      const naturalHeight = card.offsetHeight;
+      maxVisibleHeight = Math.max(maxVisibleHeight, naturalHeight);
+      // Restore the height temporarily
+      if (currentHeight) card.style.height = currentHeight;
+    });
+
+    // Reposition visible cards with continuous positioning (no gaps)
+    visibleCards.forEach(function(card, visualIndex) {
+      // Set all visible cards to the new maximum height (based only on visible cards)
+      card.style.height = maxVisibleHeight + 'px';
+
+      // Position based on visual index (position in the visible sequence)
+      const rightPosition = cardWidth * overlap * visualIndex;
+      card.style.right = rightPosition + 'px';
+
+      // Update z-index based on visual position
+      card.style.zIndex = (100 - visualIndex).toString();
+
+      // Apply alternating stagger based on visual index
+      const isEven = visualIndex % 2 === 0;
+      const verticalOffset = isEven ? 0 : staggerOffset;
+      card.style.top = verticalOffset + 'px';
+
+      // Apply brightness fade based on visual position
+      if (visualIndex === 0) {
+        card.style.filter = 'none';
+      } else {
+        const baseBrightness = 0.8;
+        const minBrightness = 0.6;
+        let brightness;
+        if (visualIndex <= 3) {
+          brightness = baseBrightness;
+        } else {
+          const fadeStep = (baseBrightness - minBrightness) / Math.max(visibleCards.length - 3, 10);
+          brightness = Math.max(minBrightness, baseBrightness - ((visualIndex - 3) * fadeStep));
+        }
+        card.style.filter = 'brightness(' + brightness + ')';
+      }
+    });
+
+    // Update stack width based on number of visible cards
+    const totalWidth = cardWidth + ((visibleCards.length - 1) * cardWidth * overlap);
+    stack.style.width = totalWidth + 'px';
+
+    // Update stack height based on the NEW maximum height of visible cards
+    const containerHeight = maxVisibleHeight + staggerOffset;
+    stack.style.height = containerHeight + 'px';
   }
 
   // Close other <details> elements when one is opened. This keeps the
@@ -400,23 +513,24 @@ document.addEventListener('DOMContentLoaded', function() {
         // All cards need to be absolute for right-to-left positioning to work
         card.style.position = 'absolute';
 
-        // Apply opacity fade to all cards behind the front card
-        // Front card (index 0): full opacity (1.0)
-        // Cards behind: fade from 0.7 down to 0.6 for very deep stacks
+        // Apply darkening effect to cards behind the front card
+        // Front card (index 0): full brightness (no filter)
+        // Cards behind: darken progressively without transparency
         if (index === 0) {
-          card.style.opacity = '1.0';
+          card.style.filter = 'none';
         } else {
-          // Cards 1-3: 0.7 opacity
-          // Cards 4+: gradually fade to 0.6
-          const baseOpacity = 0.7;
-          const minOpacity = 0.6;
+          // Cards 1-3: 80% brightness
+          // Cards 4+: gradually darken to 60%
+          const baseBrightness = 0.8;
+          const minBrightness = 0.6;
+          let brightness;
           if (index <= 3) {
-            card.style.opacity = baseOpacity.toString();
+            brightness = baseBrightness;
           } else {
-            const fadeStep = (baseOpacity - minOpacity) / Math.max(familySize - 3, 10);
-            const opacity = Math.max(minOpacity, baseOpacity - ((index - 3) * fadeStep));
-            card.style.opacity = opacity.toString();
+            const fadeStep = (baseBrightness - minBrightness) / Math.max(familySize - 3, 10);
+            brightness = Math.max(minBrightness, baseBrightness - ((index - 3) * fadeStep));
           }
+          card.style.filter = `brightness(${brightness})`;
         }
 
         // Set up hover interactions for each card
@@ -486,12 +600,12 @@ document.addEventListener('DOMContentLoaded', function() {
         // Hovered card: bring to top (z-index 200), lift up, full brightness
         card.style.zIndex = '200';
         card.style.transform = 'translateY(-12px)';
-        card.style.opacity = '1.0';
+        card.style.filter = 'none';
         // Add stronger shadow for lifted card
         card.style.boxShadow = '0 12px 24px rgba(0, 0, 0, 0.3)';
       } else {
-        // All other cards: fade to indicate they're not active
-        card.style.opacity = '0.7';
+        // All other cards: darken to indicate they're not active (opaque, not transparent)
+        card.style.filter = 'brightness(0.7)';
 
         if (index > hoveredIndex) {
           // Cards after the hovered card: shift right to reveal space
@@ -520,20 +634,21 @@ document.addEventListener('DOMContentLoaded', function() {
       // Reset box-shadow
       card.style.boxShadow = '';
 
-      // Restore original opacity fade: front card full brightness, back cards faded
+      // Restore original brightness fade: front card full brightness, back cards darkened
       if (index === 0) {
-        card.style.opacity = '1.0';
+        card.style.filter = 'none';
       } else {
-        // Same fade pattern as initialization
-        const baseOpacity = 0.7;
-        const minOpacity = 0.6;
+        // Same brightness pattern as initialization
+        const baseBrightness = 0.8;
+        const minBrightness = 0.6;
+        let brightness;
         if (index <= 3) {
-          card.style.opacity = baseOpacity.toString();
+          brightness = baseBrightness;
         } else {
-          const fadeStep = (baseOpacity - minOpacity) / Math.max(familySize - 3, 10);
-          const opacity = Math.max(minOpacity, baseOpacity - ((index - 3) * fadeStep));
-          card.style.opacity = opacity.toString();
+          const fadeStep = (baseBrightness - minBrightness) / Math.max(familySize - 3, 10);
+          brightness = Math.max(minBrightness, baseBrightness - ((index - 3) * fadeStep));
         }
+        card.style.filter = `brightness(${brightness})`;
       }
     });
   }

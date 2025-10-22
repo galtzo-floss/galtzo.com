@@ -71,6 +71,10 @@
   description: Disallow insecure, unscoped, finds
   language: Ruby
   ecosystem: rubygems
+  theme: family
+  family_id: active-record
+  family_name: "ActiveRecord Plugins"
+  family_position: 2
   minimum_version: 2.7
   role: author
   first_commit_on: 2024/05/30
@@ -102,6 +106,10 @@
     like validation, relationships, and nested_attributes.
   language: Ruby
   ecosystem: rubygems
+  theme: family
+  family_id: active-record
+  family_name: "ActiveRecord Plugins"
+  family_position: 3
   minimum_version: 2.2
   role: author
   first_commit_on: 2017/11/08
@@ -132,6 +140,10 @@
   description: Getting transactions right is hard, and this gem makes it easier.
   language: Ruby
   ecosystem: rubygems
+  theme: family
+  family_id: active-record
+  family_name: "ActiveRecord Plugins"
+  family_position: 4
   minimum_version: 2.5
   role: author
   first_commit_on: 2016/03/26
@@ -261,6 +273,10 @@
   description: Replacement for broken Class.new(ActiveRecord::Base)
   language: Ruby
   ecosystem: rubygems
+  theme: family
+  family_id: active-record
+  family_name: "ActiveRecord Plugins"
+  family_position: 5
   minimum_version: 2.4
   role: author
   first_commit_on: 2018/01/03
@@ -505,7 +521,10 @@
     owner: pboling
   tags:
   - toast
-  adoptable: true
+  adoptable: false
+  theme: avoid-me
+  archived: true
+  deprecation_reason: "Incompatible with modern Rails"
   docs_site:
   github_stars: 101
   release_date:
@@ -610,6 +629,10 @@
     It works better if you are wearing a tricorne!
   language: Ruby
   ecosystem: rubygems
+  theme: family
+  family_id: active-record
+  family_name: "ActiveRecord Plugins"
+  family_position: 6
   minimum_version: 1.8
   role: author
   first_commit_on: 2009/03/03
@@ -682,6 +705,10 @@
     into error states, and the errors need to be collected at a single point.
   language: Ruby
   ecosystem: rubygems
+  theme: family
+  family_id: active-record
+  family_name: "ActiveRecord Plugins"
+  family_position: 11
   minimum_version: 1.8
   role: author
   first_commit_on: 2015/04/08
@@ -700,6 +727,7 @@
   tags:
   - rails
   - presenter
+  - activerecord
   - error-handle
   docs_site:
   github_stars: 3
@@ -779,6 +807,10 @@
   description: Batch Processing of Records with Blocks in Rails
   language: Ruby
   ecosystem: rubygems
+  theme: family
+  family_id: active-record
+  family_name: "ActiveRecord Plugins"
+  family_position: 7
   minimum_version: 1.8
   role: author
   first_commit_on: 2008/11/15
@@ -811,6 +843,10 @@
     integer column
   language: Ruby
   ecosystem: rubygems
+  theme: family
+  family_id: active-record
+  family_name: "ActiveRecord Plugins"
+  family_position: 1
   minimum_version: 1.9
   role: maintainer
   first_commit_on: 2009/10/20
@@ -1043,6 +1079,10 @@
     dependencies: floss-funding.dev"
   language: Ruby
   ecosystem: rubygems
+  theme: family
+  family_id: kettle-rb-family
+  family_name: "Kettle-RB Family"
+  family_position: 1
   minimum_version: 2.7
   role: author
   first_commit_on: 2023/08/16
@@ -1090,6 +1130,10 @@
     for every CI platform, batteries included.
   language: Ruby
   ecosystem: rubygems
+  theme: family
+  family_id: kettle-rb-family
+  family_name: "Kettle-RB Family"
+  family_position: 3
   minimum_version: 2.7
   role: author
   first_commit_on: 2023/10/16
@@ -1132,6 +1176,10 @@
     floss-funding.dev"
   language: Ruby
   ecosystem: rubygems
+  theme: family
+  family_id: kettle-rb-family
+  family_name: "Kettle-RB Family"
+  family_position: 2
   minimum_version: 2.7
   role: author
   first_commit_on: 2023/08/16
@@ -1257,6 +1305,10 @@
     a yubikey
   language: Ruby
   ecosystem: rubygems
+  theme: family
+  family_id: ruby-openid
+  family_name: "Ruby OpenID Family"
+  family_position: 5
   minimum_version: 2.7
   role: maintainer
   first_commit_on: 2025/01/14
@@ -1291,8 +1343,12 @@
   description: Originally a fork. Has been merged back to the original gem.
   language: Ruby
   ecosystem: rubygems
+  theme: family
+  family_id: ruby-openid
+  family_name: "Ruby OpenID Family"
+  family_position: 9
   minimum_version: 2.7
-  role: maintainer
+  role: author
   first_commit_on: 2025/01/14
   first_commit: https://github.com/ruby-openid/masq/commit/356d38447249cd9116e5a13ade4e34597a39a350
   funding_sites:
@@ -1360,6 +1416,10 @@
   description: "\U0001F511 A Ruby wrapper for the original OAuth 1.0 / 1.0a spec."
   language: Ruby
   ecosystem: rubygems
+  theme: family
+  family_id: ruby-oauth
+  family_name: "Ruby OAuth Family"
+  family_position: 2
   minimum_version: 2.3
   role: maintainer
   first_commit_on: 2018/03/01
@@ -1397,6 +1457,10 @@
   description: "\U0001F5A5️ OAuth 1.0 / 1.0a TTY Command Line Interface"
   language: Ruby
   ecosystem: rubygems
+  theme: family
+  family_id: ruby-oauth
+  family_name: "Ruby OAuth Family"
+  family_position: 3
   minimum_version: 2.3
   role: author
   first_commit_on: 2022/08/23
@@ -1435,6 +1499,10 @@
   description: Ruby OAuth 2.0 framework for building OAuth providers and clients
   language: Ruby
   ecosystem: rubygems
+  theme: family
+  family_id: ruby-oauth
+  family_name: "Ruby OAuth Family"
+  family_position: 1
   minimum_version: 2.2
   role: maintainer
   first_commit_on: 2017/12/14
@@ -1472,6 +1540,10 @@
   description: Traditional username/password based authentication system for OmniAuth
   language: Ruby
   ecosystem: rubygems
+  theme: family
+  family_id: omniauth-family
+  family_name: "OmniAuth Family"
+  family_position: 1
   minimum_version: 2.4
   role: maintainer
   first_commit_on: 2020/04/30
@@ -1500,6 +1572,10 @@
   description: An OmniAuth strategy to accept JWT-based single sign-on.
   language: Ruby
   ecosystem: rubygems
+  theme: family
+  family_id: omniauth-family
+  family_name: "OmniAuth Family"
+  family_position: 3
   minimum_version: 2.2
   role: maintainer
   first_commit_on: 2023/11/30
@@ -1528,6 +1604,10 @@
   description: Originally a fork. Has been merged back to the original gem.
   language: Ruby
   ecosystem: rubygems
+  theme: family
+  family_id: omniauth-family
+  family_name: "OmniAuth Family"
+  family_position: 4
   minimum_version: 2.2
   role: author
   first_commit_on: 2023/11/30
@@ -1556,6 +1636,10 @@
   description: A LDAP strategy for OmniAuth.
   language: Ruby
   ecosystem: rubygems
+  theme: family
+  family_id: omniauth-family
+  family_name: "OmniAuth Family"
+  family_position: 2
   minimum_version: 1.8
   role: maintainer
   first_commit_on: 2025/10/18
@@ -1584,6 +1668,10 @@
   description: OpenID (not OIDC) strategy for OmniAuth.
   language: Ruby
   ecosystem: rubygems
+  theme: family
+  family_id: ruby-openid
+  family_name: "Ruby OpenID Family"
+  family_position: 3
   minimum_version: 2.4
   role: maintainer
   first_commit_on: 2025/04/30
@@ -1621,6 +1709,10 @@
   description: Provides a thin wrapper around the excellent rack-openid2 gem.
   language: Ruby
   ecosystem: rubygems
+  theme: family
+  family_id: ruby-openid
+  family_name: "Ruby OpenID Family"
+  family_position: 4
   minimum_version: 2.7
   role: maintainer
   first_commit_on: 2024/09/04
@@ -1718,6 +1810,10 @@
   description: Advanced Queue Transformation
   language: Ruby
   ecosystem: rubygems
+  theme: family
+  family_id: resque-family
+  family_name: "Resque Family"
+  family_position: 6
   minimum_version: 1.8
   role: author
   first_commit_on: 2013/02/28
@@ -1734,6 +1830,7 @@
   - type: SourceHut
     url: https://git.sr.ht/~galtzo/qfill
   tags:
+  - resque
   - queue
   - math
   docs_site:
@@ -1781,6 +1878,10 @@
   description: Provides a more HTTPish API around the ruby-openid library
   language: Ruby
   ecosystem: rubygems
+  theme: family
+  family_id: ruby-openid
+  family_name: "Ruby OpenID Family"
+  family_position: 2
   minimum_version: 2.7
   role: maintainer
   first_commit_on: 2024/09/04
@@ -1818,6 +1919,10 @@
   description: Originally a fork. Has been merged back to the original gem.
   language: Ruby
   ecosystem: rubygems
+  theme: family
+  family_id: ruby-openid
+  family_name: "Ruby OpenID Family"
+  family_position: 8
   minimum_version: 2.7
   role: author
   first_commit_on: 2024/09/04
@@ -1908,7 +2013,10 @@
   tags:
   - rails
   - env
-  adoptable: true
+  adoptable: false
+  theme: avoid-me
+  archived: true
+  deprecation_reason: "Incompatible with modern Rails"
   docs_site:
   github_stars: 2
   total_downloads: 16069
@@ -2027,6 +2135,10 @@
     placing them on multiple queues, and processing them later.
   language: Ruby
   ecosystem: rubygems
+  theme: family
+  family_id: resque-family
+  family_name: "Resque Family"
+  family_position: 1
   minimum_version: 1.8
   role: maintainer
   first_commit_on: 2024/05/16
@@ -2069,6 +2181,10 @@
       end
   language: Ruby
   ecosystem: rubygems
+  theme: family
+  family_id: resque-family
+  family_name: "Resque Family"
+  family_position: 5
   minimum_version: 1.8
   role: maintainer
   first_commit_on: 2025/10/18
@@ -2111,6 +2227,10 @@
       end
   language: Ruby
   ecosystem: rubygems
+  theme: family
+  family_id: resque-family
+  family_name: "Resque Family"
+  family_position: 3
   minimum_version: 2.3
   role: author
   first_commit_on: 2017/04/10
@@ -2142,6 +2262,10 @@
     by arity of perform method, with automated cleanup tools
   language: Ruby
   ecosystem: rubygems
+  theme: family
+  family_id: resque-family
+  family_name: "Resque Family"
+  family_position: 4
   minimum_version: 2.3
   role: author
   first_commit_on: 2017/04/28
@@ -2174,6 +2298,10 @@
   description: A resque plugin that ensures job uniqueness at enqueue time.
   language: Ruby
   ecosystem: rubygems
+  theme: family
+  family_id: resque-family
+  family_name: "Resque Family"
+  family_position: 2
   minimum_version: 2.3
   role: author
   first_commit_on: 2017/04/30
@@ -2207,6 +2335,10 @@
     the success of the response will depend on a parameter given on the URL of the authentication request.
   language: Ruby
   ecosystem: rubygems
+  theme: family
+  family_id: ruby-openid
+  family_name: "Ruby OpenID Family"
+  family_position: 6
   minimum_version: 2.7
   role: maintainer
   first_commit_on: 2024/09/18
@@ -2246,6 +2378,10 @@
     }
   language: Ruby
   ecosystem: rubygems
+  theme: family
+  family_id: rspec-family
+  family_name: "RSpec Plugins"
+  family_position: 3
   minimum_version: 1.8
   role: author
   first_commit_on: 2018/10/01
@@ -2286,6 +2422,10 @@
     - bottom of stack, dev/test dependencies: floss-funding.dev"
   language: Ruby
   ecosystem: rubygems
+  theme: family
+  family_id: rspec-family
+  family_name: "RSpec Plugins"
+  family_position: 4
   minimum_version: 1.8
   role: author
   first_commit_on: 2015/10/21
@@ -2326,6 +2466,10 @@
     hide_env('SESSION_SECRET')
   language: Ruby
   ecosystem: rubygems
+  theme: family
+  family_id: rspec-family
+  family_name: "RSpec Plugins"
+  family_position: 1
   minimum_version: 1.8
   role: author
   first_commit_on: 2018/10/06
@@ -2367,7 +2511,7 @@
   ecosystem: rubygems
   theme: family
   family_id: rubocop-lts
-  family_name: "RuboCop-LTS"
+  family_name: "RuboCop-LTS Family"
   family_position: 1
   minimum_version: 3.2
   role: author
@@ -2381,13 +2525,14 @@
   forges:
   - type: GitHub
     url: https://github.com/rubocop-lts/rubocop-lts
+    owner: rubocop-lts
   - type: GitLab
     url: https://gitlab.com/rubocop-lts/rubocop-lts
   - type: Codeberg
     url: https://codeberg.org/rubocop-lts/rubocop-lts
   tags:
   - rubocop
-  docs_site:
+  docs_site: https://rubocop-lts.gitlab.io/
   github_stars: 12
   gitlab_stars: 1
   codeberg_stars: 0
@@ -2404,7 +2549,7 @@
   ecosystem: rubygems
   theme: family
   family_id: rubocop-lts
-  family_name: "RuboCop-LTS"
+  family_name: "RuboCop-LTS Family"
   family_position: 2
   minimum_version: 3.2
   role: author
@@ -2423,7 +2568,7 @@
     url: https://gitlab.com/rubocop-lts/rubocop-ruby1_8
   tags:
   - rubocop
-  docs_site:
+  docs_site: https://rubocop-lts.gitlab.io/
   github_stars: 6
   gitlab_stars: 1
   total_downloads: 4996
@@ -2439,7 +2584,7 @@
   ecosystem: rubygems
   theme: family
   family_id: rubocop-lts
-  family_name: "RuboCop-LTS"
+  family_name: "RuboCop-LTS Family"
   family_position: 3
   minimum_version: 3.2
   role: author
@@ -2458,7 +2603,7 @@
     url: https://gitlab.com/rubocop-lts/rubocop-ruby1_9
   tags:
   - rubocop
-  docs_site:
+  docs_site: https://rubocop-lts.gitlab.io/
   github_stars: 6
   gitlab_stars: 1
   total_downloads: 10171
@@ -2474,7 +2619,7 @@
   ecosystem: rubygems
   theme: family
   family_id: rubocop-lts
-  family_name: "RuboCop-LTS"
+  family_name: "RuboCop-LTS Family"
   family_position: 4
   minimum_version: 3.2
   role: author
@@ -2493,7 +2638,7 @@
     url: https://gitlab.com/rubocop-lts/rubocop-ruby2_0
   tags:
   - rubocop
-  docs_site:
+  docs_site: https://rubocop-lts.gitlab.io/
   github_stars: 6
   gitlab_stars: 1
   total_downloads: 9025
@@ -2509,7 +2654,7 @@
   ecosystem: rubygems
   theme: family
   family_id: rubocop-lts
-  family_name: "RuboCop-LTS"
+  family_name: "RuboCop-LTS Family"
   family_position: 5
   minimum_version: 3.2
   role: author
@@ -2528,7 +2673,7 @@
     url: https://gitlab.com/rubocop-lts/rubocop-ruby2_1
   tags:
   - rubocop
-  docs_site:
+  docs_site: https://rubocop-lts.gitlab.io/
   github_stars: 6
   gitlab_stars: 1
   total_downloads: 17721
@@ -2544,7 +2689,7 @@
   ecosystem: rubygems
   theme: family
   family_id: rubocop-lts
-  family_name: "RuboCop-LTS"
+  family_name: "RuboCop-LTS Family"
   family_position: 6
   minimum_version: 3.2
   role: author
@@ -2563,7 +2708,7 @@
     url: https://gitlab.com/rubocop-lts/rubocop-ruby2_2
   tags:
   - rubocop
-  docs_site:
+  docs_site: https://rubocop-lts.gitlab.io/
   github_stars: 6
   gitlab_stars: 1
   total_downloads: 30977
@@ -2579,7 +2724,7 @@
   ecosystem: rubygems
   theme: family
   family_id: rubocop-lts
-  family_name: "RuboCop-LTS"
+  family_name: "RuboCop-LTS Family"
   family_position: 7
   minimum_version: 3.2
   role: author
@@ -2598,7 +2743,7 @@
     url: https://gitlab.com/rubocop-lts/rubocop-ruby2_3
   tags:
   - rubocop
-  docs_site:
+  docs_site: https://rubocop-lts.gitlab.io/
   github_stars: 6
   gitlab_stars: 1
   total_downloads: 11596
@@ -2614,7 +2759,7 @@
   ecosystem: rubygems
   theme: family
   family_id: rubocop-lts
-  family_name: "RuboCop-LTS"
+  family_name: "RuboCop-LTS Family"
   family_position: 8
   minimum_version: 3.2
   role: author
@@ -2633,7 +2778,7 @@
     url: https://gitlab.com/rubocop-lts/rubocop-ruby2_4
   tags:
   - rubocop
-  docs_site:
+  docs_site: https://rubocop-lts.gitlab.io/
   github_stars: 6
   gitlab_stars: 1
   total_downloads: 53040
@@ -2649,7 +2794,7 @@
   ecosystem: rubygems
   theme: family
   family_id: rubocop-lts
-  family_name: "RuboCop-LTS"
+  family_name: "RuboCop-LTS Family"
   family_position: 9
   minimum_version: 3.2
   role: author
@@ -2668,7 +2813,7 @@
     url: https://gitlab.com/rubocop-lts/rubocop-ruby2_5
   tags:
   - rubocop
-  docs_site:
+  docs_site: https://rubocop-lts.gitlab.io/
   github_stars: 6
   gitlab_stars: 1
   total_downloads: 7233
@@ -2684,7 +2829,7 @@
   ecosystem: rubygems
   theme: family
   family_id: rubocop-lts
-  family_name: "RuboCop-LTS"
+  family_name: "RuboCop-LTS Family"
   family_position: 10
   minimum_version: 3.2
   role: author
@@ -2703,7 +2848,7 @@
     url: https://gitlab.com/rubocop-lts/rubocop-ruby2_6
   tags:
   - rubocop
-  docs_site:
+  docs_site: https://rubocop-lts.gitlab.io/
   github_stars: 6
   gitlab_stars: 1
   total_downloads: 11398
@@ -2719,7 +2864,7 @@
   ecosystem: rubygems
   theme: family
   family_id: rubocop-lts
-  family_name: "RuboCop-LTS"
+  family_name: "RuboCop-LTS Family"
   family_position: 11
   minimum_version: 3.2
   role: author
@@ -2738,7 +2883,7 @@
     url: https://gitlab.com/rubocop-lts/rubocop-ruby2_7
   tags:
   - rubocop
-  docs_site:
+  docs_site: https://rubocop-lts.gitlab.io/
   github_stars: 6
   gitlab_stars: 1
   total_downloads: 88910
@@ -2754,7 +2899,7 @@
   ecosystem: rubygems
   theme: family
   family_id: rubocop-lts
-  family_name: "RuboCop-LTS"
+  family_name: "RuboCop-LTS Family"
   family_position: 12
   minimum_version: 3.2
   role: author
@@ -2775,7 +2920,7 @@
     url: https://codeberg.org/rubocop-lts/rubocop-ruby3_0
   tags:
   - rubocop
-  docs_site:
+  docs_site: https://rubocop-lts.gitlab.io/
   github_stars: 6
   gitlab_stars: 1
   codeberg_stars: 0
@@ -2792,7 +2937,7 @@
   ecosystem: rubygems
   theme: family
   family_id: rubocop-lts
-  family_name: "RuboCop-LTS"
+  family_name: "RuboCop-LTS Family"
   family_position: 13
   minimum_version: 3.2
   role: author
@@ -2811,7 +2956,7 @@
     url: https://gitlab.com/rubocop-lts/rubocop-ruby3_1
   tags:
   - rubocop
-  docs_site:
+  docs_site: https://rubocop-lts.gitlab.io/
   github_stars: 6
   gitlab_stars: 1
   total_downloads: 24082
@@ -2827,7 +2972,7 @@
   ecosystem: rubygems
   theme: family
   family_id: rubocop-lts
-  family_name: "RuboCop-LTS"
+  family_name: "RuboCop-LTS Family"
   family_position: 14
   minimum_version: 3.2
   role: author
@@ -2844,7 +2989,7 @@
     url: https://gitlab.com/rubocop-lts/rubocop-ruby3_2
   tags:
   - rubocop
-  docs_site:
+  docs_site: https://rubocop-lts.gitlab.io/
   github_stars: 7
   gitlab_stars: 1
   total_downloads: 62447
@@ -2858,6 +3003,10 @@
   description: A library for consuming and serving OpenID identities.
   language: Ruby
   ecosystem: rubygems
+  theme: family
+  family_id: ruby-openid
+  family_name: "Ruby OpenID Family"
+  family_position: 1
   minimum_version: 2.7
   role: maintainer
   first_commit_on: 2024/08/30
@@ -2895,6 +3044,10 @@
   description: Originally a fork. Has been merged back to the original gem.
   language: Ruby
   ecosystem: rubygems
+  theme: family
+  family_id: ruby-openid
+  family_name: "Ruby OpenID Family"
+  family_position: 7
   minimum_version: 2.7
   role: author
   first_commit_on: 2024/08/30
@@ -3103,6 +3256,10 @@
     (belongs_to) to another
   language: Ruby
   ecosystem: rubygems
+  theme: family
+  family_id: active-record
+  family_name: "ActiveRecord Plugins"
+  family_position: 8
   minimum_version: 2.5
   role: author
   first_commit_on: 2021/10/22
@@ -3136,6 +3293,10 @@
     dependencies: floss-funding.dev"
   language: Ruby
   ecosystem: rubygems
+  theme: family
+  family_id: rspec-family
+  family_name: "RSpec Plugins"
+  family_position: 5
   minimum_version: 2.3
   role: author
   first_commit_on: 2018/09/23
@@ -3175,6 +3336,10 @@
     dynamic array of column names
   language: Ruby
   ecosystem: rubygems
+  theme: family
+  family_id: active-record
+  family_name: "ActiveRecord Plugins"
+  family_position: 9
   minimum_version: 2.3
   role: author
   first_commit_on: 2017/06/12
@@ -3204,6 +3369,10 @@
   description: 'A Hashie::Mash joint to make #snakelife better'
   language: Ruby
   ecosystem: rubygems
+  theme: family
+  family_id: ruby-oauth
+  family_name: "Ruby OAuth Family"
+  family_position: 5
   minimum_version: 2.2
   role: author
   first_commit_on: 2022/08/26
@@ -3238,6 +3407,10 @@
   description: Dynamic Spyke API connection plugin for the Enterprise Cloud
   language: Ruby
   ecosystem: rubygems
+  theme: family
+  family_id: active-record
+  family_name: "ActiveRecord Plugins"
+  family_position: 10
   minimum_version: 2.3
   role: author
   first_commit_on: 2024/03/23
@@ -3284,7 +3457,10 @@
     owner: pboling
   tags:
   - toast
-  adoptable: true
+  adoptable: false
+  theme: avoid-me
+  archived: true
+  deprecation_reason: "If you need to use something like this, do your best to rename your deployed environments instead"
   docs_site:
   github_stars: 7
   total_downloads: 368595
@@ -3302,7 +3478,7 @@
   ecosystem: rubygems
   theme: family
   family_id: rubocop-lts
-  family_name: "RuboCop-LTS"
+  family_name: "RuboCop-LTS Family"
   family_position: 15
   minimum_version: 3.2
   role: author
@@ -3323,7 +3499,7 @@
     url: https://codeberg.org/rubocop-lts/standard-rubocop-lts
   tags:
   - rubocop
-  docs_site:
+  docs_site: https://rubocop-lts.gitlab.io/
   github_stars: 6
   gitlab_stars: 1
   codeberg_stars: 0
@@ -3485,6 +3661,10 @@
     projects - bottom of stack, dev/test dependencies: floss-funding.dev"
   language: Ruby
   ecosystem: rubygems
+  theme: family
+  family_id: rspec-family
+  family_name: "RSpec Plugins"
+  family_position: 2
   minimum_version: 1.9
   role: author
   first_commit_on: 2025/08/16
@@ -3553,6 +3733,10 @@
   description: "\U0001F516 Versions are good. Versions are cool. Versions will win."
   language: Ruby
   ecosystem: rubygems
+  theme: family
+  family_id: ruby-oauth
+  family_name: "Ruby OAuth Family"
+  family_position: 6
   minimum_version: 2.2
   role: author
   first_commit_on: 2022/06/20
@@ -3592,6 +3776,10 @@
     the oauth helper method on the Warden::Manager config setup
   language: Ruby
   ecosystem: rubygems
+  theme: family
+  family_id: ruby-oauth
+  family_name: "Ruby OAuth Family"
+  family_position: 4
   minimum_version: 1.8
   role: maintainer
   first_commit_on: 2025/10/19

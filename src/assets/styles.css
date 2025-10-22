@@ -259,7 +259,7 @@
     --z-corner-banner: 10;
     --z-fork-banner: 11;
     --z-role-banner: 10;
-    --z-filter-panel: 60;
+    --z-filter-panel: 500; /* Must be higher than family card hover z-index (200) */
 
     /* =========================================================================
        THEME SYSTEM - Project Card Themes
@@ -553,6 +553,8 @@ button,
     position: relative;
     overflow: hidden;
     background: var(--card-bg);
+    /* Prevent cards from stretching to match taller items in the same flex row */
+    align-self: flex-start;
 
     .tag {
         display: inline-block;
@@ -903,6 +905,8 @@ button,
     /* This will be set dynamically by JavaScript based on family size */
     min-width: var(--card-width);
     min-height: var(--card-min-height);
+    /* Prevent family stacks from forcing other cards in the same flex row to stretch */
+    align-self: flex-start;
 }
 
 /* Cards within a family stack */
