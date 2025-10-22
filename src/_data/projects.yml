@@ -418,6 +418,10 @@
   description: Organize complicated search results
   language: Ruby
   ecosystem: rubygems
+  theme: family
+  family_id: adoptable-family
+  family_name: "Looking for Maintainers!"
+  family_position: 7
   minimum_version: 1.8
   role: author
   first_commit_on: 2010/03/01
@@ -433,7 +437,6 @@
     owner: galtzo-floss
   tags:
     - search
-  theme: adopt-me
   #  adoption_url: "https://..." # Optional: custom adoption page (defaults to issues)
   adoptable: true
   archived: true
@@ -529,6 +532,10 @@
     a cookie by an after_filter (default) or a Rack Middleware (option).
   language: Ruby
   ecosystem: rubygems
+  theme: family
+  family_id: archived-family
+  family_name: "Thanks for the Memories!"
+  family_position: 1
   minimum_version: 1.8
   role: maintainer
   first_commit_on: 2010/02/05
@@ -541,7 +548,6 @@
   tags:
   - toast
   adoptable: false
-  theme: avoid-me
   archived: true
   deprecation_reason: "Incompatible with modern Rails"
   docs_site:
@@ -555,6 +561,10 @@
     of each release!
   language: Ruby
   ecosystem: rubygems
+  theme: family
+  family_id: adoptable-family
+  family_name: "Looking for Maintainers!"
+  family_position: 3
   minimum_version: 1.8
   role: author
   first_commit_on: 2008/11/15
@@ -573,7 +583,6 @@
   tags:
   - release
   - email
-  theme: adopt-me
   #  adoption_url: "https://..." # Optional: custom adoption page (defaults to issues)
   adoptable: true
   archived: true
@@ -591,6 +600,10 @@
     and Do Something
   language: Ruby
   ecosystem: rubygems
+  theme: family
+  family_id: adoptable-family
+  family_name: "Looking for Maintainers!"
+  family_position: 5
   minimum_version: 1.8
   role: author
   first_commit_on: 2015/10/06
@@ -608,7 +621,6 @@
     url: https://git.sr.ht/~galtzo/celluloid-io-pg-listener
   tags:
   - async
-  theme: adopt-me
   #  adoption_url: "https://..." # Optional: custom adoption page (defaults to issues)
   adoptable: true
   archived: true
@@ -1058,6 +1070,10 @@
   description: Find out if your Module include/extend hooks are misbehaving!
   language: Ruby
   ecosystem: rubygems
+  theme: family
+  family_id: adoptable-family
+  family_name: "Looking for Maintainers!"
+  family_position: 8
   minimum_version: 1.8
   role: author
   first_commit_on: 2019/12/18
@@ -1075,7 +1091,6 @@
     url: https://git.sr.ht/~galtzo/include_with_respect
   tags:
   - test
-  theme: adopt-me
   #  adoption_url: "https://..." # Optional: custom adoption page (defaults to issues)
   adoptable: true
   archived: true
@@ -1266,6 +1281,10 @@
     intelligently.
   language: Ruby
   ecosystem: rubygems
+  theme: family
+  family_id: adoptable-family
+  family_name: "Looking for Maintainers!"
+  family_position: 6
   minimum_version: 1.8
   role: author
   first_commit_on: 2015/04/15
@@ -1281,8 +1300,6 @@
     owner: galtzo-floss
   tags:
   - hash
-  adoptable: true
-  theme: adopt-me
   #  adoption_url: "https://..." # Optional: custom adoption page (defaults to issues)
   adoptable: true
   archived: true
@@ -1903,6 +1920,10 @@
         Based on logical-insight and rack-bug.
   language: Ruby
   ecosystem: rubygems
+  theme: family
+  family_id: adoptable-family
+  family_name: "Looking for Maintainers!"
+  family_position: 1
   minimum_version: 1.8
   role: author
   first_commit_on: 2012/08/30
@@ -1919,7 +1940,6 @@
   tags:
   - rack
   - view
-  theme: adopt-me
   #  adoption_url: "https://..." # Optional: custom adoption page (defaults to issues)
   adoptable: true
   archived: true
@@ -2019,6 +2039,10 @@
     into the response body. Extracted from rack-insight.
   language: Ruby
   ecosystem: rubygems
+  theme: family
+  family_id: adoptable-family
+  family_name: "Looking for Maintainers!"
+  family_position: 2
   minimum_version: 1.8
   role: author
   first_commit_on: 2015/04/12
@@ -2035,7 +2059,6 @@
   tags:
   - rack
   - view
-  theme: adopt-me
   #  adoption_url: "https://..." # Optional: custom adoption page (defaults to issues)
   adoptable: true
   archived: true
@@ -2131,6 +2154,10 @@
   description: An API for using the Amazon Flexible Payment Service (FPS).
   language: Ruby
   ecosystem: rubygems
+  theme: family
+  family_id: adoptable-family
+  family_name: "Looking for Maintainers!"
+  family_position: 4
   minimum_version: 1.8
   role: maintainer
   first_commit_on: 2010/11/01
@@ -2148,7 +2175,6 @@
   - payment
   - aws
   - api
-  theme: adopt-me
   #  adoption_url: "https://..." # Optional: custom adoption page (defaults to issues)
   adoptable: true
   archived: true
@@ -3242,6 +3268,10 @@
   description: Create Files Named Sequentially Intelligently
   language: Ruby
   ecosystem: rubygems
+  theme: family
+  family_id: adoptable-family
+  family_name: "Looking for Maintainers!"
+  family_position: 9
   minimum_version: 1.8
   role: author
   first_commit_on: 2014/02/25
@@ -3259,7 +3289,9 @@
     url: https://git.sr.ht/~galtzo/sequential_file
   tags:
   - shell
+  #  adoption_url: "https://..." # Optional: custom adoption page (defaults to issues)
   adoptable: true
+  archived: true
   docs_site:
   github_stars: 6
   total_downloads: 3828
@@ -3527,6 +3559,10 @@
     of the Rails FlashHash
   language: Ruby
   ecosystem: rubygems
+  theme: family
+  family_id: archived-family
+  family_name: "Thanks for the Memories!"
+  family_position: 2
   minimum_version: 1.8
   role: author
   first_commit_on: 2012/08/16
@@ -3543,7 +3579,6 @@
   tags:
   - toast
   adoptable: false
-  theme: avoid-me
   archived: true
   deprecation_reason: "If you need to use something like this, do your best to rename your deployed environments instead"
   docs_site:
@@ -3717,6 +3752,10 @@
     with many extra features.  It is now deprecated in favor of the original gem.
   language: Ruby
   ecosystem: rubygems
+  theme: family
+  family_id: rails-family
+  family_name: "Rails Plugins"
+  family_position: 6
   minimum_version: 1.8
   role: author
   first_commit_on: 2008/11/15
@@ -3733,7 +3772,6 @@
   tags:
   - email
   - error-handle
-  theme: adopt-me
 #  adoption_url: "https://..." # Optional: custom adoption page (defaults to issues)
   adoptable: true
   archived: true

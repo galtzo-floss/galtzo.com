@@ -298,10 +298,10 @@ body_class: projects
                data-family-index="<%= index %>"
                data-is-primary="<%= project['family_primary'] ? 'true' : 'false' %>">
     <div class="corner-anchor fork">
-      <% if project['archived'] || project['theme'] == 'avoid-me' %>
-      <%# THEME: Avoid Me - Uses caution tape X overlay on card, no corner banner %>
+      <% if project['theme'] == 'avoid-me' %>
+      <%# Avoid-me projects - Uses caution tape X overlay on card, no corner banner %>
       <% elsif project['adoptable'] || project['theme'] == 'adopt-me' %>
-      <%# THEME: Adopt Me - Replace Fork banner with Adopt Me banner %>
+      <%# Adoptable projects - Replace Fork banner with Adopt Me banner %>
       <a href="<%= project['adoption_url'] || (gh_forge ? "#{gh_forge['url']}/issues" : first_forge['url']) %>"
          class="corner-banner banner-adopt"
          target="_blank" rel="noopener">
@@ -509,8 +509,10 @@ body_class: projects
           data-tags='<%= tags_for_card.to_json %>'
           <% if project['theme'] %>data-theme="<%= project['theme'] %>"<% end %>>
     <div class="corner-anchor fork">
-      <% if project['theme'] == 'adopt-me' %>
-      <%# THEME: Adopt Me %>
+      <% if project['archived'] || project['theme'] == 'avoid-me' %>
+      <%# Archived projects - Uses caution tape X overlay on card, no corner banner %>
+      <% elsif project['adoptable'] || project['theme'] == 'adopt-me' %>
+      <%# Adoptable projects - Replace Fork banner with Adopt Me banner %>
       <a href="<%= project['adoption_url'] || (gh_forge ? "#{gh_forge['url']}/issues" : first_forge['url']) %>"
          class="corner-banner banner-adopt"
          target="_blank" rel="noopener">
@@ -523,8 +525,6 @@ body_class: projects
          target="_blank" rel="noopener">
         Update&nbsp;<span class="update-text">Me</span><span class="update-emoji" aria-hidden="true">🔧</span>
       </a>
-      <% elsif project['archived'] || project['theme'] == 'avoid-me' %>
-      <%# THEME: Avoid Me - Uses caution tape X overlay on card, no corner banner %>
       <% elsif project["type"] == "person" %>
       <a href="<%= gh_forge['url'] %>" class="corner-banner banner-fork" target="_blank" rel="noopener">Follow&nbsp;<span class="fork-me-text">Me</span><span class="fork-me-emoji" aria-hidden="true">🔮</span></a>
       <% else %>
