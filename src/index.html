@@ -493,11 +493,9 @@ body_class: projects
     <% elsif project["type"] != "person" && gh_forge %>
     <p>
       <img alt="<%= project['name'] %> GitHub License" src="https://img.shields.io/github/license/<%= gh_forge['owner'] %>/<%= project['name'] %>?style=social">
-      <img alt="<%= project['name'] %> GitHub stars" src="https://img.shields.io/github/stars/<%= gh_forge['owner'] %>/<%= project['name'] %>?style=social">
       <img alt="<%= project['name'] %> GitHub commit activity" src="https://img.shields.io/github/commit-activity/m/<%= gh_forge['owner'] %>/<%= project['name'] %>?style=social">
-      <% if project["language"] == "Ruby" %>
+      <% if project["release_date"] && project["last_commit_on"] %>
       <img alt="<%= project['name'] %> GitHub commits since latest release" src="https://img.shields.io/github/commits-since/<%= gh_forge['owner'] %>/<%= project['name'] %>/latest?style=social">
-      <img alt="<%= project['name'] %> Gem Total Downloads" src="https://img.shields.io/gem/dt/<%= project['name'] %>?style=social">
       <% end %>
     </p>
     <% end %>
@@ -749,7 +747,7 @@ body_class: projects
     <p>
       <img alt="<%= project['name'] %> GitHub License" src="https://img.shields.io/github/license/<%= gh_forge['owner'] %>/<%= project['name'] %>?style=social">
       <img alt="<%= project['name'] %> GitHub commit activity" src="https://img.shields.io/github/commit-activity/m/<%= gh_forge['owner'] %>/<%= project['name'] %>?style=social">
-      <% if project["last_release_on"] %>
+      <% if project["release_date"] && project["last_commit_on"] %>
       <img alt="<%= project['name'] %> GitHub commits since latest release" src="https://img.shields.io/github/commits-since/<%= gh_forge['owner'] %>/<%= project['name'] %>/latest?style=social">
       <% end %>
     </p>
