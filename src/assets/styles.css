@@ -849,19 +849,20 @@ button,
 }
 
 /* =========================================================================
-   THEME: AVOID ME
-   Static caution tape X overlay for archived/deprecated projects
+   ARCHIVED PROJECTS - Caution Tape X Overlay
+   Applies to any project marked as archived, regardless of theme
+   Can be used with family stacks and any other theme
    ========================================================================= */
 
-/* Reduce opacity of avoided/archived cards to indicate deprecated status */
-.card.theme-avoid-me {
+/* Reduce opacity of archived cards to indicate deprecated status */
+.card.archived {
     opacity: var(--avoid-card-opacity);
     position: relative;
 }
 
 /* Caution tape X overlay - diagonal stripes from corners */
-.card.theme-avoid-me::before,
-.card.theme-avoid-me::after {
+.card.archived::before,
+.card.archived::after {
     content: '';
     position: absolute;
     width: var(--avoid-tape-width);
@@ -882,12 +883,12 @@ button,
 }
 
 /* Top-left to bottom-right diagonal */
-.card.theme-avoid-me::before {
+.card.archived::before {
     transform: translate(-50%, -50%) rotate(45deg);
 }
 
 /* Top-right to bottom-left diagonal */
-.card.theme-avoid-me::after {
+.card.archived::after {
     transform: translate(-50%, -50%) rotate(-45deg);
 }
 

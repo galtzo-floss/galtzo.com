@@ -288,8 +288,9 @@ body_class: projects
           <% sorted_tags = (project['tags'] || []).sort %>
           <% aspect_class = project['aspect'].nil? ? '' : "card-#{project['aspect']}" %>
           <% theme_class = project['theme'] ? "theme-#{project['theme']}" : '' %>
+          <% archived_class = project['archived'] || project['status'] == 'archived' || project['theme'] == 'avoid-me' ? 'archived' : '' %>
 
-          <div class="card card-in-family <%= aspect_class %> <%= project['role'] %> <%= theme_class %>"
+          <div class="card card-in-family <%= aspect_class %> <%= project['role'] %> <%= theme_class %> <%= archived_class %>"
                data-tags='<%= tags_for_card.to_json %>'
                data-theme="family"
                data-family-id="<%= project['family_id'] %>"
@@ -339,7 +340,7 @@ body_class: projects
             &nbsp;|&nbsp;
             <a href="<%= project['first_commit'] %>" class="role-start" target="_blank" rel="noopener">since <%= year %></a>
             <% end %>
-            <% if project['archived'] %>
+            <% if project['archived'] && !project['adoptable'] %>
             &nbsp;|&nbsp;
             <span>Archived</span>
             <% end %>
@@ -502,8 +503,9 @@ body_class: projects
       <% sorted_tags = (project['tags'] || []).sort %>
       <% aspect_class = project['aspect'].nil? ? '' : "card-#{project['aspect']}" %>
       <% theme_class = project['theme'] ? "theme-#{project['theme']}" : '' %>
+  <% archived_class = project['archived'] || project['status'] == 'archived' || project['theme'] == 'avoid-me' ? 'archived' : '' %>
 
-      <li class="card <%= aspect_class %> <%= project['role'] %> <%= theme_class %>"
+      <li class="card <%= aspect_class %> <%= project['role'] %> <%= theme_class %> <%= archived_class %>"
           data-tags='<%= tags_for_card.to_json %>'
           <% if project['theme'] %>data-theme="<%= project['theme'] %>"<% end %>>
     <div class="corner-anchor fork">

@@ -182,6 +182,10 @@
     v5.2+ & Ruby 2.7+
   language: Ruby
   ecosystem: rubygems
+  theme: family
+  family_id: logging-family
+  family_name: "Logging Tools"
+  family_position: 4
   minimum_version: 2.7
   role: author
   first_commit_on: 2024/11/20
@@ -212,6 +216,10 @@
   description: Rails v8 ActiveSupport::Logger backported to Rails v5.2+ & Ruby 2.7+
   language: Ruby
   ecosystem: rubygems
+  theme: family
+  family_id: logging-family
+  family_name: "Logging Tools"
+  family_position: 3
   minimum_version: 2.7
   role: author
   first_commit_on: 2024/10/10
@@ -243,6 +251,10 @@
     v5.2+ & Ruby 2.7+
   language: Ruby
   ecosystem: rubygems
+  theme: family
+  family_id: logging-family
+  family_name: "Logging Tools"
+  family_position: 5
   minimum_version: 2.7
   role: author
   first_commit_on: 2024/10/10
@@ -337,6 +349,10 @@
     different versions of dependencies in repeatable scenarios called "appraisals."
   language: Ruby
   ecosystem: rubygems
+  theme: family
+  family_id: rspec-family
+  family_name: "RSpec Plugins"
+  family_position: 1
   minimum_version: 1.8
   role: author
   first_commit_on: 2017/11/20
@@ -417,7 +433,10 @@
     owner: galtzo-floss
   tags:
     - search
+  theme: adopt-me
+  #  adoption_url: "https://..." # Optional: custom adoption page (defaults to issues)
   adoptable: true
+  archived: true
   docs_site:
   github_stars: 8
   total_downloads: 11069
@@ -554,6 +573,10 @@
   tags:
   - release
   - email
+  theme: adopt-me
+  #  adoption_url: "https://..." # Optional: custom adoption page (defaults to issues)
+  adoptable: true
+  archived: true
   docs_site:
   github_stars: 49
   total_downloads: 96707
@@ -585,6 +608,10 @@
     url: https://git.sr.ht/~galtzo/celluloid-io-pg-listener
   tags:
   - async
+  theme: adopt-me
+  #  adoption_url: "https://..." # Optional: custom adoption page (defaults to issues)
+  adoptable: true
+  archived: true
   docs_site:
   github_stars: 11
   total_downloads: 21713
@@ -598,6 +625,10 @@
   description: Use the familiar ActiveModel::Errors pattern for controller validations
   language: Ruby
   ecosystem: rubygems
+  theme: family
+  family_id: rails-family
+  family_name: "Rails Plugins"
+  family_position: 4
   minimum_version: 1.8
   role: author
   first_commit_on: 2014/11/19
@@ -667,6 +698,10 @@
     Automatically log selected methods and their arguments as they are called at runtime!
   language: Ruby
   ecosystem: rubygems
+  theme: family
+  family_id: logging-family
+  family_name: "Logging Tools"
+  family_position: 1
   minimum_version: 3.1
   role: author
   first_commit_on: 2017/03/25
@@ -744,6 +779,10 @@
     no_content_for, and an enhanced content_for that plays nice with friends'
   language: Ruby
   ecosystem: rubygems
+  theme: family
+  family_id: rails-family
+  family_name: "Rails Plugins"
+  family_position: 2
   minimum_version: 1.8
   role: author
   first_commit_on: 2012/08/14
@@ -986,6 +1025,10 @@
   description: Humorous Log Levels and Color For Rails.  Customizable!
   language: Ruby
   ecosystem: rubygems
+  theme: family
+  family_id: logging-family
+  family_name: "Logging Tools"
+  family_position: 8
   minimum_version: 1.8
   role: author
   first_commit_on: 2014/10/16
@@ -1032,6 +1075,10 @@
     url: https://git.sr.ht/~galtzo/include_with_respect
   tags:
   - test
+  theme: adopt-me
+  #  adoption_url: "https://..." # Optional: custom adoption page (defaults to issues)
+  adoptable: true
+  archived: true
   docs_site:
   github_stars: 6
   total_downloads: 7906
@@ -1235,6 +1282,10 @@
   tags:
   - hash
   adoptable: true
+  theme: adopt-me
+  #  adoption_url: "https://..." # Optional: custom adoption page (defaults to issues)
+  adoptable: true
+  archived: true
   docs_site:
   github_stars: 3
   total_downloads: 11659
@@ -1779,6 +1830,10 @@
     Defaults are `truthy: 'green'` and `falsey: 'red'`.
   language: Ruby
   ecosystem: rubygems
+  theme: family
+  family_id: logging-family
+  family_name: "Logging Tools"
+  family_position: 6
   minimum_version: 2.6
   role: author
   first_commit_on: 2022/03/21
@@ -1864,7 +1919,10 @@
   tags:
   - rack
   - view
+  theme: adopt-me
+  #  adoption_url: "https://..." # Optional: custom adoption page (defaults to issues)
   adoptable: true
+  archived: true
   docs_site:
   github_stars: 151
   total_downloads: 131207
@@ -1977,7 +2035,10 @@
   tags:
   - rack
   - view
+  theme: adopt-me
+  #  adoption_url: "https://..." # Optional: custom adoption page (defaults to issues)
   adoptable: true
+  archived: true
   docs_site:
   github_stars: 12
   total_downloads: 36873
@@ -1997,6 +2058,10 @@
       to remove the conflict might be a better long-term solution.
   language: Ruby
   ecosystem: rubygems
+  theme: family
+  family_id: rails-family
+  family_name: "Rails Plugins"
+  family_position: 5
   minimum_version: 1.8
   role: author
   first_commit_on: 2016/03/08
@@ -2014,7 +2079,6 @@
   - rails
   - env
   adoptable: false
-  theme: avoid-me
   archived: true
   deprecation_reason: "Incompatible with modern Rails"
   docs_site:
@@ -2031,6 +2095,10 @@
     with a reference implementation
   language: Ruby
   ecosystem: rubygems
+  theme: family
+  family_id: logging-family
+  family_name: "Logging Tools"
+  family_position: 7
   minimum_version: 1.8
   role: author
   first_commit_on: 2015/06/21
@@ -2048,6 +2116,7 @@
   - rails
   - react
   - view
+  - log
   adoptable: true
   docs_site:
   github_stars: 19
@@ -2079,7 +2148,10 @@
   - payment
   - aws
   - api
+  theme: adopt-me
+  #  adoption_url: "https://..." # Optional: custom adoption page (defaults to issues)
   adoptable: true
+  archived: true
   docs_site:
   github_stars: 158
   total_downloads: 64098
@@ -2094,6 +2166,10 @@
     Ruby by logging/benchmarking/timing-out/rescuing 'Kernel.require' & 'load'
   language: Ruby
   ecosystem: rubygems
+  theme: family
+  family_id: logging-family
+  family_name: "Logging Tools"
+  family_position: 2
   minimum_version: 2.2
   role: author
   first_commit_on: 2018/09/21
@@ -2381,7 +2457,7 @@
   theme: family
   family_id: rspec-family
   family_name: "RSpec Plugins"
-  family_position: 3
+  family_position: 4
   minimum_version: 1.8
   role: author
   first_commit_on: 2018/10/01
@@ -2425,7 +2501,7 @@
   theme: family
   family_id: rspec-family
   family_name: "RSpec Plugins"
-  family_position: 4
+  family_position: 5
   minimum_version: 1.8
   role: author
   first_commit_on: 2015/10/21
@@ -2469,7 +2545,7 @@
   theme: family
   family_id: rspec-family
   family_name: "RSpec Plugins"
-  family_position: 1
+  family_position: 2
   minimum_version: 1.8
   role: author
   first_commit_on: 2018/10/06
@@ -3087,6 +3163,10 @@
     In Rails, Sinatra, et al, or simply the mail gem: Aids in development, testing, qa, and production troubleshooting of email issues without worrying that emails will get sent to actual live addresses.
   language: Ruby
   ecosystem: rubygems
+  theme: family
+  family_id: rails-family
+  family_name: "Rails Plugins"
+  family_position: 1
   minimum_version: 2.3
   role: author
   first_commit_on: 2008/11/15
@@ -3126,6 +3206,10 @@
   description: Rails gem for Data Migrations
   language: Ruby
   ecosystem: rubygems
+  theme: family
+  family_id: active-record
+  family_name: "ActiveRecord Plugins"
+  family_position: 9
   minimum_version: 1.8
   role: maintainer
   first_commit_on: 2023/02/21
@@ -3143,6 +3227,7 @@
     url: https://git.sr.ht/~galtzo/seed_migration
   tags:
   - rails
+  - activerecord
   - migration
   docs_site:
   github_stars: 383
@@ -3296,7 +3381,7 @@
   theme: family
   family_id: rspec-family
   family_name: "RSpec Plugins"
-  family_position: 5
+  family_position: 6
   minimum_version: 2.3
   role: author
   first_commit_on: 2018/09/23
@@ -3516,6 +3601,10 @@
     Also includes a presenter base class to allow any Ruby web framework to create logic around HTML tags
   language: Ruby
   ecosystem: rubygems
+  theme: family
+  family_id: rails-family
+  family_name: "Rails Plugins"
+  family_position: 3
   minimum_version: 1.8
   role: author
   first_commit_on: 2015/08/23
@@ -3644,7 +3733,10 @@
   tags:
   - email
   - error-handle
+  theme: adopt-me
+#  adoption_url: "https://..." # Optional: custom adoption page (defaults to issues)
   adoptable: true
+  archived: true
   docs_site:
   github_stars: 65
   total_downloads: 95891
@@ -3664,7 +3756,7 @@
   theme: family
   family_id: rspec-family
   family_name: "RSpec Plugins"
-  family_position: 2
+  family_position: 3
   minimum_version: 1.9
   role: author
   first_commit_on: 2025/08/16
