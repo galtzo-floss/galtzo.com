@@ -549,6 +549,8 @@ button,
     padding: var(--card-padding);
     /* Ensure content clears the horizontal role bar at the top */
     padding-top: calc(var(--card-padding) + var(--rolebar-height));
+    /* Ensure content clears the horizontal stats bar at the bottom (when present) */
+    padding-bottom: calc(var(--card-padding) + var(--rolebar-height));
     border-radius: var(--border-radius-sm);
     position: relative;
     overflow: hidden;
@@ -655,62 +657,63 @@ button,
     display: inline;
 }
 
-/* Role banner: convert to a full-width horizontal bar across the top of the card */
-.card .banner-role {
-    /* override ribbon defaults */
-    transform: none;
-    transform-origin: initial;
-    white-space: normal;
+/* =========================================================================
+   HORIZONTAL BANNERS - Shared base styles for top (role) and bottom (stats)
+   ========================================================================= */
 
-    /* full-width bar at top */
-    top: 0;
+/* Base styles for all horizontal banners */
+.card .horizontal-banner {
+    /* Positioning and size */
+    position: relative;
     left: 0;
     right: 0;
     width: 100%;
     height: var(--rolebar-height);
-    /* extra right padding to avoid fork ribbon overlap visually */
-    padding: 0 calc(0.75rem + var(--fork-notch)) 0 0.75rem;
 
-    /* reset size from ribbon values */
+    /* NO TRANSFORMS - keep it flat and horizontal */
+    transform: none;
+    transform-origin: initial;
+    white-space: normal;
+
+    /* Typography */
     font-size: 0.9rem;
     line-height: var(--rolebar-height);
 
-    /* layout contents: label left, since-year right */
-    justify-content: space-between;
+    /* Display */
+    display: flex;
+    align-items: center;
 
-    /* layering: must sit under the fork ribbon on the right */
+    /* Layering */
     z-index: var(--z-role-banner);
-
-    /* shape to match card corners */
-    border-top-left-radius: var(--border-radius-sm);
-    border-top-right-radius: var(--border-radius-sm);
 }
 
-/* Role bar content styles */
-.card .banner-role .role-label,
-.card .banner-role .role-start {
+/* Content label styles (used by both role-label and stats-label) */
+.card .horizontal-banner .role-label,
+.card .horizontal-banner .stats-label,
+.card .horizontal-banner .role-start {
     display: inline-flex;
     align-items: center;
     line-height: 1;
 }
-.card .banner-role a {
-    color: inherit; /* uses white from corner-banner */
+
+/* Link styles */
+.card .horizontal-banner a {
+    color: inherit;
     text-decoration: none;
 }
-.card .banner-role a:hover {
+
+.card .horizontal-banner a:hover {
     text-decoration: underline;
 }
 
-/* Consolidated: subtle role tint for horizontal bar using scoped variables */
-.card:is(.author, .maintainer, .contributor).banner-role,
-.card:is(.author, .maintainer, .contributor) .banner-role {
+/* Role-specific background and shadow for all horizontal banners */
+.card:is(.author, .maintainer, .contributor) .horizontal-banner {
     background: color-mix(in oklab, var(--current-role-solid) 8%, var(--card-bg));
-    box-shadow: inset 0 -6px 12px -8px var(--current-role-color);
     color: var(--text-color);
 }
 
-/* Consolidated: left accent stripe using scoped variables */
-.card .banner-role::before {
+/* Left accent stripe for all horizontal banners */
+.card .horizontal-banner::before {
     content: "";
     position: absolute;
     left: 0.25rem;
@@ -722,14 +725,49 @@ button,
     z-index: 11;
 }
 
-.card:is(.author, .maintainer, .contributor) .banner-role::before {
+.card:is(.author, .maintainer, .contributor) .horizontal-banner::before {
     background: var(--current-role-solid);
     opacity: 0.12;
 }
 
 /* =========================================================================
-   STATS BANNER - Bottom of card (mirrors role banner at top)
-   Displays release date and download count in a horizontal banner
+   ROLE BANNER - Top banner specific styles
+   ========================================================================= */
+
+.top-anchor.role {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: var(--z-role-banner);
+}
+
+.card .banner-role {
+    /* Position at top */
+    top: 0;
+
+    /* Extra right padding to avoid fork ribbon overlap */
+    padding: 0 calc(0.75rem + var(--fork-notch)) 0 0.75rem;
+
+    /* Layout: label left, since-year right */
+    justify-content: space-between;
+
+    /* Shape: rounded top corners */
+    border-top-left-radius: var(--border-radius-sm);
+    border-top-right-radius: var(--border-radius-sm);
+
+    /* Bold text */
+    font-weight: 600;
+}
+
+/* Role banner specific shadow (from top) */
+.card:is(.author, .maintainer, .contributor) .banner-role {
+    box-shadow: inset 0 -6px 12px -8px var(--current-role-color);
+}
+
+/* =========================================================================
+   STATS BANNER - Bottom banner specific styles
    ========================================================================= */
 
 .bottom-anchor.stats {
@@ -741,74 +779,29 @@ button,
     z-index: var(--z-role-banner);
 }
 
-.card .bottom-banner.banner-stats {
-    /* Position: full-width bar at bottom (mirrors role banner at top) */
-    position: relative;
+.card .banner-stats {
+    /* Position at bottom */
     bottom: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-    height: var(--rolebar-height);
 
-    /* NO TRANSFORMS - keep it flat and horizontal */
-    transform: none;
-    transform-origin: initial;
-
-    /* Padding: match role banner */
+    /* Padding */
     padding: 0 0.75rem;
 
-    /* Typography: match role banner exactly */
-    font-size: 0.9rem;
-    line-height: var(--rolebar-height);
-    white-space: nowrap;
-    text-align: center;
-
-    /* Shape: rounded bottom corners to match card */
-    border-bottom-left-radius: var(--border-radius-sm);
-    border-bottom-right-radius: var(--border-radius-sm);
-
-    /* Display */
-    display: flex;
-    align-items: center;
+    /* Layout: centered */
     justify-content: center;
 
-    /* Layering */
-    z-index: var(--z-role-banner);
+    /* Shape: rounded bottom corners */
+    border-bottom-left-radius: var(--border-radius-sm);
+    border-bottom-right-radius: var(--border-radius-sm);
 }
 
-.card .bottom-banner.banner-stats .stats-label {
-    display: inline-flex;
-    align-items: center;
-    line-height: 1;
-}
-
-.card .bottom-banner.banner-stats .stat-item {
-    display: inline;
-}
-
-/* Role-specific styling for stats banner (matches role banner exactly) */
-.card:is(.author, .maintainer, .contributor) .bottom-banner.banner-stats {
-    background: color-mix(in oklab, var(--current-role-solid) 8%, var(--card-bg));
+/* Stats banner specific shadow (from bottom) */
+.card:is(.author, .maintainer, .contributor) .banner-stats {
     box-shadow: inset 0 6px 12px -8px var(--current-role-color);
-    color: var(--text-color);
 }
 
-/* Left accent stripe for stats banner (mirrors role banner's left stripe) */
-.card .bottom-banner.banner-stats::before {
-    content: "";
-    position: absolute;
-    left: 0.25rem;
-    top: 0.375rem;
-    bottom: 0.375rem;
-    width: 6px;
-    border-radius: 3px;
-    background: transparent;
-    z-index: 11;
-}
-
-.card:is(.author, .maintainer, .contributor) .bottom-banner.banner-stats::before {
-    background: var(--current-role-solid);
-    opacity: 0.12;
+/* Stats banner inline items */
+.card .banner-stats .stat-item {
+    display: inline;
 }
 
 /* =========================================================================
@@ -817,16 +810,17 @@ button,
    ========================================================================= */
 
 .card .banner-adopt {
-    /* Use same positioning as fork banner */
+    /* Dedicated positional offsets (inward movement with positive values) */
     top: calc(var(--ribbon-top) + var(--ribbon-top-offset));
     right: calc(var(--ribbon-right) + var(--ribbon-right-offset));
+
+    /* Text padding along the ribbon length (does not change position) */
     padding-left: var(--corner-gap);
     padding-right: var(--corner-gap);
 
-    /* Purple gradient background */
     background: linear-gradient(135deg, var(--adopt-gradient-start) 0%, var(--adopt-gradient-end) 100%);
     z-index: var(--z-fork-banner);
-    color: var(--white);
+    color: var(--white); /* ensure readable by default */
     transition: background var(--transition-medium), color var(--transition-medium);
 }
 
@@ -867,16 +861,17 @@ button,
    ========================================================================= */
 
 .card .banner-update {
-    /* Use same positioning as fork banner */
+    /* Dedicated positional offsets (inward movement with positive values) */
     top: calc(var(--ribbon-top) + var(--ribbon-top-offset));
     right: calc(var(--ribbon-right) + var(--ribbon-right-offset));
+
+    /* Text padding along the ribbon length (does not change position) */
     padding-left: var(--corner-gap);
     padding-right: var(--corner-gap);
 
-    /* Amber/orange gradient background */
     background: linear-gradient(135deg, var(--update-gradient-start) 0%, var(--update-gradient-end) 100%);
     z-index: var(--z-fork-banner);
-    color: var(--white);
+    color: var(--white); /* ensure readable by default */
     transition: background var(--transition-medium), color var(--transition-medium);
 
     /* Subtle pulse animation to draw attention */
@@ -958,11 +953,11 @@ button,
 
     /* Caution tape pattern - diagonal yellow/black stripes perpendicular to tape direction */
     background: repeating-linear-gradient(
-        -45deg,
-        var(--avoid-stripe-yellow),
-        var(--avoid-stripe-yellow) var(--avoid-stripe-width),
-        var(--avoid-stripe-black) var(--avoid-stripe-width),
-        var(--avoid-stripe-black) calc(var(--avoid-stripe-width) * 2)
+            -45deg,
+            var(--avoid-stripe-yellow),
+            var(--avoid-stripe-yellow) var(--avoid-stripe-width),
+            var(--avoid-stripe-black) var(--avoid-stripe-width),
+            var(--avoid-stripe-black) calc(var(--avoid-stripe-width) * 2)
     );
 }
 
@@ -1534,9 +1529,9 @@ header nav a img {
    behind it. Multiple drop-shadows with increasing blur create a diffuse effect. */
 .language.bash {
     filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.9))
-            drop-shadow(0 0 10px rgba(255, 255, 255, 0.75))
-            drop-shadow(0 0 14px rgba(255, 255, 255, 0.4))
-            drop-shadow(0 0 16px rgba(255, 255, 255, 0.1));
+    drop-shadow(0 0 10px rgba(255, 255, 255, 0.75))
+    drop-shadow(0 0 14px rgba(255, 255, 255, 0.4))
+    drop-shadow(0 0 16px rgba(255, 255, 255, 0.1));
 }
 
 /* =========================================================================
@@ -1556,10 +1551,10 @@ header nav a img {
     /* Compose the full filter from the knobs above. Keep the invert+rotate base to adapt
        light-only shields to dark contexts, then fine-tune via variables. */
     --shield-filter-dark: invert(1)
-                           hue-rotate(180deg)
-                           saturate(var(--shield-saturate))
-                           contrast(var(--shield-contrast))
-                           brightness(var(--shield-darkness));
+    hue-rotate(180deg)
+    saturate(var(--shield-saturate))
+    contrast(var(--shield-contrast))
+    brightness(var(--shield-darkness));
 }
 
 /* Smoothly animate when the theme toggles */

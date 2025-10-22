@@ -344,8 +344,8 @@ body_class: projects
       <% end %>
       <% end %>
     </div>
-    <div class="corner-anchor role">
-      <div class="corner-banner banner-role <%= project['role'] %>">
+    <div class="top-anchor role">
+      <div class="horizontal-banner banner-role <%= project['role'] %>">
           <span class="role-label">
             <% if project["type"] == "person" %>
             <a href="<%= gh_forge['url'] %>" target="_blank" rel="noopener">Human</a>
@@ -369,14 +369,8 @@ body_class: projects
     </div>
     <% if project['release_date'] || project['total_downloads'] %>
     <div class="bottom-anchor stats">
-      <div class="bottom-banner banner-stats <%= project['role'] %>">
+      <div class="horizontal-banner banner-stats <%= project['role'] %>">
         <span class="stats-label">
-          <% if project['release_date'] %>
-          <span class="stat-item">Last Release: <%= project['release_date'] %></span>
-          <% end %>
-          <% if project['release_date'] && project['total_downloads'] %>
-          &nbsp;|&nbsp;
-          <% end %>
           <% if project['total_downloads'] %>
           <%
             downloads = project['total_downloads']
@@ -385,12 +379,30 @@ body_class: projects
             elsif downloads >= 1_000_000
               "#{(downloads / 1_000_000.0).round(1)}M"
             elsif downloads >= 1_000
-              "#{(downloads / 1_000.0).round(1)}K"
+              "#{(downloads / 1_000.0).round(1)}k"
             else
               downloads.to_s
             end
           %>
-          <span class="stat-item">Downloads: <%= formatted_downloads %></span>
+          <span class="stat-item"><%= formatted_downloads %> downloads</span>
+          <% end %>
+          <%
+            total_stars = (project['github_stars'] || 0) + (project['gitlab_stars'] || 0) + (project['codeberg_stars'] || 0)
+          %>
+          <% if total_stars > 0 %>
+          <% if project['total_downloads'] %>
+          &nbsp;|&nbsp;
+          <% end %>
+          <span class="stat-item"><%= total_stars %> ⭐️</span>
+          <% end %>
+          <% date = project['release_date'] || project['last_commit_on'] %>
+          <% if date && (project['total_downloads'] || total_stars > 0) %>
+          &nbsp;|&nbsp;
+          <% end %>
+          <% if project['release_date'] %>
+          <span class="stat-item">Last Release: <%= project['release_date'] %></span>
+          <% elsif project['last_commit_on'] %>
+          <span class="stat-item">Last Commit: <%= project['last_commit_on'] %></span>
           <% end %>
         </span>
       </div>
@@ -587,8 +599,8 @@ body_class: projects
       <% end %>
       <% end %>
     </div>
-    <div class="corner-anchor role">
-      <div class="corner-banner banner-role <%= project['role'] %>">
+    <div class="top-anchor role">
+      <div class="horizontal-banner banner-role <%= project['role'] %>">
           <span class="role-label">
             <% if project["type"] == "person" %>
             <a href="<%= gh_forge['url'] %>" target="_blank" rel="noopener">Human</a>
@@ -612,14 +624,8 @@ body_class: projects
     </div>
     <% if project['release_date'] || project['total_downloads'] %>
     <div class="bottom-anchor stats">
-      <div class="bottom-banner banner-stats <%= project['role'] %>">
+      <div class="horizontal-banner banner-stats <%= project['role'] %>">
         <span class="stats-label">
-          <% if project['release_date'] %>
-          <span class="stat-item">Last Release: <%= project['release_date'] %></span>
-          <% end %>
-          <% if project['release_date'] && project['total_downloads'] %>
-          &nbsp;|&nbsp;
-          <% end %>
           <% if project['total_downloads'] %>
           <%
             downloads = project['total_downloads']
@@ -628,12 +634,30 @@ body_class: projects
             elsif downloads >= 1_000_000
               "#{(downloads / 1_000_000.0).round(1)}M"
             elsif downloads >= 1_000
-              "#{(downloads / 1_000.0).round(1)}K"
+              "#{(downloads / 1_000.0).round(1)}k"
             else
               downloads.to_s
             end
           %>
-          <span class="stat-item">Downloads: <%= formatted_downloads %></span>
+          <span class="stat-item"><%= formatted_downloads %> downloads</span>
+          <% end %>
+          <%
+            total_stars = (project['github_stars'] || 0) + (project['gitlab_stars'] || 0) + (project['codeberg_stars'] || 0)
+          %>
+          <% if total_stars > 0 %>
+          <% if project['total_downloads'] %>
+          &nbsp;|&nbsp;
+          <% end %>
+          <span class="stat-item"><%= total_stars %> ⭐️</span>
+          <% end %>
+          <% date = project['release_date'] || project['last_commit_on'] %>
+          <% if date && (project['total_downloads'] || total_stars > 0) %>
+          &nbsp;|&nbsp;
+          <% end %>
+          <% if project['release_date'] %>
+          <span class="stat-item">Last Release: <%= project['release_date'] %></span>
+          <% elsif project['last_commit_on'] %>
+          <span class="stat-item">Last Commit: <%= project['last_commit_on'] %></span>
           <% end %>
         </span>
       </div>
@@ -724,11 +748,9 @@ body_class: projects
     <% elsif project["type"] != "person" && gh_forge %>
     <p>
       <img alt="<%= project['name'] %> GitHub License" src="https://img.shields.io/github/license/<%= gh_forge['owner'] %>/<%= project['name'] %>?style=social">
-      <img alt="<%= project['name'] %> GitHub stars" src="https://img.shields.io/github/stars/<%= gh_forge['owner'] %>/<%= project['name'] %>?style=social">
       <img alt="<%= project['name'] %> GitHub commit activity" src="https://img.shields.io/github/commit-activity/m/<%= gh_forge['owner'] %>/<%= project['name'] %>?style=social">
-      <% if project["language"] == "Ruby" %>
+      <% if project["last_release_on"] %>
       <img alt="<%= project['name'] %> GitHub commits since latest release" src="https://img.shields.io/github/commits-since/<%= gh_forge['owner'] %>/<%= project['name'] %>/latest?style=social">
-      <img alt="<%= project['name'] %> Gem Total Downloads" src="https://img.shields.io/gem/dt/<%= project['name'] %>?style=social">
       <% end %>
     </p>
     <% end %>
