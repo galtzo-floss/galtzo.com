@@ -209,6 +209,7 @@ document.addEventListener('DOMContentLoaded', function() {
   /**
    * Reposition visible cards in a family stack after filtering
    * This closes gaps left by hidden cards and recalculates height
+   * Adapts to mobile viewports with vertical stacking
    * @param {HTMLElement} stack - The family stack container
    */
   function repositionFamilyStack(stack) {
@@ -219,13 +220,20 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (visibleCards.length === 0) return;
 
+    // Detect if we're on a mobile viewport
+    const isMobile = window.innerWidth <= 768;
+
     // Get CSS variable values
     const cardWidth = parseInt(getComputedStyle(document.documentElement)
       .getPropertyValue('--card-width')) || 450;
     const overlap = parseFloat(getComputedStyle(document.documentElement)
-      .getPropertyValue('--family-overlap')) || 0.15;
+      .getPropertyValue(isMobile ? '--family-overlap-mobile' : '--family-overlap')) || (isMobile ? 0.25 : 0.15);
+    const mobileHorizontalOffset = parseInt(getComputedStyle(document.documentElement)
+      .getPropertyValue('--family-mobile-horizontal-offset')) || 20;
+    const mobileTouchSpacing = parseInt(getComputedStyle(document.documentElement)
+      .getPropertyValue('--family-mobile-touch-spacing')) || 60;
 
-    // Get the role banner height for stagger calculation
+    // Get the role banner height for stagger calculation (desktop only)
     const roleBanner = visibleCards[0] ? visibleCards[0].querySelector('.banner-role') : null;
     const roleBannerHeight = roleBanner ? roleBanner.offsetHeight : 30;
     const staggerOffset = roleBannerHeight * 1.5;
@@ -242,43 +250,129 @@ document.addEventListener('DOMContentLoaded', function() {
       if (currentHeight) card.style.height = currentHeight;
     });
 
-    // Reposition visible cards with continuous positioning (no gaps)
-    visibleCards.forEach(function(card, visualIndex) {
-      // Set all visible cards to the new maximum height (based only on visible cards)
-      card.style.height = maxVisibleHeight + 'px';
+    if (isMobile) {
+      // MOBILE: Vertical stacking with horizontal offsets
+      // Cards overlap - showing a percentage of each card with minimum 60px touch area
+      let cardHeights = [];
 
-      // Position based on visual index (position in the visible sequence)
-      const rightPosition = cardWidth * overlap * visualIndex;
-      card.style.right = rightPosition + 'px';
+      // Measure each visible card's natural height
+      visibleCards.forEach(function(card) {
+        const currentHeight = card.style.height;
+        card.style.height = '';
+        const naturalHeight = card.offsetHeight;
+        cardHeights.push(naturalHeight);
+        if (currentHeight) card.style.height = currentHeight;
+      });
 
-      // Update z-index based on visual position
-      card.style.zIndex = (100 - visualIndex).toString();
+      // Calculate total stack height and positions
+      let currentTop = 0;
+      let totalHeight = cardHeights[0] || 0; // Start with first card's full height
 
-      // Apply alternating stagger based on visual index
-      const isEven = visualIndex % 2 === 0;
-      const verticalOffset = isEven ? 0 : staggerOffset;
-      card.style.top = verticalOffset + 'px';
-
-      // Apply brightness fade based on visual position
-      if (visualIndex === 0) {
-        card.style.filter = 'none';
-      } else {
-        const baseBrightness = 0.8;
-        const minBrightness = 0.6;
-        let brightness;
-        if (visualIndex <= 3) {
-          brightness = baseBrightness;
-        } else {
-          const fadeStep = (baseBrightness - minBrightness) / Math.max(visibleCards.length - 3, 10);
-          brightness = Math.max(minBrightness, baseBrightness - ((visualIndex - 3) * fadeStep));
-        }
-        card.style.filter = 'brightness(' + brightness + ')';
+      // Calculate offsets for each card
+      let cardOffsets = [0]; // First card at top (0)
+      for (let i = 1; i < cardHeights.length; i++) {
+        // Each card shows a portion of itself: use overlap percentage but ensure at least 60px is visible
+        const visiblePortion = cardHeights[i - 1] * overlap; // 0.25 = 25% visible
+        const nextOffset = Math.max(visiblePortion, mobileTouchSpacing);
+        currentTop += nextOffset;
+        cardOffsets.push(currentTop);
+        totalHeight = currentTop + cardHeights[i];
       }
-    });
 
-    // Update stack width based on number of visible cards
-    const totalWidth = cardWidth + ((visibleCards.length - 1) * cardWidth * overlap);
-    stack.style.width = totalWidth + 'px';
+      // Set stack dimensions
+      stack.style.height = totalHeight + 'px';
+      stack.style.width = '100%';
+
+      // Reposition visible cards vertically with overlap
+      visibleCards.forEach(function(card, visualIndex) {
+        // Keep natural card height on mobile
+        card.style.height = '';
+
+        // Vertical position: use pre-calculated offset
+        card.style.top = cardOffsets[visualIndex] + 'px';
+        card.style.bottom = 'auto';
+
+        // Horizontal position: three-layer wave pattern
+        // Pattern: 0, 20px, 40px, 20px, 0, 20px, 40px, 20px...
+        // Creates a wave where each card is offset from both neighbors
+        const wavePosition = visualIndex % 4;
+        let horizontalOffset = 0;
+        if (wavePosition === 1 || wavePosition === 3) {
+          horizontalOffset = mobileHorizontalOffset / 2; // 20px
+        } else if (wavePosition === 2) {
+          horizontalOffset = mobileHorizontalOffset; // 40px
+        }
+
+        card.style.left = horizontalOffset + 'px';
+        card.style.right = 'auto';
+
+        // Update z-index based on visual position
+        card.style.zIndex = (100 - visualIndex).toString();
+
+        // Apply brightness fade based on visual position
+        if (visualIndex === 0) {
+          card.style.filter = 'none';
+        } else {
+          const baseBrightness = 0.8;
+          const minBrightness = 0.6;
+          let brightness;
+          if (visualIndex <= 3) {
+            brightness = baseBrightness;
+          } else {
+            const fadeStep = (baseBrightness - minBrightness) / Math.max(visibleCards.length - 3, 10);
+            brightness = Math.max(minBrightness, baseBrightness - ((visualIndex - 3) * fadeStep));
+          }
+          card.style.filter = 'brightness(' + brightness + ')';
+        }
+      });
+    } else {
+      // DESKTOP: Horizontal stacking with vertical offsets (existing behavior)
+      // Reposition visible cards with continuous positioning (no gaps)
+      visibleCards.forEach(function(card, visualIndex) {
+        // Set all visible cards to the new maximum height (based only on visible cards)
+        card.style.height = maxVisibleHeight + 'px';
+
+        // Position based on visual index (position in the visible sequence)
+        const rightPosition = cardWidth * overlap * visualIndex;
+        card.style.right = rightPosition + 'px';
+        card.style.left = 'auto';
+
+        // Update z-index based on visual position
+        card.style.zIndex = (100 - visualIndex).toString();
+
+        // Three-layer vertical wave pattern
+        // Pattern: 0, stagger/2, stagger, stagger/2, 0, stagger/2, stagger, stagger/2...
+        // Creates a wave where each card is offset from both neighbors
+        const wavePosition = visualIndex % 4;
+        let verticalOffset = 0;
+        if (wavePosition === 1 || wavePosition === 3) {
+          verticalOffset = staggerOffset / 2;
+        } else if (wavePosition === 2) {
+          verticalOffset = staggerOffset;
+        }
+        card.style.top = verticalOffset + 'px';
+
+        // Apply brightness fade based on visual position
+        if (visualIndex === 0) {
+          card.style.filter = 'none';
+        } else {
+          const baseBrightness = 0.8;
+          const minBrightness = 0.6;
+          let brightness;
+          if (visualIndex <= 3) {
+            brightness = baseBrightness;
+          } else {
+            const fadeStep = (baseBrightness - minBrightness) / Math.max(visibleCards.length - 3, 10);
+            brightness = Math.max(minBrightness, baseBrightness - ((visualIndex - 3) * fadeStep));
+          }
+          card.style.filter = 'brightness(' + brightness + ')';
+        }
+      });
+
+      // Update stack width based on number of visible cards
+      const totalWidth = cardWidth + ((visibleCards.length - 1) * cardWidth * overlap);
+      stack.style.width = totalWidth + 'px';
+    }
 
     // Update stack height based on the NEW maximum height of visible cards
     const containerHeight = maxVisibleHeight + staggerOffset;
@@ -465,11 +559,15 @@ document.addEventListener('DOMContentLoaded', function() {
    * Initialize family stack interactions
    * Sets up hover effects and dynamic width calculations for family card stacks
    * Fully dynamic - supports any number of cards (tested up to 20+)
+   * Adapts to mobile viewports with vertical stacking
    */
   function initFamilyStacks() {
     const familyStacks = document.querySelectorAll('.card-family-stack');
 
     if (!familyStacks.length) return;
+
+    // Detect if we're on a mobile viewport
+    const isMobile = window.innerWidth <= 768;
 
     familyStacks.forEach(stack => {
       const cards = stack.querySelectorAll('.card-in-family');
@@ -479,7 +577,11 @@ document.addEventListener('DOMContentLoaded', function() {
       const cardWidth = parseInt(getComputedStyle(document.documentElement)
         .getPropertyValue('--card-width')) || 450;
       const overlap = parseFloat(getComputedStyle(document.documentElement)
-        .getPropertyValue('--family-overlap')) || 0.15;
+        .getPropertyValue(isMobile ? '--family-overlap-mobile' : '--family-overlap')) || (isMobile ? 0.25 : 0.15);
+      const mobileHorizontalOffset = parseInt(getComputedStyle(document.documentElement)
+        .getPropertyValue('--family-mobile-horizontal-offset')) || 20;
+      const mobileTouchSpacing = parseInt(getComputedStyle(document.documentElement)
+        .getPropertyValue('--family-mobile-touch-spacing')) || 60;
 
       // Calculate and set the stack container width dynamically
       setFamilyStackWidth(stack, familySize, cardWidth, overlap);
@@ -508,77 +610,162 @@ document.addEventListener('DOMContentLoaded', function() {
         if (currentHeight) card.style.height = currentHeight;
       });
 
-      // Adjust container height to account for stagger (using 1.5x multiplier)
-      const containerHeight = maxHeight + staggerOffset;
-      stack.style.height = `${containerHeight}px`;
 
-      // Position each card dynamically with decreasing z-index
-      // Stack orientation: right to left (top card on right, stack extends left)
-      cards.forEach((card, index) => {
-        // Set all cards to the same height (tallest card's height)
-        card.style.height = `${maxHeight}px`;
+      if (isMobile) {
+        // MOBILE: Vertical stacking with horizontal offsets
+        // Cards overlap - showing a percentage of each card with minimum 60px touch area
+        let cardHeights = [];
 
-        // Position: cards stack from right to left
-        // First card (index 0) is on the far right
-        // Each subsequent card is positioned to the left of the previous one
-        // Calculate right position instead of left position
-        const rightPosition = cardWidth * overlap * index;
-        card.style.right = `${rightPosition}px`;
-        card.style.left = 'auto'; // Clear any left positioning
+        // First, measure each card's natural height
+        cards.forEach(card => {
+          const currentHeight = card.style.height;
+          card.style.height = '';
+          const naturalHeight = card.offsetHeight;
+          cardHeights.push(naturalHeight);
+          if (currentHeight) card.style.height = currentHeight;
+        });
 
-        // Alternating vertical stagger: even cards shift up, odd cards shift down
-        // Using 1.5x role banner height creates better visual separation
-        const isEven = index % 2 === 0;
-        const verticalOffset = isEven ? 0 : staggerOffset;
-        card.style.top = `${verticalOffset}px`;
+        // Calculate total stack height and positions
+        let currentTop = 0;
+        let totalHeight = cardHeights[0] || 0; // Start with first card's full height
 
-        // Z-index: first card highest (100), decreasing for each subsequent card
-        const zIndex = 100 - index;
-        card.style.zIndex = zIndex;
-
-        // All cards need to be absolute for right-to-left positioning to work
-        card.style.position = 'absolute';
-
-        // Apply darkening effect to cards behind the front card
-        // Front card (index 0): full brightness (no filter)
-        // Cards behind: darken progressively without transparency
-        if (index === 0) {
-          card.style.filter = 'none';
-        } else {
-          // Cards 1-3: 80% brightness
-          // Cards 4+: gradually darken to 60%
-          const baseBrightness = 0.8;
-          const minBrightness = 0.6;
-          let brightness;
-          if (index <= 3) {
-            brightness = baseBrightness;
-          } else {
-            const fadeStep = (baseBrightness - minBrightness) / Math.max(familySize - 3, 10);
-            brightness = Math.max(minBrightness, baseBrightness - ((index - 3) * fadeStep));
-          }
-          card.style.filter = `brightness(${brightness})`;
+        // Calculate offsets for each card
+        let cardOffsets = [0]; // First card at top (0)
+        for (let i = 1; i < cardHeights.length; i++) {
+          // Each card shows a portion of itself: use overlap percentage but ensure at least 60px is visible
+          const visiblePortion = cardHeights[i - 1] * overlap; // 0.25 = 25% visible
+          const nextOffset = Math.max(visiblePortion, mobileTouchSpacing);
+          currentTop += nextOffset;
+          cardOffsets.push(currentTop);
+          totalHeight = currentTop + cardHeights[i];
         }
 
-        // Set up hover interactions for each card
-        // Hover: lift card and push subsequent cards
-        card.addEventListener('mouseenter', () => {
-          handleFamilyCardHover(stack, index, cardWidth);
+        // Set stack dimensions
+        stack.style.height = `${totalHeight}px`;
+        stack.style.width = '100%';
+
+        // Position each card vertically with overlap
+        cards.forEach((card, index) => {
+          // Keep natural card height on mobile
+          card.style.height = '';
+
+          // Vertical position: use pre-calculated offset
+          card.style.top = `${cardOffsets[index]}px`;
+          card.style.bottom = 'auto';
+
+          // Horizontal position: three-layer wave pattern
+          // Pattern: 0, 20px, 40px, 20px, 0, 20px, 40px, 20px...
+          // Creates a wave where each card is offset from both neighbors
+          const wavePosition = index % 4;
+          let horizontalOffset = 0;
+          if (wavePosition === 1 || wavePosition === 3) {
+            horizontalOffset = mobileHorizontalOffset / 2; // 20px
+          } else if (wavePosition === 2) {
+            horizontalOffset = mobileHorizontalOffset; // 40px
+          }
+
+          card.style.left = `${horizontalOffset}px`;
+          card.style.right = 'auto';
+
+          // Z-index: first card highest (100), decreasing for each subsequent card
+          card.style.zIndex = 100 - index;
+
+          card.style.position = 'absolute';
+
+          // Apply darkening effect to cards behind the front card
+          if (index === 0) {
+            card.style.filter = 'none';
+          } else {
+            const baseBrightness = 0.8;
+            const minBrightness = 0.6;
+            let brightness;
+            if (index <= 3) {
+              brightness = baseBrightness;
+            } else {
+              const fadeStep = (baseBrightness - minBrightness) / Math.max(familySize - 3, 10);
+              brightness = Math.max(minBrightness, baseBrightness - ((index - 3) * fadeStep));
+            }
+            card.style.filter = `brightness(${brightness})`;
+          }
         });
+      } else {
+        // DESKTOP: Horizontal stacking with vertical offsets (existing behavior)
+        // Adjust container height to account for stagger (using 1.5x multiplier)
+        const containerHeight = maxHeight + staggerOffset;
+        stack.style.height = `${containerHeight}px`;
 
-        // Mouse leave: reset all cards in this stack
-        card.addEventListener('mouseleave', () => {
-          resetFamilyStack(stack);
+        // Position each card dynamically with decreasing z-index
+        // Stack orientation: right to left (top card on right, stack extends left)
+        cards.forEach((card, index) => {
+          // Set all cards to the same height (tallest card's height)
+          card.style.height = `${maxHeight}px`;
+
+          // Position: cards stack from right to left
+          // First card (index 0) is on the far right
+          // Each subsequent card is positioned to the left of the previous one
+          const rightPosition = cardWidth * overlap * index;
+          card.style.right = `${rightPosition}px`;
+          card.style.left = 'auto'; // Clear any left positioning
+
+          // Three-layer vertical wave pattern
+          // Pattern: 0, stagger/2, stagger, stagger/2, 0, stagger/2, stagger, stagger/2...
+          // Creates a wave where each card is offset from both neighbors
+          const wavePosition = index % 4;
+          let verticalOffset = 0;
+          if (wavePosition === 1 || wavePosition === 3) {
+            verticalOffset = staggerOffset / 2;
+          } else if (wavePosition === 2) {
+            verticalOffset = staggerOffset;
+          }
+          card.style.top = `${verticalOffset}px`;
+
+          // Z-index: first card highest (100), decreasing for each subsequent card
+          card.style.zIndex = 100 - index;
+
+          // All cards need to be absolute for right-to-left positioning to work
+          card.style.position = 'absolute';
+
+          // Apply darkening effect to cards behind the front card
+          // Front card (index 0): full brightness (no filter)
+          // Cards behind: darken progressively without transparency
+          if (index === 0) {
+            card.style.filter = 'none';
+          } else {
+            // Cards 1-3: 80% brightness
+            // Cards 4+: gradually darken to 60%
+            const baseBrightness = 0.8;
+            const minBrightness = 0.6;
+            let brightness;
+            if (index <= 3) {
+              brightness = baseBrightness;
+            } else {
+              const fadeStep = (baseBrightness - minBrightness) / Math.max(familySize - 3, 10);
+              brightness = Math.max(minBrightness, baseBrightness - ((index - 3) * fadeStep));
+            }
+            card.style.filter = `brightness(${brightness})`;
+          }
+
+          // Set up hover interactions for each card
+          // Hover: lift card and push subsequent cards
+          card.addEventListener('mouseenter', () => {
+            handleFamilyCardHover(stack, index, cardWidth);
+          });
+
+          // Mouse leave: reset all cards in this stack
+          card.addEventListener('mouseleave', () => {
+            resetFamilyStack(stack);
+          });
+
+          // Keyboard navigation: focus state triggers same visual as hover
+          card.addEventListener('focus', () => {
+            handleFamilyCardHover(stack, index, cardWidth);
+          }, true);
+
+          card.addEventListener('blur', () => {
+            resetFamilyStack(stack);
+          }, true);
         });
-
-        // Keyboard navigation: focus state triggers same visual as hover
-        card.addEventListener('focus', () => {
-          handleFamilyCardHover(stack, index, cardWidth);
-        }, true);
-
-        card.addEventListener('blur', () => {
-          resetFamilyStack(stack);
-        }, true);
-      });
+      }
     });
   }
 
@@ -681,5 +868,24 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Initialize themes on page load
   initThemes();
+
+  // Handle viewport resize: reinitialize stacks when crossing mobile/desktop breakpoint
+  let resizeTimeout = null;
+  let previousIsMobile = window.innerWidth <= 768;
+
+  window.addEventListener('resize', function() {
+    // Debounce resize events
+    if (resizeTimeout) clearTimeout(resizeTimeout);
+
+    resizeTimeout = setTimeout(() => {
+      const currentIsMobile = window.innerWidth <= 768;
+
+      // Only reinitialize if we've crossed the mobile/desktop boundary
+      if (currentIsMobile !== previousIsMobile) {
+        previousIsMobile = currentIsMobile;
+        initFamilyStacks();
+      }
+    }, 150); // 150ms debounce
+  });
 
 });

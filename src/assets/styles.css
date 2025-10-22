@@ -286,6 +286,9 @@
 
     /* Family theme - stacked cards */
     --family-overlap: 0.15;              /* 15% overlap for horizontal stacking */
+    --family-overlap-mobile: 0.25;       /* 25% overlap for vertical stacking on mobile */
+    --family-mobile-horizontal-offset: 40px; /* horizontal offset between cards in mobile vertical stack */
+    --family-mobile-touch-spacing: 60px; /* vertical spacing for easy touch targets on mobile */
     --family-transition: 0.3s ease-out;  /* smooth transition for hover effects */
     --family-z-base: 20;                 /* base z-index for family cards */
     --card-min-height: 400px;            /* minimum height for family cards */
@@ -1068,31 +1071,27 @@ button,
 /* Mobile responsive - switch to vertical stacking on small screens */
 @media (max-width: 768px) {
     .card-family-stack {
-        display: flex;
-        flex-direction: column;
+        position: relative;
         width: 100% !important; /* Override JS-set width */
         min-width: auto;
-        /* For large families, allow natural height expansion */
+        /* Height will be calculated by JavaScript for vertical stacking */
         min-height: auto;
     }
 
     .card-family-stack .card-in-family {
-        position: relative !important;
-        left: 0 !important;
-        width: 100%;
-        margin-bottom: 1rem;
-        /* Reset z-index for vertical stacking */
-        z-index: auto !important;
+        position: absolute !important;
+        /* Width adjusted for mobile - leave room for horizontal offset */
+        width: calc(100% - var(--family-mobile-horizontal-offset)) !important;
+        max-width: var(--card-width);
+        /* Left position and top position will be set by JavaScript */
+        /* to create vertical stack with horizontal offsets */
     }
 
-    /* Last card in family shouldn't have bottom margin */
-    .card-family-stack .card-in-family:last-child {
-        margin-bottom: 0;
-    }
-
+    /* Hover effects adjusted for mobile - subtle lift instead of translateY */
     .card-family-stack .card-in-family:hover,
     .card-family-stack .card-in-family:focus-within {
-        transform: translateY(0);
+        transform: scale(1.02);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
     }
 }
 
