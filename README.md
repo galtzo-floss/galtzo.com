@@ -6,8 +6,8 @@ Quick start
 
 ```bash
 # from project root
-bundle install --path vendor/bundle
-bundle exec bridgetown serve
+bundle install
+bundle exec bridgetown start
 ```
 
 Open http://localhost:4000 in your browser.
@@ -22,24 +22,3 @@ Notes
 
 - Replace the example projects in `_data/projects.yml` with your real projects.
 - If you don't have Ruby/Bundler installed, install them first. On many systems you can use a Ruby manager like rbenv or rvm.
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>{{ page.title }} - {{ site.title }}</title>
-  <link rel="stylesheet" href="/assets/styles.css">
-</head>
-<body>
-  <header>
-    <nav><a href="/">{{ site.title }}</a></nav>
-  </header>
-  <main>
-    {{ content }}
-  </main>
-  <footer>
-    <p>Built with Bridgetown</p>
-  </footer>
-</body>
-</html>
-

@@ -1,11 +1,11 @@
 source "https://rubygems.org"
 
-# Bridgetown 2.x family pinned to 2.0.1 per request
-gem "bridgetown", "2.0.1"
-gem "bridgetown-core", "2.0.1"
-gem "bridgetown-builder", "2.0.1"
-gem "bridgetown-foundation", "2.0.1"
-gem "bridgetown-paginate", "2.0.1"
+# Bridgetown 2.x family pinned to 2.1.1 per request
+gem "bridgetown", "2.1.1"
+gem "bridgetown-core", "2.1.1"
+gem "bridgetown-builder", "2.1.1"
+gem "bridgetown-foundation", "2.1.1"
+gem "bridgetown-paginate", "2.1.1"
 
 group :development do
   # Optional stylesheet compiler
