@@ -60,9 +60,23 @@ git status 2>&1 | tee tmp/git_status.txt
 ### projects.yml Entry Count (as of 2026-02-22)
 
 - Total YAML entries: 107 (includes 1 `type: person` entry)
-- Project entries: 106
+- Ruby+rubygems project entries: 101
 - RubyGems.org gems owned by pboling: 114
-- **Gap: ~8 gems not yet in projects.yml**
+- **Gap: 17 gems missing from projects.yml** (ast-merge, bash-merge, commonmarker-merge,
+  dotenv-merge, json-merge, jsonc-merge, markdown-merge, markly-merge, prism-merge,
+  psych-merge, rbs-merge, token-resolver, toml-merge, tree_haver, yaml-converter,
+  yard-fence, yard-yaml)
+- 4 entries in projects.yml not owned by pboling on RubyGems.org (intentional):
+  awesome-sponsorships, masq, os, resque
+
+### scripts/update_projects — key behaviour
+
+- **RubyGems discovery is ON by default.** The script always runs the discovery
+  pre-flight at startup (requires `RUBYGEMS_HANDLE` env var).
+- Pass `--no-discover` to skip discovery.
+- Pass `-y` or `--no-tty` to auto-accept all confirmation prompts (non-interactive / CI use).
+- The old `--discover-rubygems` flag no longer exists; discovery is now the default.
+
 
 ## Workspace Layout
 

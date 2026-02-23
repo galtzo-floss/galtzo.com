@@ -27,7 +27,7 @@ class ProjectUpdater
     release_date last_commit_on status
   ]
 
-  def initialize(surgical_field: nil, discover_rubygems: false)
+  def initialize(surgical_field: nil, discover_rubygems: true, auto_confirm: false)
     # SAFETY CHECK: projects_dev.yml must exist
     # If it doesn't exist, it means scripts/devswap was run but not run again to restore prod
     # This risks deploying dev/test projects to production
@@ -56,6 +56,7 @@ class ProjectUpdater
     @errors = [] # Track errors for summary
     @surgical_field = surgical_field
     @discover_rubygems = discover_rubygems
+    @auto_confirm = auto_confirm
 
     # Preserve header comments from YAML files
     @projects_header = extract_yaml_header(PROJECTS_FILE)
@@ -67,12 +68,39 @@ class ProjectUpdater
   end
 
   def run
-    # First, discover and add missing RubyGems if requested
+    puts "="*80
+    puts "🔍 PRE-FLIGHT: RUBYGEMS DISCOVERY"
+    puts "="*80
+
+    # Always run discovery analysis first (unless explicitly disabled)
     if @discover_rubygems
-      discover_and_add_missing_gems
+      if RUBYGEMS_HANDLE
+        missing_gems = discover_missing_gems
+        if missing_gems.any?
+          puts "\n📦 #{missing_gems.size} gem(s) on RubyGems.org are not yet in projects.yml:"
+          missing_gems.each { |name| puts "  • #{name}" }
+          puts ""
+          if confirm("➕ Add these #{missing_gems.size} missing gem(s) to projects.yml now?", default: true)
+            add_missing_gems(missing_gems)
+          else
+            puts "  ⏭️  Skipping gem discovery."
+          end
+        else
+          puts "✅ All RubyGems for #{RUBYGEMS_HANDLE} are already in projects.yml."
+        end
+      else
+        puts "⚠️  RUBYGEMS_HANDLE is not set — skipping discovery."
+        puts "   Set it in your environment to enable automatic gem discovery."
+        puts "   Use --no-discover to suppress this warning."
+      end
+    else
+      puts "⏭️  RubyGems discovery skipped (--no-discover)."
     end
 
+    puts ""
+    puts "="*80
     puts "Starting project update..."
+
     if @surgical_field
       puts "🔬 SURGICAL UPDATE MODE: Only updating '#{@surgical_field}' field"
       puts "   (Ignoring last_scrape_at timestamps)"
@@ -82,6 +110,19 @@ class ProjectUpdater
     puts "GitLab Token: #{GITLAB_TOKEN ? '✅ Set' : '❌ Not set'}"
     puts "RubyGems Handle: #{RUBYGEMS_HANDLE ? "✅ Set (#{RUBYGEMS_HANDLE})" : '❌ Not set'}"
 
+    non_person = @projects.count { |p| p['type'] != 'person' }
+    skippable  = @projects.count { |p| p['type'] != 'person' && !@surgical_field && recently_scraped?(p) }
+    to_update  = non_person - skippable
+    puts ""
+    puts "  #{non_person} projects total, #{skippable} recently scraped (will skip), #{to_update} to update."
+    puts ""
+
+    unless confirm("▶️  Proceed with updating #{to_update} project(s)?", default: true)
+      puts "Aborted."
+      exit 0
+    end
+
+    puts ""
     skipped_count = 0
     updated_count = 0
 
@@ -144,6 +185,75 @@ class ProjectUpdater
   end
 
   private
+
+  # Prompt the user for a yes/no answer.
+  # In auto-confirm mode (@auto_confirm) the default is accepted immediately.
+  # Returns true for yes, false for no.
+  def confirm(message, default: true)
+    if @auto_confirm
+      answer = default ? 'y' : 'n'
+      puts "#{message} [auto: #{answer}]"
+      return default
+    end
+
+    prompt = default ? "[Y/n]" : "[y/N]"
+    print "#{message} #{prompt} "
+    $stdout.flush
+    input = $stdin.gets&.strip&.downcase
+    # Empty input → accept the default
+    return default if input.nil? || input.empty?
+    input.start_with?('y')
+  end
+
+  # Returns the list of gem names on RubyGems.org that are absent from projects.yml.
+  def discover_missing_gems
+    puts "  Querying RubyGems.org for gems owned by #{RUBYGEMS_HANDLE}..."
+    rubygems = fetch_user_rubygems(RUBYGEMS_HANDLE)
+
+    if rubygems.empty?
+      puts "  ⚠️  No gems found for #{RUBYGEMS_HANDLE} — check the handle and your network."
+      return []
+    end
+
+    puts "  Found #{rubygems.size} gem(s) owned by #{RUBYGEMS_HANDLE} on RubyGems.org."
+
+    existing_gems = @projects
+      .select { |p| p['language'] == 'Ruby' && p['ecosystem'] == 'rubygems' }
+      .map { |p| p['name'] }
+
+    rubygems.reject { |gem_name| existing_gems.include?(gem_name) }
+  end
+
+  # Adds each gem in +missing_gems+ to projects.yml (and projects_dev.yml),
+  # then saves both files.
+  def add_missing_gems(missing_gems)
+    puts "\n🔨 Adding #{missing_gems.size} missing gem(s) to projects.yml..."
+    errors_before = @errors.size
+
+    missing_gems.each_with_index do |gem_name, index|
+      puts "\n[#{index + 1}/#{missing_gems.size}] Adding: #{gem_name}"
+
+      begin
+        new_project = build_project_from_rubygem(gem_name)
+        @projects << new_project
+        puts "  ✅ Added #{gem_name}"
+
+        @projects_dev << new_project.dup
+        puts "  🔄 Synced to projects_dev.yml"
+
+        sleep(@rate_limit_delay)
+      rescue => e
+        error_msg = "Failed to add #{gem_name}: #{e.message}"
+        @errors << error_msg
+        puts "  ❌ ERROR: #{e.message}"
+      end
+    end
+
+    added = missing_gems.size - (@errors.size - errors_before)
+    save_yaml(PROJECTS_FILE, @projects)
+    save_yaml(PROJECTS_DEV_FILE, @projects_dev) if @projects_dev
+    puts "\n✅ Discovery complete! Added #{added} of #{missing_gems.size} gem(s)."
+  end
 
   def discover_and_add_missing_gems
     unless RUBYGEMS_HANDLE
@@ -1038,44 +1148,57 @@ end
 # Run the updater
 if __FILE__ == $0
   # Parse command-line arguments
-  surgical_field = nil
-  discover_rubygems = false
+  surgical_field   = nil
+  discover_rubygems = true   # ON by default
+  auto_confirm     = false
 
   ARGV.each do |arg|
     case arg
     when '--help', '-h'
       puts "Usage: #{$0} [OPTIONS] [FIELD]"
       puts ""
-      puts "Update all project data, or surgically update a specific field."
+      puts "Fetches live stats for every project in projects.yml from GitHub, GitLab,"
+      puts "Codeberg, and RubyGems APIs. By default, also discovers any gems on"
+      puts "RubyGems.org that are missing from projects.yml and prompts you to add them"
+      puts "before the main update begins."
       puts ""
       puts "Options:"
-      puts "  --help, -h              Show this help message"
-      puts "  --discover-rubygems     Discover and add missing RubyGems to projects.yml"
-      puts "                          (Uses RUBYGEMS_HANDLE from environment)"
+      puts "  -h, --help          Show this help message"
+      puts "  --no-discover       Skip the RubyGems discovery pre-flight entirely"
+      puts "  -y, --no-tty        Auto-accept all confirmation prompts (non-interactive mode)"
       puts ""
-      puts "Surgical Update Fields:"
+      puts "Surgical Update Fields (update one field across all projects):"
       ProjectUpdater::VALID_SURGICAL_FIELDS.each do |field|
         puts "  #{field}"
       end
       puts ""
+      puts "Environment Variables:"
+      puts "  GITHUB_TOKEN        Raises GitHub API rate limit from 60 to 5,000 req/hr"
+      puts "  GITLAB_TOKEN        Authenticates GitLab API requests"
+      puts "  RUBYGEMS_HANDLE     Your RubyGems username — required for gem discovery"
+      puts ""
       puts "Examples:"
-      puts "  #{$0}                          # Full update (respects last_scrape_at)"
-      puts "  #{$0} --discover-rubygems      # Find and add missing RubyGems"
-      puts "  #{$0} release_date             # Update only release_date for all projects"
-      puts "  #{$0} github_stars             # Update only github_stars for all projects"
-      puts "  #{$0} --discover-rubygems release_date  # Discover gems, then update release_date"
+      puts "  #{$0}                     # Full update + gem discovery (interactive)"
+      puts "  #{$0} -y                  # Full update + gem discovery (non-interactive)"
+      puts "  #{$0} --no-discover       # Full update, skip gem discovery"
+      puts "  #{$0} release_date        # Surgical: update only release_date for all projects"
+      puts "  #{$0} github_stars        # Surgical: update only github_stars for all projects"
+      puts "  #{$0} -y release_date     # Surgical update, non-interactive"
       exit 0
-    when '--discover-rubygems'
-      discover_rubygems = true
+    when '--no-discover'
+      discover_rubygems = false
+    when '-y', '--no-tty'
+      auto_confirm = true
     else
-      # Assume it's a surgical field
+      # Assume it's a surgical field name
       surgical_field = arg unless arg.start_with?('--')
     end
   end
 
-  updater = ProjectUpdater.new(surgical_field: surgical_field, discover_rubygems: discover_rubygems)
+  updater = ProjectUpdater.new(
+    surgical_field:    surgical_field,
+    discover_rubygems: discover_rubygems,
+    auto_confirm:      auto_confirm
+  )
   updater.run
 end
-
-
-

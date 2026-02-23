@@ -31,25 +31,49 @@ Iterates over every project in `src/_data/projects.yml` and fetches up-to-date
 data from GitHub, GitLab, Codeberg, and RubyGems APIs, then writes the results
 back to both `projects.yml` and `projects_dev.yml`.
 
+Before the main update begins, the script always runs a **RubyGems discovery
+pre-flight**: it queries RubyGems.org for every gem owned by `RUBYGEMS_HANDLE`,
+compares the list against `projects.yml`, and — if any are missing — displays
+them and asks whether to add them now. This keeps `projects.yml` in sync with
+your published gems automatically.
+
 #### Environment variables
 
 | Variable | Required | Purpose |
 |---|---|---|
-| `GITHUB_TOKEN` | Recommended | Raises the GitHub API rate limit from 60 to 5 000 req/hr |
+| `GITHUB_TOKEN` | Recommended | Raises the GitHub API rate limit from 60 to 5,000 req/hr |
 | `GITLAB_TOKEN` | Optional | Authenticates GitLab API requests |
-| `RUBYGEMS_HANDLE` | Required for `--discover-rubygems` | Your RubyGems username (e.g. `pboling`) |
+| `RUBYGEMS_HANDLE` | Recommended | Your RubyGems username (e.g. `pboling`) — enables gem discovery |
 
 Set these in a `.env.local` file (or however your shell loads env vars) before running.
 
-#### Full update (all fields, all projects)
+#### Full update (default)
 
 ```bash
 ruby scripts/update_projects
 ```
 
-Projects scraped within the last 24 hours are automatically skipped. To force a
-re-scrape, delete or zero out the `last_scrape_at` field in `projects.yml` for
-the projects you want refreshed.
+The script will:
+1. **Discover** any gems on RubyGems.org not yet in `projects.yml` and prompt
+   you to add them.
+2. Show how many projects will be updated vs. skipped (projects scraped within
+   the last 24 hours are skipped automatically).
+3. **Prompt for confirmation** before starting the update loop.
+
+To skip all prompts (e.g. in CI or a cron job), pass `-y` / `--no-tty`:
+
+```bash
+ruby scripts/update_projects -y
+```
+
+To skip the RubyGems discovery pre-flight entirely:
+
+```bash
+ruby scripts/update_projects --no-discover
+```
+
+To force a re-scrape of a project that was recently scraped, delete or zero out
+its `last_scrape_at` field in `projects.yml`.
 
 #### Surgical update — one field across all projects
 
@@ -80,23 +104,16 @@ Examples:
 ruby scripts/update_projects github_stars
 ruby scripts/update_projects release_date
 ruby scripts/update_projects status
+ruby scripts/update_projects -y release_date   # non-interactive
 ```
 
-#### Discover and add missing RubyGems
+#### Option reference
 
-Queries the RubyGems API for all gems owned by `RUBYGEMS_HANDLE`, compares the
-list against `projects.yml`, and adds any missing entries (including fetching
-their GitHub stars, release date, and other metadata automatically).
-
-```bash
-RUBYGEMS_HANDLE=pboling ruby scripts/update_projects --discover-rubygems
-```
-
-You can combine discovery with a surgical field update in the same run:
-
-```bash
-ruby scripts/update_projects --discover-rubygems release_date
-```
+| Flag | Default | Description |
+|---|---|---|
+| `-h, --help` | | Show help and exit |
+| `--no-discover` | *(discovery on)* | Skip the RubyGems discovery pre-flight |
+| `-y, --no-tty` | *(interactive)* | Auto-accept all confirmation prompts |
 
 #### Safety check
 
