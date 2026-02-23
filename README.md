@@ -162,6 +162,94 @@ restore the production file — see the next section.
 
 ---
 
+### `scripts/project_query` — query and inspect projects.yml from the CLI
+
+Read-only script for filtering, auditing, and exploring `src/_data/projects.yml`.
+No API calls are made; it operates entirely on the local YAML file.
+
+```bash
+bundle exec ruby scripts/project_query <subcommand> [args] [options]
+```
+
+#### Subcommands
+
+| Subcommand | Description |
+|---|---|
+| `list` | Table of all projects |
+| `stats` | Summary statistics (counts by language, ecosystem, status, role; stars; downloads) |
+| `show <name>` | Full YAML dump for one project (fuzzy name match) |
+| `missing <field>` | Projects where the given field is blank or nil |
+| `stale [--days N]` | Projects not scraped in > N days (default: 30) |
+| `status <value>` | Filter by status (`active` \| `stale` \| `archived`) |
+| `language <value>` | Filter by language |
+| `ecosystem <value>` | Filter by ecosystem (`rubygems` \| `cargo` \| `npm` \| `pypi` \| `go`) |
+| `role <value>` | Filter by role (`author` \| `contributor` \| `maintainer`) |
+| `tag <value>` | Filter by tag |
+| `needs-attention` | Full data-quality report: missing fields, stale scrapes, status mismatches, zero downloads, etc. |
+| `console` | Drop into an IRB session with project data pre-loaded |
+
+#### Options
+
+| Flag | Default | Description |
+|---|---|---|
+| `--days N` | 30 | Day threshold for the `stale` subcommand |
+| `--format table\|names\|yaml` | `table` | Output format |
+| `--file PATH` | `src/_data/projects.yml` | Use a different YAML file |
+| `--no-color` | *(auto)* | Disable ANSI colour output |
+| `-h, --help` | | Show help |
+
+#### Common workflows
+
+```bash
+# What needs fixing right now?
+bundle exec ruby scripts/project_query needs-attention
+
+# Which projects have no ecosystem set?
+bundle exec ruby scripts/project_query missing ecosystem
+
+# Which projects haven't been scraped in over a week?
+bundle exec ruby scripts/project_query stale --days 7
+
+# Show full entry for one project
+bundle exec ruby scripts/project_query show version_gem
+
+# Get just the names of all stale projects (for scripting)
+bundle exec ruby scripts/project_query status stale --format names
+
+# Interactive exploration
+bundle exec ruby scripts/project_query console
+```
+
+#### IRB console
+
+The `console` subcommand drops into a pre-loaded IRB session with:
+
+- `PROJS` — array of typed `Project` structs (one per project)
+- `PROJECTS` — array of raw hashes
+
+Helper methods available at the prompt:
+
+| Method | Description |
+|---|---|
+| `find("name")` | Fuzzy-find a project by name |
+| `by_language("Ruby")` | Filter by language |
+| `by_status("stale")` | Filter by status |
+| `by_role("author")` | Filter by role |
+| `by_ecosystem("rubygems")` | Filter by ecosystem |
+| `by_tag("rspec")` | Filter by tag |
+| `missing(:field)` | Projects with a blank field |
+| `stale_scrape(days: 30)` | Not scraped in N days |
+| `stale_commit(days: 365)` | No commit in N days |
+| `never_scraped` | Never been scraped |
+| `needs_attention` | Returns grouped issues hash |
+| `stats` | Prints summary statistics |
+
+Each `Project` struct also has convenience predicates: `ruby_gem?`, `active?`,
+`archived?`, `stale?`, `never_scraped?`, `days_since_scrape`, `days_since_commit`,
+`github_url`.
+
+---
+
 ### `scripts/devswap` — swap between dev and production project lists
 
 Toggles `projects.yml` between the production and dev/test versions so you can

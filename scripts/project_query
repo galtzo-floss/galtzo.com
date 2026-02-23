@@ -1,0 +1,591 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+# =============================================================================
+# scripts/project_query — query, filter, and inspect src/_data/projects.yml
+#
+# Usage:
+#   bundle exec ruby scripts/project_query [OPTIONS] <subcommand> [args]
+#
+# Run with --help for full usage.
+# =============================================================================
+
+require 'yaml'
+require 'date'
+require 'time'
+require 'pp'
+require 'rbconfig'
+require 'tempfile'
+
+class ProjectQuery
+  PROJECTS_FILE     = File.expand_path('../src/_data/projects.yml', __dir__)
+  CONSOLE_HELPER    = File.expand_path('../tmp/project_query_console.rb', __dir__)
+
+  # Fields that are expected on every non-person project
+  EXPECTED_FIELDS = %w[
+    name description language ecosystem minimum_version role
+    first_commit_on forges tags status
+    release_date last_commit_on last_scrape_at
+  ].freeze
+
+  # Ecosystems that should have download stats
+  DOWNLOAD_ECOSYSTEMS = %w[rubygems cargo npm pypi].freeze
+
+  # Ecosystems that should have a release_date
+  RELEASE_DATE_ECOSYSTEMS = %w[rubygems cargo npm pypi go].freeze
+
+  # ANSI colour codes
+  COLORS = {
+    red:     "\e[31m",
+    yellow:  "\e[33m",
+    green:   "\e[32m",
+    cyan:    "\e[36m",
+    bold:    "\e[1m",
+    reset:   "\e[0m",
+  }.freeze
+
+  def initialize(file: PROJECTS_FILE, format: :table, color: $stdout.tty?)
+    @file   = file
+    @format = format
+    @color  = color
+    @all    = YAML.load_file(@file) || []
+    @projects = @all.reject { |p| p['type'] == 'person' }
+  end
+
+  # ============================================================================
+  # Public subcommand entry points
+  # ============================================================================
+
+  def run_stats
+    puts header("📊 PROJECT STATISTICS")
+    puts "  Total projects : #{@projects.size}"
+    puts "  Source file    : #{@file}"
+    puts ""
+
+    group_stat("Language",     @projects.group_by { |p| p['language'] || '(none)' })
+    group_stat("Ecosystem",    @projects.group_by { |p| p['ecosystem'] || '(none)' })
+    group_stat("Status",       @projects.group_by { |p| p['status'] || '(none)' })
+    group_stat("Role",         @projects.group_by { |p| p['role'] || '(none)' })
+
+    # Stars
+    stars = @projects.filter_map { |p| p['github_stars'] }.sort
+    if stars.any?
+      puts "  GitHub stars   : min=#{stars.first}  max=#{stars.last}  avg=#{(stars.sum.to_f / stars.size).round(1)}  total=#{stars.sum}"
+    end
+
+    # Downloads
+    dl = @projects.filter_map { |p| p['total_downloads'] }.sort
+    if dl.any?
+      puts "  Total downloads: min=#{dl.first}  max=#{dl.last}  avg=#{(dl.sum.to_f / dl.size).round(0).to_i}  total=#{dl.sum}"
+    end
+
+    # Scrape freshness
+    never  = @projects.count { |p| p['last_scrape_at'].nil? }
+    stale7 = @projects.count { |p| days_since(p['last_scrape_at']) > 7 }
+    stale30= @projects.count { |p| days_since(p['last_scrape_at']) > 30 }
+    puts ""
+    puts "  Never scraped  : #{never}"
+    puts "  Scrape > 7d    : #{stale7}"
+    puts "  Scrape > 30d   : #{stale30}"
+  end
+
+  def run_missing(field)
+    abort_usage("missing requires a field name") unless field
+    matches = @projects.select { |p| blank?(p[field]) }
+    print_results(matches, label: "Missing '#{field}'")
+  end
+
+  def run_stale(days:)
+    matches = @projects.select { |p| days_since(p['last_scrape_at']) > days }
+    print_results(matches, label: "Not scraped in > #{days} days")
+  end
+
+  def run_filter(field, value)
+    matches = @projects.select { |p| p[field].to_s.downcase == value.downcase }
+    print_results(matches, label: "#{field}=#{value}")
+  end
+
+  def run_show(name)
+    project = @projects.find { |p| p['name'].to_s.downcase == name.to_s.downcase }
+    if project.nil?
+      # fuzzy fallback
+      matches = @projects.select { |p| p['name'].to_s.downcase.include?(name.to_s.downcase) }
+      if matches.size == 1
+        project = matches.first
+      elsif matches.size > 1
+        puts colorize("Ambiguous name '#{name}' — matches:", :yellow)
+        matches.each { |p| puts "  #{p['name']}" }
+        return
+      else
+        puts colorize("No project found matching '#{name}'", :red)
+        return
+      end
+    end
+    puts YAML.dump([project])
+  end
+
+  def run_needs_attention
+    issues = collect_issues
+    if issues.empty?
+      puts colorize("✅  No issues found — all projects look good!", :green)
+      return
+    end
+
+    # Group by issue type
+    by_type = issues.group_by { |i| i[:type] }
+
+    puts header("⚠️  NEEDS ATTENTION — #{issues.size} issue(s) across #{issues.map { |i| i[:name] }.uniq.size} project(s)")
+    puts ""
+
+    by_type.sort_by { |t, _| t }.each do |type, group|
+      puts colorize("  #{type} (#{group.size})", :bold)
+      group.sort_by { |i| i[:name] }.each do |issue|
+        detail = issue[:detail] ? colorize("  → #{issue[:detail]}", :yellow) : ""
+        puts "    #{issue[:name]}#{detail}"
+      end
+      puts ""
+    end
+
+    # Summary table
+    puts colorize("  Summary:", :bold)
+    by_type.sort_by { |t, g| [-g.size, t] }.each do |type, group|
+      bar = "█" * [group.size, 40].min
+      puts "    #{type.ljust(30)} #{group.size.to_s.rjust(3)}  #{colorize(bar, :cyan)}"
+    end
+  end
+
+  def run_console
+    write_console_helper
+    puts colorize("🔮 Launching IRB console with project data pre-loaded...", :cyan)
+    puts colorize("   Helper: #{CONSOLE_HELPER}", :cyan)
+    puts ""
+    # In-process IRB start (so bundle env is preserved)
+    $LOAD_PATH.unshift(File.expand_path('../', RbConfig::CONFIG['rubylibdir'])) rescue nil
+    require CONSOLE_HELPER
+    begin
+      require 'amazing_print'
+      AmazingPrint.irb!
+    rescue LoadError
+      # amazing_print not available — IRB will use pp
+    end
+    require 'irb'
+    IRB.start(__FILE__)
+  end
+
+  def run_list
+    print_results(@projects, label: "All projects")
+  end
+
+  # ============================================================================
+  private
+  # ============================================================================
+
+  # ── Issue collectors ────────────────────────────────────────────────────────
+
+  def collect_issues
+    issues = []
+    @projects.each do |p|
+      name = p['name']
+      eco  = p['ecosystem']
+      lang = p['language']
+
+      # Missing core fields
+      issues << issue(name, "no_description",     "description is blank")   if blank?(p['description'])
+      issues << issue(name, "no_forges",           "forges is empty")        if blank?(p['forges'])
+      issues << issue(name, "no_status",           "status is nil")          if p['status'].nil?
+      issues << issue(name, "no_tags",             "tags is empty")          if blank?(p['tags'])
+      issues << issue(name, "no_minimum_version",  "minimum_version is nil") if p['minimum_version'].nil?
+      issues << issue(name, "no_role",             "role is nil")            if p['role'].nil?
+      issues << issue(name, "no_first_commit_on",  "first_commit_on is nil") if p['first_commit_on'].nil?
+
+      # Scrape freshness
+      if p['last_scrape_at'].nil?
+        issues << issue(name, "never_scraped", "never been scraped")
+      elsif days_since(p['last_scrape_at']) > 30
+        issues << issue(name, "stale_scrape", "last scraped #{days_since(p['last_scrape_at'])} days ago")
+      end
+
+      # Commit freshness vs status mismatch
+      if !p['last_commit_on'].nil? && days_since(p['last_commit_on']) > 365 && p['status'] != 'stale' && p['status'] != 'archived'
+        issues << issue(name, "stale_mismatch", "last commit #{days_since(p['last_commit_on'])}d ago but status=#{p['status']}")
+      end
+      issues << issue(name, "no_last_commit",  "last_commit_on is nil") if p['last_commit_on'].nil? && p['status'] != 'archived'
+
+      # Ecosystem-specific
+      if RELEASE_DATE_ECOSYSTEMS.include?(eco) && p['release_date'].nil?
+        issues << issue(name, "no_release_date", "release_date nil for ecosystem=#{eco}")
+      end
+      if DOWNLOAD_ECOSYSTEMS.include?(eco) && (p['total_downloads'].nil? || p['total_downloads'] == 0)
+        issues << issue(name, "zero_downloads", "total_downloads=#{p['total_downloads'].inspect} for ecosystem=#{eco}")
+      end
+
+      # Ruby gem without ecosystem set
+      if lang == 'Ruby' && eco.nil?
+        issues << issue(name, "ruby_missing_ecosystem", "language=Ruby but ecosystem is nil")
+      end
+
+      # Invalid role
+      unless p['role'].nil? || %w[author contributor maintainer].include?(p['role'])
+        issues << issue(name, "invalid_role", "role=#{p['role']}")
+      end
+    end
+    issues
+  end
+
+  def issue(name, type, detail = nil)
+    { name: name, type: type, detail: detail }
+  end
+
+  # ── Output helpers ───────────────────────────────────────────────────────────
+
+  def print_results(projects, label: nil)
+    if projects.empty?
+      puts colorize("  (no matches)", :yellow)
+      return
+    end
+
+    case @format
+    when :names
+      projects.each { |p| puts p['name'] }
+
+    when :yaml
+      puts YAML.dump(projects)
+
+    else # :table (default)
+      puts header("#{label} (#{projects.size})")  if label
+      widths = [4, 30, 12, 10, 12, 6, 8, 10]
+      hdr = table_row(["#", "name", "language", "ecosystem", "status", "role", "stars", "last_scrape"], widths)
+      puts colorize(hdr, :bold)
+      puts colorize("─" * hdr.length, :cyan)
+      projects.each_with_index do |p, i|
+        scrape_d = days_since(p['last_scrape_at'])
+        scrape   = p['last_scrape_at'] ? "#{scrape_d}d ago" : colorize("never", :red)
+        stars    = p['github_stars']&.to_s || colorize("?", :yellow)
+        status   = p['status'] || colorize("?", :yellow)
+        eco      = p['ecosystem'] || colorize("?", :yellow)
+        row = table_row(
+          [(i + 1).to_s, truncate(p['name'], 30), p['language'] || '?', eco, status, p['role'] || '?', stars, scrape],
+          widths
+        )
+        # Colour the row by status
+        row_color = case p['status']
+                    when 'archived' then :yellow
+                    when 'stale'    then :red
+                    else :reset
+                    end
+        puts colorize(row, row_color)
+      end
+    end
+  end
+
+  def group_stat(label, grouped)
+    sorted = grouped.sort_by { |_, v| -v.size }
+    puts "  #{label.ljust(15)}: " + sorted.map { |k, v| "#{k}=#{v.size}" }.join("  ")
+  end
+
+  def header(text)
+    bar = "═" * [text.length + 4, 60].max
+    "\n#{colorize(bar, :bold)}\n#{colorize("  #{text}", :bold)}\n#{colorize(bar, :bold)}"
+  end
+
+  def table_row(cols, widths)
+    cols.each_with_index.map { |c, i| c.to_s.ljust(widths[i] || 10) }.join("  ")
+  end
+
+  def truncate(str, max)
+    return str if str.nil? || str.length <= max
+    "#{str[0, max - 1]}…"
+  end
+
+  def colorize(text, code)
+    return text unless @color
+    "#{COLORS[code] || COLORS[:reset]}#{text}#{COLORS[:reset]}"
+  end
+
+  def blank?(val)
+    val.nil? || (val.respond_to?(:empty?) && val.empty?)
+  end
+
+  def days_since(date_string)
+    return Float::INFINITY if date_string.nil?
+    parsed = Time.parse(date_string.to_s)
+    ((Time.now.utc - parsed) / 86_400).round
+  rescue ArgumentError, TypeError
+    Float::INFINITY
+  end
+
+  def abort_usage(msg)
+    warn colorize("❌  #{msg}", :red)
+    warn "Run with --help for usage."
+    exit 1
+  end
+
+  # ── Console helper writer ────────────────────────────────────────────────────
+
+  def write_console_helper
+    FileUtils.mkdir_p(File.dirname(CONSOLE_HELPER))
+    File.write(CONSOLE_HELPER, console_helper_source)
+  end
+
+  def console_helper_source
+    <<~'RUBY'
+      # frozen_string_literal: true
+      # Auto-generated by scripts/project_query console — safe to delete.
+      require 'yaml'
+      require 'date'
+      require 'time'
+      require 'pp'
+
+      _projects_file = File.expand_path('../../src/_data/projects.yml', __FILE__)
+      _raw = YAML.load_file(_projects_file) || []
+
+      # ── Project struct ────────────────────────────────────────────────────────
+      Project = Struct.new(
+        :name, :description, :language, :ecosystem, :minimum_version,
+        :role, :status, :tags, :forges,
+        :github_stars, :gitlab_stars, :codeberg_stars,
+        :total_downloads, :daily_downloads, :release_downloads,
+        :release_date, :last_commit_on, :first_commit_on, :first_commit,
+        :last_scrape_at, :docs_site, :funding_sites,
+        :theme, :family_id, :family_name, :family_position,
+        :raw,
+        keyword_init: true
+      ) do
+        def self.from_h(h)
+          known = members - [:raw]
+          attrs = known.each_with_object({}) { |k, acc| acc[k] = h[k.to_s] }
+          new(**attrs, raw: h)
+        end
+
+        def days_since_scrape
+          return Float::INFINITY if last_scrape_at.nil?
+          ((Time.now.utc - Time.parse(last_scrape_at.to_s)) / 86_400).round
+        rescue
+          Float::INFINITY
+        end
+
+        def days_since_commit
+          return Float::INFINITY if last_commit_on.nil?
+          (Date.today - Date.parse(last_commit_on.to_s.gsub('/', '-'))).to_i
+        rescue
+          Float::INFINITY
+        end
+
+        def ruby_gem?   = language == 'Ruby' && ecosystem == 'rubygems'
+        def active?     = status == 'active'
+        def archived?   = status == 'archived'
+        def stale?      = status == 'stale'
+        def never_scraped? = last_scrape_at.nil?
+        def github_url  = forges&.find { |f| f['type'] == 'GitHub' }&.dig('url')
+
+        def to_s
+          "#<Project name=#{name.inspect} language=#{language.inspect} status=#{status.inspect}>"
+        end
+        alias inspect to_s
+      end
+
+      # ── Collections ───────────────────────────────────────────────────────────
+      PROJECTS_RAW  = _raw.freeze
+      PROJECTS      = _raw.reject { |p| p['type'] == 'person' }.freeze
+      PROJS         = PROJECTS.map { |h| Project.from_h(h) }.freeze
+
+      # ── Top-level helper methods ──────────────────────────────────────────────
+
+      def find(name)
+        hit = PROJS.find { |p| p.name.to_s.downcase == name.downcase }
+        hit ||= PROJS.select { |p| p.name.to_s.downcase.include?(name.downcase) }
+        hit
+      end
+
+      def by_language(lang)  = PROJS.select { |p| p.language.to_s.downcase == lang.downcase }
+      def by_status(s)       = PROJS.select { |p| p.status.to_s.downcase == s.downcase }
+      def by_role(r)         = PROJS.select { |p| p.role.to_s.downcase == r.downcase }
+      def by_ecosystem(e)    = PROJS.select { |p| p.ecosystem.to_s.downcase == e.downcase }
+      def by_tag(t)          = PROJS.select { |p| Array(p.tags).any? { |tag| tag.downcase == t.downcase } }
+
+      def missing(field)
+        PROJS.select { |p| v = p.send(field) rescue nil; v.nil? || (v.respond_to?(:empty?) && v.empty?) }
+      end
+
+      def stale_scrape(days: 30)
+        PROJS.select { |p| p.days_since_scrape > days }
+      end
+
+      def stale_commit(days: 365)
+        PROJS.select { |p| p.days_since_commit > days }
+      end
+
+      def never_scraped = PROJS.select(&:never_scraped?)
+
+      def needs_attention
+        issues = []
+        PROJS.each do |p|
+          issues << [p.name, "no_description"]    if p.description.to_s.empty?
+          issues << [p.name, "no_forges"]         if Array(p.forges).empty?
+          issues << [p.name, "no_status"]         if p.status.nil?
+          issues << [p.name, "no_tags"]           if Array(p.tags).empty?
+          issues << [p.name, "never_scraped"]     if p.never_scraped?
+          issues << [p.name, "stale_scrape_30d"]  if !p.never_scraped? && p.days_since_scrape > 30
+          issues << [p.name, "stale_mismatch"]    if p.days_since_commit > 365 && p.active?
+        end
+        issues.group_by(&:last).transform_values { |v| v.map(&:first) }
+      end
+
+      def stats
+        puts "Projects : #{PROJS.size}"
+        puts "Languages: #{PROJS.group_by(&:language).transform_values(&:size).sort_by { |_, v| -v }.to_h}"
+        puts "Ecosystems:#{PROJS.group_by(&:ecosystem).transform_values(&:size).sort_by { |_, v| -v }.to_h}"
+        puts "Statuses : #{PROJS.group_by(&:status).transform_values(&:size).sort_by { |_, v| -v }.to_h}"
+        puts "Roles    : #{PROJS.group_by(&:role).transform_values(&:size).sort_by { |_, v| -v }.to_h}"
+        stars = PROJS.filter_map(&:github_stars).sort
+        puts "Stars    : min=#{stars.first} max=#{stars.last} total=#{stars.sum}" if stars.any?
+        nil
+      end
+
+      # ── Welcome banner ────────────────────────────────────────────────────────
+      puts "\e[1m\e[36m" + "═" * 60 + "\e[0m"
+      puts "\e[1m  🔮 Project Query Console\e[0m"
+      puts "\e[36m" + "═" * 60 + "\e[0m"
+      puts "  PROJS          — array of #{PROJS.size} Project structs"
+      puts "  PROJECTS       — array of raw hashes"
+      puts ""
+      puts "  find(name)           fuzzy-find one project"
+      puts "  by_language(lang)    filter by language"
+      puts "  by_status(status)    filter by status"
+      puts "  by_role(role)        filter by role"
+      puts "  by_ecosystem(eco)    filter by ecosystem"
+      puts "  by_tag(tag)          filter by tag"
+      puts "  missing(:field)      projects with blank field"
+      puts "  stale_scrape(days:)  not scraped in N days (default 30)"
+      puts "  stale_commit(days:)  no commit in N days (default 365)"
+      puts "  never_scraped        never been scraped"
+      puts "  needs_attention      grouped issues hash"
+      puts "  stats                print summary statistics"
+      puts "\e[36m" + "═" * 60 + "\e[0m"
+      puts ""
+    RUBY
+  end
+end
+
+# =============================================================================
+# CLI
+# =============================================================================
+
+if __FILE__ == $0
+  require 'fileutils'
+
+  subcommand = nil
+  sub_args   = []
+  format     = :table
+  days       = 30
+  file       = ProjectQuery::PROJECTS_FILE
+  no_color   = !$stdout.tty?
+
+  i = 0
+  while i < ARGV.size
+    arg = ARGV[i]
+    case arg
+    when '--help', '-h'
+      puts <<~HELP
+        Usage: bundle exec ruby scripts/project_query [OPTIONS] <subcommand> [args]
+
+        Subcommands:
+          list                         List all projects (table view)
+          stats                        Summary statistics
+          show <name>                  Show full YAML for one project (fuzzy match)
+          missing <field>              Projects with a blank/nil value for <field>
+          stale [--days N]             Projects not scraped in > N days (default: 30)
+          status <value>               Filter by status (active|stale|archived)
+          language <value>             Filter by language
+          ecosystem <value>            Filter by ecosystem (rubygems|cargo|npm|pypi|go|none)
+          role <value>                 Filter by role (author|contributor|maintainer)
+          tag <value>                  Filter by tag
+          needs-attention              Full report of all data quality issues
+          console                      Drop into IRB with project data pre-loaded
+
+        Options:
+          -h, --help                   Show this help
+          --days N                     Used with `stale` (default: 30)
+          --format table|names|yaml    Output format (default: table)
+          --file PATH                  Use a different projects YAML file
+          --no-color                   Disable ANSI colour output
+
+        Field names for `missing`:
+          name  description  language  ecosystem  minimum_version  role
+          status  tags  forges  release_date  last_commit_on  first_commit_on
+          github_stars  total_downloads  last_scrape_at  docs_site
+
+        Examples:
+          bundle exec ruby scripts/project_query stats
+          bundle exec ruby scripts/project_query needs-attention
+          bundle exec ruby scripts/project_query missing ecosystem
+          bundle exec ruby scripts/project_query missing last_scrape_at
+          bundle exec ruby scripts/project_query stale --days 7
+          bundle exec ruby scripts/project_query show version_gem
+          bundle exec ruby scripts/project_query status stale
+          bundle exec ruby scripts/project_query language Rust
+          bundle exec ruby scripts/project_query ecosystem cargo
+          bundle exec ruby scripts/project_query tag rspec
+          bundle exec ruby scripts/project_query list --format names
+          bundle exec ruby scripts/project_query console
+      HELP
+      exit 0
+
+    when '--days'
+      days = ARGV[i += 1].to_i
+    when '--format'
+      format = ARGV[i += 1].to_sym
+    when '--file'
+      file = ARGV[i += 1]
+    when '--no-color'
+      no_color = true
+    else
+      if subcommand.nil?
+        subcommand = arg
+      else
+        sub_args << arg
+      end
+    end
+    i += 1
+  end
+
+  if subcommand.nil?
+    warn "No subcommand given. Run with --help for usage."
+    exit 1
+  end
+
+  pq = ProjectQuery.new(file: file, format: format, color: !no_color)
+
+  case subcommand
+  when 'list'
+    pq.run_list
+  when 'stats'
+    pq.run_stats
+  when 'show'
+    pq.run_show(sub_args.first)
+  when 'missing'
+    pq.run_missing(sub_args.first)
+  when 'stale'
+    pq.run_stale(days: days)
+  when 'status'
+    pq.run_filter('status', sub_args.first || '')
+  when 'language'
+    pq.run_filter('language', sub_args.first || '')
+  when 'ecosystem'
+    pq.run_filter('ecosystem', sub_args.first || '')
+  when 'role'
+    pq.run_filter('role', sub_args.first || '')
+  when 'tag'
+    tag = sub_args.first || ''
+    matches = pq.instance_variable_get(:@projects).select { |p| Array(p['tags']).any? { |t| t.downcase == tag.downcase } }
+    pq.send(:print_results, matches, label: "tag=#{tag}")
+  when 'needs-attention', 'needs_attention'
+    pq.run_needs_attention
+  when 'console'
+    pq.run_console
+  else
+    warn "Unknown subcommand: #{subcommand.inspect}"
+    warn "Run with --help for usage."
+    exit 1
+  end
+end
