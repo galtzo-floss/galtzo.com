@@ -136,7 +136,7 @@ ruby scripts/update_projects add_project -y \
 | Flag | Description |
 |---|---|
 | `--name NAME` | Project / package name |
-| `--ecosystem ECO` | `rubygems` \| `cargo` \| `npm` \| `pypi` \| `go` \| `none` |
+| `--ecosystem ECO` | `rubygems` \| `cargo` \| `npm` \| `pypi` \| `go` \| `none` | Use `none` for projects with no package registry (forge-only). Stored as `ecosystem: none` — distinguishable from a missing/unset ecosystem, which triggers a data-quality warning. |
 | `--language LANG` | Primary language (inferred from ecosystem if omitted) |
 | `--role ROLE` | `author` \| `contributor` \| `maintainer` (default: `contributor`) |
 | `--github-url URL` | GitHub repository URL |
@@ -145,6 +145,7 @@ ruby scripts/update_projects add_project -y \
 | `--description TEXT` | Short description (HTML allowed) |
 | `--minimum-version VER` | Minimum runtime version |
 | `--tags TAG1,TAG2` | Comma-separated tags |
+| `--funding-sites VALUE` | Pre-set funding sites. Use `none` for an empty list, or `TYPE1:URL1,TYPE2:URL2` (e.g. `OpenCollective:https://opencollective.com/myorg`). Defaults to OpenCollective + Liberapay for `role: author`, empty list otherwise. |
 
 #### Option reference
 
@@ -253,6 +254,69 @@ Helper methods available at the prompt:
 Each `Project` struct also has convenience predicates: `ruby_gem?`, `active?`,
 `archived?`, `stale?`, `never_scraped?`, `days_since_scrape`, `days_since_commit`,
 `github_url`.
+
+---
+
+### `scripts/analyze_tags` — analyse and rationalise tag usage
+
+Reads `src/_data/projects.yml`, reports the tag frequency distribution, and can
+merge/rename tags to reduce the total unique count and keep filter pills manageable.
+
+```bash
+bundle exec ruby scripts/analyze_tags [OPTIONS]
+```
+
+#### Modes
+
+| Mode | Behaviour |
+|---|---|
+| *(default — no flags)* | Print the full analysis report: overview stats, frequency table, suggested merges, impact estimate |
+| `--interactive` | Walk through each suggested merge one-by-one and confirm/reject/customize |
+| `--interactive -y` | Auto-accept all suggested merges non-interactively |
+| `--apply RENAMES_FILE` | Apply a hand-crafted YAML renames file |
+
+#### Options
+
+| Flag | Description |
+|---|---|
+| `-i, --interactive` | Interactive merge wizard |
+| `-y, --no-tty` | Auto-accept all prompts |
+| `--dry-run` | Preview what would change without writing files |
+| `--apply PATH` | Apply renames from a YAML file (`old_tag: canonical_tag`) |
+| `--no-color` | Disable ANSI colour output |
+| `--file PATH` | Use a different projects YAML file |
+| `--dev-file PATH` | Use a different projects_dev YAML file |
+
+#### Renames file format (for `--apply`)
+
+```yaml
+# tmp/my_renames.yml
+testing: test
+rspec: test
+auth: security
+debug: log
+```
+
+#### Common workflows
+
+```bash
+# See the full spread analysis and all suggested merges
+bundle exec ruby scripts/analyze_tags
+
+# Interactively accept or reject each merge (can also type a custom canonical name)
+bundle exec ruby scripts/analyze_tags --interactive
+
+# Preview what all suggested merges would do, without writing
+bundle exec ruby scripts/analyze_tags --interactive -y --dry-run
+
+# Apply all suggested merges without being asked
+bundle exec ruby scripts/analyze_tags --interactive -y
+
+# Apply a hand-crafted set of renames
+bundle exec ruby scripts/analyze_tags --apply tmp/my_renames.yml
+```
+
+The script always updates both `projects.yml` **and** `projects_dev.yml` when applying changes.
 
 ---
 

@@ -295,7 +295,7 @@ class ProjectUpdater
     eco_list = ECOSYSTEMS.keys.join(', ')
     raw_eco  = ask("Package ecosystem (#{eco_list})", default: opts[:ecosystem] || 'none')
     ecosystem = ECOSYSTEMS.key?(raw_eco) ? raw_eco : 'none'
-    project['ecosystem'] = ecosystem == 'none' ? nil : ecosystem
+    project['ecosystem'] = ecosystem
 
     inferred_language = ECOSYSTEMS[ecosystem][:language]
 
@@ -352,7 +352,56 @@ class ProjectUpdater
     raw_tags = ask("Tags (comma-separated)", default: opts[:tags])
     project['tags'] = raw_tags ? raw_tags.split(',').map(&:strip).reject(&:empty?) : []
 
-    # ── Now auto-fill from APIs ───────────────────────────────────────────────
+    # ── Funding sites ─────────────────────────────────────────────────────────
+    # funding_sites is a required field (index.html raises if nil).
+    # Start with a sensible default based on role, then let the user amend.
+    puts ""
+    puts "  Funding sites (press Enter to keep default, type 'none' for an empty list):"
+    default_funding = if project['role'] == 'author'
+      [
+        { 'type' => 'OpenCollective', 'url' => 'https://opencollective.com/galtzo-floss' },
+        { 'type' => 'Liberapay',      'url' => 'https://liberapay.com/pboling' },
+      ]
+    else
+      []
+    end
+
+    funding_sites = if opts[:funding_sites]
+      # Pre-supplied via --funding-sites flag
+      raw_fs = opts[:funding_sites].to_s.strip
+      if raw_fs.downcase == 'none' || raw_fs.empty?
+        puts "  Funding sites: (empty list) [pre-supplied]"
+        []
+      else
+        parsed = raw_fs.split(',').filter_map do |entry|
+          type, url = entry.strip.split(':', 2)
+          { 'type' => type.strip, 'url' => url.strip } if type && url
+        end
+        puts "  Funding sites: #{parsed.map { |f| "#{f['type']}: #{f['url']}" }.join(', ')} [pre-supplied]"
+        parsed
+      end
+    else
+      puts "  Default: #{default_funding.empty? ? '(empty list — no funding sites)' : default_funding.map { |f| "#{f['type']}: #{f['url']}" }.join(', ')}"
+      result = default_funding.dup
+      loop do
+        raw = ask("  Add a funding site as 'TYPE URL' (e.g. 'OpenCollective https://opencollective.com/myorg'), or Enter to finish")
+        break if raw.nil? || raw.strip.empty?
+        if raw.strip.downcase == 'none'
+          result = []
+          puts "  → Funding sites set to empty list."
+          break
+        end
+        parts = raw.strip.split(/\s+/, 2)
+        if parts.size == 2
+          result << { 'type' => parts[0], 'url' => parts[1] }
+          puts "  → Added: #{parts[0]}: #{parts[1]}"
+        else
+          puts "  ⚠️  Expected 'TYPE URL' (two parts separated by a space), got: #{raw.inspect}. Try again."
+        end
+      end
+      result
+    end
+    project['funding_sites'] = funding_sites
     puts ""
     puts "="*80
     puts "🌐 Fetching data from APIs..."
@@ -1507,6 +1556,9 @@ if __FILE__ == $0
           --description TEXT      Short description (HTML allowed)
           --minimum-version VER   Minimum runtime version
           --tags TAG1,TAG2        Comma-separated tags
+          --funding-sites         Pre-set funding sites (interactive prompt skipped; use 'none' for empty list,
+                                  or 'TYPE1:URL1,TYPE2:URL2', e.g.
+                                  'OpenCollective:https://opencollective.com/myorg,Liberapay:https://liberapay.com/me')
 
         Environment Variables:
           GITHUB_TOKEN            Raises GitHub API rate limit from 60 to 5,000 req/hr
@@ -1556,6 +1608,8 @@ if __FILE__ == $0
       add_project_opts[:minimum_version] = ARGV[i += 1]
     when '--tags'
       add_project_opts[:tags] = ARGV[i += 1]
+    when '--funding-sites'
+      add_project_opts[:funding_sites] = ARGV[i += 1]
 
     else
       # Anything else is treated as a surgical field name

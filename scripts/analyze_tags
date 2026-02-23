@@ -1,0 +1,488 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+# =============================================================================
+# scripts/analyze_tags — analyse, rationalise, and merge tags in projects.yml
+#
+# Usage:
+#   bundle exec ruby scripts/analyze_tags [OPTIONS]
+#
+# Run with --help for full usage.
+# =============================================================================
+
+require 'yaml'
+require 'table_tennis'
+require 'set'
+
+class TagAnalyzer
+  PROJECTS_FILE     = File.expand_path('../src/_data/projects.yml',     __dir__)
+  PROJECTS_DEV_FILE = File.expand_path('../src/_data/projects_dev.yml', __dir__)
+
+  # ---------------------------------------------------------------------------
+  # Suggested canonical renames: { "old_tag" => "canonical_tag" }
+  #
+  # Philosophy: prefer the shortest, most widely-used form; collapse synonyms
+  # and near-duplicates; raise singletons into a broader existing tag where
+  # semantically justified.
+  # ---------------------------------------------------------------------------
+  SUGGESTED_RENAMES = {
+    # test / rspec / testing → test
+    'testing'          => 'test',
+    'rspec'            => 'test',
+    'mock'             => 'test',
+    'harness'          => 'test',
+    'coverage'         => 'test',
+    'fuzz'             => 'test',
+
+    # log / debug → log
+    'debug'            => 'log',
+
+    # error-handle → errors
+    'error-handle'     => 'errors',
+
+    # auth / security → security
+    'auth'             => 'security',
+
+    # cli / tty / terminal → cli
+    'tty'              => 'cli',
+    'terminal'         => 'cli',
+
+    # tui / tty / terminal (tui is distinct but tiny) → cli
+    'tui'              => 'cli',
+
+    # perf / benchmark → perf
+    'benchmark'        => 'perf',
+
+    # regex (only 2 uses, already well-described by context) → parsing
+    'regex'            => 'parsing',
+
+    # serialize → serialization
+    'serialize'        => 'serialization',
+
+    # validate → validation
+    'validate'         => 'validation',
+
+    # presenter → view
+    'presenter'        => 'view',
+
+    # toast → flash  (toast is the UI term; flash is the Rails term already in use)
+    'toast'            => 'flash',
+
+    # GHA → ci  (GitHub Actions is CI)
+    'GHA'              => 'ci',
+
+    # rake → bundler  (rake is a build tool, closest existing tag)
+    'rake'             => 'bundler',
+
+    # gemfile → bundler
+    'gemfile'          => 'bundler',
+
+    # git → vcs
+    'git'              => 'vcs',
+
+    # release / semver → release
+    'semver'           => 'release',
+
+    # funding / awesome-list → meta  (site-meta/community tags)
+    'funding'          => 'meta',
+    'awesome-list'     => 'meta',
+
+    # wip / experimental → experimental
+    'wip'              => 'experimental',
+
+    # state-machine → state-machine  (keep, it's distinct)
+
+    # service-objects → service-objects  (keep, it's distinct)
+
+    # async → concurrency
+    'async'            => 'concurrency',
+
+    # migration → rails  (always an ActiveRecord/Rails migration tool)
+    'migration'        => 'rails',
+
+    # dynamodb → aws
+    'dynamodb'         => 'aws',
+
+    # payment → api  (remit is a payment API integration)
+    'payment'          => 'api',
+
+    # package-manager → bundler  (ore-light is a Ruby gem packager)
+    'package-manager'  => 'bundler',
+
+    # csv → data
+    'csv'              => 'data',
+
+    # hash → data
+    'hash'             => 'data',
+
+    # math → data
+    'math'             => 'data',
+
+    # time → data
+    'time'             => 'data',
+
+    # search → api  (awesome_search is a search API layer)
+    'search'           => 'api',
+
+    # websocket → api
+    'websocket'        => 'api',
+  }.freeze
+
+  def initialize(file: PROJECTS_FILE, dev_file: PROJECTS_DEV_FILE,
+                 auto_confirm: false, interactive: false,
+                 renames_file: nil, dry_run: false, color: $stdout.tty?)
+    @file         = file
+    @dev_file     = dev_file
+    @auto_confirm = auto_confirm
+    @interactive  = interactive
+    @renames_file = renames_file
+    @dry_run      = dry_run
+    @color        = color
+
+    @raw      = YAML.load_file(@file) || []
+    @projects = @raw.reject { |p| p['type'] == 'person' }
+  end
+
+  # ============================================================================
+  # Public entry points
+  # ============================================================================
+
+  # Full analysis report — always runs first regardless of mode.
+  def run_analyze
+    freq    = tag_freq(@projects)
+    all     = @projects.flat_map { |p| Array(p['tags']) }
+    unique  = freq.size
+    total   = all.size
+    singles = freq.count { |_, c| c == 1 }
+    doubles = freq.count { |_, c| c == 2 }
+
+    # ── Overview ──────────────────────────────────────────────────────────────
+    # Note: values must include at least one non-numeric entry (or a unit suffix)
+    # so table_tennis treats the column as text rather than promoting it to float.
+    overview = [
+      { metric: 'Total unique tags',          value: "#{unique} tags" },
+      { metric: 'Total tag usages',           value: "#{total} usages" },
+      { metric: 'Avg usages per tag',         value: (total.to_f / unique).round(1).to_s },
+      { metric: 'Singleton tags (used once)', value: "#{singles} tags" },
+      { metric: 'Doubleton tags (used twice)',value: "#{doubles} tags" },
+      { metric: 'Tags used ≥ 3 times',        value: "#{freq.count { |_, c| c >= 3 }} tags" },
+      { metric: 'Tags used ≥ 5 times',        value: "#{freq.count { |_, c| c >= 5 }} tags" },
+    ]
+    puts tt(overview, title: '🏓 Tag Spread Analysis — Overview',
+            columns: %i[metric value], headers: { metric: 'Metric', value: 'Value' })
+
+    # ── Full frequency table ──────────────────────────────────────────────────
+    rows = freq.sort_by { |_, c| -c }.map do |tag, count|
+      tier = case count
+             when 1     then 'singleton'
+             when 2     then 'doubleton'
+             when 3..4  then 'rare'
+             when 5..9  then 'moderate'
+             when 10..  then 'common'
+             end
+      { tag: tag, count: count, tier: tier }
+    end
+    puts tt(rows, title: 'All Tags by Frequency',
+            zebra: true, row_numbers: true, color_scales: :count,
+            mark: ->(r) { r[:tier] == 'singleton' || r[:tier] == 'doubleton' })
+
+    # ── Suggested merges ─────────────────────────────────────────────────────
+    # Only show merges where the "old" tag actually exists in the data
+    active_renames = SUGGESTED_RENAMES.select { |old, _| freq.key?(old) }
+
+    if active_renames.any?
+      # Group by canonical target to show what collapses into what
+      by_target = active_renames.group_by { |_, can| can }
+      merge_rows = by_target.flat_map do |canonical, pairs|
+        pairs.map do |old_tag, _|
+          {
+            old_tag:   old_tag,
+            canonical: canonical,
+            usages:    freq[old_tag] || 0,
+            target_usages: freq[canonical] || 0,
+          }
+        end
+      end.sort_by { |r| [r[:canonical], -r[:usages]] }
+
+      puts tt(merge_rows,
+              title:   '💡 Suggested Tag Merges (old → canonical)',
+              zebra:   true,
+              row_numbers: true,
+              headers: { old_tag: 'Old tag', canonical: 'Canonical', usages: 'Uses (old)', target_usages: 'Uses (target)' })
+
+      after_unique = simulate_after_unique(freq, active_renames)
+      after_total  = total  # tag count doesn't change, just unique count
+
+      puts tt([
+        { metric: 'Unique tags before merge', value: "#{unique} tags" },
+        { metric: 'Unique tags after merge',  value: "#{after_unique} tags" },
+        { metric: 'Reduction',                value: "−#{unique - after_unique} tags (#{((unique - after_unique) * 100.0 / unique).round(1)}%)" },
+      ], title: '📉 Impact Estimate', columns: %i[metric value],
+         headers: { metric: 'Metric', value: 'Value' })
+    else
+      puts "\n✅  No suggested merges are applicable to the current tag set.\n"
+    end
+
+    active_renames
+  end
+
+  # Apply a renames hash (old → canonical) to both projects files.
+  def run_apply(renames)
+    return if renames.empty?
+
+    puts "\n" + "=" * 60
+    if @dry_run
+      puts "🔍  DRY RUN — no files will be written"
+    else
+      puts "✏️   Applying #{renames.size} rename(s) to projects.yml …"
+    end
+    puts "=" * 60
+
+    [@file, @dev_file].each do |path|
+      next unless File.exist?(path)
+      data     = YAML.load_file(path) || []
+      changed  = 0
+
+      data.each do |entry|
+        next unless entry.is_a?(Hash)
+        tags = Array(entry['tags'])
+        new_tags = tags.map { |t| renames[t] || t }.uniq.sort
+        if new_tags != tags.sort
+          changed += 1
+          entry['tags'] = new_tags unless @dry_run
+        end
+      end
+
+      if @dry_run
+        puts "  #{File.basename(path)}: #{changed} project(s) would be updated"
+      else
+        save_yaml(path, data)
+        puts "  #{File.basename(path)}: #{changed} project(s) updated"
+      end
+    end
+
+    puts "\n✅  Done." unless @dry_run
+  end
+
+  # Interactive mode: walk through each suggested merge and confirm individually.
+  def run_interactive(suggested_renames)
+    return if suggested_renames.empty?
+    freq = tag_freq(@projects)
+
+    approved = {}
+    puts "\n" + "=" * 60
+    puts "🎾  INTERACTIVE TAG MERGE"
+    puts "    Press Enter to accept [Y/n], or type a different canonical name."
+    puts "=" * 60 + "\n"
+
+    by_target = suggested_renames.group_by { |_, can| can }
+    by_target.sort_by { |can, _| can }.each do |canonical, pairs|
+      pairs.sort_by { |old, _| -(freq[old] || 0) }.each do |old_tag, _|
+        old_count    = freq[old_tag] || 0
+        target_count = freq[canonical] || 0
+        print "\n  Rename #{old_tag.inspect} (#{old_count} uses) → #{canonical.inspect} (#{target_count} uses)  [Y/n/custom]: "
+        $stdout.flush
+
+        if @auto_confirm
+          puts "y [auto]"
+          approved[old_tag] = canonical
+          next
+        end
+
+        input = $stdin.gets&.strip
+        case input&.downcase
+        when '', 'y', 'yes'
+          approved[old_tag] = canonical
+        when 'n', 'no'
+          puts "    ⏭️  Skipped."
+        else
+          # Treat non-empty non-y/n input as a custom canonical name
+          approved[old_tag] = input
+          puts "    → Will rename to #{input.inspect}"
+        end
+      end
+    end
+
+    if approved.empty?
+      puts "\nNo renames approved — nothing to write."
+      return
+    end
+
+    puts "\n"
+    rows = approved.map { |old, can| { old_tag: old, canonical: can } }
+    puts tt(rows, title: "✅  Approved Renames (#{approved.size})",
+            headers: { old_tag: 'Old tag', canonical: 'Canonical' })
+
+    run_apply(approved)
+  end
+
+  # Load a renames YAML file (format: { old: canonical, ... }) and apply.
+  def run_from_file(path)
+    unless File.exist?(path)
+      warn "❌  Renames file not found: #{path}"
+      exit 1
+    end
+    renames = YAML.load_file(path)
+    unless renames.is_a?(Hash)
+      warn "❌  Renames file must be a YAML hash mapping old_tag: canonical_tag"
+      exit 1
+    end
+    run_apply(renames)
+  end
+
+  # ============================================================================
+  private
+  # ============================================================================
+
+  def tag_freq(projects)
+    projects.flat_map { |p| Array(p['tags']) }.tally
+  end
+
+  def simulate_after_unique(freq, renames)
+    # Merge old tags into canonicals and count unique surviving keys
+    merged = {}
+    freq.each do |tag, count|
+      canonical = renames[tag] || tag
+      merged[canonical] = (merged[canonical] || 0) + count
+    end
+    merged.size
+  end
+
+  def tt(rows, **opts)
+    opts[:theme] = :ansi unless @color
+    TableTennis.new(rows, opts).to_s
+  end
+
+  def confirm(message, default: true)
+    return default if @auto_confirm
+    prompt = default ? '[Y/n]' : '[y/N]'
+    print "#{message} #{prompt} "
+    $stdout.flush
+    input = $stdin.gets&.strip&.downcase
+    return default if input.nil? || input.empty?
+    input.start_with?('y')
+  end
+
+  def save_yaml(file_path, data)
+    # Preserve any header comments above the YAML data
+    existing = File.exist?(file_path) ? File.read(file_path) : ''
+    header_lines = []
+    existing.each_line do |line|
+      break unless line.strip.start_with?('#') || line.strip == '---' || line.strip.empty?
+      header_lines << line if line.strip.start_with?('#')
+    end
+    header = header_lines.join
+
+    yaml_content = YAML.dump(data)
+    final = if header.empty?
+      yaml_content
+    else
+      lines = yaml_content.lines
+      lines.first&.strip == '---' ? lines.first + header + "\n" + lines[1..].join : "---\n#{header}\n#{yaml_content}"
+    end
+
+    File.write(file_path, final)
+    puts "  💾 Saved: #{file_path}"
+  end
+end
+
+# =============================================================================
+# CLI
+# =============================================================================
+
+if __FILE__ == $0
+  file         = TagAnalyzer::PROJECTS_FILE
+  dev_file     = TagAnalyzer::PROJECTS_DEV_FILE
+  auto_confirm = false
+  interactive  = false
+  renames_file = nil
+  dry_run      = false
+  no_color     = !$stdout.tty?
+
+  i = 0
+  while i < ARGV.size
+    arg = ARGV[i]
+    case arg
+    when '--help', '-h'
+      puts <<~HELP
+        Usage: bundle exec ruby scripts/analyze_tags [OPTIONS]
+
+        Analyses tag usage across projects.yml, reports the spread and frequency,
+        and optionally merges/renames tags to reduce the total unique count.
+
+        Modes (default: analysis report only):
+          --interactive, -i       Walk through each suggested rename interactively
+          --apply RENAMES_FILE    Apply renames from a YAML file (format: old: canonical)
+          --dry-run               Show what would change without writing any files
+
+        Options:
+          -h, --help              Show this help
+          -y, --no-tty            Auto-accept all prompts (for use with --interactive)
+          --no-color              Disable ANSI colour output
+          --file PATH             Use a different projects YAML file
+          --dev-file PATH         Use a different projects_dev YAML file
+
+        The renames file format (for --apply) is a simple YAML hash:
+          testing: test
+          rspec: test
+          auth: security
+
+        Examples:
+          # See the full analysis report and suggested merges
+          bundle exec ruby scripts/analyze_tags
+
+          # Interactively approve/reject each suggested merge
+          bundle exec ruby scripts/analyze_tags --interactive
+
+          # Non-interactively apply all suggested merges
+          bundle exec ruby scripts/analyze_tags --interactive -y
+
+          # Dry-run to preview --interactive -y changes
+          bundle exec ruby scripts/analyze_tags --interactive -y --dry-run
+
+          # Apply a hand-crafted renames file
+          bundle exec ruby scripts/analyze_tags --apply tmp/my_renames.yml
+      HELP
+      exit 0
+
+    when '--interactive', '-i'
+      interactive = true
+    when '-y', '--no-tty'
+      auto_confirm = true
+    when '--dry-run'
+      dry_run = true
+    when '--no-color'
+      no_color = true
+    when '--apply'
+      renames_file = ARGV[i += 1]
+    when '--file'
+      file = ARGV[i += 1]
+    when '--dev-file'
+      dev_file = ARGV[i += 1]
+    else
+      warn "Unknown option: #{arg}"
+      warn 'Run with --help for usage.'
+      exit 1
+    end
+    i += 1
+  end
+
+  analyzer = TagAnalyzer.new(
+    file:         file,
+    dev_file:     dev_file,
+    auto_confirm: auto_confirm,
+    interactive:  interactive,
+    renames_file: renames_file,
+    dry_run:      dry_run,
+    color:        !no_color,
+  )
+
+  # Always run the analysis report first
+  suggested = analyzer.run_analyze
+
+  if renames_file
+    analyzer.run_from_file(renames_file)
+  elsif interactive
+    analyzer.run_interactive(suggested)
+  end
+end

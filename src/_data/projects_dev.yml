@@ -1,44 +1,4 @@
 ---
-# ============================================================================
-# PROJECT CARD THEMES SCHEMA
-# ============================================================================
-# Optional theme field enables special visual treatments for project cards.
-# Valid values: adopt-me | update-me | avoid-me | family | holiday
-#
-# ADOPT-ME THEME:
-#   theme: adopt-me
-#   adoption_url: "https://..." # Optional: custom adoption page (defaults to issues)
-#
-# UPDATE-ME THEME:
-#   theme: update-me
-#   stale_since: "YYYY-MM-DD" # Optional: date of last significant update
-#   update_priority: low | medium | high # Optional: priority level
-#
-# AVOID-ME THEME:
-#   theme: avoid-me
-#   archived: true # Optional: boolean flag
-#   deprecation_reason: "Superseded by ProjectX" # Optional: explanation
-#   replacement_url: "https://..." # Optional: link to replacement project
-#
-# FAMILY THEME (grouped/stacked cards):
-#   theme: family
-#   family_id: "unique-family-identifier" # Required: groups related projects
-#   family_name: "Display Name" # Required: human-readable family name
-#   family_position: 1 # Required: order in stack (1 = primary/leftmost)
-#   family_primary: true # Optional: mark as primary card (only one per family)
-#
-# HOLIDAY THEME (seasonal decorations):
-#   theme: holiday
-#   holiday_type: christmas | halloween | newyear | birthday | celebration # Required
-#   holiday_colors: ["#hex", "#hex"] # Optional: custom colors
-#   holiday_date_start: "YYYY-MM-DD" # Optional: auto-enable start date
-#   holiday_date_end: "YYYY-MM-DD" # Optional: auto-enable end date
-#   holiday_decorations: # Optional: custom decoration config
-#     garland: true
-#     popouts: ["🎄", "⛄", "🎁"]
-#     animation: snowfall | confetti | sparkle
-# ============================================================================
-
 - name: "Peter Boling, team leader, web architect, security researcher, and rubyist.
     Building for web since 2004. \U0001F9F0"
   description: |
@@ -76,36 +36,36 @@
   - type: SourceHut
     url: https://sr.ht/~galtzo/
   tags:
+  - api
+  - bash
   - bridgetown
-  - markdown
-  - roda
-  - hanami
-  - sinatra
-  - rails
-  - sidekiq
-  - resque
-  - rspec
-  - minitest
+  - ci/cd
+  - css
   - docker
-  - k8s
+  - go
+  - graphql
+  - hanami
   - html
   - javascript
-  - typescript
-  - websockets
-  - react
-  - svelte
   - jquery
+  - k8s
+  - markdown
+  - minitest
+  - mysql
   - oauth
   - openid
-  - api
-  - graphql
-  - mysql
   - postgres
+  - rails
+  - react
+  - resque
+  - roda
+  - sidekiq
+  - sinatra
   - sqlite3
-  - ci/cd
-  - bash
-  - go
-  - css
+  - svelte
+  - test
+  - typescript
+  - websockets
   docs_site: https://galtzo.com
 - name: active_security
   description: Disallow insecure, unscoped, finds
@@ -211,7 +171,7 @@
     Enabled specification of FSF Free/Libre and OSI Approved requirements.
     <a href="https://dev.to/galtzo/how-to-check-license-compatibility-41h0" class="text-link" target="_blank" rel="noopener">Learn how</a> to add it to your project!
   language: Go
-  ecosystem:
+  ecosystem: none
   minimum_version: '1.23'
   role: contributor
   first_commit_on: 2025/09/11
@@ -222,9 +182,9 @@
     url: https://github.com/apache/skywalking-eyes
     owner: apache
   tags:
-  - license
-  - GHA
+  - ci
   - cli
+  - license
   - shell
   docs_site:
   github_stars: 301
@@ -255,9 +215,8 @@
   - type: Codeberg
     url: https://codeberg.org/appraisal-rb/appraisal2
   tags:
-  - test
-  - harness
   - bundler
+  - test
   docs_site: https://appraisal2.galtzo.com
   github_stars: 18
   gitlab_stars: 0
@@ -316,7 +275,7 @@
     url: https://github.com/galtzo-floss/awesome_search
     owner: galtzo-floss
   tags:
-  - search
+  - api
   docs_site:
   github_stars: 8
   total_downloads: 11217
@@ -329,7 +288,7 @@
 - name: bash_step
   description: Bash Step Function Library
   language: Bash
-  ecosystem:
+  ecosystem: none
   minimum_version: '4.0'
   role: author
   first_commit_on: 2013/11/08
@@ -353,7 +312,7 @@
 - name: bsfl
   description: Bash Script Function Library
   language: Bash
-  ecosystem:
+  ecosystem: none
   minimum_version: '4.0'
   role: maintainer
   first_commit_on: 2013/11/08
@@ -394,7 +353,7 @@
     owner: galtzo-floss
   tags:
   - rails
-  - testing
+  - test
   docs_site:
   github_stars: 25
   total_downloads: 5000
@@ -728,7 +687,7 @@
   first_commit: https://github.com/kettle-rb/prism-merge/commit/71fcddaa659cd6e9e94053e67524e5a400423ced
   funding_sites:
   - type: OpenCollective
-    url: https://opencollective.com/galtzo-floss
+    url: https://opencollective.com/kettle-rb
   - type: Liberapay
     url: https://liberapay.com/pboling
   forges:
@@ -736,7 +695,7 @@
     url: https://github.com/kettle-rb/prism-merge
     owner: kettle-rb
   tags:
-  - testing
+  - test
   docs_site: https://www.rubydoc.info/gems/prism-merge/2.0.4
   total_downloads: 2121
   daily_downloads:
@@ -758,7 +717,7 @@
   first_commit: https://github.com/kettle-rb/ast-merge/commit/a63a4858cb229530c1706925bb209546695e8b3a
   funding_sites:
   - type: OpenCollective
-    url: https://opencollective.com/galtzo-floss
+    url: https://opencollective.com/kettle-rb
   - type: Liberapay
     url: https://liberapay.com/pboling
   forges:
@@ -766,8 +725,7 @@
     url: https://github.com/kettle-rb/ast-merge
     owner: kettle-rb
   tags:
-  - rspec
-  - testing
+  - test
   docs_site: https://www.rubydoc.info/gems/ast-merge/4.0.6
   total_downloads: 9280
   daily_downloads:
@@ -789,7 +747,7 @@
   first_commit: https://github.com/kettle-rb/dotenv-merge/commit/a34c8f20c877a45d03b9f0b83b973614e123a92b
   funding_sites:
   - type: OpenCollective
-    url: https://opencollective.com/galtzo-floss
+    url: https://opencollective.com/kettle-rb
   - type: Liberapay
     url: https://liberapay.com/pboling
   forges:
@@ -819,7 +777,7 @@
   first_commit: https://github.com/kettle-rb/rbs-merge/commit/7ae936a6ae844aee513264eecc39215eed53c313
   funding_sites:
   - type: OpenCollective
-    url: https://opencollective.com/galtzo-floss
+    url: https://opencollective.com/kettle-rb
   - type: Liberapay
     url: https://liberapay.com/pboling
   forges:
@@ -851,7 +809,7 @@
   first_commit: https://github.com/kettle-rb/tree_haver/commit/a89211bff10f4440b96758a8ac9d7d539001b0c8
   funding_sites:
   - type: OpenCollective
-    url: https://opencollective.com/galtzo-floss
+    url: https://opencollective.com/kettle-rb
   - type: Liberapay
     url: https://liberapay.com/pboling
   forges:
@@ -882,7 +840,7 @@
   first_commit: https://github.com/kettle-rb/toml-merge/commit/772a5f5802ce518f2e2c83a561eb583ed634bac4
   funding_sites:
   - type: OpenCollective
-    url: https://opencollective.com/galtzo-floss
+    url: https://opencollective.com/kettle-rb
   - type: Liberapay
     url: https://liberapay.com/pboling
   forges:
@@ -913,7 +871,7 @@
   first_commit: https://github.com/kettle-rb/bash-merge/commit/db525d5aedd0c895422a067629118f3fa9c3c22d
   funding_sites:
   - type: OpenCollective
-    url: https://opencollective.com/galtzo-floss
+    url: https://opencollective.com/kettle-rb
   - type: Liberapay
     url: https://liberapay.com/pboling
   forges:
@@ -945,7 +903,7 @@
   first_commit: https://github.com/kettle-rb/json-merge/commit/f1cc25b1d9b79c598270e3aa203fa56787e6c6fc
   funding_sites:
   - type: OpenCollective
-    url: https://opencollective.com/galtzo-floss
+    url: https://opencollective.com/kettle-rb
   - type: Liberapay
     url: https://liberapay.com/pboling
   forges:
@@ -974,7 +932,7 @@
   first_commit: https://github.com/kettle-rb/markdown-merge/commit/76f2230840b236dd10fdd7baf322c082762dddb0
   funding_sites:
   - type: OpenCollective
-    url: https://opencollective.com/galtzo-floss
+    url: https://opencollective.com/kettle-rb
   - type: Liberapay
     url: https://liberapay.com/pboling
   forges:
@@ -1005,7 +963,7 @@
   first_commit: https://github.com/kettle-rb/jsonc-merge/commit/f1cc25b1d9b79c598270e3aa203fa56787e6c6fc
   funding_sites:
   - type: OpenCollective
-    url: https://opencollective.com/galtzo-floss
+    url: https://opencollective.com/kettle-rb
   - type: Liberapay
     url: https://liberapay.com/pboling
   forges:
@@ -1036,7 +994,7 @@
   first_commit: https://github.com/kettle-rb/commonmarker-merge/commit/12d4e9fff5bbe6a9b29e81c6643b4dd705f8e80a
   funding_sites:
   - type: OpenCollective
-    url: https://opencollective.com/galtzo-floss
+    url: https://opencollective.com/kettle-rb
   - type: Liberapay
     url: https://liberapay.com/pboling
   forges:
@@ -1066,7 +1024,7 @@
   first_commit: https://github.com/kettle-rb/psych-merge/commit/3330d3309d6962a4e676aa1c43e4ca90dfd21dc4
   funding_sites:
   - type: OpenCollective
-    url: https://opencollective.com/galtzo-floss
+    url: https://opencollective.com/kettle-rb
   - type: Liberapay
     url: https://liberapay.com/pboling
   forges:
@@ -1097,7 +1055,7 @@
   first_commit: https://github.com/kettle-rb/markly-merge/commit/3dcd8b855b8a773f175ff34d31e3885a28a3e70b
   funding_sites:
   - type: OpenCollective
-    url: https://opencollective.com/galtzo-floss
+    url: https://opencollective.com/kettle-rb
   - type: Liberapay
     url: https://liberapay.com/pboling
   forges:
@@ -1128,7 +1086,7 @@
   first_commit: https://github.com/kettle-rb/token-resolver/commit/e0e299cad6e6914d512845c71df6b7ac8009e5ac
   funding_sites:
   - type: OpenCollective
-    url: https://opencollective.com/galtzo-floss
+    url: https://opencollective.com/kettle-rb
   - type: Liberapay
     url: https://liberapay.com/pboling
   forges:
@@ -1136,7 +1094,7 @@
     url: https://github.com/kettle-rb/token-resolver
     owner: kettle-rb
   tags:
-  - testing
+  - test
   docs_site: https://www.rubydoc.info/gems/token-resolver/1.0.2
   total_downloads: 260
   daily_downloads:
