@@ -129,13 +129,13 @@
   - activerecord
   docs_site:
   github_stars: 7
-  total_downloads: 1881
-  daily_downloads: 0
-  release_downloads: 1521
+  total_downloads: 3040
+  daily_downloads:
+  release_downloads: 2579
   release_date: 2024/07/05
-  last_commit_on: 2025/08/20
+  last_commit_on: 2026/01/22
   status: active
-  last_scrape_at: '2025-10-21T22:09:52Z'
+  last_scrape_at: '2026-02-23T04:34:59Z'
 - name: activerecord-transactionable
   description: Getting transactions right is hard, and this gem makes it easier.
   language: Ruby
@@ -166,13 +166,13 @@
   github_stars: 11
   gitlab_stars: 0
   codeberg_stars: 0
-  total_downloads: 55340
-  daily_downloads: 0
-  release_downloads: 1845
+  total_downloads: 58596
+  daily_downloads:
+  release_downloads: 2900
   release_date: 2024/03/06
-  last_commit_on: 2025/08/13
+  last_commit_on: 2026/01/17
   status: active
-  last_scrape_at: '2025-10-21T22:09:58Z'
+  last_scrape_at: '2026-02-23T04:35:04Z'
 - name: anonymous_active_record
   description: Replacement for broken Class.new(ActiveRecord::Base)
   language: Ruby
@@ -195,13 +195,13 @@
   - activerecord
   docs_site:
   github_stars: 12
-  total_downloads: 290778
-  daily_downloads: 0
-  release_downloads: 235925
+  total_downloads: 295038
+  daily_downloads:
+  release_downloads: 239002
   release_date: 2024/09/18
-  last_commit_on: 2025/08/13
+  last_commit_on: 2026/01/17
   status: active
-  last_scrape_at: '2025-10-21T22:10:08Z'
+  last_scrape_at: '2026-02-23T04:35:15Z'
 - name: skywalking-eyes
   description: |
     A full-featured license tool to check and fix license headers and resolve dependencies' licenses.
@@ -227,11 +227,11 @@
   - cli
   - shell
   docs_site:
-  github_stars: 286
-  release_date: 2025/02/13
-  last_commit_on: 2025/09/14
+  github_stars: 301
+  release_date: 2025/10/27
+  last_commit_on: 2026/02/11
   status: active
-  last_scrape_at: '2025-10-21T22:10:10Z'
+  last_scrape_at: '2026-02-23T04:35:17Z'
 - name: appraisal2
   description: Appraisal2 integrates with bundler and rake to test your library against
     different versions of dependencies in repeatable scenarios called "appraisals."
@@ -259,16 +259,16 @@
   - harness
   - bundler
   docs_site: https://appraisal2.galtzo.com
-  github_stars: 12
+  github_stars: 18
   gitlab_stars: 0
   codeberg_stars: 0
-  total_downloads: 25389
-  daily_downloads: 0
-  release_downloads: 25389
-  release_date: 2025/07/28
-  last_commit_on: 2025/08/14
+  total_downloads: 42562
+  daily_downloads:
+  release_downloads: 935
+  release_date: 2026/02/18
+  last_commit_on: 2026/02/21
   status: active
-  last_scrape_at: '2025-10-21T22:10:14Z'
+  last_scrape_at: '2026-02-23T04:35:20Z'
 - name: archivist-client
   description: archivist-client queries archive.org for book data and downloads some
     things.
@@ -291,13 +291,13 @@
   - cli
   docs_site:
   github_stars: 16
-  total_downloads: 37071
-  daily_downloads: 0
-  release_downloads: 2848
+  total_downloads: 38069
+  daily_downloads:
+  release_downloads: 3088
   release_date: 2018/09/04
-  last_commit_on: 2019/12/26
-  status: stale
-  last_scrape_at: '2025-10-21T22:10:16Z'
+  last_commit_on: 2026/01/17
+  status: active
+  last_scrape_at: '2026-02-23T04:35:23Z'
 - name: awesome_search
   description: Organize complicated search results
   language: Ruby
@@ -319,13 +319,13 @@
   - search
   docs_site:
   github_stars: 8
-  total_downloads: 11069
-  daily_downloads: 0
-  release_downloads: 6129
+  total_downloads: 11217
+  daily_downloads:
+  release_downloads: 6236
   release_date: 2010/06/22
-  last_commit_on: 2025/08/13
+  last_commit_on: 2026/01/22
   status: active
-  last_scrape_at: '2025-10-21T22:10:19Z'
+  last_scrape_at: '2026-02-23T04:35:25Z'
 - name: bash_step
   description: Bash Step Function Library
   language: Bash
@@ -349,7 +349,7 @@
   release_date:
   last_commit_on: 2021/12/07
   status: stale
-  last_scrape_at: '2025-10-21T22:10:23Z'
+  last_scrape_at: '2026-02-23T04:35:30Z'
 - name: bsfl
   description: Bash Script Function Library
   language: Bash
@@ -373,7 +373,7 @@
   release_date:
   last_commit_on: 2021/12/07
   status: stale
-  last_scrape_at: '2025-10-21T22:10:25Z'
+  last_scrape_at: '2026-02-23T04:35:32Z'
 - name: test-adopt-me-gem
   description: This project is available for adoption. Looking for a new maintainer
     who can take it forward!
@@ -620,11 +620,529 @@
   tags:
   - rails
   docs_site: https://www.rubydoc.info/gems/cacheable_flash/1.0.0
-  total_downloads: 461101
+  total_downloads: 465648
   daily_downloads:
-  release_downloads: 176696
+  release_downloads: 180107
   release_date: 2017/04/11
-  github_stars: 0
-  last_commit_on:
-  status: stale
-  last_scrape_at: '2025-10-22T19:54:49Z'
+  github_stars: 101
+  last_commit_on: 2020/11/15
+  status: archived
+  last_scrape_at: '2026-02-23T04:35:35Z'
+- name: yard-fence
+  description: "\U0001F93A Convert ASCII braces ('{}') to full-width braces ('{}')
+    within code fences (triple-or-single backticks) during YARD processing, and back
+    to ASCII braces afterward"
+  language: Ruby
+  ecosystem: rubygems
+  minimum_version: '2.7'
+  role: author
+  first_commit_on: 2025/11/07
+  first_commit: https://github.com/galtzo-floss/yard-fence/commit/242b77a6caa398ca01ab3b3643d3e3b970497f05
+  funding_sites:
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  - type: Liberapay
+    url: https://liberapay.com/pboling
+  forges:
+  - type: GitHub
+    url: https://github.com/galtzo-floss/yard-fence
+    owner: galtzo-floss
+  tags:
+  - ruby
+  docs_site: https://www.rubydoc.info/gems/yard-fence/0.8.2
+  total_downloads: 1845
+  daily_downloads:
+  release_downloads: 323
+  release_date: 2025/12/30
+  github_stars: 1
+  last_commit_on: 2026/02/23
+  status: active
+  last_scrape_at: '2026-02-23T04:40:06Z'
+- name: yaml-converter
+  description: "\U0001F968 yaml-converter parses YAML files (with inline #note: annotations
+    and validation markers) and emits polished Markdown, HTML, and PDF/DOCX (via pandoc)
+    outputs including a validation status line, fenced YAML blocks, and extracted
+    notes."
+  language: Ruby
+  ecosystem: rubygems
+  minimum_version: '2.7'
+  role: author
+  first_commit_on: 2025/11/08
+  first_commit: https://github.com/galtzo-floss/yaml-converter/commit/232ad133b6259aabb39993b476f727d91d0a5f0c
+  funding_sites:
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  - type: Liberapay
+    url: https://liberapay.com/pboling
+  forges:
+  - type: GitHub
+    url: https://github.com/galtzo-floss/yaml-converter
+    owner: galtzo-floss
+  tags:
+  - ruby
+  docs_site: https://www.rubydoc.info/gems/yaml-converter/0.1.0
+  total_downloads: 1568
+  daily_downloads:
+  release_downloads: 1568
+  release_date: 2025/11/09
+  github_stars: 2
+  last_commit_on: 2026/02/20
+  status: active
+  last_scrape_at: '2026-02-23T04:40:08Z'
+- name: yard-yaml
+  description: "\U0001F968 A YARD plugin for YAML documents"
+  language: Ruby
+  ecosystem: rubygems
+  minimum_version: '2.7'
+  role: author
+  first_commit_on: 2025/11/09
+  first_commit: https://github.com/galtzo-floss/yard-yaml/commit/ffbe883471d11462dc28675867d852372ea3a481
+  funding_sites:
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  - type: Liberapay
+    url: https://liberapay.com/pboling
+  forges:
+  - type: GitHub
+    url: https://github.com/galtzo-floss/yard-yaml
+    owner: galtzo-floss
+  tags:
+  - ruby
+  docs_site: https://www.rubydoc.info/gems/yard-yaml/0.1.0
+  total_downloads: 1720
+  daily_downloads:
+  release_downloads: 1720
+  release_date: 2025/11/10
+  github_stars: 2
+  last_commit_on: 2026/02/23
+  status: active
+  last_scrape_at: '2026-02-23T04:40:10Z'
+- name: prism-merge
+  description: "☯️ Intelligently merge two versions of a Ruby file using Prism AST
+    analysis, similar to a smart 'git merge' specifically designed for Ruby code."
+  language: Ruby
+  ecosystem: rubygems
+  minimum_version: '2.7'
+  role: author
+  first_commit_on: 2025/12/02
+  first_commit: https://github.com/kettle-rb/prism-merge/commit/71fcddaa659cd6e9e94053e67524e5a400423ced
+  funding_sites:
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  - type: Liberapay
+    url: https://liberapay.com/pboling
+  forges:
+  - type: GitHub
+    url: https://github.com/kettle-rb/prism-merge
+    owner: kettle-rb
+  tags:
+  - testing
+  docs_site: https://www.rubydoc.info/gems/prism-merge/2.0.4
+  total_downloads: 2121
+  daily_downloads:
+  release_downloads: 71
+  release_date: 2026/02/22
+  github_stars: 17
+  last_commit_on: 2026/02/22
+  status: active
+  last_scrape_at: '2026-02-23T04:40:13Z'
+- name: ast-merge
+  description: "☯️ Ast::Merge provides base classes, modules, and RSpec shared examples
+    for building intelligent file mergers using AST analysis. It powers prism-merge,
+    psych-merge, json-merge, and other format-specific merge gems."
+  language: Ruby
+  ecosystem: rubygems
+  minimum_version: '2.7'
+  role: author
+  first_commit_on: 2025/12/06
+  first_commit: https://github.com/kettle-rb/ast-merge/commit/a63a4858cb229530c1706925bb209546695e8b3a
+  funding_sites:
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  - type: Liberapay
+    url: https://liberapay.com/pboling
+  forges:
+  - type: GitHub
+    url: https://github.com/kettle-rb/ast-merge
+    owner: kettle-rb
+  tags:
+  - rspec
+  - testing
+  docs_site: https://www.rubydoc.info/gems/ast-merge/4.0.6
+  total_downloads: 9280
+  daily_downloads:
+  release_downloads: 158
+  release_date: 2026/02/19
+  github_stars: 4
+  last_commit_on: 2026/02/21
+  status: active
+  last_scrape_at: '2026-02-23T04:40:15Z'
+- name: dotenv-merge
+  description: "☯️ Dotenv::Merge provides smart .env file merging that preserves comments,
+    understands variable assignments, and supports freeze blocks for protecting sensitive
+    configuration. Perfect for merging environment templates with local overrides."
+  language: Ruby
+  ecosystem: rubygems
+  minimum_version: '2.7'
+  role: author
+  first_commit_on: 2025/12/06
+  first_commit: https://github.com/kettle-rb/dotenv-merge/commit/a34c8f20c877a45d03b9f0b83b973614e123a92b
+  funding_sites:
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  - type: Liberapay
+    url: https://liberapay.com/pboling
+  forges:
+  - type: GitHub
+    url: https://github.com/kettle-rb/dotenv-merge
+    owner: kettle-rb
+  tags:
+  - ruby
+  docs_site: https://www.rubydoc.info/gems/dotenv-merge/1.0.3
+  total_downloads: 4045
+  daily_downloads:
+  release_downloads: 120
+  release_date: 2026/02/19
+  github_stars: 1
+  last_commit_on: 2026/02/19
+  status: active
+  last_scrape_at: '2026-02-23T04:40:17Z'
+- name: rbs-merge
+  description: "☯️ Intelligently merge RBS type signature files by parsing and comparing
+    AST structures. Supports freeze blocks to protect customizations, signature-based
+    matching, and configurable merge strategies."
+  language: Ruby
+  ecosystem: rubygems
+  minimum_version: '2.7'
+  role: author
+  first_commit_on: 2025/12/06
+  first_commit: https://github.com/kettle-rb/rbs-merge/commit/7ae936a6ae844aee513264eecc39215eed53c313
+  funding_sites:
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  - type: Liberapay
+    url: https://liberapay.com/pboling
+  forges:
+  - type: GitHub
+    url: https://github.com/kettle-rb/rbs-merge
+    owner: kettle-rb
+  tags:
+  - ruby
+  docs_site: https://www.rubydoc.info/gems/rbs-merge/2.0.0
+  total_downloads: 1889
+  daily_downloads:
+  release_downloads: 120
+  release_date: 2026/02/19
+  github_stars: 1
+  last_commit_on: 2026/02/22
+  status: active
+  last_scrape_at: '2026-02-23T04:40:19Z'
+- name: tree_haver
+  description: "\U0001F334 TreeHaver is a cross-Ruby adapter for many AST parsing
+    libraries; supporting MRI Ruby, JRuby, & TruffleRuby. Provides unified parsing
+    API & AST when using ruby_tree_sitter, parslet, citrus, ffi, tree_stump (Rust),
+    JRuby JARs, etc. As Faraday is to HTTP clients, this is for ASTs: 'Learn once
+    & write once & run anywhere'"
+  language: Ruby
+  ecosystem: rubygems
+  minimum_version: '2.7'
+  role: author
+  first_commit_on: 2025/12/14
+  first_commit: https://github.com/kettle-rb/tree_haver/commit/a89211bff10f4440b96758a8ac9d7d539001b0c8
+  funding_sites:
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  - type: Liberapay
+    url: https://liberapay.com/pboling
+  forges:
+  - type: GitHub
+    url: https://github.com/kettle-rb/tree_haver
+    owner: kettle-rb
+  tags:
+  - api
+  - cli
+  docs_site: https://www.rubydoc.info/gems/tree_haver/5.0.5
+  total_downloads: 4765
+  daily_downloads:
+  release_downloads: 175
+  release_date: 2026/02/18
+  github_stars: 15
+  last_commit_on: 2026/02/19
+  status: active
+  last_scrape_at: '2026-02-23T04:40:22Z'
+- name: toml-merge
+  description: "☯️ Intelligently merges TOML files by analyzing their AST structure
+    with tree-sitter, preserving key organization and resolving conflicts based on
+    structural similarity."
+  language: Ruby
+  ecosystem: rubygems
+  minimum_version: '2.7'
+  role: author
+  first_commit_on: 2025/12/09
+  first_commit: https://github.com/kettle-rb/toml-merge/commit/772a5f5802ce518f2e2c83a561eb583ed634bac4
+  funding_sites:
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  - type: Liberapay
+    url: https://liberapay.com/pboling
+  forges:
+  - type: GitHub
+    url: https://github.com/kettle-rb/toml-merge
+    owner: kettle-rb
+  tags:
+  - ruby
+  docs_site: https://www.rubydoc.info/gems/toml-merge/2.0.1
+  total_downloads: 2450
+  daily_downloads:
+  release_downloads: 119
+  release_date: 2026/02/19
+  github_stars: 1
+  last_commit_on: 2026/02/19
+  status: active
+  last_scrape_at: '2026-02-23T04:40:24Z'
+- name: bash-merge
+  description: "☯️ Bash::Merge provides smart Bash script merging that preserves comments,
+    understands shell structure, and supports freeze blocks for protecting destination
+    content. Perfect for merging configuration scripts and shell templates with customized
+    destination files."
+  language: Ruby
+  ecosystem: rubygems
+  minimum_version: '2.7'
+  role: author
+  first_commit_on: 2025/12/06
+  first_commit: https://github.com/kettle-rb/bash-merge/commit/db525d5aedd0c895422a067629118f3fa9c3c22d
+  funding_sites:
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  - type: Liberapay
+    url: https://liberapay.com/pboling
+  forges:
+  - type: GitHub
+    url: https://github.com/kettle-rb/bash-merge
+    owner: kettle-rb
+  tags:
+  - ruby
+  docs_site: https://www.rubydoc.info/gems/bash-merge/2.0.6
+  total_downloads: 3713
+  daily_downloads:
+  release_downloads: 123
+  release_date: 2026/02/19
+  github_stars: 1
+  last_commit_on: 2026/02/21
+  status: active
+  last_scrape_at: '2026-02-23T04:40:26Z'
+- name: json-merge
+  description: "☯️ Json::Merge provides smart JSON file merging that understands JSON
+    structure. Perfect for merging strict JSON configuration files like package.json,
+    tsconfig.json (without comments), and other standard JSON files. For JSON with
+    Comments (JSONC) files like devcontainer.json and VS Code settings, use jsonc-merge
+    instead."
+  language: Ruby
+  ecosystem: rubygems
+  minimum_version: '2.7'
+  role: author
+  first_commit_on: 2025/12/06
+  first_commit: https://github.com/kettle-rb/json-merge/commit/f1cc25b1d9b79c598270e3aa203fa56787e6c6fc
+  funding_sites:
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  - type: Liberapay
+    url: https://liberapay.com/pboling
+  forges:
+  - type: GitHub
+    url: https://github.com/kettle-rb/json-merge
+    owner: kettle-rb
+  tags:
+  - ruby
+  docs_site: https://www.rubydoc.info/gems/json-merge/1.1.2
+  total_downloads: 1738
+  daily_downloads:
+  release_downloads: 120
+  release_date: 2026/02/19
+  github_stars: 1
+  last_commit_on: 2026/02/19
+  status: active
+  last_scrape_at: '2026-02-23T04:40:28Z'
+- name: markdown-merge
+  description: "☯️ Ast::Merge-based structure for merging Markdown files with tools
+    like markly-merge and commonmarker-merge"
+  language: Ruby
+  ecosystem: rubygems
+  minimum_version: '2.7'
+  role: author
+  first_commit_on: 2025/12/11
+  first_commit: https://github.com/kettle-rb/markdown-merge/commit/76f2230840b236dd10fdd7baf322c082762dddb0
+  funding_sites:
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  - type: Liberapay
+    url: https://liberapay.com/pboling
+  forges:
+  - type: GitHub
+    url: https://github.com/kettle-rb/markdown-merge
+    owner: kettle-rb
+  tags:
+  - ruby
+  docs_site: https://www.rubydoc.info/gems/markdown-merge/1.0.3
+  total_downloads: 634
+  daily_downloads:
+  release_downloads: 128
+  release_date: 2026/02/19
+  github_stars: 1
+  last_commit_on: 2026/02/19
+  status: active
+  last_scrape_at: '2026-02-23T04:40:30Z'
+- name: jsonc-merge
+  description: "☯️ Jsonc::Merge provides smart JSONC (JSON with Comments) file merging
+    that preserves comments, understands JSON structure, and supports freeze blocks
+    for protecting destination content. Perfect for merging configuration files like
+    devcontainer.json, tsconfig.json, package.json, and VS Code settings."
+  language: Ruby
+  ecosystem: rubygems
+  minimum_version: '2.7'
+  role: author
+  first_commit_on: 2025/12/06
+  first_commit: https://github.com/kettle-rb/jsonc-merge/commit/f1cc25b1d9b79c598270e3aa203fa56787e6c6fc
+  funding_sites:
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  - type: Liberapay
+    url: https://liberapay.com/pboling
+  forges:
+  - type: GitHub
+    url: https://github.com/kettle-rb/jsonc-merge
+    owner: kettle-rb
+  tags:
+  - ruby
+  docs_site: https://www.rubydoc.info/gems/jsonc-merge/1.0.1
+  total_downloads: 262
+  daily_downloads:
+  release_downloads: 123
+  release_date: 2026/02/19
+  github_stars: 1
+  last_commit_on: 2026/02/19
+  status: active
+  last_scrape_at: '2026-02-23T04:40:32Z'
+- name: commonmarker-merge
+  description: "☯️ Commonmarker::Merge provides smart Markdown file merging using
+    Comrak (Rust) via Commonmarker. It understands document structure including headings,
+    lists, code blocks, and tables. Perfect for merging documentation templates with
+    customized files."
+  language: Ruby
+  ecosystem: rubygems
+  minimum_version: '2.7'
+  role: author
+  first_commit_on: 2025/12/06
+  first_commit: https://github.com/kettle-rb/commonmarker-merge/commit/12d4e9fff5bbe6a9b29e81c6643b4dd705f8e80a
+  funding_sites:
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  - type: Liberapay
+    url: https://liberapay.com/pboling
+  forges:
+  - type: GitHub
+    url: https://github.com/kettle-rb/commonmarker-merge
+    owner: kettle-rb
+  tags:
+  - ruby
+  docs_site: https://www.rubydoc.info/gems/commonmarker-merge/1.0.1
+  total_downloads: 243
+  daily_downloads:
+  release_downloads: 110
+  release_date: 2026/02/19
+  github_stars: 1
+  last_commit_on: 2026/02/19
+  status: active
+  last_scrape_at: '2026-02-23T04:40:35Z'
+- name: psych-merge
+  description: "☯️ Psych::Merge provides smart YAML file merging that preserves comments,
+    anchors/aliases, and supports freeze blocks for protecting destination content.
+    Perfect for merging configuration templates with customized destination files."
+  language: Ruby
+  ecosystem: rubygems
+  minimum_version: '2.7'
+  role: author
+  first_commit_on: 2025/12/05
+  first_commit: https://github.com/kettle-rb/psych-merge/commit/3330d3309d6962a4e676aa1c43e4ca90dfd21dc4
+  funding_sites:
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  - type: Liberapay
+    url: https://liberapay.com/pboling
+  forges:
+  - type: GitHub
+    url: https://github.com/kettle-rb/psych-merge
+    owner: kettle-rb
+  tags:
+  - ruby
+  docs_site: https://www.rubydoc.info/gems/psych-merge/1.0.0
+  total_downloads: 139
+  daily_downloads:
+  release_downloads: 139
+  release_date: 2026/02/19
+  github_stars: 1
+  last_commit_on: 2026/02/19
+  status: active
+  last_scrape_at: '2026-02-23T04:40:37Z'
+- name: markly-merge
+  description: "☯️ Markly::Merge provides smart Markdown file merging using libcmark-gfm
+    via Markly. It understands document structure including headings, lists, code
+    blocks, and tables. Perfect for merging documentation templates with customized
+    files."
+  language: Ruby
+  ecosystem: rubygems
+  minimum_version: '2.7'
+  role: author
+  first_commit_on: 2025/12/09
+  first_commit: https://github.com/kettle-rb/markly-merge/commit/3dcd8b855b8a773f175ff34d31e3885a28a3e70b
+  funding_sites:
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  - type: Liberapay
+    url: https://liberapay.com/pboling
+  forges:
+  - type: GitHub
+    url: https://github.com/kettle-rb/markly-merge
+    owner: kettle-rb
+  tags:
+  - ruby
+  docs_site: https://www.rubydoc.info/gems/markly-merge/1.0.0
+  total_downloads: 139
+  daily_downloads:
+  release_downloads: 139
+  release_date: 2026/02/19
+  github_stars: 1
+  last_commit_on: 2026/02/19
+  status: active
+  last_scrape_at: '2026-02-23T04:40:39Z'
+- name: token-resolver
+  description: "\U0001FA99 Token::Resolver provides configurable PEG-based (parslet)
+    parsing and resolution of structured tokens (e.g., {KJ|GEM_NAME}) in arbitrary
+    text. Useful for template ETL pipelines where tokens in template files must be
+    resolved before format-specific merging."
+  language: Ruby
+  ecosystem: rubygems
+  minimum_version: '2.7'
+  role: author
+  first_commit_on: 2026/02/21
+  first_commit: https://github.com/kettle-rb/token-resolver/commit/e0e299cad6e6914d512845c71df6b7ac8009e5ac
+  funding_sites:
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  - type: Liberapay
+    url: https://liberapay.com/pboling
+  forges:
+  - type: GitHub
+    url: https://github.com/kettle-rb/token-resolver
+    owner: kettle-rb
+  tags:
+  - testing
+  docs_site: https://www.rubydoc.info/gems/token-resolver/1.0.2
+  total_downloads: 260
+  daily_downloads:
+  release_downloads: 90
+  release_date: 2026/02/22
+  github_stars: 4
+  last_commit_on: 2026/02/22
+  status: active
+  last_scrape_at: '2026-02-23T04:40:41Z'

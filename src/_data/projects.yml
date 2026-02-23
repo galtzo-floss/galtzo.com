@@ -107,13 +107,13 @@
   - activerecord
   docs_site:
   github_stars: 7
-  total_downloads: 1881
-  daily_downloads: 0
-  release_downloads: 1521
+  total_downloads: 3040
+  daily_downloads:
+  release_downloads: 2579
   release_date: 2024/07/05
-  last_commit_on: 2025/08/20
+  last_commit_on: 2026/01/22
   status: active
-  last_scrape_at: '2025-10-21T22:09:52Z'
+  last_scrape_at: '2026-02-23T04:34:59Z'
 - name: activerecord-tablefree
   description: ActiveRecord Tablefree Models provides a simple mixin for creating
     models that are not bound to the database. Take advantage of ActiveRecord features
@@ -143,13 +143,13 @@
   - validate
   docs_site:
   github_stars: 2
-  total_downloads: 107609
-  daily_downloads: 0
-  release_downloads: 83422
+  total_downloads: 109442
+  daily_downloads:
+  release_downloads: 84555
   release_date: 2018/09/23
-  last_commit_on: 2025/08/06
+  last_commit_on: 2026/01/17
   status: active
-  last_scrape_at: '2025-10-21T22:09:55Z'
+  last_scrape_at: '2026-02-23T04:35:01Z'
 - name: activerecord-transactionable
   description: Getting transactions right is hard, and this gem makes it easier.
   language: Ruby
@@ -184,13 +184,13 @@
   github_stars: 11
   gitlab_stars: 0
   codeberg_stars: 0
-  total_downloads: 55340
-  daily_downloads: 0
-  release_downloads: 1845
+  total_downloads: 58596
+  daily_downloads:
+  release_downloads: 2900
   release_date: 2024/03/06
-  last_commit_on: 2025/08/13
+  last_commit_on: 2026/01/17
   status: active
-  last_scrape_at: '2025-10-21T22:09:58Z'
+  last_scrape_at: '2026-02-23T04:35:04Z'
 - name: activesupport-broadcast_logger
   description: Rails v8 ActiveSupport::BroadcastLogger, fixed & backported to Rails
     v5.2+ & Ruby 2.7+
@@ -218,14 +218,14 @@
   - activesupport
   - log
   docs_site:
-  github_stars: 8
-  total_downloads: 6190
-  daily_downloads: 0
-  release_downloads: 3568
+  github_stars: 9
+  total_downloads: 7950
+  daily_downloads:
+  release_downloads: 4797
   release_date: 2025/02/25
-  last_commit_on: 2025/08/12
+  last_commit_on: 2026/01/22
   status: active
-  last_scrape_at: '2025-10-21T22:10:01Z'
+  last_scrape_at: '2026-02-23T04:35:07Z'
 - name: activesupport-logger
   description: Rails v8 ActiveSupport::Logger backported to Rails v5.2+ & Ruby 2.7+
   language: Ruby
@@ -253,13 +253,13 @@
   - log
   docs_site:
   github_stars: 9
-  total_downloads: 8983
-  daily_downloads: 0
-  release_downloads: 5027
+  total_downloads: 12204
+  daily_downloads:
+  release_downloads: 7731
   release_date: 2024/11/22
-  last_commit_on: 2025/07/27
+  last_commit_on: 2026/01/22
   status: active
-  last_scrape_at: '2025-10-21T22:10:03Z'
+  last_scrape_at: '2026-02-23T04:35:09Z'
 - name: activesupport-tagged_logging
   description: Rails v8 ActiveSupport::TaggedLogging, fixed & backported to Rails
     v5.2+ & Ruby 2.7+
@@ -288,13 +288,13 @@
   - log
   docs_site:
   github_stars: 9
-  total_downloads: 3587
-  daily_downloads: 0
-  release_downloads: 1989
+  total_downloads: 4822
+  daily_downloads:
+  release_downloads: 2950
   release_date: 2024/11/22
-  last_commit_on: 2025/08/12
+  last_commit_on: 2026/01/22
   status: active
-  last_scrape_at: '2025-10-21T22:10:05Z'
+  last_scrape_at: '2026-02-23T04:35:12Z'
 - name: anonymous_active_record
   description: Replacement for broken Class.new(ActiveRecord::Base)
   language: Ruby
@@ -321,13 +321,13 @@
   - activerecord
   docs_site:
   github_stars: 12
-  total_downloads: 290778
-  daily_downloads: 0
-  release_downloads: 235925
+  total_downloads: 295038
+  daily_downloads:
+  release_downloads: 239002
   release_date: 2024/09/18
-  last_commit_on: 2025/08/13
+  last_commit_on: 2026/01/17
   status: active
-  last_scrape_at: '2025-10-21T22:10:08Z'
+  last_scrape_at: '2026-02-23T04:35:15Z'
 - name: skywalking-eyes
   description: |
     A full-featured license tool to check and fix license headers and resolve dependencies' licenses.
@@ -353,11 +353,11 @@
   - cli
   - shell
   docs_site:
-  github_stars: 286
-  release_date: 2025/02/13
-  last_commit_on: 2025/09/14
+  github_stars: 301
+  release_date: 2025/10/27
+  last_commit_on: 2026/02/11
   status: active
-  last_scrape_at: '2025-10-21T22:10:10Z'
+  last_scrape_at: '2026-02-23T04:35:17Z'
 - name: appraisal2
   description: Appraisal2 integrates with bundler and rake to test your library against
     different versions of dependencies in repeatable scenarios called "appraisals."
@@ -389,16 +389,16 @@
   - harness
   - bundler
   docs_site: https://appraisal2.galtzo.com
-  github_stars: 12
+  github_stars: 18
   gitlab_stars: 0
   codeberg_stars: 0
-  total_downloads: 25389
-  daily_downloads: 0
-  release_downloads: 25389
-  release_date: 2025/07/28
-  last_commit_on: 2025/08/14
+  total_downloads: 42562
+  daily_downloads:
+  release_downloads: 935
+  release_date: 2026/02/18
+  last_commit_on: 2026/02/21
   status: active
-  last_scrape_at: '2025-10-21T22:10:14Z'
+  last_scrape_at: '2026-02-23T04:35:20Z'
 - name: archivist-client
   description: archivist-client queries archive.org for book data and downloads some
     things.
@@ -421,13 +421,13 @@
   - cli
   docs_site:
   github_stars: 16
-  total_downloads: 37071
-  daily_downloads: 0
-  release_downloads: 2848
+  total_downloads: 38069
+  daily_downloads:
+  release_downloads: 3088
   release_date: 2018/09/04
-  last_commit_on: 2019/12/26
-  status: stale
-  last_scrape_at: '2025-10-21T22:10:16Z'
+  last_commit_on: 2026/01/17
+  status: active
+  last_scrape_at: '2026-02-23T04:35:23Z'
 - name: awesome_search
   description: Organize complicated search results
   language: Ruby
@@ -455,13 +455,13 @@
   archived: true
   docs_site:
   github_stars: 8
-  total_downloads: 11069
-  daily_downloads: 0
-  release_downloads: 6129
+  total_downloads: 11217
+  daily_downloads:
+  release_downloads: 6236
   release_date: 2010/06/22
-  last_commit_on: 2025/08/13
+  last_commit_on: 2026/01/22
   status: active
-  last_scrape_at: '2025-10-21T22:10:19Z'
+  last_scrape_at: '2026-02-23T04:35:25Z'
 - name: awesome-sponsorships
   description: "\U0001F496 An Open Source Funding How To Awesome List: checklist and
     inspiration to earn more as a FLOSS developer"
@@ -487,9 +487,9 @@
   docs_site: https://awesome-sponsorships.galtzo.com
   github_stars: 5
   release_date:
-  last_commit_on: 2025/09/12
+  last_commit_on: 2026/02/20
   status: active
-  last_scrape_at: '2025-10-21T22:10:21Z'
+  last_scrape_at: '2026-02-23T04:35:28Z'
 - name: bash_step
   description: Bash Step Function Library
   language: Bash
@@ -513,7 +513,7 @@
   release_date:
   last_commit_on: 2021/12/07
   status: stale
-  last_scrape_at: '2025-10-21T22:10:23Z'
+  last_scrape_at: '2026-02-23T04:35:30Z'
 - name: bsfl
   description: Bash Script Function Library
   language: Bash
@@ -537,7 +537,7 @@
   release_date:
   last_commit_on: 2021/12/07
   status: stale
-  last_scrape_at: '2025-10-21T22:10:25Z'
+  last_scrape_at: '2026-02-23T04:35:32Z'
 - name: cacheable_flash
   description: |-
     Allows caching of pages with flash messages by rendering flash
@@ -562,9 +562,9 @@
   tags:
   - toast
   - rails
-  total_downloads: 461101
+  total_downloads: 465648
   daily_downloads:
-  release_downloads: 176696
+  release_downloads: 180107
   adoptable: false
   archived: true
   deprecation_reason: Incompatible with modern Rails
@@ -573,7 +573,7 @@
   release_date: 2017/04/11
   last_commit_on: 2020/11/15
   status: archived
-  last_scrape_at: '2025-10-21T22:10:28Z'
+  last_scrape_at: '2026-02-23T04:35:35Z'
 - name: capistrano_mailer
   description: Capistrano Deployment Email Notification.  Keep the whole team informed
     of each release!
@@ -605,13 +605,13 @@
   archived: true
   docs_site:
   github_stars: 49
-  total_downloads: 96707
-  daily_downloads: 0
-  release_downloads: 13880
+  total_downloads: 98086
+  daily_downloads:
+  release_downloads: 14127
   release_date: 2013/01/22
-  last_commit_on: 2025/08/18
+  last_commit_on: 2026/01/17
   status: active
-  last_scrape_at: '2025-10-21T22:10:30Z'
+  last_scrape_at: '2026-02-23T04:35:37Z'
 - name: celluloid-io-pg-listener
   description: Asynchronously LISTEN for Postgresql NOTIFY messages with payloads
     and Do Something
@@ -642,13 +642,13 @@
   archived: true
   docs_site:
   github_stars: 11
-  total_downloads: 21713
-  daily_downloads: 0
-  release_downloads: 3573
+  total_downloads: 22412
+  daily_downloads:
+  release_downloads: 3781
   release_date: 2015/11/30
-  last_commit_on: 2025/08/12
+  last_commit_on: 2026/01/17
   status: active
-  last_scrape_at: '2025-10-21T22:10:32Z'
+  last_scrape_at: '2026-02-23T04:35:40Z'
 - name: controller_validator
   description: Use the familiar ActiveModel::Errors pattern for controller validations
   language: Ruby
@@ -675,13 +675,13 @@
   - validate
   docs_site:
   github_stars: 8
-  total_downloads: 6042
-  daily_downloads: 0
-  release_downloads: 6042
+  total_downloads: 7016
+  daily_downloads:
+  release_downloads: 7016
   release_date: 2014/11/20
-  last_commit_on: 2025/08/13
+  last_commit_on: 2026/01/17
   status: active
-  last_scrape_at: '2025-10-21T22:10:35Z'
+  last_scrape_at: '2026-02-23T04:35:42Z'
 - name: csv_pirate
   description: |-
     CsvPirate is the easy way to create a CSV of essentially anything in Ruby, in full pirate regalia.
@@ -713,13 +713,13 @@
   - csv
   docs_site:
   github_stars: 34
-  total_downloads: 147173
-  daily_downloads: 0
-  release_downloads: 5515
+  total_downloads: 149539
+  daily_downloads:
+  release_downloads: 5728
   release_date: 2013/11/26
-  last_commit_on: 2025/08/18
+  last_commit_on: 2026/01/17
   status: active
-  last_scrape_at: '2025-10-21T22:10:37Z'
+  last_scrape_at: '2026-02-23T04:35:45Z'
 - name: debug_logging
   description: |
     Unobtrusive debug logging for Ruby.  NO LITTERING.
@@ -756,13 +756,13 @@
   github_stars: 18
   gitlab_stars: 0
   codeberg_stars: 0
-  total_downloads: 81398
-  daily_downloads: 0
-  release_downloads: 2840
+  total_downloads: 84627
+  daily_downloads:
+  release_downloads: 3843
   release_date: 2024/05/12
-  last_commit_on: 2024/11/09
+  last_commit_on: 2026/01/17
   status: active
-  last_scrape_at: '2025-10-21T22:10:41Z'
+  last_scrape_at: '2026-02-23T04:35:48Z'
 - name: destination_errors
   description: Useful when a presenter deals with multiple objects that may enter
     into error states, and the errors need to be collected at a single point.
@@ -795,13 +795,13 @@
   docs_site:
   github_stars: 3
   gitlab_stars: 0
-  total_downloads: 17427
-  daily_downloads: 0
-  release_downloads: 4189
+  total_downloads: 17819
+  daily_downloads:
+  release_downloads: 4328
   release_date: 2015/05/20
-  last_commit_on: 2025/08/12
+  last_commit_on: 2026/01/17
   status: active
-  last_scrape_at: '2025-10-21T22:10:43Z'
+  last_scrape_at: '2026-02-23T04:35:51Z'
 - name: dry_views
   description: 'Provides extensions to ActionView::Helpers::CaptureHelper: content_for_with_default,
     no_content_for, and an enhanced content_for that plays nice with friends'
@@ -831,13 +831,13 @@
   - view
   docs_site:
   github_stars: 11
-  total_downloads: 9905
-  daily_downloads: 0
-  release_downloads: 6313
+  total_downloads: 10128
+  daily_downloads:
+  release_downloads: 6450
   release_date: 2012/08/15
-  last_commit_on: 2024/09/21
-  status: stale
-  last_scrape_at: '2025-10-21T22:10:45Z'
+  last_commit_on: 2026/01/17
+  status: active
+  last_scrape_at: '2026-02-23T04:35:54Z'
 - name: dynamoid
   description: Dynamoid is an ORM for Amazon's DynamoDB that supports offline development,
     associations, querying, and everything else you'd expect from an ActiveRecord-style
@@ -862,14 +862,14 @@
   - aws
   - api
   docs_site:
-  github_stars: 600
-  total_downloads: 10043677
-  daily_downloads: 0
-  release_downloads: 60181
+  github_stars: 601
+  total_downloads: 10791269
+  daily_downloads:
+  release_downloads: 191531
   release_date: 2025/08/23
-  last_commit_on: 2025/10/10
+  last_commit_on: 2026/01/17
   status: active
-  last_scrape_at: '2025-10-21T22:10:48Z'
+  last_scrape_at: '2026-02-23T04:35:56Z'
 - name: each_in_batches
   description: Batch Processing of Records with Blocks in Rails
   language: Ruby
@@ -898,13 +898,13 @@
   - activerecord
   docs_site:
   github_stars: 12
-  total_downloads: 14459
-  daily_downloads: 0
-  release_downloads: 6539
+  total_downloads: 14975
+  daily_downloads:
+  release_downloads: 6844
   release_date: 2016/06/01
-  last_commit_on: 2025/08/13
+  last_commit_on: 2026/01/17
   status: active
-  last_scrape_at: '2025-10-21T22:10:50Z'
+  last_scrape_at: '2026-02-23T04:35:59Z'
 - name: flag_shih_tzu
   description: Bit fields for ActiveRecord - store multiple boolean flags in a single
     integer column
@@ -938,16 +938,16 @@
   - activerecord
   - bitfields
   docs_site:
-  github_stars: 506
+  github_stars: 507
   gitlab_stars: 0
   codeberg_stars: 0
-  total_downloads: 4054339
-  daily_downloads: 0
-  release_downloads: 3139782
+  total_downloads: 4589153
+  daily_downloads:
+  release_downloads: 3668950
   release_date: 2018/11/30
-  last_commit_on: 2025/08/18
+  last_commit_on: 2026/01/17
   status: active
-  last_scrape_at: '2025-10-21T22:10:54Z'
+  last_scrape_at: '2026-02-23T04:36:02Z'
 - name: floss_funding
   description: Help overlooked open source projects - the ones at the bottom of the
     stack, and the dev dependencies - by funding them.
@@ -975,14 +975,14 @@
   - wip
   - experimental
   docs_site: https://floss-funding.galtzo.com
-  github_stars: 3
-  total_downloads: 357
-  daily_downloads: 0
-  release_downloads: 190
+  github_stars: 4
+  total_downloads: 489
+  daily_downloads:
+  release_downloads: 268
   release_date:
-  last_commit_on: 2025/10/09
+  last_commit_on: 2025/11/21
   status: active
-  last_scrape_at: '2025-10-21T22:10:56Z'
+  last_scrape_at: '2026-02-23T04:36:05Z'
 - name: gem_bench
   description: |-
     * Benchmark different versions of same or similar gems
@@ -1018,14 +1018,14 @@
   - bundler
   - regex
   docs_site:
-  github_stars: 92
-  total_downloads: 2935576
-  daily_downloads: 0
-  release_downloads: 11891
+  github_stars: 94
+  total_downloads: 2943383
+  daily_downloads:
+  release_downloads: 14182
   release_date: 2024/09/22
-  last_commit_on: 2025/08/18
+  last_commit_on: 2026/01/17
   status: active
-  last_scrape_at: '2025-10-21T22:10:59Z'
+  last_scrape_at: '2026-02-23T04:36:07Z'
 - name: gitmoji-regex
   description: "\U0001F61C A regular expression matching Gitmoji (a subset of Unicode
     Emoji) symbolsFund overlooked open source projects - bottom of stack, dev/test
@@ -1052,13 +1052,13 @@
   - regex
   docs_site:
   github_stars: 12
-  total_downloads: 22976
-  daily_downloads: 0
-  release_downloads: 15624
+  total_downloads: 24610
+  daily_downloads:
+  release_downloads: 16662
   release_date: 2025/08/20
-  last_commit_on: 2025/10/09
+  last_commit_on: 2025/11/21
   status: active
-  last_scrape_at: '2025-10-21T22:11:01Z'
+  last_scrape_at: '2026-02-23T04:36:10Z'
 - name: humorous_log_formatter
   description: Humorous Log Levels and Color For Rails.  Customizable!
   language: Ruby
@@ -1084,14 +1084,14 @@
   - log
   adoptable: true
   docs_site:
-  github_stars: 8
-  total_downloads: 7048
-  daily_downloads: 0
-  release_downloads: 4457
+  github_stars: 9
+  total_downloads: 7288
+  daily_downloads:
+  release_downloads: 4646
   release_date: 2014/10/18
-  last_commit_on: 2025/08/13
+  last_commit_on: 2026/01/22
   status: active
-  last_scrape_at: '2025-10-21T22:11:03Z'
+  last_scrape_at: '2026-02-23T04:36:12Z'
 - name: include_with_respect
   description: Find out if your Module include/extend hooks are misbehaving!
   language: Ruby
@@ -1121,13 +1121,13 @@
   archived: true
   docs_site:
   github_stars: 6
-  total_downloads: 7906
-  daily_downloads: 0
-  release_downloads: 6037
+  total_downloads: 8874
+  daily_downloads:
+  release_downloads: 6961
   release_date: 2020/02/14
-  last_commit_on: 2025/08/12
+  last_commit_on: 2026/01/17
   status: active
-  last_scrape_at: '2025-10-21T22:11:06Z'
+  last_scrape_at: '2026-02-23T04:36:15Z'
 - name: json_schemer-fuzz
   description: Fuzz generator for json_schemer
   language: Ruby
@@ -1149,14 +1149,14 @@
   - test
   - fuzz
   docs_site:
-  github_stars: 6
-  total_downloads: 733
-  daily_downloads: 0
-  release_downloads: 733
+  github_stars: 8
+  total_downloads: 893
+  daily_downloads:
+  release_downloads: 893
   release_date: 2023/10/26
-  last_commit_on: 2025/08/13
+  last_commit_on: 2026/01/22
   status: active
-  last_scrape_at: '2025-10-21T22:11:08Z'
+  last_scrape_at: '2026-02-23T04:36:17Z'
 - name: kettle-dev
   description: "\U0001F372 Kettle::Dev is a meta tool from kettle-rb to streamline
     development and testing. Acts as a shim dependency, pulling in many other dependencies,
@@ -1203,13 +1203,13 @@
   github_stars: 2
   gitlab_stars: 0
   codeberg_stars: 0
-  total_downloads: 21140
-  daily_downloads: 0
-  release_downloads: 81
-  release_date: 2025/10/21
-  last_commit_on: 2025/10/21
+  total_downloads: 34736
+  daily_downloads:
+  release_downloads: 929
+  release_date: 2025/11/29
+  last_commit_on: 2026/02/21
   status: active
-  last_scrape_at: '2025-10-21T22:11:12Z'
+  last_scrape_at: '2026-02-23T04:36:21Z'
 - name: kettle-soup-cover
   description: |
     A Covered Kettle of Test Coverage SOUP (Software of Unknown Provenance)
@@ -1246,13 +1246,13 @@
   github_stars: 10
   gitlab_stars: 1
   codeberg_stars: 0
-  total_downloads: 26561
-  daily_downloads: 0
-  release_downloads: 4995
-  release_date: 2025/07/15
-  last_commit_on: 2025/10/09
+  total_downloads: 30874
+  daily_downloads:
+  release_downloads: 712
+  release_date: 2025/12/28
+  last_commit_on: 2025/12/28
   status: active
-  last_scrape_at: '2025-10-21T22:11:15Z'
+  last_scrape_at: '2026-02-23T04:36:24Z'
 - name: kettle-test
   description: "\U0001F372 Kettle::Test is a meta tool from kettle-rb to streamline
     testing. Acts as a shim dependency, pulling in many other dependencies, to give
@@ -1294,13 +1294,13 @@
   github_stars: 1
   gitlab_stars: 0
   codeberg_stars: 0
-  total_downloads: 16140
-  daily_downloads: 0
-  release_downloads: 86
-  release_date: 2025/10/21
-  last_commit_on: 2025/10/21
+  total_downloads: 18541
+  daily_downloads:
+  release_downloads: 461
+  release_date: 2026/02/06
+  last_commit_on: 2026/02/06
   status: active
-  last_scrape_at: '2025-10-21T22:11:19Z'
+  last_scrape_at: '2026-02-23T04:36:28Z'
 - name: letter_group
   description: Organize data results from raw sql queries (as with PGresult, or Dossier)
     intelligently.
@@ -1329,13 +1329,13 @@
   archived: true
   docs_site:
   github_stars: 3
-  total_downloads: 11659
-  daily_downloads: 0
-  release_downloads: 6810
+  total_downloads: 12137
+  daily_downloads:
+  release_downloads: 7187
   release_date: 2015/04/11
-  last_commit_on: 2025/08/13
+  last_commit_on: 2026/01/17
   status: active
-  last_scrape_at: '2025-10-21T22:11:22Z'
+  last_scrape_at: '2026-02-23T04:36:30Z'
 - name: library_tree
   description: Builds a tree of module inclusion of a target module into other modules
   language: Ruby
@@ -1358,13 +1358,13 @@
   - experimental
   docs_site:
   github_stars: 2
-  total_downloads: 259
-  daily_downloads: 0
-  release_downloads: 259
+  total_downloads: 372
+  daily_downloads:
+  release_downloads: 372
   release_date: 2025/08/12
-  last_commit_on: 2025/10/09
+  last_commit_on: 2025/11/21
   status: active
-  last_scrape_at: '2025-10-21T22:11:25Z'
+  last_scrape_at: '2026-02-23T04:36:32Z'
 - name: logos
   description: "\U0001FAB5 A resource for logos, with proper attribution information,
     including license and copyright, for open source projects I care about."
@@ -1389,9 +1389,9 @@
   docs_site: https://logos.galtzo.com/
   github_stars: 2
   release_date:
-  last_commit_on: 2025/09/12
+  last_commit_on: 2025/11/21
   status: active
-  last_scrape_at: '2025-10-21T22:11:27Z'
+  last_scrape_at: '2026-02-23T04:36:35Z'
 - name: masq
   description: Masq supports OpenID 2.0 and supports SReg, AX (fetch and store requests)
     and PAPE as well as some custom additions like multi-factor authentication using
@@ -1429,9 +1429,9 @@
   gitlab_stars: 0
   codeberg_stars: 0
   release_date:
-  last_commit_on: 2025/08/14
+  last_commit_on: 2025/12/02
   status: active
-  last_scrape_at: '2025-10-21T22:11:30Z'
+  last_scrape_at: '2026-02-23T04:36:38Z'
 - name: masq2
   description: Originally a fork. Has been merged back to the original gem.
   language: Ruby
@@ -1466,13 +1466,13 @@
   github_stars: 10
   gitlab_stars: 0
   codeberg_stars: 0
-  total_downloads: 406
-  daily_downloads: 0
-  release_downloads: 406
+  total_downloads: 617
+  daily_downloads:
+  release_downloads: 617
   release_date: 2025/04/04
-  last_commit_on: 2025/08/14
+  last_commit_on: 2025/12/02
   status: active
-  last_scrape_at: '2025-10-21T22:11:33Z'
+  last_scrape_at: '2026-02-23T04:36:42Z'
 - name: month-serializer
   description: Serialize Month objects to Integer
   language: Ruby
@@ -1497,14 +1497,14 @@
   - math
   - serialize
   docs_site:
-  github_stars: 6
-  total_downloads: 8886
-  daily_downloads: 0
-  release_downloads: 7081
+  github_stars: 7
+  total_downloads: 9441
+  daily_downloads:
+  release_downloads: 7578
   release_date: 2018/10/29
-  last_commit_on: 2025/10/09
+  last_commit_on: 2025/11/21
   status: active
-  last_scrape_at: '2025-10-21T22:11:36Z'
+  last_scrape_at: '2026-02-23T04:36:44Z'
 - name: oauth
   description: "\U0001F511 A Ruby wrapper for the original OAuth 1.0 / 1.0a spec."
   language: Ruby
@@ -1536,16 +1536,16 @@
   - security
   - api
   docs_site: https://oauth.galtzo.com
-  github_stars: 677
+  github_stars: 674
   gitlab_stars: 5
   codeberg_stars: 0
-  total_downloads: 150017752
-  daily_downloads: 0
-  release_downloads: 160098
-  release_date: 2025/09/22
-  last_commit_on: 2025/10/13
+  total_downloads: 155752964
+  daily_downloads:
+  release_downloads: 664922
+  release_date: 2025/11/07
+  last_commit_on: 2026/01/25
   status: active
-  last_scrape_at: '2025-10-21T22:11:40Z'
+  last_scrape_at: '2026-02-23T04:36:48Z'
 - name: oauth-tty
   description: "\U0001F5A5️ OAuth 1.0 / 1.0a TTY Command Line Interface"
   language: Ruby
@@ -1581,13 +1581,13 @@
   github_stars: 6
   gitlab_stars: 1
   codeberg_stars: 1
-  total_downloads: 13483254
-  daily_downloads: 0
-  release_downloads: 192742
+  total_downloads: 16248735
+  daily_downloads:
+  release_downloads: 1251324
   release_date: 2025/09/21
-  last_commit_on: 2025/10/13
+  last_commit_on: 2025/11/27
   status: active
-  last_scrape_at: '2025-10-21T22:11:43Z'
+  last_scrape_at: '2026-02-23T04:36:52Z'
 - name: oauth2
   description: Ruby OAuth 2.0 framework for building OAuth providers and clients
   language: Ruby
@@ -1619,16 +1619,16 @@
   - security
   - api
   docs_site: https://oauth2.galtzo.com
-  github_stars: 2153
-  gitlab_stars: 22
-  codeberg_stars: 1
-  total_downloads: 236350600
-  daily_downloads: 0
-  release_downloads: 521545
-  release_date: 2025/09/16
-  last_commit_on: 2025/10/13
+  github_stars: 2165
+  gitlab_stars: 23
+  codeberg_stars: 2
+  total_downloads: 249040458
+  daily_downloads:
+  release_downloads: 1932935
+  release_date: 2025/11/08
+  last_commit_on: 2025/11/27
   status: active
-  last_scrape_at: '2025-10-21T22:11:46Z'
+  last_scrape_at: '2026-02-23T04:36:56Z'
 - name: omniauth-identity
   description: Traditional username/password based authentication system for OmniAuth
   language: Ruby
@@ -1653,14 +1653,14 @@
   - security
   - api
   docs_site: https://omniauth-identity.galtzo.com
-  github_stars: 361
-  total_downloads: 2029780
-  daily_downloads: 0
-  release_downloads: 515
+  github_stars: 364
+  total_downloads: 2136894
+  daily_downloads:
+  release_downloads: 30404
   release_date: 2025/10/14
-  last_commit_on: 2025/10/21
+  last_commit_on: 2025/11/27
   status: active
-  last_scrape_at: '2025-10-21T22:11:49Z'
+  last_scrape_at: '2026-02-23T04:36:58Z'
 - name: omniauth-jwt
   description: An OmniAuth strategy to accept JWT-based single sign-on.
   language: Ruby
@@ -1686,13 +1686,13 @@
   - api
   docs_site:
   github_stars: 101
-  total_downloads: 146507
-  daily_downloads: 0
-  release_downloads: 143591
+  total_downloads: 146980
+  daily_downloads:
+  release_downloads: 143969
   release_date: 2013/10/19
-  last_commit_on: 2025/09/11
+  last_commit_on: 2026/01/22
   status: active
-  last_scrape_at: '2025-10-21T22:11:51Z'
+  last_scrape_at: '2026-02-23T04:37:01Z'
 - name: omniauth-jwt2
   description: Originally a fork. Has been merged back to the original gem.
   language: Ruby
@@ -1718,13 +1718,13 @@
   - api
   docs_site:
   github_stars: 6
-  total_downloads: 1812
-  daily_downloads: 0
-  release_downloads: 1812
+  total_downloads: 2582
+  daily_downloads:
+  release_downloads: 2582
   release_date: 2023/12/07
-  last_commit_on: 2023/12/07
-  status: stale
-  last_scrape_at: '2025-10-21T22:11:54Z'
+  last_commit_on: 2026/01/22
+  status: active
+  last_scrape_at: '2026-02-23T04:37:03Z'
 - name: omniauth-ldap
   description: A LDAP strategy for OmniAuth.
   language: Ruby
@@ -1749,14 +1749,14 @@
   - security
   - api
   docs_site:
-  github_stars: 147
-  total_downloads: 739013
-  daily_downloads: 0
-  release_downloads: 136987
-  release_date: 2018/01/09
-  last_commit_on: 2025/10/18
+  github_stars: 148
+  total_downloads: 747047
+  daily_downloads:
+  release_downloads: 1232
+  release_date: 2025/11/10
+  last_commit_on: 2025/11/27
   status: active
-  last_scrape_at: '2025-10-21T22:11:56Z'
+  last_scrape_at: '2026-02-23T04:37:06Z'
 - name: omniauth-openid
   description: OpenID (not OIDC) strategy for OmniAuth.
   language: Ruby
@@ -1791,13 +1791,13 @@
   github_stars: 96
   gitlab_stars: 0
   codeberg_stars: 0
-  total_downloads: 4157102
-  daily_downloads: 0
-  release_downloads: 17220
+  total_downloads: 4650852
+  daily_downloads:
+  release_downloads: 36137
   release_date: 2025/06/08
-  last_commit_on: 2025/08/14
+  last_commit_on: 2025/12/02
   status: active
-  last_scrape_at: '2025-10-21T22:12:00Z'
+  last_scrape_at: '2026-02-23T04:37:09Z'
 - name: open_id_authentication
   description: Provides a thin wrapper around the excellent rack-openid2 gem.
   language: Ruby
@@ -1832,13 +1832,13 @@
   github_stars: 10
   gitlab_stars: 0
   codeberg_stars: 0
-  total_downloads: 122650
-  daily_downloads: 0
-  release_downloads: 3914
+  total_downloads: 125411
+  daily_downloads:
+  release_downloads: 4844
   release_date: 2024/09/25
-  last_commit_on: 2025/06/10
+  last_commit_on: 2026/01/22
   status: active
-  last_scrape_at: '2025-10-21T22:12:03Z'
+  last_scrape_at: '2026-02-23T04:37:13Z'
 - name: os
   description: Easily determine which OS your Ruby code is running on.
   language: Ruby
@@ -1857,14 +1857,14 @@
   tags:
   - test
   docs_site:
-  github_stars: 153
-  total_downloads: 387550106
-  daily_downloads: 0
-  release_downloads: 210175721
+  github_stars: 154
+  total_downloads: 416020257
+  daily_downloads:
+  release_downloads: 237476522
   release_date: 2021/11/07
   last_commit_on: 2025/06/08
   status: active
-  last_scrape_at: '2025-10-21T22:12:05Z'
+  last_scrape_at: '2026-02-23T04:37:15Z'
 - name: pretty_feed
   description: |
     PrettyFeed provides a modulizer you can include in a job, worker, class, rake task, etc,
@@ -1896,13 +1896,13 @@
   - debug
   docs_site:
   github_stars: 6
-  total_downloads: 18245
-  daily_downloads: 0
-  release_downloads: 4100
+  total_downloads: 20349
+  daily_downloads:
+  release_downloads: 5088
   release_date: 2023/10/18
-  last_commit_on: 2025/08/13
+  last_commit_on: 2026/01/22
   status: active
-  last_scrape_at: '2025-10-21T22:12:08Z'
+  last_scrape_at: '2026-02-23T04:37:18Z'
 - name: qfill
   description: Advanced Queue Transformation
   language: Ruby
@@ -1932,13 +1932,13 @@
   - math
   docs_site:
   github_stars: 6
-  total_downloads: 35098
-  daily_downloads: 0
-  release_downloads: 11303
+  total_downloads: 36471
+  daily_downloads:
+  release_downloads: 12276
   release_date: 2022/02/25
-  last_commit_on: 2025/08/13
+  last_commit_on: 2026/01/17
   status: active
-  last_scrape_at: '2025-10-21T22:12:10Z'
+  last_scrape_at: '2026-02-23T04:37:21Z'
 - name: rack-insight
   description: |-
     Debugging toolbar for Rack applications implemented as middleware.
@@ -1969,13 +1969,13 @@
   archived: true
   docs_site:
   github_stars: 151
-  total_downloads: 131207
-  daily_downloads: 0
-  release_downloads: 22529
+  total_downloads: 133050
+  daily_downloads:
+  release_downloads: 22758
   release_date: 2015/11/29
   last_commit_on: 2016/04/27
   status: stale
-  last_scrape_at: '2025-10-21T22:12:12Z'
+  last_scrape_at: '2026-02-23T04:37:23Z'
 - name: rack-openid
   description: Provides a more HTTPish API around the ruby-openid library
   language: Ruby
@@ -2010,13 +2010,13 @@
   github_stars: 5
   gitlab_stars: 0
   codeberg_stars: 0
-  total_downloads: 7835727
-  daily_downloads: 0
-  release_downloads: 3697118
+  total_downloads: 8042494
+  daily_downloads:
+  release_downloads: 3799145
   release_date: 2014/01/20
   last_commit_on: 2025/09/14
   status: active
-  last_scrape_at: '2025-10-21T22:12:15Z'
+  last_scrape_at: '2026-02-23T04:37:26Z'
 - name: rack-openid2
   description: Originally a fork. Has been merged back to the original gem.
   language: Ruby
@@ -2051,13 +2051,13 @@
   github_stars: 10
   gitlab_stars: 0
   codeberg_stars: 0
-  total_downloads: 5582
-  daily_downloads: 0
-  release_downloads: 4188
+  total_downloads: 6988
+  daily_downloads:
+  release_downloads: 5195
   release_date: 2024/09/25
   last_commit_on: 2025/06/07
   status: active
-  last_scrape_at: '2025-10-21T22:12:19Z'
+  last_scrape_at: '2026-02-23T04:37:30Z'
 - name: rack-toolbar
   description: Provides an easy way to create Rack Middleware that injects things
     into the response body. Extracted from rack-insight.
@@ -2087,13 +2087,13 @@
   archived: true
   docs_site:
   github_stars: 12
-  total_downloads: 36873
-  daily_downloads: 0
-  release_downloads: 27381
+  total_downloads: 37363
+  daily_downloads:
+  release_downloads: 27606
   release_date: 2015/04/13
   last_commit_on: 2025/08/13
   status: active
-  last_scrape_at: '2025-10-21T22:12:21Z'
+  last_scrape_at: '2026-02-23T04:37:32Z'
 - name: rails_env_local
   description: |2
       If existing infrastructure for deployed environments
@@ -2129,13 +2129,13 @@
   deprecation_reason: Incompatible with modern Rails
   docs_site:
   github_stars: 2
-  total_downloads: 16069
-  daily_downloads: 0
-  release_downloads: 6610
+  total_downloads: 16715
+  daily_downloads:
+  release_downloads: 6815
   release_date: 2016/03/11
   last_commit_on: 2025/08/04
   status: archived
-  last_scrape_at: '2025-10-21T22:12:24Z'
+  last_scrape_at: '2026-02-23T04:37:34Z'
 - name: react-rails-benchmark_renderer
   description: Concern::Instrumentation Plugin for React::Rails Render Benchmarking
     with a reference implementation
@@ -2166,13 +2166,13 @@
   adoptable: true
   docs_site:
   github_stars: 19
-  total_downloads: 3374
-  daily_downloads: 0
-  release_downloads: 3374
+  total_downloads: 3508
+  daily_downloads:
+  release_downloads: 3508
   release_date: 2015/06/21
   last_commit_on: 2025/08/13
   status: active
-  last_scrape_at: '2025-10-21T22:12:26Z'
+  last_scrape_at: '2026-02-23T04:37:37Z'
 - name: remit
   description: An API for using the Amazon Flexible Payment Service (FPS).
   language: Ruby
@@ -2202,13 +2202,13 @@
   archived: true
   docs_site:
   github_stars: 158
-  total_downloads: 64098
-  daily_downloads: 0
-  release_downloads: 34566
+  total_downloads: 65703
+  daily_downloads:
+  release_downloads: 35657
   release_date: 2011/08/14
   last_commit_on: 2013/03/27
   status: stale
-  last_scrape_at: '2025-10-21T22:12:28Z'
+  last_scrape_at: '2026-02-23T04:37:39Z'
 - name: require_bench
   description: Ruby app loading slowly, or never? Discover bootstrapping issues in
     Ruby by logging/benchmarking/timing-out/rescuing 'Kernel.require' & 'load'
@@ -2247,13 +2247,13 @@
   github_stars: 7
   gitlab_stars: 0
   codeberg_stars: 0
-  total_downloads: 64709
-  daily_downloads: 0
-  release_downloads: 19266
+  total_downloads: 67839
+  daily_downloads:
+  release_downloads: 21120
   release_date: 2023/10/10
-  last_commit_on: 2025/08/13
+  last_commit_on: 2026/01/17
   status: active
-  last_scrape_at: '2025-10-21T22:12:31Z'
+  last_scrape_at: '2026-02-23T04:37:42Z'
 - name: resque
   description: Resque is a Redis-backed Ruby library for creating background jobs,
     placing them on multiple queues, and processing them later.
@@ -2282,14 +2282,14 @@
   - shell
   - cli
   docs_site:
-  github_stars: 9471
-  total_downloads: 48786508
-  daily_downloads: 0
-  release_downloads: 899882
-  release_date: 2024/12/30
-  last_commit_on: 2025/08/23
+  github_stars: 9485
+  total_downloads: 50756464
+  daily_downloads:
+  release_downloads: 31692
+  release_date: 2026/01/12
+  last_commit_on: 2026/01/12
   status: active
-  last_scrape_at: '2025-10-21T22:12:34Z'
+  last_scrape_at: '2026-02-23T04:37:45Z'
 - name: resque-lonely_job
   description: |
     Ensures that for a given queue, only one worker is working on a job at any given time.
@@ -2329,13 +2329,13 @@
   adoptable: false
   docs_site:
   github_stars: 6
-  total_downloads: 299806
-  daily_downloads: 0
-  release_downloads: 196807
+  total_downloads: 305965
+  daily_downloads:
+  release_downloads: 200966
   release_date: 2014/08/13
-  last_commit_on: 2025/10/18
+  last_commit_on: 2026/01/17
   status: active
-  last_scrape_at: '2025-10-21T22:12:36Z'
+  last_scrape_at: '2026-02-23T04:37:48Z'
 - name: resque-unique_at_runtime
   description: |
     Ensures that for a given queue, only one worker is working on a job at any given time.
@@ -2374,13 +2374,13 @@
   - uniq
   docs_site:
   github_stars: 8
-  total_downloads: 81923
-  daily_downloads: 0
-  release_downloads: 65852
+  total_downloads: 90296
+  daily_downloads:
+  release_downloads: 73562
   release_date: 2018/11/15
-  last_commit_on: 2025/08/22
+  last_commit_on: 2026/01/17
   status: active
-  last_scrape_at: '2025-10-21T22:12:38Z'
+  last_scrape_at: '2026-02-23T04:37:50Z'
 - name: resque-unique_by_arity
   description: Configure resque-unique_in_queue and resque-unique_at_runtime uniqueness
     by arity of perform method, with automated cleanup tools
@@ -2411,13 +2411,13 @@
   - uniq
   docs_site:
   github_stars: 9
-  total_downloads: 41835
-  daily_downloads: 0
-  release_downloads: 6279
+  total_downloads: 43578
+  daily_downloads:
+  release_downloads: 6633
   release_date: 2018/11/17
-  last_commit_on: 2025/08/22
+  last_commit_on: 2026/01/17
   status: active
-  last_scrape_at: '2025-10-21T22:12:40Z'
+  last_scrape_at: '2026-02-23T04:37:53Z'
 - name: resque-unique_in_queue
   description: A resque plugin that ensures job uniqueness at enqueue time.
   language: Ruby
@@ -2445,13 +2445,13 @@
   - uniq
   docs_site:
   github_stars: 8
-  total_downloads: 111695
-  daily_downloads: 0
-  release_downloads: 103158
+  total_downloads: 127321
+  daily_downloads:
+  release_downloads: 118311
   release_date: 2018/11/15
-  last_commit_on: 2025/08/22
+  last_commit_on: 2026/01/17
   status: active
-  last_scrape_at: '2025-10-21T22:12:43Z'
+  last_scrape_at: '2026-02-23T04:37:55Z'
 - name: rots
   description: |
     Ruby OpenID Test Server (ROTS) provides a basic OpenID server made in top of the Rack gem.
@@ -2490,13 +2490,13 @@
   github_stars: 35
   gitlab_stars: 1
   codeberg_stars: 0
-  total_downloads: 710
-  daily_downloads: 0
-  release_downloads: 710
+  total_downloads: 929
+  daily_downloads:
+  release_downloads: 929
   release_date: 2024/09/25
-  last_commit_on: 2025/10/18
+  last_commit_on: 2025/11/23
   status: active
-  last_scrape_at: '2025-10-21T22:12:47Z'
+  last_scrape_at: '2026-02-23T04:37:58Z'
 - name: rspec-block_is_expected
   description: subject { Integer(nil) }; it('raises') { block_is_expected.to raise_error(TypeError)
     }
@@ -2533,13 +2533,13 @@
   github_stars: 8
   gitlab_stars: 1
   codeberg_stars: 0
-  total_downloads: 277014
-  daily_downloads: 0
-  release_downloads: 175461
+  total_downloads: 362236
+  daily_downloads:
+  release_downloads: 254326
   release_date: 2024/06/23
-  last_commit_on: 2025/07/27
+  last_commit_on: 2026/01/17
   status: active
-  last_scrape_at: '2025-10-21T22:12:50Z'
+  last_scrape_at: '2026-02-23T04:38:02Z'
 - name: rspec-pending_for
   description: "⏳️ Mark specs pending or skipped for specific Ruby engine (e.g. MRI
     or JRuby) & versions, or version ranges. Fund overlooked open source projects
@@ -2576,13 +2576,13 @@
   github_stars: 12
   gitlab_stars: 1
   codeberg_stars: 0
-  total_downloads: 136799
-  daily_downloads: 0
-  release_downloads: 9402
-  release_date: 2025/09/05
-  last_commit_on: 2025/10/13
+  total_downloads: 145269
+  daily_downloads:
+  release_downloads: 819
+  release_date: 2026/02/07
+  last_commit_on: 2026/02/08
   status: active
-  last_scrape_at: '2025-10-21T22:12:53Z'
+  last_scrape_at: '2026-02-23T04:38:06Z'
 - name: rspec-stubbed_env
   description: |
     Stub or hide environment variables in a scoped context for testing
@@ -2619,16 +2619,16 @@
   - env
   - mock
   docs_site: https://rspec-stubbed-env.galtzo.com
-  github_stars: 15
+  github_stars: 16
   gitlab_stars: 1
   codeberg_stars: 0
-  total_downloads: 325433
-  daily_downloads: 0
-  release_downloads: 21579
+  total_downloads: 373115
+  daily_downloads:
+  release_downloads: 27482
   release_date: 2025/08/05
-  last_commit_on: 2025/10/09
+  last_commit_on: 2025/11/21
   status: active
-  last_scrape_at: '2025-10-21T22:12:57Z'
+  last_scrape_at: '2026-02-23T04:38:09Z'
 - name: rubocop-lts
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby code
   language: Ruby
@@ -2660,13 +2660,13 @@
   github_stars: 12
   gitlab_stars: 1
   codeberg_stars: 0
-  total_downloads: 228168
-  daily_downloads: 0
-  release_downloads: 4487
+  total_downloads: 248453
+  daily_downloads:
+  release_downloads: 6333
   release_date: 2023/05/30
   last_commit_on: 2025/07/15
   status: active
-  last_scrape_at: '2025-10-21T22:13:01Z'
+  last_scrape_at: '2026-02-23T04:38:12Z'
 - name: rubocop-ruby1_8
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 1.8 code
   language: Ruby
@@ -2695,13 +2695,13 @@
   docs_site: https://rubocop-lts.gitlab.io/
   github_stars: 6
   gitlab_stars: 1
-  total_downloads: 4996
-  daily_downloads: 0
-  release_downloads: 2581
+  total_downloads: 5505
+  daily_downloads:
+  release_downloads: 2867
   release_date: 2023/06/14
   last_commit_on: 2025/08/06
   status: active
-  last_scrape_at: '2025-10-21T22:13:04Z'
+  last_scrape_at: '2026-02-23T04:38:15Z'
 - name: rubocop-ruby1_9
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 1.9 code
   language: Ruby
@@ -2730,13 +2730,13 @@
   docs_site: https://rubocop-lts.gitlab.io/
   github_stars: 6
   gitlab_stars: 1
-  total_downloads: 10171
-  daily_downloads: 0
-  release_downloads: 1074
+  total_downloads: 11124
+  daily_downloads:
+  release_downloads: 1312
   release_date: 2023/06/14
   last_commit_on: 2025/08/06
   status: active
-  last_scrape_at: '2025-10-21T22:13:07Z'
+  last_scrape_at: '2026-02-23T04:38:19Z'
 - name: rubocop-ruby2_0
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 2.0 code
   language: Ruby
@@ -2765,13 +2765,13 @@
   docs_site: https://rubocop-lts.gitlab.io/
   github_stars: 6
   gitlab_stars: 1
-  total_downloads: 9025
-  daily_downloads: 0
-  release_downloads: 845
+  total_downloads: 9739
+  daily_downloads:
+  release_downloads: 1000
   release_date: 2023/06/13
   last_commit_on: 2025/08/06
   status: active
-  last_scrape_at: '2025-10-21T22:13:10Z'
+  last_scrape_at: '2026-02-23T04:38:21Z'
 - name: rubocop-ruby2_1
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 2.1 code
   language: Ruby
@@ -2800,13 +2800,13 @@
   docs_site: https://rubocop-lts.gitlab.io/
   github_stars: 6
   gitlab_stars: 1
-  total_downloads: 17721
-  daily_downloads: 0
-  release_downloads: 9849
+  total_downloads: 19610
+  daily_downloads:
+  release_downloads: 10843
   release_date: 2023/06/13
   last_commit_on: 2025/08/06
   status: active
-  last_scrape_at: '2025-10-21T22:13:13Z'
+  last_scrape_at: '2026-02-23T04:38:24Z'
 - name: rubocop-ruby2_2
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 2.2 code
   language: Ruby
@@ -2835,13 +2835,13 @@
   docs_site: https://rubocop-lts.gitlab.io/
   github_stars: 6
   gitlab_stars: 1
-  total_downloads: 30977
-  daily_downloads: 0
-  release_downloads: 3304
+  total_downloads: 33814
+  daily_downloads:
+  release_downloads: 4216
   release_date: 2023/06/13
-  last_commit_on: 2025/08/06
+  last_commit_on: 2026/01/22
   status: active
-  last_scrape_at: '2025-10-21T22:13:16Z'
+  last_scrape_at: '2026-02-23T04:38:28Z'
 - name: rubocop-ruby2_3
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 2.3 code
   language: Ruby
@@ -2870,13 +2870,13 @@
   docs_site: https://rubocop-lts.gitlab.io/
   github_stars: 6
   gitlab_stars: 1
-  total_downloads: 11596
-  daily_downloads: 0
-  release_downloads: 3471
+  total_downloads: 12589
+  daily_downloads:
+  release_downloads: 3855
   release_date: 2023/06/13
   last_commit_on: 2025/08/06
   status: active
-  last_scrape_at: '2025-10-21T22:13:19Z'
+  last_scrape_at: '2026-02-23T04:38:31Z'
 - name: rubocop-ruby2_4
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 2.4 code
   language: Ruby
@@ -2905,13 +2905,13 @@
   docs_site: https://rubocop-lts.gitlab.io/
   github_stars: 6
   gitlab_stars: 1
-  total_downloads: 53040
-  daily_downloads: 0
-  release_downloads: 1314
+  total_downloads: 58496
+  daily_downloads:
+  release_downloads: 1541
   release_date: 2023/06/13
   last_commit_on: 2025/08/06
   status: active
-  last_scrape_at: '2025-10-21T22:13:21Z'
+  last_scrape_at: '2026-02-23T04:38:34Z'
 - name: rubocop-ruby2_5
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 2.5 code
   language: Ruby
@@ -2940,13 +2940,13 @@
   docs_site: https://rubocop-lts.gitlab.io/
   github_stars: 6
   gitlab_stars: 1
-  total_downloads: 7233
-  daily_downloads: 0
-  release_downloads: 1110
+  total_downloads: 8031
+  daily_downloads:
+  release_downloads: 1343
   release_date: 2023/06/13
   last_commit_on: 2025/08/06
   status: active
-  last_scrape_at: '2025-10-21T22:13:25Z'
+  last_scrape_at: '2026-02-23T04:38:37Z'
 - name: rubocop-ruby2_6
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 2.6 code
   language: Ruby
@@ -2975,13 +2975,13 @@
   docs_site: https://rubocop-lts.gitlab.io/
   github_stars: 6
   gitlab_stars: 1
-  total_downloads: 11398
-  daily_downloads: 0
-  release_downloads: 1549
+  total_downloads: 12387
+  daily_downloads:
+  release_downloads: 1840
   release_date: 2023/06/13
   last_commit_on: 2025/08/06
   status: active
-  last_scrape_at: '2025-10-21T22:13:28Z'
+  last_scrape_at: '2026-02-23T04:38:40Z'
 - name: rubocop-ruby2_7
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 2.7 code
   language: Ruby
@@ -3010,13 +3010,13 @@
   docs_site: https://rubocop-lts.gitlab.io/
   github_stars: 6
   gitlab_stars: 1
-  total_downloads: 88910
-  daily_downloads: 0
-  release_downloads: 67321
+  total_downloads: 95906
+  daily_downloads:
+  release_downloads: 72433
   release_date: 2023/06/13
   last_commit_on: 2025/08/06
   status: active
-  last_scrape_at: '2025-10-21T22:13:31Z'
+  last_scrape_at: '2026-02-23T04:38:43Z'
 - name: rubocop-ruby3_0
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 3.0 code
   language: Ruby
@@ -3048,13 +3048,13 @@
   github_stars: 6
   gitlab_stars: 1
   codeberg_stars: 0
-  total_downloads: 12347
-  daily_downloads: 0
-  release_downloads: 950
+  total_downloads: 13561
+  daily_downloads:
+  release_downloads: 1177
   release_date: 2023/06/13
   last_commit_on: 2025/08/06
   status: active
-  last_scrape_at: '2025-10-21T22:13:34Z'
+  last_scrape_at: '2026-02-23T04:38:47Z'
 - name: rubocop-ruby3_1
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 3.1 code
   language: Ruby
@@ -3083,13 +3083,13 @@
   docs_site: https://rubocop-lts.gitlab.io/
   github_stars: 6
   gitlab_stars: 1
-  total_downloads: 24082
-  daily_downloads: 0
-  release_downloads: 10474
+  total_downloads: 26029
+  daily_downloads:
+  release_downloads: 11508
   release_date: 2023/06/13
   last_commit_on: 2025/08/06
   status: active
-  last_scrape_at: '2025-10-21T22:13:38Z'
+  last_scrape_at: '2026-02-23T04:38:50Z'
 - name: rubocop-ruby3_2
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 3.2 code
   language: Ruby
@@ -3116,13 +3116,13 @@
   docs_site: https://rubocop-lts.gitlab.io/
   github_stars: 7
   gitlab_stars: 1
-  total_downloads: 62447
-  daily_downloads: 0
-  release_downloads: 59680
+  total_downloads: 137068
+  daily_downloads:
+  release_downloads: 133993
   release_date: 2023/06/13
   last_commit_on: 2025/08/06
   status: active
-  last_scrape_at: '2025-10-21T22:13:41Z'
+  last_scrape_at: '2026-02-23T04:38:53Z'
 - name: ruby-openid
   description: A library for consuming and serving OpenID identities.
   language: Ruby
@@ -3156,14 +3156,14 @@
   docs_site:
   github_stars: 12
   gitlab_stars: 0
-  codeberg_stars: 0
-  total_downloads: 11677378
-  daily_downloads: 0
-  release_downloads: 4854762
+  codeberg_stars: 1
+  total_downloads: 12493227
+  daily_downloads:
+  release_downloads: 5652005
   release_date: 2019/10/16
-  last_commit_on: 2025/08/14
+  last_commit_on: 2025/12/02
   status: active
-  last_scrape_at: '2025-10-21T22:13:45Z'
+  last_scrape_at: '2026-02-23T04:38:57Z'
 - name: ruby-openid2
   description: Originally a fork. Has been merged back to the original gem.
   language: Ruby
@@ -3197,14 +3197,14 @@
   docs_site:
   github_stars: 12
   gitlab_stars: 0
-  codeberg_stars: 0
-  total_downloads: 7686
-  daily_downloads: 0
-  release_downloads: 5933
+  codeberg_stars: 1
+  total_downloads: 8991
+  daily_downloads:
+  release_downloads: 6871
   release_date: 2024/09/25
-  last_commit_on: 2025/08/14
+  last_commit_on: 2025/12/02
   status: active
-  last_scrape_at: '2025-10-21T22:13:48Z'
+  last_scrape_at: '2026-02-23T04:39:01Z'
 - name: sanitize_email
   description: |2
       Email Condom for your Ruby Server.
@@ -3243,13 +3243,13 @@
   github_stars: 174
   gitlab_stars: 0
   codeberg_stars: 0
-  total_downloads: 2471459
-  daily_downloads: 0
-  release_downloads: 62870
+  total_downloads: 2554572
+  daily_downloads:
+  release_downloads: 93939
   release_date: 2024/11/09
-  last_commit_on: 2025/09/22
+  last_commit_on: 2026/01/17
   status: active
-  last_scrape_at: '2025-10-21T22:13:51Z'
+  last_scrape_at: '2026-02-23T04:39:05Z'
 - name: seed_migration
   description: Rails gem for Data Migrations
   language: Ruby
@@ -3278,14 +3278,14 @@
   - activerecord
   - migration
   docs_site:
-  github_stars: 383
-  total_downloads: 1548060
-  daily_downloads: 0
-  release_downloads: 1167317
+  github_stars: 384
+  total_downloads: 1599247
+  daily_downloads:
+  release_downloads: 1216206
   release_date: 2017/08/01
   last_commit_on: 2025/08/18
   status: active
-  last_scrape_at: '2025-10-21T22:13:54Z'
+  last_scrape_at: '2026-02-23T04:39:07Z'
 - name: sequential_file
   description: Create Files Named Sequentially Intelligently
   language: Ruby
@@ -3315,13 +3315,13 @@
   archived: true
   docs_site:
   github_stars: 6
-  total_downloads: 3828
-  daily_downloads: 0
-  release_downloads: 3828
+  total_downloads: 4008
+  daily_downloads:
+  release_downloads: 4008
   release_date: 2014/02/26
-  last_commit_on: 2025/08/13
+  last_commit_on: 2026/01/17
   status: active
-  last_scrape_at: '2025-10-21T22:13:56Z'
+  last_scrape_at: '2026-02-23T04:39:10Z'
 - name: service_actor-promptable
   description: TTY Prompt plugin for your service objects for your application logic
   language: Ruby
@@ -3346,13 +3346,13 @@
   - tty
   docs_site:
   github_stars: 8
-  total_downloads: 14290
-  daily_downloads: 0
-  release_downloads: 11792
+  total_downloads: 16268
+  daily_downloads:
+  release_downloads: 13586
   release_date: 2022/07/03
   last_commit_on: 2025/08/13
   status: active
-  last_scrape_at: '2025-10-21T22:13:59Z'
+  last_scrape_at: '2026-02-23T04:39:12Z'
 - name: shields-badge
   description: |
     Shields::Badge.gem_total_downloads(path_parameters: {gem: 'rails'})
@@ -3379,16 +3379,16 @@
   tags:
   - markdown
   docs_site: https://shields-badge.galtzo.com
-  github_stars: 11
+  github_stars: 12
   gitlab_stars: 1
   codeberg_stars: 1
-  total_downloads: 311
-  daily_downloads: 0
-  release_downloads: 311
+  total_downloads: 497
+  daily_downloads:
+  release_downloads: 497
   release_date: 2025/05/30
   last_commit_on: 2025/08/18
   status: active
-  last_scrape_at: '2025-10-21T22:14:02Z'
+  last_scrape_at: '2026-02-23T04:39:16Z'
 - name: shiftable
   description: Move single records (has_one) or collections (has_many) from one parent
     (belongs_to) to another
@@ -3418,13 +3418,13 @@
   - activerecord
   docs_site:
   github_stars: 7
-  total_downloads: 27092
-  daily_downloads: 0
-  release_downloads: 12066
+  total_downloads: 29031
+  daily_downloads:
+  release_downloads: 12975
   release_date: 2021/11/15
-  last_commit_on: 2025/08/13
+  last_commit_on: 2026/01/17
   status: active
-  last_scrape_at: '2025-10-21T22:14:04Z'
+  last_scrape_at: '2026-02-23T04:39:18Z'
 - name: silent_stream
   description: "\U0001F515 (formerly) ActiveSupport Kernel Reporting Detritus with
     a few enhancementsFund overlooked open source projects - bottom of stack, dev/test
@@ -3462,13 +3462,13 @@
   github_stars: 7
   gitlab_stars: 0
   codeberg_stars: 0
-  total_downloads: 153447
-  daily_downloads: 0
-  release_downloads: 17047
+  total_downloads: 161538
+  daily_downloads:
+  release_downloads: 22116
   release_date: 2025/08/21
-  last_commit_on: 2025/10/09
+  last_commit_on: 2025/11/21
   status: active
-  last_scrape_at: '2025-10-21T22:14:09Z'
+  last_scrape_at: '2026-02-23T04:39:22Z'
 - name: simple_column-scopes
   description: Dynamic modules which define dynamic methods for scopes based on a
     dynamic array of column names
@@ -3496,13 +3496,13 @@
   - activerecord
   docs_site:
   github_stars: 2
-  total_downloads: 3002
-  daily_downloads: 0
-  release_downloads: 3002
-  release_date: 2017/06/20
-  last_commit_on: 2025/08/12
+  total_downloads: 3273
+  daily_downloads:
+  release_downloads: 108
+  release_date: 2026/02/04
+  last_commit_on: 2026/02/08
   status: active
-  last_scrape_at: '2025-10-21T22:14:11Z'
+  last_scrape_at: '2026-02-23T04:39:24Z'
 - name: snaky_hash
   description: 'A Hashie::Mash joint to make #snakelife better'
   language: Ruby
@@ -3534,13 +3534,13 @@
   github_stars: 6
   gitlab_stars: 2
   codeberg_stars: 2
-  total_downloads: 88272364
-  daily_downloads: 0
-  release_downloads: 5480704
+  total_downloads: 99812938
+  daily_downloads:
+  release_downloads: 11182572
   release_date: 2025/05/23
-  last_commit_on: 2025/08/21
+  last_commit_on: 2025/12/02
   status: active
-  last_scrape_at: '2025-10-21T22:14:14Z'
+  last_scrape_at: '2026-02-23T04:39:27Z'
 - name: spyke-connection_lambda
   description: Dynamic Spyke API connection plugin for the Enterprise Cloud
   language: Ruby
@@ -3568,13 +3568,13 @@
   - api
   docs_site:
   github_stars: 3
-  total_downloads: 604
-  daily_downloads: 0
-  release_downloads: 604
+  total_downloads: 810
+  daily_downloads:
+  release_downloads: 810
   release_date: 2024/03/23
   last_commit_on: 2025/08/13
   status: active
-  last_scrape_at: '2025-10-21T22:14:16Z'
+  last_scrape_at: '2026-02-23T04:39:30Z'
 - name: stackable_flash
   description: Allows flashes to stack intelligently, while preserving existing behavior
     of the Rails FlashHash
@@ -3605,13 +3605,13 @@
     your deployed environments instead
   docs_site:
   github_stars: 7
-  total_downloads: 368595
-  daily_downloads: 0
-  release_downloads: 185150
+  total_downloads: 372445
+  daily_downloads:
+  release_downloads: 188638
   release_date: 2017/05/31
   last_commit_on: 2025/08/04
   status: archived
-  last_scrape_at: '2025-10-21T22:14:19Z'
+  last_scrape_at: '2026-02-23T04:39:32Z'
 - name: standard-rubocop-lts
   description: |
     Enables Ruby projects to more confidently support even the most finely-aged Rubies.
@@ -3645,13 +3645,13 @@
   github_stars: 6
   gitlab_stars: 1
   codeberg_stars: 0
-  total_downloads: 144097
-  daily_downloads: 0
-  release_downloads: 607
+  total_downloads: 225401
+  daily_downloads:
+  release_downloads: 973
   release_date: 2025/04/17
-  last_commit_on: 2025/08/14
+  last_commit_on: 2025/12/02
   status: active
-  last_scrape_at: '2025-10-21T22:14:22Z'
+  last_scrape_at: '2026-02-23T04:39:36Z'
 - name: status_tag
   description: |-
     Provides content_tag_for method signature to create customizable and logic-gated labels from objects.
@@ -3689,13 +3689,13 @@
   github_stars: 9
   gitlab_stars: 0
   codeberg_stars: 0
-  total_downloads: 12755
-  daily_downloads: 0
-  release_downloads: 3983
+  total_downloads: 13158
+  daily_downloads:
+  release_downloads: 4190
   release_date: 2015/08/24
-  last_commit_on: 2025/08/13
+  last_commit_on: 2026/01/17
   status: active
-  last_scrape_at: '2025-10-21T22:14:25Z'
+  last_scrape_at: '2026-02-23T04:39:41Z'
 - name: stone_checksums
   description: "\U0001F5FF Generate both SHA256 & SHA512 checksums into the checksums
     directory, and git commit them.\n  gem install stone_checksums\nThen, use the
@@ -3735,13 +3735,13 @@
   github_stars: 6
   gitlab_stars: 0
   codeberg_stars: 0
-  total_downloads: 41061
-  daily_downloads: 0
-  release_downloads: 13813
-  release_date: 2025/08/27
-  last_commit_on: 2025/10/13
+  total_downloads: 44005
+  daily_downloads:
+  release_downloads: 1651
+  release_date: 2025/10/30
+  last_commit_on: 2025/11/27
   status: active
-  last_scrape_at: '2025-10-21T22:14:29Z'
+  last_scrape_at: '2026-02-23T04:39:45Z'
 - name: strict_states
   description: Safely access state machine states with guarantee that there are no
     typos.  Compatible with all Ruby state machine libraries.
@@ -3773,13 +3773,13 @@
   adoptable: true
   archived: true
   github_stars: 5
-  total_downloads: 3260
-  daily_downloads: 0
-  release_downloads: 3260
+  total_downloads: 3388
+  daily_downloads:
+  release_downloads: 3388
   release_date: 2015/11/09
-  last_commit_on: 2025/08/12
+  last_commit_on: 2026/01/17
   status: active
-  last_scrape_at: '2025-10-21T22:14:31Z'
+  last_scrape_at: '2026-02-23T04:39:47Z'
 - name: super_exception_notifier
   description: In the Rails v2 era, this was a popular fork of exception_notification,
     with many extra features.  It is now deprecated in favor of the original gem.
@@ -3809,13 +3809,13 @@
   archived: true
   docs_site:
   github_stars: 65
-  total_downloads: 95891
-  daily_downloads: 0
-  release_downloads: 4080
+  total_downloads: 97865
+  daily_downloads:
+  release_downloads: 4294
   release_date: 2014/01/19
   last_commit_on: 2014/01/19
   status: stale
-  last_scrape_at: '2025-10-21T22:14:34Z'
+  last_scrape_at: '2026-02-23T04:39:50Z'
 - name: timecop-rspec
   description: "⌚️ Timecop::Rspec provides Timecop time-machines for RSpec that allow
     youto time-travel test examples, context/describes, and/or your entire test suite.
@@ -3846,13 +3846,13 @@
   - time
   docs_site: https://timecop-rspec.galtzo.com
   github_stars: 4
-  total_downloads: 15825
-  daily_downloads: 0
-  release_downloads: 14970
+  total_downloads: 17131
+  daily_downloads:
+  release_downloads: 16052
   release_date: 2025/08/20
-  last_commit_on: 2025/10/09
+  last_commit_on: 2025/11/21
   status: active
-  last_scrape_at: '2025-10-21T22:14:36Z'
+  last_scrape_at: '2026-02-23T04:39:52Z'
 - name: undrive_google
   description: "\U0001F3F4 Liberate files from your Google Drive with transformations"
   language: Ruby
@@ -3881,16 +3881,16 @@
   - shell
   - cli
   docs_site:
-  github_stars: 1
+  github_stars: 2
   gitlab_stars: 0
   codeberg_stars: 0
-  total_downloads: 4225
-  daily_downloads: 0
-  release_downloads: 55
+  total_downloads: 4936
+  daily_downloads:
+  release_downloads: 241
   release_date: 2025/10/21
-  last_commit_on: 2025/10/21
+  last_commit_on: 2025/11/27
   status: active
-  last_scrape_at: '2025-10-21T22:14:39Z'
+  last_scrape_at: '2026-02-23T04:39:56Z'
 - name: version_gem
   description: "\U0001F516 Versions are good. Versions are cool. Versions will win."
   language: Ruby
@@ -3926,13 +3926,13 @@
   github_stars: 10
   gitlab_stars: 1
   codeberg_stars: 0
-  total_downloads: 101086444
-  daily_downloads: 0
-  release_downloads: 1489688
+  total_downloads: 113228819
+  daily_downloads:
+  release_downloads: 6092791
   release_date: 2025/09/02
-  last_commit_on: 2025/10/13
+  last_commit_on: 2025/11/27
   status: active
-  last_scrape_at: '2025-10-21T22:14:42Z'
+  last_scrape_at: '2026-02-23T04:39:59Z'
 - name: warden_oauth
   description: warden_oauth will help you create oauth authentication strategies using
     the oauth helper method on the Warden::Manager config setup
@@ -3961,14 +3961,14 @@
   - security
   - api
   docs_site:
-  github_stars: 58
-  total_downloads: 31133
-  daily_downloads: 0
-  release_downloads: 23904
+  github_stars: 59
+  total_downloads: 31476
+  daily_downloads:
+  release_downloads: 24138
   release_date: 2010/02/01
   last_commit_on: 2025/10/19
   status: active
-  last_scrape_at: '2025-10-21T22:14:45Z'
+  last_scrape_at: '2026-02-23T04:40:02Z'
 - name: yacs
   description: Yet Another Crypto Scanner; Alternative Front End Demo for DEX
   language: TypeScript
@@ -3989,8 +3989,526 @@
   - api
   - react
   docs_site:
-  github_stars: 0
+  github_stars: 2
   release_date:
-  last_commit_on: 2025/10/06
+  last_commit_on: 2025/12/17
   status: active
-  last_scrape_at: '2025-10-21T22:14:47Z'
+  last_scrape_at: '2026-02-23T04:40:04Z'
+- name: yard-fence
+  description: "\U0001F93A Convert ASCII braces ('{}') to full-width braces ('{}')
+    within code fences (triple-or-single backticks) during YARD processing, and back
+    to ASCII braces afterward"
+  language: Ruby
+  ecosystem: rubygems
+  minimum_version: '2.7'
+  role: author
+  first_commit_on: 2025/11/07
+  first_commit: https://github.com/galtzo-floss/yard-fence/commit/242b77a6caa398ca01ab3b3643d3e3b970497f05
+  funding_sites:
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  - type: Liberapay
+    url: https://liberapay.com/pboling
+  forges:
+  - type: GitHub
+    url: https://github.com/galtzo-floss/yard-fence
+    owner: galtzo-floss
+  tags:
+  - ruby
+  docs_site: https://www.rubydoc.info/gems/yard-fence/0.8.2
+  total_downloads: 1845
+  daily_downloads:
+  release_downloads: 323
+  release_date: 2025/12/30
+  github_stars: 1
+  last_commit_on: 2026/02/23
+  status: active
+  last_scrape_at: '2026-02-23T04:40:06Z'
+- name: yaml-converter
+  description: "\U0001F968 yaml-converter parses YAML files (with inline #note: annotations
+    and validation markers) and emits polished Markdown, HTML, and PDF/DOCX (via pandoc)
+    outputs including a validation status line, fenced YAML blocks, and extracted
+    notes."
+  language: Ruby
+  ecosystem: rubygems
+  minimum_version: '2.7'
+  role: author
+  first_commit_on: 2025/11/08
+  first_commit: https://github.com/galtzo-floss/yaml-converter/commit/232ad133b6259aabb39993b476f727d91d0a5f0c
+  funding_sites:
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  - type: Liberapay
+    url: https://liberapay.com/pboling
+  forges:
+  - type: GitHub
+    url: https://github.com/galtzo-floss/yaml-converter
+    owner: galtzo-floss
+  tags:
+  - ruby
+  docs_site: https://www.rubydoc.info/gems/yaml-converter/0.1.0
+  total_downloads: 1568
+  daily_downloads:
+  release_downloads: 1568
+  release_date: 2025/11/09
+  github_stars: 2
+  last_commit_on: 2026/02/20
+  status: active
+  last_scrape_at: '2026-02-23T04:40:08Z'
+- name: yard-yaml
+  description: "\U0001F968 A YARD plugin for YAML documents"
+  language: Ruby
+  ecosystem: rubygems
+  minimum_version: '2.7'
+  role: author
+  first_commit_on: 2025/11/09
+  first_commit: https://github.com/galtzo-floss/yard-yaml/commit/ffbe883471d11462dc28675867d852372ea3a481
+  funding_sites:
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  - type: Liberapay
+    url: https://liberapay.com/pboling
+  forges:
+  - type: GitHub
+    url: https://github.com/galtzo-floss/yard-yaml
+    owner: galtzo-floss
+  tags:
+  - ruby
+  docs_site: https://www.rubydoc.info/gems/yard-yaml/0.1.0
+  total_downloads: 1720
+  daily_downloads:
+  release_downloads: 1720
+  release_date: 2025/11/10
+  github_stars: 2
+  last_commit_on: 2026/02/23
+  status: active
+  last_scrape_at: '2026-02-23T04:40:10Z'
+- name: prism-merge
+  description: "☯️ Intelligently merge two versions of a Ruby file using Prism AST
+    analysis, similar to a smart 'git merge' specifically designed for Ruby code."
+  language: Ruby
+  ecosystem: rubygems
+  minimum_version: '2.7'
+  role: author
+  first_commit_on: 2025/12/02
+  first_commit: https://github.com/kettle-rb/prism-merge/commit/71fcddaa659cd6e9e94053e67524e5a400423ced
+  funding_sites:
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  - type: Liberapay
+    url: https://liberapay.com/pboling
+  forges:
+  - type: GitHub
+    url: https://github.com/kettle-rb/prism-merge
+    owner: kettle-rb
+  tags:
+  - testing
+  docs_site: https://www.rubydoc.info/gems/prism-merge/2.0.4
+  total_downloads: 2121
+  daily_downloads:
+  release_downloads: 71
+  release_date: 2026/02/22
+  github_stars: 17
+  last_commit_on: 2026/02/22
+  status: active
+  last_scrape_at: '2026-02-23T04:40:13Z'
+- name: ast-merge
+  description: "☯️ Ast::Merge provides base classes, modules, and RSpec shared examples
+    for building intelligent file mergers using AST analysis. It powers prism-merge,
+    psych-merge, json-merge, and other format-specific merge gems."
+  language: Ruby
+  ecosystem: rubygems
+  minimum_version: '2.7'
+  role: author
+  first_commit_on: 2025/12/06
+  first_commit: https://github.com/kettle-rb/ast-merge/commit/a63a4858cb229530c1706925bb209546695e8b3a
+  funding_sites:
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  - type: Liberapay
+    url: https://liberapay.com/pboling
+  forges:
+  - type: GitHub
+    url: https://github.com/kettle-rb/ast-merge
+    owner: kettle-rb
+  tags:
+  - rspec
+  - testing
+  docs_site: https://www.rubydoc.info/gems/ast-merge/4.0.6
+  total_downloads: 9280
+  daily_downloads:
+  release_downloads: 158
+  release_date: 2026/02/19
+  github_stars: 4
+  last_commit_on: 2026/02/21
+  status: active
+  last_scrape_at: '2026-02-23T04:40:15Z'
+- name: dotenv-merge
+  description: "☯️ Dotenv::Merge provides smart .env file merging that preserves comments,
+    understands variable assignments, and supports freeze blocks for protecting sensitive
+    configuration. Perfect for merging environment templates with local overrides."
+  language: Ruby
+  ecosystem: rubygems
+  minimum_version: '2.7'
+  role: author
+  first_commit_on: 2025/12/06
+  first_commit: https://github.com/kettle-rb/dotenv-merge/commit/a34c8f20c877a45d03b9f0b83b973614e123a92b
+  funding_sites:
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  - type: Liberapay
+    url: https://liberapay.com/pboling
+  forges:
+  - type: GitHub
+    url: https://github.com/kettle-rb/dotenv-merge
+    owner: kettle-rb
+  tags:
+  - ruby
+  docs_site: https://www.rubydoc.info/gems/dotenv-merge/1.0.3
+  total_downloads: 4045
+  daily_downloads:
+  release_downloads: 120
+  release_date: 2026/02/19
+  github_stars: 1
+  last_commit_on: 2026/02/19
+  status: active
+  last_scrape_at: '2026-02-23T04:40:17Z'
+- name: rbs-merge
+  description: "☯️ Intelligently merge RBS type signature files by parsing and comparing
+    AST structures. Supports freeze blocks to protect customizations, signature-based
+    matching, and configurable merge strategies."
+  language: Ruby
+  ecosystem: rubygems
+  minimum_version: '2.7'
+  role: author
+  first_commit_on: 2025/12/06
+  first_commit: https://github.com/kettle-rb/rbs-merge/commit/7ae936a6ae844aee513264eecc39215eed53c313
+  funding_sites:
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  - type: Liberapay
+    url: https://liberapay.com/pboling
+  forges:
+  - type: GitHub
+    url: https://github.com/kettle-rb/rbs-merge
+    owner: kettle-rb
+  tags:
+  - ruby
+  docs_site: https://www.rubydoc.info/gems/rbs-merge/2.0.0
+  total_downloads: 1889
+  daily_downloads:
+  release_downloads: 120
+  release_date: 2026/02/19
+  github_stars: 1
+  last_commit_on: 2026/02/22
+  status: active
+  last_scrape_at: '2026-02-23T04:40:19Z'
+- name: tree_haver
+  description: "\U0001F334 TreeHaver is a cross-Ruby adapter for many AST parsing
+    libraries; supporting MRI Ruby, JRuby, & TruffleRuby. Provides unified parsing
+    API & AST when using ruby_tree_sitter, parslet, citrus, ffi, tree_stump (Rust),
+    JRuby JARs, etc. As Faraday is to HTTP clients, this is for ASTs: 'Learn once
+    & write once & run anywhere'"
+  language: Ruby
+  ecosystem: rubygems
+  minimum_version: '2.7'
+  role: author
+  first_commit_on: 2025/12/14
+  first_commit: https://github.com/kettle-rb/tree_haver/commit/a89211bff10f4440b96758a8ac9d7d539001b0c8
+  funding_sites:
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  - type: Liberapay
+    url: https://liberapay.com/pboling
+  forges:
+  - type: GitHub
+    url: https://github.com/kettle-rb/tree_haver
+    owner: kettle-rb
+  tags:
+  - api
+  - cli
+  docs_site: https://www.rubydoc.info/gems/tree_haver/5.0.5
+  total_downloads: 4765
+  daily_downloads:
+  release_downloads: 175
+  release_date: 2026/02/18
+  github_stars: 15
+  last_commit_on: 2026/02/19
+  status: active
+  last_scrape_at: '2026-02-23T04:40:22Z'
+- name: toml-merge
+  description: "☯️ Intelligently merges TOML files by analyzing their AST structure
+    with tree-sitter, preserving key organization and resolving conflicts based on
+    structural similarity."
+  language: Ruby
+  ecosystem: rubygems
+  minimum_version: '2.7'
+  role: author
+  first_commit_on: 2025/12/09
+  first_commit: https://github.com/kettle-rb/toml-merge/commit/772a5f5802ce518f2e2c83a561eb583ed634bac4
+  funding_sites:
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  - type: Liberapay
+    url: https://liberapay.com/pboling
+  forges:
+  - type: GitHub
+    url: https://github.com/kettle-rb/toml-merge
+    owner: kettle-rb
+  tags:
+  - ruby
+  docs_site: https://www.rubydoc.info/gems/toml-merge/2.0.1
+  total_downloads: 2450
+  daily_downloads:
+  release_downloads: 119
+  release_date: 2026/02/19
+  github_stars: 1
+  last_commit_on: 2026/02/19
+  status: active
+  last_scrape_at: '2026-02-23T04:40:24Z'
+- name: bash-merge
+  description: "☯️ Bash::Merge provides smart Bash script merging that preserves comments,
+    understands shell structure, and supports freeze blocks for protecting destination
+    content. Perfect for merging configuration scripts and shell templates with customized
+    destination files."
+  language: Ruby
+  ecosystem: rubygems
+  minimum_version: '2.7'
+  role: author
+  first_commit_on: 2025/12/06
+  first_commit: https://github.com/kettle-rb/bash-merge/commit/db525d5aedd0c895422a067629118f3fa9c3c22d
+  funding_sites:
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  - type: Liberapay
+    url: https://liberapay.com/pboling
+  forges:
+  - type: GitHub
+    url: https://github.com/kettle-rb/bash-merge
+    owner: kettle-rb
+  tags:
+  - ruby
+  docs_site: https://www.rubydoc.info/gems/bash-merge/2.0.6
+  total_downloads: 3713
+  daily_downloads:
+  release_downloads: 123
+  release_date: 2026/02/19
+  github_stars: 1
+  last_commit_on: 2026/02/21
+  status: active
+  last_scrape_at: '2026-02-23T04:40:26Z'
+- name: json-merge
+  description: "☯️ Json::Merge provides smart JSON file merging that understands JSON
+    structure. Perfect for merging strict JSON configuration files like package.json,
+    tsconfig.json (without comments), and other standard JSON files. For JSON with
+    Comments (JSONC) files like devcontainer.json and VS Code settings, use jsonc-merge
+    instead."
+  language: Ruby
+  ecosystem: rubygems
+  minimum_version: '2.7'
+  role: author
+  first_commit_on: 2025/12/06
+  first_commit: https://github.com/kettle-rb/json-merge/commit/f1cc25b1d9b79c598270e3aa203fa56787e6c6fc
+  funding_sites:
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  - type: Liberapay
+    url: https://liberapay.com/pboling
+  forges:
+  - type: GitHub
+    url: https://github.com/kettle-rb/json-merge
+    owner: kettle-rb
+  tags:
+  - ruby
+  docs_site: https://www.rubydoc.info/gems/json-merge/1.1.2
+  total_downloads: 1738
+  daily_downloads:
+  release_downloads: 120
+  release_date: 2026/02/19
+  github_stars: 1
+  last_commit_on: 2026/02/19
+  status: active
+  last_scrape_at: '2026-02-23T04:40:28Z'
+- name: markdown-merge
+  description: "☯️ Ast::Merge-based structure for merging Markdown files with tools
+    like markly-merge and commonmarker-merge"
+  language: Ruby
+  ecosystem: rubygems
+  minimum_version: '2.7'
+  role: author
+  first_commit_on: 2025/12/11
+  first_commit: https://github.com/kettle-rb/markdown-merge/commit/76f2230840b236dd10fdd7baf322c082762dddb0
+  funding_sites:
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  - type: Liberapay
+    url: https://liberapay.com/pboling
+  forges:
+  - type: GitHub
+    url: https://github.com/kettle-rb/markdown-merge
+    owner: kettle-rb
+  tags:
+  - ruby
+  docs_site: https://www.rubydoc.info/gems/markdown-merge/1.0.3
+  total_downloads: 634
+  daily_downloads:
+  release_downloads: 128
+  release_date: 2026/02/19
+  github_stars: 1
+  last_commit_on: 2026/02/19
+  status: active
+  last_scrape_at: '2026-02-23T04:40:30Z'
+- name: jsonc-merge
+  description: "☯️ Jsonc::Merge provides smart JSONC (JSON with Comments) file merging
+    that preserves comments, understands JSON structure, and supports freeze blocks
+    for protecting destination content. Perfect for merging configuration files like
+    devcontainer.json, tsconfig.json, package.json, and VS Code settings."
+  language: Ruby
+  ecosystem: rubygems
+  minimum_version: '2.7'
+  role: author
+  first_commit_on: 2025/12/06
+  first_commit: https://github.com/kettle-rb/jsonc-merge/commit/f1cc25b1d9b79c598270e3aa203fa56787e6c6fc
+  funding_sites:
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  - type: Liberapay
+    url: https://liberapay.com/pboling
+  forges:
+  - type: GitHub
+    url: https://github.com/kettle-rb/jsonc-merge
+    owner: kettle-rb
+  tags:
+  - ruby
+  docs_site: https://www.rubydoc.info/gems/jsonc-merge/1.0.1
+  total_downloads: 262
+  daily_downloads:
+  release_downloads: 123
+  release_date: 2026/02/19
+  github_stars: 1
+  last_commit_on: 2026/02/19
+  status: active
+  last_scrape_at: '2026-02-23T04:40:32Z'
+- name: commonmarker-merge
+  description: "☯️ Commonmarker::Merge provides smart Markdown file merging using
+    Comrak (Rust) via Commonmarker. It understands document structure including headings,
+    lists, code blocks, and tables. Perfect for merging documentation templates with
+    customized files."
+  language: Ruby
+  ecosystem: rubygems
+  minimum_version: '2.7'
+  role: author
+  first_commit_on: 2025/12/06
+  first_commit: https://github.com/kettle-rb/commonmarker-merge/commit/12d4e9fff5bbe6a9b29e81c6643b4dd705f8e80a
+  funding_sites:
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  - type: Liberapay
+    url: https://liberapay.com/pboling
+  forges:
+  - type: GitHub
+    url: https://github.com/kettle-rb/commonmarker-merge
+    owner: kettle-rb
+  tags:
+  - ruby
+  docs_site: https://www.rubydoc.info/gems/commonmarker-merge/1.0.1
+  total_downloads: 243
+  daily_downloads:
+  release_downloads: 110
+  release_date: 2026/02/19
+  github_stars: 1
+  last_commit_on: 2026/02/19
+  status: active
+  last_scrape_at: '2026-02-23T04:40:35Z'
+- name: psych-merge
+  description: "☯️ Psych::Merge provides smart YAML file merging that preserves comments,
+    anchors/aliases, and supports freeze blocks for protecting destination content.
+    Perfect for merging configuration templates with customized destination files."
+  language: Ruby
+  ecosystem: rubygems
+  minimum_version: '2.7'
+  role: author
+  first_commit_on: 2025/12/05
+  first_commit: https://github.com/kettle-rb/psych-merge/commit/3330d3309d6962a4e676aa1c43e4ca90dfd21dc4
+  funding_sites:
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  - type: Liberapay
+    url: https://liberapay.com/pboling
+  forges:
+  - type: GitHub
+    url: https://github.com/kettle-rb/psych-merge
+    owner: kettle-rb
+  tags:
+  - ruby
+  docs_site: https://www.rubydoc.info/gems/psych-merge/1.0.0
+  total_downloads: 139
+  daily_downloads:
+  release_downloads: 139
+  release_date: 2026/02/19
+  github_stars: 1
+  last_commit_on: 2026/02/19
+  status: active
+  last_scrape_at: '2026-02-23T04:40:37Z'
+- name: markly-merge
+  description: "☯️ Markly::Merge provides smart Markdown file merging using libcmark-gfm
+    via Markly. It understands document structure including headings, lists, code
+    blocks, and tables. Perfect for merging documentation templates with customized
+    files."
+  language: Ruby
+  ecosystem: rubygems
+  minimum_version: '2.7'
+  role: author
+  first_commit_on: 2025/12/09
+  first_commit: https://github.com/kettle-rb/markly-merge/commit/3dcd8b855b8a773f175ff34d31e3885a28a3e70b
+  funding_sites:
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  - type: Liberapay
+    url: https://liberapay.com/pboling
+  forges:
+  - type: GitHub
+    url: https://github.com/kettle-rb/markly-merge
+    owner: kettle-rb
+  tags:
+  - ruby
+  docs_site: https://www.rubydoc.info/gems/markly-merge/1.0.0
+  total_downloads: 139
+  daily_downloads:
+  release_downloads: 139
+  release_date: 2026/02/19
+  github_stars: 1
+  last_commit_on: 2026/02/19
+  status: active
+  last_scrape_at: '2026-02-23T04:40:39Z'
+- name: token-resolver
+  description: "\U0001FA99 Token::Resolver provides configurable PEG-based (parslet)
+    parsing and resolution of structured tokens (e.g., {KJ|GEM_NAME}) in arbitrary
+    text. Useful for template ETL pipelines where tokens in template files must be
+    resolved before format-specific merging."
+  language: Ruby
+  ecosystem: rubygems
+  minimum_version: '2.7'
+  role: author
+  first_commit_on: 2026/02/21
+  first_commit: https://github.com/kettle-rb/token-resolver/commit/e0e299cad6e6914d512845c71df6b7ac8009e5ac
+  funding_sites:
+  - type: OpenCollective
+    url: https://opencollective.com/galtzo-floss
+  - type: Liberapay
+    url: https://liberapay.com/pboling
+  forges:
+  - type: GitHub
+    url: https://github.com/kettle-rb/token-resolver
+    owner: kettle-rb
+  tags:
+  - testing
+  docs_site: https://www.rubydoc.info/gems/token-resolver/1.0.2
+  total_downloads: 260
+  daily_downloads:
+  release_downloads: 90
+  release_date: 2026/02/22
+  github_stars: 4
+  last_commit_on: 2026/02/22
+  status: active
+  last_scrape_at: '2026-02-23T04:40:41Z'

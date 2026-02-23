@@ -239,6 +239,7 @@ class ProjectUpdater
         puts "  ✅ Added #{gem_name}"
 
         @projects_dev << new_project.dup
+        puts "  💾 Saved to projects.yml"
         puts "  🔄 Synced to projects_dev.yml"
 
         sleep(@rate_limit_delay)
@@ -255,71 +256,371 @@ class ProjectUpdater
     puts "\n✅ Discovery complete! Added #{added} of #{missing_gems.size} gem(s)."
   end
 
-  def discover_and_add_missing_gems
-    unless RUBYGEMS_HANDLE
-      puts "❌ ERROR: RUBYGEMS_HANDLE environment variable is not set!"
-      puts "   Please set it in .env.local to use this feature."
-      return
+
+  # ============================================================================
+  # ADD PROJECT SUBCOMMAND
+  # ============================================================================
+
+  # Supported ecosystems and their display labels.
+  ECOSYSTEMS = {
+    'rubygems' => { label: 'RubyGems',   language: 'Ruby'       },
+    'cargo'    => { label: 'Cargo',      language: 'Rust'       },
+    'npm'      => { label: 'npm',        language: 'JavaScript' },
+    'pypi'     => { label: 'PyPI',       language: 'Python'     },
+    'go'       => { label: 'Go Modules', language: 'Go'         },
+    'none'     => { label: 'None',       language: nil          },
+  }.freeze
+
+  # Interactive (or flag-driven) wizard to add a single project to projects.yml.
+  # +opts+ is a Hash of pre-supplied values from the command line (may be empty).
+  def run_add_project(opts = {})
+    puts "="*80
+    puts "➕ ADD PROJECT"
+    puts "="*80
+    puts "Answer the prompts below. Press Enter to accept [defaults]."
+    puts "Values pre-supplied via flags are shown and confirmed automatically."
+    puts ""
+
+    project = {}
+
+    # ── Name ──────────────────────────────────────────────────────────────────
+    project['name'] = ask("Project name", default: opts[:name])
+
+    # ── Ecosystem ─────────────────────────────────────────────────────────────
+    eco_list = ECOSYSTEMS.keys.join(', ')
+    raw_eco  = ask("Package ecosystem (#{eco_list})", default: opts[:ecosystem] || 'none')
+    ecosystem = ECOSYSTEMS.key?(raw_eco) ? raw_eco : 'none'
+    project['ecosystem'] = ecosystem == 'none' ? nil : ecosystem
+
+    inferred_language = ECOSYSTEMS[ecosystem][:language]
+
+    # ── Language ──────────────────────────────────────────────────────────────
+    project['language'] = ask("Primary language", default: opts[:language] || inferred_language || 'Ruby')
+
+    # ── Role ──────────────────────────────────────────────────────────────────
+    role = ask("Your role (author/contributor/maintainer)", default: opts[:role] || 'contributor')
+    project['role'] = role
+
+    # ── Forge URLs ────────────────────────────────────────────────────────────
+    puts ""
+    puts "  Forges (press Enter to skip any):"
+    forges = []
+
+    github_url = ask("  GitHub URL", default: opts[:github_url])
+    if github_url && !github_url.empty?
+      github_url = github_url.sub(/\.git$/, '').sub(%r{/tree/.*}, '').sub(%r{/blob/.*}, '')
+      owner = github_url.match(%r{github\.com/([^/]+)/})&.send(:[], 1)
+      forges << { 'type' => 'GitHub', 'url' => github_url, 'owner' => owner }
     end
 
-    puts "\n" + "="*80
-    puts "🔍 DISCOVERING RUBYGEMS FOR: #{RUBYGEMS_HANDLE}"
+    gitlab_url = ask("  GitLab URL", default: opts[:gitlab_url])
+    if gitlab_url && !gitlab_url.empty?
+      owner = gitlab_url.match(%r{gitlab\.com/([^/]+)/})&.send(:[], 1)
+      forges << { 'type' => 'GitLab', 'url' => gitlab_url, 'owner' => owner }
+    end
+
+    codeberg_url = ask("  Codeberg URL", default: opts[:codeberg_url])
+    if codeberg_url && !codeberg_url.empty?
+      owner = codeberg_url.match(%r{codeberg\.org/([^/]+)/})&.send(:[], 1)
+      forges << { 'type' => 'Codeberg', 'url' => codeberg_url, 'owner' => owner }
+    end
+
+    project['forges'] = forges
+
+    # ── Description ───────────────────────────────────────────────────────────
+    puts ""
+    project['description'] = ask("Description (can be HTML)", default: opts[:description])
+
+    # ── Minimum runtime version ───────────────────────────────────────────────
+    version_label = case project['language']
+    when 'Ruby'       then 'Minimum Ruby version (e.g. 2.7)'
+    when 'Rust'       then 'Minimum Rust edition (e.g. 2021)'
+    when 'Python'     then 'Minimum Python version (e.g. 3.9)'
+    when 'JavaScript',
+         'TypeScript' then 'Minimum Node version (e.g. 18)'
+    when 'Go'         then 'Minimum Go version (e.g. 1.21)'
+    else                   'Minimum runtime version'
+    end
+    project['minimum_version'] = ask(version_label, default: opts[:minimum_version])
+
+    # ── Tags ──────────────────────────────────────────────────────────────────
+    raw_tags = ask("Tags (comma-separated)", default: opts[:tags])
+    project['tags'] = raw_tags ? raw_tags.split(',').map(&:strip).reject(&:empty?) : []
+
+    # ── Now auto-fill from APIs ───────────────────────────────────────────────
+    puts ""
+    puts "="*80
+    puts "🌐 Fetching data from APIs..."
     puts "="*80
 
-    # Fetch all gems owned by the user
-    rubygems = fetch_user_rubygems(RUBYGEMS_HANDLE)
+    # Ecosystem-specific download stats
+    case ecosystem
+    when 'rubygems'
+      pkg = project['name']
+      puts "  Querying RubyGems for: #{pkg}"
+      gem_info = fetch_rubygems_info(pkg)
+      gem_data = api_request("https://rubygems.org/api/v1/gems/#{pkg}.json")
+      if gem_data
+        project['description'] ||= gem_data['info'] || gem_data['summary']
+        project['docs_site']     = gem_data['documentation_uri']
+        req_ver = gem_data['required_ruby_version'] || '>= 0'
+        project['minimum_version'] ||= extract_minimum_version(req_ver)
+        project['tags'] = (project['tags'] + determine_tags_from_gem(gem_data)).uniq.sort if project['tags'].empty?
+      end
+      if gem_info
+        project['total_downloads']   = gem_info[:total_downloads]
+        project['daily_downloads']   = gem_info[:daily_downloads]
+        project['release_downloads'] = gem_info[:release_downloads]
+        puts "    📦 Downloads: #{gem_info[:total_downloads]} total"
+      end
+      project['release_date'] = fetch_rubygems_release_date(pkg)
+      puts "    📅 Latest release: #{project['release_date'] || 'unknown'}"
 
-    if rubygems.empty?
-      puts "No gems found for user: #{RUBYGEMS_HANDLE}"
-      return
-    end
+    when 'cargo'
+      pkg = project['name']
+      puts "  Querying crates.io for: #{pkg}"
+      cargo_info = fetch_cargo_info(pkg)
+      if cargo_info
+        project['description']     ||= cargo_info[:description]
+        project['total_downloads']   = cargo_info[:total_downloads]
+        project['release_downloads'] = cargo_info[:release_downloads]
+        project['release_date']      = cargo_info[:release_date]
+        project['minimum_version'] ||= cargo_info[:rust_version]
+        if forges.none? { |f| f['type'] == 'GitHub' } && cargo_info[:repository]
+          url = cargo_info[:repository].sub(/\.git$/, '')
+          if url.include?('github.com')
+            owner = url.match(%r{github\.com/([^/]+)/})&.send(:[], 1)
+            forges << { 'type' => 'GitHub', 'url' => url, 'owner' => owner }
+            project['forges'] = forges
+          end
+        end
+        puts "    📦 Downloads: #{cargo_info[:total_downloads]} total"
+        puts "    📅 Latest release: #{cargo_info[:release_date] || 'unknown'}"
+      end
 
-    puts "Found #{rubygems.size} gems owned by #{RUBYGEMS_HANDLE}"
+    when 'npm'
+      pkg = project['name']
+      puts "  Querying npm registry for: #{pkg}"
+      npm_info = fetch_npm_info(pkg)
+      if npm_info
+        project['description']   ||= npm_info[:description]
+        project['release_date']    = npm_info[:release_date]
+        project['minimum_version']||= npm_info[:node_version]
+        if forges.none? { |f| f['type'] == 'GitHub' } && npm_info[:repository]
+          url = npm_info[:repository].sub(/\.git$/, '')
+          if url.include?('github.com')
+            owner = url.match(%r{github\.com/([^/]+)/})&.send(:[], 1)
+            forges << { 'type' => 'GitHub', 'url' => url, 'owner' => owner }
+            project['forges'] = forges
+          end
+        end
+        puts "    📅 Latest release: #{npm_info[:release_date] || 'unknown'}"
+      end
 
-    # Get list of existing gem names in projects
-    existing_gems = @projects
-      .select { |p| p['language'] == 'Ruby' && p['ecosystem'] == 'rubygems' }
-      .map { |p| p['name'] }
+    when 'pypi'
+      pkg = project['name']
+      puts "  Querying PyPI for: #{pkg}"
+      pypi_info = fetch_pypi_info(pkg)
+      if pypi_info
+        project['description']    ||= pypi_info[:description]
+        project['release_date']     = pypi_info[:release_date]
+        project['minimum_version'] ||= pypi_info[:python_version]
+        if forges.none? { |f| f['type'] == 'GitHub' } && pypi_info[:repository]
+          url = pypi_info[:repository].sub(/\.git$/, '')
+          if url.include?('github.com')
+            owner = url.match(%r{github\.com/([^/]+)/})&.send(:[], 1)
+            forges << { 'type' => 'GitHub', 'url' => url, 'owner' => owner }
+            project['forges'] = forges
+          end
+        end
+        puts "    📅 Latest release: #{pypi_info[:release_date] || 'unknown'}"
+      end
 
-    # Find missing gems
-    missing_gems = rubygems.reject { |gem_name| existing_gems.include?(gem_name) }
-
-    if missing_gems.empty?
-      puts "✅ All gems are already in projects.yml!"
-      return
-    end
-
-    puts "\n📦 Found #{missing_gems.size} missing gems:"
-    missing_gems.each { |name| puts "  • #{name}" }
-
-    puts "\n🔨 Adding missing gems to projects.yml..."
-
-    missing_gems.each_with_index do |gem_name, index|
-      puts "\n[#{index + 1}/#{missing_gems.size}] Adding: #{gem_name}"
-
-      begin
-        new_project = build_project_from_rubygem(gem_name)
-        @projects << new_project
-        puts "  ✅ Added #{gem_name}"
-
-        # Also add to projects_dev
-        @projects_dev << new_project.dup
-        puts "  🔄 Synced to projects_dev.yml"
-
-        sleep(@rate_limit_delay) # Rate limiting
-      rescue => e
-        error_msg = "Failed to add #{gem_name}: #{e.message}"
-        @errors << error_msg
-        puts "  ❌ ERROR: #{e.message}"
+    when 'go'
+      pkg = project['name']
+      puts "  Querying Go module proxy for: #{pkg}"
+      go_info = fetch_go_info(pkg)
+      if go_info
+        project['release_date']    = go_info[:release_date]
+        project['minimum_version']||= go_info[:go_version]
+        puts "    📅 Latest release: #{go_info[:release_date] || 'unknown'}"
       end
     end
 
-    # Save the updated projects files
-    save_yaml(PROJECTS_FILE, @projects)
-    save_yaml(PROJECTS_DEV_FILE, @projects_dev) if @projects_dev
+    # GitHub info (stars, last commit, status, first commit)
+    github_forge = project['forges'].find { |f| f['type'] == 'GitHub' }
+    if github_forge
+      puts "  Querying GitHub for: #{github_forge['url']}"
+      begin
+        github_info = fetch_github_info(github_forge['url'])
+        project['github_stars']   = github_info[:stars]
+        project['last_commit_on'] = github_info[:last_commit]
+        project['status']         = github_info[:archived] ? 'archived' : 'active'
+        puts "    ⭐ Stars: #{github_info[:stars]}"
+        puts "    🔨 Last commit: #{github_info[:last_commit] || 'unknown'}"
 
-    puts "\n✅ Discovery complete! Added #{missing_gems.size - @errors.select { |e| e.include?('Failed to add') }.size} new gems."
+        repo_path = extract_repo_path(github_forge['url'])
+        if repo_path
+          first_commit = fetch_first_commit(repo_path)
+          if first_commit
+            project['first_commit']    = first_commit[:url]
+            project['first_commit_on'] = first_commit[:date]
+            puts "    🏁 First commit: #{first_commit[:date] || 'unknown'}"
+          end
+        end
+      rescue => e
+        puts "    ⚠️  GitHub fetch failed: #{e.message}"
+        project['github_stars'] = 0
+        project['status']       = 'active'
+      end
+    else
+      project['github_stars'] = 0
+      project['status']       = 'active'
+    end
+
+    # Defaults for anything still nil
+    project['first_commit_on'] ||= project['release_date']
+    project['status']          ||= 'active'
+
+    # ── Review and confirm ────────────────────────────────────────────────────
+    puts ""
+    puts "="*80
+    puts "📋 REVIEW — project entry to be added:"
+    puts "="*80
+    puts project.reject { |_, v| v.nil? }.to_yaml.gsub(/^---\n?/, '')
+    puts "="*80
+    puts ""
+
+    unless confirm("💾 Add this project to projects.yml?", default: true)
+      puts "Aborted — nothing was saved."
+      exit 0
+    end
+
+    @projects << project
+    @projects_dev << project.dup
+
+    save_yaml(PROJECTS_FILE, @projects)
+    puts "  💾 Saved to projects.yml"
+    save_yaml(PROJECTS_DEV_FILE, @projects_dev) if @projects_dev
+    puts "  🔄 Synced to projects_dev.yml"
+    puts "\n✅ Project '#{project['name']}' added successfully."
   end
+
+  # ── Multi-ecosystem package info fetchers ────────────────────────────────
+
+  def fetch_cargo_info(crate_name)
+    data = api_request("https://crates.io/api/v1/crates/#{crate_name}")
+    return nil unless data && data['crate']
+
+    c = data['crate']
+    newest_version = data.dig('versions')&.find { |v| !v['yanked'] }
+
+    {
+      description:      c['description'],
+      total_downloads:  c['downloads'],
+      release_downloads: newest_version&.dig('downloads'),
+      release_date:     newest_version ? Date.parse(newest_version['updated_at']).strftime('%Y/%m/%d') : nil,
+      rust_version:     newest_version&.dig('rust_version'),
+      repository:       c['repository'],
+    }
+  rescue => e
+    puts "    ⚠️  crates.io fetch failed: #{e.message}"
+    nil
+  end
+
+  def fetch_npm_info(pkg_name)
+    data = api_request("https://registry.npmjs.org/#{URI.encode_www_form_component(pkg_name)}/latest")
+    return nil unless data
+
+    repo = data.dig('repository', 'url') || ''
+    repo = repo.sub(/^git\+/, '').sub(/^git:\/\//, 'https://').sub(/\.git$/, '')
+
+    node_ver = data.dig('engines', 'node')
+    node_ver = node_ver.match(/(\d+\.\d*)/)&.send(:[], 1) if node_ver
+
+    {
+      description:  data['description'],
+      release_date: nil, # latest endpoint doesn't include publish time; dist-tags/time needs separate call
+      node_version: node_ver,
+      repository:   repo.include?('github.com') ? repo : nil,
+    }
+  rescue => e
+    puts "    ⚠️  npm fetch failed: #{e.message}"
+    nil
+  end
+
+  def fetch_pypi_info(pkg_name)
+    data = api_request("https://pypi.org/pypi/#{pkg_name}/json")
+    return nil unless data
+
+    info    = data['info'] || {}
+    releases = data['releases'] || {}
+    # Find the latest non-dev release date
+    release_date = nil
+    latest_ver = info['version']
+    if latest_ver && releases[latest_ver]
+      files = releases[latest_ver].reject { |f| f['yanked'] }
+      upload_time = files.first&.dig('upload_time')
+      release_date = Date.parse(upload_time).strftime('%Y/%m/%d') if upload_time
+    end
+
+    python_ver = info['requires_python']
+    python_ver = python_ver.match(/(\d+\.\d*)/)&.send(:[], 1) if python_ver
+
+    repo = [info['project_urls']&.dig('Source'), info['home_page']].compact.find { |u| u.include?('github.com') }
+
+    {
+      description:    info['summary'],
+      release_date:   release_date,
+      python_version: python_ver,
+      repository:     repo,
+    }
+  rescue => e
+    puts "    ⚠️  PyPI fetch failed: #{e.message}"
+    nil
+  end
+
+  def fetch_go_info(module_path)
+    # Go module proxy: https://proxy.golang.org/<module>/@latest
+    encoded = module_path.gsub(/([A-Z])/) { |m| "!#{m.downcase}" }
+    data = api_request("https://proxy.golang.org/#{encoded}/@latest")
+    return nil unless data
+
+    release_date = data['Time'] ? Date.parse(data['Time']).strftime('%Y/%m/%d') : nil
+
+    # go.dev/ref/mod doesn't expose min Go version via proxy; try pkg.go.dev API
+    go_version = nil
+
+    {
+      release_date: release_date,
+      go_version:   go_version,
+      version:      data['Version'],
+    }
+  rescue => e
+    puts "    ⚠️  Go proxy fetch failed: #{e.message}"
+    nil
+  end
+
+  # Prompt helper that supports a pre-supplied value (skips interactive prompt).
+  def ask(prompt, default: nil)
+    if @auto_confirm && !default.nil?
+      val = default.to_s.empty? ? nil : default
+      display = val || '(empty)'
+      puts "#{prompt}: #{display} [auto]"
+      return val
+    end
+
+    display_default = default.nil? || default.to_s.empty? ? '' : " [#{default}]"
+    print "#{prompt}#{display_default}: "
+    $stdout.flush
+    input = $stdin.gets&.chomp
+    return default if input.nil? || input.strip.empty?
+    input.strip
+  end
+
+  # ============================================================================
+  # END ADD PROJECT
+  # ============================================================================
 
   def fetch_user_rubygems(handle)
     api_url = "https://rubygems.org/api/v1/owners/#{handle}/gems.json"
