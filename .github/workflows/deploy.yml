@@ -1,5 +1,9 @@
 name: Build and deploy to DreamHost
 
+permissions:
+  contents: read
+  pull-requests: write
+
 on:
   push:
     branches: [ 'main' ]
