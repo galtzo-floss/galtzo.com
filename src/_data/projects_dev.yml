@@ -56,7 +56,7 @@
   aspect: wide
   type: person
   ecosystem:
-  minimum_version: 1.8
+  minimum_version: "1.8"
   role: author
   first_commit_on: 2004/01/01
   first_commit: https://github.com/galtzo-floss/galtzo.com/commit/23b15c81cfe20eb53117efbcba8d76d7c2959290
@@ -111,7 +111,7 @@
   description: Disallow insecure, unscoped, finds
   language: Ruby
   ecosystem: rubygems
-  minimum_version: 2.7
+  minimum_version: "2.7"
   role: author
   first_commit_on: 2024/05/30
   first_commit: https://github.com/galtzo-floss/active_security/commit/9caac884909193326b3f3318ad3db00ca754fabd
@@ -140,7 +140,7 @@
   description: Getting transactions right is hard, and this gem makes it easier.
   language: Ruby
   ecosystem: rubygems
-  minimum_version: 2.5
+  minimum_version: "2.5"
   role: author
   first_commit_on: 2016/03/26
   first_commit: https://github.com/galtzo-floss/activerecord-transactionable/commit/c40965018cee7546e62249006e2f41784cde8142
@@ -177,7 +177,7 @@
   description: Replacement for broken Class.new(ActiveRecord::Base)
   language: Ruby
   ecosystem: rubygems
-  minimum_version: 2.4
+  minimum_version: "2.4"
   role: author
   first_commit_on: 2018/01/03
   first_commit: https://github.com/galtzo-floss/anonymous_active_record/commit/6d9e24334d8800910efc7a8325494cbd6c08ff87
@@ -212,7 +212,7 @@
     <a href="https://dev.to/galtzo/how-to-check-license-compatibility-41h0" class="text-link" target="_blank" rel="noopener">Learn how</a> to add it to your project!
   language: Go
   ecosystem:
-  minimum_version: 1.23
+  minimum_version: "1.23"
   role: contributor
   first_commit_on: 2025/09/11
   first_commit: https://github.com/apache/skywalking-eyes/commit/3655e78854be6a56ae72a0c9a847aedd133c3b74
@@ -237,7 +237,7 @@
     different versions of dependencies in repeatable scenarios called "appraisals."
   language: Ruby
   ecosystem: rubygems
-  minimum_version: 1.8
+  minimum_version: "1.8"
   role: author
   first_commit_on: 2017/11/20
   first_commit: https://github.com/appraisal-rb/appraisal2/commit/dcfac430d75a86a89497ec45af39edf798228f9c
@@ -274,7 +274,7 @@
     things.
   language: Ruby
   ecosystem: rubygems
-  minimum_version: 2.4
+  minimum_version: "2.4"
   role: maintainer
   first_commit_on: 2013/12/16
   first_commit: https://github.com/wordtreefoundation/archivist-client/commit/404f1976722fa7b4444d7b5d750f438bebae1102
@@ -302,7 +302,7 @@
   description: Organize complicated search results
   language: Ruby
   ecosystem: rubygems
-  minimum_version: 1.8
+  minimum_version: "1.8"
   role: author
   first_commit_on: 2010/03/01
   first_commit: https://github.com/galtzo-floss/awesome_search/commit/cc63ada6740695dd42007d62ed76d3d5e12803ae
@@ -330,7 +330,7 @@
   description: Bash Step Function Library
   language: Bash
   ecosystem:
-  minimum_version: 4.0
+  minimum_version: "4.0"
   role: author
   first_commit_on: 2013/11/08
   first_commit: https://github.com/pboling/bash_step/commit/13446f1a24bef1dafb66e916bf8bb321c8162851
@@ -354,7 +354,7 @@
   description: Bash Script Function Library
   language: Bash
   ecosystem:
-  minimum_version: 4.0
+  minimum_version: "4.0"
   role: maintainer
   first_commit_on: 2013/11/08
   first_commit: https://github.com/pboling/bsfl/commit/27444edd62fb4df3da662e8254a86c083e25d55b
@@ -379,7 +379,7 @@
     who can take it forward!
   language: Ruby
   ecosystem: rubygems
-  minimum_version: 2.7
+  minimum_version: "2.7"
   role: author
   first_commit_on: 2020/01/15
   first_commit: https://github.com/galtzo-floss/test-adopt-me-gem/commit/abc123
@@ -408,7 +408,7 @@
     are needed.
   language: Ruby
   ecosystem: rubygems
-  minimum_version: 2.5
+  minimum_version: "2.5"
   role: maintainer
   first_commit_on: 2019/05/20
   first_commit: https://github.com/galtzo-floss/test-update-me-lib/commit/def456
@@ -438,7 +438,7 @@
     project instead.
   language: Ruby
   ecosystem: rubygems
-  minimum_version: 2.3
+  minimum_version: "2.3"
   role: author
   first_commit_on: 2015/03/10
   first_commit: https://github.com/galtzo-floss/test-avoid-me-deprecated/commit/ghi789
@@ -469,7 +469,7 @@
     family
   language: Ruby
   ecosystem: rubygems
-  minimum_version: 2.7
+  minimum_version: "2.7"
   role: author
   first_commit_on: 2021/08/01
   first_commit: https://github.com/galtzo-floss/test-family-auth-core/commit/jkl012
@@ -501,7 +501,7 @@
   description: OAuth integration for the Rails authentication suite
   language: Ruby
   ecosystem: rubygems
-  minimum_version: 2.7
+  minimum_version: "2.7"
   role: author
   first_commit_on: 2021/09/15
   first_commit: https://github.com/galtzo-floss/test-family-auth-oauth/commit/mno345
@@ -532,7 +532,7 @@
   description: Two-factor authentication for the Rails authentication suite
   language: Ruby
   ecosystem: rubygems
-  minimum_version: 2.7
+  minimum_version: "2.7"
   role: author
   first_commit_on: 2022/01/10
   first_commit: https://github.com/galtzo-floss/test-family-auth-2fa/commit/pqr678
@@ -563,7 +563,7 @@
   description: A festive project celebrating the winter season!
   language: Ruby
   ecosystem: rubygems
-  minimum_version: 2.7
+  minimum_version: "2.7"
   role: author
   first_commit_on: 2020/12/01
   first_commit: https://github.com/galtzo-floss/test-holiday-christmas/commit/stu901

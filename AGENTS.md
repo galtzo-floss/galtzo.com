@@ -114,7 +114,8 @@ galtzo.com/
 
 ### scripts/project_query — subcommands
 
-Read-only. Never modifies YAML files. Always run via `bundle exec`.
+Read-only. Never modifies YAML files. Always run via `bundle exec` (requires `table_tennis` gem).
+Output is rendered by `table_tennis`: auto-layout, number formatting, colour scales, mark highlighting.
 
 ```bash
 bundle exec ruby scripts/project_query needs-attention   # data quality audit
@@ -127,6 +128,6 @@ bundle exec ruby scripts/project_query console          # IRB session
 
 All subcommands accept `--format table|names|yaml`, `--file PATH`, `--no-color`.
 
-In the IRB console: `PROJS`, `find()`, `by_language()`, `by_status()`,
+In the IRB console: `PROJS`, `table()`, `find()`, `by_language()`, `by_status()`,
 `by_ecosystem()`, `by_role()`, `by_tag()`, `missing()`, `stale_scrape()`,
 `stale_commit()`, `needs_attention`, `stats`.

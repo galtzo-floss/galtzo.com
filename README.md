@@ -167,6 +167,11 @@ restore the production file — see the next section.
 Read-only script for filtering, auditing, and exploring `src/_data/projects.yml`.
 No API calls are made; it operates entirely on the local YAML file.
 
+Output is rendered by the [`table_tennis`](https://github.com/gurgeous/table_tennis) gem,
+which provides auto-layout to fit your terminal, auto-formatted numbers (commas, `—` for nil),
+`color_scales` on numeric columns, `mark` to highlight rows by status, and automatic
+light/dark theme detection.
+
 ```bash
 bundle exec ruby scripts/project_query <subcommand> [args] [options]
 ```
@@ -231,6 +236,7 @@ Helper methods available at the prompt:
 
 | Method | Description |
 |---|---|
+| `table(projs, **opts)` | Print a `TableTennis` table from any `Project` array; accepts all `table_tennis` options |
 | `find("name")` | Fuzzy-find a project by name |
 | `by_language("Ruby")` | Filter by language |
 | `by_status("stale")` | Filter by status |

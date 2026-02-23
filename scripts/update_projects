@@ -1297,6 +1297,14 @@ class ProjectUpdater
   end
 
   def save_yaml(file_path, data)
+    # Guard: minimum_version must always be a String so YAML round-trips cleanly
+    # and index.html's .sort on version arrays never mixes Float with String.
+    data.each do |entry|
+      next unless entry.is_a?(Hash) && entry.key?('minimum_version')
+      v = entry['minimum_version']
+      entry['minimum_version'] = v.to_s unless v.nil? || v.is_a?(String)
+    end
+
     yaml_content = YAML.dump(data)
 
     # Determine which header to use based on the file path
