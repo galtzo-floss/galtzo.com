@@ -31,12 +31,6 @@ Iterates over every project in `src/_data/projects.yml` and fetches up-to-date
 data from GitHub, GitLab, Codeberg, and RubyGems APIs, then writes the results
 back to both `projects.yml` and `projects_dev.yml`.
 
-Before the main update begins, the script always runs a **RubyGems discovery
-pre-flight**: it queries RubyGems.org for every gem owned by `RUBYGEMS_HANDLE`,
-compares the list against `projects.yml`, and — if any are missing — displays
-them and asks whether to add them now. This keeps `projects.yml` in sync with
-your published gems automatically.
-
 #### Environment variables
 
 | Variable | Required | Purpose |
@@ -53,12 +47,16 @@ Set these in a `.env.local` file (or however your shell loads env vars) before r
 ruby scripts/update_projects
 ```
 
-The script will:
-1. **Discover** any gems on RubyGems.org not yet in `projects.yml` and prompt
-   you to add them.
-2. Show how many projects will be updated vs. skipped (projects scraped within
+When run with no subcommand or field, the script:
+
+1. **Discovers** any gems on RubyGems.org (owned by `RUBYGEMS_HANDLE`) not yet
+   in `projects.yml`, displays them, and asks whether to add them now.
+2. Shows how many projects will be updated vs. skipped (projects scraped within
    the last 24 hours are skipped automatically).
-3. **Prompt for confirmation** before starting the update loop.
+3. **Prompts for confirmation** before starting the update loop.
+
+> Discovery only runs on a bare full update. Passing a surgical field or the
+> `add_project` subcommand disables it automatically.
 
 To skip all prompts (e.g. in CI or a cron job), pass `-y` / `--no-tty`:
 
@@ -66,7 +64,7 @@ To skip all prompts (e.g. in CI or a cron job), pass `-y` / `--no-tty`:
 ruby scripts/update_projects -y
 ```
 
-To skip the RubyGems discovery pre-flight entirely:
+To skip the RubyGems discovery pre-flight explicitly:
 
 ```bash
 ruby scripts/update_projects --no-discover
@@ -77,8 +75,8 @@ its `last_scrape_at` field in `projects.yml`.
 
 #### Surgical update — one field across all projects
 
-Instead of a full re-scrape, you can update a single field for every project.
-Surgical mode ignores `last_scrape_at` timestamps.
+Instead of a full re-scrape, update a single field for every project.
+Surgical mode ignores `last_scrape_at` timestamps and skips gem discovery.
 
 ```bash
 ruby scripts/update_projects <field>
@@ -98,21 +96,62 @@ Valid fields:
 | `last_commit_on` | GitHub API |
 | `status` | Derived from GitHub (`active` / `stale` / `archived`) |
 
-Examples:
-
 ```bash
 ruby scripts/update_projects github_stars
 ruby scripts/update_projects release_date
-ruby scripts/update_projects status
-ruby scripts/update_projects -y release_date   # non-interactive
+ruby scripts/update_projects -y status          # non-interactive
 ```
+
+#### `add_project` — add a single project interactively
+
+Wizard that interrogates you for a project's details, auto-fills everything it
+can from the relevant package registry and GitHub, then shows you the resulting
+YAML entry for confirmation before writing it to `projects.yml`.
+
+Works for any language and any of the supported package ecosystems:
+**RubyGems**, **Cargo** (Rust / crates.io), **npm** (JavaScript/TypeScript),
+**PyPI** (Python), **Go Modules** (proxy.golang.org), or **none** (forge-only
+projects with no package registry).
+
+```bash
+# Fully interactive — prompts for everything
+ruby scripts/update_projects add_project
+
+# Pre-supply values to skip individual prompts
+ruby scripts/update_projects add_project \
+  --name my-crate \
+  --ecosystem cargo \
+  --role contributor \
+  --github-url https://github.com/org/my-crate
+
+# Non-interactive (auto-accept all defaults / pre-supplied values)
+ruby scripts/update_projects add_project -y \
+  --name my-gem \
+  --ecosystem rubygems \
+  --role author
+```
+
+`add_project` flags (all optional — omitted values are prompted interactively):
+
+| Flag | Description |
+|---|---|
+| `--name NAME` | Project / package name |
+| `--ecosystem ECO` | `rubygems` \| `cargo` \| `npm` \| `pypi` \| `go` \| `none` |
+| `--language LANG` | Primary language (inferred from ecosystem if omitted) |
+| `--role ROLE` | `author` \| `contributor` \| `maintainer` (default: `contributor`) |
+| `--github-url URL` | GitHub repository URL |
+| `--gitlab-url URL` | GitLab repository URL |
+| `--codeberg-url URL` | Codeberg repository URL |
+| `--description TEXT` | Short description (HTML allowed) |
+| `--minimum-version VER` | Minimum runtime version |
+| `--tags TAG1,TAG2` | Comma-separated tags |
 
 #### Option reference
 
 | Flag | Default | Description |
 |---|---|---|
 | `-h, --help` | | Show help and exit |
-| `--no-discover` | *(discovery on)* | Skip the RubyGems discovery pre-flight |
+| `--no-discover` | *(auto)* | Skip the RubyGems discovery pre-flight |
 | `-y, --no-tty` | *(interactive)* | Auto-accept all confirmation prompts |
 
 #### Safety check

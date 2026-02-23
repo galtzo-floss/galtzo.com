@@ -71,11 +71,32 @@ git status 2>&1 | tee tmp/git_status.txt
 
 ### scripts/update_projects — key behaviour
 
-- **RubyGems discovery is ON by default.** The script always runs the discovery
-  pre-flight at startup (requires `RUBYGEMS_HANDLE` env var).
-- Pass `--no-discover` to skip discovery.
-- Pass `-y` or `--no-tty` to auto-accept all confirmation prompts (non-interactive / CI use).
-- The old `--discover-rubygems` flag no longer exists; discovery is now the default.
+- **RubyGems discovery runs by default only on a bare full update** (no subcommand,
+  no surgical field). Passing a surgical field or `add_project` disables discovery
+  automatically. Pass `--no-discover` to suppress it explicitly on a bare update.
+- Pass `-y` or `--no-tty` to auto-accept all confirmation prompts (non-interactive / CI).
+- The old `--discover-rubygems` flag no longer exists.
+- After adding a gem during discovery, output reads:
+    ```
+    💾 Saved to projects.yml
+    🔄 Synced to projects_dev.yml
+    ```
+
+### scripts/update_projects — subcommands and surgical fields
+
+| Invocation | Discovery | Description |
+|---|---|---|
+| `ruby scripts/update_projects` | ✅ on | Full update, interactive |
+| `ruby scripts/update_projects -y` | ✅ on | Full update, non-interactive |
+| `ruby scripts/update_projects --no-discover` | ❌ off | Full update, skip discovery |
+| `ruby scripts/update_projects <field>` | ❌ off | Surgical: one field, all projects |
+| `ruby scripts/update_projects add_project` | ❌ off | Wizard: add a single project |
+
+**`add_project`** supports any ecosystem: `rubygems`, `cargo`, `npm`, `pypi`, `go`, `none`.
+All flags are optional — omitted values are prompted interactively.
+Flags: `--name`, `--ecosystem`, `--language`, `--role`, `--github-url`,
+`--gitlab-url`, `--codeberg-url`, `--description`, `--minimum-version`, `--tags`.
+
 
 
 ## Workspace Layout
