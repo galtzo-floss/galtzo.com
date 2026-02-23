@@ -140,7 +140,7 @@ class ProjectQuery
   end
 
   def run_needs_attention
-    issues = collect_issues
+    issues = collect_issues + collect_family_issues
     if issues.empty?
       puts tt([{ result: '✅  All projects look good — no issues found!' }],
               title: 'Needs Attention')
@@ -284,6 +284,29 @@ class ProjectQuery
       end
     end
     issues
+  end
+
+  def collect_family_issues
+    family_issues = []
+    @projects
+      .select { |p| p['theme'] == 'family' && p['family_id'] }
+      .group_by { |p| p['family_id'] }
+      .each do |fid, members|
+        # Duplicate positions within a family
+        pos_tally = members.group_by { |p| p['family_position'] }
+        pos_tally.each do |pos, dups|
+          next if dups.size == 1
+          dups.each do |p|
+            family_issues << row_issue(p['name'], 'duplicate_family_position',
+              "family=#{fid} has duplicate position #{pos}: #{dups.map { |d| d['name'] }.join(', ')}")
+          end
+        end
+        # Missing position
+        members.each do |p|
+          family_issues << row_issue(p['name'], 'missing_family_position', "family=#{fid}") if p['family_position'].nil?
+        end
+      end
+    family_issues
   end
 
   def row_issue(name, issue, detail = nil)

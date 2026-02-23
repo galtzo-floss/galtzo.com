@@ -320,6 +320,60 @@ The script always updates both `projects.yml` **and** `projects_dev.yml` when ap
 
 ---
 
+### `scripts/manage_families` — interactive TUI for managing project families
+
+Provides a full interactive terminal UI for organising which projects belong to
+which family, renumbering positions, creating new families, and moving projects
+between families.
+
+```bash
+bundle exec ruby scripts/manage_families
+bundle exec ruby scripts/manage_families --dry-run   # preview without writing
+```
+
+#### Main menu
+
+| Key | Action |
+|---|---|
+| `1`–`13` | Open a family to manage its members |
+| `U` | Manage unassigned projects (assign any to an existing or new family) |
+| `N` | Create a new family (prompts for ID + display name, then seeds members) |
+| `Q` | Save all changes and exit |
+
+#### Per-family actions
+
+| Key | Action |
+|---|---|
+| `R` | **Renumber** — compact `family_position` to 1..N in the current order, fixing gaps and duplicates |
+| `M` | **Move member** — swap a member's position with another, or unassign it entirely |
+| `A` | **Add unassigned** — pick from the unassigned project list and append to this family |
+| `D` | **Delete family** — unassigns all members (they return to the unassigned pool) |
+| `P` | **Reorder globally** — shift this family's positions so it sorts before/after others on the page |
+| `B` | Back to main menu |
+
+#### How `family_position` works
+
+`family_position` is a per-family integer (1-based) determining the stacking order of
+cards **within** that family's stack on the page. The rendering order of family stacks
+themselves is determined by the insertion order in the YAML (i.e. which family appears
+first in `projects.yml`).
+
+Use `R` (renumber) to fix duplicate or gapped positions after any edits.
+
+#### Options
+
+| Flag | Description |
+|---|---|
+| `--dry-run` | Show what would be saved without writing files |
+| `--no-color` | Disable ANSI colour output |
+| `--file PATH` | Use a different projects YAML file |
+| `--dev-file PATH` | Use a different projects_dev YAML file |
+
+Changes are written to both `projects.yml` **and** `projects_dev.yml` on exit.
+The dev file only receives family-field updates for projects that already exist there.
+
+---
+
 ### `scripts/devswap` — swap between dev and production project lists
 
 Toggles `projects.yml` between the production and dev/test versions so you can
