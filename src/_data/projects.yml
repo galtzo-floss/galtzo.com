@@ -13,8 +13,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/galtzo-floss
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/galtzo-floss/active_security
@@ -48,8 +46,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/galtzo-floss
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/galtzo-floss/activerecord-tablefree
@@ -82,8 +78,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/galtzo-floss
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/galtzo-floss/activerecord-transactionable
@@ -124,8 +118,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/galtzo-floss
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/galtzo-floss/activesupport-broadcast_logger
@@ -158,8 +150,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/galtzo-floss
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/galtzo-floss/activesupport-logger
@@ -193,8 +183,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/galtzo-floss
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/galtzo-floss/activesupport-tagged_logging
@@ -227,8 +215,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/galtzo-floss
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/galtzo-floss/anonymous_active_record
@@ -297,8 +283,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/appraisal-rb
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/appraisal-rb/appraisal2
@@ -331,9 +315,7 @@
   role: maintainer
   first_commit_by_person_on: 2013/12/16
   first_commit_by_person: https://github.com/wordtreefoundation/archivist-client/commit/404f1976722fa7b4444d7b5d750f438bebae1102
-  funding_sites:
-  - type: Liberapay
-    url: https://liberapay.com/pboling
+  funding_sites: []
   forges:
   - type: GitHub
     url: https://github.com/wordtreefoundation/archivist-client
@@ -366,8 +348,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/galtzo-floss
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/galtzo-floss/awesome_search
@@ -398,8 +378,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/floss_funding
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/floss-funding/awesome-sponsorships
@@ -422,9 +400,7 @@
   role: author
   first_commit_by_person_on: 2013/11/08
   first_commit_by_person: https://github.com/pboling/bash_step/commit/13446f1a24bef1dafb66e916bf8bb321c8162851
-  funding_sites:
-  - type: Liberapay
-    url: https://liberapay.com/pboling
+  funding_sites: []
   forges:
   - type: GitHub
     url: https://github.com/pboling/bash_step
@@ -447,9 +423,7 @@
   role: maintainer
   first_commit_by_person_on: 2013/11/08
   first_commit_by_person: https://github.com/pboling/bsfl/commit/27444edd62fb4df3da662e8254a86c083e25d55b
-  funding_sites:
-  - type: Liberapay
-    url: https://liberapay.com/pboling
+  funding_sites: []
   forges:
   - type: GitHub
     url: https://github.com/pboling/bsfl
@@ -515,8 +489,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/galtzo-floss
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/galtzo-floss/capistrano_mailer
@@ -553,8 +525,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/galtzo-floss
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/galtzo-floss/celluloid-io-pg-listener
@@ -589,8 +559,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/galtzo-floss
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/galtzo-floss/controller_validator
@@ -624,8 +592,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/galtzo-floss
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/galtzo-floss/csv_pirate
@@ -662,8 +628,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/galtzo-floss
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/galtzo-floss/debug_logging
@@ -703,8 +667,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/galtzo-floss
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/galtzo-floss/destination_errors
@@ -742,8 +704,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/galtzo-floss
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/galtzo-floss/dry_views
@@ -776,8 +736,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/dynamoid
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/Dynamoid/dynamoid
@@ -809,8 +767,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/galtzo-floss
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/galtzo-floss/each_in_batches
@@ -845,8 +801,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/galtzo-floss
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/galtzo-floss/flag_shih_tzu
@@ -888,8 +842,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/floss_funding
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/floss-funding/floss_funding
@@ -926,8 +878,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/galtzo-floss
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/galtzo-floss/gem_bench
@@ -962,8 +912,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/galtzo-floss
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/galtzo-floss/gitmoji-regex
@@ -997,8 +945,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/galtzo-floss
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/galtzo-floss/humorous_log_formatter
@@ -1030,8 +976,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/galtzo-floss
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/galtzo-floss/include_with_respect
@@ -1063,8 +1007,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/galtzo-floss
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/galtzo-floss/json_schemer-fuzz
@@ -1100,8 +1042,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/kettle-rb
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/kettle-rb/kettle-dev
@@ -1151,8 +1091,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/kettle-rb
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/kettle-rb/kettle-soup-cover
@@ -1196,8 +1134,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/kettle-rb
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/kettle-rb/kettle-test
@@ -1237,8 +1173,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/galtzo-floss
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/galtzo-floss/letter_group
@@ -1268,8 +1202,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/galtzo-floss
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/galtzo-floss/library_tree
@@ -1298,8 +1230,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/galtzo-floss
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/galtzo-floss/logos
@@ -1330,8 +1260,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/ruby-openid
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/ruby-openid/masq
@@ -1367,8 +1295,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/ruby-openid
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/ruby-openid/masq
@@ -1404,8 +1330,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/galtzo-floss
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/galtzo-floss/month-serializer
@@ -1439,8 +1363,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/ruby-oauth
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/ruby-oauth/oauth
@@ -1479,8 +1401,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/ruby-oauth
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/ruby-oauth/oauth-tty
@@ -1520,8 +1440,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/ruby-oauth
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/ruby-oauth/oauth2
@@ -1557,9 +1475,7 @@
   role: maintainer
   first_commit_by_person_on: 2020/05/01
   first_commit_by_person: https://github.com/omniauth/omniauth-identity/commit/79e402e17654955659078fea590b92e5f70ab3a6
-  funding_sites:
-  - type: Liberapay
-    url: https://liberapay.com/pboling
+  funding_sites: []
   forges:
   - type: GitHub
     url: https://github.com/omniauth/omniauth-identity
@@ -1588,9 +1504,7 @@
   role: maintainer
   first_commit_by_person_on: 2023/11/30
   first_commit_by_person: https://github.com/omniauth/omniauth-jwt/commit/f960595dbb1464e7d0ac5df48ae708424ba95e5d
-  funding_sites:
-  - type: Liberapay
-    url: https://liberapay.com/pboling
+  funding_sites: []
   forges:
   - type: GitHub
     url: https://github.com/omniauth/omniauth-jwt
@@ -1619,9 +1533,7 @@
   role: author
   first_commit_by_person_on: 2023/11/30
   first_commit_by_person: https://github.com/omniauth/omniauth-jwt2/commit/f960595dbb1464e7d0ac5df48ae708424ba95e5d
-  funding_sites:
-  - type: Liberapay
-    url: https://liberapay.com/pboling
+  funding_sites: []
   forges:
   - type: GitHub
     url: https://github.com/omniauth/omniauth-jwt2
@@ -1650,9 +1562,7 @@
   role: maintainer
   first_commit_by_person_on: 2025/10/18
   first_commit_by_person: https://github.com/omniauth/omniauth-ldap/commit/5ea8e97a1e729a21d4cb7f022af350c322d1406e
-  funding_sites:
-  - type: Liberapay
-    url: https://liberapay.com/pboling
+  funding_sites: []
   forges:
   - type: GitHub
     url: https://github.com/omniauth/omniauth-ldap
@@ -1684,8 +1594,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/ruby-openid
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/ruby-openid/omniauth-openid
@@ -1724,8 +1632,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/ruby-openid
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/ruby-openid/open_id_authentication
@@ -1758,9 +1664,7 @@
   role: maintainer
   first_commit_by_person_on: 2022/12/11
   first_commit_by_person: https://github.com/rdp/os/commit/66bc609b4e53a9b822904b43ed08a8206364e7eb
-  funding_sites:
-  - type: Liberapay
-    url: https://liberapay.com/pboling
+  funding_sites: []
   forges:
   - type: GitHub
     url: https://github.com/rdp/os
@@ -1794,8 +1698,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/galtzo-floss
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/galtzo-floss/pretty_feed
@@ -1828,8 +1730,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/galtzo-floss
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/galtzo-floss/qfill
@@ -1866,8 +1766,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/galtzo-floss
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/pboling/rack-insight
@@ -1901,8 +1799,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/ruby-openid
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/ruby-openid/rack-openid
@@ -1941,8 +1837,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/ruby-openid
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/ruby-openid/rack-openid2
@@ -1982,8 +1876,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/galtzo-floss
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/galtzo-floss/rack-toolbar
@@ -2023,8 +1915,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/galtzo-floss
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/pboling/rails_env_local
@@ -2060,8 +1950,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/galtzo-floss
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/galtzo-floss/react-rails-benchmark_renderer
@@ -2096,8 +1984,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/galtzo-floss
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/tylerhunt/remit
@@ -2132,8 +2018,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/galtzo-floss
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/galtzo-floss/require_bench
@@ -2175,8 +2059,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/resque
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/resque/resque
@@ -2221,8 +2103,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/resque
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/resque/resque-lonely_job
@@ -2267,8 +2147,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/resque
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/resque/resque-unique_at_runtime
@@ -2302,8 +2180,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/resque
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/resque/resque-unique_by_arity
@@ -2338,8 +2214,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/resque
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/resque/resque-unique_in_queue
@@ -2375,8 +2249,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/ruby-openid
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/ruby-openid/rots
@@ -2416,8 +2288,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/galtzo-floss
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/galtzo-floss/rspec-block_is_expected
@@ -2459,8 +2329,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/galtzo-floss
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/galtzo-floss/rspec-pending_for
@@ -2502,8 +2370,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/galtzo-floss
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/galtzo-floss/rspec-stubbed_env
@@ -2543,8 +2409,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/rubocop-lts
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/rubocop-lts/rubocop-lts
@@ -2581,8 +2445,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/rubocop-lts
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/rubocop-lts/rubocop-ruby1_8
@@ -2616,8 +2478,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/rubocop-lts
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/rubocop-lts/rubocop-ruby1_9
@@ -2651,8 +2511,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/rubocop-lts
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/rubocop-lts/rubocop-ruby2_0
@@ -2686,8 +2544,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/rubocop-lts
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/rubocop-lts/rubocop-ruby2_1
@@ -2721,8 +2577,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/rubocop-lts
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/rubocop-lts/rubocop-ruby2_2
@@ -2756,8 +2610,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/rubocop-lts
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/rubocop-lts/rubocop-ruby2_3
@@ -2791,8 +2643,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/rubocop-lts
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/rubocop-lts/rubocop-ruby2_4
@@ -2826,8 +2676,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/rubocop-lts
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/rubocop-lts/rubocop-ruby2_5
@@ -2861,8 +2709,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/rubocop-lts
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/rubocop-lts/rubocop-ruby2_6
@@ -2896,8 +2742,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/rubocop-lts
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/rubocop-lts/rubocop-ruby2_7
@@ -2931,8 +2775,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/rubocop-lts
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/rubocop-lts/rubocop-ruby3_0
@@ -2969,8 +2811,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/rubocop-lts
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/rubocop-lts/rubocop-ruby3_1
@@ -3037,8 +2877,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/ruby-openid
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/ruby-openid/ruby-openid
@@ -3077,8 +2915,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/ruby-openid
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/ruby-openid/ruby-openid
@@ -3119,8 +2955,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/galtzo-floss
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/galtzo-floss/sanitize_email
@@ -3161,8 +2995,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/galtzo-floss
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/galtzo-floss/seed_migration
@@ -3196,8 +3028,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/galtzo-floss
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/galtzo-floss/sequential_file
@@ -3229,8 +3059,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/galtzo-floss
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/galtzo-floss/service_actor-promptable
@@ -3263,8 +3091,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/galtzo-floss
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/galtzo-floss/shields-badge
@@ -3302,8 +3128,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/galtzo-floss
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/galtzo-floss/shiftable
@@ -3339,8 +3163,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/galtzo-floss
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/galtzo-floss/silent_stream
@@ -3381,8 +3203,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/galtzo-floss
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/galtzo-floss/simple_column-scopes
@@ -3414,8 +3234,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/ruby-oauth
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/ruby-oauth/snaky_hash
@@ -3452,8 +3270,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/galtzo-floss
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/galtzo-floss/spyke-connection_lambda
@@ -3487,8 +3303,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/galtzo-floss
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/pboling/stackable_flash
@@ -3525,8 +3339,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/galtzo-floss
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/rubocop-lts/standard-rubocop-lts
@@ -3565,8 +3377,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/galtzo-floss
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/galtzo-floss/status_tag
@@ -3610,8 +3420,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/galtzo-floss
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/galtzo-floss/stone_checksums
@@ -3653,8 +3461,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/galtzo-floss
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/galtzo-floss/strict_states
@@ -3691,8 +3497,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/galtzo-floss
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/pboling/super_exception_notifier
@@ -3729,8 +3533,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/galtzo-floss
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/galtzo-floss/timecop-rspec
@@ -3759,8 +3561,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/galtzo-floss
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/galtzo-floss/undrive_google
@@ -3801,8 +3601,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/ruby-oauth
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/ruby-oauth/version_gem
@@ -3843,8 +3641,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/ruby-oauth
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/ruby-oauth/warden_oauth
@@ -3871,9 +3667,7 @@
   role: author
   first_commit_by_person_on: 2025/09/24
   first_commit_by_person: https://github.com/pboling/yacs/commit/1a1182a2d0949ea0a2170b9374983687d43539cf
-  funding_sites:
-  - type: Liberapay
-    url: https://liberapay.com/pboling
+  funding_sites: []
   forges:
   - type: GitHub
     url: https://github.com/pboling/yacs
@@ -3901,8 +3695,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/galtzo-floss
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/galtzo-floss/yard-fence
@@ -3932,8 +3724,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/galtzo-floss
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/galtzo-floss/yaml-converter
@@ -3960,8 +3750,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/galtzo-floss
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/galtzo-floss/yard-yaml
@@ -3992,8 +3780,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/kettle-rb
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/kettle-rb/tree_haver
@@ -4028,8 +3814,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/kettle-rb
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/kettle-rb/ast-merge
@@ -4066,8 +3850,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/kettle-rb
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/kettle-rb/token-resolver
@@ -4102,8 +3884,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/kettle-rb
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/kettle-rb/bash-merge
@@ -4139,8 +3919,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/kettle-rb
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/kettle-rb/commonmarker-merge
@@ -4175,8 +3953,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/kettle-rb
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/kettle-rb/dotenv-merge
@@ -4214,8 +3990,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/kettle-rb
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/kettle-rb/json-merge
@@ -4251,8 +4025,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/kettle-rb
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/kettle-rb/jsonc-merge
@@ -4286,8 +4058,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/kettle-rb
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/kettle-rb/markdown-merge
@@ -4323,8 +4093,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/kettle-rb
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/kettle-rb/markly-merge
@@ -4358,8 +4126,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/kettle-rb
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/kettle-rb/prism-merge
@@ -4393,8 +4159,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/kettle-rb
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/kettle-rb/psych-merge
@@ -4429,8 +4193,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/kettle-rb
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/kettle-rb/rbs-merge
@@ -4465,8 +4227,6 @@
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/kettle-rb
-  - type: Liberapay
-    url: https://liberapay.com/pboling
   forges:
   - type: GitHub
     url: https://github.com/kettle-rb/toml-merge
@@ -4558,9 +4318,7 @@
   - owasp
   - sbom
   - cyclonedx
-  funding_sites:
-  - type: Liberapay
-    url: https://liberapay.com/pboling
+  funding_sites: []
   docs_site: https://www.rubydoc.info/gems/cyclonedx-ruby/1.1.0
   total_downloads: 177019
   daily_downloads: 283
@@ -4588,9 +4346,7 @@
   - rust
   - ruby
   - api
-  funding_sites:
-  - type: Liberapay
-    url: https://liberapay.com/pboling
+  funding_sites: []
   docs_site:
   total_downloads: 4566189
   daily_downloads:
@@ -4601,3 +4357,87 @@
   status: active
   first_commit_by_person: https://github.com/oxidize-rb/rb-sys/commit/44cb57255497879c0efe5d45e57473ad73231593
   first_commit_by_person_on: 2026/01/05
+- name: rb_sys
+  ecosystem: rubygems
+  language: Ruby
+  role: contributor
+  forges:
+  - type: GitHub
+    url: https://github.com/oxidize-rb/rb-sys
+    owner: oxidize-rb
+  description: Helpers for compiling Rust extensions for ruby
+  minimum_version: '2.7'
+  tags:
+  - ruby
+  - rust
+  - api
+  funding_sites: []
+  docs_site:
+  total_downloads: 31293634
+  daily_downloads: 20380
+  release_downloads: 374729
+  release_date: 2026/01/05
+  github_stars: 299
+  last_commit_on: 2026/02/20
+  status: active
+  first_commit_by_person: https://github.com/oxidize-rb/rb-sys/commit/44cb57255497879c0efe5d45e57473ad73231593
+  first_commit_by_person_on: 2026/01/05
+- name: magnus
+  ecosystem: cargo
+  language: Rust
+  role: contributor
+  forges:
+  - type: GitHub
+    url: https://github.com/matsadler/magnus
+    owner: matsadler
+  description: High level Ruby bindings. Write Ruby extension gems in Rust, or call
+    Ruby code from a Rust binary.
+  minimum_version: '1.56'
+  tags:
+  - ruby
+  - rust
+  - rubygems
+  - api
+  funding_sites: []
+  docs_site:
+  total_downloads: 4013194
+  daily_downloads:
+  release_downloads: 157703
+  release_date: 2025/10/08
+  github_stars: 851
+  last_commit_on: 2026/02/22
+  status: active
+  first_commit_by_person: https://github.com/matsadler/magnus/commit/3d15dc8ec4d669002dea2295e89df947dd477058
+  first_commit_by_person_on: 2026/01/30
+- name: setup-ruby-flash
+  ecosystem: none
+  language: Ruby
+  role: author
+  forges:
+  - type: GitHub
+    url: https://github.com/appraisal-rb/setup-ruby-flash
+    owner: appraisal-rb
+  description: 'GHA: ⚡️Fast Setup of Ruby & Gems via rv & ore (alternative to setup-ruby,
+    with fallback to setup-ruby)'
+  minimum_version: '2.3'
+  tags:
+  - ruby
+  - rust
+  - go
+  - bundler
+  - rubygems
+  - ci
+  - test
+  funding_sites:
+  - type: OpenCollective
+    url: https://opencollective.com/appraisal-rb
+  docs_site:
+  total_downloads:
+  daily_downloads:
+  release_downloads:
+  release_date:
+  github_stars: 17
+  last_commit_on: 2026/02/10
+  status: active
+  first_commit_by_person: https://github.com/appraisal-rb/setup-ruby-flash/commit/95081d1ec9f5d0e9cd1d78e5c443e4a3c580fc6c
+  first_commit_by_person_on: 2026/01/14

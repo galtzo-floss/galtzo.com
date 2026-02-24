@@ -470,16 +470,12 @@ class ProjectUpdater
     project['tags'] = raw_tags ? raw_tags.split(',').map(&:strip).reject(&:empty?) : []
 
     # ── Funding sites ─────────────────────────────────────────────────────────
+    # Only OpenCollective entries are project-specific and stored in the YAML.
+    # Liberapay (https://liberapay.com/pboling) is rendered as the fallback icon
+    # by the view layer when funding_sites is non-nil-but-empty, and GitHub
+    # Sponsors is always injected at render time — neither should be stored here.
     puts ""
-    puts "  Funding sites#{label}:"
-    default_funding = if project['role'] == 'author'
-      [
-        { 'type' => 'OpenCollective', 'url' => 'https://opencollective.com/galtzo-floss' },
-        { 'type' => 'Liberapay',      'url' => 'https://liberapay.com/pboling' },
-      ]
-    else
-      []
-    end
+    puts "  Funding sites#{label} (OpenCollective only — Liberapay & GitHub Sponsors are added by the view):"
 
     funding_sites = if opts[:funding_sites]
       raw_fs = opts[:funding_sites].to_s.strip
@@ -489,33 +485,50 @@ class ProjectUpdater
       else
         parsed = raw_fs.split(',').filter_map do |entry|
           type, url = entry.strip.split(':', 2)
+          next if type && %w[Liberapay GitHub\ Sponsors].include?(type.strip)
           { 'type' => type.strip, 'url' => url.strip } if type && url
         end
         puts "  Funding sites: #{parsed.map { |f| "#{f['type']}: #{f['url']}" }.join(', ')} [pre-supplied]"
         parsed
       end
     else
-      known_types = @projects
-        .flat_map { |p| Array(p['funding_sites']).map { |f| f['type'] } }
+      # Collect all known OpenCollective org slugs from existing projects
+      known_oc_urls = @projects
+        .flat_map { |p| Array(p['funding_sites']) }
+        .select  { |f| f['type'] == 'OpenCollective' }
+        .map     { |f| f['url'] }
         .compact.uniq.sort
 
-      puts "  Default: #{default_funding.empty? ? '(empty list — no funding sites)' : default_funding.map { |f| "#{f['type']}: #{f['url']}" }.join(', ')}"
-      result = default_funding.dup
+      # Suggest the forge owner's org as a sensible default (e.g. appraisal-rb → appraisal-rb)
+      gh_forge_owner = project.dig('forges', 0, 'owner') ||
+                       Array(project['forges']).find { |f| f['type'] == 'GitHub' }&.dig('owner')
+      default_oc_url = gh_forge_owner ? "https://opencollective.com/#{gh_forge_owner}" : nil
+
+      result = []
 
       loop do
         puts ""
-        puts "  Current: #{result.empty? ? '(none)' : result.map { |f| "#{f['type']}: #{f['url']}" }.join(', ')}"
+        already_added = result.map { |f| f['url'] }
+        puts "  Current: #{result.empty? ? '(none — Liberapay & GitHub Sponsors added by view)' : result.map { |f| f['url'] }.join(', ')}"
 
-        type_choices = known_types.map { |t| { name: t, value: t } }
-        type_choices << { name: '─' * 40, value: :separator, disabled: '' }
-        type_choices << { name: '✏️  Enter a new type manually', value: :new_type }
-        type_choices << { name: '🚫  Set to empty list (none)',   value: :none }
-        type_choices << { name: '✅  Done adding',                value: :done }
+        # Build choice list of OC orgs not yet added
+        available = known_oc_urls.reject { |u| already_added.include?(u) }
+        org_choices = available.map { |u| { name: u.split('/').last, value: u } }
+
+        # Surface the default suggestion first if it's not already in the list or added
+        if default_oc_url && !already_added.include?(default_oc_url) && !available.include?(default_oc_url)
+          org_choices.unshift({ name: "#{default_oc_url.split('/').last} (suggested)", value: default_oc_url })
+        end
+
+        org_choices << { name: '─' * 40, value: :separator, disabled: '' }
+        org_choices << { name: '✏️  Enter a new OpenCollective org URL manually', value: :new_url }
+        org_choices << { name: '🚫  Set to empty list (no OpenCollective)',        value: :none }
+        org_choices << { name: '✅  Done',                                         value: :done }
 
         selected = @prompt.select(
-          "Add a funding site — select type:",
-          type_choices,
-          per_page: type_choices.size,
+          "Add an OpenCollective org:",
+          org_choices,
+          per_page: org_choices.size,
           cycle:    true,
           filter:   true,
         )
@@ -525,28 +538,21 @@ class ProjectUpdater
           break
         when :none
           result = []
-          @prompt.ok "Funding sites cleared to empty list."
+          @prompt.ok "OpenCollective entries cleared."
           break
-        when :new_type
-          new_type = @prompt.ask("New funding type name (must match icon filename, e.g. 'GitHub Sponsors'):") do |q|
+        when :new_url
+          new_url = @prompt.ask("Full OpenCollective URL (e.g. https://opencollective.com/my-org):") do |q|
             q.required true
             q.modify   :strip
           end
-          next unless new_type
-          known_types << new_type unless known_types.include?(new_type)
-          selected_type = new_type
+          next unless new_url
+          result << { 'type' => 'OpenCollective', 'url' => new_url }
+          @prompt.ok "Added: #{new_url}"
         else
-          selected_type = selected
+          # selected is a URL string from the known list or suggested default
+          result << { 'type' => 'OpenCollective', 'url' => selected }
+          @prompt.ok "Added: #{selected}"
         end
-
-        url = @prompt.ask("URL for '#{selected_type}':") do |q|
-          q.required true
-          q.modify   :strip
-        end
-        next unless url
-
-        result << { 'type' => selected_type, 'url' => url }
-        @prompt.ok "Added: #{selected_type}: #{url}"
       end
       result
     end
@@ -921,10 +927,7 @@ class ProjectUpdater
       'role' => 'author', # Assume author since it's owned by the user
       'first_commit_by_person_on' => release_date, # Use first release date as placeholder
       'first_commit_by_person' => nil, # Will need to be filled manually or via GitHub API
-      'funding_sites' => [
-        { 'type' => 'OpenCollective', 'url' => 'https://opencollective.com/galtzo-floss' },
-        { 'type' => 'Liberapay', 'url' => 'https://liberapay.com/pboling' }
-      ],
+      'funding_sites' => [], # Populated interactively: only OpenCollective entries are stored
       'forges' => forges,
       'tags' => determine_tags_from_gem(gem_data),
       'docs_site' => gem_data['documentation_uri'] || nil

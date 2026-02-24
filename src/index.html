@@ -463,23 +463,18 @@ body_class: projects
     </h2>
     <p>
       <% if project['archived'] %>
-      <% # No reason to show funding links for archived projects %>
+      <% # No reason to show funding icons for archived projects %>
       <% else %>
-      <% if !project["funding_sites"].nil? %>
-      <% project["funding_sites"].each do |funding_site| %>
+      <%# Liberapay is always shown — it is the universal fallback funding icon %>
+      <a href="https://liberapay.com/pboling" class="funding-link" target="_blank" rel="noopener">
+        <img src="/assets/images/Liberapay.svg" alt="Liberapay" class="link-icon funding-site">
+      </a>
+      <%# Render any project-specific OpenCollective orgs stored in funding_sites %>
+      <% Array(project["funding_sites"]).each do |funding_site| %>
       <a href="<%= funding_site['url'] %>" class="funding-link" target="_blank" rel="noopener">
         <img
                 src="/assets/images/<%= funding_site['type'] %>.svg"
-                alt="Documentation Website (<%= funding_site['url'] %>)"
-                class="link-icon funding-site"
-        >
-      </a>
-      <% end %>
-      <% else %>
-      <a href="https://liberapay.com/pboling" class="funding-link" target="_blank" rel="noopener">
-        <img
-                src="/assets/images/Liberapay.svg"
-                alt="This project has no funding links. Please donate to me directly!"
+                alt="<%= funding_site['type'] %> (<%= funding_site['url'] %>)"
                 class="link-icon funding-site"
         >
       </a>
@@ -539,13 +534,15 @@ body_class: projects
     <p>
       This project is in the to-be-archived queue. It is no longer maintained, so speak up if you use it!
     </p>
-    <% elsif project["funding_sites"].any? %>
-    <% funding_sites = project["funding_sites"].dup %>
-    <% funding_sites << {"type" => "GitHub Sponsors", "url" => "https://github.com/sponsors/pboling"} unless funding_sites.any? { |fs| fs["type"] == "GitHub Sponsors" } %>
+    <% else %>
+    <%# Always show Liberapay + GitHub Sponsors; prepend any project-specific OC orgs %>
+    <% text_funding = Array(project["funding_sites"]).dup %>
+    <% text_funding << {"type" => "Liberapay",       "url" => "https://liberapay.com/pboling"} %>
+    <% text_funding << {"type" => "GitHub Sponsors", "url" => "https://github.com/sponsors/pboling"} %>
     <p>
       Financially support my work on <em><%= project["name"] %></em> via:
-    <% last_comma_index = funding_sites.size - 1 %>
-    <% funding_sites.each_with_index do |funding_site, i| %>
+    <% last_comma_index = text_funding.size - 1 %>
+    <% text_funding.each_with_index do |funding_site, i| %>
     <a href="<%= funding_site['url'] %>" class="text-link <%= funding_site['type'].gsub(' ', '-').downcase %>" target="_blank" rel="noopener">
       <% if funding_site['type'] == 'OpenCollective' %>
       <em><%= funding_site['url'].split("/")[-1] %></em>
@@ -705,23 +702,18 @@ body_class: projects
     </h2>
     <p>
       <% if project['archived'] %>
-      <% # No reason to show funding links for archived projects %>
+      <% # No reason to show funding icons for archived projects %>
       <% else %>
-      <% if !project["funding_sites"].nil? %>
-      <% project["funding_sites"].each do |funding_site| %>
+      <%# Liberapay is always shown — it is the universal fallback funding icon %>
+      <a href="https://liberapay.com/pboling" class="funding-link" target="_blank" rel="noopener">
+        <img src="/assets/images/Liberapay.svg" alt="Liberapay" class="link-icon funding-site">
+      </a>
+      <%# Render any project-specific OpenCollective orgs stored in funding_sites %>
+      <% Array(project["funding_sites"]).each do |funding_site| %>
       <a href="<%= funding_site['url'] %>" class="funding-link" target="_blank" rel="noopener">
         <img
                 src="/assets/images/<%= funding_site['type'] %>.svg"
-                alt="Documentation Website (<%= funding_site['url'] %>)"
-                class="link-icon funding-site"
-        >
-      </a>
-      <% end %>
-      <% else %>
-      <a href="https://liberapay.com/pboling" class="funding-link" target="_blank" rel="noopener">
-        <img
-                src="/assets/images/Liberapay.svg"
-                alt="This project has no funding links. Please donate to me directly!"
+                alt="<%= funding_site['type'] %> (<%= funding_site['url'] %>)"
                 class="link-icon funding-site"
         >
       </a>
@@ -781,9 +773,11 @@ body_class: projects
     <p>
       This project is in the to-be-archived queue. It is no longer maintained, so speak up if you use it!
     </p>
-    <% elsif project["funding_sites"].any? %>
-    <% funding_sites = project["funding_sites"].dup %>
-    <% funding_sites << {"type" => "GitHub Sponsors", "url" => "https://github.com/sponsors/pboling"} unless funding_sites.any? { |fs| fs["type"] == "GitHub Sponsors" } %>
+    <% else %>
+    <%# Always show Liberapay + GitHub Sponsors; prepend any project-specific OC orgs %>
+    <% text_funding = Array(project["funding_sites"]).dup %>
+    <% text_funding << {"type" => "Liberapay",       "url" => "https://liberapay.com/pboling"} %>
+    <% text_funding << {"type" => "GitHub Sponsors", "url" => "https://github.com/sponsors/pboling"} %>
     <p>
       Financially support
       <% if project["_is_person"] %>
@@ -792,8 +786,8 @@ body_class: projects
       my work on <em><%= project["name"] %></em>
       <% end %>
       via:
-    <% last_comma_index = funding_sites.size - 1 %>
-    <% funding_sites.each_with_index do |funding_site, i| %>
+    <% last_comma_index = text_funding.size - 1 %>
+    <% text_funding.each_with_index do |funding_site, i| %>
     <a href="<%= funding_site['url'] %>" class="text-link <%= funding_site['type'].gsub(' ', '-').downcase %>" target="_blank" rel="noopener">
       <% if funding_site['type'] == 'OpenCollective' %>
       <em><%= funding_site['url'].split("/")[-1] %></em>
