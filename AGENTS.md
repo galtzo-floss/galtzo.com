@@ -105,6 +105,7 @@ Flags: `--name`, `--ecosystem`, `--language`, `--role`, `--github-url`,
 galtzo.com/
   src/_data/projects.yml       # production project list
   src/_data/projects_dev.yml   # dev/test project list (must exist)
+  src/_data/families.yml       # family metadata: id, name, position (global order)
   scripts/update_projects      # main data refresh script (read-write, makes API calls)
   scripts/project_query        # read-only query/audit/console script (no API calls)
   scripts/analyze_tags         # read-only analysis + optional tag merge/rename script
@@ -120,21 +121,30 @@ galtzo.com/
 - `ecosystem: nil` (absent) — data quality issue; should be set to a real ecosystem or `none`.
 - `funding_sites: []` — valid empty list (external/contributed projects). `funding_sites: nil` / absent is a bug — `index.html` raises on it.
 - `minimum_version` — must always be a quoted string (e.g. `"2.7"`, not `2.7`). `save_yaml` in `update_projects` enforces this automatically.
+- `family_id` — references an `id` in `families.yml`. Project entries carry only `theme: family`, `family_id`, and optionally `family_primary: true`. `family_name` and `family_position` are **not** stored on project entries — they live in `families.yml` (name) and YAML insertion order (within-family member order) respectively.
 
 Read-only by default; writes only when `--interactive` (with confirmation) or `--apply` is used.
 
 ### scripts/manage_families — interactive family TUI
 
-Interactive. Reads + writes both YAML files on exit. Always run via `bundle exec`.
+Interactive. Reads + writes `projects.yml`, `projects_dev.yml`, and `families.yml` on exit.
+Always run via `bundle exec`.
 
 ```bash
 bundle exec ruby scripts/manage_families           # full TUI
 bundle exec ruby scripts/manage_families --dry-run # preview saves only
 ```
 
-Main menu: select a family by number, `U` for unassigned projects, `N` to create a new family, `Q` to save and exit.
-Per-family actions: `R` renumber (compact 1..N), `M` move/remove member, `A` add unassigned project, `D` delete family, `P` reorder globally.
-Family fields written: `theme`, `family_id`, `family_name`, `family_position`, `family_primary`.
+**Data model:** Family metadata (name, global display order) lives exclusively in
+`src/_data/families.yml`. Project entries in `projects.yml` carry only:
+`theme: family`, `family_id`, and (optionally) `family_primary: true`.
+Within-family member order is the order entries appear in `projects.yml`.
+
+Main menu: select a family by its `position` number, `U` for unassigned projects,
+`N` to create a new family, `Q` to save and exit.
+Per-family actions: `M` remove member, `S` swap two members' order, `A` add unassigned
+project, `D` delete family, `P` reposition this family among all families.
+Family fields written to projects: `theme`, `family_id`, `family_primary`.
 
 ```bash
 bundle exec ruby scripts/analyze_tags                    # full report

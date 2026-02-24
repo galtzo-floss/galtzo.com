@@ -1,0 +1,43 @@
+---
+- id: active-record
+  name: ActiveRecord Plugins
+  position: 2
+- id: logging-family
+  name: Logging Tools
+  position: 3
+- id: rspec-family
+  name: RSpec Plugins
+  position: 4
+- id: adoptable-family
+  name: Looking for Maintainers!
+  position: 5
+- id: archived-family
+  name: Thanks for the Memories!
+  position: 6
+- id: rails-family
+  name: Rails Plugins
+  position: 7
+- id: rubygems-bundler-family
+  name: RubyGems/Bundler Plugins
+  position: 8
+- id: kettle-rb-family
+  name: Kettle-RB Family
+  position: 9
+- id: ruby-openid
+  name: Ruby OpenID Family
+  position: 10
+- id: ruby-oauth
+  name: Ruby OAuth Family
+  position: 11
+- id: omniauth-family
+  name: OmniAuth Family
+  position: 12
+- id: resque-family
+  name: Resque Family
+  position: 13
+- id: rubocop-lts
+  name: RuboCop-LTS Family
+  position: 14
+- id: ast-merge
+  name: "*-merge Gem Family"
+  position: 1

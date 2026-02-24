@@ -245,6 +245,9 @@ body_class: projects
   </details>
 </div>
 
+<% # Build a lookup of family metadata from families.yml, keyed by id %>
+<% families_by_id = (site.data.families || []).each_with_object({}) { |f, h| h[f['id']] = f } %>
+
 <% # Phase 4: Family Theme - Group projects by family_id %>
 <% family_groups = {} %>
 <% non_family_projects = [] %>
@@ -260,18 +263,23 @@ body_class: projects
   <% end %>
 <% end %>
 
-<% # Sort family members by family_position %>
+<% # Sort family members by their within-family position (index in family_groups insertion order) %>
 <% family_groups.each do |family_id, members| %>
-  <% family_groups[family_id] = members.sort_by { |p| p['family_position'] || 999 } %>
+  <% family_groups[family_id] = members.sort_by.with_index { |p, i| i } %>
 <% end %>
 
-<% # Merge all projects back together for rendering: person first, then families, then regular projects %>
+<% # Order families by their position in families.yml, then merge for rendering %>
+<% ordered_families = (site.data.families || []).sort_by { |f| f['position'] || 999 } %>
+
+<% # Merge all projects back together for rendering: person first, then families (in position order), then regular projects %>
 <% all_projects_for_rendering = [] %>
 <% if person_project %>
   <% all_projects_for_rendering << { type: :single, project: person_project } %>
 <% end %>
-<% family_groups.each do |family_id, members| %>
-  <% all_projects_for_rendering << { type: :family, family_id: family_id, members: members } %>
+<% ordered_families.each do |family_meta| %>
+  <% members = family_groups[family_meta['id']] %>
+  <% next unless members && members.any? %>
+  <% all_projects_for_rendering << { type: :family, family_id: family_meta['id'], family_name: family_meta['name'], members: members } %>
 <% end %>
 <% non_family_projects.each do |project| %>
   <% all_projects_for_rendering << { type: :single, project: project } %>
@@ -283,7 +291,7 @@ body_class: projects
       <%# Render family stack container %>
       <% family_members = item[:members] %>
       <% primary_project = family_members.find { |p| p['family_primary'] } || family_members.first %>
-      <% family_name = primary_project['family_name'] %>
+      <% family_name = item[:family_name] %>
       <% family_id = item[:family_id] %>
 
       <li class="card-family-stack" data-family-id="<%= family_id %>" data-family-size="<%= family_members.size %>">
@@ -314,7 +322,6 @@ body_class: projects
                data-tags='<%= tags_for_card.to_json %>'
                data-theme="family"
                data-family-id="<%= project['family_id'] %>"
-               data-family-position="<%= project['family_position'] %>"
                data-family-index="<%= index %>"
                data-is-primary="<%= project['family_primary'] ? 'true' : 'false' %>">
     <div class="corner-anchor fork">
@@ -533,7 +540,7 @@ body_class: projects
     <% if project['theme'] == 'family' %>
     <div class="family-badge">
       <span class="family-icon" aria-hidden="true">🏠</span>
-      <span class="family-label"><%= project['family_name'] %></span>
+      <span class="family-label"><%= family_name %></span>
       <% if project['family_primary'] %>
       <span class="family-count">(<%= family_members.size %> projects)</span>
       <% end %>

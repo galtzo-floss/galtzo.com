@@ -69,8 +69,6 @@
   docs_site: https://galtzo.com
   theme:
   family_id:
-  family_name:
-  family_position:
 - name: active_security
   description: Disallow insecure, unscoped, finds
   language: Ruby
@@ -102,8 +100,6 @@
   last_scrape_at: '2026-02-23T04:34:59Z'
   theme: family
   family_id: active-record
-  family_name: ActiveRecord Plugins
-  family_position: 2
 - name: activerecord-transactionable
   description: Getting transactions right is hard, and this gem makes it easier.
   language: Ruby
@@ -143,8 +139,6 @@
   last_scrape_at: '2026-02-23T04:35:04Z'
   theme: family
   family_id: active-record
-  family_name: ActiveRecord Plugins
-  family_position: 4
 - name: anonymous_active_record
   description: Replacement for broken Class.new(ActiveRecord::Base)
   language: Ruby
@@ -176,8 +170,6 @@
   last_scrape_at: '2026-02-23T04:35:15Z'
   theme: family
   family_id: active-record
-  family_name: ActiveRecord Plugins
-  family_position: 5
 - name: skywalking-eyes
   description: |
     A full-featured license tool to check and fix license headers and resolve dependencies' licenses.
@@ -210,8 +202,6 @@
   last_scrape_at: '2026-02-23T04:35:17Z'
   theme:
   family_id:
-  family_name:
-  family_position:
 - name: appraisal2
   description: Appraisal2 integrates with bundler and rake to test your library against
     different versions of dependencies in repeatable scenarios called "appraisals."
@@ -250,8 +240,6 @@
   last_scrape_at: '2026-02-23T04:35:20Z'
   theme: family
   family_id: rspec-family
-  family_name: RSpec Plugins
-  family_position: 1
 - name: archivist-client
   description: archivist-client queries archive.org for book data and downloads some
     things.
@@ -283,8 +271,6 @@
   last_scrape_at: '2026-02-23T04:35:23Z'
   theme:
   family_id:
-  family_name:
-  family_position:
 - name: awesome_search
   description: Organize complicated search results
   language: Ruby
@@ -315,8 +301,6 @@
   last_scrape_at: '2026-02-23T04:35:25Z'
   theme: family
   family_id: adoptable-family
-  family_name: Looking for Maintainers!
-  family_position: 7
 - name: bash_step
   description: Bash Step Function Library
   language: Bash
@@ -343,8 +327,6 @@
   last_scrape_at: '2026-02-23T04:35:30Z'
   theme:
   family_id:
-  family_name:
-  family_position:
 - name: bsfl
   description: Bash Script Function Library
   language: Bash
@@ -371,8 +353,6 @@
   last_scrape_at: '2026-02-23T04:35:32Z'
   theme:
   family_id:
-  family_name:
-  family_position:
 - name: test-adopt-me-gem
   description: This project is available for adoption. Looking for a new maintainer
     who can take it forward!
@@ -629,8 +609,6 @@
   last_scrape_at: '2026-02-23T04:35:35Z'
   theme: family
   family_id: archived-family
-  family_name: Thanks for the Memories!
-  family_position: 1
 - name: yard-fence
   description: "\U0001F93A Convert ASCII braces ('{}') to full-width braces ('{}')
     within code fences (triple-or-single backticks) during YARD processing, and back
@@ -663,8 +641,6 @@
   last_scrape_at: '2026-02-23T04:40:06Z'
   theme:
   family_id:
-  family_name:
-  family_position:
 - name: yaml-converter
   description: "\U0001F968 yaml-converter parses YAML files (with inline #note: annotations
     and validation markers) and emits polished Markdown, HTML, and PDF/DOCX (via pandoc)
@@ -698,8 +674,6 @@
   last_scrape_at: '2026-02-23T04:40:08Z'
   theme:
   family_id:
-  family_name:
-  family_position:
 - name: yard-yaml
   description: "\U0001F968 A YARD plugin for YAML documents"
   language: Ruby
@@ -730,8 +704,6 @@
   last_scrape_at: '2026-02-23T04:40:10Z'
   theme:
   family_id:
-  family_name:
-  family_position:
 - name: prism-merge
   description: "☯️ Intelligently merge two versions of a Ruby file using Prism AST
     analysis, similar to a smart 'git merge' specifically designed for Ruby code."
@@ -763,8 +735,6 @@
   last_scrape_at: '2026-02-23T04:40:13Z'
   theme: family
   family_id: ast-merge
-  family_name: "*-merge Gem Family"
-  family_position: 11
 - name: ast-merge
   description: "☯️ Ast::Merge provides base classes, modules, and RSpec shared examples
     for building intelligent file mergers using AST analysis. It powers prism-merge,
@@ -797,8 +767,6 @@
   last_scrape_at: '2026-02-23T04:40:15Z'
   theme: family
   family_id: ast-merge
-  family_name: "*-merge Gem Family"
-  family_position: 3
 - name: dotenv-merge
   description: "☯️ Dotenv::Merge provides smart .env file merging that preserves comments,
     understands variable assignments, and supports freeze blocks for protecting sensitive
@@ -831,8 +799,6 @@
   last_scrape_at: '2026-02-23T04:40:17Z'
   theme: family
   family_id: ast-merge
-  family_name: "*-merge Gem Family"
-  family_position: 6
 - name: rbs-merge
   description: "☯️ Intelligently merge RBS type signature files by parsing and comparing
     AST structures. Supports freeze blocks to protect customizations, signature-based
@@ -865,8 +831,6 @@
   last_scrape_at: '2026-02-23T04:40:19Z'
   theme: family
   family_id: ast-merge
-  family_name: "*-merge Gem Family"
-  family_position: 13
 - name: tree_haver
   description: "\U0001F334 TreeHaver is a cross-Ruby adapter for many AST parsing
     libraries; supporting MRI Ruby, JRuby, & TruffleRuby. Provides unified parsing
@@ -902,8 +866,6 @@
   last_scrape_at: '2026-02-23T04:40:22Z'
   theme: family
   family_id: ast-merge
-  family_name: "*-merge Gem Family"
-  family_position: 1
   family_primary: true
 - name: toml-merge
   description: "☯️ Intelligently merges TOML files by analyzing their AST structure
@@ -937,8 +899,6 @@
   last_scrape_at: '2026-02-23T04:40:24Z'
   theme: family
   family_id: ast-merge
-  family_name: "*-merge Gem Family"
-  family_position: 14
 - name: bash-merge
   description: "☯️ Bash::Merge provides smart Bash script merging that preserves comments,
     understands shell structure, and supports freeze blocks for protecting destination
@@ -972,8 +932,6 @@
   last_scrape_at: '2026-02-23T04:40:26Z'
   theme: family
   family_id: ast-merge
-  family_name: "*-merge Gem Family"
-  family_position: 4
 - name: json-merge
   description: "☯️ Json::Merge provides smart JSON file merging that understands JSON
     structure. Perfect for merging strict JSON configuration files like package.json,
@@ -1008,8 +966,6 @@
   last_scrape_at: '2026-02-23T04:40:28Z'
   theme: family
   family_id: ast-merge
-  family_name: "*-merge Gem Family"
-  family_position: 7
 - name: markdown-merge
   description: "☯️ Ast::Merge-based structure for merging Markdown files with tools
     like markly-merge and commonmarker-merge"
@@ -1041,8 +997,6 @@
   last_scrape_at: '2026-02-23T04:40:30Z'
   theme: family
   family_id: ast-merge
-  family_name: "*-merge Gem Family"
-  family_position: 9
 - name: jsonc-merge
   description: "☯️ Jsonc::Merge provides smart JSONC (JSON with Comments) file merging
     that preserves comments, understands JSON structure, and supports freeze blocks
@@ -1076,8 +1030,6 @@
   last_scrape_at: '2026-02-23T04:40:32Z'
   theme: family
   family_id: ast-merge
-  family_name: "*-merge Gem Family"
-  family_position: 8
 - name: commonmarker-merge
   description: "☯️ Commonmarker::Merge provides smart Markdown file merging using
     Comrak (Rust) via Commonmarker. It understands document structure including headings,
@@ -1111,8 +1063,6 @@
   last_scrape_at: '2026-02-23T04:40:35Z'
   theme: family
   family_id: ast-merge
-  family_name: "*-merge Gem Family"
-  family_position: 5
 - name: psych-merge
   description: "☯️ Psych::Merge provides smart YAML file merging that preserves comments,
     anchors/aliases, and supports freeze blocks for protecting destination content.
@@ -1145,8 +1095,6 @@
   last_scrape_at: '2026-02-23T04:40:37Z'
   theme: family
   family_id: ast-merge
-  family_name: "*-merge Gem Family"
-  family_position: 12
 - name: markly-merge
   description: "☯️ Markly::Merge provides smart Markdown file merging using libcmark-gfm
     via Markly. It understands document structure including headings, lists, code
@@ -1180,8 +1128,6 @@
   last_scrape_at: '2026-02-23T04:40:39Z'
   theme: family
   family_id: ast-merge
-  family_name: "*-merge Gem Family"
-  family_position: 10
 - name: token-resolver
   description: "\U0001FA99 Token::Resolver provides configurable PEG-based (parslet)
     parsing and resolution of structured tokens (e.g., {KJ|GEM_NAME}) in arbitrary
@@ -1215,5 +1161,3 @@
   last_scrape_at: '2026-02-23T04:40:41Z'
   theme: family
   family_id: ast-merge
-  family_name: "*-merge Gem Family"
-  family_position: 2

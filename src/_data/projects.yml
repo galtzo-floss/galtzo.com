@@ -4041,41 +4041,6 @@
   last_commit_on: 2026/02/23
   status: active
   last_scrape_at: '2026-02-23T04:40:10Z'
-- name: prism-merge
-  description: "☯️ Intelligently merge two versions of a Ruby file using Prism AST
-    analysis, similar to a smart 'git merge' specifically designed for Ruby code."
-  language: Ruby
-  ecosystem: rubygems
-  minimum_version: '2.7'
-  role: author
-  first_commit_on: 2025/12/02
-  first_commit: https://github.com/kettle-rb/prism-merge/commit/71fcddaa659cd6e9e94053e67524e5a400423ced
-  funding_sites:
-  - type: OpenCollective
-    url: https://opencollective.com/kettle-rb
-  - type: Liberapay
-    url: https://liberapay.com/pboling
-  forges:
-  - type: GitHub
-    url: https://github.com/kettle-rb/prism-merge
-    owner: kettle-rb
-  tags:
-  - ruby
-  - ast
-  - templating
-  docs_site: https://www.rubydoc.info/gems/prism-merge/2.0.4
-  total_downloads: 2121
-  daily_downloads:
-  release_downloads: 71
-  release_date: 2026/02/22
-  github_stars: 17
-  last_commit_on: 2026/02/22
-  status: active
-  last_scrape_at: '2026-02-23T04:40:13Z'
-  theme: family
-  family_id: ast-merge
-  family_name: "*-merge Gem Family"
-  family_position: 11
 - name: ast-merge
   description: "☯️ Ast::Merge provides base classes, modules, and RSpec shared examples
     for building intelligent file mergers using AST analysis. It powers prism-merge,
@@ -4112,6 +4077,41 @@
   family_id: ast-merge
   family_name: "*-merge Gem Family"
   family_position: 3
+- name: prism-merge
+  description: "☯️ Intelligently merge two versions of a Ruby file using Prism AST
+    analysis, similar to a smart 'git merge' specifically designed for Ruby code."
+  language: Ruby
+  ecosystem: rubygems
+  minimum_version: '2.7'
+  role: author
+  first_commit_on: 2025/12/02
+  first_commit: https://github.com/kettle-rb/prism-merge/commit/71fcddaa659cd6e9e94053e67524e5a400423ced
+  funding_sites:
+  - type: OpenCollective
+    url: https://opencollective.com/kettle-rb
+  - type: Liberapay
+    url: https://liberapay.com/pboling
+  forges:
+  - type: GitHub
+    url: https://github.com/kettle-rb/prism-merge
+    owner: kettle-rb
+  tags:
+  - ruby
+  - ast
+  - templating
+  docs_site: https://www.rubydoc.info/gems/prism-merge/2.0.4
+  total_downloads: 2121
+  daily_downloads:
+  release_downloads: 71
+  release_date: 2026/02/22
+  github_stars: 17
+  last_commit_on: 2026/02/22
+  status: active
+  last_scrape_at: '2026-02-23T04:40:13Z'
+  theme: family
+  family_id: ast-merge
+  family_name: "*-merge Gem Family"
+  family_position: 11
 - name: dotenv-merge
   description: "☯️ Dotenv::Merge provides smart .env file merging that preserves comments,
     understands variable assignments, and supports freeze blocks for protecting sensitive
