@@ -28,7 +28,7 @@ class ProjectUpdater
     release_date last_commit_on status
   ]
 
-  def initialize(surgical_field: nil, discover_rubygems: true, auto_confirm: false)
+  def initialize(surgical_fields: [], discover_rubygems: true, auto_confirm: false)
     # SAFETY CHECK: projects_dev.yml must exist
     # If it doesn't exist, it means scripts/devswap was run but not run again to restore prod
     # This risks deploying dev/test projects to production
@@ -55,7 +55,7 @@ class ProjectUpdater
     @projects_dev = load_yaml(PROJECTS_DEV_FILE)
     @rate_limit_delay = 1 # seconds between API calls
     @errors = [] # Track errors for summary
-    @surgical_field = surgical_field
+    @surgical_fields = Array(surgical_fields).compact
     @discover_rubygems = discover_rubygems
     @auto_confirm = auto_confirm
     @prompt = TTY::Prompt.new
@@ -64,8 +64,9 @@ class ProjectUpdater
     @projects_header = extract_yaml_header(PROJECTS_FILE)
     @projects_dev_header = extract_yaml_header(PROJECTS_DEV_FILE)
 
-    if @surgical_field && !VALID_SURGICAL_FIELDS.include?(@surgical_field)
-      raise "Invalid surgical field: #{@surgical_field}. Valid fields: #{VALID_SURGICAL_FIELDS.join(', ')}"
+    invalid = @surgical_fields - VALID_SURGICAL_FIELDS
+    if invalid.any?
+      raise "Invalid surgical field(s): #{invalid.join(', ')}. Valid fields: #{VALID_SURGICAL_FIELDS.join(', ')}"
     end
   end
 
@@ -103,8 +104,8 @@ class ProjectUpdater
     puts "="*80
     puts "Starting project update..."
 
-    if @surgical_field
-      puts "🔬 SURGICAL UPDATE MODE: Only updating '#{@surgical_field}' field"
+    if @surgical_fields.any?
+      puts "🔬 SURGICAL UPDATE MODE: Only updating #{@surgical_fields.map { |f| "'#{f}'" }.join(', ')} field(s)"
       puts "   (Ignoring last_scrape_at timestamps)"
     end
     puts "Processing #{@projects.size} projects from #{PROJECTS_FILE}"
@@ -112,14 +113,31 @@ class ProjectUpdater
     puts "GitLab Token: #{GITLAB_TOKEN ? '✅ Set' : '❌ Not set'}"
     puts "RubyGems Handle: #{RUBYGEMS_HANDLE ? "✅ Set (#{RUBYGEMS_HANDLE})" : '❌ Not set'}"
 
-    non_person = @projects.count { |p| p['type'] != 'person' }
-    skippable  = @projects.count { |p| p['type'] != 'person' && !@surgical_field && recently_scraped?(p) }
-    to_update  = non_person - skippable
+    non_person   = @projects.reject { |p| p['type'] == 'person' }
+    skippable    = non_person.select { |p| !@surgical_fields.any? && recently_scraped?(p) }
+    to_process   = non_person - skippable
+
+    # Partition what we can actually update
+    has_github   = to_process.select { |p| (p['forges'] || []).any? { |f| f['type'] == 'GitHub' } }
+    no_github    = to_process - has_github
+    rubygems     = has_github.select { |p| p['language'] == 'Ruby' && p['ecosystem'] == 'rubygems' }
+    github_only  = has_github - rubygems
+
     puts ""
-    puts "  #{non_person} projects total, #{skippable} recently scraped (will skip), #{to_update} to update."
+    puts "  📋 #{non_person.size} projects total"
+    puts "  ⏭️  #{skippable.size} recently scraped (will skip)"
+    puts ""
+    puts "  Of the #{to_process.size} remaining:"
+    puts "    ⭐ #{has_github.size} have a GitHub forge → stars, status, last commit, release date"
+    puts "    💎 #{rubygems.size} are RubyGems → also: total/daily/release downloads"
+    puts "    🔗 #{github_only.size} are GitHub-only (no download stats available)"
+    if no_github.any?
+      puts "    ⚠️  #{no_github.size} have no GitHub forge → will be skipped (no update source):"
+      no_github.each { |p| puts "       • #{p['name']} (#{p['ecosystem']})" }
+    end
     puts ""
 
-    unless confirm("▶️  Proceed with updating #{to_update} project(s)?", default: true)
+    unless confirm("▶️  Proceed with updating #{has_github.size} project(s)?", default: true)
       puts "Aborted."
       exit 0
     end
@@ -136,7 +154,7 @@ class ProjectUpdater
       end
 
       # Check if project was recently scraped (skip this check in surgical mode)
-      if !@surgical_field && recently_scraped?(project)
+      if !@surgical_fields.any? && recently_scraped?(project)
         puts "[#{index + 1}/#{@projects.size}] ⏭️  Skipping (scraped #{time_ago(project['last_scrape_at'])}): #{project['name']}"
         skipped_count += 1
         next
@@ -144,9 +162,17 @@ class ProjectUpdater
 
       puts "\n[#{index + 1}/#{@projects.size}] Processing: #{project['name']}"
 
+      # Skip projects with no GitHub forge — we have no update source for them
+      has_github_forge = (project['forges'] || []).any? { |f| f['type'] == 'GitHub' }
+      unless has_github_forge || @surgical_fields.any?
+        puts "  ⏭️  No GitHub forge — skipping (no update source available)"
+        skipped_count += 1
+        next
+      end
+
       begin
-        if @surgical_field
-          update_single_field(project, @surgical_field)
+        if @surgical_fields.any?
+          @surgical_fields.each { |field| update_single_field(project, field) }
         else
           update_project(project)
           # Set the scrape timestamp only for full updates
@@ -977,13 +1003,21 @@ class ProjectUpdater
         gem_name = project['name']
         gem_info = fetch_rubygems_info(gem_name)
         if gem_info
-          project['total_downloads'] = gem_info[:total_downloads]
-          project['daily_downloads'] = gem_info[:daily_downloads]
+          project['total_downloads']   = gem_info[:total_downloads]
+          project['daily_downloads']   = gem_info[:daily_downloads]
           project['release_downloads'] = gem_info[:release_downloads]
           puts "  📦 #{field}: #{gem_info[field.to_sym]}"
         end
+      elsif github_forge
+        gh_downloads = fetch_github_release_downloads(github_forge['url'])
+        if gh_downloads
+          github_forge['total_downloads']   = gh_downloads[:total_downloads]
+          github_forge['release_downloads'] = gh_downloads[:release_downloads]
+          puts "  📦 GitHub release downloads (total): #{gh_downloads[:total_downloads]}"
+          puts "  📥 GitHub release downloads (latest): #{gh_downloads[:release_downloads] || 'N/A'}"
+        end
       else
-        puts "  ⏭️  Not a RubyGem"
+        puts "  ⏭️  No download source available for this project"
       end
 
     when 'release_date'
@@ -1054,6 +1088,17 @@ class ProjectUpdater
       puts "  ⭐ Codeberg stars: #{codeberg_stars}"
     end
 
+    # Step 3b: GitHub release downloads (non-rubygems only — rubygems has no release assets)
+    unless project['language'] == 'Ruby' && project['ecosystem'] == 'rubygems'
+      gh_downloads = fetch_github_release_downloads(github_forge['url'])
+      if gh_downloads
+        github_forge['total_downloads']   = gh_downloads[:total_downloads]
+        github_forge['release_downloads'] = gh_downloads[:release_downloads]
+        puts "  📦 GitHub release downloads (total): #{gh_downloads[:total_downloads]}"
+        puts "  📥 GitHub release downloads (latest): #{gh_downloads[:release_downloads] || 'N/A'}"
+      end
+    end
+
     # Steps 4-6: RubyGems download statistics (for Ruby gems only)
     if project['language'] == 'Ruby' && project['ecosystem'] == 'rubygems'
       gem_name = project['name']
@@ -1065,11 +1110,7 @@ class ProjectUpdater
         project['release_downloads'] = gem_info[:release_downloads]
 
         puts "  📦 Total downloads: #{gem_info[:total_downloads]}"
-        if gem_info[:daily_downloads]
-          puts "  📊 Daily downloads: #{gem_info[:daily_downloads]}"
-        else
-          puts "  📊 Daily downloads: N/A (not available via public API)"
-        end
+        puts "  📊 Daily downloads: #{gem_info[:daily_downloads] || 'N/A'}"
         puts "  📥 Release downloads: #{gem_info[:release_downloads]}"
       end
     end
@@ -1154,6 +1195,39 @@ class ProjectUpdater
     end
   end
 
+  def fetch_github_release_downloads(url)
+    repo_path = extract_repo_path(url)
+    page      = 1
+    all_releases = []
+
+    loop do
+      page_url = "https://api.github.com/repos/#{repo_path}/releases?per_page=100&page=#{page}"
+      data = github_api_request(page_url)
+      break unless data.is_a?(Array) && data.any?
+      all_releases.concat(data)
+      break if data.size < 100
+      page += 1
+    end
+
+    return nil if all_releases.empty?
+
+    # Total downloads = sum of every asset's download_count across all releases
+    total = all_releases.sum do |release|
+      Array(release['assets']).sum { |asset| asset['download_count'].to_i }
+    end
+
+    # Release downloads = asset download_count sum for the most recent non-prerelease release
+    latest = all_releases.reject { |r| r['prerelease'] || r['draft'] }.first
+    release = latest ? Array(latest['assets']).sum { |asset| asset['download_count'].to_i } : nil
+
+    { total_downloads: total, release_downloads: release }
+  rescue => e
+    error_msg = "Failed to fetch GitHub release downloads from #{url}: #{e.message}"
+    @errors << error_msg unless @errors.include?(error_msg)
+    puts "    ⚠️  #{error_msg}"
+    nil
+  end
+
   def fetch_github_info(url)
     repo_path = extract_repo_path(url)
     api_url = "https://api.github.com/repos/#{repo_path}"
@@ -1235,26 +1309,38 @@ class ProjectUpdater
   end
 
   def fetch_rubygems_info(gem_name)
-    # Fetch gem stats - this includes all download data available via public API
     api_url = "https://rubygems.org/api/v1/gems/#{gem_name}.json"
     data = api_request(api_url)
 
     return nil unless data
 
-    total_downloads = data['downloads'] || 0
+    total_downloads  = data['downloads'] || 0
     version_downloads = data['version_downloads'] || 0
-
-    # Note: RubyGems public API does not provide daily/weekly/monthly download statistics
-    # We'll set this to nil to indicate it's not available
-    daily_downloads = nil
+    daily_downloads  = fetch_bestgems_daily(gem_name)
 
     {
-      total_downloads: total_downloads,
-      daily_downloads: daily_downloads,
-      release_downloads: version_downloads
+      total_downloads:  total_downloads,
+      daily_downloads:  daily_downloads,
+      release_downloads: version_downloads,
     }
   rescue => e
     error_msg = "Failed to fetch RubyGems info for #{gem_name}: #{e.message}"
+    @errors << error_msg unless @errors.include?(error_msg)
+    puts "    ⚠️  #{error_msg}"
+    nil
+  end
+
+  BESTGEMS_API = "http://bestgems.org/api/v1/gems"
+
+  def fetch_bestgems_daily(gem_name)
+    url  = "#{BESTGEMS_API}/#{gem_name}/daily_downloads.json"
+    data = api_request(url)
+    return nil unless data.is_a?(Array) && data.any?
+    # Response is array of {"date"=>..., "daily_downloads"=>...}, sorted date desc.
+    # First entry is already the most recent, but max_by is safe against gaps.
+    data.max_by { |row| row['date'] }&.fetch('daily_downloads', nil)
+  rescue => e
+    error_msg = "Failed to fetch bestgems daily downloads for #{gem_name}: #{e.message}"
     @errors << error_msg unless @errors.include?(error_msg)
     puts "    ⚠️  #{error_msg}"
     nil
@@ -1323,7 +1409,7 @@ class ProjectUpdater
     request = Net::HTTP::Get.new(uri)
     request['User-Agent'] = 'Galtzo-Project-Updater'
 
-    response = Net::HTTP.start(uri.hostname, uri.port, use_ssl: true) do |http|
+    response = Net::HTTP.start(uri.hostname, uri.port, use_ssl: uri.scheme == 'https') do |http|
       http.request(request)
     end
 
@@ -1559,10 +1645,10 @@ if __FILE__ == $0
   add_project_opts = {}
 
   OptionParser.new do |op|
-    op.banner = "Usage: #{$0} [OPTIONS] [SUBCOMMAND|FIELD]"
+    op.banner = "Usage: #{$0} [OPTIONS] [SUBCOMMAND|FIELD [FIELD ...]]"
 
     op.separator ""
-    op.separator "Fetches live stats for erefavery project in projects.yml from GitHub, GitLab,"
+    op.separator "Fetches live stats for every project in projects.yml from GitHub, GitLab,"
     op.separator "Codeberg, and RubyGems APIs."
     op.separator ""
     op.separator "When run with no subcommand or field, a RubyGems discovery pre-flight runs"
@@ -1574,7 +1660,7 @@ if __FILE__ == $0
     op.separator "  add_project             Interactively add a single project to projects.yml."
     op.separator "                          Works for any language / ecosystem."
     op.separator ""
-    op.separator "Surgical Update Fields (update one field across all projects):"
+    op.separator "Surgical Update Fields (one or more, space-separated):"
     ProjectUpdater::VALID_SURGICAL_FIELDS.each { |f| op.separator "  #{f}" }
     op.separator ""
     op.separator "Environment Variables:"
@@ -1583,13 +1669,13 @@ if __FILE__ == $0
     op.separator "  RUBYGEMS_HANDLE         Your RubyGems username — required for gem discovery"
     op.separator ""
     op.separator "Examples:"
-    op.separator "  #{$0}                              # Full update + gem discovery (interactive)"
-    op.separator "  #{$0} -y                           # Full update + gem discovery (non-interactive)"
-    op.separator "  #{$0} --no-discover                # Full update, skip gem discovery"
-    op.separator "  #{$0} release_date                 # Surgical: update only release_date"
-    op.separator "  #{$0} github_stars                 # Surgical: update only github_stars"
-    op.separator "  #{$0} -y release_date              # Surgical update, non-interactive"
-    op.separator "  #{$0} add_project                  # Interactively add a project"
+    op.separator "  #{$0}                                             # Full update + gem discovery"
+    op.separator "  #{$0} -y                                          # Full update, non-interactive"
+    op.separator "  #{$0} --no-discover                               # Full update, skip discovery"
+    op.separator "  #{$0} release_date                                # Surgical: one field"
+    op.separator "  #{$0} total_downloads daily_downloads release_downloads  # Surgical: multiple"
+    op.separator "  #{$0} -y github_stars                             # Surgical, non-interactive"
+    op.separator "  #{$0} add_project                                 # Interactively add a project"
     op.separator "  #{$0} add_project --name my-gem --ecosystem rubygems --github-url https://github.com/org/repo"
     op.separator ""
     op.separator "Options:"
@@ -1656,21 +1742,19 @@ if __FILE__ == $0
     end
   end.parse!
 
-  # Remaining ARGV after parse! holds an optional subcommand or surgical field
-  remainder = ARGV.first
-
-  subcommand     = remainder == 'add_project' ? 'add_project' : nil
-  surgical_field = (remainder && remainder != 'add_project') ? remainder : nil
+  # Remaining ARGV after parse! holds an optional subcommand or one/more surgical fields
+  subcommand      = ARGV.first == 'add_project' ? 'add_project' : nil
+  surgical_fields = subcommand ? [] : ARGV.select { |a| !a.start_with?('--') }
 
   # Discovery is on by default ONLY for a bare full update (no subcommand, no
-  # surgical field). When the user is doing something more targeted they don't
+  # surgical fields). When the user is doing something more targeted they don't
   # want the pre-flight slowing them down unless they asked for it explicitly.
   if options[:discover_rubygems].nil?
-    options[:discover_rubygems] = subcommand.nil? && surgical_field.nil?
+    options[:discover_rubygems] = subcommand.nil? && surgical_fields.empty?
   end
 
   updater = ProjectUpdater.new(
-    surgical_field:    surgical_field,
+    surgical_fields:   surgical_fields,
     discover_rubygems: options[:discover_rubygems],
     auto_confirm:      options[:auto_confirm],
   )

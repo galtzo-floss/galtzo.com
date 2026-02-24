@@ -91,13 +91,13 @@
   - activerecord
   docs_site:
   github_stars: 7
-  total_downloads: 3040
+  total_downloads: 3047
   daily_downloads:
-  release_downloads: 2579
+  release_downloads: 2585
   release_date: 2024/07/05
   last_commit_on: 2026/01/22
   status: active
-  last_scrape_at: '2026-02-23T04:34:59Z'
+  last_scrape_at: '2026-02-24T05:39:12Z'
   theme: family
   family_id: active-record
 - name: activerecord-transactionable
@@ -130,13 +130,13 @@
   github_stars: 11
   gitlab_stars: 0
   codeberg_stars: 0
-  total_downloads: 58596
+  total_downloads: 58717
   daily_downloads:
-  release_downloads: 2900
+  release_downloads: 2911
   release_date: 2024/03/06
   last_commit_on: 2026/01/17
   status: active
-  last_scrape_at: '2026-02-23T04:35:04Z'
+  last_scrape_at: '2026-02-24T05:39:18Z'
   theme: family
   family_id: active-record
 - name: anonymous_active_record
@@ -161,13 +161,13 @@
   - activerecord
   docs_site:
   github_stars: 12
-  total_downloads: 295038
+  total_downloads: 295061
   daily_downloads:
-  release_downloads: 239002
+  release_downloads: 239020
   release_date: 2024/09/18
   last_commit_on: 2026/01/17
   status: active
-  last_scrape_at: '2026-02-23T04:35:15Z'
+  last_scrape_at: '2026-02-24T05:39:27Z'
   theme: family
   family_id: active-record
 - name: skywalking-eyes
@@ -199,7 +199,7 @@
   release_date: 2025/10/27
   last_commit_on: 2026/02/11
   status: active
-  last_scrape_at: '2026-02-23T04:35:17Z'
+  last_scrape_at: '2026-02-24T05:39:30Z'
   theme:
   family_id:
 - name: appraisal2
@@ -231,13 +231,13 @@
   github_stars: 18
   gitlab_stars: 0
   codeberg_stars: 0
-  total_downloads: 42562
+  total_downloads: 42634
   daily_downloads:
-  release_downloads: 935
+  release_downloads: 1004
   release_date: 2026/02/18
   last_commit_on: 2026/02/21
   status: active
-  last_scrape_at: '2026-02-23T04:35:20Z'
+  last_scrape_at: '2026-02-24T05:39:33Z'
   theme: family
   family_id: rspec-family
 - name: archivist-client
@@ -262,13 +262,13 @@
   - cli
   docs_site:
   github_stars: 16
-  total_downloads: 38069
+  total_downloads: 38073
   daily_downloads:
-  release_downloads: 3088
+  release_downloads: 3089
   release_date: 2018/09/04
   last_commit_on: 2026/01/17
   status: active
-  last_scrape_at: '2026-02-23T04:35:23Z'
+  last_scrape_at: '2026-02-24T05:39:35Z'
   theme:
   family_id:
 - name: awesome_search
@@ -292,13 +292,13 @@
   - api
   docs_site:
   github_stars: 8
-  total_downloads: 11217
+  total_downloads: 11218
   daily_downloads:
   release_downloads: 6236
   release_date: 2010/06/22
   last_commit_on: 2026/01/22
   status: active
-  last_scrape_at: '2026-02-23T04:35:25Z'
+  last_scrape_at: '2026-02-24T05:39:37Z'
   theme: family
   family_id: adoptable-family
 - name: bash_step
@@ -324,7 +324,7 @@
   release_date:
   last_commit_on: 2021/12/07
   status: stale
-  last_scrape_at: '2026-02-23T04:35:30Z'
+  last_scrape_at: '2026-02-24T05:39:41Z'
   theme:
   family_id:
 - name: bsfl
@@ -350,7 +350,7 @@
   release_date:
   last_commit_on: 2021/12/07
   status: stale
-  last_scrape_at: '2026-02-23T04:35:32Z'
+  last_scrape_at: '2026-02-24T05:39:44Z'
   theme:
   family_id:
 - name: test-adopt-me-gem
@@ -599,14 +599,14 @@
   tags:
   - rails
   docs_site: https://www.rubydoc.info/gems/cacheable_flash/1.0.0
-  total_downloads: 465648
+  total_downloads: 465691
   daily_downloads:
-  release_downloads: 180107
+  release_downloads: 180137
   release_date: 2017/04/11
   github_stars: 101
   last_commit_on: 2020/11/15
   status: archived
-  last_scrape_at: '2026-02-23T04:35:35Z'
+  last_scrape_at: '2026-02-24T05:39:46Z'
   theme: family
   family_id: archived-family
 - name: yard-fence
@@ -631,14 +631,14 @@
   tags:
   - ruby
   docs_site: https://www.rubydoc.info/gems/yard-fence/0.8.2
-  total_downloads: 1845
+  total_downloads: 1850
   daily_downloads:
-  release_downloads: 323
+  release_downloads: 328
   release_date: 2025/12/30
   github_stars: 1
   last_commit_on: 2026/02/23
   status: active
-  last_scrape_at: '2026-02-23T04:40:06Z'
+  last_scrape_at: '2026-02-24T05:43:58Z'
   theme:
   family_id:
 - name: yaml-converter
@@ -664,14 +664,14 @@
   tags:
   - ruby
   docs_site: https://www.rubydoc.info/gems/yaml-converter/0.1.0
-  total_downloads: 1568
+  total_downloads: 1572
   daily_downloads:
-  release_downloads: 1568
+  release_downloads: 1572
   release_date: 2025/11/09
   github_stars: 2
-  last_commit_on: 2026/02/20
+  last_commit_on: 2026/02/23
   status: active
-  last_scrape_at: '2026-02-23T04:40:08Z'
+  last_scrape_at: '2026-02-24T05:44:00Z'
   theme:
   family_id:
 - name: yard-yaml
@@ -694,14 +694,14 @@
   tags:
   - ruby
   docs_site: https://www.rubydoc.info/gems/yard-yaml/0.1.0
-  total_downloads: 1720
+  total_downloads: 1725
   daily_downloads:
-  release_downloads: 1720
+  release_downloads: 1725
   release_date: 2025/11/10
   github_stars: 2
   last_commit_on: 2026/02/23
   status: active
-  last_scrape_at: '2026-02-23T04:40:10Z'
+  last_scrape_at: '2026-02-24T05:44:03Z'
   theme:
   family_id:
 - name: prism-merge
@@ -725,14 +725,14 @@
   tags:
   - test
   docs_site: https://www.rubydoc.info/gems/prism-merge/2.0.4
-  total_downloads: 2121
+  total_downloads: 2298
   daily_downloads:
-  release_downloads: 71
+  release_downloads: 117
   release_date: 2026/02/22
   github_stars: 17
   last_commit_on: 2026/02/22
   status: active
-  last_scrape_at: '2026-02-23T04:40:13Z'
+  last_scrape_at: '2026-02-24T05:44:28Z'
   theme: family
   family_id: ast-merge
 - name: ast-merge
@@ -757,14 +757,14 @@
   tags:
   - test
   docs_site: https://www.rubydoc.info/gems/ast-merge/4.0.6
-  total_downloads: 9280
+  total_downloads: 9282
   daily_downloads:
   release_downloads: 158
   release_date: 2026/02/19
   github_stars: 4
   last_commit_on: 2026/02/21
   status: active
-  last_scrape_at: '2026-02-23T04:40:15Z'
+  last_scrape_at: '2026-02-24T05:44:07Z'
   theme: family
   family_id: ast-merge
 - name: dotenv-merge
@@ -789,14 +789,14 @@
   tags:
   - ruby
   docs_site: https://www.rubydoc.info/gems/dotenv-merge/1.0.3
-  total_downloads: 4045
+  total_downloads: 4048
   daily_downloads:
-  release_downloads: 120
+  release_downloads: 121
   release_date: 2026/02/19
   github_stars: 1
   last_commit_on: 2026/02/19
   status: active
-  last_scrape_at: '2026-02-23T04:40:17Z'
+  last_scrape_at: '2026-02-24T05:44:17Z'
   theme: family
   family_id: ast-merge
 - name: rbs-merge
@@ -821,14 +821,14 @@
   tags:
   - ruby
   docs_site: https://www.rubydoc.info/gems/rbs-merge/2.0.0
-  total_downloads: 1889
+  total_downloads: 1890
   daily_downloads:
   release_downloads: 120
   release_date: 2026/02/19
   github_stars: 1
   last_commit_on: 2026/02/22
   status: active
-  last_scrape_at: '2026-02-23T04:40:19Z'
+  last_scrape_at: '2026-02-24T05:44:33Z'
   theme: family
   family_id: ast-merge
 - name: tree_haver
@@ -856,14 +856,14 @@
   - api
   - cli
   docs_site: https://www.rubydoc.info/gems/tree_haver/5.0.5
-  total_downloads: 4765
+  total_downloads: 4772
   daily_downloads:
-  release_downloads: 175
+  release_downloads: 176
   release_date: 2026/02/18
   github_stars: 15
   last_commit_on: 2026/02/19
   status: active
-  last_scrape_at: '2026-02-23T04:40:22Z'
+  last_scrape_at: '2026-02-24T05:44:05Z'
   theme: family
   family_id: ast-merge
   family_primary: true
@@ -889,14 +889,14 @@
   tags:
   - ruby
   docs_site: https://www.rubydoc.info/gems/toml-merge/2.0.1
-  total_downloads: 2450
+  total_downloads: 2452
   daily_downloads:
-  release_downloads: 119
+  release_downloads: 120
   release_date: 2026/02/19
   github_stars: 1
   last_commit_on: 2026/02/19
   status: active
-  last_scrape_at: '2026-02-23T04:40:24Z'
+  last_scrape_at: '2026-02-24T05:44:35Z'
   theme: family
   family_id: ast-merge
 - name: bash-merge
@@ -922,14 +922,14 @@
   tags:
   - ruby
   docs_site: https://www.rubydoc.info/gems/bash-merge/2.0.6
-  total_downloads: 3713
+  total_downloads: 3716
   daily_downloads:
-  release_downloads: 123
+  release_downloads: 124
   release_date: 2026/02/19
   github_stars: 1
   last_commit_on: 2026/02/21
   status: active
-  last_scrape_at: '2026-02-23T04:40:26Z'
+  last_scrape_at: '2026-02-24T05:44:12Z'
   theme: family
   family_id: ast-merge
 - name: json-merge
@@ -956,14 +956,14 @@
   tags:
   - ruby
   docs_site: https://www.rubydoc.info/gems/json-merge/1.1.2
-  total_downloads: 1738
+  total_downloads: 1744
   daily_downloads:
-  release_downloads: 120
+  release_downloads: 122
   release_date: 2026/02/19
   github_stars: 1
   last_commit_on: 2026/02/19
   status: active
-  last_scrape_at: '2026-02-23T04:40:28Z'
+  last_scrape_at: '2026-02-24T05:44:19Z'
   theme: family
   family_id: ast-merge
 - name: markdown-merge
@@ -987,14 +987,14 @@
   tags:
   - ruby
   docs_site: https://www.rubydoc.info/gems/markdown-merge/1.0.3
-  total_downloads: 634
+  total_downloads: 647
   daily_downloads:
-  release_downloads: 128
+  release_downloads: 135
   release_date: 2026/02/19
   github_stars: 1
   last_commit_on: 2026/02/19
   status: active
-  last_scrape_at: '2026-02-23T04:40:30Z'
+  last_scrape_at: '2026-02-24T05:44:24Z'
   theme: family
   family_id: ast-merge
 - name: jsonc-merge
@@ -1020,14 +1020,14 @@
   tags:
   - ruby
   docs_site: https://www.rubydoc.info/gems/jsonc-merge/1.0.1
-  total_downloads: 262
+  total_downloads: 268
   daily_downloads:
-  release_downloads: 123
+  release_downloads: 127
   release_date: 2026/02/19
   github_stars: 1
   last_commit_on: 2026/02/19
   status: active
-  last_scrape_at: '2026-02-23T04:40:32Z'
+  last_scrape_at: '2026-02-24T05:44:21Z'
   theme: family
   family_id: ast-merge
 - name: commonmarker-merge
@@ -1060,7 +1060,7 @@
   github_stars: 1
   last_commit_on: 2026/02/19
   status: active
-  last_scrape_at: '2026-02-23T04:40:35Z'
+  last_scrape_at: '2026-02-24T05:44:14Z'
   theme: family
   family_id: ast-merge
 - name: psych-merge
@@ -1085,14 +1085,14 @@
   tags:
   - ruby
   docs_site: https://www.rubydoc.info/gems/psych-merge/1.0.0
-  total_downloads: 139
+  total_downloads: 141
   daily_downloads:
-  release_downloads: 139
+  release_downloads: 141
   release_date: 2026/02/19
   github_stars: 1
   last_commit_on: 2026/02/19
   status: active
-  last_scrape_at: '2026-02-23T04:40:37Z'
+  last_scrape_at: '2026-02-24T05:44:31Z'
   theme: family
   family_id: ast-merge
 - name: markly-merge
@@ -1118,14 +1118,14 @@
   tags:
   - ruby
   docs_site: https://www.rubydoc.info/gems/markly-merge/1.0.0
-  total_downloads: 139
+  total_downloads: 142
   daily_downloads:
-  release_downloads: 139
+  release_downloads: 142
   release_date: 2026/02/19
   github_stars: 1
-  last_commit_on: 2026/02/19
+  last_commit_on: 2026/02/23
   status: active
-  last_scrape_at: '2026-02-23T04:40:39Z'
+  last_scrape_at: '2026-02-24T05:44:26Z'
   theme: family
   family_id: ast-merge
 - name: token-resolver
@@ -1151,14 +1151,14 @@
   tags:
   - test
   docs_site: https://www.rubydoc.info/gems/token-resolver/1.0.2
-  total_downloads: 260
+  total_downloads: 410
   daily_downloads:
-  release_downloads: 90
+  release_downloads: 141
   release_date: 2026/02/22
   github_stars: 4
   last_commit_on: 2026/02/22
   status: active
-  last_scrape_at: '2026-02-23T04:40:41Z'
+  last_scrape_at: '2026-02-24T05:44:09Z'
   theme: family
   family_id: ast-merge
 - name: cyclonedx-ruby
@@ -1191,3 +1191,4 @@
   status: active
   first_commit: https://github.com/CycloneDX/cyclonedx-ruby-gem/commit/eecfebe3cb0ce961fef8e424162ac94298f02a9f
   first_commit_on: 2018/05/21
+  last_scrape_at: '2026-02-24T05:44:38Z'

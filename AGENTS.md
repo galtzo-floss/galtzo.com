@@ -89,8 +89,14 @@ git status 2>&1 | tee tmp/git_status.txt
 | `ruby scripts/update_projects` | ✅ on | Full update, interactive |
 | `ruby scripts/update_projects -y` | ✅ on | Full update, non-interactive |
 | `ruby scripts/update_projects --no-discover` | ❌ off | Full update, skip discovery |
-| `ruby scripts/update_projects <field>` | ❌ off | Surgical: one field, all projects |
+| `ruby scripts/update_projects <field> [field ...]` | ❌ off | Surgical: one or more fields |
 | `ruby scripts/update_projects add_project` | ❌ off | Wizard: add a single project |
+
+Multiple surgical fields can be combined in one invocation:
+```bash
+ruby scripts/update_projects total_downloads daily_downloads release_downloads
+ruby scripts/update_projects github_stars gitlab_stars codeberg_stars
+```
 
 **`add_project`** supports any ecosystem: `rubygems`, `cargo`, `npm`, `pypi`, `go`, `none`.
 All flags are optional — omitted values are prompted interactively.
