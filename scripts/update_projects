@@ -140,7 +140,7 @@ class ProjectUpdater
     puts ""
     puts "  Of the #{to_process.size} remaining:"
     puts "    ⭐ #{has_github.size} have a GitHub forge → stars, status, last commit, release date"
-    puts "    💎 #{rubygems.size} are RubyGems → also: total/daily/release downloads"
+    puts "    💎 #{rubygems.size} are RubyGems → also: total/daily(28d avg)/release downloads"
     puts "    🔗 #{github_only.size} are GitHub-only (no download stats available)"
     if no_github.any?
       puts "    ⚠️  #{no_github.size} have no GitHub forge → will be skipped (no update source):"
@@ -1239,7 +1239,7 @@ class ProjectUpdater
         project['release_downloads'] = gem_info[:release_downloads]
 
         puts "  📦 Total downloads: #{gem_info[:total_downloads]}"
-        puts "  📊 Daily downloads: #{gem_info[:daily_downloads] || 'N/A'}"
+        puts "  📊 Daily downloads (28d avg): #{gem_info[:daily_downloads] || 'N/A'}"
         puts "  📥 Release downloads: #{gem_info[:release_downloads]}"
       end
     end
@@ -1462,13 +1462,27 @@ class ProjectUpdater
 
   BESTGEMS_API = "http://bestgems.org/api/v1/gems"
 
+  # Number of most-recent non-nil days used for the trailing daily-average.
+  # 28 days = exactly 4 weeks, which eliminates weekday/weekend download cycles.
+  DAILY_AVG_WINDOW = 28
+
   def fetch_bestgems_daily(gem_name)
     url  = "#{BESTGEMS_API}/#{gem_name}/daily_downloads.json"
     data = api_request(url)
     return nil unless data.is_a?(Array) && data.any?
-    # Response is array of {"date"=>..., "daily_downloads"=>...}, sorted date desc.
-    # First entry is already the most recent, but max_by is safe against gaps.
-    data.max_by { |row| row['date'] }&.fetch('daily_downloads', nil)
+
+    # Response is the gem's *complete* download history, newest-first.
+    # A single day's count is too volatile (can vary 3-4× within one week due to
+    # weekday/weekend patterns).  Instead compute a 28-day trailing average:
+    #   • 28 days = exactly 4 weeks → eliminates Mon-spike / Sun-trough cycles
+    #   • Skip nil rows (bestgems data gaps, ~12 per gem lifetime) so they don't
+    #     drag the average down.
+    # The stored value is a rounded integer; the UI displays it as "~N/d" to
+    # signal it is an average, not a spot reading.
+    recent = data.select { |row| !row['daily_downloads'].nil? }.first(DAILY_AVG_WINDOW)
+    return nil if recent.empty?
+
+    (recent.sum { |row| row['daily_downloads'] }.to_f / recent.size).round
   rescue => e
     error_msg = "Failed to fetch bestgems daily downloads for #{gem_name}: #{e.message}"
     @errors << error_msg unless @errors.include?(error_msg)

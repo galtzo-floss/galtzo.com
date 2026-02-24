@@ -421,7 +421,7 @@ body_class: projects
             <span class="stat-label">DL</span>
             <span class="stat-sub" title="Total downloads">T:&nbsp;<%== fmt_num.call(total_dl) %></span>
             <% if release_dl %><span class="stat-sub" title="Latest release downloads">R:&nbsp;<%== fmt_num.call(release_dl) %></span><% end %>
-            <% if daily_dl %><span class="stat-sub" title="Daily downloads"><%== fmt_num.call(daily_dl) %>&nbsp;/&nbsp;d</span><% end %>
+            <% if daily_dl %><span class="stat-sub" title="28-day trailing average downloads per day">~<%== fmt_num.call(daily_dl) %>/d</span><% end %>
           </span>
           <% end %>
           <% if total_stars_for_footer > 0 %>
@@ -663,7 +663,7 @@ body_class: projects
             <span class="stat-label">DL</span>
             <span class="stat-sub" title="Total downloads">T:&nbsp;<%== fmt_num.call(total_dl) %></span>
             <% if release_dl %><span class="stat-sub" title="Latest release downloads">R:&nbsp;<%== fmt_num.call(release_dl) %></span><% end %>
-            <% if daily_dl %><span class="stat-sub" title="Daily downloads"><%== fmt_num.call(daily_dl) %>&nbsp;/&nbsp;d</span><% end %>
+            <% if daily_dl %><span class="stat-sub" title="28-day trailing average downloads per day">~<%== fmt_num.call(daily_dl) %>/d</span><% end %>
           </span>
           <% end %>
           <% if total_stars_for_footer > 0 %>
