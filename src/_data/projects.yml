@@ -4293,7 +4293,7 @@
   first_commit_by_person_on: 2026/01/19
   funding_sites: []
   release_date: 2026/02/17
-  last_scrape_at: '2026-02-23T12:13:30Z'
+  last_scrape_at: '2026-02-24T16:31:44Z'
   theme: family
   family_id: rubygems-bundler-family
   family_position: 6
@@ -4323,7 +4323,7 @@
   first_commit_by_person_on: 2026/02/08
   funding_sites: []
   release_date: 2026/02/16
-  last_scrape_at: '2026-02-23T12:13:32Z'
+  last_scrape_at: '2026-02-24T16:31:47Z'
   theme: family
   family_id: rubygems-bundler-family
   family_position: 5
@@ -4386,6 +4386,7 @@
   theme: family
   family_id: ast-merge
   family_position: 17
+  last_scrape_at: '2026-02-24T16:31:50Z'
 - name: rb_sys
   ecosystem: rubygems
   language: Ruby
@@ -4402,9 +4403,9 @@
   - api
   funding_sites: []
   docs_site:
-  total_downloads: 31293634
-  daily_downloads: 20380
-  release_downloads: 374729
+  total_downloads: 31298933
+  daily_downloads: 21146
+  release_downloads: 378209
   release_date: 2026/01/05
   github_stars: 299
   last_commit_on: 2026/02/20
@@ -4414,6 +4415,7 @@
   theme: family
   family_id: ast-merge
   family_position: 18
+  last_scrape_at: '2026-02-24T16:31:53Z'
 - name: magnus
   ecosystem: cargo
   language: Rust
@@ -4422,6 +4424,8 @@
   - type: GitHub
     url: https://github.com/matsadler/magnus
     owner: matsadler
+    total_downloads: 0
+    release_downloads: 0
   description: High level Ruby bindings. Write Ruby extension gems in Rust, or call
     Ruby code from a Rust binary.
   minimum_version: '1.56'
@@ -4444,6 +4448,7 @@
   theme: family
   family_id: ast-merge
   family_position: 16
+  last_scrape_at: '2026-02-24T16:31:56Z'
 - name: setup-ruby-flash
   ecosystem: none
   language: Ruby
@@ -4452,6 +4457,8 @@
   - type: GitHub
     url: https://github.com/appraisal-rb/setup-ruby-flash
     owner: appraisal-rb
+    total_downloads: 0
+    release_downloads: 0
   description: 'GHA: ⚡️Fast Setup of Ruby & Gems via rv & ore (alternative to setup-ruby,
     with fallback to setup-ruby)'
   minimum_version: '2.3'
@@ -4470,7 +4477,7 @@
   total_downloads:
   daily_downloads:
   release_downloads:
-  release_date:
+  release_date: 2026/02/07
   github_stars: 17
   last_commit_on: 2026/02/10
   status: active
@@ -4479,6 +4486,7 @@
   theme: family
   family_id: rubygems-bundler-family
   family_position: 7
+  last_scrape_at: '2026-02-24T16:31:59Z'
 - name: tree_stump
   ecosystem: rubygems
   language: Ruby
@@ -4497,7 +4505,7 @@
   - api
   funding_sites: []
   docs_site:
-  total_downloads: 717
+  total_downloads: 718
   daily_downloads: 6
   release_downloads: 130
   release_date: 2026/02/16
@@ -4509,6 +4517,7 @@
   theme: family
   family_id: ast-merge
   family_position: 15
+  last_scrape_at: '2026-02-24T16:32:02Z'
 - name: ruby_tree_sitter
   ecosystem: rubygems
   language: Ruby
@@ -4526,8 +4535,8 @@
   - api
   funding_sites: []
   docs_site: https://faveod.github.io/ruby-tree-sitter/
-  total_downloads: 101181
-  daily_downloads: 244
+  total_downloads: 101188
+  daily_downloads: 250
   release_downloads: 173
   release_date: 2026/02/19
   github_stars: 63
@@ -4538,6 +4547,7 @@
   theme: family
   family_id: ast-merge
   family_position: 19
+  last_scrape_at: '2026-02-24T16:32:04Z'
 - name: bson
   ecosystem: rubygems
   language: Ruby
@@ -4555,15 +4565,16 @@
   - serialization
   funding_sites: []
   docs_site: https://www.mongodb.com/docs/ruby-driver/current/tutorials/bson-v4/
-  total_downloads: 112454337
-  daily_downloads: 26522
-  release_downloads: 959152
+  total_downloads: 112456531
+  daily_downloads: 27558
+  release_downloads: 959710
   release_date: 2025/10/16
   github_stars: 82
   last_commit_on: 2026/01/08
   status: active
   first_commit_by_person: https://github.com/mongodb/bson-ruby/commit/ddbfce8c9b71470f61b68f0730102e1db4a965f8
   first_commit_by_person_on: 2025/06/02
+  last_scrape_at: '2026-02-24T16:32:07Z'
 - name: rexml
   ecosystem: rubygems
   language: Ruby
@@ -4581,15 +4592,16 @@
   - xml
   funding_sites: []
   docs_site:
-  total_downloads: 713025033
-  daily_downloads: 462062
-  release_downloads: 40863391
+  total_downloads: 713070992
+  daily_downloads: 482967
+  release_downloads: 40894043
   release_date: 2025/09/10
   github_stars: 164
   last_commit_on: 2025/12/20
   status: active
   first_commit_by_person: https://github.com/ruby/rexml/commit/ec410a0d5e5e5daddca82fd1455824219403f676
   first_commit_by_person_on: 2025/07/09
+  last_scrape_at: '2026-02-24T16:32:10Z'
 - name: bundler
   ecosystem: rubygems
   language: Ruby
@@ -4605,9 +4617,9 @@
   - ruby
   funding_sites: []
   docs_site:
-  total_downloads: 3206319893
-  daily_downloads: 1819784
-  release_downloads: 2969543
+  total_downloads: 3206559570
+  daily_downloads: 1912599
+  release_downloads: 2999764
   release_date: 2026/02/05
   github_stars: 3900
   last_commit_on: 2026/02/20
@@ -4618,3 +4630,57 @@
   family_id: rubygems-bundler-family
   family_position: 4
   family_primary: true
+  last_scrape_at: '2026-02-24T16:32:12Z'
+- name: hashie
+  ecosystem: rubygems
+  language: Ruby
+  role: contributor
+  forges:
+  - type: GitHub
+    url: https://github.com/hashie/hashie
+    owner: hashie
+  description: Hashie is a collection of classes and mixins that make hashes more
+    powerful.
+  minimum_version: '2.7'
+  tags:
+  - ruby
+  - data
+  funding_sites: []
+  docs_site: https://www.rubydoc.info/gems/hashie
+  total_downloads: 438586347
+  daily_downloads: 227824
+  release_downloads: 4081164
+  release_date: 2025/12/24
+  github_stars: 3027
+  last_commit_on: 2026/02/22
+  status: active
+  first_commit_by_person: https://github.com/hashie/hashie/commit/a44dd9a2687055d0074f8e71f1c50e3096ee846b
+  first_commit_by_person_on: 2015/10/19
+  last_scrape_at: '2026-02-24T16:32:15Z'
+- name: rails
+  ecosystem: rubygems
+  family: rails-family
+  language: Ruby
+  role: contributor
+  forges:
+  - type: GitHub
+    url: https://github.com/rails/rails
+    owner: rails
+  description: Ruby on Rails is a full-stack web framework optimized for programmer
+    happiness and sustainable productivity. It encourages beautiful code by favoring
+    convention over configuration.
+  minimum_version: '3.2'
+  tags:
+  - rails
+  funding_sites: []
+  docs_site: https://api.rubyonrails.org/v8.1.2/
+  total_downloads: 712610989
+  daily_downloads: 313118
+  release_downloads: 1856485
+  release_date: 2026/01/08
+  github_stars: 58302
+  last_commit_on: 2026/02/24
+  status: active
+  first_commit_by_person: https://github.com/rails/rails/commit/40143bf9d032fbc0081384f00edb5ca1d600068f
+  first_commit_by_person_on: 2023/02/23
+  last_scrape_at: '2026-02-24T16:32:18Z'

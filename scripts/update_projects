@@ -313,8 +313,9 @@ class ProjectUpdater
 
   # Interactive (or flag-driven) wizard to add a single project to projects.yml.
   # +opts+ is a Hash of pre-supplied values from the command line (may be empty).
-  # When multiple ecosystems are specified (comma-separated), one project entry
-  # is created per ecosystem — each receives its own API scrape.
+  # When multiple ecosystems are specified via --ecosystem flag (comma-separated),
+  # one project entry is created per ecosystem — each receives its own API scrape.
+  # Interactive mode allows selecting a single ecosystem via tty-prompt select menu.
   public
   def run_add_project(opts = {})
     puts "="*80
@@ -322,8 +323,9 @@ class ProjectUpdater
     puts "="*80
     puts "Answer the prompts below. Press Enter to accept [defaults]."
     puts "Values pre-supplied via flags are shown and confirmed automatically."
-    puts "To add the same project in multiple ecosystems, separate them with commas"
-    puts "(e.g. 'rubygems,npm'). Each ecosystem will become its own project card."
+    puts "To add the same project in multiple ecosystems from the command line,"
+    puts "use --ecosystem flag with comma-separated values (e.g. 'rubygems,npm')."
+    puts "Each ecosystem will create its own project card with separate API scrape."
     puts ""
 
     # ── Name ──────────────────────────────────────────────────────────────────
@@ -341,12 +343,32 @@ class ProjectUpdater
       end.uniq
     else
       # Interactive multi-select menu using tty-prompt
+      # Use Space/Ctrl+A to select/deselect, Enter to confirm
       ecosystem_choices = ECOSYSTEMS.map do |key, config|
         { name: "#{config[:label]}#{key == 'none' ? ' (no package ecosystem)' : ''}", value: key }
       end
 
-      selected = @prompt.multi_select("Select package ecosystem(s):", ecosystem_choices, per_page: 10)
-      selected.empty? ? ['none'] : selected
+      selected = @prompt.multi_select("Select package ecosystem(s) [Press Space to select, Enter to confirm]:", ecosystem_choices, per_page: 10)
+
+      # Confirm the selection with the user
+      if selected.empty?
+        puts ""
+        puts "  ⚠️  No ecosystems selected."
+        if confirm("    Would you like to try selecting again?", default: true)
+          # Recursively retry (will re-prompt)
+          ecosystem_choices = ECOSYSTEMS.map do |key, config|
+            { name: "#{config[:label]}#{key == 'none' ? ' (no package ecosystem)' : ''}", value: key }
+          end
+          selected = @prompt.multi_select("Select package ecosystem(s) [Press Space to select, Enter to confirm]:", ecosystem_choices, per_page: 10)
+          selected.empty? ? ['none'] : selected
+        else
+          ['none']
+        end
+      else
+        puts ""
+        puts "  ✅ Selected ecosystem(s): #{selected.join(', ')}"
+        selected
+      end
     end
 
     if requested_ecosystems.size > 1
@@ -744,7 +766,9 @@ class ProjectUpdater
 
     result
   rescue => e
-    puts "  ⚠️  Ecosystem scrape failed: #{e.message}"
+    puts "  ⚠️  Ecosystem scrape failed: #{e.class} - #{e.message}"
+    puts "  📍 Backtrace:"
+    puts e.backtrace.first(5).map { |line| "      #{line}" }
     result
   end
 

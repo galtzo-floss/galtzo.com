@@ -1420,6 +1420,18 @@ h1 .tag-list {
     z-index: 1;
 }
 
+/* Subdued styling for metadata text (e.g., downloads) within pills */
+.pill-outer .tag small {
+    font-size: 0.85em;              /* Slightly smaller than the main tag text */
+    opacity: 0.65;                  /* Reduced opacity for visual de-emphasis */
+    font-weight: 500;               /* Slightly lighter weight */
+}
+
+/* Maintain white color for small text in active pills */
+.pill-outer.active .tag small {
+    color: rgba(255, 255, 255, 0.8); /* Slightly transparent white for subdued effect */
+}
+
 /* =========================================================================
    FILTERS CONTAINER & PANELS
    ========================================================================= */

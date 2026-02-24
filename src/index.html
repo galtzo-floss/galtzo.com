@@ -9,12 +9,43 @@ body_class: projects
 <% projects = site.data.projects %>
 
 <%# Shared number formatter used by both card footer blocks below %>
+<%# Rules for shortening:
+    - Maximum 3 significant figures (e.g., 345k not 345.6k)
+    - Maximum 1 digit after decimal point
+    - Only numbers with letter abbreviations (B, M, k) can have decimals
+    - Examples:
+      * 345.6k => 345k (remove decimal to stay under 3 sig figs)
+      * 22.5k => 22.5k (keep decimal, already 3 sig figs)
+      * 548.2M => 548M (remove decimal to stay under 3 sig figs)
+      * 22.4M => 22.4M (keep decimal, already 3 sig figs)
+      * Numbers without abbreviations (< 1000) always show as-is (no decimals)
+%>
 <% fmt_num = ->(n) {
   return nil if n.nil?
-  if    n >= 1_000_000_000 then "#{(n / 1_000_000_000.0).round(1)}B"
-  elsif n >= 1_000_000     then "#{(n / 1_000_000.0).round(1)}M"
-  elsif n >= 1_000         then "#{(n / 1_000.0).round(1)}k"
-  else  n.to_s
+
+  if n >= 1_000_000_000
+    # Billions: divide by 1B
+    scaled = n / 1_000_000_000.0
+    # Format with 1 decimal, then remove trailing .0
+    formatted = sprintf("%.1f", scaled).sub(/\.0$/, '')
+    # If we have a decimal point and it results in > 3 sig figs, remove it
+    formatted = formatted.sub(/\.\d$/, '') if formatted.include?('.') && formatted.gsub('.', '').length > 3
+    "#{formatted}B"
+  elsif n >= 1_000_000
+    # Millions: divide by 1M
+    scaled = n / 1_000_000.0
+    formatted = sprintf("%.1f", scaled).sub(/\.0$/, '')
+    formatted = formatted.sub(/\.\d$/, '') if formatted.include?('.') && formatted.gsub('.', '').length > 3
+    "#{formatted}M"
+  elsif n >= 1_000
+    # Thousands: divide by 1k
+    scaled = n / 1_000.0
+    formatted = sprintf("%.1f", scaled).sub(/\.0$/, '')
+    formatted = formatted.sub(/\.\d$/, '') if formatted.include?('.') && formatted.gsub('.', '').length > 3
+    "#{formatted}k"
+  else
+    # No abbreviation: return as-is (no decimals for small numbers)
+    n.to_s
   end
 } %>
 
@@ -100,6 +131,20 @@ body_class: projects
 <% adoptable_count = projects.count { |p| p["adoptable"] } %>
 <% archived_count = projects.count { |p| p["status"] == "archived" } %>
 
+<%# Calculate daily downloads for each role filter (exclusive: no project in multiple roles) %>
+<% role_daily_downloads = {} %>
+<% allowed_roles.each do |role| %>
+<% role_projects = projects.select { |p| p["role"] == role } %>
+<% role_daily_downloads[role] = role_projects.sum { |p| (p['daily_downloads'] || 0).to_i } %>
+<% end %>
+
+<%# Calculate daily downloads for adoptable and archived (excluding projects that are already counted in roles) %>
+<% adoptable_projects = projects.select { |p| p["adoptable"] } %>
+<% adoptable_daily_downloads = adoptable_projects.sum { |p| (p['daily_downloads'] || 0).to_i } %>
+
+<% archived_projects = projects.select { |p| p["status"] == "archived" } %>
+<% archived_daily_downloads = archived_projects.sum { |p| (p['daily_downloads'] || 0).to_i } %>
+
 <h1>
   <span class="title-text"><%= (page.respond_to?(:data) && page.data["title"]) || "Open Source Projects" %></span>
   <span class="tag-list">
@@ -107,7 +152,7 @@ body_class: projects
     <span>
       <button type="button" class="tag-link pill-outer role-link <%= role %>" data-tag="<%= role %>">
         <span class="count left"><%== role_counts[role].to_s.rjust(2, 'x').gsub('x', '&nbsp;') %></span>
-        <span class="tag <%= role %>"><%= role %></span>
+        <span class="tag <%= role %>"><%= role %> <small>[ ~<%== fmt_num.call(role_daily_downloads[role]) %>&nbsp;/&nbsp;d ]</small></span>
         <span class="count right"><%== role_counts[role].to_s.ljust(2, 'x').gsub('x', '&nbsp;') %></span>
       </button>
     </span>
@@ -115,14 +160,14 @@ body_class: projects
     <span>
       <button type="button" class="tag-link pill-outer special-filter" data-tag="adoptable" data-special-filter="adoptable-family">
         <span class="count left"><%== adoptable_count.to_s.rjust(2, 'x').gsub('x', '&nbsp;') %></span>
-        <span class="tag">👁️ Adoptable</span>
+        <span class="tag">👁️ Adoptable <small>[ ~<%== fmt_num.call(adoptable_daily_downloads) %>&nbsp;/&nbsp;d ]</small></span>
         <span class="count right"><%== adoptable_count.to_s.ljust(2, 'x').gsub('x', '&nbsp;') %></span>
       </button>
     </span>
     <span>
       <button type="button" class="tag-link pill-outer special-filter" data-tag="archived" data-special-filter="archived-family">
         <span class="count left"><%== archived_count.to_s.rjust(2, 'x').gsub('x', '&nbsp;') %></span>
-        <span class="tag">👁️ Archived</span>
+        <span class="tag">👁️ Archived <small>[ ~<%== fmt_num.call(archived_daily_downloads) %>&nbsp;/&nbsp;d ]</small></span>
         <span class="count right"><%== archived_count.to_s.ljust(2, 'x').gsub('x', '&nbsp;') %></span>
       </button>
     </span>
@@ -345,29 +390,31 @@ body_class: projects
           <% tags_for_card << "archived" if project['status'] == 'archived' %>
           <% tags_for_card.sort! %>
           <% sorted_tags = (project['tags'] || []).sort %>
-          <% aspect_class = project['aspect'].nil? ? '' : "card-#{project['aspect']}" %>
-          <% theme_class = project['theme'] ? "theme-#{project['theme']}" : '' %>
-          <% archived_class = project['archived'] || project['status'] == 'archived' || project['theme'] == 'avoid-me' ? 'archived' : '' %>
+      <% aspect_class = project['aspect'].nil? ? '' : "card-#{project['aspect']}" %>
+      <% theme_class = project['theme'] ? "theme-#{project['theme']}" : '' %>
+      <% archived_class = project['archived'] || project['status'] == 'archived' || project['theme'] == 'avoid-me' ? 'archived' : '' %>
 
-          <div class="card card-in-family <%= aspect_class %> <%= project['role'] %> <%= theme_class %> <%= archived_class %>"
-               data-tags='<%= tags_for_card.to_json %>'
-               data-theme="family"
-               data-family-id="<%= project['family_id'] %>"
-               data-family-index="<%= index %>"
-               data-is-primary="<%= project['family_primary'] ? 'true' : 'false' %>">
+      <div class="card card-in-family <%= aspect_class %> <%= project['role'] %> <%= theme_class %> <%= archived_class %>"
+           data-tags='<%= tags_for_card.to_json %>'
+           data-theme="family"
+           data-family-id="<%= project['family_id'] %>"
+           data-family-index="<%= index %>"
+           data-is-primary="<%= project['family_primary'] ? 'true' : 'false' %>">
     <div class="corner-anchor fork">
       <% if project['status'] == 'archived' || project['theme'] == 'avoid-me' %>
       <%# Avoid-me projects - Uses caution tape X overlay on card, no corner banner %>
       <% elsif project['adoptable'] || project['theme'] == 'adopt-me' %>
       <%# Adoptable projects - Replace Fork banner with Adopt Me banner %>
-      <a href="<%= project['adoption_url'] || (gh_forge ? "#{gh_forge['url']}/issues" : first_forge['url']) %>"
+      <% adoption_url = project['adoption_url'] || (gh_forge ? "#{gh_forge['url']}/issues" : first_forge['url']) %>
+      <a href="<%= adoption_url %>"
          class="corner-banner banner-adopt"
          target="_blank" rel="noopener">
         Adopt&nbsp;<span class="adopt-text">Me</span><span class="adopt-emoji" aria-hidden="true">🤝</span>
       </a>
       <% elsif project['theme'] == 'update-me' %>
       <%# THEME: Update Me - Replace Fork banner with Update Me banner %>
-      <a href="<%= gh_forge ? "#{gh_forge['url']}/issues" : (first_forge ? first_forge['url'] : '#') %>"
+      <% update_url = gh_forge ? "#{gh_forge['url']}/issues" : (first_forge ? first_forge['url'] : '#') %>
+      <a href="<%= update_url %>"
          class="corner-banner banner-update"
          target="_blank" rel="noopener">
         Update&nbsp;<span class="update-text">Me</span><span class="update-emoji" aria-hidden="true">🔧</span>
@@ -389,7 +436,8 @@ body_class: projects
             <a href="<%= gh_forge['url'] %>" target="_blank" rel="noopener">Human</a>
             <% else %>
             <% if gh_forge %>
-            <a href="<%= gh_forge['url'] %>/commits?author=pboling" target="_blank" rel="noopener"><%= project['role'].capitalize %></a>
+            <% capitalized_role = project['role'].capitalize %>
+            <a href="<%= gh_forge['url'] %>/commits?author=pboling" target="_blank" rel="noopener"><%= capitalized_role %></a>
             <% else %>
             <span><%= project['role'].capitalize %></span>
             <% end %>
@@ -431,7 +479,7 @@ body_class: projects
           <% if project['release_date'] || project['last_commit_on'] %>
           <% if has_dl || total_stars_for_footer > 0 %><span class="stat-sep">&nbsp;|&nbsp;</span><% end %>
           <% if project['release_date'] %>
-          <span class="stat-group"><span class="stat-label">Rel</span><span class="stat-item"><%= project['release_date'] %></span></span>
+          <span class="stat-group"><span class="stat-label">Last Rel</span><span class="stat-item"><%= project['release_date'] %></span></span>
           <% else %>
           <span class="stat-group"><span class="stat-label">Commit</span><span class="stat-item"><%= project['last_commit_on'] %></span></span>
           <% end %>
@@ -543,7 +591,8 @@ body_class: projects
       Financially support my work on <em><%= project["name"] %></em> via:
     <% last_comma_index = text_funding.size - 1 %>
     <% text_funding.each_with_index do |funding_site, i| %>
-    <a href="<%= funding_site['url'] %>" class="text-link <%= funding_site['type'].gsub(' ', '-').downcase %>" target="_blank" rel="noopener">
+    <% funding_site_class = funding_site['type'].gsub(' ', '-').downcase %>
+    <a href="<%= funding_site['url'] %>" class="text-link <%= funding_site_class %>" target="_blank" rel="noopener">
       <% if funding_site['type'] == 'OpenCollective' %>
       <em><%= funding_site['url'].split("/")[-1] %></em>
       <% end %>
@@ -599,14 +648,16 @@ body_class: projects
       <%# Archived projects - Uses caution tape X overlay on card, no corner banner %>
       <% elsif project['adoptable'] || project['theme'] == 'adopt-me' %>
       <%# Adoptable projects - Replace Fork banner with Adopt Me banner %>
-      <a href="<%= project['adoption_url'] || (gh_forge ? "#{gh_forge['url']}/issues" : first_forge['url']) %>"
+      <% adoption_url = project['adoption_url'] || (gh_forge ? "#{gh_forge['url']}/issues" : first_forge['url']) %>
+      <a href="<%= adoption_url %>"
          class="corner-banner banner-adopt"
          target="_blank" rel="noopener">
         Adopt&nbsp;<span class="adopt-text">Me</span><span class="adopt-emoji" aria-hidden="true">🤝</span>
       </a>
       <% elsif project['theme'] == 'update-me' %>
       <%# THEME: Update Me %>
-      <a href="<%= gh_forge ? "#{gh_forge['url']}/issues" : (first_forge ? first_forge['url'] : '#') %>"
+      <% update_url = gh_forge ? "#{gh_forge['url']}/issues" : (first_forge ? first_forge['url'] : '#') %>
+      <a href="<%= update_url %>"
          class="corner-banner banner-update"
          target="_blank" rel="noopener">
         Update&nbsp;<span class="update-text">Me</span><span class="update-emoji" aria-hidden="true">🔧</span>
@@ -628,7 +679,8 @@ body_class: projects
             <a href="<%= gh_forge['url'] %>" target="_blank" rel="noopener">Human</a>
             <% else %>
             <% if gh_forge %>
-            <a href="<%= gh_forge['url'] %>/commits?author=pboling" target="_blank" rel="noopener"><%= project['role'].capitalize %></a>
+            <% capitalized_role = project['role'].capitalize %>
+            <a href="<%= gh_forge['url'] %>/commits?author=pboling" target="_blank" rel="noopener"><%= capitalized_role %></a>
             <% else %>
             <span><%= project['role'].capitalize %></span>
             <% end %>
