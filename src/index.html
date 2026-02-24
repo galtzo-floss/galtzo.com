@@ -6,7 +6,7 @@ body_class: projects
 ---
 <% allowed_roles = %w(author maintainer contributor) %>
 
-<% non_person_projects = site.data.projects.reject {|p| p["type"] == "person" } %>
+<% non_person_projects = site.data.projects %>
 
 <% years = non_person_projects.map {|p| p['first_commit_on']&.to_s&.split('/')&.first }.compact.uniq.sort %>
 <% year_counts = {} %>
@@ -251,11 +251,9 @@ body_class: projects
 <% # Phase 4: Family Theme - Group projects by family_id %>
 <% family_groups = {} %>
 <% non_family_projects = [] %>
-<% person_project = nil %>
+<% person_project = site.data.person %>
 <% site.data.projects.each do |project| %>
-  <% if project['type'] == 'person' %>
-    <% person_project = project %>
-  <% elsif project['family_id'] %>
+  <% if project['family_id'] %>
     <% family_groups[project['family_id']] ||= [] %>
     <% family_groups[project['family_id']] << project %>
   <% else %>
@@ -274,7 +272,7 @@ body_class: projects
 <% # Merge all projects back together for rendering: person first, then families (in position order), then regular projects %>
 <% all_projects_for_rendering = [] %>
 <% if person_project %>
-  <% all_projects_for_rendering << { type: :single, project: person_project } %>
+  <% all_projects_for_rendering << { type: :single, project: person_project.merge("type" => "person") } %>
 <% end %>
 <% ordered_families.each do |family_meta| %>
   <% members = family_groups[family_meta['id']] %>

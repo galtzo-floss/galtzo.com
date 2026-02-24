@@ -57,10 +57,10 @@ git status 2>&1 | tee tmp/git_status.txt
 - **Update script**: `scripts/update_projects` — fetches live stats from GitHub, GitLab, RubyGems APIs
 - **Swap script**: `scripts/devswap` — swaps prod/dev projects.yml files; must be run in pairs
 
-### projects.yml Entry Count (as of 2026-02-22)
+### projects.yml Entry Count (as of 2026-02-24)
 
-- Total YAML entries: 107 (includes 1 `type: person` entry)
-- Ruby+rubygems project entries: 101
+- Total YAML entries: 126 (person entry moved to `person.yml`)
+- Ruby+rubygems project entries: ~100
 - RubyGems.org gems owned by pboling: 114
 - **Gap: 17 gems missing from projects.yml** (ast-merge, bash-merge, commonmarker-merge,
   dotenv-merge, json-merge, jsonc-merge, markdown-merge, markly-merge, prism-merge,
@@ -109,8 +109,9 @@ Flags: `--name`, `--ecosystem`, `--language`, `--role`, `--github-url`,
 
 ```
 galtzo.com/
-  src/_data/projects.yml       # production project list
-  src/_data/projects_dev.yml   # dev/test project list (must exist)
+  src/_data/projects.yml       # production project list (no person entry)
+  src/_data/projects_dev.yml   # dev/test project list (must exist; no person entry)
+  src/_data/person.yml         # single person/author entry (rendered as the first card)
   src/_data/families.yml       # family metadata: id, name, position (global order)
   scripts/update_projects      # main data refresh script (read-write, makes API calls)
   scripts/project_query        # read-only query/audit/console script (no API calls)

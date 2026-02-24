@@ -435,7 +435,6 @@ class FamilyManager
   def unassigned_projects
     @projects.select do |p|
       p.is_a?(Hash) &&
-        p['type'] != 'person' &&
         p['theme'] != 'family' &&
         !NON_FAMILY_THEMES.include?(p['theme'])
     end.sort_by { |p| p['name'] }

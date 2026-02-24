@@ -40,7 +40,7 @@ class ProjectQuery
     @format   = format
     @color    = color
     @all      = YAML.load_file(@file) || []
-    @projects = @all.reject { |p| p['type'] == 'person' }
+    @projects = @all
   end
 
   # ============================================================================
@@ -398,7 +398,7 @@ class ProjectQuery
 
       # ── Collections ───────────────────────────────────────────────────────────
       PROJECTS_RAW = _raw.freeze
-      PROJECTS     = _raw.reject { |p| p['type'] == 'person' }.freeze
+      PROJECTS     = _raw.freeze
       PROJS        = PROJECTS.map { |h| Project.from_h(h) }.freeze
 
       # ── Table helper: print an array of Project structs as a table ────────────

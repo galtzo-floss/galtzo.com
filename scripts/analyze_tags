@@ -140,7 +140,7 @@ class TagAnalyzer
     @color        = color
 
     @raw      = YAML.load_file(@file) || []
-    @projects = @raw.reject { |p| p['type'] == 'person' }
+    @projects = @raw
   end
 
   # ============================================================================

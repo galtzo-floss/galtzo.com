@@ -113,7 +113,7 @@ class ProjectUpdater
     puts "GitLab Token: #{GITLAB_TOKEN ? '✅ Set' : '❌ Not set'}"
     puts "RubyGems Handle: #{RUBYGEMS_HANDLE ? "✅ Set (#{RUBYGEMS_HANDLE})" : '❌ Not set'}"
 
-    non_person   = @projects.reject { |p| p['type'] == 'person' }
+    non_person   = @projects
     skippable    = non_person.select { |p| !@surgical_fields.any? && recently_scraped?(p) }
     to_process   = non_person - skippable
 
@@ -147,11 +147,6 @@ class ProjectUpdater
     updated_count = 0
 
     @projects.each_with_index do |project, index|
-      # Skip the person entry
-      if project['type'] == 'person'
-        puts "[#{index + 1}/#{@projects.size}] Skipping person entry: #{project['name']}"
-        next
-      end
 
       # Check if project was recently scraped (skip this check in surgical mode)
       if !@surgical_fields.any? && recently_scraped?(project)
