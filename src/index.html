@@ -6,11 +6,11 @@ body_class: projects
 ---
 <% allowed_roles = %w(author maintainer contributor) %>
 
-<% non_person_projects = site.data.projects %>
+<% projects = site.data.projects %>
 
-<% years = non_person_projects.map {|p| p['first_commit_by_person_on']&.to_s&.split('/')&.first }.compact.uniq.sort %>
+<% years = projects.map {|p| p['first_commit_by_person_on']&.to_s&.split('/')&.first }.compact.uniq.sort %>
 <% year_counts = {} %>
-<% non_person_projects.each do |project| %>
+<% projects.each do |project| %>
 <% year = project['first_commit_by_person_on']&.to_s&.split('/')&.first %>
 <% if year %>
 <% year_counts[year] ||= 0 %>
@@ -18,16 +18,16 @@ body_class: projects
 <% end %>
 <% end %>
 
-<% tags = non_person_projects.flat_map { |project| project["tags"] || [] }.uniq.sort %>
+<% tags = projects.flat_map { |project| project["tags"] || [] }.uniq.sort %>
 <% tag_counts = {} %>
-<% non_person_projects.each do |project| %>
+<% projects.each do |project| %>
 <% (project["tags"] || []).each do |tag| %>
 <% tag_counts[tag] ||= 0 %>
 <% tag_counts[tag] += 1 %>
 <% end %>
 <% end %>
 
-<% bash_projects = non_person_projects.select {|p| p["language"] == "Bash" } %>
+<% bash_projects = projects.select {|p| p["language"] == "Bash" } %>
 <% min_bash_versions = bash_projects.flat_map { |project| project["minimum_version"] || [] }.uniq.sort %>
 <% min_bash_counts = {} %>
 <% bash_projects.each do |project| %>
@@ -37,7 +37,7 @@ body_class: projects
 <% end %>
 <% end %>
 
-<% ts_projects = non_person_projects.select {|p| p["language"] == "TypeScript" } %>
+<% ts_projects = projects.select {|p| p["language"] == "TypeScript" } %>
 <% min_ts_versions = ts_projects.flat_map { |project| project["minimum_version"] || [] }.uniq.sort %>
 <% min_ts_counts = {} %>
 <% ts_projects.each do |project| %>
@@ -47,7 +47,7 @@ body_class: projects
 <% end %>
 <% end %>
 
-<% rb_projects = non_person_projects.select {|p| p["language"] == "Ruby" } %>
+<% rb_projects = projects.select {|p| p["language"] == "Ruby" } %>
 <% min_rb_versions = rb_projects.flat_map { |project| project["minimum_version"] || [] }.uniq.sort %>
 <% min_rb_counts = {} %>
 <% rb_projects.each do |project| %>
@@ -57,7 +57,7 @@ body_class: projects
 <% end %>
 <% end %>
 
-<% go_projects = non_person_projects.select {|p| p["language"] == "Go" } %>
+<% go_projects = projects.select {|p| p["language"] == "Go" } %>
 <% min_go_versions = go_projects.flat_map { |project| project["minimum_version"] || [] }.uniq.sort %>
 <% min_go_counts = {} %>
 <% go_projects.each do |project| %>
@@ -67,18 +67,28 @@ body_class: projects
 <% end %>
 <% end %>
 
-<% lanugage_count = min_go_versions.count + min_rb_counts.count + min_ts_counts.count + min_bash_counts.count %>
+<% rust_projects = projects.select {|p| p["language"] == "Rust" } %>
+<% min_rust_versions = rust_projects.flat_map { |project| project["minimum_version"] || [] }.uniq.sort %>
+<% min_rust_counts = {} %>
+<% rust_projects.each do |project| %>
+<% if project["minimum_version"] %>
+<% min_rust_counts[project["minimum_version"]] ||= 0 %>
+<% min_rust_counts[project["minimum_version"]] += 1 %>
+<% end %>
+<% end %>
+
+<% lanugage_count = min_go_versions.count + min_rb_counts.count + min_ts_counts.count + min_bash_counts.count + min_rust_versions.count %>
 
 <% role_counts = {} %>
-<% non_person_projects.each do |project| %>
+<% projects.each do |project| %>
 <% if project["role"] %>
 <% role_counts[project["role"]] ||= 0 %>
 <% role_counts[project["role"]] += 1 %>
 <% end %>
 <% end %>
 
-<% adoptable_count = non_person_projects.count { |p| p["adoptable"] } %>
-<% archived_count = non_person_projects.count { |p| p["status"] == "archived" } %>
+<% adoptable_count = projects.count { |p| p["adoptable"] } %>
+<% archived_count = projects.count { |p| p["status"] == "archived" } %>
 
 <h1>
   <span class="title-text"><%= (page.respond_to?(:data) && page.data["title"]) || "Open Source Projects" %></span>
@@ -215,6 +225,19 @@ body_class: projects
         </button>
       </li>
       <% end %>
+      <% min_rust_versions.each do |min_rust| %>
+      <li>
+        <button type="button" class="tag-link pill-outer min_lang_link" data-tag="Rust >= <%= min_rust %>">
+          <span class="count left"><%== min_rust_counts[min_rust].to_s.rjust(2, 'x').gsub('x', '&nbsp;') %></span>
+          <span class="tag min-language"><img
+                  src="/assets/images/Rust.svg"
+                  alt="Rust >= <%= min_rust %>"
+                  class="language rust"
+          >>=&nbsp;v<%= min_rust %></span>
+          <span class="count right"><%== min_rust_counts[min_rust].to_s.ljust(2, 'x').gsub('x', '&nbsp;') %></span>
+        </button>
+      </li>
+      <% end %>
       <% min_rb_versions[0...2].each do |min_ruby| %>
       <li>
         <button type="button" class="tag-link pill-outer min_lang-link" data-tag="Ruby >= <%= min_ruby %>">
@@ -251,7 +274,7 @@ body_class: projects
 <% # Phase 4: Family Theme - Group projects by family_id %>
 <% family_groups = {} %>
 <% non_family_projects = [] %>
-<% person_project = site.data.person %>
+<% person = site.data.person %>
 <% site.data.projects.each do |project| %>
   <% if project['family_id'] %>
     <% family_groups[project['family_id']] ||= [] %>
@@ -271,8 +294,8 @@ body_class: projects
 
 <% # Merge all projects back together for rendering: person first, then families (in position order), then regular projects %>
 <% all_projects_for_rendering = [] %>
-<% if person_project %>
-  <% all_projects_for_rendering << { type: :single, project: person_project.merge("type" => "person") } %>
+<% if person %>
+  <% all_projects_for_rendering << { type: :single, project: person.merge("_is_person" => true) } %>
 <% end %>
 <% ordered_families.each do |family_meta| %>
   <% members = family_groups[family_meta['id']] %>
@@ -339,7 +362,7 @@ body_class: projects
          target="_blank" rel="noopener">
         Update&nbsp;<span class="update-text">Me</span><span class="update-emoji" aria-hidden="true">🔧</span>
       </a>
-      <% elsif project["type"] == "person" %>
+      <% elsif project["_is_person"] %>
       <a href="<%= gh_forge['url'] %>" class="corner-banner banner-fork" target="_blank" rel="noopener">Follow&nbsp;<span class="fork-me-text">Me</span><span class="fork-me-emoji" aria-hidden="true">🔮</span></a>
       <% else %>
       <% if gh_forge %>
@@ -352,7 +375,7 @@ body_class: projects
     <div class="top-anchor role">
       <div class="horizontal-banner banner-role <%= project['role'] %>">
           <span class="role-label">
-            <% if project["type"] == "person" %>
+            <% if project["_is_person"] %>
             <a href="<%= gh_forge['url'] %>" target="_blank" rel="noopener">Human</a>
             <% else %>
             <% if gh_forge %>
@@ -495,7 +518,8 @@ body_class: projects
     </p>
     <% if project['archived'] %>
     <% # No reason to show GitHub stats for archived projects %>
-    <% elsif project["type"] != "person" && gh_forge %>
+    <% elsif gh_forge %>
+    <%# Per-project GitHub badge stats — family cards are never the person card %>
     <p>
       <img alt="<%= project['name'] %> GitHub License" src="https://img.shields.io/github/license/<%= gh_forge['owner'] %>/<%= project['name'] %>?style=social">
       <img alt="<%= project['name'] %> GitHub commit activity" src="https://img.shields.io/github/commit-activity/m/<%= gh_forge['owner'] %>/<%= project['name'] %>?style=social">
@@ -515,13 +539,7 @@ body_class: projects
     <% funding_sites = project["funding_sites"].dup %>
     <% funding_sites << {"type" => "GitHub Sponsors", "url" => "https://github.com/sponsors/pboling"} unless funding_sites.any? { |fs| fs["type"] == "GitHub Sponsors" } %>
     <p>
-      Financially support
-      <% if project["type"] == "person" %>
-      my open source work
-      <% else %>
-      my work on <em><%= project["name"] %></em>
-      <% end %>
-      via:
+      Financially support my work on <em><%= project["name"] %></em> via:
     <% last_comma_index = funding_sites.size - 1 %>
     <% funding_sites.each_with_index do |funding_site, i| %>
     <a href="<%= funding_site['url'] %>" class="text-link <%= funding_site['type'].gsub(' ', '-').downcase %>" target="_blank" rel="noopener">
@@ -549,7 +567,7 @@ body_class: projects
         <% end %>
       </li>
     <% elsif item[:type] == :single %>
-      <%# Render single (non-family) project card %>
+      <%# Render single project card (includes the person card first) %>
       <% project = item[:project] %>
       <% raise "Project #{project['name']} has no role!" if project['role'].nil? %>
       <% raise "Project #{project['name']} has invalid role #{project['role']}!" unless allowed_roles.include?(project['role']) %>
@@ -592,7 +610,7 @@ body_class: projects
          target="_blank" rel="noopener">
         Update&nbsp;<span class="update-text">Me</span><span class="update-emoji" aria-hidden="true">🔧</span>
       </a>
-      <% elsif project["type"] == "person" %>
+      <% elsif project["_is_person"] %>
       <a href="<%= gh_forge['url'] %>" class="corner-banner banner-fork" target="_blank" rel="noopener">Follow&nbsp;<span class="fork-me-text">Me</span><span class="fork-me-emoji" aria-hidden="true">🔮</span></a>
       <% else %>
       <% if gh_forge %>
@@ -605,7 +623,7 @@ body_class: projects
     <div class="top-anchor role">
       <div class="horizontal-banner banner-role <%= project['role'] %>">
           <span class="role-label">
-            <% if project["type"] == "person" %>
+            <% if project["_is_person"] %>
             <a href="<%= gh_forge['url'] %>" target="_blank" rel="noopener">Human</a>
             <% else %>
             <% if gh_forge %>
@@ -748,7 +766,8 @@ body_class: projects
     </p>
     <% if project['archived'] %>
     <% # No reason to show GitHub stats for archived projects %>
-    <% elsif project["type"] != "person" && gh_forge %>
+    <% elsif !project["_is_person"] && gh_forge %>
+    <%# Per-project GitHub badge stats (not shown on the person card) %>
     <p>
       <img alt="<%= project['name'] %> GitHub License" src="https://img.shields.io/github/license/<%= gh_forge['owner'] %>/<%= project['name'] %>?style=social">
       <img alt="<%= project['name'] %> GitHub commit activity" src="https://img.shields.io/github/commit-activity/m/<%= gh_forge['owner'] %>/<%= project['name'] %>?style=social">
@@ -769,7 +788,7 @@ body_class: projects
     <% funding_sites << {"type" => "GitHub Sponsors", "url" => "https://github.com/sponsors/pboling"} unless funding_sites.any? { |fs| fs["type"] == "GitHub Sponsors" } %>
     <p>
       Financially support
-      <% if project["type"] == "person" %>
+      <% if project["_is_person"] %>
       my open source work
       <% else %>
       my work on <em><%= project["name"] %></em>
