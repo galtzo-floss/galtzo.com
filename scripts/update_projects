@@ -1510,130 +1510,129 @@ end
 
 # Run the updater
 if __FILE__ == $0
-  # ── Parse command-line arguments ──────────────────────────────────────────
-  subcommand       = nil   # 'add_project' or nil (default = full update)
-  surgical_field   = nil
-  discover_rubygems = nil  # nil = decide after parsing; true/false = explicit
-  auto_confirm     = false
+  require 'optparse'
+
+  options = {
+    auto_confirm:     false,
+    discover_rubygems: nil,   # nil = decide after parsing; true/false = explicit
+  }
   add_project_opts = {}
 
-  i = 0
-  while i < ARGV.size
-    arg = ARGV[i]
-    case arg
-    when '--help', '-h'
-      puts <<~HELP
-        Usage: #{$0} [OPTIONS] [SUBCOMMAND|FIELD]
+  OptionParser.new do |op|
+    op.banner = "Usage: #{$0} [OPTIONS] [SUBCOMMAND|FIELD]"
 
-        Fetches live stats for every project in projects.yml from GitHub, GitLab,
-        Codeberg, and RubyGems APIs.
+    op.separator ""
+    op.separator "Fetches live stats for every project in projects.yml from GitHub, GitLab,"
+    op.separator "Codeberg, and RubyGems APIs."
+    op.separator ""
+    op.separator "When run with no subcommand or field, a RubyGems discovery pre-flight runs"
+    op.separator "first: it queries RubyGems.org for every gem owned by RUBYGEMS_HANDLE,"
+    op.separator "shows any that are missing from projects.yml, and asks whether to add them"
+    op.separator "before the main update begins."
+    op.separator ""
+    op.separator "Subcommands:"
+    op.separator "  add_project             Interactively add a single project to projects.yml."
+    op.separator "                          Works for any language / ecosystem."
+    op.separator ""
+    op.separator "Surgical Update Fields (update one field across all projects):"
+    ProjectUpdater::VALID_SURGICAL_FIELDS.each { |f| op.separator "  #{f}" }
+    op.separator ""
+    op.separator "Environment Variables:"
+    op.separator "  GITHUB_TOKEN            Raises GitHub API rate limit from 60 to 5,000 req/hr"
+    op.separator "  GITLAB_TOKEN            Authenticates GitLab API requests"
+    op.separator "  RUBYGEMS_HANDLE         Your RubyGems username — required for gem discovery"
+    op.separator ""
+    op.separator "Examples:"
+    op.separator "  #{$0}                              # Full update + gem discovery (interactive)"
+    op.separator "  #{$0} -y                           # Full update + gem discovery (non-interactive)"
+    op.separator "  #{$0} --no-discover                # Full update, skip gem discovery"
+    op.separator "  #{$0} release_date                 # Surgical: update only release_date"
+    op.separator "  #{$0} github_stars                 # Surgical: update only github_stars"
+    op.separator "  #{$0} -y release_date              # Surgical update, non-interactive"
+    op.separator "  #{$0} add_project                  # Interactively add a project"
+    op.separator "  #{$0} add_project --name my-gem --ecosystem rubygems --github-url https://github.com/org/repo"
+    op.separator ""
+    op.separator "Options:"
 
-        When run with no subcommand or field, a RubyGems discovery pre-flight runs
-        first: it queries RubyGems.org for every gem owned by RUBYGEMS_HANDLE,
-        shows any that are missing from projects.yml, and asks whether to add them
-        before the main update begins.
-
-        Subcommands:
-          add_project             Interactively add a single project to projects.yml.
-                                  Works for any language / ecosystem.
-
-        Surgical Update Fields (update one field across all projects):
-        #{ProjectUpdater::VALID_SURGICAL_FIELDS.map { |f| "  #{f}" }.join("\n")}
-
-        Options:
-          -h, --help              Show this help message
-          --no-discover           Skip the RubyGems discovery pre-flight
-          -y, --no-tty            Auto-accept all prompts (for CI / cron)
-
-        add_project options (all optional — omitted values are prompted interactively):
-          --name NAME             Project / package name
-          --ecosystem ECO         Package ecosystem: rubygems, cargo, npm, pypi, go, none
-          --language LANG         Primary language
-          --role ROLE             author | contributor | maintainer  (default: contributor)
-          --github-url URL        GitHub repository URL
-          --gitlab-url URL        GitLab repository URL
-          --codeberg-url URL      Codeberg repository URL
-          --description TEXT      Short description (HTML allowed)
-          --minimum-version VER   Minimum runtime version
-          --tags TAG1,TAG2        Comma-separated tags
-          --funding-sites         Pre-set funding sites (interactive prompt skipped; use 'none' for empty list,
-                                  or 'TYPE1:URL1,TYPE2:URL2', e.g.
-                                  'OpenCollective:https://opencollective.com/myorg,Liberapay:https://liberapay.com/me')
-
-        Environment Variables:
-          GITHUB_TOKEN            Raises GitHub API rate limit from 60 to 5,000 req/hr
-          GITLAB_TOKEN            Authenticates GitLab API requests
-          RUBYGEMS_HANDLE         Your RubyGems username — required for gem discovery
-
-        Examples:
-          #{$0}                              # Full update + gem discovery (interactive)
-          #{$0} -y                           # Full update + gem discovery (non-interactive)
-          #{$0} --no-discover                # Full update, skip gem discovery
-          #{$0} release_date                 # Surgical: update only release_date
-          #{$0} github_stars                 # Surgical: update only github_stars
-          #{$0} -y release_date              # Surgical update, non-interactive
-          #{$0} add_project                  # Interactively add a project
-          #{$0} add_project --name my-crate --ecosystem cargo --role contributor
-          #{$0} add_project --name my-gem --ecosystem rubygems --github-url https://github.com/org/repo
-      HELP
-      exit 0
-
-    when '-y', '--no-tty'
-      auto_confirm = true
-
-    when '--no-discover'
-      discover_rubygems = false
-
-    when 'add_project'
-      subcommand = 'add_project'
-
-    # add_project flags
-    when '--name'
-      add_project_opts[:name] = ARGV[i += 1]
-    when '--ecosystem'
-      add_project_opts[:ecosystem] = ARGV[i += 1]
-    when '--language'
-      add_project_opts[:language] = ARGV[i += 1]
-    when '--role'
-      add_project_opts[:role] = ARGV[i += 1]
-    when '--github-url'
-      add_project_opts[:github_url] = ARGV[i += 1]
-    when '--gitlab-url'
-      add_project_opts[:gitlab_url] = ARGV[i += 1]
-    when '--codeberg-url'
-      add_project_opts[:codeberg_url] = ARGV[i += 1]
-    when '--description'
-      add_project_opts[:description] = ARGV[i += 1]
-    when '--minimum-version'
-      add_project_opts[:minimum_version] = ARGV[i += 1]
-    when '--tags'
-      add_project_opts[:tags] = ARGV[i += 1]
-    when '--funding-sites'
-      add_project_opts[:funding_sites] = ARGV[i += 1]
-
-    else
-      # Anything else is treated as a surgical field name
-      unless arg.start_with?('--')
-        surgical_field = arg
-      else
-        warn "Unknown option: #{arg}"
-        exit 1
-      end
+    op.on("-y", "--no-tty", "Auto-accept all prompts (for CI / cron)") do
+      options[:auto_confirm] = true
     end
-    i += 1
-  end
+
+    op.on("--no-discover", "Skip the RubyGems discovery pre-flight") do
+      options[:discover_rubygems] = false
+    end
+
+    op.separator ""
+    op.separator "add_project options (all optional — omitted values are prompted interactively):"
+
+    op.on("--name NAME", "Project / package name") do |v|
+      add_project_opts[:name] = v
+    end
+
+    op.on("--ecosystem ECO", "Package ecosystem: rubygems, cargo, npm, pypi, go, none") do |v|
+      add_project_opts[:ecosystem] = v
+    end
+
+    op.on("--language LANG", "Primary language") do |v|
+      add_project_opts[:language] = v
+    end
+
+    op.on("--role ROLE", "author | contributor | maintainer  (default: contributor)") do |v|
+      add_project_opts[:role] = v
+    end
+
+    op.on("--github-url URL", "GitHub repository URL") do |v|
+      add_project_opts[:github_url] = v
+    end
+
+    op.on("--gitlab-url URL", "GitLab repository URL") do |v|
+      add_project_opts[:gitlab_url] = v
+    end
+
+    op.on("--codeberg-url URL", "Codeberg repository URL") do |v|
+      add_project_opts[:codeberg_url] = v
+    end
+
+    op.on("--description TEXT", "Short description (HTML allowed)") do |v|
+      add_project_opts[:description] = v
+    end
+
+    op.on("--minimum-version VER", "Minimum runtime version") do |v|
+      add_project_opts[:minimum_version] = v
+    end
+
+    op.on("--tags TAG1,TAG2", "Comma-separated tags") do |v|
+      add_project_opts[:tags] = v
+    end
+
+    op.on("--funding-sites SPEC",
+          "Pre-set funding sites; use 'none' for empty, or 'TYPE1:URL1,TYPE2:URL2'") do |v|
+      add_project_opts[:funding_sites] = v
+    end
+
+    op.on("-h", "--help", "Show this help message") do
+      puts op
+      exit 0
+    end
+  end.parse!
+
+  # Remaining ARGV after parse! holds an optional subcommand or surgical field
+  remainder = ARGV.first
+
+  subcommand     = remainder == 'add_project' ? 'add_project' : nil
+  surgical_field = (remainder && remainder != 'add_project') ? remainder : nil
 
   # Discovery is on by default ONLY for a bare full update (no subcommand, no
-  # surgical field).  When the user is doing something more targeted they don't
+  # surgical field). When the user is doing something more targeted they don't
   # want the pre-flight slowing them down unless they asked for it explicitly.
-  if discover_rubygems.nil?
-    discover_rubygems = subcommand.nil? && surgical_field.nil?
+  if options[:discover_rubygems].nil?
+    options[:discover_rubygems] = subcommand.nil? && surgical_field.nil?
   end
 
   updater = ProjectUpdater.new(
     surgical_field:    surgical_field,
-    discover_rubygems: discover_rubygems,
-    auto_confirm:      auto_confirm
+    discover_rubygems: options[:discover_rubygems],
+    auto_confirm:      options[:auto_confirm],
   )
 
   case subcommand

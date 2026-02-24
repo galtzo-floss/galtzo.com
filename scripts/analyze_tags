@@ -391,98 +391,86 @@ end
 # =============================================================================
 
 if __FILE__ == $0
-  file         = TagAnalyzer::PROJECTS_FILE
-  dev_file     = TagAnalyzer::PROJECTS_DEV_FILE
-  auto_confirm = false
-  interactive  = false
-  renames_file = nil
-  dry_run      = false
-  no_color     = !$stdout.tty?
+  require 'optparse'
 
-  i = 0
-  while i < ARGV.size
-    arg = ARGV[i]
-    case arg
-    when '--help', '-h'
-      puts <<~HELP
-        Usage: bundle exec ruby scripts/analyze_tags [OPTIONS]
+  options = {
+    file:         TagAnalyzer::PROJECTS_FILE,
+    dev_file:     TagAnalyzer::PROJECTS_DEV_FILE,
+    auto_confirm: false,
+    interactive:  false,
+    renames_file: nil,
+    dry_run:      false,
+    color:        $stdout.tty?,
+  }
 
-        Analyses tag usage across projects.yml, reports the spread and frequency,
-        and optionally merges/renames tags to reduce the total unique count.
+  OptionParser.new do |op|
+    op.banner = "Usage: bundle exec ruby scripts/analyze_tags [OPTIONS]"
 
-        Modes (default: analysis report only):
-          --interactive, -i       Walk through each suggested rename interactively
-          --apply RENAMES_FILE    Apply renames from a YAML file (format: old: canonical)
-          --dry-run               Show what would change without writing any files
+    op.separator ""
+    op.separator "Analyses tag usage across projects.yml, reports the spread and frequency,"
+    op.separator "and optionally merges/renames tags to reduce the total unique count."
+    op.separator ""
+    op.separator "Modes (default: analysis report only):"
+    op.separator "  --interactive, -i       Walk through each suggested rename interactively"
+    op.separator "  --apply RENAMES_FILE    Apply renames from a YAML file (format: old: canonical)"
+    op.separator "  --dry-run               Show what would change without writing any files"
+    op.separator ""
+    op.separator "The renames file format (for --apply) is a simple YAML hash:"
+    op.separator "  testing: test"
+    op.separator "  rspec: test"
+    op.separator "  auth: security"
+    op.separator ""
+    op.separator "Examples:"
+    op.separator "  bundle exec ruby scripts/analyze_tags"
+    op.separator "  bundle exec ruby scripts/analyze_tags --interactive"
+    op.separator "  bundle exec ruby scripts/analyze_tags --interactive -y"
+    op.separator "  bundle exec ruby scripts/analyze_tags --interactive -y --dry-run"
+    op.separator "  bundle exec ruby scripts/analyze_tags --apply tmp/my_renames.yml"
+    op.separator ""
+    op.separator "Options:"
 
-        Options:
-          -h, --help              Show this help
-          -y, --no-tty            Auto-accept all prompts (for use with --interactive)
-          --no-color              Disable ANSI colour output
-          --file PATH             Use a different projects YAML file
-          --dev-file PATH         Use a different projects_dev YAML file
-
-        The renames file format (for --apply) is a simple YAML hash:
-          testing: test
-          rspec: test
-          auth: security
-
-        Examples:
-          # See the full analysis report and suggested merges
-          bundle exec ruby scripts/analyze_tags
-
-          # Interactively approve/reject each suggested merge
-          bundle exec ruby scripts/analyze_tags --interactive
-
-          # Non-interactively apply all suggested merges
-          bundle exec ruby scripts/analyze_tags --interactive -y
-
-          # Dry-run to preview --interactive -y changes
-          bundle exec ruby scripts/analyze_tags --interactive -y --dry-run
-
-          # Apply a hand-crafted renames file
-          bundle exec ruby scripts/analyze_tags --apply tmp/my_renames.yml
-      HELP
-      exit 0
-
-    when '--interactive', '-i'
-      interactive = true
-    when '-y', '--no-tty'
-      auto_confirm = true
-    when '--dry-run'
-      dry_run = true
-    when '--no-color'
-      no_color = true
-    when '--apply'
-      renames_file = ARGV[i += 1]
-    when '--file'
-      file = ARGV[i += 1]
-    when '--dev-file'
-      dev_file = ARGV[i += 1]
-    else
-      warn "Unknown option: #{arg}"
-      warn 'Run with --help for usage.'
-      exit 1
+    op.on("-i", "--interactive", "Walk through each suggested rename interactively") do
+      options[:interactive] = true
     end
-    i += 1
-  end
 
-  analyzer = TagAnalyzer.new(
-    file:         file,
-    dev_file:     dev_file,
-    auto_confirm: auto_confirm,
-    interactive:  interactive,
-    renames_file: renames_file,
-    dry_run:      dry_run,
-    color:        !no_color,
-  )
+    op.on("-y", "--no-tty", "Auto-accept all prompts (for use with --interactive)") do
+      options[:auto_confirm] = true
+    end
+
+    op.on("--dry-run", "Show what would change without writing any files") do
+      options[:dry_run] = true
+    end
+
+    op.on("--no-color", "Disable ANSI colour output") do
+      options[:color] = false
+    end
+
+    op.on("--apply RENAMES_FILE", "Apply renames from a YAML file") do |path|
+      options[:renames_file] = path
+    end
+
+    op.on("--file PATH", "Use a different projects YAML file") do |path|
+      options[:file] = path
+    end
+
+    op.on("--dev-file PATH", "Use a different projects_dev YAML file") do |path|
+      options[:dev_file] = path
+    end
+
+    op.on("-h", "--help", "Show this help") do
+      puts op
+      exit 0
+    end
+  end.parse!
+
+  analyzer = TagAnalyzer.new(**options)
 
   # Always run the analysis report first
   suggested = analyzer.run_analyze
 
-  if renames_file
-    analyzer.run_from_file(renames_file)
-  elsif interactive
+  if options[:renames_file]
+    analyzer.run_from_file(options[:renames_file])
+  elsif options[:interactive]
     analyzer.run_interactive(suggested)
   end
 end

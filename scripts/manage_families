@@ -516,76 +516,70 @@ end
 # =============================================================================
 
 if __FILE__ == $0
-  file          = FamilyManager::PROJECTS_FILE
-  dev_file      = FamilyManager::PROJECTS_DEV_FILE
-  families_file = FamilyManager::FAMILIES_FILE
-  auto_confirm  = false
-  dry_run       = false
-  no_color      = !$stdout.tty?
+  require 'optparse'
 
-  i = 0
-  while i < ARGV.size
-    arg = ARGV[i]
-    case arg
-    when '--help', '-h'
-      puts <<~HELP
-        Usage: bundle exec ruby scripts/manage_families [OPTIONS]
+  options = {
+    file:          FamilyManager::PROJECTS_FILE,
+    dev_file:      FamilyManager::PROJECTS_DEV_FILE,
+    families_file: FamilyManager::FAMILIES_FILE,
+    auto_confirm:  false,
+    dry_run:       false,
+    color:         $stdout.tty?,
+  }
 
-        Interactive TUI for managing project families.
+  OptionParser.new do |op|
+    op.banner = "Usage: bundle exec ruby scripts/manage_families [OPTIONS]"
 
-        Family metadata (name, global display order) lives in families.yml.
-        Project entries in projects.yml carry only: theme, family_id, family_primary.
-        Within-family member order is the order entries appear in projects.yml.
+    op.separator ""
+    op.separator "Interactive TUI for managing project families."
+    op.separator ""
+    op.separator "Family metadata (name, global display order) lives in families.yml."
+    op.separator "Project entries in projects.yml carry only: theme, family_id, family_primary."
+    op.separator "Within-family member order is the order entries appear in projects.yml."
+    op.separator ""
+    op.separator "From the main menu:"
+    op.separator "  • Select a family by scrolling/filtering to manage its members"
+    op.separator "  • [U] Manage unassigned projects"
+    op.separator "  • [N] Create a new family"
+    op.separator "  • [Q] Save and exit"
+    op.separator ""
+    op.separator "Per-family actions (via expand menu):"
+    op.separator "  [r] Reorder members within the family (pick member, pick destination, repeat)"
+    op.separator "  [m] Remove a member from the family"
+    op.separator "  [a] Add an unassigned project to the family"
+    op.separator "  [p] Reposition this family among all families"
+    op.separator "  [d] Delete the family (unassigns all members)"
+    op.separator "  [b] Back to main menu"
+    op.separator ""
+    op.separator "Changes are written to projects.yml, projects_dev.yml, and families.yml on exit."
+    op.separator ""
+    op.separator "Options:"
 
-        From the main menu:
-          • Select a family by scrolling/filtering to manage its members
-          • [U] Manage unassigned projects
-          • [N] Create a new family
-          • [Q] Save and exit
-
-        Per-family actions (via expand menu):
-          [r] Reorder members within the family (pick member, pick destination, repeat)
-          [m] Remove a member from the family
-          [a] Add an unassigned project to the family
-          [p] Reposition this family among all families
-          [d] Delete the family (unassigns all members)
-          [b] Back to main menu
-
-        Options:
-          -h, --help              Show this help
-          --dry-run               Preview saves without writing files
-          --no-color              Disable ANSI colour output
-          --file PATH             Use a different projects YAML file
-          --dev-file PATH         Use a different projects_dev YAML file
-          --families-file PATH    Use a different families YAML file
-
-        Changes are written to projects.yml, projects_dev.yml, and families.yml on exit.
-      HELP
-      exit 0
-    when '--dry-run'
-      dry_run = true
-    when '--no-color'
-      no_color = true
-    when '--file'
-      file = ARGV[i += 1]
-    when '--dev-file'
-      dev_file = ARGV[i += 1]
-    when '--families-file'
-      families_file = ARGV[i += 1]
-    else
-      warn "Unknown option: #{arg}"
-      warn 'Run with --help for usage.'
-      exit 1
+    op.on("--dry-run", "Preview saves without writing files") do
+      options[:dry_run] = true
     end
-    i += 1
-  end
 
-  FamilyManager.new(
-    file:          file,
-    dev_file:      dev_file,
-    families_file: families_file,
-    auto_confirm:  auto_confirm,
-    dry_run:       dry_run,
-    color:         !no_color,
-  ).run
+    op.on("--no-color", "Disable ANSI colour output") do
+      options[:color] = false
+    end
+
+    op.on("--file PATH", "Use a different projects YAML file") do |path|
+      options[:file] = path
+    end
+
+    op.on("--dev-file PATH", "Use a different projects_dev YAML file") do |path|
+      options[:dev_file] = path
+    end
+
+    op.on("--families-file PATH", "Use a different families YAML file") do |path|
+      options[:families_file] = path
+    end
+
+    op.on("-h", "--help", "Show this help") do
+      puts op
+      exit 0
+    end
+  end.parse!
+
+  FamilyManager.new(**options).run
 end

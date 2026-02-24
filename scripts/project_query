@@ -515,88 +515,82 @@ end
 
 if __FILE__ == $0
   require 'fileutils'
+  require 'optparse'
 
-  subcommand = nil
-  sub_args   = []
-  format     = :table
-  days       = 30
-  file       = ProjectQuery::PROJECTS_FILE
-  no_color   = !$stdout.tty?
+  options = {
+    format:   :table,
+    days:     30,
+    file:     ProjectQuery::PROJECTS_FILE,
+    color:    $stdout.tty?,
+  }
 
-  i = 0
-  while i < ARGV.size
-    arg = ARGV[i]
-    case arg
-    when '--help', '-h'
-      puts <<~HELP
-        Usage: bundle exec ruby scripts/project_query [OPTIONS] <subcommand> [args]
+  OptionParser.new do |op|
+    op.banner = "Usage: bundle exec ruby scripts/project_query [OPTIONS] <subcommand> [args]"
 
-        Subcommands:
-          list                         List all projects (table view)
-          stats                        Summary statistics
-          show <name>                  Show full entry for one project (fuzzy match)
-          missing <field>              Projects where the given field is blank or nil
-          stale [--days N]             Projects not scraped in > N days (default: 30)
-          status <value>               Filter by status (active|stale|archived)
-          language <value>             Filter by language
-          ecosystem <value>            Filter by ecosystem (rubygems|cargo|npm|pypi|go|none)
-          role <value>                 Filter by role (author|contributor|maintainer)
-          tag <value>                  Filter by tag
-          needs-attention              Full data-quality audit report
-          console                      Drop into IRB with project data pre-loaded
+    op.separator ""
+    op.separator "Subcommands:"
+    op.separator "  list                         List all projects (table view)"
+    op.separator "  stats                        Summary statistics"
+    op.separator "  show <name>                  Show full entry for one project (fuzzy match)"
+    op.separator "  missing <field>              Projects where the given field is blank or nil"
+    op.separator "  stale [--days N]             Projects not scraped in > N days (default: 30)"
+    op.separator "  status <value>               Filter by status (active|stale|archived)"
+    op.separator "  language <value>             Filter by language"
+    op.separator "  ecosystem <value>            Filter by ecosystem (rubygems|cargo|npm|pypi|go|none)"
+    op.separator "  role <value>                 Filter by role (author|contributor|maintainer)"
+    op.separator "  tag <value>                  Filter by tag"
+    op.separator "  needs-attention              Full data-quality audit report"
+    op.separator "  console                      Drop into IRB with project data pre-loaded"
+    op.separator ""
+    op.separator "Field names for `missing`:"
+    op.separator "  name  description  language  ecosystem  minimum_version  role"
+    op.separator "  status  tags  forges  release_date  last_commit_on  first_commit_on"
+    op.separator "  github_stars  total_downloads  last_scrape_at  docs_site"
+    op.separator ""
+    op.separator "Examples:"
+    op.separator "  bundle exec ruby scripts/project_query stats"
+    op.separator "  bundle exec ruby scripts/project_query needs-attention"
+    op.separator "  bundle exec ruby scripts/project_query missing ecosystem"
+    op.separator "  bundle exec ruby scripts/project_query stale --days 7"
+    op.separator "  bundle exec ruby scripts/project_query show version_gem"
+    op.separator "  bundle exec ruby scripts/project_query tag rspec"
+    op.separator "  bundle exec ruby scripts/project_query list --format names"
+    op.separator "  bundle exec ruby scripts/project_query console"
+    op.separator ""
+    op.separator "Options:"
 
-        Options:
-          -h, --help                   Show this help
-          --days N                     Day threshold for `stale` (default: 30)
-          --format table|names|yaml    Output format (default: table)
-          --file PATH                  Use a different projects YAML file
-          --no-color                   Disable ANSI colour / force :ansi theme
-
-        Field names for `missing`:
-          name  description  language  ecosystem  minimum_version  role
-          status  tags  forges  release_date  last_commit_on  first_commit_on
-          github_stars  total_downloads  last_scrape_at  docs_site
-
-        Examples:
-          bundle exec ruby scripts/project_query stats
-          bundle exec ruby scripts/project_query needs-attention
-          bundle exec ruby scripts/project_query missing ecosystem
-          bundle exec ruby scripts/project_query missing last_scrape_at
-          bundle exec ruby scripts/project_query stale --days 7
-          bundle exec ruby scripts/project_query show version_gem
-          bundle exec ruby scripts/project_query status stale
-          bundle exec ruby scripts/project_query language Rust
-          bundle exec ruby scripts/project_query ecosystem cargo
-          bundle exec ruby scripts/project_query tag rspec
-          bundle exec ruby scripts/project_query list --format names
-          bundle exec ruby scripts/project_query console
-      HELP
-      exit 0
-
-    when '--days'
-      days = ARGV[i += 1].to_i
-    when '--format'
-      format = ARGV[i += 1].to_sym
-    when '--file'
-      file = ARGV[i += 1]
-    when '--no-color'
-      no_color = true
-    else
-      if subcommand.nil?
-        subcommand = arg
-      else
-        sub_args << arg
-      end
+    op.on("--days N", Integer, "Day threshold for `stale` (default: 30)") do |n|
+      options[:days] = n
     end
-    i += 1
-  end
+
+    op.on("--format FORMAT", %i[table names yaml], "Output format: table|names|yaml (default: table)") do |f|
+      options[:format] = f
+    end
+
+    op.on("--file PATH", "Use a different projects YAML file") do |path|
+      options[:file] = path
+    end
+
+    op.on("--no-color", "Disable ANSI colour / force :ansi theme") do
+      options[:color] = false
+    end
+
+    op.on("-h", "--help", "Show this help") do
+      puts op
+      exit 0
+    end
+  end.parse!
+
+  # Remaining ARGV after parse! holds the subcommand and its arguments
+  subcommand = ARGV.shift
+  sub_args   = ARGV.dup
 
   if subcommand.nil?
     warn 'No subcommand given. Run with --help for usage.'
     exit 1
   end
 
-  pq = ProjectQuery.new(file: file, format: format, color: !no_color)
+  pq = ProjectQuery.new(file: options[:file], format: options[:format], color: options[:color])
 
   case subcommand
   when 'list'
@@ -608,7 +602,7 @@ if __FILE__ == $0
   when 'missing'
     pq.run_missing(sub_args.first)
   when 'stale'
-    pq.run_stale(days: days)
+    pq.run_stale(days: options[:days])
   when 'status'
     pq.run_filter('status', sub_args.first || '')
   when 'language'
