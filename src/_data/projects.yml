@@ -1981,7 +1981,7 @@
   role: maintainer
   first_commit_by_person_on: 2010/09/21
   first_commit_by_person: https://github.com/tylerhunt/remit/commit/2d4ec0a3f586faab6cc92c9520a07a27e93a8d34
-  funding_sites:
+  funding_sites: []
   forges:
   - type: GitHub
     url: https://github.com/tylerhunt/remit
