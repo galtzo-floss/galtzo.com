@@ -361,7 +361,7 @@ class ProjectQuery
         :total_downloads, :daily_downloads, :release_downloads,
         :release_date, :last_commit_on, :first_commit_on, :first_commit,
         :last_scrape_at, :docs_site, :funding_sites,
-        :theme, :family_id, :family_name, :family_position,
+        :theme, :family_id, :family_position,
         :raw,
         keyword_init: true
       ) do

@@ -1458,7 +1458,7 @@ class ProjectUpdater
   end
 
   def validate_family_theme(project)
-    required_fields = %w[family_id family_name family_position]
+    required_fields = %w[family_id family_position]
     missing_fields = required_fields.select { |field| project[field].nil? }
 
     if missing_fields.any?
