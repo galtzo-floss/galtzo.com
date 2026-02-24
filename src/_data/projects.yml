@@ -4294,6 +4294,9 @@
   funding_sites: []
   release_date: 2026/02/17
   last_scrape_at: '2026-02-23T12:13:30Z'
+  theme: family
+  family_id: rubygems-bundler-family
+  family_position: 6
 - name: gemfile-go
   ecosystem: go
   language: Go
@@ -4321,6 +4324,9 @@
   funding_sites: []
   release_date: 2026/02/16
   last_scrape_at: '2026-02-23T12:13:32Z'
+  theme: family
+  family_id: rubygems-bundler-family
+  family_position: 5
 - name: cyclonedx-ruby
   ecosystem: rubygems
   language: Ruby
@@ -4377,6 +4383,9 @@
   status: active
   first_commit_by_person: https://github.com/oxidize-rb/rb-sys/commit/44cb57255497879c0efe5d45e57473ad73231593
   first_commit_by_person_on: 2026/01/05
+  theme: family
+  family_id: ast-merge
+  family_position: 17
 - name: rb_sys
   ecosystem: rubygems
   language: Ruby
@@ -4402,6 +4411,9 @@
   status: active
   first_commit_by_person: https://github.com/oxidize-rb/rb-sys/commit/44cb57255497879c0efe5d45e57473ad73231593
   first_commit_by_person_on: 2026/01/05
+  theme: family
+  family_id: ast-merge
+  family_position: 18
 - name: magnus
   ecosystem: cargo
   language: Rust
@@ -4429,6 +4441,9 @@
   status: active
   first_commit_by_person: https://github.com/matsadler/magnus/commit/3d15dc8ec4d669002dea2295e89df947dd477058
   first_commit_by_person_on: 2026/01/30
+  theme: family
+  family_id: ast-merge
+  family_position: 16
 - name: setup-ruby-flash
   ecosystem: none
   language: Ruby
@@ -4461,6 +4476,9 @@
   status: active
   first_commit_by_person: https://github.com/appraisal-rb/setup-ruby-flash/commit/95081d1ec9f5d0e9cd1d78e5c443e4a3c580fc6c
   first_commit_by_person_on: 2026/01/14
+  theme: family
+  family_id: rubygems-bundler-family
+  family_position: 7
 - name: tree_stump
   ecosystem: rubygems
   language: Ruby
@@ -4470,7 +4488,7 @@
     url: https://github.com/joker1007/tree_stump
     owner: joker1007
   description: Ruby bindings for Tree-sitter written in Rust using rb_sys and magnus.
-  minimum_version: '2.7'
+  minimum_version: '3.1'
   tags:
   - ruby
   - rust
@@ -4488,6 +4506,9 @@
   status: active
   first_commit_by_person: https://github.com/joker1007/tree_stump/commit/5bb3a191f08b2cbc7d2022f46ba41e8aae7f720b
   first_commit_by_person_on: 2025/12/15
+  theme: family
+  family_id: ast-merge
+  family_position: 15
 - name: ruby_tree_sitter
   ecosystem: rubygems
   language: Ruby
@@ -4497,7 +4518,7 @@
     url: https://www.github.com/Faveod/ruby-tree-sitter
     owner: Faveod
   description: Ruby bindings for Tree-Sitter
-  minimum_version: '2.7'
+  minimum_version: '3.2'
   tags:
   - ruby
   - ast
@@ -4514,3 +4535,86 @@
   status: active
   first_commit_by_person: https://github.com/Faveod/ruby-tree-sitter/commit/710127ddd5025ff53592a33b5a89a6331d994745
   first_commit_by_person_on: 2026/01/04
+  theme: family
+  family_id: ast-merge
+  family_position: 19
+- name: bson
+  ecosystem: rubygems
+  language: Ruby
+  role: contributor
+  forges:
+  - type: GitHub
+    url: https://github.com/mongodb/bson-ruby
+    owner: mongodb
+  description: A fully featured BSON specification implementation in Ruby
+  minimum_version: '2.6'
+  tags:
+  - ruby
+  - json
+  - data
+  - serialization
+  funding_sites: []
+  docs_site: https://www.mongodb.com/docs/ruby-driver/current/tutorials/bson-v4/
+  total_downloads: 112454337
+  daily_downloads: 26522
+  release_downloads: 959152
+  release_date: 2025/10/16
+  github_stars: 82
+  last_commit_on: 2026/01/08
+  status: active
+  first_commit_by_person: https://github.com/mongodb/bson-ruby/commit/ddbfce8c9b71470f61b68f0730102e1db4a965f8
+  first_commit_by_person_on: 2025/06/02
+- name: rexml
+  ecosystem: rubygems
+  language: Ruby
+  role: contributor
+  forges:
+  - type: GitHub
+    url: https://github.com/ruby/rexml
+    owner: ruby
+  description: An XML toolkit for Ruby
+  minimum_version: '2.5'
+  tags:
+  - ruby
+  - data
+  - serialization
+  - xml
+  funding_sites: []
+  docs_site:
+  total_downloads: 713025033
+  daily_downloads: 462062
+  release_downloads: 40863391
+  release_date: 2025/09/10
+  github_stars: 164
+  last_commit_on: 2025/12/20
+  status: active
+  first_commit_by_person: https://github.com/ruby/rexml/commit/ec410a0d5e5e5daddca82fd1455824219403f676
+  first_commit_by_person_on: 2025/07/09
+- name: bundler
+  ecosystem: rubygems
+  language: Ruby
+  role: contributor
+  forges:
+  - type: GitHub
+    url: https://github.com/ruby/rubygems
+    owner: ruby
+  description: Bundler manages an application's dependencies through its entire life,
+    across many machines, systematically and repeatably
+  minimum_version: '3.2'
+  tags:
+  - ruby
+  funding_sites: []
+  docs_site:
+  total_downloads: 3206319893
+  daily_downloads: 1819784
+  release_downloads: 2969543
+  release_date: 2026/02/05
+  github_stars: 3900
+  last_commit_on: 2026/02/20
+  status: active
+  first_commit_by_person: https://github.com/ruby/rubygems/commit/4c2c259ed307633186534440457bb0f46fc01108
+  first_commit_by_person_on: 2023/09/14
+  theme: family
+  family_id: rubygems-bundler-family
+  family_position: 4
+  family_primary: true

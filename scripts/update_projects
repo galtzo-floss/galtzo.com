@@ -14,6 +14,7 @@ class ProjectUpdater
   PROJECTS_DEV_FILE = File.expand_path('../src/_data/projects_dev.yml', __dir__)
 
   PERSON_FILE = File.expand_path('../src/_data/person.yml', __dir__)
+  FAMILIES_FILE = File.expand_path('../src/_data/families.yml', __dir__)
 
   # API tokens from environment (optional but recommended to avoid rate limits)
   GITHUB_TOKEN = ENV['GITHUB_TOKEN']
@@ -64,6 +65,7 @@ class ProjectUpdater
 
     @projects = load_yaml(PROJECTS_FILE)
     @projects_dev = load_yaml(PROJECTS_DEV_FILE)
+    @families = load_yaml(FAMILIES_FILE)
     @rate_limit_delay = 1 # seconds between API calls
     @errors = [] # Track errors for summary
     @surgical_fields = Array(surgical_fields).compact
@@ -327,15 +329,25 @@ class ProjectUpdater
     # ── Name ──────────────────────────────────────────────────────────────────
     project_name = ask("Project name", default: opts[:name])
 
-    # ── Ecosystem(s) ──────────────────────────────────────────────────────────
-    eco_list = ECOSYSTEMS.keys.join(', ')
-    raw_eco_input = ask("Package ecosystem(s) — comma-separated for multiple (#{eco_list})",
-                        default: opts[:ecosystem] || 'none')
+    # ── Family ────────────────────────────────────────────────────────────────
+    family_id = select_family
 
-    # Parse comma-separated list; filter to known ecosystems (unknown → 'none')
-    requested_ecosystems = raw_eco_input.to_s.split(',').map(&:strip).map do |e|
-      ECOSYSTEMS.key?(e) ? e : 'none'
-    end.uniq
+    # ── Ecosystem(s) ──────────────────────────────────────────────────────────
+    # Use tty-prompt select menu for ecosystem selection
+    requested_ecosystems = if opts[:ecosystem]
+      # Parse comma-separated list from opts; filter to known ecosystems
+      opts[:ecosystem].to_s.split(',').map(&:strip).map do |e|
+        ECOSYSTEMS.key?(e) ? e : 'none'
+      end.uniq
+    else
+      # Interactive multi-select menu using tty-prompt
+      ecosystem_choices = ECOSYSTEMS.map do |key, config|
+        { name: "#{config[:label]}#{key == 'none' ? ' (no package ecosystem)' : ''}", value: key }
+      end
+
+      selected = @prompt.multi_select("Select package ecosystem(s):", ecosystem_choices, per_page: 10)
+      selected.empty? ? ['none'] : selected
+    end
 
     if requested_ecosystems.size > 1
       puts ""
@@ -346,7 +358,7 @@ class ProjectUpdater
 
     # Collect all project entries to add (one per ecosystem)
     projects_to_add = requested_ecosystems.map do |ecosystem|
-      build_add_project_entry(project_name, ecosystem, opts, requested_ecosystems.size > 1)
+      build_add_project_entry(project_name, ecosystem, opts, requested_ecosystems.size > 1, family_id)
     end
 
     # ── Final review and save ─────────────────────────────────────────────────
@@ -388,7 +400,7 @@ class ProjectUpdater
   # uses the scraped data as defaults for all subsequent interactive prompts.
   # +multi+ is true when we are building one of several ecosystem entries so
   # the user gets appropriate labelling.
-  def build_add_project_entry(project_name, ecosystem, opts, multi = false)
+  def build_add_project_entry(project_name, ecosystem, opts, multi = false, family_id = nil)
     label = multi ? " [#{ecosystem}]" : ""
     puts ""
     puts "─"*80
@@ -396,6 +408,7 @@ class ProjectUpdater
     puts "─"*80
 
     project = { 'name' => project_name, 'ecosystem' => ecosystem }
+    project['family'] = family_id if family_id
 
     # ── Early ecosystem scrape ─────────────────────────────────────────────
     # Scrape as soon as we know name + ecosystem so we can pre-fill defaults.
@@ -830,6 +843,19 @@ class ProjectUpdater
   rescue => e
     puts "    ⚠️  Go proxy fetch failed: #{e.message}"
     nil
+  end
+
+  # Prompt user to select a family using tty-prompt menu.
+  # Returns the family ID or nil if no family is selected.
+  def select_family
+    return nil unless @families && @families.any?
+
+    family_choices = @families.map do |family|
+      { name: family['name'], value: family['id'] }
+    end
+    family_choices << { name: '(No family)', value: nil }
+
+    @prompt.select("Select a family for this project:", family_choices, per_page: 10)
   end
 
   # Prompt helper that supports a pre-supplied value (skips interactive prompt).
