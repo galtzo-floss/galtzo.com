@@ -769,7 +769,7 @@
   theme: family
   family_id: active-record
   family_name: ActiveRecord Plugins
-  family_position: 11
+  family_position: 12
   minimum_version: '1.8'
   role: author
   first_commit_on: 2015/04/08
@@ -3439,7 +3439,7 @@
   theme: family
   family_id: active-record
   family_name: ActiveRecord Plugins
-  family_position: 9
+  family_position: 10
   minimum_version: '2.3'
   role: author
   first_commit_on: 2017/06/12
@@ -3510,7 +3510,7 @@
   theme: family
   family_id: active-record
   family_name: ActiveRecord Plugins
-  family_position: 10
+  family_position: 11
   minimum_version: '2.3'
   role: author
   first_commit_on: 2024/03/23
@@ -4072,6 +4072,10 @@
   last_commit_on: 2026/02/22
   status: active
   last_scrape_at: '2026-02-23T04:40:13Z'
+  theme: family
+  family_id: ast-merge
+  family_name: "*-merge Gem Family"
+  family_position: 11
 - name: ast-merge
   description: "☯️ Ast::Merge provides base classes, modules, and RSpec shared examples
     for building intelligent file mergers using AST analysis. It powers prism-merge,
@@ -4104,6 +4108,10 @@
   last_commit_on: 2026/02/21
   status: active
   last_scrape_at: '2026-02-23T04:40:15Z'
+  theme: family
+  family_id: ast-merge
+  family_name: "*-merge Gem Family"
+  family_position: 3
 - name: dotenv-merge
   description: "☯️ Dotenv::Merge provides smart .env file merging that preserves comments,
     understands variable assignments, and supports freeze blocks for protecting sensitive
@@ -4137,6 +4145,10 @@
   last_commit_on: 2026/02/19
   status: active
   last_scrape_at: '2026-02-23T04:40:17Z'
+  theme: family
+  family_id: ast-merge
+  family_name: "*-merge Gem Family"
+  family_position: 6
 - name: rbs-merge
   description: "☯️ Intelligently merge RBS type signature files by parsing and comparing
     AST structures. Supports freeze blocks to protect customizations, signature-based
@@ -4170,6 +4182,10 @@
   last_commit_on: 2026/02/22
   status: active
   last_scrape_at: '2026-02-23T04:40:19Z'
+  theme: family
+  family_id: ast-merge
+  family_name: "*-merge Gem Family"
+  family_position: 13
 - name: tree_haver
   description: "\U0001F334 TreeHaver is a cross-Ruby adapter for many AST parsing
     libraries; supporting MRI Ruby, JRuby, & TruffleRuby. Provides unified parsing
@@ -4203,6 +4219,11 @@
   last_commit_on: 2026/02/19
   status: active
   last_scrape_at: '2026-02-23T04:40:22Z'
+  theme: family
+  family_id: ast-merge
+  family_name: "*-merge Gem Family"
+  family_position: 1
+  family_primary: true
 - name: toml-merge
   description: "☯️ Intelligently merges TOML files by analyzing their AST structure
     with tree-sitter, preserving key organization and resolving conflicts based on
@@ -4236,6 +4257,10 @@
   last_commit_on: 2026/02/19
   status: active
   last_scrape_at: '2026-02-23T04:40:24Z'
+  theme: family
+  family_id: ast-merge
+  family_name: "*-merge Gem Family"
+  family_position: 14
 - name: bash-merge
   description: "☯️ Bash::Merge provides smart Bash script merging that preserves comments,
     understands shell structure, and supports freeze blocks for protecting destination
@@ -4270,6 +4295,10 @@
   last_commit_on: 2026/02/21
   status: active
   last_scrape_at: '2026-02-23T04:40:26Z'
+  theme: family
+  family_id: ast-merge
+  family_name: "*-merge Gem Family"
+  family_position: 4
 - name: json-merge
   description: "☯️ Json::Merge provides smart JSON file merging that understands JSON
     structure. Perfect for merging strict JSON configuration files like package.json,
@@ -4305,6 +4334,10 @@
   last_commit_on: 2026/02/19
   status: active
   last_scrape_at: '2026-02-23T04:40:28Z'
+  theme: family
+  family_id: ast-merge
+  family_name: "*-merge Gem Family"
+  family_position: 7
 - name: markdown-merge
   description: "☯️ Ast::Merge-based structure for merging Markdown files with tools
     like markly-merge and commonmarker-merge"
@@ -4337,6 +4370,10 @@
   last_commit_on: 2026/02/19
   status: active
   last_scrape_at: '2026-02-23T04:40:30Z'
+  theme: family
+  family_id: ast-merge
+  family_name: "*-merge Gem Family"
+  family_position: 9
 - name: jsonc-merge
   description: "☯️ Jsonc::Merge provides smart JSONC (JSON with Comments) file merging
     that preserves comments, understands JSON structure, and supports freeze blocks
@@ -4371,6 +4408,10 @@
   last_commit_on: 2026/02/19
   status: active
   last_scrape_at: '2026-02-23T04:40:32Z'
+  theme: family
+  family_id: ast-merge
+  family_name: "*-merge Gem Family"
+  family_position: 8
 - name: commonmarker-merge
   description: "☯️ Commonmarker::Merge provides smart Markdown file merging using
     Comrak (Rust) via Commonmarker. It understands document structure including headings,
@@ -4405,6 +4446,10 @@
   last_commit_on: 2026/02/19
   status: active
   last_scrape_at: '2026-02-23T04:40:35Z'
+  theme: family
+  family_id: ast-merge
+  family_name: "*-merge Gem Family"
+  family_position: 5
 - name: psych-merge
   description: "☯️ Psych::Merge provides smart YAML file merging that preserves comments,
     anchors/aliases, and supports freeze blocks for protecting destination content.
@@ -4438,6 +4483,10 @@
   last_commit_on: 2026/02/19
   status: active
   last_scrape_at: '2026-02-23T04:40:37Z'
+  theme: family
+  family_id: ast-merge
+  family_name: "*-merge Gem Family"
+  family_position: 12
 - name: markly-merge
   description: "☯️ Markly::Merge provides smart Markdown file merging using libcmark-gfm
     via Markly. It understands document structure including headings, lists, code
@@ -4472,6 +4521,10 @@
   last_commit_on: 2026/02/19
   status: active
   last_scrape_at: '2026-02-23T04:40:39Z'
+  theme: family
+  family_id: ast-merge
+  family_name: "*-merge Gem Family"
+  family_position: 10
 - name: token-resolver
   description: "\U0001FA99 Token::Resolver provides configurable PEG-based (parslet)
     parsing and resolution of structured tokens (e.g., {KJ|GEM_NAME}) in arbitrary
@@ -4504,6 +4557,10 @@
   last_commit_on: 2026/02/22
   status: active
   last_scrape_at: '2026-02-23T04:40:41Z'
+  theme: family
+  family_id: ast-merge
+  family_name: "*-merge Gem Family"
+  family_position: 2
 - name: ore-light
   ecosystem: go
   language: Go
