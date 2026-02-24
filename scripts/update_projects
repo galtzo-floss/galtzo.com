@@ -13,10 +13,20 @@ class ProjectUpdater
   PROJECTS_FILE = File.expand_path('../src/_data/projects.yml', __dir__)
   PROJECTS_DEV_FILE = File.expand_path('../src/_data/projects_dev.yml', __dir__)
 
+  PERSON_FILE = File.expand_path('../src/_data/person.yml', __dir__)
+
   # API tokens from environment (optional but recommended to avoid rate limits)
   GITHUB_TOKEN = ENV['GITHUB_TOKEN']
   GITLAB_TOKEN = ENV['GITLAB_TOKEN']
   RUBYGEMS_HANDLE = ENV['RUBYGEMS_HANDLE']
+
+  # GitHub login of the site owner — used to filter commits to "first commit BY this person".
+  # Read from person.yml's GitHub forge owner field at load time so it stays DRY.
+  GITHUB_HANDLE = begin
+    person = YAML.load_file(PERSON_FILE) rescue {}
+    github_forge = Array(person['forges']).find { |f| f['type'] == 'GitHub' }
+    github_forge&.dig('owner') || ENV['GITHUB_HANDLE'] || 'pboling'
+  end
 
   # Skip projects scraped within the last 24 hours
   SCRAPE_THRESHOLD_HOURS = 24
@@ -26,6 +36,7 @@ class ProjectUpdater
     github_stars gitlab_stars codeberg_stars
     total_downloads daily_downloads release_downloads
     release_date last_commit_on status
+    first_commit_by_person first_commit_by_person_on
   ]
 
   def initialize(surgical_fields: [], discover_rubygems: true, auto_confirm: false)
@@ -300,6 +311,8 @@ class ProjectUpdater
 
   # Interactive (or flag-driven) wizard to add a single project to projects.yml.
   # +opts+ is a Hash of pre-supplied values from the command line (may be empty).
+  # When multiple ecosystems are specified (comma-separated), one project entry
+  # is created per ecosystem — each receives its own API scrape.
   public
   def run_add_project(opts = {})
     puts "="*80
@@ -307,47 +320,124 @@ class ProjectUpdater
     puts "="*80
     puts "Answer the prompts below. Press Enter to accept [defaults]."
     puts "Values pre-supplied via flags are shown and confirmed automatically."
+    puts "To add the same project in multiple ecosystems, separate them with commas"
+    puts "(e.g. 'rubygems,npm'). Each ecosystem will become its own project card."
     puts ""
 
-    project = {}
-
     # ── Name ──────────────────────────────────────────────────────────────────
-    project['name'] = ask("Project name", default: opts[:name])
+    project_name = ask("Project name", default: opts[:name])
 
-    # ── Ecosystem ─────────────────────────────────────────────────────────────
+    # ── Ecosystem(s) ──────────────────────────────────────────────────────────
     eco_list = ECOSYSTEMS.keys.join(', ')
-    raw_eco  = ask("Package ecosystem (#{eco_list})", default: opts[:ecosystem] || 'none')
-    ecosystem = ECOSYSTEMS.key?(raw_eco) ? raw_eco : 'none'
-    project['ecosystem'] = ecosystem
+    raw_eco_input = ask("Package ecosystem(s) — comma-separated for multiple (#{eco_list})",
+                        default: opts[:ecosystem] || 'none')
+
+    # Parse comma-separated list; filter to known ecosystems (unknown → 'none')
+    requested_ecosystems = raw_eco_input.to_s.split(',').map(&:strip).map do |e|
+      ECOSYSTEMS.key?(e) ? e : 'none'
+    end.uniq
+
+    if requested_ecosystems.size > 1
+      puts ""
+      puts "  📦 Multiple ecosystems detected: #{requested_ecosystems.join(', ')}"
+      puts "     A separate project card will be created for each ecosystem."
+      puts ""
+    end
+
+    # Collect all project entries to add (one per ecosystem)
+    projects_to_add = requested_ecosystems.map do |ecosystem|
+      build_add_project_entry(project_name, ecosystem, opts, requested_ecosystems.size > 1)
+    end
+
+    # ── Final review and save ─────────────────────────────────────────────────
+    puts ""
+    puts "="*80
+    puts "📋 FINAL REVIEW — #{projects_to_add.size} project entry/entries to be added:"
+    puts "="*80
+    projects_to_add.each_with_index do |p, i|
+      puts "\n[#{i + 1}/#{projects_to_add.size}] #{p['name']} (#{p['ecosystem']}):"
+      puts p.reject { |_, v| v.nil? }.to_yaml.gsub(/^---\n?/, '').gsub(/^/, '  ')
+      puts "  " + "─"*76
+    end
+    puts ""
+
+    unless confirm("💾 Add #{projects_to_add.size == 1 ? 'this project' : "these #{projects_to_add.size} projects"} to projects.yml?", default: true)
+      puts "Aborted — nothing was saved."
+      exit 0
+    end
+
+    projects_to_add.each do |project|
+      @projects << project
+      @projects_dev << project.dup
+      puts "  ✅ Queued: #{project['name']} (#{project['ecosystem']})"
+    end
+
+    save_yaml(PROJECTS_FILE, @projects)
+    puts "  💾 Saved to projects.yml"
+    save_yaml(PROJECTS_DEV_FILE, @projects_dev) if @projects_dev
+    puts "  🔄 Synced to projects_dev.yml"
+
+    names = projects_to_add.map { |p| "#{p['name']} (#{p['ecosystem']})" }.join(', ')
+    puts "\n✅ Added: #{names}"
+  end
+
+  private
+
+  # Build a single project entry hash for the given name + ecosystem.
+  # Scrapes the ecosystem API immediately after name/ecosystem are known, then
+  # uses the scraped data as defaults for all subsequent interactive prompts.
+  # +multi+ is true when we are building one of several ecosystem entries so
+  # the user gets appropriate labelling.
+  def build_add_project_entry(project_name, ecosystem, opts, multi = false)
+    label = multi ? " [#{ecosystem}]" : ""
+    puts ""
+    puts "─"*80
+    puts "  🔧 Building entry for: #{project_name}#{label}"
+    puts "─"*80
+
+    project = { 'name' => project_name, 'ecosystem' => ecosystem }
+
+    # ── Early ecosystem scrape ─────────────────────────────────────────────
+    # Scrape as soon as we know name + ecosystem so we can pre-fill defaults.
+    scraped = scrape_ecosystem_data(project_name, ecosystem)
+    if scraped[:found]
+      puts "  ✅ Ecosystem data fetched — pre-filling defaults from API."
+    else
+      puts "  ⚠️  No ecosystem data found — you will need to fill in details manually."
+    end
 
     inferred_language = ECOSYSTEMS[ecosystem][:language]
 
     # ── Language ──────────────────────────────────────────────────────────────
-    project['language'] = ask("Primary language", default: opts[:language] || inferred_language || 'Ruby')
+    project['language'] = ask("  Primary language#{label}",
+                              default: opts[:language] || inferred_language || 'Ruby')
 
     # ── Role ──────────────────────────────────────────────────────────────────
-    role = ask("Your role (author/contributor/maintainer)", default: opts[:role] || 'contributor')
+    role = ask("  Your role#{label} (author/contributor/maintainer)",
+               default: opts[:role] || 'contributor')
     project['role'] = role
 
     # ── Forge URLs ────────────────────────────────────────────────────────────
+    # Pre-fill GitHub URL from scraped data when available.
+    scraped_github = scraped[:github_url]
     puts ""
-    puts "  Forges (press Enter to skip any):"
+    puts "  Forges (press Enter to skip any)#{label}:"
     forges = []
 
-    github_url = ask("  GitHub URL", default: opts[:github_url])
+    github_url = ask("  GitHub URL#{label}", default: opts[:github_url] || scraped_github)
     if github_url && !github_url.empty?
       github_url = github_url.sub(/\.git$/, '').sub(%r{/tree/.*}, '').sub(%r{/blob/.*}, '')
       owner = github_url.match(%r{github\.com/([^/]+)/})&.send(:[], 1)
       forges << { 'type' => 'GitHub', 'url' => github_url, 'owner' => owner }
     end
 
-    gitlab_url = ask("  GitLab URL", default: opts[:gitlab_url])
+    gitlab_url = ask("  GitLab URL#{label}", default: opts[:gitlab_url])
     if gitlab_url && !gitlab_url.empty?
       owner = gitlab_url.match(%r{gitlab\.com/([^/]+)/})&.send(:[], 1)
       forges << { 'type' => 'GitLab', 'url' => gitlab_url, 'owner' => owner }
     end
 
-    codeberg_url = ask("  Codeberg URL", default: opts[:codeberg_url])
+    codeberg_url = ask("  Codeberg URL#{label}", default: opts[:codeberg_url])
     if codeberg_url && !codeberg_url.empty?
       owner = codeberg_url.match(%r{codeberg\.org/([^/]+)/})&.send(:[], 1)
       forges << { 'type' => 'Codeberg', 'url' => codeberg_url, 'owner' => owner }
@@ -357,29 +447,31 @@ class ProjectUpdater
 
     # ── Description ───────────────────────────────────────────────────────────
     puts ""
-    project['description'] = ask("Description (can be HTML)", default: opts[:description])
+    project['description'] = ask("  Description#{label} (can be HTML)",
+                                 default: opts[:description] || scraped[:description])
 
     # ── Minimum runtime version ───────────────────────────────────────────────
     version_label = case project['language']
-    when 'Ruby'       then 'Minimum Ruby version (e.g. 2.7)'
-    when 'Rust'       then 'Minimum Rust edition (e.g. 2021)'
-    when 'Python'     then 'Minimum Python version (e.g. 3.9)'
+    when 'Ruby'       then "Minimum Ruby version#{label} (e.g. 2.7)"
+    when 'Rust'       then "Minimum Rust edition#{label} (e.g. 2021)"
+    when 'Python'     then "Minimum Python version#{label} (e.g. 3.9)"
     when 'JavaScript',
-         'TypeScript' then 'Minimum Node version (e.g. 18)'
-    when 'Go'         then 'Minimum Go version (e.g. 1.21)'
-    else                   'Minimum runtime version'
+         'TypeScript' then "Minimum Node version#{label} (e.g. 18)"
+    when 'Go'         then "Minimum Go version#{label} (e.g. 1.21)"
+    else                   "Minimum runtime version#{label}"
     end
-    project['minimum_version'] = ask(version_label, default: opts[:minimum_version])
+    project['minimum_version'] = ask("  #{version_label}",
+                                     default: opts[:minimum_version] || scraped[:minimum_version])
 
     # ── Tags ──────────────────────────────────────────────────────────────────
-    raw_tags = ask("Tags (comma-separated)", default: opts[:tags])
+    scraped_tags_str = scraped[:tags]&.join(', ')
+    raw_tags = ask("  Tags#{label} (comma-separated)",
+                   default: opts[:tags] || scraped_tags_str)
     project['tags'] = raw_tags ? raw_tags.split(',').map(&:strip).reject(&:empty?) : []
 
     # ── Funding sites ─────────────────────────────────────────────────────────
-    # funding_sites is a required field (index.html raises if nil).
-    # Start with a sensible default based on role, then let the user amend.
     puts ""
-    puts "  Funding sites:"
+    puts "  Funding sites#{label}:"
     default_funding = if project['role'] == 'author'
       [
         { 'type' => 'OpenCollective', 'url' => 'https://opencollective.com/galtzo-floss' },
@@ -390,7 +482,6 @@ class ProjectUpdater
     end
 
     funding_sites = if opts[:funding_sites]
-      # Pre-supplied via --funding-sites flag (TYPE:URL,TYPE:URL format)
       raw_fs = opts[:funding_sites].to_s.strip
       if raw_fs.downcase == 'none' || raw_fs.empty?
         puts "  Funding sites: (empty list) [pre-supplied]"
@@ -404,7 +495,6 @@ class ProjectUpdater
         parsed
       end
     else
-      # Collect all known funding types from existing projects (icon names must match)
       known_types = @projects
         .flat_map { |p| Array(p['funding_sites']).map { |f| f['type'] } }
         .compact.uniq.sort
@@ -416,7 +506,6 @@ class ProjectUpdater
         puts ""
         puts "  Current: #{result.empty? ? '(none)' : result.map { |f| "#{f['type']}: #{f['url']}" }.join(', ')}"
 
-        # Build type choices: known types + "new" sentinel + done/none actions
         type_choices = known_types.map { |t| { name: t, value: t } }
         type_choices << { name: '─' * 40, value: :separator, disabled: '' }
         type_choices << { name: '✏️  Enter a new type manually', value: :new_type }
@@ -444,7 +533,6 @@ class ProjectUpdater
             q.modify   :strip
           end
           next unless new_type
-          # Add to known_types so it appears in subsequent iterations
           known_types << new_type unless known_types.include?(new_type)
           selected_type = new_type
         else
@@ -463,109 +551,27 @@ class ProjectUpdater
       result
     end
     project['funding_sites'] = funding_sites
+
+    # ── Apply remaining scraped stats ──────────────────────────────────────────
     puts ""
-    puts "="*80
-    puts "🌐 Fetching data from APIs..."
-    puts "="*80
+    puts "  🌐 Applying ecosystem stats#{label}..."
 
-    # Ecosystem-specific download stats
-    case ecosystem
-    when 'rubygems'
-      pkg = project['name']
-      puts "  Querying RubyGems for: #{pkg}"
-      gem_info = fetch_rubygems_info(pkg)
-      gem_data = api_request("https://rubygems.org/api/v1/gems/#{pkg}.json")
-      if gem_data
-        project['description'] ||= gem_data['info'] || gem_data['summary']
-        project['docs_site']     = gem_data['documentation_uri']
-        req_ver = gem_data['required_ruby_version'] || '>= 0'
-        project['minimum_version'] ||= extract_minimum_version(req_ver)
-        project['tags'] = (project['tags'] + determine_tags_from_gem(gem_data)).uniq.sort if project['tags'].empty?
-      end
-      if gem_info
-        project['total_downloads']   = gem_info[:total_downloads]
-        project['daily_downloads']   = gem_info[:daily_downloads]
-        project['release_downloads'] = gem_info[:release_downloads]
-        puts "    📦 Downloads: #{gem_info[:total_downloads]} total"
-      end
-      project['release_date'] = fetch_rubygems_release_date(pkg)
-      puts "    📅 Latest release: #{project['release_date'] || 'unknown'}"
+    project['docs_site']          = scraped[:docs_site]
+    project['total_downloads']    = scraped[:total_downloads]
+    project['daily_downloads']    = scraped[:daily_downloads]
+    project['release_downloads']  = scraped[:release_downloads]
+    project['release_date']       = scraped[:release_date]
 
-    when 'cargo'
-      pkg = project['name']
-      puts "  Querying crates.io for: #{pkg}"
-      cargo_info = fetch_cargo_info(pkg)
-      if cargo_info
-        project['description']     ||= cargo_info[:description]
-        project['total_downloads']   = cargo_info[:total_downloads]
-        project['release_downloads'] = cargo_info[:release_downloads]
-        project['release_date']      = cargo_info[:release_date]
-        project['minimum_version'] ||= cargo_info[:rust_version]
-        if forges.none? { |f| f['type'] == 'GitHub' } && cargo_info[:repository]
-          url = cargo_info[:repository].sub(/\.git$/, '')
-          if url.include?('github.com')
-            owner = url.match(%r{github\.com/([^/]+)/})&.send(:[], 1)
-            forges << { 'type' => 'GitHub', 'url' => url, 'owner' => owner }
-            project['forges'] = forges
-          end
-        end
-        puts "    📦 Downloads: #{cargo_info[:total_downloads]} total"
-        puts "    📅 Latest release: #{cargo_info[:release_date] || 'unknown'}"
-      end
-
-    when 'npm'
-      pkg = project['name']
-      puts "  Querying npm registry for: #{pkg}"
-      npm_info = fetch_npm_info(pkg)
-      if npm_info
-        project['description']   ||= npm_info[:description]
-        project['release_date']    = npm_info[:release_date]
-        project['minimum_version']||= npm_info[:node_version]
-        if forges.none? { |f| f['type'] == 'GitHub' } && npm_info[:repository]
-          url = npm_info[:repository].sub(/\.git$/, '')
-          if url.include?('github.com')
-            owner = url.match(%r{github\.com/([^/]+)/})&.send(:[], 1)
-            forges << { 'type' => 'GitHub', 'url' => url, 'owner' => owner }
-            project['forges'] = forges
-          end
-        end
-        puts "    📅 Latest release: #{npm_info[:release_date] || 'unknown'}"
-      end
-
-    when 'pypi'
-      pkg = project['name']
-      puts "  Querying PyPI for: #{pkg}"
-      pypi_info = fetch_pypi_info(pkg)
-      if pypi_info
-        project['description']    ||= pypi_info[:description]
-        project['release_date']     = pypi_info[:release_date]
-        project['minimum_version'] ||= pypi_info[:python_version]
-        if forges.none? { |f| f['type'] == 'GitHub' } && pypi_info[:repository]
-          url = pypi_info[:repository].sub(/\.git$/, '')
-          if url.include?('github.com')
-            owner = url.match(%r{github\.com/([^/]+)/})&.send(:[], 1)
-            forges << { 'type' => 'GitHub', 'url' => url, 'owner' => owner }
-            project['forges'] = forges
-          end
-        end
-        puts "    📅 Latest release: #{pypi_info[:release_date] || 'unknown'}"
-      end
-
-    when 'go'
-      pkg = project['name']
-      puts "  Querying Go module proxy for: #{pkg}"
-      go_info = fetch_go_info(pkg)
-      if go_info
-        project['release_date']    = go_info[:release_date]
-        project['minimum_version']||= go_info[:go_version]
-        puts "    📅 Latest release: #{go_info[:release_date] || 'unknown'}"
-      end
+    # Merge scraped tags if none were entered manually
+    if project['tags'].empty? && scraped[:tags]&.any?
+      project['tags'] = scraped[:tags]
     end
 
     # GitHub info (stars, last commit, status, first commit)
+    # Use forges built interactively (which may have been pre-filled from scrape)
     github_forge = project['forges'].find { |f| f['type'] == 'GitHub' }
     if github_forge
-      puts "  Querying GitHub for: #{github_forge['url']}"
+      puts "  Querying GitHub for: #{github_forge['url']}..."
       begin
         github_info = fetch_github_info(github_forge['url'])
         project['github_stars']   = github_info[:stars]
@@ -576,11 +582,11 @@ class ProjectUpdater
 
         repo_path = extract_repo_path(github_forge['url'])
         if repo_path
-          first_commit = fetch_first_commit(repo_path)
+          first_commit = fetch_first_commit_by_person(repo_path)
           if first_commit
-            project['first_commit']    = first_commit[:url]
-            project['first_commit_on'] = first_commit[:date]
-            puts "    🏁 First commit: #{first_commit[:date] || 'unknown'}"
+            project['first_commit_by_person']    = first_commit[:url]
+            project['first_commit_by_person_on'] = first_commit[:date]
+            puts "    🏁 First commit by #{GITHUB_HANDLE}: #{first_commit[:date] || 'unknown'}"
           end
         end
       rescue => e
@@ -593,33 +599,137 @@ class ProjectUpdater
       project['status']       = 'active'
     end
 
-    # Defaults for anything still nil
-    project['first_commit_on'] ||= project['release_date']
+    project['first_commit_by_person_on'] ||= project['release_date']
     project['status']          ||= 'active'
 
-    # ── Review and confirm ────────────────────────────────────────────────────
+    # ── Per-entry review ──────────────────────────────────────────────────────
     puts ""
-    puts "="*80
-    puts "📋 REVIEW — project entry to be added:"
-    puts "="*80
-    puts project.reject { |_, v| v.nil? }.to_yaml.gsub(/^---\n?/, '')
-    puts "="*80
-    puts ""
+    puts "  📋 Entry preview#{label}:"
+    puts project.reject { |_, v| v.nil? }.to_yaml.gsub(/^---\n?/, '').gsub(/^/, '    ')
 
-    unless confirm("💾 Add this project to projects.yml?", default: true)
-      puts "Aborted — nothing was saved."
-      exit 0
+    project
+  end
+
+  # Scrape the ecosystem registry for the given package name and return a Hash
+  # of pre-fillable fields.  Always returns a Hash; :found => false when the
+  # package was not found or scrape failed.
+  def scrape_ecosystem_data(pkg_name, ecosystem)
+    result = { found: false, github_url: nil, description: nil,
+               minimum_version: nil, tags: nil, docs_site: nil,
+               total_downloads: nil, daily_downloads: nil,
+               release_downloads: nil, release_date: nil }
+
+    case ecosystem
+    when 'rubygems'
+      puts "  🔍 Scraping RubyGems.org for '#{pkg_name}'..."
+      gem_data = api_request("https://rubygems.org/api/v1/gems/#{pkg_name}.json")
+      return result unless gem_data
+
+      result[:found]           = true
+      result[:description]     = gem_data['info'] || gem_data['summary']
+      result[:docs_site]       = gem_data['documentation_uri']
+      req_ver = gem_data['required_ruby_version'] || '>= 0'
+      result[:minimum_version] = extract_minimum_version(req_ver)
+      result[:tags]            = determine_tags_from_gem(gem_data)
+      result[:release_date]    = fetch_rubygems_release_date(pkg_name)
+
+      gem_info = fetch_rubygems_info(pkg_name)
+      if gem_info
+        result[:total_downloads]   = gem_info[:total_downloads]
+        result[:daily_downloads]   = gem_info[:daily_downloads]
+        result[:release_downloads] = gem_info[:release_downloads]
+        puts "    📦 Downloads: #{gem_info[:total_downloads]} total"
+      end
+      puts "    📅 Latest release: #{result[:release_date] || 'unknown'}"
+
+      [gem_data['source_code_uri'], gem_data['homepage_uri'], gem_data['project_uri']].compact.each do |uri|
+        if uri.include?('github.com')
+          result[:github_url] = uri.sub(/\.git$/, '').sub(%r{/tree/.*}, '').sub(%r{/blob/.*}, '')
+          puts "    🔗 Source repo: #{result[:github_url]}"
+          break
+        end
+      end
+
+    when 'cargo'
+      puts "  🔍 Scraping crates.io for '#{pkg_name}'..."
+      cargo_info = fetch_cargo_info(pkg_name)
+      return result unless cargo_info
+
+      result[:found]             = true
+      result[:description]       = cargo_info[:description]
+      result[:total_downloads]   = cargo_info[:total_downloads]
+      result[:release_downloads] = cargo_info[:release_downloads]
+      result[:release_date]      = cargo_info[:release_date]
+      result[:minimum_version]   = cargo_info[:rust_version]
+      puts "    📦 Downloads: #{cargo_info[:total_downloads]} total"
+      puts "    📅 Latest release: #{cargo_info[:release_date] || 'unknown'}"
+
+      if cargo_info[:repository]
+        url = cargo_info[:repository].sub(/\.git$/, '')
+        if url.include?('github.com')
+          result[:github_url] = url
+          puts "    🔗 Source repo: #{url}"
+        end
+      end
+
+    when 'npm'
+      puts "  🔍 Scraping npm registry for '#{pkg_name}'..."
+      npm_info = fetch_npm_info(pkg_name)
+      return result unless npm_info
+
+      result[:found]           = true
+      result[:description]     = npm_info[:description]
+      result[:release_date]    = npm_info[:release_date]
+      result[:minimum_version] = npm_info[:node_version]
+      puts "    📅 Latest release: #{npm_info[:release_date] || 'unknown'}"
+
+      if npm_info[:repository]
+        url = npm_info[:repository].sub(/\.git$/, '')
+        if url.include?('github.com')
+          result[:github_url] = url
+          puts "    🔗 Source repo: #{url}"
+        end
+      end
+
+    when 'pypi'
+      puts "  🔍 Scraping PyPI for '#{pkg_name}'..."
+      pypi_info = fetch_pypi_info(pkg_name)
+      return result unless pypi_info
+
+      result[:found]           = true
+      result[:description]     = pypi_info[:description]
+      result[:release_date]    = pypi_info[:release_date]
+      result[:minimum_version] = pypi_info[:python_version]
+      puts "    📅 Latest release: #{pypi_info[:release_date] || 'unknown'}"
+
+      if pypi_info[:repository]
+        url = pypi_info[:repository].sub(/\.git$/, '')
+        if url.include?('github.com')
+          result[:github_url] = url
+          puts "    🔗 Source repo: #{url}"
+        end
+      end
+
+    when 'go'
+      puts "  🔍 Scraping Go module proxy for '#{pkg_name}'..."
+      go_info = fetch_go_info(pkg_name)
+      return result unless go_info
+
+      result[:found]           = true
+      result[:release_date]    = go_info[:release_date]
+      result[:minimum_version] = go_info[:go_version]
+      puts "    📅 Latest release: #{go_info[:release_date] || 'unknown'}"
+
+    # 'none' or unknown ecosystem — nothing to scrape
     end
 
-    @projects << project
-    @projects_dev << project.dup
-
-    save_yaml(PROJECTS_FILE, @projects)
-    puts "  💾 Saved to projects.yml"
-    save_yaml(PROJECTS_DEV_FILE, @projects_dev) if @projects_dev
-    puts "  🔄 Synced to projects_dev.yml"
-    puts "\n✅ Project '#{project['name']}' added successfully."
+    result
+  rescue => e
+    puts "  ⚠️  Ecosystem scrape failed: #{e.message}"
+    result
   end
+
+  public
 
   # ── Multi-ecosystem package info fetchers ────────────────────────────────
 
@@ -809,8 +919,8 @@ class ProjectUpdater
       'ecosystem' => 'rubygems',
       'minimum_version' => min_version,
       'role' => 'author', # Assume author since it's owned by the user
-      'first_commit_on' => release_date, # Use first release date as placeholder
-      'first_commit' => nil, # Will need to be filled manually or via GitHub API
+      'first_commit_by_person_on' => release_date, # Use first release date as placeholder
+      'first_commit_by_person' => nil, # Will need to be filled manually or via GitHub API
       'funding_sites' => [
         { 'type' => 'OpenCollective', 'url' => 'https://opencollective.com/galtzo-floss' },
         { 'type' => 'Liberapay', 'url' => 'https://liberapay.com/pboling' }
@@ -840,9 +950,9 @@ class ProjectUpdater
         # Try to get first commit info
         repo_path = extract_repo_path(github_url)
         if repo_path
-          first_commit = fetch_first_commit(repo_path)
-          project['first_commit'] = first_commit[:url] if first_commit
-          project['first_commit_on'] = first_commit[:date] if first_commit
+          first_commit = fetch_first_commit_by_person(repo_path)
+          project['first_commit_by_person']    = first_commit[:url] if first_commit
+          project['first_commit_by_person_on'] = first_commit[:date] if first_commit
         end
       rescue => e
         puts "    ⚠️  Could not fetch GitHub info: #{e.message}"
@@ -858,39 +968,49 @@ class ProjectUpdater
     project
   end
 
-  def fetch_first_commit(repo_path)
-    # Fetch the first commit using the API
-    api_url = "https://api.github.com/repos/#{repo_path}/commits?per_page=1&sha=HEAD"
+  # Fetch the oldest commit on +repo_path+ that was authored by +github_handle+.
+  #
+  # Strategy — always author-filtered, always 1-2 API calls:
+  #   1. GET /repos/:repo/commits?author=:handle&per_page=1
+  #      This returns the most-recent commit by the author and, via the Link
+  #      header, the URL of the last page (oldest commits).
+  #   2a. If a "last" page URL is present, fetch it and take the last item —
+  #       that is the oldest commit by the author.
+  #   2b. If there is no "last" page the single result IS the oldest (and only)
+  #       commit by the author.
+  #
+  # Using the ?author= filter means we never care about who made the *repo's*
+  # first commit — we go directly to the person's oldest contribution.
+  def fetch_first_commit_by_person(repo_path, github_handle = GITHUB_HANDLE)
+    api_url = "https://api.github.com/repos/#{repo_path}/commits" \
+              "?author=#{github_handle}&per_page=1"
 
-    # We need to paginate backwards to find the first commit
-    # This is a simplified approach - we'll get the last page
     response_data = github_api_request_with_headers(api_url)
+    return nil unless response_data[:data].is_a?(Array) && response_data[:data].any?
 
-    return nil unless response_data[:data] && response_data[:data].is_a?(Array) && response_data[:data].any?
-
-    # Check if there are more pages by looking at Link header
     last_page_url = response_data[:last_page_url]
 
-    if last_page_url
-      # Fetch the last page (which contains the first commit)
+    oldest_commit = if last_page_url
+      # Multiple pages → fetch the last page and take its last entry
       last_page_data = github_api_request(last_page_url)
-      first_commit = last_page_data.last if last_page_data.is_a?(Array)
+      last_page_data.is_a?(Array) ? last_page_data.last : nil
     else
-      # Only one page, so the last commit is the first
-      first_commit = response_data[:data].last
+      # Single page → the only result is already the oldest
+      response_data[:data].last
     end
 
-    if first_commit
-      commit_date = first_commit.dig('commit', 'committer', 'date')
-      {
-        url: first_commit['html_url'],
-        date: commit_date ? Date.parse(commit_date).strftime('%Y/%m/%d') : nil
-      }
-    else
-      nil
-    end
+    return nil unless oldest_commit
+
+    # Prefer author date (when they wrote the code) over committer date
+    # (when it was applied to the tree, which can be much later for merges).
+    commit_date = oldest_commit.dig('commit', 'author', 'date') ||
+                  oldest_commit.dig('commit', 'committer', 'date')
+    {
+      url:  oldest_commit['html_url'],
+      date: commit_date ? Date.parse(commit_date).strftime('%Y/%m/%d') : nil,
+    }
   rescue => e
-    puts "    ⚠️  Could not fetch first commit: #{e.message}"
+    puts "    ⚠️  Could not fetch first commit by #{github_handle}: #{e.message}"
     nil
   end
 
@@ -1035,6 +1155,20 @@ class ProjectUpdater
       project['last_commit_on'] = last_commit
       puts "  🔨 Last commit: #{last_commit || 'N/A'}"
 
+    when 'first_commit_by_person', 'first_commit_by_person_on'
+      raise "Missing GitHub forge for project: #{project['name']}" unless github_forge
+      repo_path = extract_repo_path(github_forge['url'])
+      raise "Cannot extract repo path from #{github_forge['url']}" unless repo_path
+      first = fetch_first_commit_by_person(repo_path)
+      if first
+        project['first_commit_by_person']    = first[:url]
+        project['first_commit_by_person_on'] = first[:date]
+        puts "  🏁 First commit by #{GITHUB_HANDLE}: #{first[:date] || 'N/A'}"
+        puts "     #{first[:url]}"
+      else
+        puts "  ⚠️  No commits by #{GITHUB_HANDLE} found in #{github_forge['url']}"
+      end
+
     when 'status'
       raise "Missing GitHub forge for project: #{project['name']}" unless github_forge
       github_info = fetch_github_info(github_forge['url'])
@@ -1152,6 +1286,7 @@ class ProjectUpdater
       github_stars gitlab_stars codeberg_stars
       total_downloads daily_downloads release_downloads
       release_date last_commit_on status last_scrape_at
+      first_commit_by_person first_commit_by_person_on
     ]
 
     sync_fields.each do |field|
@@ -1672,6 +1807,10 @@ if __FILE__ == $0
     op.separator "  #{$0} -y github_stars                             # Surgical, non-interactive"
     op.separator "  #{$0} add_project                                 # Interactively add a project"
     op.separator "  #{$0} add_project --name my-gem --ecosystem rubygems --github-url https://github.com/org/repo"
+    op.separator "  #{$0} add_project --name my-pkg --ecosystem rubygems,npm  # Two cards, one per ecosystem"
+    op.separator ""
+    op.separator "  Regenerate first-commit-by-person for all projects:"
+    op.separator "  #{$0} first_commit_by_person"
     op.separator ""
     op.separator "Options:"
 
@@ -1690,7 +1829,9 @@ if __FILE__ == $0
       add_project_opts[:name] = v
     end
 
-    op.on("--ecosystem ECO", "Package ecosystem: rubygems, cargo, npm, pypi, go, none") do |v|
+    op.on("--ecosystem ECO",
+          "Ecosystem: rubygems, cargo, npm, pypi, go, none.",
+          "Comma-separated for multiple (e.g. rubygems,npm) — one card per ecosystem.") do |v|
       add_project_opts[:ecosystem] = v
     end
 

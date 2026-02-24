@@ -8,10 +8,10 @@ body_class: projects
 
 <% non_person_projects = site.data.projects %>
 
-<% years = non_person_projects.map {|p| p['first_commit_on']&.to_s&.split('/')&.first }.compact.uniq.sort %>
+<% years = non_person_projects.map {|p| p['first_commit_by_person_on']&.to_s&.split('/')&.first }.compact.uniq.sort %>
 <% year_counts = {} %>
 <% non_person_projects.each do |project| %>
-<% year = project['first_commit_on']&.to_s&.split('/')&.first %>
+<% year = project['first_commit_by_person_on']&.to_s&.split('/')&.first %>
 <% if year %>
 <% year_counts[year] ||= 0 %>
 <% year_counts[year] += 1 %>
@@ -297,7 +297,7 @@ body_class: projects
           <% # Set up project variables for card rendering %>
           <% raise "Project #{project['name']} has no role!" if project['role'].nil? %>
           <% raise "Project #{project['name']} has invalid role #{project['role']}!" unless allowed_roles.include?(project['role']) %>
-          <% year = project['first_commit_on']&.to_s&.split('/')&.first %>
+          <% year = project['first_commit_by_person_on']&.to_s&.split('/')&.first %>
           <% gh_forge = project["forges"].find { |f| f["type"] == "GitHub" } %>
           <% first_forge = project["forges"].first %>
           <%# Build a reusable list of tags for the card so filtering doesn't rely on visible DOM elements %>
@@ -361,9 +361,9 @@ body_class: projects
             <span><%= project['role'].capitalize %></span>
             <% end %>
             <% end %>
-            <% if project['first_commit'] && year %>
+            <% if project['first_commit_by_person'] && year %>
             &nbsp;|&nbsp;
-            <a href="<%= project['first_commit'] %>" class="role-start" target="_blank" rel="noopener">since <%= year %></a>
+            <a href="<%= project['first_commit_by_person'] %>" class="role-start" target="_blank" rel="noopener">since <%= year %></a>
             <% end %>
             <% if project['archived'] && !project['adoptable'] %>
             &nbsp;|&nbsp;
@@ -553,7 +553,7 @@ body_class: projects
       <% project = item[:project] %>
       <% raise "Project #{project['name']} has no role!" if project['role'].nil? %>
       <% raise "Project #{project['name']} has invalid role #{project['role']}!" unless allowed_roles.include?(project['role']) %>
-      <% year = project['first_commit_on']&.to_s&.split('/')&.first %>
+      <% year = project['first_commit_by_person_on']&.to_s&.split('/')&.first %>
       <% gh_forge = project["forges"].find { |f| f["type"] == "GitHub" } %>
       <% first_forge = project["forges"].first %>
       <%# Build a reusable list of tags for the card so filtering doesn't rely on visible DOM elements %>
@@ -614,9 +614,9 @@ body_class: projects
             <span><%= project['role'].capitalize %></span>
             <% end %>
             <% end %>
-            <% if project['first_commit'] && year %>
+            <% if project['first_commit_by_person'] && year %>
             &nbsp;|&nbsp;
-            <a href="<%= project['first_commit'] %>" class="role-start" target="_blank" rel="noopener">since <%= year %></a>
+            <a href="<%= project['first_commit_by_person'] %>" class="role-start" target="_blank" rel="noopener">since <%= year %></a>
             <% end %>
             <% if project['archived'] %>
             &nbsp;|&nbsp;

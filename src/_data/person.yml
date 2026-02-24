@@ -17,8 +17,8 @@ aspect: wide
 ecosystem:
 minimum_version: '1.8'
 role: author
-first_commit_on: 2004/01/01
-first_commit: https://github.com/galtzo-floss/galtzo.com/commit/23b15c81cfe20eb53117efbcba8d76d7c2959290
+first_commit_by_person_on: 2004/01/01
+first_commit_by_person: https://github.com/galtzo-floss/galtzo.com/commit/23b15c81cfe20eb53117efbcba8d76d7c2959290
 funding_sites:
 - type: OpenCollective
   url: https://opencollective.com/appraisal-rb

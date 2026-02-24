@@ -25,7 +25,7 @@ class ProjectQuery
   # Fields expected on every non-person project
   EXPECTED_FIELDS = %w[
     name description language ecosystem minimum_version role
-    first_commit_on forges tags status
+    first_commit_by_person_on forges tags status
     release_date last_commit_on last_scrape_at
   ].freeze
 
@@ -255,7 +255,7 @@ class ProjectQuery
       issues << row_issue(name, 'no_tags',               'tags is empty')                if blank?(p['tags'])
       issues << row_issue(name, 'no_minimum_version',    'minimum_version is nil')       if p['minimum_version'].nil?
       issues << row_issue(name, 'no_role',               'role is nil')                  if p['role'].nil?
-      issues << row_issue(name, 'no_first_commit_on',    'first_commit_on is nil')       if p['first_commit_on'].nil?
+      issues << row_issue(name, 'no_first_commit_by_person_on', 'first_commit_by_person_on is nil') if p['first_commit_by_person_on'].nil?
 
       if p['last_scrape_at'].nil?
         issues << row_issue(name, 'never_scraped',       'never been scraped')
@@ -359,7 +359,7 @@ class ProjectQuery
         :role, :status, :tags, :forges,
         :github_stars, :gitlab_stars, :codeberg_stars,
         :total_downloads, :daily_downloads, :release_downloads,
-        :release_date, :last_commit_on, :first_commit_on, :first_commit,
+        :release_date, :last_commit_on, :first_commit_by_person_on, :first_commit_by_person,
         :last_scrape_at, :docs_site, :funding_sites,
         :theme, :family_id, :family_position,
         :raw,
@@ -547,7 +547,7 @@ if __FILE__ == $0
     op.separator ""
     op.separator "Field names for `missing`:"
     op.separator "  name  description  language  ecosystem  minimum_version  role"
-    op.separator "  status  tags  forges  release_date  last_commit_on  first_commit_on"
+    op.separator "  status  tags  forges  release_date  last_commit_on  first_commit_by_person_on"
     op.separator "  github_stars  total_downloads  last_scrape_at  docs_site"
     op.separator ""
     op.separator "Examples:"

@@ -5,8 +5,8 @@
   ecosystem: rubygems
   minimum_version: '2.7'
   role: author
-  first_commit_on: 2024/05/30
-  first_commit: https://github.com/galtzo-floss/active_security/commit/9caac884909193326b3f3318ad3db00ca754fabd
+  first_commit_by_person_on: 2024/05/30
+  first_commit_by_person: https://github.com/galtzo-floss/active_security/commit/9caac884909193326b3f3318ad3db00ca754fabd
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/galtzo-floss
@@ -37,8 +37,8 @@
   ecosystem: rubygems
   minimum_version: '2.5'
   role: author
-  first_commit_on: 2016/03/26
-  first_commit: https://github.com/galtzo-floss/activerecord-transactionable/commit/c40965018cee7546e62249006e2f41784cde8142
+  first_commit_by_person_on: 2016/03/26
+  first_commit_by_person: https://github.com/galtzo-floss/activerecord-transactionable/commit/c40965018cee7546e62249006e2f41784cde8142
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/galtzo-floss
@@ -77,8 +77,8 @@
   ecosystem: rubygems
   minimum_version: '2.4'
   role: author
-  first_commit_on: 2018/01/03
-  first_commit: https://github.com/galtzo-floss/anonymous_active_record/commit/6d9e24334d8800910efc7a8325494cbd6c08ff87
+  first_commit_by_person_on: 2018/01/03
+  first_commit_by_person: https://github.com/galtzo-floss/anonymous_active_record/commit/6d9e24334d8800910efc7a8325494cbd6c08ff87
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/galtzo-floss
@@ -115,8 +115,8 @@
   ecosystem: none
   minimum_version: '1.23'
   role: contributor
-  first_commit_on: 2025/09/11
-  first_commit: https://github.com/apache/skywalking-eyes/commit/3655e78854be6a56ae72a0c9a847aedd133c3b74
+  first_commit_by_person_on: 2025/09/11
+  first_commit_by_person: https://github.com/apache/skywalking-eyes/commit/3655e78854be6a56ae72a0c9a847aedd133c3b74
   funding_sites: []
   forges:
   - type: GitHub
@@ -143,8 +143,8 @@
   ecosystem: rubygems
   minimum_version: '1.8'
   role: author
-  first_commit_on: 2017/11/20
-  first_commit: https://github.com/appraisal-rb/appraisal2/commit/dcfac430d75a86a89497ec45af39edf798228f9c
+  first_commit_by_person_on: 2017/11/20
+  first_commit_by_person: https://github.com/appraisal-rb/appraisal2/commit/dcfac430d75a86a89497ec45af39edf798228f9c
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/appraisal-rb
@@ -182,8 +182,8 @@
   ecosystem: rubygems
   minimum_version: '2.4'
   role: maintainer
-  first_commit_on: 2013/12/16
-  first_commit: https://github.com/wordtreefoundation/archivist-client/commit/404f1976722fa7b4444d7b5d750f438bebae1102
+  first_commit_by_person_on: 2013/12/16
+  first_commit_by_person: https://github.com/wordtreefoundation/archivist-client/commit/404f1976722fa7b4444d7b5d750f438bebae1102
   funding_sites:
   - type: Liberapay
     url: https://liberapay.com/pboling
@@ -213,8 +213,8 @@
   ecosystem: rubygems
   minimum_version: '1.8'
   role: author
-  first_commit_on: 2010/03/01
-  first_commit: https://github.com/galtzo-floss/awesome_search/commit/cc63ada6740695dd42007d62ed76d3d5e12803ae
+  first_commit_by_person_on: 2010/03/01
+  first_commit_by_person: https://github.com/galtzo-floss/awesome_search/commit/cc63ada6740695dd42007d62ed76d3d5e12803ae
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/galtzo-floss
@@ -244,8 +244,8 @@
   ecosystem: none
   minimum_version: '4.0'
   role: author
-  first_commit_on: 2013/11/08
-  first_commit: https://github.com/pboling/bash_step/commit/13446f1a24bef1dafb66e916bf8bb321c8162851
+  first_commit_by_person_on: 2013/11/08
+  first_commit_by_person: https://github.com/pboling/bash_step/commit/13446f1a24bef1dafb66e916bf8bb321c8162851
   funding_sites:
   - type: Liberapay
     url: https://liberapay.com/pboling
@@ -271,8 +271,8 @@
   ecosystem: none
   minimum_version: '4.0'
   role: maintainer
-  first_commit_on: 2013/11/08
-  first_commit: https://github.com/pboling/bsfl/commit/27444edd62fb4df3da662e8254a86c083e25d55b
+  first_commit_by_person_on: 2013/11/08
+  first_commit_by_person: https://github.com/pboling/bsfl/commit/27444edd62fb4df3da662e8254a86c083e25d55b
   funding_sites:
   - type: Liberapay
     url: https://liberapay.com/pboling
@@ -299,8 +299,8 @@
   ecosystem: rubygems
   minimum_version: '2.7'
   role: author
-  first_commit_on: 2020/01/15
-  first_commit: https://github.com/galtzo-floss/test-adopt-me-gem/commit/abc123
+  first_commit_by_person_on: 2020/01/15
+  first_commit_by_person: https://github.com/galtzo-floss/test-adopt-me-gem/commit/abc123
   theme: adopt-me
   adoption_url: https://github.com/galtzo-floss/test-adopt-me-gem/issues?q=label%3Agood-first-issue
   funding_sites:
@@ -329,8 +329,8 @@
   ecosystem: rubygems
   minimum_version: '2.5'
   role: maintainer
-  first_commit_on: 2019/05/20
-  first_commit: https://github.com/galtzo-floss/test-update-me-lib/commit/def456
+  first_commit_by_person_on: 2019/05/20
+  first_commit_by_person: https://github.com/galtzo-floss/test-update-me-lib/commit/def456
   theme: update-me
   stale_since: '2023-06-15'
   update_priority: high
@@ -360,8 +360,8 @@
   ecosystem: rubygems
   minimum_version: '2.3'
   role: author
-  first_commit_on: 2015/03/10
-  first_commit: https://github.com/galtzo-floss/test-avoid-me-deprecated/commit/ghi789
+  first_commit_by_person_on: 2015/03/10
+  first_commit_by_person: https://github.com/galtzo-floss/test-avoid-me-deprecated/commit/ghi789
   theme: avoid-me
   archived: true
   deprecation_reason: Superseded by modern-alternative-gem with better performance
@@ -392,8 +392,8 @@
   ecosystem: rubygems
   minimum_version: '2.7'
   role: author
-  first_commit_on: 2021/08/01
-  first_commit: https://github.com/galtzo-floss/test-family-auth-core/commit/jkl012
+  first_commit_by_person_on: 2021/08/01
+  first_commit_by_person: https://github.com/galtzo-floss/test-family-auth-core/commit/jkl012
   theme: family
   family_id: rails-auth-suite
   family_name: Rails Authentication Suite
@@ -425,8 +425,8 @@
   ecosystem: rubygems
   minimum_version: '2.7'
   role: author
-  first_commit_on: 2021/09/15
-  first_commit: https://github.com/galtzo-floss/test-family-auth-oauth/commit/mno345
+  first_commit_by_person_on: 2021/09/15
+  first_commit_by_person: https://github.com/galtzo-floss/test-family-auth-oauth/commit/mno345
   theme: family
   family_id: rails-auth-suite
   family_name: Rails Authentication Suite
@@ -457,8 +457,8 @@
   ecosystem: rubygems
   minimum_version: '2.7'
   role: author
-  first_commit_on: 2022/01/10
-  first_commit: https://github.com/galtzo-floss/test-family-auth-2fa/commit/pqr678
+  first_commit_by_person_on: 2022/01/10
+  first_commit_by_person: https://github.com/galtzo-floss/test-family-auth-2fa/commit/pqr678
   theme: family
   family_id: rails-auth-suite
   family_name: Rails Authentication Suite
@@ -489,8 +489,8 @@
   ecosystem: rubygems
   minimum_version: '2.7'
   role: author
-  first_commit_on: 2020/12/01
-  first_commit: https://github.com/galtzo-floss/test-holiday-christmas/commit/stu901
+  first_commit_by_person_on: 2020/12/01
+  first_commit_by_person: https://github.com/galtzo-floss/test-holiday-christmas/commit/stu901
   theme: holiday
   holiday_type: christmas
   holiday_date_start: '2025-12-01'
@@ -531,8 +531,8 @@
   ecosystem: rubygems
   minimum_version: '2.7'
   role: author
-  first_commit_on: 2017/04/11
-  first_commit:
+  first_commit_by_person_on: 2017/04/11
+  first_commit_by_person:
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/galtzo-floss
@@ -564,8 +564,8 @@
   ecosystem: rubygems
   minimum_version: '2.7'
   role: author
-  first_commit_on: 2025/11/07
-  first_commit: https://github.com/galtzo-floss/yard-fence/commit/242b77a6caa398ca01ab3b3643d3e3b970497f05
+  first_commit_by_person_on: 2025/11/07
+  first_commit_by_person: https://github.com/galtzo-floss/yard-fence/commit/242b77a6caa398ca01ab3b3643d3e3b970497f05
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/galtzo-floss
@@ -597,8 +597,8 @@
   ecosystem: rubygems
   minimum_version: '2.7'
   role: author
-  first_commit_on: 2025/11/08
-  first_commit: https://github.com/galtzo-floss/yaml-converter/commit/232ad133b6259aabb39993b476f727d91d0a5f0c
+  first_commit_by_person_on: 2025/11/08
+  first_commit_by_person: https://github.com/galtzo-floss/yaml-converter/commit/232ad133b6259aabb39993b476f727d91d0a5f0c
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/galtzo-floss
@@ -627,8 +627,8 @@
   ecosystem: rubygems
   minimum_version: '2.7'
   role: author
-  first_commit_on: 2025/11/09
-  first_commit: https://github.com/galtzo-floss/yard-yaml/commit/ffbe883471d11462dc28675867d852372ea3a481
+  first_commit_by_person_on: 2025/11/09
+  first_commit_by_person: https://github.com/galtzo-floss/yard-yaml/commit/ffbe883471d11462dc28675867d852372ea3a481
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/galtzo-floss
@@ -658,8 +658,8 @@
   ecosystem: rubygems
   minimum_version: '2.7'
   role: author
-  first_commit_on: 2025/12/02
-  first_commit: https://github.com/kettle-rb/prism-merge/commit/71fcddaa659cd6e9e94053e67524e5a400423ced
+  first_commit_by_person_on: 2025/12/02
+  first_commit_by_person: https://github.com/kettle-rb/prism-merge/commit/71fcddaa659cd6e9e94053e67524e5a400423ced
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/kettle-rb
@@ -691,8 +691,8 @@
   ecosystem: rubygems
   minimum_version: '2.7'
   role: author
-  first_commit_on: 2025/12/06
-  first_commit: https://github.com/kettle-rb/ast-merge/commit/a63a4858cb229530c1706925bb209546695e8b3a
+  first_commit_by_person_on: 2025/12/06
+  first_commit_by_person: https://github.com/kettle-rb/ast-merge/commit/a63a4858cb229530c1706925bb209546695e8b3a
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/kettle-rb
@@ -724,8 +724,8 @@
   ecosystem: rubygems
   minimum_version: '2.7'
   role: author
-  first_commit_on: 2025/12/06
-  first_commit: https://github.com/kettle-rb/dotenv-merge/commit/a34c8f20c877a45d03b9f0b83b973614e123a92b
+  first_commit_by_person_on: 2025/12/06
+  first_commit_by_person: https://github.com/kettle-rb/dotenv-merge/commit/a34c8f20c877a45d03b9f0b83b973614e123a92b
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/kettle-rb
@@ -756,8 +756,8 @@
   ecosystem: rubygems
   minimum_version: '2.7'
   role: author
-  first_commit_on: 2025/12/06
-  first_commit: https://github.com/kettle-rb/rbs-merge/commit/7ae936a6ae844aee513264eecc39215eed53c313
+  first_commit_by_person_on: 2025/12/06
+  first_commit_by_person: https://github.com/kettle-rb/rbs-merge/commit/7ae936a6ae844aee513264eecc39215eed53c313
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/kettle-rb
@@ -790,8 +790,8 @@
   ecosystem: rubygems
   minimum_version: '2.7'
   role: author
-  first_commit_on: 2025/12/14
-  first_commit: https://github.com/kettle-rb/tree_haver/commit/a89211bff10f4440b96758a8ac9d7d539001b0c8
+  first_commit_by_person_on: 2025/12/14
+  first_commit_by_person: https://github.com/kettle-rb/tree_haver/commit/a89211bff10f4440b96758a8ac9d7d539001b0c8
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/kettle-rb
@@ -825,8 +825,8 @@
   ecosystem: rubygems
   minimum_version: '2.7'
   role: author
-  first_commit_on: 2025/12/09
-  first_commit: https://github.com/kettle-rb/toml-merge/commit/772a5f5802ce518f2e2c83a561eb583ed634bac4
+  first_commit_by_person_on: 2025/12/09
+  first_commit_by_person: https://github.com/kettle-rb/toml-merge/commit/772a5f5802ce518f2e2c83a561eb583ed634bac4
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/kettle-rb
@@ -858,8 +858,8 @@
   ecosystem: rubygems
   minimum_version: '2.7'
   role: author
-  first_commit_on: 2025/12/06
-  first_commit: https://github.com/kettle-rb/bash-merge/commit/db525d5aedd0c895422a067629118f3fa9c3c22d
+  first_commit_by_person_on: 2025/12/06
+  first_commit_by_person: https://github.com/kettle-rb/bash-merge/commit/db525d5aedd0c895422a067629118f3fa9c3c22d
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/kettle-rb
@@ -892,8 +892,8 @@
   ecosystem: rubygems
   minimum_version: '2.7'
   role: author
-  first_commit_on: 2025/12/06
-  first_commit: https://github.com/kettle-rb/json-merge/commit/f1cc25b1d9b79c598270e3aa203fa56787e6c6fc
+  first_commit_by_person_on: 2025/12/06
+  first_commit_by_person: https://github.com/kettle-rb/json-merge/commit/f1cc25b1d9b79c598270e3aa203fa56787e6c6fc
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/kettle-rb
@@ -923,8 +923,8 @@
   ecosystem: rubygems
   minimum_version: '2.7'
   role: author
-  first_commit_on: 2025/12/11
-  first_commit: https://github.com/kettle-rb/markdown-merge/commit/76f2230840b236dd10fdd7baf322c082762dddb0
+  first_commit_by_person_on: 2025/12/11
+  first_commit_by_person: https://github.com/kettle-rb/markdown-merge/commit/76f2230840b236dd10fdd7baf322c082762dddb0
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/kettle-rb
@@ -956,8 +956,8 @@
   ecosystem: rubygems
   minimum_version: '2.7'
   role: author
-  first_commit_on: 2025/12/06
-  first_commit: https://github.com/kettle-rb/jsonc-merge/commit/f1cc25b1d9b79c598270e3aa203fa56787e6c6fc
+  first_commit_by_person_on: 2025/12/06
+  first_commit_by_person: https://github.com/kettle-rb/jsonc-merge/commit/f1cc25b1d9b79c598270e3aa203fa56787e6c6fc
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/kettle-rb
@@ -989,8 +989,8 @@
   ecosystem: rubygems
   minimum_version: '2.7'
   role: author
-  first_commit_on: 2025/12/06
-  first_commit: https://github.com/kettle-rb/commonmarker-merge/commit/12d4e9fff5bbe6a9b29e81c6643b4dd705f8e80a
+  first_commit_by_person_on: 2025/12/06
+  first_commit_by_person: https://github.com/kettle-rb/commonmarker-merge/commit/12d4e9fff5bbe6a9b29e81c6643b4dd705f8e80a
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/kettle-rb
@@ -1021,8 +1021,8 @@
   ecosystem: rubygems
   minimum_version: '2.7'
   role: author
-  first_commit_on: 2025/12/05
-  first_commit: https://github.com/kettle-rb/psych-merge/commit/3330d3309d6962a4e676aa1c43e4ca90dfd21dc4
+  first_commit_by_person_on: 2025/12/05
+  first_commit_by_person: https://github.com/kettle-rb/psych-merge/commit/3330d3309d6962a4e676aa1c43e4ca90dfd21dc4
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/kettle-rb
@@ -1054,8 +1054,8 @@
   ecosystem: rubygems
   minimum_version: '2.7'
   role: author
-  first_commit_on: 2025/12/09
-  first_commit: https://github.com/kettle-rb/markly-merge/commit/3dcd8b855b8a773f175ff34d31e3885a28a3e70b
+  first_commit_by_person_on: 2025/12/09
+  first_commit_by_person: https://github.com/kettle-rb/markly-merge/commit/3dcd8b855b8a773f175ff34d31e3885a28a3e70b
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/kettle-rb
@@ -1087,8 +1087,8 @@
   ecosystem: rubygems
   minimum_version: '2.7'
   role: author
-  first_commit_on: 2026/02/21
-  first_commit: https://github.com/kettle-rb/token-resolver/commit/e0e299cad6e6914d512845c71df6b7ac8009e5ac
+  first_commit_by_person_on: 2026/02/21
+  first_commit_by_person: https://github.com/kettle-rb/token-resolver/commit/e0e299cad6e6914d512845c71df6b7ac8009e5ac
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/kettle-rb
@@ -1140,6 +1140,33 @@
   github_stars: 36
   last_commit_on: 2026/01/12
   status: active
-  first_commit: https://github.com/CycloneDX/cyclonedx-ruby-gem/commit/eecfebe3cb0ce961fef8e424162ac94298f02a9f
-  first_commit_on: 2018/05/21
+  first_commit_by_person: https://github.com/CycloneDX/cyclonedx-ruby-gem/commit/eecfebe3cb0ce961fef8e424162ac94298f02a9f
+  first_commit_by_person_on: 2018/05/21
   last_scrape_at: '2026-02-24T05:44:38Z'
+- name: rb-sys
+  ecosystem: cargo
+  language: Rust
+  role: contributor
+  forges:
+  - type: GitHub
+    url: https://github.com/oxidize-rb/rb-sys
+    owner: oxidize-rb
+  description: Rust bindings for the CRuby API
+  minimum_version: '1.71'
+  tags:
+  - rust
+  - ruby
+  - api
+  funding_sites:
+  - type: Liberapay
+    url: https://liberapay.com/pboling
+  docs_site:
+  total_downloads: 4566189
+  daily_downloads:
+  release_downloads: 152006
+  release_date: 2026/01/05
+  github_stars: 299
+  last_commit_on: 2026/02/20
+  status: active
+  first_commit_by_person: https://github.com/oxidize-rb/rb-sys/commit/23163c1fd08c3ecd33a730d8e6f86cacbf055a0a
+  first_commit_by_person_on: 2021/12/21
