@@ -13,6 +13,7 @@
 require 'yaml'
 require 'date'
 require 'time'
+require 'tty-prompt'
 require 'pp'
 require 'rbconfig'
 require 'table_tennis'
@@ -525,8 +526,10 @@ if __FILE__ == $0
   }
 
   OptionParser.new do |op|
-    op.banner = "Usage: bundle exec ruby scripts/project_query [OPTIONS] <subcommand> [args]"
+    op.banner = "Usage: bundle exec ruby scripts/project_query [OPTIONS] [subcommand [args]]"
 
+    op.separator ""
+    op.separator "When run without a subcommand, an interactive menu is shown."
     op.separator ""
     op.separator "Subcommands:"
     op.separator "  list                         List all projects (table view)"
@@ -586,8 +589,50 @@ if __FILE__ == $0
   sub_args   = ARGV.dup
 
   if subcommand.nil?
-    warn 'No subcommand given. Run with --help for usage.'
-    exit 1
+    prompt = TTY::Prompt.new(enable_color: options[:color])
+
+    SUBCOMMANDS = [
+      { name: 'list             — list all projects',                              value: 'list' },
+      { name: 'stats            — summary statistics',                             value: 'stats' },
+      { name: 'needs-attention  — full data-quality audit',                        value: 'needs-attention' },
+      { name: 'show             — show full entry for one project (fuzzy match)',  value: 'show' },
+      { name: 'missing          — projects where a field is blank or nil',         value: 'missing' },
+      { name: 'stale            — projects not scraped recently',                  value: 'stale' },
+      { name: 'status           — filter by status',                               value: 'status' },
+      { name: 'language         — filter by language',                             value: 'language' },
+      { name: 'ecosystem        — filter by ecosystem',                            value: 'ecosystem' },
+      { name: 'role             — filter by role',                                 value: 'role' },
+      { name: 'tag              — filter by tag',                                  value: 'tag' },
+      { name: 'console          — drop into IRB with project data pre-loaded',     value: 'console' },
+    ].freeze
+
+    subcommand = prompt.select(
+      "📊 Project Query — select a subcommand:",
+      SUBCOMMANDS,
+      per_page: SUBCOMMANDS.size,
+      cycle:    true,
+      filter:   true,
+    )
+
+    # Prompt for the argument required by certain subcommands
+    case subcommand
+    when 'show'
+      sub_args = [prompt.ask("Project name (fuzzy match):", required: true)]
+    when 'missing'
+      sub_args = [prompt.ask("Field name:", required: true)]
+    when 'stale'
+      options[:days] = prompt.ask("Not scraped in more than how many days?", default: options[:days], convert: :int)
+    when 'status'
+      sub_args = [prompt.select("Status:", %w[active stale archived], cycle: true)]
+    when 'language'
+      sub_args = [prompt.ask("Language:", required: true)]
+    when 'ecosystem'
+      sub_args = [prompt.select("Ecosystem:", %w[rubygems cargo npm pypi go none], cycle: true)]
+    when 'role'
+      sub_args = [prompt.select("Role:", %w[author contributor maintainer], cycle: true)]
+    when 'tag'
+      sub_args = [prompt.ask("Tag:", required: true)]
+    end
   end
 
   pq = ProjectQuery.new(file: options[:file], format: options[:format], color: options[:color])

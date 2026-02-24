@@ -7,6 +7,7 @@ require 'json'
 require 'uri'
 require 'date'
 require 'time'
+require 'tty-prompt'
 
 class ProjectUpdater
   PROJECTS_FILE = File.expand_path('../src/_data/projects.yml', __dir__)
@@ -57,6 +58,7 @@ class ProjectUpdater
     @surgical_field = surgical_field
     @discover_rubygems = discover_rubygems
     @auto_confirm = auto_confirm
+    @prompt = TTY::Prompt.new
 
     # Preserve header comments from YAML files
     @projects_header = extract_yaml_header(PROJECTS_FILE)
@@ -356,7 +358,7 @@ class ProjectUpdater
     # funding_sites is a required field (index.html raises if nil).
     # Start with a sensible default based on role, then let the user amend.
     puts ""
-    puts "  Funding sites (press Enter to keep default, type 'none' for an empty list):"
+    puts "  Funding sites:"
     default_funding = if project['role'] == 'author'
       [
         { 'type' => 'OpenCollective', 'url' => 'https://opencollective.com/galtzo-floss' },
@@ -367,7 +369,7 @@ class ProjectUpdater
     end
 
     funding_sites = if opts[:funding_sites]
-      # Pre-supplied via --funding-sites flag
+      # Pre-supplied via --funding-sites flag (TYPE:URL,TYPE:URL format)
       raw_fs = opts[:funding_sites].to_s.strip
       if raw_fs.downcase == 'none' || raw_fs.empty?
         puts "  Funding sites: (empty list) [pre-supplied]"
@@ -381,23 +383,61 @@ class ProjectUpdater
         parsed
       end
     else
+      # Collect all known funding types from existing projects (icon names must match)
+      known_types = @projects
+        .flat_map { |p| Array(p['funding_sites']).map { |f| f['type'] } }
+        .compact.uniq.sort
+
       puts "  Default: #{default_funding.empty? ? '(empty list — no funding sites)' : default_funding.map { |f| "#{f['type']}: #{f['url']}" }.join(', ')}"
       result = default_funding.dup
+
       loop do
-        raw = ask("  Add a funding site as 'TYPE URL' (e.g. 'OpenCollective https://opencollective.com/myorg'), or Enter to finish")
-        break if raw.nil? || raw.strip.empty?
-        if raw.strip.downcase == 'none'
-          result = []
-          puts "  → Funding sites set to empty list."
+        puts ""
+        puts "  Current: #{result.empty? ? '(none)' : result.map { |f| "#{f['type']}: #{f['url']}" }.join(', ')}"
+
+        # Build type choices: known types + "new" sentinel + done/none actions
+        type_choices = known_types.map { |t| { name: t, value: t } }
+        type_choices << { name: '─' * 40, value: :separator, disabled: '' }
+        type_choices << { name: '✏️  Enter a new type manually', value: :new_type }
+        type_choices << { name: '🚫  Set to empty list (none)',   value: :none }
+        type_choices << { name: '✅  Done adding',                value: :done }
+
+        selected = @prompt.select(
+          "Add a funding site — select type:",
+          type_choices,
+          per_page: type_choices.size,
+          cycle:    true,
+          filter:   true,
+        )
+
+        case selected
+        when :done
           break
-        end
-        parts = raw.strip.split(/\s+/, 2)
-        if parts.size == 2
-          result << { 'type' => parts[0], 'url' => parts[1] }
-          puts "  → Added: #{parts[0]}: #{parts[1]}"
+        when :none
+          result = []
+          @prompt.ok "Funding sites cleared to empty list."
+          break
+        when :new_type
+          new_type = @prompt.ask("New funding type name (must match icon filename, e.g. 'GitHub Sponsors'):") do |q|
+            q.required true
+            q.modify   :strip
+          end
+          next unless new_type
+          # Add to known_types so it appears in subsequent iterations
+          known_types << new_type unless known_types.include?(new_type)
+          selected_type = new_type
         else
-          puts "  ⚠️  Expected 'TYPE URL' (two parts separated by a space), got: #{raw.inspect}. Try again."
+          selected_type = selected
         end
+
+        url = @prompt.ask("URL for '#{selected_type}':") do |q|
+          q.required true
+          q.modify   :strip
+        end
+        next unless url
+
+        result << { 'type' => selected_type, 'url' => url }
+        @prompt.ok "Added: #{selected_type}: #{url}"
       end
       result
     end
@@ -1522,7 +1562,7 @@ if __FILE__ == $0
     op.banner = "Usage: #{$0} [OPTIONS] [SUBCOMMAND|FIELD]"
 
     op.separator ""
-    op.separator "Fetches live stats for every project in projects.yml from GitHub, GitLab,"
+    op.separator "Fetches live stats for erefavery project in projects.yml from GitHub, GitLab,"
     op.separator "Codeberg, and RubyGems APIs."
     op.separator ""
     op.separator "When run with no subcommand or field, a RubyGems discovery pre-flight runs"
