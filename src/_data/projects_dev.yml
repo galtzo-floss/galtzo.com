@@ -37,7 +37,7 @@
   ecosystem: rubygems
   minimum_version: '2.5'
   role: author
-  first_commit_by_person_on: 2016/03/26
+  first_commit_by_person_on: 2016/03/27
   first_commit_by_person: https://github.com/galtzo-floss/activerecord-transactionable/commit/c40965018cee7546e62249006e2f41784cde8142
   funding_sites:
   - type: OpenCollective
@@ -531,8 +531,8 @@
   ecosystem: rubygems
   minimum_version: '2.7'
   role: author
-  first_commit_by_person_on: 2017/04/11
-  first_commit_by_person:
+  first_commit_by_person_on: 2010/02/05
+  first_commit_by_person: https://github.com/pboling/cacheable-flash/commit/cb952b3338df3610ab993c944ee5c0cd894d3185
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/galtzo-floss
@@ -627,8 +627,8 @@
   ecosystem: rubygems
   minimum_version: '2.7'
   role: author
-  first_commit_by_person_on: 2025/11/09
-  first_commit_by_person: https://github.com/galtzo-floss/yard-yaml/commit/ffbe883471d11462dc28675867d852372ea3a481
+  first_commit_by_person_on: 2025/11/10
+  first_commit_by_person: https://github.com/galtzo-floss/yard-yaml/commit/fe07f29d0831a3e702e3dc76088debfadc81ad2b
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/galtzo-floss
@@ -1140,8 +1140,8 @@
   github_stars: 36
   last_commit_on: 2026/01/12
   status: active
-  first_commit_by_person: https://github.com/CycloneDX/cyclonedx-ruby-gem/commit/eecfebe3cb0ce961fef8e424162ac94298f02a9f
-  first_commit_by_person_on: 2018/05/21
+  first_commit_by_person: https://github.com/CycloneDX/cyclonedx-ruby-gem/commit/6a174b8a9248c6eb29d90bd2e5f100f7213f2cd5
+  first_commit_by_person_on: 2025/10/26
   last_scrape_at: '2026-02-24T05:44:38Z'
 - name: rb-sys
   ecosystem: cargo
@@ -1168,5 +1168,5 @@
   github_stars: 299
   last_commit_on: 2026/02/20
   status: active
-  first_commit_by_person: https://github.com/oxidize-rb/rb-sys/commit/23163c1fd08c3ecd33a730d8e6f86cacbf055a0a
-  first_commit_by_person_on: 2021/12/21
+  first_commit_by_person: https://github.com/oxidize-rb/rb-sys/commit/44cb57255497879c0efe5d45e57473ad73231593
+  first_commit_by_person_on: 2026/01/05
