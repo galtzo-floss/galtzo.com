@@ -8,6 +8,16 @@ body_class: projects
 
 <% projects = site.data.projects %>
 
+<%# Shared number formatter used by both card footer blocks below %>
+<% fmt_num = ->(n) {
+  return nil if n.nil?
+  if    n >= 1_000_000_000 then "#{(n / 1_000_000_000.0).round(1)}B"
+  elsif n >= 1_000_000     then "#{(n / 1_000_000.0).round(1)}M"
+  elsif n >= 1_000         then "#{(n / 1_000.0).round(1)}k"
+  else  n.to_s
+  end
+} %>
+
 <% years = projects.map {|p| p['first_commit_by_person_on']&.to_s&.split('/')&.first }.compact.uniq.sort %>
 <% year_counts = {} %>
 <% projects.each do |project| %>
@@ -395,42 +405,36 @@ body_class: projects
           </span>
       </div>
     </div>
-    <% if project['release_date'] || project['total_downloads'] %>
+    <% total_stars_for_footer = (project['github_stars'] || 0) + (project['gitlab_stars'] || 0) + (project['codeberg_stars'] || 0) %>
+    <% if project['release_date'] || project['total_downloads'] || total_stars_for_footer > 0 %>
     <div class="bottom-anchor stats">
       <div class="horizontal-banner banner-stats <%= project['role'] %>">
         <span class="stats-label">
-          <% if project['total_downloads'] %>
           <%
-            downloads = project['total_downloads']
-            formatted_downloads = if downloads >= 1_000_000_000
-              "#{(downloads / 1_000_000_000.0).round(1)}B"
-            elsif downloads >= 1_000_000
-              "#{(downloads / 1_000_000.0).round(1)}M"
-            elsif downloads >= 1_000
-              "#{(downloads / 1_000.0).round(1)}k"
-            else
-              downloads.to_s
-            end
+            total_dl   = project['total_downloads']
+            release_dl = project['release_downloads']
+            daily_dl   = project['daily_downloads']
+            has_dl     = !!total_dl
           %>
-          <span class="stat-item"><%= formatted_downloads %> downloads</span>
+          <% if has_dl %>
+          <span class="stat-group dl-group">
+            <span class="stat-label">DL</span>
+            <span class="stat-sub" title="Total downloads">T:&nbsp;<%== fmt_num.call(total_dl) %></span>
+            <% if release_dl %><span class="stat-sub" title="Latest release downloads">R:&nbsp;<%== fmt_num.call(release_dl) %></span><% end %>
+            <% if daily_dl %><span class="stat-sub" title="Daily downloads"><%== fmt_num.call(daily_dl) %>&nbsp;/&nbsp;d</span><% end %>
+          </span>
           <% end %>
-          <%
-            total_stars = (project['github_stars'] || 0) + (project['gitlab_stars'] || 0) + (project['codeberg_stars'] || 0)
-          %>
-          <% if total_stars > 0 %>
-          <% if project['total_downloads'] %>
-          &nbsp;|&nbsp;
+          <% if total_stars_for_footer > 0 %>
+          <% if has_dl %><span class="stat-sep">&nbsp;|&nbsp;</span><% end %>
+          <span class="stat-group"><span class="stat-item"><%= total_stars_for_footer %> ⭐️</span></span>
           <% end %>
-          <span class="stat-item"><%= total_stars %> ⭐️</span>
-          <% end %>
-          <% date = project['release_date'] || project['last_commit_on'] %>
-          <% if date && (project['total_downloads'] || total_stars > 0) %>
-          &nbsp;|&nbsp;
-          <% end %>
+          <% if project['release_date'] || project['last_commit_on'] %>
+          <% if has_dl || total_stars_for_footer > 0 %><span class="stat-sep">&nbsp;|&nbsp;</span><% end %>
           <% if project['release_date'] %>
-          <span class="stat-item">Last Release: <%= project['release_date'] %></span>
-          <% elsif project['last_commit_on'] %>
-          <span class="stat-item">Last Commit: <%= project['last_commit_on'] %></span>
+          <span class="stat-group"><span class="stat-label">Rel</span><span class="stat-item"><%= project['release_date'] %></span></span>
+          <% else %>
+          <span class="stat-group"><span class="stat-label">Commit</span><span class="stat-item"><%= project['last_commit_on'] %></span></span>
+          <% end %>
           <% end %>
         </span>
       </div>
@@ -643,42 +647,36 @@ body_class: projects
           </span>
       </div>
     </div>
-    <% if project['release_date'] || project['total_downloads'] %>
+    <% total_stars_for_footer = (project['github_stars'] || 0) + (project['gitlab_stars'] || 0) + (project['codeberg_stars'] || 0) %>
+    <% if project['release_date'] || project['total_downloads'] || total_stars_for_footer > 0 %>
     <div class="bottom-anchor stats">
       <div class="horizontal-banner banner-stats <%= project['role'] %>">
         <span class="stats-label">
-          <% if project['total_downloads'] %>
           <%
-            downloads = project['total_downloads']
-            formatted_downloads = if downloads >= 1_000_000_000
-              "#{(downloads / 1_000_000_000.0).round(1)}B"
-            elsif downloads >= 1_000_000
-              "#{(downloads / 1_000_000.0).round(1)}M"
-            elsif downloads >= 1_000
-              "#{(downloads / 1_000.0).round(1)}k"
-            else
-              downloads.to_s
-            end
+            total_dl   = project['total_downloads']
+            release_dl = project['release_downloads']
+            daily_dl   = project['daily_downloads']
+            has_dl     = !!total_dl
           %>
-          <span class="stat-item"><%= formatted_downloads %> downloads</span>
+          <% if has_dl %>
+          <span class="stat-group dl-group">
+            <span class="stat-label">DL</span>
+            <span class="stat-sub" title="Total downloads">T:&nbsp;<%== fmt_num.call(total_dl) %></span>
+            <% if release_dl %><span class="stat-sub" title="Latest release downloads">R:&nbsp;<%== fmt_num.call(release_dl) %></span><% end %>
+            <% if daily_dl %><span class="stat-sub" title="Daily downloads"><%== fmt_num.call(daily_dl) %>&nbsp;/&nbsp;d</span><% end %>
+          </span>
           <% end %>
-          <%
-            total_stars = (project['github_stars'] || 0) + (project['gitlab_stars'] || 0) + (project['codeberg_stars'] || 0)
-          %>
-          <% if total_stars > 0 %>
-          <% if project['total_downloads'] %>
-          &nbsp;|&nbsp;
+          <% if total_stars_for_footer > 0 %>
+          <% if has_dl %><span class="stat-sep">&nbsp;|&nbsp;</span><% end %>
+          <span class="stat-group"><span class="stat-item"><%= total_stars_for_footer %>&nbsp;⭐️</span></span>
           <% end %>
-          <span class="stat-item"><%= total_stars %> ⭐️</span>
-          <% end %>
-          <% date = project['release_date'] || project['last_commit_on'] %>
-          <% if date && (project['total_downloads'] || total_stars > 0) %>
-          &nbsp;|&nbsp;
-          <% end %>
+          <% if project['release_date'] || project['last_commit_on'] %>
+          <% if has_dl || total_stars_for_footer > 0 %><span class="stat-sep">&nbsp;|&nbsp;</span><% end %>
           <% if project['release_date'] %>
-          <span class="stat-item">Last Release: <%= project['release_date'] %></span>
-          <% elsif project['last_commit_on'] %>
-          <span class="stat-item">Last Commit: <%= project['last_commit_on'] %></span>
+          <span class="stat-group"><span class="stat-label">Rel</span><span class="stat-item"><%= project['release_date'] %></span></span>
+          <% else %>
+          <span class="stat-group"><span class="stat-label">Commit</span><span class="stat-item"><%= project['last_commit_on'] %></span></span>
+          <% end %>
           <% end %>
         </span>
       </div>
