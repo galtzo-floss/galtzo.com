@@ -106,9 +106,9 @@
   - activerecord
   docs_site:
   github_stars: 7
-  total_downloads: 3047
-  daily_downloads:
-  release_downloads: 2585
+  total_downloads: 3048
+  daily_downloads: 0
+  release_downloads: 2586
   release_date: 2024/07/05
   last_commit_on: 2026/01/22
   status: active
@@ -141,9 +141,9 @@
   - validation
   docs_site:
   github_stars: 2
-  total_downloads: 109519
-  daily_downloads:
-  release_downloads: 84568
+  total_downloads: 109520
+  daily_downloads: 8
+  release_downloads: 84569
   release_date: 2018/09/23
   last_commit_on: 2026/01/17
   status: active
@@ -182,7 +182,7 @@
   gitlab_stars: 0
   codeberg_stars: 0
   total_downloads: 58717
-  daily_downloads:
+  daily_downloads: 6
   release_downloads: 2911
   release_date: 2024/03/06
   last_commit_on: 2026/01/17
@@ -216,7 +216,7 @@
   docs_site:
   github_stars: 9
   total_downloads: 7968
-  daily_downloads:
+  daily_downloads: 2
   release_downloads: 4810
   release_date: 2025/02/25
   last_commit_on: 2026/01/22
@@ -248,9 +248,9 @@
   - log
   docs_site:
   github_stars: 9
-  total_downloads: 12271
-  daily_downloads:
-  release_downloads: 7791
+  total_downloads: 12279
+  daily_downloads: 14
+  release_downloads: 7799
   release_date: 2024/11/22
   last_commit_on: 2026/01/22
   status: active
@@ -282,9 +282,9 @@
   - log
   docs_site:
   github_stars: 9
-  total_downloads: 4833
-  daily_downloads:
-  release_downloads: 2955
+  total_downloads: 4834
+  daily_downloads: 2
+  release_downloads: 2956
   release_date: 2024/11/22
   last_commit_on: 2026/01/22
   status: active
@@ -314,9 +314,9 @@
   - activerecord
   docs_site:
   github_stars: 12
-  total_downloads: 295061
-  daily_downloads:
-  release_downloads: 239020
+  total_downloads: 295066
+  daily_downloads: 10
+  release_downloads: 239025
   release_date: 2024/09/18
   last_commit_on: 2026/01/17
   status: active
@@ -340,6 +340,8 @@
   - type: GitHub
     url: https://github.com/apache/skywalking-eyes
     owner: apache
+    total_downloads: 1498
+    release_downloads: 0
   tags:
   - ci
   - cli
@@ -383,9 +385,9 @@
   github_stars: 18
   gitlab_stars: 0
   codeberg_stars: 0
-  total_downloads: 42634
-  daily_downloads:
-  release_downloads: 1004
+  total_downloads: 42681
+  daily_downloads: 172
+  release_downloads: 1051
   release_date: 2026/02/18
   last_commit_on: 2026/02/21
   status: active
@@ -413,7 +415,7 @@
   docs_site:
   github_stars: 16
   total_downloads: 38073
-  daily_downloads:
+  daily_downloads: 4
   release_downloads: 3089
   release_date: 2018/09/04
   last_commit_on: 2026/01/17
@@ -446,7 +448,7 @@
   docs_site:
   github_stars: 8
   total_downloads: 11218
-  daily_downloads:
+  daily_downloads: 0
   release_downloads: 6236
   release_date: 2010/06/22
   last_commit_on: 2026/01/22
@@ -471,7 +473,6 @@
     url: https://github.com/floss-funding/awesome-sponsorships
     owner: galtzo-floss
   tags:
-  - funding
   - markdown
   - meta
   docs_site: https://awesome-sponsorships.galtzo.com
@@ -552,7 +553,7 @@
   - flash
   - rails
   total_downloads: 465691
-  daily_downloads:
+  daily_downloads: 11
   release_downloads: 180137
   adoptable: false
   archived: true
@@ -594,7 +595,7 @@
   docs_site:
   github_stars: 49
   total_downloads: 98089
-  daily_downloads:
+  daily_downloads: 3
   release_downloads: 14130
   release_date: 2013/01/22
   last_commit_on: 2026/01/17
@@ -624,13 +625,13 @@
   - type: SourceHut
     url: https://git.sr.ht/~galtzo/celluloid-io-pg-listener
   tags:
-  - async
+  - concurrency
   adoptable: true
   archived: true
   docs_site:
   github_stars: 11
   total_downloads: 22415
-  daily_downloads:
+  daily_downloads: 1
   release_downloads: 3783
   release_date: 2015/11/30
   last_commit_on: 2026/01/17
@@ -661,9 +662,9 @@
   - validation
   docs_site:
   github_stars: 8
-  total_downloads: 7020
-  daily_downloads:
-  release_downloads: 7020
+  total_downloads: 7021
+  daily_downloads: 0
+  release_downloads: 7021
   release_date: 2014/11/20
   last_commit_on: 2026/01/17
   status: active
@@ -699,7 +700,7 @@
   docs_site:
   github_stars: 34
   total_downloads: 149544
-  daily_downloads:
+  daily_downloads: 1
   release_downloads: 5729
   release_date: 2013/11/26
   last_commit_on: 2026/01/17
@@ -739,9 +740,9 @@
   github_stars: 18
   gitlab_stars: 0
   codeberg_stars: 0
-  total_downloads: 84632
-  daily_downloads:
-  release_downloads: 3847
+  total_downloads: 84634
+  daily_downloads: 2
+  release_downloads: 3848
   release_date: 2024/05/12
   last_commit_on: 2026/01/17
   status: active
@@ -778,7 +779,7 @@
   github_stars: 3
   gitlab_stars: 0
   total_downloads: 17819
-  daily_downloads:
+  daily_downloads: 0
   release_downloads: 4328
   release_date: 2015/05/20
   last_commit_on: 2026/01/17
@@ -812,8 +813,8 @@
   - view
   docs_site:
   github_stars: 11
-  total_downloads: 10128
-  daily_downloads:
+  total_downloads: 10129
+  daily_downloads: 0
   release_downloads: 6450
   release_date: 2012/08/15
   last_commit_on: 2026/01/17
@@ -843,9 +844,9 @@
   - aws
   docs_site:
   github_stars: 600
-  total_downloads: 10800605
-  daily_downloads:
-  release_downloads: 193228
+  total_downloads: 10801165
+  daily_downloads: 3938
+  release_downloads: 193329
   release_date: 2025/08/23
   last_commit_on: 2026/01/17
   status: active
@@ -878,7 +879,7 @@
   docs_site:
   github_stars: 12
   total_downloads: 14976
-  daily_downloads:
+  daily_downloads: 0
   release_downloads: 6845
   release_date: 2016/06/01
   last_commit_on: 2026/01/17
@@ -919,9 +920,9 @@
   github_stars: 507
   gitlab_stars: 0
   codeberg_stars: 0
-  total_downloads: 4596740
-  daily_downloads:
-  release_downloads: 3676380
+  total_downloads: 4597038
+  daily_downloads: 5278
+  release_downloads: 3676678
   release_date: 2018/11/30
   last_commit_on: 2026/01/17
   status: active
@@ -949,11 +950,11 @@
     owner: floss-funding
   tags:
   - experimental
-  - funding
+  - meta
   docs_site: https://floss-funding.galtzo.com
   github_stars: 4
   total_downloads: 489
-  daily_downloads:
+  daily_downloads: 2
   release_downloads: 268
   release_date:
   last_commit_on: 2025/11/21
@@ -989,13 +990,13 @@
   tags:
   - bundler
   - log
+  - parsing
   - perf
-  - regex
   docs_site:
   github_stars: 94
-  total_downloads: 2943453
-  daily_downloads:
-  release_downloads: 14196
+  total_downloads: 2943460
+  daily_downloads: 55
+  release_downloads: 14197
   release_date: 2024/09/22
   last_commit_on: 2026/01/17
   status: active
@@ -1022,12 +1023,12 @@
   - type: SourceHut
     url: https://git.sr.ht/~galtzo/gitmoji-regex
   tags:
-  - regex
+  - parsing
   - vcs
   docs_site:
   github_stars: 12
   total_downloads: 24613
-  daily_downloads:
+  daily_downloads: 12
   release_downloads: 16665
   release_date: 2025/08/20
   last_commit_on: 2025/11/21
@@ -1059,7 +1060,7 @@
   docs_site:
   github_stars: 9
   total_downloads: 7291
-  daily_downloads:
+  daily_downloads: 3
   release_downloads: 4648
   release_date: 2014/10/18
   last_commit_on: 2026/01/22
@@ -1093,9 +1094,9 @@
   archived: true
   docs_site:
   github_stars: 6
-  total_downloads: 8881
-  daily_downloads:
-  release_downloads: 6966
+  total_downloads: 8882
+  daily_downloads: 3
+  release_downloads: 6967
   release_date: 2020/02/14
   last_commit_on: 2026/01/17
   status: active
@@ -1122,7 +1123,7 @@
   docs_site:
   github_stars: 8
   total_downloads: 895
-  daily_downloads:
+  daily_downloads: 1
   release_downloads: 895
   release_date: 2023/10/26
   last_commit_on: 2026/01/22
@@ -1173,9 +1174,9 @@
   github_stars: 2
   gitlab_stars: 0
   codeberg_stars: 0
-  total_downloads: 34860
-  daily_downloads:
-  release_downloads: 935
+  total_downloads: 34863
+  daily_downloads: 28
+  release_downloads: 936
   release_date: 2025/11/29
   last_commit_on: 2026/02/21
   status: active
@@ -1214,8 +1215,8 @@
   github_stars: 10
   gitlab_stars: 1
   codeberg_stars: 0
-  total_downloads: 30906
-  daily_downloads:
+  total_downloads: 30909
+  daily_downloads: 14
   release_downloads: 715
   release_date: 2025/12/28
   last_commit_on: 2025/12/28
@@ -1260,7 +1261,7 @@
   gitlab_stars: 0
   codeberg_stars: 0
   total_downloads: 18556
-  daily_downloads:
+  daily_downloads: 3
   release_downloads: 463
   release_date: 2026/02/06
   last_commit_on: 2026/02/06
@@ -1294,7 +1295,7 @@
   docs_site:
   github_stars: 3
   total_downloads: 12140
-  daily_downloads:
+  daily_downloads: 1
   release_downloads: 7188
   release_date: 2015/04/11
   last_commit_on: 2026/01/17
@@ -1322,7 +1323,7 @@
   docs_site:
   github_stars: 2
   total_downloads: 374
-  daily_downloads:
+  daily_downloads: 1
   release_downloads: 374
   release_date: 2025/08/12
   last_commit_on: 2025/11/21
@@ -1426,7 +1427,7 @@
   gitlab_stars: 0
   codeberg_stars: 0
   total_downloads: 619
-  daily_downloads:
+  daily_downloads: 0
   release_downloads: 619
   release_date: 2025/04/04
   last_commit_on: 2025/12/02
@@ -1457,7 +1458,7 @@
   docs_site:
   github_stars: 7
   total_downloads: 9442
-  daily_downloads:
+  daily_downloads: 0
   release_downloads: 7579
   release_date: 2018/10/29
   last_commit_on: 2025/11/21
@@ -1495,9 +1496,9 @@
   github_stars: 674
   gitlab_stars: 5
   codeberg_stars: 0
-  total_downloads: 155832892
-  daily_downloads:
-  release_downloads: 678526
+  total_downloads: 155841007
+  daily_downloads: 47380
+  release_downloads: 679533
   release_date: 2025/11/07
   last_commit_on: 2026/01/25
   status: active
@@ -1535,9 +1536,9 @@
   github_stars: 6
   gitlab_stars: 1
   codeberg_stars: 1
-  total_downloads: 16290591
-  daily_downloads:
-  release_downloads: 1270482
+  total_downloads: 16294360
+  daily_downloads: 24525
+  release_downloads: 1272019
   release_date: 2025/09/21
   last_commit_on: 2025/11/27
   status: active
@@ -1574,9 +1575,9 @@
   github_stars: 2165
   gitlab_stars: 23
   codeberg_stars: 2
-  total_downloads: 249197745
-  daily_downloads:
-  release_downloads: 1974507
+  total_downloads: 249213913
+  daily_downloads: 91140
+  release_downloads: 1978795
   release_date: 2025/11/08
   last_commit_on: 2025/11/27
   status: active
@@ -1604,9 +1605,9 @@
   - security
   docs_site: https://omniauth-identity.galtzo.com
   github_stars: 364
-  total_downloads: 2138704
-  daily_downloads:
-  release_downloads: 31004
+  total_downloads: 2138839
+  daily_downloads: 481
+  release_downloads: 31124
   release_date: 2025/10/14
   last_commit_on: 2025/11/27
   status: active
@@ -1635,7 +1636,7 @@
   docs_site:
   github_stars: 101
   total_downloads: 146982
-  daily_downloads:
+  daily_downloads: 2
   release_downloads: 143970
   release_date: 2013/10/19
   last_commit_on: 2026/01/22
@@ -1664,9 +1665,9 @@
   - security
   docs_site:
   github_stars: 6
-  total_downloads: 2588
-  daily_downloads:
-  release_downloads: 2588
+  total_downloads: 2589
+  daily_downloads: 6
+  release_downloads: 2589
   release_date: 2023/12/07
   last_commit_on: 2026/01/22
   status: active
@@ -1694,9 +1695,9 @@
   - security
   docs_site:
   github_stars: 148
-  total_downloads: 747109
-  daily_downloads:
-  release_downloads: 1253
+  total_downloads: 747112
+  daily_downloads: 50
+  release_downloads: 1254
   release_date: 2025/11/10
   last_commit_on: 2025/11/27
   status: active
@@ -1733,9 +1734,9 @@
   github_stars: 96
   gitlab_stars: 0
   codeberg_stars: 0
-  total_downloads: 4657254
-  daily_downloads:
-  release_downloads: 36430
+  total_downloads: 4658534
+  daily_downloads: 6458
+  release_downloads: 36431
   release_date: 2025/06/08
   last_commit_on: 2025/12/02
   status: active
@@ -1773,7 +1774,7 @@
   gitlab_stars: 0
   codeberg_stars: 0
   total_downloads: 125422
-  daily_downloads:
+  daily_downloads: 13
   release_downloads: 4847
   release_date: 2024/09/25
   last_commit_on: 2026/01/22
@@ -1798,9 +1799,9 @@
   - test
   docs_site:
   github_stars: 154
-  total_downloads: 416299133
-  daily_downloads:
-  release_downloads: 237741843
+  total_downloads: 416320934
+  daily_downloads: 157454
+  release_downloads: 237762453
   release_date: 2021/11/07
   last_commit_on: 2025/06/08
   status: active
@@ -1835,7 +1836,7 @@
   docs_site:
   github_stars: 6
   total_downloads: 20357
-  daily_downloads:
+  daily_downloads: 1
   release_downloads: 5094
   release_date: 2023/10/18
   last_commit_on: 2026/01/22
@@ -1870,7 +1871,7 @@
   docs_site:
   github_stars: 6
   total_downloads: 36478
-  daily_downloads:
+  daily_downloads: 3
   release_downloads: 12278
   release_date: 2022/02/25
   last_commit_on: 2026/01/17
@@ -1905,8 +1906,8 @@
   archived: true
   docs_site:
   github_stars: 151
-  total_downloads: 133052
-  daily_downloads:
+  total_downloads: 133053
+  daily_downloads: 2
   release_downloads: 22758
   release_date: 2015/11/29
   last_commit_on: 2016/04/27
@@ -1944,9 +1945,9 @@
   github_stars: 5
   gitlab_stars: 0
   codeberg_stars: 0
-  total_downloads: 8043664
-  daily_downloads:
-  release_downloads: 3800181
+  total_downloads: 8043724
+  daily_downloads: 571
+  release_downloads: 3800237
   release_date: 2014/01/20
   last_commit_on: 2025/09/14
   status: active
@@ -1984,7 +1985,7 @@
   gitlab_stars: 0
   codeberg_stars: 0
   total_downloads: 6993
-  daily_downloads:
+  daily_downloads: 5
   release_downloads: 5199
   release_date: 2024/09/25
   last_commit_on: 2025/06/07
@@ -2019,7 +2020,7 @@
   docs_site:
   github_stars: 12
   total_downloads: 37364
-  daily_downloads:
+  daily_downloads: 1
   release_downloads: 27606
   release_date: 2015/04/13
   last_commit_on: 2025/08/13
@@ -2060,7 +2061,7 @@
   docs_site:
   github_stars: 2
   total_downloads: 16716
-  daily_downloads:
+  daily_downloads: 1
   release_downloads: 6815
   release_date: 2016/03/11
   last_commit_on: 2025/08/04
@@ -2096,7 +2097,7 @@
   docs_site:
   github_stars: 19
   total_downloads: 3508
-  daily_downloads:
+  daily_downloads: 0
   release_downloads: 3508
   release_date: 2015/06/21
   last_commit_on: 2025/08/13
@@ -2123,16 +2124,15 @@
     url: https://github.com/tylerhunt/remit
     owner: tylerhunt
   tags:
-  - payment
-  - aws
   - api
+  - aws
   adoptable: true
   archived: true
   docs_site:
   github_stars: 158
-  total_downloads: 65720
-  daily_downloads:
-  release_downloads: 35671
+  total_downloads: 65722
+  daily_downloads: 11
+  release_downloads: 35673
   release_date: 2011/08/14
   last_commit_on: 2013/03/27
   status: stale
@@ -2172,9 +2172,9 @@
   github_stars: 7
   gitlab_stars: 0
   codeberg_stars: 0
-  total_downloads: 67846
-  daily_downloads:
-  release_downloads: 21126
+  total_downloads: 67848
+  daily_downloads: 4
+  release_downloads: 21128
   release_date: 2023/10/10
   last_commit_on: 2026/01/17
   status: active
@@ -2207,9 +2207,9 @@
   - cli
   docs_site:
   github_stars: 9484
-  total_downloads: 50777705
-  daily_downloads:
-  release_downloads: 33524
+  total_downloads: 50779530
+  daily_downloads: 13523
+  release_downloads: 33703
   release_date: 2026/01/12
   last_commit_on: 2026/01/12
   status: active
@@ -2252,8 +2252,8 @@
   adoptable: false
   docs_site:
   github_stars: 6
-  total_downloads: 306053
-  daily_downloads:
+  total_downloads: 306055
+  daily_downloads: 15
   release_downloads: 201023
   release_date: 2014/08/13
   last_commit_on: 2026/01/17
@@ -2296,9 +2296,9 @@
   - uniq
   docs_site:
   github_stars: 8
-  total_downloads: 90410
-  daily_downloads:
-  release_downloads: 73673
+  total_downloads: 90456
+  daily_downloads: 56
+  release_downloads: 73718
   release_date: 2018/11/15
   last_commit_on: 2026/01/17
   status: active
@@ -2332,8 +2332,8 @@
   - uniq
   docs_site:
   github_stars: 9
-  total_downloads: 43581
-  daily_downloads:
+  total_downloads: 43583
+  daily_downloads: 1
   release_downloads: 6635
   release_date: 2018/11/17
   last_commit_on: 2026/01/17
@@ -2365,9 +2365,9 @@
   - uniq
   docs_site:
   github_stars: 8
-  total_downloads: 127485
-  daily_downloads:
-  release_downloads: 118474
+  total_downloads: 127530
+  daily_downloads: 156
+  release_downloads: 118519
   release_date: 2018/11/15
   last_commit_on: 2026/01/17
   status: active
@@ -2408,7 +2408,7 @@
   gitlab_stars: 1
   codeberg_stars: 0
   total_downloads: 931
-  daily_downloads:
+  daily_downloads: 0
   release_downloads: 931
   release_date: 2024/09/25
   last_commit_on: 2025/11/23
@@ -2448,9 +2448,9 @@
   github_stars: 8
   gitlab_stars: 1
   codeberg_stars: 0
-  total_downloads: 362806
-  daily_downloads:
-  release_downloads: 254887
+  total_downloads: 362856
+  daily_downloads: 585
+  release_downloads: 254935
   release_date: 2024/06/23
   last_commit_on: 2026/01/17
   status: active
@@ -2489,8 +2489,8 @@
   github_stars: 12
   gitlab_stars: 1
   codeberg_stars: 0
-  total_downloads: 145302
-  daily_downloads:
+  total_downloads: 145309
+  daily_downloads: 43
   release_downloads: 837
   release_date: 2026/02/07
   last_commit_on: 2026/02/08
@@ -2532,9 +2532,9 @@
   github_stars: 16
   gitlab_stars: 1
   codeberg_stars: 0
-  total_downloads: 373509
-  daily_downloads:
-  release_downloads: 27519
+  total_downloads: 373518
+  daily_downloads: 174
+  release_downloads: 27528
   release_date: 2025/08/05
   last_commit_on: 2025/11/21
   status: active
@@ -2569,9 +2569,9 @@
   github_stars: 12
   gitlab_stars: 1
   codeberg_stars: 0
-  total_downloads: 248500
-  daily_downloads:
-  release_downloads: 6339
+  total_downloads: 248512
+  daily_downloads: 30
+  release_downloads: 6341
   release_date: 2023/05/30
   last_commit_on: 2025/07/15
   status: active
@@ -2604,7 +2604,7 @@
   github_stars: 6
   gitlab_stars: 1
   total_downloads: 5507
-  daily_downloads:
+  daily_downloads: 1
   release_downloads: 2868
   release_date: 2023/06/14
   last_commit_on: 2025/08/06
@@ -2637,8 +2637,8 @@
   docs_site: https://rubocop-lts.gitlab.io/
   github_stars: 6
   gitlab_stars: 1
-  total_downloads: 11126
-  daily_downloads:
+  total_downloads: 11127
+  daily_downloads: 5
   release_downloads: 1312
   release_date: 2023/06/14
   last_commit_on: 2025/08/06
@@ -2671,8 +2671,8 @@
   docs_site: https://rubocop-lts.gitlab.io/
   github_stars: 6
   gitlab_stars: 1
-  total_downloads: 9741
-  daily_downloads:
+  total_downloads: 9742
+  daily_downloads: 3
   release_downloads: 1001
   release_date: 2023/06/13
   last_commit_on: 2025/08/06
@@ -2705,9 +2705,9 @@
   docs_site: https://rubocop-lts.gitlab.io/
   github_stars: 6
   gitlab_stars: 1
-  total_downloads: 19611
-  daily_downloads:
-  release_downloads: 10843
+  total_downloads: 19612
+  daily_downloads: 2
+  release_downloads: 10844
   release_date: 2023/06/13
   last_commit_on: 2025/08/06
   status: active
@@ -2739,9 +2739,9 @@
   docs_site: https://rubocop-lts.gitlab.io/
   github_stars: 6
   gitlab_stars: 1
-  total_downloads: 33820
-  daily_downloads:
-  release_downloads: 4219
+  total_downloads: 33823
+  daily_downloads: 3
+  release_downloads: 4222
   release_date: 2023/06/13
   last_commit_on: 2026/01/22
   status: active
@@ -2774,7 +2774,7 @@
   github_stars: 6
   gitlab_stars: 1
   total_downloads: 12593
-  daily_downloads:
+  daily_downloads: 4
   release_downloads: 3859
   release_date: 2023/06/13
   last_commit_on: 2025/08/06
@@ -2808,7 +2808,7 @@
   github_stars: 6
   gitlab_stars: 1
   total_downloads: 58499
-  daily_downloads:
+  daily_downloads: 1
   release_downloads: 1541
   release_date: 2023/06/13
   last_commit_on: 2025/08/06
@@ -2841,9 +2841,9 @@
   docs_site: https://rubocop-lts.gitlab.io/
   github_stars: 6
   gitlab_stars: 1
-  total_downloads: 8035
-  daily_downloads:
-  release_downloads: 1345
+  total_downloads: 8036
+  daily_downloads: 3
+  release_downloads: 1346
   release_date: 2023/06/13
   last_commit_on: 2025/08/06
   status: active
@@ -2876,7 +2876,7 @@
   github_stars: 6
   gitlab_stars: 1
   total_downloads: 12388
-  daily_downloads:
+  daily_downloads: 2
   release_downloads: 1840
   release_date: 2023/06/13
   last_commit_on: 2025/08/06
@@ -2909,9 +2909,9 @@
   docs_site: https://rubocop-lts.gitlab.io/
   github_stars: 6
   gitlab_stars: 1
-  total_downloads: 95918
-  daily_downloads:
-  release_downloads: 72442
+  total_downloads: 95920
+  daily_downloads: 10
+  release_downloads: 72444
   release_date: 2023/06/13
   last_commit_on: 2025/08/06
   status: active
@@ -2947,7 +2947,7 @@
   gitlab_stars: 1
   codeberg_stars: 0
   total_downloads: 13562
-  daily_downloads:
+  daily_downloads: 5
   release_downloads: 1178
   release_date: 2023/06/13
   last_commit_on: 2025/08/06
@@ -2981,7 +2981,7 @@
   github_stars: 6
   gitlab_stars: 1
   total_downloads: 26034
-  daily_downloads:
+  daily_downloads: 4
   release_downloads: 11510
   release_date: 2023/06/13
   last_commit_on: 2025/08/06
@@ -3012,9 +3012,9 @@
   docs_site: https://rubocop-lts.gitlab.io/
   github_stars: 7
   gitlab_stars: 1
-  total_downloads: 137612
-  daily_downloads:
-  release_downloads: 134536
+  total_downloads: 137660
+  daily_downloads: 575
+  release_downloads: 134583
   release_date: 2023/06/13
   last_commit_on: 2025/08/06
   status: active
@@ -3051,9 +3051,9 @@
   github_stars: 12
   gitlab_stars: 0
   codeberg_stars: 1
-  total_downloads: 12505481
-  daily_downloads:
-  release_downloads: 5664073
+  total_downloads: 12507327
+  daily_downloads: 9086
+  release_downloads: 5665916
   release_date: 2019/10/16
   last_commit_on: 2025/12/02
   status: active
@@ -3090,9 +3090,9 @@
   github_stars: 12
   gitlab_stars: 0
   codeberg_stars: 1
-  total_downloads: 8995
-  daily_downloads:
-  release_downloads: 6874
+  total_downloads: 8996
+  daily_downloads: 5
+  release_downloads: 6875
   release_date: 2024/09/25
   last_commit_on: 2025/12/02
   status: active
@@ -3133,9 +3133,9 @@
   github_stars: 174
   gitlab_stars: 0
   codeberg_stars: 0
-  total_downloads: 2555399
-  daily_downloads:
-  release_downloads: 94510
+  total_downloads: 2555457
+  daily_downloads: 441
+  release_downloads: 94544
   release_date: 2024/11/09
   last_commit_on: 2026/01/17
   status: active
@@ -3167,9 +3167,9 @@
   - rails
   docs_site:
   github_stars: 384
-  total_downloads: 1600078
-  daily_downloads:
-  release_downloads: 1217015
+  total_downloads: 1600118
+  daily_downloads: 476
+  release_downloads: 1217054
   release_date: 2017/08/01
   last_commit_on: 2025/08/18
   status: active
@@ -3203,7 +3203,7 @@
   docs_site:
   github_stars: 6
   total_downloads: 4009
-  daily_downloads:
+  daily_downloads: 1
   release_downloads: 4009
   release_date: 2014/02/26
   last_commit_on: 2026/01/17
@@ -3234,7 +3234,7 @@
   docs_site:
   github_stars: 8
   total_downloads: 16277
-  daily_downloads:
+  daily_downloads: 1
   release_downloads: 13593
   release_date: 2022/07/03
   last_commit_on: 2025/08/13
@@ -3270,7 +3270,7 @@
   gitlab_stars: 1
   codeberg_stars: 1
   total_downloads: 498
-  daily_downloads:
+  daily_downloads: 1
   release_downloads: 498
   release_date: 2025/05/30
   last_commit_on: 2025/08/18
@@ -3305,7 +3305,7 @@
   docs_site:
   github_stars: 7
   total_downloads: 29046
-  daily_downloads:
+  daily_downloads: 18
   release_downloads: 12977
   release_date: 2021/11/15
   last_commit_on: 2026/01/17
@@ -3346,9 +3346,9 @@
   github_stars: 7
   gitlab_stars: 0
   codeberg_stars: 0
-  total_downloads: 161577
-  daily_downloads:
-  release_downloads: 22133
+  total_downloads: 161585
+  daily_downloads: 18
+  release_downloads: 22140
   release_date: 2025/08/21
   last_commit_on: 2025/11/21
   status: active
@@ -3380,7 +3380,7 @@
   docs_site:
   github_stars: 2
   total_downloads: 3274
-  daily_downloads:
+  daily_downloads: 0
   release_downloads: 109
   release_date: 2026/02/04
   last_commit_on: 2026/02/08
@@ -3416,9 +3416,9 @@
   github_stars: 6
   gitlab_stars: 2
   codeberg_stars: 2
-  total_downloads: 99960609
-  daily_downloads:
-  release_downloads: 11270068
+  total_downloads: 99974692
+  daily_downloads: 84531
+  release_downloads: 11278871
   release_date: 2025/05/23
   last_commit_on: 2025/12/02
   status: active
@@ -3450,7 +3450,7 @@
   docs_site:
   github_stars: 3
   total_downloads: 811
-  daily_downloads:
+  daily_downloads: 0
   release_downloads: 811
   release_date: 2024/03/23
   last_commit_on: 2025/08/13
@@ -3485,9 +3485,9 @@
     your deployed environments instead
   docs_site:
   github_stars: 7
-  total_downloads: 372475
-  daily_downloads:
-  release_downloads: 188668
+  total_downloads: 372477
+  daily_downloads: 7
+  release_downloads: 188669
   release_date: 2017/05/31
   last_commit_on: 2025/08/04
   status: archived
@@ -3524,8 +3524,8 @@
   github_stars: 6
   gitlab_stars: 1
   codeberg_stars: 0
-  total_downloads: 225957
-  daily_downloads:
+  total_downloads: 226006
+  daily_downloads: 584
   release_downloads: 975
   release_date: 2025/04/17
   last_commit_on: 2025/12/02
@@ -3567,7 +3567,7 @@
   gitlab_stars: 0
   codeberg_stars: 0
   total_downloads: 13160
-  daily_downloads:
+  daily_downloads: 0
   release_downloads: 4191
   release_date: 2015/08/24
   last_commit_on: 2026/01/17
@@ -3611,8 +3611,8 @@
   github_stars: 6
   gitlab_stars: 0
   codeberg_stars: 0
-  total_downloads: 44016
-  daily_downloads:
+  total_downloads: 44017
+  daily_downloads: 6
   release_downloads: 1654
   release_date: 2025/10/30
   last_commit_on: 2025/11/27
@@ -3649,7 +3649,7 @@
   archived: true
   github_stars: 5
   total_downloads: 3388
-  daily_downloads:
+  daily_downloads: 0
   release_downloads: 3388
   release_date: 2015/11/09
   last_commit_on: 2026/01/17
@@ -3684,7 +3684,7 @@
   docs_site:
   github_stars: 65
   total_downloads: 97870
-  daily_downloads:
+  daily_downloads: 2
   release_downloads: 4294
   release_date: 2014/01/19
   last_commit_on: 2014/01/19
@@ -3719,7 +3719,7 @@
   docs_site: https://timecop-rspec.galtzo.com
   github_stars: 4
   total_downloads: 17137
-  daily_downloads:
+  daily_downloads: 3
   release_downloads: 16058
   release_date: 2025/08/20
   last_commit_on: 2025/11/21
@@ -3757,7 +3757,7 @@
   gitlab_stars: 0
   codeberg_stars: 0
   total_downloads: 4937
-  daily_downloads:
+  daily_downloads: 3
   release_downloads: 241
   release_date: 2025/10/21
   last_commit_on: 2025/11/27
@@ -3796,9 +3796,9 @@
   github_stars: 10
   gitlab_stars: 1
   codeberg_stars: 0
-  total_downloads: 113381785
-  daily_downloads:
-  release_downloads: 6162649
+  total_downloads: 113396126
+  daily_downloads: 89076
+  release_downloads: 6169040
   release_date: 2025/09/02
   last_commit_on: 2025/11/27
   status: active
@@ -3831,7 +3831,7 @@
   docs_site:
   github_stars: 59
   total_downloads: 31478
-  daily_downloads:
+  daily_downloads: 1
   release_downloads: 24138
   release_date: 2010/02/01
   last_commit_on: 2025/10/19
@@ -3853,7 +3853,6 @@
     url: https://github.com/pboling/yacs
     owner: pboling
   tags:
-  - websocket
   - api
   - react
   docs_site:
@@ -3885,7 +3884,7 @@
   - ruby
   docs_site: https://www.rubydoc.info/gems/yard-fence/0.8.2
   total_downloads: 1850
-  daily_downloads:
+  daily_downloads: 2
   release_downloads: 328
   release_date: 2025/12/30
   github_stars: 1
@@ -3916,7 +3915,7 @@
   - ruby
   docs_site: https://www.rubydoc.info/gems/yaml-converter/0.1.0
   total_downloads: 1572
-  daily_downloads:
+  daily_downloads: 2
   release_downloads: 1572
   release_date: 2025/11/09
   github_stars: 2
@@ -3944,7 +3943,7 @@
   - ruby
   docs_site: https://www.rubydoc.info/gems/yard-yaml/0.1.0
   total_downloads: 1725
-  daily_downloads:
+  daily_downloads: 4
   release_downloads: 1725
   release_date: 2025/11/10
   github_stars: 2
@@ -3977,7 +3976,7 @@
   - cli
   docs_site: https://www.rubydoc.info/gems/tree_haver/5.0.5
   total_downloads: 4772
-  daily_downloads:
+  daily_downloads: 10
   release_downloads: 176
   release_date: 2026/02/18
   github_stars: 15
@@ -4012,8 +4011,8 @@
   - ast
   - templating
   docs_site: https://www.rubydoc.info/gems/ast-merge/4.0.6
-  total_downloads: 9282
-  daily_downloads:
+  total_downloads: 9283
+  daily_downloads: 10
   release_downloads: 158
   release_date: 2026/02/19
   github_stars: 4
@@ -4048,7 +4047,7 @@
   - templating
   docs_site: https://www.rubydoc.info/gems/token-resolver/1.0.2
   total_downloads: 410
-  daily_downloads:
+  daily_downloads: 214
   release_downloads: 141
   release_date: 2026/02/22
   github_stars: 4
@@ -4085,7 +4084,7 @@
   - bash
   docs_site: https://www.rubydoc.info/gems/bash-merge/2.0.6
   total_downloads: 3716
-  daily_downloads:
+  daily_downloads: 5
   release_downloads: 124
   release_date: 2026/02/19
   github_stars: 1
@@ -4122,7 +4121,7 @@
   - markdown
   docs_site: https://www.rubydoc.info/gems/commonmarker-merge/1.0.1
   total_downloads: 243
-  daily_downloads:
+  daily_downloads: 2
   release_downloads: 110
   release_date: 2026/02/19
   github_stars: 1
@@ -4158,7 +4157,7 @@
   - dotenv
   docs_site: https://www.rubydoc.info/gems/dotenv-merge/1.0.3
   total_downloads: 4048
-  daily_downloads:
+  daily_downloads: 5
   release_downloads: 121
   release_date: 2026/02/19
   github_stars: 1
@@ -4196,7 +4195,7 @@
   - templating
   docs_site: https://www.rubydoc.info/gems/json-merge/1.1.2
   total_downloads: 1744
-  daily_downloads:
+  daily_downloads: 4
   release_downloads: 122
   release_date: 2026/02/19
   github_stars: 1
@@ -4233,7 +4232,7 @@
   - templating
   docs_site: https://www.rubydoc.info/gems/jsonc-merge/1.0.1
   total_downloads: 268
-  daily_downloads:
+  daily_downloads: 7
   release_downloads: 127
   release_date: 2026/02/19
   github_stars: 1
@@ -4268,7 +4267,7 @@
   - markdown
   docs_site: https://www.rubydoc.info/gems/markdown-merge/1.0.3
   total_downloads: 647
-  daily_downloads:
+  daily_downloads: 8
   release_downloads: 135
   release_date: 2026/02/19
   github_stars: 1
@@ -4304,9 +4303,9 @@
   - templating
   - markdown
   docs_site: https://www.rubydoc.info/gems/markly-merge/1.0.0
-  total_downloads: 142
-  daily_downloads:
-  release_downloads: 142
+  total_downloads: 143
+  daily_downloads: 24
+  release_downloads: 143
   release_date: 2026/02/19
   github_stars: 1
   last_commit_on: 2026/02/23
@@ -4339,7 +4338,7 @@
   - templating
   docs_site: https://www.rubydoc.info/gems/prism-merge/2.0.4
   total_downloads: 2298
-  daily_downloads:
+  daily_downloads: 370
   release_downloads: 117
   release_date: 2026/02/22
   github_stars: 17
@@ -4375,7 +4374,7 @@
   - yaml
   docs_site: https://www.rubydoc.info/gems/psych-merge/1.0.0
   total_downloads: 141
-  daily_downloads:
+  daily_downloads: 23
   release_downloads: 141
   release_date: 2026/02/19
   github_stars: 1
@@ -4411,7 +4410,7 @@
   - rbs
   docs_site: https://www.rubydoc.info/gems/rbs-merge/2.0.0
   total_downloads: 1890
-  daily_downloads:
+  daily_downloads: 3
   release_downloads: 120
   release_date: 2026/02/19
   github_stars: 1
@@ -4446,9 +4445,9 @@
   - templating
   - toml
   docs_site: https://www.rubydoc.info/gems/toml-merge/2.0.1
-  total_downloads: 2452
-  daily_downloads:
-  release_downloads: 120
+  total_downloads: 2453
+  daily_downloads: 4
+  release_downloads: 121
   release_date: 2026/02/19
   github_stars: 1
   last_commit_on: 2026/02/19
@@ -4465,6 +4464,8 @@
   - type: GitHub
     url: https://github.com/contriboss/ore-light
     owner: contriboss
+    total_downloads: 1009
+    release_downloads: 84
   description: Lean, Bundler-compatible gem manager written in Go
   minimum_version: '1.25'
   tags:
@@ -4489,6 +4490,8 @@
   - type: GitHub
     url: https://github.com/contriboss/gemfile-go
     owner: contriboss
+    total_downloads: 0
+    release_downloads: 0
   description: Pure Go parser for Ruby Gemfile and Gemfile.lock files
   minimum_version: '1.25'
   tags:
@@ -4527,9 +4530,9 @@
   - type: Liberapay
     url: https://liberapay.com/pboling
   docs_site: https://www.rubydoc.info/gems/cyclonedx-ruby/1.1.0
-  total_downloads: 176806
-  daily_downloads:
-  release_downloads: 176806
+  total_downloads: 176832
+  daily_downloads: 157
+  release_downloads: 176832
   release_date: 2019/07/13
   github_stars: 36
   last_commit_on: 2026/01/12
