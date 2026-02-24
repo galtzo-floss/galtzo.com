@@ -4506,3 +4506,33 @@
   funding_sites: []
   release_date: 2026/02/16
   last_scrape_at: '2026-02-23T12:13:32Z'
+- name: cyclonedx-ruby
+  ecosystem: rubygems
+  language: Ruby
+  role: contributor
+  forges:
+  - type: GitHub
+    url: https://github.com/CycloneDX/cyclonedx-ruby-gem
+    owner: CycloneDX
+  description: Creates CycloneDX Software Bill of Materials (SBOM) from Ruby projects
+  minimum_version: '2.7'
+  tags:
+  - ruby
+  - bundler
+  - gem
+  - owasp
+  - sbom
+  - cyclonedx
+  funding_sites:
+  - type: Liberapay
+    url: https://liberapay.com/pboling
+  docs_site: https://www.rubydoc.info/gems/cyclonedx-ruby/1.1.0
+  total_downloads: 176806
+  daily_downloads:
+  release_downloads: 176806
+  release_date: 2019/07/13
+  github_stars: 36
+  last_commit_on: 2026/01/12
+  status: active
+  first_commit: https://github.com/CycloneDX/cyclonedx-ruby-gem/commit/eecfebe3cb0ce961fef8e424162ac94298f02a9f
+  first_commit_on: 2018/05/21
