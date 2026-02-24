@@ -1,4 +1,7 @@
 ---
+- id: ast-merge
+  name: "*-merge Gem Family"
+  position: 1
 - id: active-record
   name: ActiveRecord Plugins
   position: 2
@@ -38,6 +41,3 @@
 - id: rubocop-lts
   name: RuboCop-LTS Family
   position: 14
-- id: ast-merge
-  name: "*-merge Gem Family"
-  position: 1

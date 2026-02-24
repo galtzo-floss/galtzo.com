@@ -140,10 +140,12 @@ bundle exec ruby scripts/manage_families --dry-run # preview saves only
 `theme: family`, `family_id`, and (optionally) `family_primary: true`.
 Within-family member order is the order entries appear in `projects.yml`.
 
-Main menu: select a family by its `position` number, `U` for unassigned projects,
+Main menu: scroll/filter to select a family, `U` for unassigned projects,
 `N` to create a new family, `Q` to save and exit.
-Per-family actions: `M` remove member, `S` swap two members' order, `A` add unassigned
-project, `D` delete family, `P` reposition this family among all families.
+Per-family actions (via `expand` prompt — type the key letter):
+`r` reorder members (pick member, pick destination, list re-renders, repeat until done),
+`m` remove a member, `a` add unassigned project, `p` reposition this family among all
+families, `d` delete family, `b` back.
 Family fields written to projects: `theme`, `family_id`, `family_primary`.
 
 ```bash

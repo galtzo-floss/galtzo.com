@@ -12,6 +12,7 @@
 
 require 'yaml'
 require 'table_tennis'
+require 'tty-prompt'
 
 class FamilyManager
   PROJECTS_FILE     = File.expand_path('../src/_data/projects.yml',     __dir__)
@@ -27,12 +28,13 @@ class FamilyManager
   def initialize(file: PROJECTS_FILE, dev_file: PROJECTS_DEV_FILE,
                  families_file: FAMILIES_FILE,
                  auto_confirm: false, dry_run: false, color: $stdout.tty?)
-    @file         = file
-    @dev_file     = dev_file
+    @file          = file
+    @dev_file      = dev_file
     @families_file = families_file
-    @auto_confirm = auto_confirm
-    @dry_run      = dry_run
-    @color        = color
+    @auto_confirm  = auto_confirm
+    @dry_run       = dry_run
+    @color         = color
+    @prompt        = TTY::Prompt.new(enable_color: color)
 
     load!
   end
@@ -46,41 +48,29 @@ class FamilyManager
       puts ""
       unassigned = unassigned_projects
 
-      puts tt(
-        @families.map do |fam|
-          members = family_members(fam['id'])
-          {
-            pos:   fam['position'],
-            id:    fam['id'],
-            name:  fam['name'],
-            count: members.size,
-          }
-        end +
-        [{ pos: '', id: '──────────', name: '──────────────────────', count: '' }] +
-        [{ pos: 'U', id: '(unassigned)', name: "#{unassigned.size} project(s) with no family", count: '' }] +
-        [{ pos: 'N', id: '(new family)', name: 'Create a new family',                          count: '' }] +
-        [{ pos: 'Q', id: '(quit)',       name: 'Save and exit',                                count: '' }],
-        title:   '🏠 Family Manager',
-        columns: %i[pos id name count],
-        headers: { pos: 'Pos', id: 'Family ID', name: 'Family Name', count: '  #' },
+      choices = @families.map do |fam|
+        count   = family_members(fam['id']).size
+        label   = "#{fam['position'].to_s.rjust(2)}. #{fam['name'].ljust(32)} (#{count} members)"
+        { name: label, value: fam['id'] }
+      end
+      choices << { name: "─" * 55, value: :separator, disabled: "" }
+      choices << { name: "U  Unassigned projects (#{unassigned.size})", value: :unassigned }
+      choices << { name: "N  Create a new family",                       value: :new_family }
+      choices << { name: "Q  Save and exit",                             value: :quit }
+
+      selection = @prompt.select(
+        "🏠 Family Manager — select a family to manage:",
+        choices,
+        per_page: choices.size,
+        filter:   true,
+        cycle:    true,
       )
 
-      print "\nSelect a family position # (or U / N / Q): "
-      $stdout.flush
-      input = $stdin.gets&.strip
-      break if input.nil? || input.upcase == 'Q'
-
-      case input.upcase
-      when 'U' then manage_unassigned
-      when 'N' then create_family
-      else
-        pos = input.to_i
-        fam = @families.find { |f| f['position'] == pos }
-        if fam
-          manage_family(fam['id'])
-        else
-          puts "  ⚠️  Invalid selection."
-        end
+      case selection
+      when :quit      then break
+      when :unassigned then manage_unassigned
+      when :new_family then create_family
+      else manage_family(selection)
       end
     end
 
@@ -97,33 +87,34 @@ class FamilyManager
       fam     = @families.find { |f| f['id'] == fid }
       members = family_members(fid)
       puts ""
+
       puts tt(
         members.map.with_index(1) do |p, i|
-          {
-            "#":   i,
-            name:  p['name'],
-            role:  p['role'],
-            stars: p['github_stars'],
-          }
+          { "#": i, name: p['name'], role: p['role'], stars: p['github_stars'],
+            primary: p['family_primary'] ? '★' : '' }
         end,
         title:        "📦 #{fam['name']} (#{fid})  —  slot #{fam['position']}",
-        columns:      %i[# name role stars],
-        headers:      { "#": '#', name: 'Project', role: 'Role', stars: '⭐' },
+        columns:      %i[# name role stars primary],
+        headers:      { "#": '#', name: 'Project', role: 'Role', stars: '⭐', primary: '' },
         color_scales: :stars,
       )
 
-      puts "  Actions: [M]ove project in/out  [S]wap two members  [A]dd unassigned  [D]elete family  [P]osition (reorder among families)  [B]ack"
-      print "  > "
-      $stdout.flush
-      action = $stdin.gets&.strip&.upcase
-      break if action.nil? || action == 'B'
+      action = @prompt.expand("Action for '#{fam['name']}'?") do |q|
+        q.choice key: 'r', name: 'Reorder members within this family',        value: :reorder
+        q.choice key: 'm', name: 'Remove a member from this family',          value: :move
+        q.choice key: 'a', name: 'Add an unassigned project to this family',  value: :add
+        q.choice key: 'p', name: 'Reposition this family among all families', value: :position
+        q.choice key: 'd', name: 'Delete this family',                        value: :delete
+        q.choice key: 'b', name: 'Back to main menu',                         value: :back
+      end
 
       case action
-      when 'M' then move_member(fid)
-      when 'S' then swap_members(fid)
-      when 'A' then add_unassigned_to_family(fid)
-      when 'D' then break if delete_family(fid)
-      when 'P' then reposition_family(fid)
+      when :reorder  then reorder_members(fid)
+      when :move     then move_member(fid)
+      when :add      then add_unassigned_to_family(fid)
+      when :position then reposition_family(fid)
+      when :delete   then break if delete_family(fid)
+      when :back     then break
       end
     end
   end
@@ -133,112 +124,110 @@ class FamilyManager
   # ============================================================================
 
   def reposition_family(fid)
-    fam          = @families.find { |f| f['id'] == fid }
-    current_pos  = fam['position']
-    max_pos      = @families.size
+    fam         = @families.find { |f| f['id'] == fid }
+    current_pos = fam['position']
 
-    puts "\n  Current family order:"
-    @families.each do |f|
-      marker = f['id'] == fid ? ' ◀ (selected)' : ''
-      puts "    #{f['position'].to_s.rjust(2)}.  #{f['id'].ljust(32)} #{f['name']}#{marker}"
+    choices = @families.map do |f|
+      marker = f['id'] == fid ? ' ◀ current' : ''
+      { name: "#{f['position'].to_s.rjust(2)}. #{f['name']}#{marker}", value: f['position'] }
     end
 
-    print "\n  Enter new position for '#{fam['name']}' (1–#{max_pos}, current = #{current_pos}): "
-    $stdout.flush
-    input = $stdin.gets&.strip
-    return if input.nil? || input.empty?
-
-    target = input.to_i
-    return puts "  ⚠️  Invalid position." unless target >= 1 && target <= max_pos
+    target = @prompt.select(
+      "Move '#{fam['name']}' to which position? (current = #{current_pos})",
+      choices,
+      default: current_pos,
+      per_page: @families.size,
+      cycle:    true,
+    )
 
     if target == current_pos
-      puts "  ℹ️  Already at position #{current_pos}. No change."
+      @prompt.warn "Already at position #{current_pos}. No change."
       return
     end
 
-    # Remove fam from list, insert at new position, then renumber 1..N
     ordered = @families.reject { |f| f['id'] == fid }
     ordered.insert(target - 1, fam)
     ordered.each_with_index { |f, i| f['position'] = i + 1 }
 
-    puts "\n  New family order:"
-    @families.each do |f|
-      marker = f['id'] == fid ? ' ◀' : ''
-      puts "    #{f['position'].to_s.rjust(2)}.  #{f['id'].ljust(32)} #{f['name']}#{marker}"
-    end
-
-    puts "  ✅ Position updated. Will be saved on exit."
+    @prompt.ok "Moved '#{fam['name']}' to position #{fam['position']}. Will be saved on exit."
   end
 
   # ============================================================================
-  # Move a member out of the family (becomes unassigned)
+  # Reorder members within a family
+  #
+  # Pick a member to move, pick its target position. The member is inserted
+  # there and all members between slide up or down to fill the gap. The list
+  # re-renders after every move so you can keep reordering until done.
+  # ============================================================================
+
+  def reorder_members(fid)
+    loop do
+      members = family_members(fid)
+      return @prompt.warn("Need at least 2 members to reorder.") if members.size < 2
+
+      move_choices = members.map.with_index(1) do |p, i|
+        { name: "#{i.to_s.rjust(2)}. #{p['name']}", value: p }
+      end
+      move_choices << { name: '─' * 40, value: :separator, disabled: '' }
+      move_choices << { name: '(done reordering)', value: :done }
+
+      subject = @prompt.select(
+        "Move which member?",
+        move_choices,
+        per_page: move_choices.size,
+        cycle:    true,
+      )
+      break if subject == :done
+
+      current_idx = members.index(subject) # 0-based
+
+      target_choices = members.each_index.reject { |i| i == current_idx }.map do |i|
+        label = if i < current_idx
+          "#{(i + 1).to_s.rjust(2)}. before #{members[i]['name']}"
+        else
+          "#{(i + 1).to_s.rjust(2)}. after  #{members[i]['name']}"
+        end
+        { name: label, value: i }
+      end
+
+      target_idx = @prompt.select(
+        "Move '#{subject['name']}' to which position?",
+        target_choices,
+        per_page: target_choices.size,
+        cycle:    true,
+      )
+
+      # Perform the move in @projects, keeping non-family entries in place
+      family_indices = @projects.each_index.select { |i| @projects[i].is_a?(Hash) && @projects[i]['family_id'] == fid }
+      abs_from = family_indices[current_idx]
+      abs_to   = family_indices[target_idx]
+
+      @projects.insert(abs_to + (target_idx > current_idx ? 1 : 0), @projects.delete_at(abs_from))
+
+      @prompt.ok "Moved '#{subject['name']}' to position #{target_idx + 1}."
+    end
+  end
+
+  # ============================================================================
+  # Remove a member from the family (becomes unassigned)
   # ============================================================================
 
   def move_member(fid)
     members = family_members(fid)
+    choices = members.map { |p| { name: p['name'], value: p } }
+    choices << { name: '─' * 40, value: :separator, disabled: '' }
+    choices << { name: '(cancel)', value: nil }
 
-    puts tt(
-      members.map.with_index(1) { |p, i| { "#": i, name: p['name'] } },
-      title:   'Remove member from family',
-      columns: %i[# name],
-      row_numbers: false,
-    )
+    project = @prompt.select("Remove which member from this family?", choices,
+                             per_page: choices.size, cycle: true)
+    return unless project
 
-    print "  Select member # to remove (or Enter to cancel): "
-    $stdout.flush
-    input = $stdin.gets&.strip
-    return if input.nil? || input.empty?
-
-    idx = input.to_i - 1
-    return puts "  ⚠️  Invalid selection." unless idx >= 0 && idx < members.size
-
-    project = members[idx]
-    if confirm("Remove '#{project['name']}' from family '#{fid}'?", default: false)
+    if @prompt.yes?("Remove '#{project['name']}' from family '#{fid}'?", default: false)
       project.delete('theme')
       project.delete('family_id')
       project.delete('family_primary')
-      puts "  ✅ '#{project['name']}' is now unassigned."
+      @prompt.ok "'#{project['name']}' is now unassigned."
     end
-  end
-
-  # ============================================================================
-  # Swap two members within a family (reorder within-family)
-  # ============================================================================
-
-  def swap_members(fid)
-    members = family_members(fid)
-
-    puts tt(
-      members.map.with_index(1) { |p, i| { "#": i, name: p['name'] } },
-      title:   'Swap member order',
-      columns: %i[# name],
-    )
-
-    print "  Swap member # : "
-    $stdout.flush
-    a_input = $stdin.gets&.strip
-    return if a_input.nil? || a_input.empty?
-
-    print "  With member # : "
-    $stdout.flush
-    b_input = $stdin.gets&.strip
-    return if b_input.nil? || b_input.empty?
-
-    a_idx = a_input.to_i - 1
-    b_idx = b_input.to_i - 1
-
-    unless a_idx >= 0 && a_idx < members.size && b_idx >= 0 && b_idx < members.size && a_idx != b_idx
-      puts "  ⚠️  Invalid selection."
-      return
-    end
-
-    # Swap by exchanging their positions in @projects array
-    a_proj = members[a_idx]
-    b_proj = members[b_idx]
-    a_pos  = @projects.index(a_proj)
-    b_pos  = @projects.index(b_proj)
-    @projects[a_pos], @projects[b_pos] = @projects[b_pos], @projects[a_pos]
-    puts "  ✅ Swapped order: #{a_proj['name']} ↔ #{b_proj['name']}"
   end
 
   # ============================================================================
@@ -248,36 +237,33 @@ class FamilyManager
   def add_unassigned_to_family(fid)
     unassigned = unassigned_projects
     if unassigned.empty?
-      puts "  ✅ No unassigned projects."
+      @prompt.ok "No unassigned projects available."
       return
     end
 
-    fam  = @families.find { |f| f['id'] == fid }
+    fam   = @families.find { |f| f['id'] == fid }
     fname = fam['name']
 
-    puts tt(
-      unassigned.map { |p| { name: p['name'], language: p['language'], ecosystem: p['ecosystem'], stars: p['github_stars'] } },
-      title:        'Unassigned Projects',
-      row_numbers:  true,
-      color_scales: :stars,
-    )
+    choices = unassigned.map do |p|
+      label = "#{p['name']}  [#{p['language']}  #{p['ecosystem']}]"
+      label += "  ⭐#{p['github_stars']}" if p['github_stars'].to_i > 0
+      { name: label, value: p }
+    end
+    choices << { name: '─' * 40, value: :separator, disabled: '' }
+    choices << { name: '(cancel)', value: nil }
 
-    print "  Select project # to add to '#{fname}' (or Enter to cancel): "
-    $stdout.flush
-    input = $stdin.gets&.strip
-    return if input.nil? || input.empty?
+    project = @prompt.select("Add which project to '#{fname}'?", choices,
+                             per_page: [choices.size, 12].min, filter: true, cycle: true)
+    return unless project
 
-    idx = input.to_i - 1
-    return puts "  ⚠️  Invalid selection." unless idx >= 0 && idx < unassigned.size
-
-    project            = unassigned[idx]
-    project['theme']   = 'family'
+    project['theme']     = 'family'
     project['family_id'] = fid
 
-    primary = confirm("  Mark as family primary (shown first in stack)?", default: false)
-    project['family_primary'] = true if primary
+    if @prompt.yes?("Mark '#{project['name']}' as family primary (shown first in stack)?", default: false)
+      project['family_primary'] = true
+    end
 
-    puts "  ✅ Added '#{project['name']}' to '#{fname}'."
+    @prompt.ok "Added '#{project['name']}' to '#{fname}'."
   end
 
   # ============================================================================
@@ -288,30 +274,28 @@ class FamilyManager
     loop do
       unassigned = unassigned_projects
       if unassigned.empty?
-        puts "  ✅ No unassigned projects."
+        @prompt.ok "No unassigned projects."
         break
       end
 
-      puts tt(
-        unassigned.map { |p| { name: p['name'], language: p['language'], ecosystem: p['ecosystem'], theme: p['theme'].inspect, stars: p['github_stars'] } },
-        title:        "📋 Unassigned Projects (#{unassigned.size})",
-        row_numbers:  true,
-        color_scales: :stars,
+      choices = unassigned.map.with_index(1) do |p, i|
+        label = "#{i}. #{p['name'].ljust(40)} [#{p['language']}  #{p['ecosystem']}]"
+        { name: label, value: p }
+      end
+      choices << { name: '─' * 60, value: :separator, disabled: "" }
+      choices << { name: 'Back to main menu', value: :back }
+
+      selection = @prompt.select(
+        "📋 Unassigned Projects (#{unassigned.size}) — select to assign:",
+        choices,
+        per_page: [choices.size, 12].min,
+        filter:   true,
+        cycle:    true,
       )
 
-      puts "  Actions: [#] Select project to assign to a family  [B]ack"
-      print "  > "
-      $stdout.flush
-      input = $stdin.gets&.strip
-      break if input.nil? || input.upcase == 'B'
+      break if selection == :back
 
-      idx = input.to_i - 1
-      unless idx >= 0 && idx < unassigned.size
-        puts "  ⚠️  Invalid selection."
-        next
-      end
-
-      assign_project_to_family(unassigned[idx])
+      assign_project_to_family(selection)
     end
   end
 
@@ -320,43 +304,42 @@ class FamilyManager
   # ============================================================================
 
   def assign_project_to_family(project)
-    rows = @families.map do |fam|
-      { pos: fam['position'], id: fam['id'], name: fam['name'], count: family_members(fam['id']).size }
+    choices = @families.map do |fam|
+      count = family_members(fam['id']).size
+      label = "#{fam['position'].to_s.rjust(2)}. #{fam['name'].ljust(32)} (#{count} members)"
+      { name: label, value: fam['id'] }
     end
-    rows << { pos: 'N', id: '(new)',  name: 'Create a new family', count: '' }
-    rows << { pos: 'B', id: '(back)', name: 'Cancel',              count: '' }
+    choices << { name: '─' * 55, value: :separator, disabled: "" }
+    choices << { name: 'N  Create a new family', value: :new_family }
+    choices << { name: 'B  Cancel',              value: :back }
 
-    puts tt(rows, title: "Assign '#{project['name']}' to a family",
-            columns: %i[pos id name count],
-            headers: { pos: 'Pos', id: 'ID', name: 'Name', count: 'Members' })
+    selection = @prompt.select(
+      "Assign '#{project['name']}' to which family?",
+      choices,
+      per_page: choices.size,
+      filter:   true,
+      cycle:    true,
+    )
 
-    print "  Select family position # (or N / B): "
-    $stdout.flush
-    input = $stdin.gets&.strip
-    return if input.nil? || input.upcase == 'B'
+    return if selection == :back
 
-    fid = if input.upcase == 'N'
+    fid = if selection == :new_family
       meta = prompt_new_family_meta
       return unless meta
       meta[:id]
     else
-      pos = input.to_i
-      fam = @families.find { |f| f['position'] == pos }
-      unless fam
-        puts "  ⚠️  Invalid selection."
-        return
-      end
-      fam['id']
+      selection
     end
 
     project['theme']     = 'family'
     project['family_id'] = fid
 
-    primary = confirm("  Mark as family primary?", default: false)
-    project['family_primary'] = true if primary
+    if @prompt.yes?("Mark '#{project['name']}' as family primary?", default: false)
+      project['family_primary'] = true
+    end
 
     fname = @families.find { |f| f['id'] == fid }&.dig('name') || fid
-    puts "  ✅ Assigned '#{project['name']}' → '#{fname}'."
+    @prompt.ok "Assigned '#{project['name']}' → '#{fname}'."
   end
 
   # ============================================================================
@@ -371,47 +354,38 @@ class FamilyManager
     fid   = meta[:id]
     fname = meta[:name]
 
-    # Seed initial members from unassigned
     puts "\n  Now seed initial members (optional — you can add more later)."
-    unassigned = unassigned_projects
 
-    if unassigned.empty?
-      puts "  (No unassigned projects available.)"
-    else
-      loop do
-        available = unassigned_projects.reject { |p| p['family_id'] == fid }
-        break if available.empty?
+    loop do
+      available = unassigned_projects.reject { |p| p['family_id'] == fid }
+      break if available.empty?
 
-        puts tt(
-          available.map { |p| { name: p['name'], language: p['language'], ecosystem: p['ecosystem'] } },
-          title:       'Available unassigned projects',
-          row_numbers: true,
-        )
-
-        print "  Add project # to '#{fname}' (or Enter to finish): "
-        $stdout.flush
-        input = $stdin.gets&.strip
-        break if input.nil? || input.empty?
-
-        idx = input.to_i - 1
-        unless idx >= 0 && idx < available.size
-          puts "  ⚠️  Invalid selection."
-          next
-        end
-
-        project              = available[idx]
-        project['theme']     = 'family'
-        project['family_id'] = fid
-
-        if family_members(fid).empty? && confirm("  Mark as family primary?", default: true)
-          project['family_primary'] = true
-        end
-
-        puts "  ✅ Added '#{project['name']}' to '#{fname}'."
+      choices = available.map do |p|
+        { name: "#{p['name']}  [#{p['language']}]", value: p }
       end
+      choices << { name: '─' * 40, value: :separator, disabled: '' }
+      choices << { name: '(done — finish seeding)', value: nil }
+
+      project = @prompt.select(
+        "Add a project to '#{fname}' (or choose done):",
+        choices,
+        per_page: [choices.size, 12].min,
+        filter:   true,
+        cycle:    true,
+      )
+      break unless project
+
+      project['theme']     = 'family'
+      project['family_id'] = fid
+
+      if family_members(fid).empty? && @prompt.yes?("Mark as family primary?", default: true)
+        project['family_primary'] = true
+      end
+
+      @prompt.ok "Added '#{project['name']}' to '#{fname}'."
     end
 
-    puts "  Family '#{fname}' ready with #{family_members(fid).size} member(s)."
+    @prompt.ok "Family '#{fname}' ready with #{family_members(fid).size} member(s)."
   end
 
   # ============================================================================
@@ -424,7 +398,7 @@ class FamilyManager
     members = family_members(fid)
 
     puts "  ⚠️  This will UNASSIGN all #{members.size} member(s) from '#{fname}' and remove the family."
-    return false unless confirm("  Delete family '#{fid}' and unassign all members?", default: false)
+    return false unless @prompt.yes?("Delete family '#{fid}' and unassign all members?", default: false)
 
     members.each do |p|
       p.delete('theme')
@@ -433,10 +407,9 @@ class FamilyManager
     end
 
     @families.delete(fam)
-    # Renumber remaining families 1..N
     @families.each_with_index { |f, i| f['position'] = i + 1 }
 
-    puts "  ✅ Family '#{fname}' deleted. #{members.size} project(s) are now unassigned."
+    @prompt.ok "Family '#{fname}' deleted. #{members.size} project(s) are now unassigned."
     true
   end
 
@@ -449,12 +422,7 @@ class FamilyManager
     @families = (YAML.load_file(@families_file) || []).sort_by { |f| f['position'] || 999 }
   end
 
-  def all_family_ids
-    @families.map { |f| f['id'] }
-  end
-
   def family_members(fid)
-    # Return in the order they appear in @projects (insertion order = within-family order)
     @projects.select { |p| p.is_a?(Hash) && p['family_id'] == fid }
   end
 
@@ -468,37 +436,29 @@ class FamilyManager
   end
 
   def prompt_new_family_meta
-    print "  Family ID (kebab-case, e.g. 'my-new-family'): "
-    $stdout.flush
-    fid = $stdin.gets&.strip
-    return nil if fid.nil? || fid.empty?
+    fid = @prompt.ask("Family ID (kebab-case, e.g. 'my-new-family'):") do |q|
+      q.required true
+      q.modify   :strip
+      q.validate(/\A[a-z0-9]+(?:-[a-z0-9]+)*\Z/, "Must be kebab-case (lowercase letters, numbers, hyphens)")
+    end
+    return nil unless fid
 
     if @families.any? { |f| f['id'] == fid }
-      puts "  ⚠️  Family '#{fid}' already exists."
+      @prompt.error "Family '#{fid}' already exists."
       return nil
     end
 
-    print "  Family display name (e.g. 'My New Family'): "
-    $stdout.flush
-    fname = $stdin.gets&.strip
-    return nil if fname.nil? || fname.empty?
+    fname = @prompt.ask("Family display name (e.g. 'My New Family'):") do |q|
+      q.required true
+      q.modify   :strip
+    end
+    return nil unless fname
 
     next_pos = (@families.map { |f| f['position'] }.max || 0) + 1
     @families << { 'id' => fid, 'name' => fname, 'position' => next_pos }
-    puts "  ✅ Family '#{fname}' added at position #{next_pos}."
+    @prompt.ok "Family '#{fname}' added at position #{next_pos}."
 
     { id: fid, name: fname }
-  end
-
-  def confirm(message, default: true)
-    return default if @auto_confirm
-
-    prompt = default ? '[Y/n]' : '[y/N]'
-    print "#{message} #{prompt} "
-    $stdout.flush
-    input = $stdin.gets&.strip&.downcase
-    return default if input.nil? || input.empty?
-    input.start_with?('y')
   end
 
   def save_all
@@ -509,11 +469,11 @@ class FamilyManager
 
   def save_projects(path, data)
     if @dry_run
-      puts "  🔍 DRY RUN — would save: #{path}"
+      @prompt.warn "DRY RUN — would save: #{path}"
       return
     end
     File.write(path, YAML.dump(data))
-    puts "  💾 Saved: #{path}"
+    @prompt.ok "Saved: #{path}"
   end
 
   def save_dev_file(path)
@@ -524,26 +484,25 @@ class FamilyManager
       src = name_map[dp['name']]
       FAMILY_FIELDS.each { |f| dp[f] = src[f] }
       dp.delete('family_primary') unless src['family_primary']
-      # Remove stale fields that no longer belong on project entries
       dp.delete('family_name')
       dp.delete('family_position')
     end
 
     if @dry_run
-      puts "  🔍 DRY RUN — would save: #{path}"
+      @prompt.warn "DRY RUN — would save: #{path}"
       return
     end
     File.write(path, YAML.dump(dev_data))
-    puts "  💾 Saved: #{path}"
+    @prompt.ok "Saved: #{path}"
   end
 
   def save_families(path, data)
     if @dry_run
-      puts "  🔍 DRY RUN — would save: #{path}"
+      @prompt.warn "DRY RUN — would save: #{path}"
       return
     end
     File.write(path, YAML.dump(data))
-    puts "  💾 Saved: #{path}"
+    @prompt.ok "Saved: #{path}"
   end
 
   def tt(rows, **opts)
@@ -578,16 +537,19 @@ if __FILE__ == $0
         Project entries in projects.yml carry only: theme, family_id, family_primary.
         Within-family member order is the order entries appear in projects.yml.
 
-        From the main menu you can:
-          • Select a family by its position number to manage its members
-          • [M] Remove a member from a family (makes it unassigned)
-          • [S] Swap two members' within-family order
-          • [A] Add an unassigned project to the family
-          • [D] Delete a family (unassigns all members, removes from families.yml)
-          • [P] Reposition this family among all families (edits families.yml)
+        From the main menu:
+          • Select a family by scrolling/filtering to manage its members
           • [U] Manage unassigned projects
           • [N] Create a new family
           • [Q] Save and exit
+
+        Per-family actions (via expand menu):
+          [r] Reorder members within the family (pick member, pick destination, repeat)
+          [m] Remove a member from the family
+          [a] Add an unassigned project to the family
+          [p] Reposition this family among all families
+          [d] Delete the family (unassigns all members)
+          [b] Back to main menu
 
         Options:
           -h, --help              Show this help

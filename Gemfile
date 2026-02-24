@@ -17,4 +17,5 @@ group :development do
 
   # TTY / CLI App Records Printer
   gem "table_tennis"
+  gem "tty-prompt"
 end
