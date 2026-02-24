@@ -17,8 +17,9 @@
     url: https://github.com/galtzo-floss/active_security
     owner: galtzo-floss
   tags:
-  - rails
   - activerecord
+  - rails
+  - ruby
   docs_site:
   github_stars: 7
   total_downloads: 3048
@@ -54,8 +55,9 @@
   - type: SourceHut
     url: https://git.sr.ht/~galtzo/activerecord-transactionable
   tags:
-  - rails
   - activerecord
+  - rails
+  - ruby
   docs_site:
   github_stars: 11
   gitlab_stars: 0
@@ -87,8 +89,9 @@
     url: https://github.com/galtzo-floss/anonymous_active_record
     owner: galtzo-floss
   tags:
-  - rails
   - activerecord
+  - rails
+  - ruby
   docs_site:
   github_stars: 12
   total_downloads: 295066
@@ -122,6 +125,7 @@
   tags:
   - ci
   - cli
+  - go
   - license
   - shell
   docs_site:
@@ -156,6 +160,7 @@
     url: https://codeberg.org/appraisal-rb/appraisal2
   tags:
   - bundler
+  - ruby
   - test
   docs_site: https://appraisal2.galtzo.com
   github_stars: 18
@@ -187,9 +192,10 @@
     url: https://github.com/wordtreefoundation/archivist-client
     owner: wordtreefoundation
   tags:
-  - shell
   - api
   - cli
+  - ruby
+  - shell
   docs_site:
   github_stars: 16
   total_downloads: 38073
@@ -220,6 +226,7 @@
     owner: galtzo-floss
   tags:
   - api
+  - ruby
   docs_site:
   github_stars: 8
   total_downloads: 11218
@@ -247,8 +254,9 @@
     url: https://github.com/pboling/bash_step
     owner: pboling
   tags:
-  - shell
+  - bash
   - cli
+  - shell
   docs_site:
   github_stars: 6
   release_date:
@@ -273,8 +281,9 @@
     url: https://github.com/pboling/bsfl
     owner: pboling
   tags:
-  - shell
+  - bash
   - cli
+  - shell
   docs_site:
   github_stars: 4
   release_date:
@@ -303,6 +312,7 @@
     owner: galtzo-floss
   tags:
   - rails
+  - ruby
   - test
   docs_site:
   github_stars: 25
@@ -334,6 +344,7 @@
   tags:
   - activerecord
   - database
+  - ruby
   docs_site:
   github_stars: 42
   total_downloads: 15000
@@ -363,8 +374,9 @@
     url: https://github.com/galtzo-floss/test-avoid-me-deprecated
     owner: galtzo-floss
   tags:
-  - legacy
   - deprecated
+  - legacy
+  - ruby
   docs_site:
   github_stars: 150
   total_downloads: 100000
@@ -395,8 +407,9 @@
     url: https://github.com/galtzo-floss/test-family-auth-core
     owner: galtzo-floss
   tags:
-  - rails
   - authentication
+  - rails
+  - ruby
   - security
   docs_site:
   github_stars: 200
@@ -426,9 +439,10 @@
     url: https://github.com/galtzo-floss/test-family-auth-oauth
     owner: galtzo-floss
   tags:
-  - rails
-  - oauth
   - authentication
+  - oauth
+  - rails
+  - ruby
   docs_site:
   github_stars: 85
   total_downloads: 20000
@@ -457,8 +471,9 @@
     url: https://github.com/galtzo-floss/test-family-auth-2fa
     owner: galtzo-floss
   tags:
-  - rails
   - 2fa
+  - rails
+  - ruby
   - security
   docs_site:
   github_stars: 65
@@ -496,6 +511,7 @@
     owner: galtzo-floss
   tags:
   - fun
+  - ruby
   - seasonal
   docs_site:
   github_stars: 10
@@ -528,6 +544,7 @@
     owner: pivotal
   tags:
   - rails
+  - ruby
   docs_site: https://www.rubydoc.info/gems/cacheable_flash/1.0.0
   total_downloads: 465691
   daily_downloads: 11
@@ -653,6 +670,7 @@
     url: https://github.com/kettle-rb/prism-merge
     owner: kettle-rb
   tags:
+  - ruby
   - test
   docs_site: https://www.rubydoc.info/gems/prism-merge/2.0.4
   total_downloads: 2298
@@ -685,6 +703,7 @@
     url: https://github.com/kettle-rb/ast-merge
     owner: kettle-rb
   tags:
+  - ruby
   - test
   docs_site: https://www.rubydoc.info/gems/ast-merge/4.0.6
   total_downloads: 9283
@@ -785,6 +804,7 @@
   tags:
   - api
   - cli
+  - ruby
   docs_site: https://www.rubydoc.info/gems/tree_haver/5.0.5
   total_downloads: 4772
   daily_downloads: 10
@@ -1079,6 +1099,7 @@
     url: https://github.com/kettle-rb/token-resolver
     owner: kettle-rb
   tags:
+  - ruby
   - test
   docs_site: https://www.rubydoc.info/gems/token-resolver/1.0.2
   total_downloads: 410

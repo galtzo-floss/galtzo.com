@@ -20,8 +20,9 @@
     url: https://github.com/galtzo-floss/active_security
     owner: galtzo-floss
   tags:
-  - rails
   - activerecord
+  - rails
+  - ruby
   docs_site:
   github_stars: 7
   total_downloads: 3048
@@ -56,6 +57,7 @@
   tags:
   - activerecord
   - rails
+  - ruby
   - validation
   docs_site:
   github_stars: 2
@@ -93,8 +95,9 @@
   - type: SourceHut
     url: https://git.sr.ht/~galtzo/activerecord-transactionable
   tags:
-  - rails
   - activerecord
+  - rails
+  - ruby
   docs_site:
   github_stars: 11
   gitlab_stars: 0
@@ -128,9 +131,10 @@
     url: https://github.com/galtzo-floss/activesupport-broadcast_logger
     owner: galtzo-floss
   tags:
-  - rails
   - activesupport
   - log
+  - rails
+  - ruby
   docs_site:
   github_stars: 9
   total_downloads: 7968
@@ -161,9 +165,10 @@
     url: https://github.com/galtzo-floss/activesupport-logger
     owner: galtzo-floss
   tags:
-  - rails
   - activesupport
   - log
+  - rails
+  - ruby
   docs_site:
   github_stars: 9
   total_downloads: 12279
@@ -195,9 +200,10 @@
     url: https://github.com/galtzo-floss/activesupport-tagged_logging
     owner: galtzo-floss
   tags:
-  - rails
   - activesupport
   - log
+  - rails
+  - ruby
   docs_site:
   github_stars: 9
   total_downloads: 4834
@@ -228,8 +234,9 @@
     url: https://github.com/galtzo-floss/anonymous_active_record
     owner: galtzo-floss
   tags:
-  - rails
   - activerecord
+  - rails
+  - ruby
   docs_site:
   github_stars: 12
   total_downloads: 295066
@@ -263,6 +270,7 @@
   tags:
   - ci
   - cli
+  - go
   - license
   - shell
   docs_site:
@@ -298,6 +306,7 @@
     url: https://codeberg.org/appraisal-rb/appraisal2
   tags:
   - bundler
+  - ruby
   - test
   docs_site: https://appraisal2.galtzo.com
   github_stars: 18
@@ -327,9 +336,10 @@
     url: https://github.com/wordtreefoundation/archivist-client
     owner: wordtreefoundation
   tags:
-  - shell
   - api
   - cli
+  - ruby
+  - shell
   docs_site:
   github_stars: 16
   total_downloads: 38073
@@ -361,6 +371,7 @@
     owner: galtzo-floss
   tags:
   - api
+  - ruby
   adoptable: true
   archived: true
   docs_site:
@@ -393,6 +404,7 @@
   tags:
   - markdown
   - meta
+  - ruby
   docs_site: https://awesome-sponsorships.galtzo.com
   github_stars: 5
   release_date:
@@ -415,8 +427,9 @@
     url: https://github.com/pboling/bash_step
     owner: pboling
   tags:
-  - shell
+  - bash
   - cli
+  - shell
   docs_site:
   github_stars: 6
   release_date:
@@ -439,8 +452,9 @@
     url: https://github.com/pboling/bsfl
     owner: pboling
   tags:
-  - shell
+  - bash
   - cli
+  - shell
   docs_site:
   github_stars: 4
   release_date:
@@ -470,6 +484,7 @@
   tags:
   - flash
   - rails
+  - ruby
   total_downloads: 465691
   daily_downloads: 11
   release_downloads: 180137
@@ -506,8 +521,9 @@
   - type: SourceHut
     url: https://git.sr.ht/~galtzo/capistrano_mailer
   tags:
-  - release
   - email
+  - release
+  - ruby
   adoptable: true
   archived: true
   docs_site:
@@ -544,6 +560,7 @@
     url: https://git.sr.ht/~galtzo/celluloid-io-pg-listener
   tags:
   - concurrency
+  - ruby
   adoptable: true
   archived: true
   docs_site:
@@ -577,6 +594,7 @@
     owner: galtzo-floss
   tags:
   - rails
+  - ruby
   - validation
   docs_site:
   github_stars: 8
@@ -615,6 +633,7 @@
   - activerecord
   - data
   - rails
+  - ruby
   docs_site:
   github_stars: 34
   total_downloads: 149544
@@ -654,6 +673,7 @@
     url: https://git.sr.ht/~galtzo/debug_logging
   tags:
   - log
+  - ruby
   docs_site:
   github_stars: 18
   gitlab_stars: 0
@@ -692,6 +712,7 @@
   - activerecord
   - errors
   - rails
+  - ruby
   - view
   docs_site:
   github_stars: 3
@@ -728,6 +749,7 @@
     url: https://git.sr.ht/~galtzo/dry_views
   tags:
   - rails
+  - ruby
   - view
   docs_site:
   github_stars: 11
@@ -760,6 +782,7 @@
   tags:
   - api
   - aws
+  - ruby
   docs_site:
   github_stars: 600
   total_downloads: 10801165
@@ -792,8 +815,9 @@
   - type: SourceHut
     url: https://git.sr.ht/~galtzo/each_in_batches
   tags:
-  - rails
   - activerecord
+  - rails
+  - ruby
   docs_site:
   github_stars: 12
   total_downloads: 14976
@@ -831,9 +855,10 @@
   - type: SourceHut
     url: https://git.sr.ht/~galtzo/flag_shih_tzu
   tags:
-  - rails
   - activerecord
   - bitfields
+  - rails
+  - ruby
   docs_site:
   github_stars: 507
   gitlab_stars: 0
@@ -869,6 +894,7 @@
   tags:
   - experimental
   - meta
+  - ruby
   docs_site: https://floss-funding.galtzo.com
   github_stars: 4
   total_downloads: 489
@@ -910,6 +936,7 @@
   - log
   - parsing
   - perf
+  - ruby
   docs_site:
   github_stars: 94
   total_downloads: 2943460
@@ -942,6 +969,7 @@
     url: https://git.sr.ht/~galtzo/gitmoji-regex
   tags:
   - parsing
+  - ruby
   - vcs
   docs_site:
   github_stars: 12
@@ -974,6 +1002,7 @@
     owner: galtzo-floss
   tags:
   - log
+  - ruby
   adoptable: true
   docs_site:
   github_stars: 9
@@ -1007,6 +1036,7 @@
   - type: SourceHut
     url: https://git.sr.ht/~galtzo/include_with_respect
   tags:
+  - ruby
   - test
   adoptable: true
   archived: true
@@ -1037,6 +1067,7 @@
     url: https://github.com/galtzo-floss/json_schemer-fuzz
     owner: galtzo-floss
   tags:
+  - ruby
   - test
   docs_site:
   github_stars: 8
@@ -1085,6 +1116,7 @@
   - markdown
   - rake
   - release
+  - ruby
   - shell
   - test
   - vcs
@@ -1128,6 +1160,7 @@
     url: https://codeberg.org/kettle-rb/kettle-soup-cover
   tags:
   - env
+  - ruby
   - test
   docs_site: https://kettle-soup-cover.galtzo.com
   github_stars: 10
@@ -1173,6 +1206,7 @@
   tags:
   - env
   - rake
+  - ruby
   - test
   docs_site: https://kettle-test.galtzo.com
   github_stars: 1
@@ -1208,6 +1242,7 @@
     owner: galtzo-floss
   tags:
   - data
+  - ruby
   adoptable: true
   archived: true
   docs_site:
@@ -1238,6 +1273,7 @@
     owner: galtzo-floss
   tags:
   - experimental
+  - ruby
   docs_site:
   github_stars: 2
   total_downloads: 374
@@ -1266,8 +1302,9 @@
     url: https://github.com/galtzo-floss/logos
     owner: galtzo-floss
   tags:
-  - markdown
   - license
+  - markdown
+  - ruby
   docs_site: https://logos.galtzo.com/
   github_stars: 2
   release_date:
@@ -1303,6 +1340,7 @@
   tags:
   - api
   - openid
+  - ruby
   - security
   docs_site:
   github_stars: 10
@@ -1339,6 +1377,7 @@
   tags:
   - api
   - openid
+  - ruby
   - security
   docs_site:
   github_stars: 10
@@ -1372,6 +1411,7 @@
     url: https://git.sr.ht/~galtzo/month-serializer
   tags:
   - data
+  - ruby
   - serialization
   docs_site:
   github_stars: 7
@@ -1409,6 +1449,7 @@
   tags:
   - api
   - oauth
+  - ruby
   - security
   docs_site: https://oauth.galtzo.com
   github_stars: 674
@@ -1449,6 +1490,7 @@
   - api
   - cli
   - oauth
+  - ruby
   - security
   docs_site: https://oauth-tty.galtzo.com
   github_stars: 6
@@ -1488,6 +1530,7 @@
   tags:
   - api
   - oauth
+  - ruby
   - security
   docs_site: https://oauth2.galtzo.com
   github_stars: 2165
@@ -1520,6 +1563,7 @@
     owner: omniauth
   tags:
   - api
+  - ruby
   - security
   docs_site: https://omniauth-identity.galtzo.com
   github_stars: 364
@@ -1550,6 +1594,7 @@
     owner: omniauth
   tags:
   - api
+  - ruby
   - security
   docs_site:
   github_stars: 101
@@ -1580,6 +1625,7 @@
     owner: omniauth
   tags:
   - api
+  - ruby
   - security
   docs_site:
   github_stars: 6
@@ -1610,6 +1656,7 @@
     owner: omniauth
   tags:
   - api
+  - ruby
   - security
   docs_site:
   github_stars: 148
@@ -1647,6 +1694,7 @@
   tags:
   - api
   - openid
+  - ruby
   - security
   docs_site: https://omniauth-openid.galtzo.com
   github_stars: 96
@@ -1686,6 +1734,7 @@
   tags:
   - api
   - openid
+  - ruby
   - security
   docs_site: https://open-id-authentication.galtzo.com
   github_stars: 10
@@ -1714,6 +1763,7 @@
     url: https://github.com/rdp/os
     owner: rdp
   tags:
+  - ruby
   - test
   docs_site:
   github_stars: 154
@@ -1751,6 +1801,7 @@
     url: https://git.sr.ht/~galtzo/pretty_feed
   tags:
   - log
+  - ruby
   docs_site:
   github_stars: 6
   total_downloads: 20357
@@ -1786,6 +1837,7 @@
   - data
   - queue
   - resque
+  - ruby
   docs_site:
   github_stars: 6
   total_downloads: 36478
@@ -1819,6 +1871,7 @@
     owner: pboling
   tags:
   - rack
+  - ruby
   - view
   adoptable: true
   archived: true
@@ -1858,6 +1911,7 @@
   tags:
   - api
   - openid
+  - ruby
   - security
   docs_site:
   github_stars: 5
@@ -1897,6 +1951,7 @@
   tags:
   - api
   - openid
+  - ruby
   - security
   docs_site: https://rack-openid2.galtzo.com
   github_stars: 10
@@ -1932,6 +1987,7 @@
     owner: galtzo-floss
   tags:
   - rack
+  - ruby
   - view
   adoptable: true
   archived: true
@@ -1971,8 +2027,9 @@
     url: https://github.com/pboling/rails_env_local
     owner: pboling
   tags:
-  - rails
   - env
+  - rails
+  - ruby
   adoptable: false
   archived: true
   deprecation_reason: Incompatible with modern Rails
@@ -2007,10 +2064,11 @@
     url: https://github.com/galtzo-floss/react-rails-benchmark_renderer
     owner: galtzo-floss
   tags:
+  - log
   - rails
   - react
+  - ruby
   - view
-  - log
   adoptable: true
   docs_site:
   github_stars: 19
@@ -2044,6 +2102,7 @@
   tags:
   - api
   - aws
+  - ruby
   adoptable: true
   archived: true
   docs_site:
@@ -2086,6 +2145,7 @@
   - errors
   - log
   - perf
+  - ruby
   docs_site:
   github_stars: 7
   gitlab_stars: 0
@@ -2119,10 +2179,11 @@
     url: https://github.com/resque/resque
     owner: resque
   tags:
-  - resque
-  - queue
-  - shell
   - cli
+  - queue
+  - resque
+  - ruby
+  - shell
   docs_site:
   github_stars: 9484
   total_downloads: 50779530
@@ -2164,8 +2225,9 @@
     url: https://github.com/resque/resque-lonely_job
     owner: resque
   tags:
-  - resque
   - queue
+  - resque
+  - ruby
   - uniq
   adoptable: false
   docs_site:
@@ -2209,8 +2271,9 @@
     url: https://github.com/resque/resque-unique_at_runtime
     owner: resque
   tags:
-  - resque
   - queue
+  - resque
+  - ruby
   - uniq
   docs_site:
   github_stars: 8
@@ -2245,8 +2308,9 @@
   - type: SourceHut
     url: https://git.sr.ht/~galtzo/resque-unique_by_arity
   tags:
-  - resque
   - queue
+  - resque
+  - ruby
   - uniq
   docs_site:
   github_stars: 9
@@ -2278,8 +2342,9 @@
     url: https://github.com/resque/resque-unique_in_queue
     owner: resque
   tags:
-  - resque
   - queue
+  - resque
+  - ruby
   - uniq
   docs_site:
   github_stars: 8
@@ -2319,6 +2384,7 @@
     url: https://codeberg.org/ruby-openid/rots
   tags:
   - openid
+  - ruby
   - security
   - test
   docs_site:
@@ -2361,6 +2427,7 @@
     url: https://git.sr.ht/~galtzo/rspec-block_is_expected
   tags:
   - errors
+  - ruby
   - test
   docs_site:
   github_stars: 8
@@ -2402,6 +2469,7 @@
   - type: SourceHut
     url: https://git.sr.ht/~galtzo/rspec-pending_for
   tags:
+  - ruby
   - test
   docs_site:
   github_stars: 12
@@ -2445,6 +2513,7 @@
     url: https://git.sr.ht/~galtzo/rspec-stubbed_env
   tags:
   - env
+  - ruby
   - test
   docs_site: https://rspec-stubbed-env.galtzo.com
   github_stars: 16
@@ -2483,6 +2552,7 @@
     url: https://codeberg.org/rubocop-lts/rubocop-lts
   tags:
   - rubocop
+  - ruby
   docs_site: https://rubocop-lts.gitlab.io/
   github_stars: 12
   gitlab_stars: 1
@@ -2518,6 +2588,7 @@
     url: https://gitlab.com/rubocop-lts/rubocop-ruby1_8
   tags:
   - rubocop
+  - ruby
   docs_site: https://rubocop-lts.gitlab.io/
   github_stars: 6
   gitlab_stars: 1
@@ -2552,6 +2623,7 @@
     url: https://gitlab.com/rubocop-lts/rubocop-ruby1_9
   tags:
   - rubocop
+  - ruby
   docs_site: https://rubocop-lts.gitlab.io/
   github_stars: 6
   gitlab_stars: 1
@@ -2586,6 +2658,7 @@
     url: https://gitlab.com/rubocop-lts/rubocop-ruby2_0
   tags:
   - rubocop
+  - ruby
   docs_site: https://rubocop-lts.gitlab.io/
   github_stars: 6
   gitlab_stars: 1
@@ -2620,6 +2693,7 @@
     url: https://gitlab.com/rubocop-lts/rubocop-ruby2_1
   tags:
   - rubocop
+  - ruby
   docs_site: https://rubocop-lts.gitlab.io/
   github_stars: 6
   gitlab_stars: 1
@@ -2654,6 +2728,7 @@
     url: https://gitlab.com/rubocop-lts/rubocop-ruby2_2
   tags:
   - rubocop
+  - ruby
   docs_site: https://rubocop-lts.gitlab.io/
   github_stars: 6
   gitlab_stars: 1
@@ -2688,6 +2763,7 @@
     url: https://gitlab.com/rubocop-lts/rubocop-ruby2_3
   tags:
   - rubocop
+  - ruby
   docs_site: https://rubocop-lts.gitlab.io/
   github_stars: 6
   gitlab_stars: 1
@@ -2722,6 +2798,7 @@
     url: https://gitlab.com/rubocop-lts/rubocop-ruby2_4
   tags:
   - rubocop
+  - ruby
   docs_site: https://rubocop-lts.gitlab.io/
   github_stars: 6
   gitlab_stars: 1
@@ -2756,6 +2833,7 @@
     url: https://gitlab.com/rubocop-lts/rubocop-ruby2_5
   tags:
   - rubocop
+  - ruby
   docs_site: https://rubocop-lts.gitlab.io/
   github_stars: 6
   gitlab_stars: 1
@@ -2790,6 +2868,7 @@
     url: https://gitlab.com/rubocop-lts/rubocop-ruby2_6
   tags:
   - rubocop
+  - ruby
   docs_site: https://rubocop-lts.gitlab.io/
   github_stars: 6
   gitlab_stars: 1
@@ -2824,6 +2903,7 @@
     url: https://gitlab.com/rubocop-lts/rubocop-ruby2_7
   tags:
   - rubocop
+  - ruby
   docs_site: https://rubocop-lts.gitlab.io/
   github_stars: 6
   gitlab_stars: 1
@@ -2860,6 +2940,7 @@
     url: https://codeberg.org/rubocop-lts/rubocop-ruby3_0
   tags:
   - rubocop
+  - ruby
   docs_site: https://rubocop-lts.gitlab.io/
   github_stars: 6
   gitlab_stars: 1
@@ -2895,6 +2976,7 @@
     url: https://gitlab.com/rubocop-lts/rubocop-ruby3_1
   tags:
   - rubocop
+  - ruby
   docs_site: https://rubocop-lts.gitlab.io/
   github_stars: 6
   gitlab_stars: 1
@@ -2927,6 +3009,7 @@
     url: https://gitlab.com/rubocop-lts/rubocop-ruby3_2
   tags:
   - rubocop
+  - ruby
   docs_site: https://rubocop-lts.gitlab.io/
   github_stars: 7
   gitlab_stars: 1
@@ -2964,6 +3047,7 @@
   tags:
   - api
   - openid
+  - ruby
   - security
   docs_site:
   github_stars: 12
@@ -3003,6 +3087,7 @@
   tags:
   - api
   - openid
+  - ruby
   - security
   docs_site:
   github_stars: 12
@@ -3046,6 +3131,7 @@
   tags:
   - email
   - rails
+  - ruby
   - test
   docs_site:
   github_stars: 174
@@ -3083,6 +3169,7 @@
   tags:
   - activerecord
   - rails
+  - ruby
   docs_site:
   github_stars: 384
   total_downloads: 1600118
@@ -3115,6 +3202,7 @@
   - type: SourceHut
     url: https://git.sr.ht/~galtzo/sequential_file
   tags:
+  - ruby
   - shell
   adoptable: true
   archived: true
@@ -3148,6 +3236,7 @@
     url: https://git.sr.ht/~galtzo/service_actor-promptable
   tags:
   - cli
+  - ruby
   - service-objects
   docs_site:
   github_stars: 8
@@ -3183,6 +3272,7 @@
     url: https://codeberg.org/galtzo-floss/shields-badge
   tags:
   - markdown
+  - ruby
   docs_site: https://shields-badge.galtzo.com
   github_stars: 12
   gitlab_stars: 1
@@ -3218,8 +3308,9 @@
   - type: SourceHut
     url: https://git.sr.ht/~galtzo/shiftable
   tags:
-  - rails
   - activerecord
+  - rails
+  - ruby
   docs_site:
   github_stars: 7
   total_downloads: 29046
@@ -3259,6 +3350,7 @@
     url: https://git.sr.ht/~galtzo/silent_stream
   tags:
   - log
+  - ruby
   - test
   docs_site: https://silent-stream.galtzo.com
   github_stars: 7
@@ -3293,8 +3385,9 @@
     url: https://github.com/galtzo-floss/simple_column-scopes
     owner: galtzo-floss
   tags:
-  - rails
   - activerecord
+  - rails
+  - ruby
   docs_site:
   github_stars: 2
   total_downloads: 3274
@@ -3329,6 +3422,7 @@
   - type: Codeberg
     url: https://codeberg.org/ruby-oauth/snaky_hash
   tags:
+  - ruby
   - serialization
   docs_site: https://snaky-hash.galtzo.com
   github_stars: 6
@@ -3362,9 +3456,10 @@
     url: https://github.com/galtzo-floss/spyke-connection_lambda
     owner: galtzo-floss
   tags:
-  - rails
   - activerecord
   - api
+  - rails
+  - ruby
   docs_site:
   github_stars: 3
   total_downloads: 811
@@ -3397,6 +3492,7 @@
     owner: pboling
   tags:
   - flash
+  - ruby
   adoptable: false
   archived: true
   deprecation_reason: If you need to use something like this, do your best to rename
@@ -3438,6 +3534,7 @@
     url: https://codeberg.org/rubocop-lts/standard-rubocop-lts
   tags:
   - rubocop
+  - ruby
   docs_site: https://rubocop-lts.gitlab.io/
   github_stars: 6
   gitlab_stars: 1
@@ -3479,6 +3576,7 @@
     url: https://git.sr.ht/~galtzo/status_tag
   tags:
   - rails
+  - ruby
   - view
   docs_site:
   github_stars: 9
@@ -3520,11 +3618,12 @@
   - type: Codeberg
     url: https://codeberg.org/galtzo-floss/stone_checksums
   tags:
-  - security
-  - release
   - cli
-  - shell
+  - release
+  - ruby
   - rubygems
+  - security
+  - shell
   docs_site:
   github_stars: 6
   gitlab_stars: 0
@@ -3560,6 +3659,7 @@
   - type: SourceHut
     url: https://git.sr.ht/~galtzo/strict_states
   tags:
+  - ruby
   - state-machine
   - validation
   docs_site:
@@ -3597,6 +3697,7 @@
   tags:
   - email
   - errors
+  - ruby
   adoptable: true
   archived: true
   docs_site:
@@ -3633,6 +3734,7 @@
     owner: galtzo-floss
   tags:
   - data
+  - ruby
   - test
   docs_site: https://timecop-rspec.galtzo.com
   github_stars: 4
@@ -3668,8 +3770,9 @@
     url: https://git.sr.ht/~galtzo/undrive_google
   tags:
   - api
-  - shell
   - cli
+  - ruby
+  - shell
   docs_site:
   github_stars: 2
   gitlab_stars: 0
@@ -3709,6 +3812,7 @@
     url: https://git.sr.ht/~galtzo/version_gem
   tags:
   - release
+  - ruby
   - test
   docs_site: https://version-gem.galtzo.com
   github_stars: 10
@@ -3745,6 +3849,7 @@
   tags:
   - api
   - oauth
+  - ruby
   - security
   docs_site:
   github_stars: 59
@@ -3773,6 +3878,7 @@
   tags:
   - api
   - react
+  - typescript
   docs_site:
   github_stars: 2
   release_date:
@@ -3892,6 +3998,7 @@
   tags:
   - api
   - cli
+  - ruby
   docs_site: https://www.rubydoc.info/gems/tree_haver/5.0.5
   total_downloads: 4772
   daily_downloads: 10
@@ -3925,9 +4032,10 @@
     url: https://github.com/kettle-rb/ast-merge
     owner: kettle-rb
   tags:
-  - test
   - ast
+  - ruby
   - templating
+  - test
   docs_site: https://www.rubydoc.info/gems/ast-merge/4.0.6
   total_downloads: 9283
   daily_downloads: 10
@@ -3962,6 +4070,7 @@
     owner: kettle-rb
   tags:
   - grammar
+  - ruby
   - templating
   docs_site: https://www.rubydoc.info/gems/token-resolver/1.0.2
   total_downloads: 410
