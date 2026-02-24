@@ -283,6 +283,28 @@ class ProjectQuery
       unless p['role'].nil? || %w[author contributor maintainer].include?(p['role'])
         issues << row_issue(name, 'invalid_role',        "role=#{p['role']}")
       end
+
+      # ── OpenCollective org vs GitHub owner mismatch ──────────────────────────
+      # Only OpenCollective entries are stored in funding_sites (Liberapay and
+      # GitHub Sponsors are injected at render time). Flag any project where
+      # the OC org slug doesn't match the GitHub forge owner after normalising
+      # hyphens, underscores, and case — these need a human review to confirm
+      # whether the mismatch is intentional (e.g. a personal repo using an org
+      # collective) or a data error.
+      gh_forge = Array(p['forges']).find { |f| f['type'] == 'GitHub' }
+      if gh_forge
+        gh_owner = gh_forge['owner'].to_s
+        Array(p['funding_sites'])
+          .select  { |f| f['type'] == 'OpenCollective' }
+          .each do |oc|
+            oc_slug = oc['url'].to_s.split('/').last.to_s
+            norm    = ->(s) { s.downcase.gsub(/[-_]/, '') }
+            unless norm.call(gh_owner) == norm.call(oc_slug)
+              issues << row_issue(name, 'oc_org_mismatch',
+                "github_owner=#{gh_owner} vs opencollective=#{oc_slug} — confirm intentional")
+            end
+          end
+      end
     end
     issues
   end

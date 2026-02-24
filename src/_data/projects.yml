@@ -1982,8 +1982,6 @@
   first_commit_by_person_on: 2010/09/21
   first_commit_by_person: https://github.com/tylerhunt/remit/commit/2d4ec0a3f586faab6cc92c9520a07a27e93a8d34
   funding_sites:
-  - type: OpenCollective
-    url: https://opencollective.com/galtzo-floss
   forges:
   - type: GitHub
     url: https://github.com/tylerhunt/remit
@@ -3338,7 +3336,7 @@
   first_commit_by_person: https://github.com/rubocop-lts/standard-rubocop-lts/commit/6dee58e53e54f60054da55d0802cbeea35b7e36c
   funding_sites:
   - type: OpenCollective
-    url: https://opencollective.com/galtzo-floss
+    url: https://opencollective.com/rubocop-lts
   forges:
   - type: GitHub
     url: https://github.com/rubocop-lts/standard-rubocop-lts
