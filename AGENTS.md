@@ -121,7 +121,7 @@ galtzo.com/
 - `ecosystem: nil` (absent) — data quality issue; should be set to a real ecosystem or `none`.
 - `funding_sites: []` — valid empty list (external/contributed projects). `funding_sites: nil` / absent is a bug — `index.html` raises on it.
 - `minimum_version` — must always be a quoted string (e.g. `"2.7"`, not `2.7`). `save_yaml` in `update_projects` enforces this automatically.
-- `family_id` — references an `id` in `families.yml`. Project entries carry only `theme: family`, `family_id`, and optionally `family_primary: true`. `family_name` and `family_position` are **not** stored on project entries — they live in `families.yml` (name) and YAML insertion order (within-family member order) respectively.
+- `family_id` — references an `id` in `families.yml`. Project entries carry `theme: family`, `family_id`, `family_position` (within-family display order, 1-based integer), and optionally `family_primary: true`. `family_name` is **not** stored on project entries — it lives in `families.yml`.
 
 Read-only by default; writes only when `--interactive` (with confirmation) or `--apply` is used.
 
@@ -136,9 +136,9 @@ bundle exec ruby scripts/manage_families --dry-run # preview saves only
 ```
 
 **Data model:** Family metadata (name, global display order) lives exclusively in
-`src/_data/families.yml`. Project entries in `projects.yml` carry only:
-`theme: family`, `family_id`, and (optionally) `family_primary: true`.
-Within-family member order is the order entries appear in `projects.yml`.
+`src/_data/families.yml`. Project entries in `projects.yml` carry:
+`theme: family`, `family_id`, `family_position` (within-family display order),
+and (optionally) `family_primary: true`.
 
 Main menu: scroll/filter to select a family, `U` for unassigned projects,
 `N` to create a new family, `Q` to save and exit.

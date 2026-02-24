@@ -87,7 +87,6 @@
   ecosystem: rubygems
   theme: family
   family_id: active-record
-  family_name: ActiveRecord Plugins
   family_position: 2
   minimum_version: '2.7'
   role: author
@@ -122,7 +121,6 @@
   ecosystem: rubygems
   theme: family
   family_id: active-record
-  family_name: ActiveRecord Plugins
   family_position: 3
   minimum_version: '2.2'
   role: author
@@ -156,7 +154,6 @@
   ecosystem: rubygems
   theme: family
   family_id: active-record
-  family_name: ActiveRecord Plugins
   family_position: 4
   minimum_version: '2.5'
   role: author
@@ -198,7 +195,6 @@
   ecosystem: rubygems
   theme: family
   family_id: logging-family
-  family_name: Logging Tools
   family_position: 4
   minimum_version: '2.7'
   role: author
@@ -232,7 +228,6 @@
   ecosystem: rubygems
   theme: family
   family_id: logging-family
-  family_name: Logging Tools
   family_position: 3
   minimum_version: '2.7'
   role: author
@@ -267,7 +262,6 @@
   ecosystem: rubygems
   theme: family
   family_id: logging-family
-  family_name: Logging Tools
   family_position: 5
   minimum_version: '2.7'
   role: author
@@ -301,7 +295,6 @@
   ecosystem: rubygems
   theme: family
   family_id: active-record
-  family_name: ActiveRecord Plugins
   family_position: 5
   minimum_version: '2.4'
   role: author
@@ -365,7 +358,6 @@
   ecosystem: rubygems
   theme: family
   family_id: rspec-family
-  family_name: RSpec Plugins
   family_position: 1
   minimum_version: '1.8'
   role: author
@@ -433,7 +425,6 @@
   ecosystem: rubygems
   theme: family
   family_id: adoptable-family
-  family_name: Looking for Maintainers!
   family_position: 7
   minimum_version: '1.8'
   role: author
@@ -547,7 +538,6 @@
   ecosystem: rubygems
   theme: family
   family_id: archived-family
-  family_name: Thanks for the Memories!
   family_position: 1
   minimum_version: '1.8'
   role: maintainer
@@ -580,7 +570,6 @@
   ecosystem: rubygems
   theme: family
   family_id: adoptable-family
-  family_name: Looking for Maintainers!
   family_position: 3
   minimum_version: '1.8'
   role: author
@@ -618,7 +607,6 @@
   ecosystem: rubygems
   theme: family
   family_id: adoptable-family
-  family_name: Looking for Maintainers!
   family_position: 5
   minimum_version: '1.8'
   role: author
@@ -654,7 +642,6 @@
   ecosystem: rubygems
   theme: family
   family_id: rails-family
-  family_name: Rails Plugins
   family_position: 4
   minimum_version: '1.8'
   role: author
@@ -689,7 +676,6 @@
   ecosystem: rubygems
   theme: family
   family_id: active-record
-  family_name: ActiveRecord Plugins
   family_position: 6
   minimum_version: '1.8'
   role: author
@@ -727,7 +713,6 @@
   ecosystem: rubygems
   theme: family
   family_id: logging-family
-  family_name: Logging Tools
   family_position: 1
   minimum_version: '3.1'
   role: author
@@ -768,7 +753,6 @@
   ecosystem: rubygems
   theme: family
   family_id: active-record
-  family_name: ActiveRecord Plugins
   family_position: 12
   minimum_version: '1.8'
   role: author
@@ -807,7 +791,6 @@
   ecosystem: rubygems
   theme: family
   family_id: rails-family
-  family_name: Rails Plugins
   family_position: 2
   minimum_version: '1.8'
   role: author
@@ -873,7 +856,6 @@
   ecosystem: rubygems
   theme: family
   family_id: active-record
-  family_name: ActiveRecord Plugins
   family_position: 7
   minimum_version: '1.8'
   role: author
@@ -909,7 +891,6 @@
   ecosystem: rubygems
   theme: family
   family_id: active-record
-  family_name: ActiveRecord Plugins
   family_position: 1
   minimum_version: '1.9'
   role: maintainer
@@ -952,7 +933,6 @@
   ecosystem: rubygems
   theme: family
   family_id: rubygems-bundler-family
-  family_name: RubyGems/Bundler Plugins
   family_position: 3
   minimum_version: '1.9'
   role: author
@@ -990,7 +970,6 @@
   ecosystem: rubygems
   theme: family
   family_id: rubygems-bundler-family
-  family_name: RubyGems/Bundler Plugins
   family_position: 2
   minimum_version: '2.3'
   role: author
@@ -1060,7 +1039,6 @@
   ecosystem: rubygems
   theme: family
   family_id: logging-family
-  family_name: Logging Tools
   family_position: 8
   minimum_version: '1.8'
   role: author
@@ -1093,7 +1071,6 @@
   ecosystem: rubygems
   theme: family
   family_id: adoptable-family
-  family_name: Looking for Maintainers!
   family_position: 8
   minimum_version: '1.8'
   role: author
@@ -1162,7 +1139,6 @@
   ecosystem: rubygems
   theme: family
   family_id: kettle-rb-family
-  family_name: Kettle-RB Family
   family_position: 1
   minimum_version: '2.7'
   role: author
@@ -1213,7 +1189,6 @@
   ecosystem: rubygems
   theme: family
   family_id: kettle-rb-family
-  family_name: Kettle-RB Family
   family_position: 3
   minimum_version: '2.7'
   role: author
@@ -1258,7 +1233,6 @@
   ecosystem: rubygems
   theme: family
   family_id: kettle-rb-family
-  family_name: Kettle-RB Family
   family_position: 2
   minimum_version: '2.7'
   role: author
@@ -1299,7 +1273,6 @@
   ecosystem: rubygems
   theme: family
   family_id: adoptable-family
-  family_name: Looking for Maintainers!
   family_position: 6
   minimum_version: '1.8'
   role: author
@@ -1390,7 +1363,6 @@
   ecosystem: rubygems
   theme: family
   family_id: ruby-openid
-  family_name: Ruby OpenID Family
   family_position: 5
   minimum_version: '2.7'
   role: maintainer
@@ -1427,7 +1399,6 @@
   ecosystem: rubygems
   theme: family
   family_id: ruby-openid
-  family_name: Ruby OpenID Family
   family_position: 9
   minimum_version: '2.7'
   role: author
@@ -1498,7 +1469,6 @@
   ecosystem: rubygems
   theme: family
   family_id: ruby-oauth
-  family_name: Ruby OAuth Family
   family_position: 2
   minimum_version: '2.3'
   role: maintainer
@@ -1538,7 +1508,6 @@
   ecosystem: rubygems
   theme: family
   family_id: ruby-oauth
-  family_name: Ruby OAuth Family
   family_position: 3
   minimum_version: '2.3'
   role: author
@@ -1579,7 +1548,6 @@
   ecosystem: rubygems
   theme: family
   family_id: ruby-oauth
-  family_name: Ruby OAuth Family
   family_position: 1
   minimum_version: '2.2'
   role: maintainer
@@ -1619,7 +1587,6 @@
   ecosystem: rubygems
   theme: family
   family_id: omniauth-family
-  family_name: OmniAuth Family
   family_position: 1
   minimum_version: '2.4'
   role: maintainer
@@ -1650,7 +1617,6 @@
   ecosystem: rubygems
   theme: family
   family_id: omniauth-family
-  family_name: OmniAuth Family
   family_position: 3
   minimum_version: '2.2'
   role: maintainer
@@ -1681,7 +1647,6 @@
   ecosystem: rubygems
   theme: family
   family_id: omniauth-family
-  family_name: OmniAuth Family
   family_position: 4
   minimum_version: '2.2'
   role: author
@@ -1712,7 +1677,6 @@
   ecosystem: rubygems
   theme: family
   family_id: omniauth-family
-  family_name: OmniAuth Family
   family_position: 2
   minimum_version: '1.8'
   role: maintainer
@@ -1743,7 +1707,6 @@
   ecosystem: rubygems
   theme: family
   family_id: ruby-openid
-  family_name: Ruby OpenID Family
   family_position: 3
   minimum_version: '2.4'
   role: maintainer
@@ -1783,7 +1746,6 @@
   ecosystem: rubygems
   theme: family
   family_id: ruby-openid
-  family_name: Ruby OpenID Family
   family_position: 4
   minimum_version: '2.7'
   role: maintainer
@@ -1852,7 +1814,6 @@
   ecosystem: rubygems
   theme: family
   family_id: logging-family
-  family_name: Logging Tools
   family_position: 6
   minimum_version: '2.6'
   role: author
@@ -1886,7 +1847,6 @@
   ecosystem: rubygems
   theme: family
   family_id: resque-family
-  family_name: Resque Family
   family_position: 6
   minimum_version: '1.8'
   role: author
@@ -1924,7 +1884,6 @@
   ecosystem: rubygems
   theme: family
   family_id: adoptable-family
-  family_name: Looking for Maintainers!
   family_position: 1
   minimum_version: '1.8'
   role: author
@@ -1959,7 +1918,6 @@
   ecosystem: rubygems
   theme: family
   family_id: ruby-openid
-  family_name: Ruby OpenID Family
   family_position: 2
   minimum_version: '2.7'
   role: maintainer
@@ -1999,7 +1957,6 @@
   ecosystem: rubygems
   theme: family
   family_id: ruby-openid
-  family_name: Ruby OpenID Family
   family_position: 8
   minimum_version: '2.7'
   role: author
@@ -2040,7 +1997,6 @@
   ecosystem: rubygems
   theme: family
   family_id: adoptable-family
-  family_name: Looking for Maintainers!
   family_position: 2
   minimum_version: '1.8'
   role: author
@@ -2081,7 +2037,6 @@
   ecosystem: rubygems
   theme: family
   family_id: rails-family
-  family_name: Rails Plugins
   family_position: 5
   minimum_version: '1.8'
   role: author
@@ -2118,7 +2073,6 @@
   ecosystem: rubygems
   theme: family
   family_id: logging-family
-  family_name: Logging Tools
   family_position: 7
   minimum_version: '1.8'
   role: author
@@ -2154,7 +2108,6 @@
   ecosystem: rubygems
   theme: family
   family_id: adoptable-family
-  family_name: Looking for Maintainers!
   family_position: 4
   minimum_version: '1.8'
   role: maintainer
@@ -2191,7 +2144,6 @@
   ecosystem: rubygems
   theme: family
   family_id: logging-family
-  family_name: Logging Tools
   family_position: 2
   minimum_version: '2.2'
   role: author
@@ -2234,7 +2186,6 @@
   ecosystem: rubygems
   theme: family
   family_id: resque-family
-  family_name: Resque Family
   family_position: 1
   minimum_version: '1.8'
   role: maintainer
@@ -2280,7 +2231,6 @@
   ecosystem: rubygems
   theme: family
   family_id: resque-family
-  family_name: Resque Family
   family_position: 5
   minimum_version: '1.8'
   role: maintainer
@@ -2326,7 +2276,6 @@
   ecosystem: rubygems
   theme: family
   family_id: resque-family
-  family_name: Resque Family
   family_position: 3
   minimum_version: '2.3'
   role: author
@@ -2361,7 +2310,6 @@
   ecosystem: rubygems
   theme: family
   family_id: resque-family
-  family_name: Resque Family
   family_position: 4
   minimum_version: '2.3'
   role: author
@@ -2397,7 +2345,6 @@
   ecosystem: rubygems
   theme: family
   family_id: resque-family
-  family_name: Resque Family
   family_position: 2
   minimum_version: '2.3'
   role: author
@@ -2434,7 +2381,6 @@
   ecosystem: rubygems
   theme: family
   family_id: ruby-openid
-  family_name: Ruby OpenID Family
   family_position: 6
   minimum_version: '2.7'
   role: maintainer
@@ -2475,7 +2421,6 @@
   ecosystem: rubygems
   theme: family
   family_id: rspec-family
-  family_name: RSpec Plugins
   family_position: 4
   minimum_version: '1.8'
   role: author
@@ -2518,7 +2463,6 @@
   ecosystem: rubygems
   theme: family
   family_id: rspec-family
-  family_name: RSpec Plugins
   family_position: 5
   minimum_version: '1.8'
   role: author
@@ -2561,7 +2505,6 @@
   ecosystem: rubygems
   theme: family
   family_id: rspec-family
-  family_name: RSpec Plugins
   family_position: 2
   minimum_version: '1.8'
   role: author
@@ -2602,7 +2545,6 @@
   ecosystem: rubygems
   theme: family
   family_id: rubocop-lts
-  family_name: RuboCop-LTS Family
   family_position: 1
   minimum_version: '3.2'
   role: author
@@ -2640,7 +2582,6 @@
   ecosystem: rubygems
   theme: family
   family_id: rubocop-lts
-  family_name: RuboCop-LTS Family
   family_position: 2
   minimum_version: '3.2'
   role: author
@@ -2675,7 +2616,6 @@
   ecosystem: rubygems
   theme: family
   family_id: rubocop-lts
-  family_name: RuboCop-LTS Family
   family_position: 3
   minimum_version: '3.2'
   role: author
@@ -2710,7 +2650,6 @@
   ecosystem: rubygems
   theme: family
   family_id: rubocop-lts
-  family_name: RuboCop-LTS Family
   family_position: 4
   minimum_version: '3.2'
   role: author
@@ -2745,7 +2684,6 @@
   ecosystem: rubygems
   theme: family
   family_id: rubocop-lts
-  family_name: RuboCop-LTS Family
   family_position: 5
   minimum_version: '3.2'
   role: author
@@ -2780,7 +2718,6 @@
   ecosystem: rubygems
   theme: family
   family_id: rubocop-lts
-  family_name: RuboCop-LTS Family
   family_position: 6
   minimum_version: '3.2'
   role: author
@@ -2815,7 +2752,6 @@
   ecosystem: rubygems
   theme: family
   family_id: rubocop-lts
-  family_name: RuboCop-LTS Family
   family_position: 7
   minimum_version: '3.2'
   role: author
@@ -2850,7 +2786,6 @@
   ecosystem: rubygems
   theme: family
   family_id: rubocop-lts
-  family_name: RuboCop-LTS Family
   family_position: 8
   minimum_version: '3.2'
   role: author
@@ -2885,7 +2820,6 @@
   ecosystem: rubygems
   theme: family
   family_id: rubocop-lts
-  family_name: RuboCop-LTS Family
   family_position: 9
   minimum_version: '3.2'
   role: author
@@ -2920,7 +2854,6 @@
   ecosystem: rubygems
   theme: family
   family_id: rubocop-lts
-  family_name: RuboCop-LTS Family
   family_position: 10
   minimum_version: '3.2'
   role: author
@@ -2955,7 +2888,6 @@
   ecosystem: rubygems
   theme: family
   family_id: rubocop-lts
-  family_name: RuboCop-LTS Family
   family_position: 11
   minimum_version: '3.2'
   role: author
@@ -2990,7 +2922,6 @@
   ecosystem: rubygems
   theme: family
   family_id: rubocop-lts
-  family_name: RuboCop-LTS Family
   family_position: 12
   minimum_version: '3.2'
   role: author
@@ -3028,7 +2959,6 @@
   ecosystem: rubygems
   theme: family
   family_id: rubocop-lts
-  family_name: RuboCop-LTS Family
   family_position: 13
   minimum_version: '3.2'
   role: author
@@ -3063,7 +2993,6 @@
   ecosystem: rubygems
   theme: family
   family_id: rubocop-lts
-  family_name: RuboCop-LTS Family
   family_position: 14
   minimum_version: '3.2'
   role: author
@@ -3096,7 +3025,6 @@
   ecosystem: rubygems
   theme: family
   family_id: ruby-openid
-  family_name: Ruby OpenID Family
   family_position: 1
   minimum_version: '2.7'
   role: maintainer
@@ -3136,7 +3064,6 @@
   ecosystem: rubygems
   theme: family
   family_id: ruby-openid
-  family_name: Ruby OpenID Family
   family_position: 7
   minimum_version: '2.7'
   role: author
@@ -3178,7 +3105,6 @@
   ecosystem: rubygems
   theme: family
   family_id: rails-family
-  family_name: Rails Plugins
   family_position: 1
   minimum_version: '2.3'
   role: author
@@ -3220,7 +3146,6 @@
   ecosystem: rubygems
   theme: family
   family_id: active-record
-  family_name: ActiveRecord Plugins
   family_position: 9
   minimum_version: '1.8'
   role: maintainer
@@ -3255,7 +3180,6 @@
   ecosystem: rubygems
   theme: family
   family_id: adoptable-family
-  family_name: Looking for Maintainers!
   family_position: 9
   minimum_version: '1.8'
   role: author
@@ -3359,7 +3283,6 @@
   ecosystem: rubygems
   theme: family
   family_id: active-record
-  family_name: ActiveRecord Plugins
   family_position: 8
   minimum_version: '2.5'
   role: author
@@ -3396,7 +3319,6 @@
   ecosystem: rubygems
   theme: family
   family_id: rspec-family
-  family_name: RSpec Plugins
   family_position: 6
   minimum_version: '2.3'
   role: author
@@ -3438,7 +3360,6 @@
   ecosystem: rubygems
   theme: family
   family_id: active-record
-  family_name: ActiveRecord Plugins
   family_position: 10
   minimum_version: '2.3'
   role: author
@@ -3471,7 +3392,6 @@
   ecosystem: rubygems
   theme: family
   family_id: ruby-oauth
-  family_name: Ruby OAuth Family
   family_position: 5
   minimum_version: '2.2'
   role: author
@@ -3509,7 +3429,6 @@
   ecosystem: rubygems
   theme: family
   family_id: active-record
-  family_name: ActiveRecord Plugins
   family_position: 11
   minimum_version: '2.3'
   role: author
@@ -3544,7 +3463,6 @@
   ecosystem: rubygems
   theme: family
   family_id: archived-family
-  family_name: Thanks for the Memories!
   family_position: 2
   minimum_version: '1.8'
   role: author
@@ -3582,7 +3500,6 @@
   ecosystem: rubygems
   theme: family
   family_id: rubocop-lts
-  family_name: RuboCop-LTS Family
   family_position: 15
   minimum_version: '3.2'
   role: author
@@ -3622,7 +3539,6 @@
   ecosystem: rubygems
   theme: family
   family_id: rails-family
-  family_name: Rails Plugins
   family_position: 3
   minimum_version: '1.8'
   role: author
@@ -3667,7 +3583,6 @@
   ecosystem: rubygems
   theme: family
   family_id: rubygems-bundler-family
-  family_name: RubyGems/Bundler Plugins
   family_position: 1
   minimum_version: '2.2'
   role: author
@@ -3710,7 +3625,6 @@
   ecosystem: rubygems
   theme: family
   family_id: adoptable-family
-  family_name: Looking for Maintainers!
   family_position: 10
   minimum_version: '1.8'
   role: author
@@ -3748,7 +3662,6 @@
   ecosystem: rubygems
   theme: family
   family_id: rails-family
-  family_name: Rails Plugins
   family_position: 6
   minimum_version: '1.8'
   role: author
@@ -3786,7 +3699,6 @@
   ecosystem: rubygems
   theme: family
   family_id: rspec-family
-  family_name: RSpec Plugins
   family_position: 3
   minimum_version: '1.9'
   role: author
@@ -3857,7 +3769,6 @@
   ecosystem: rubygems
   theme: family
   family_id: ruby-oauth
-  family_name: Ruby OAuth Family
   family_position: 6
   minimum_version: '2.2'
   role: author
@@ -3899,7 +3810,6 @@
   ecosystem: rubygems
   theme: family
   family_id: ruby-oauth
-  family_name: Ruby OAuth Family
   family_position: 4
   minimum_version: '1.8'
   role: maintainer
@@ -4076,7 +3986,6 @@
   last_scrape_at: '2026-02-23T04:40:22Z'
   theme: family
   family_id: ast-merge
-  family_name: "*-merge Gem Family"
   family_position: 1
   family_primary: true
 - name: ast-merge
@@ -4113,7 +4022,6 @@
   last_scrape_at: '2026-02-23T04:40:15Z'
   theme: family
   family_id: ast-merge
-  family_name: "*-merge Gem Family"
   family_position: 3
 - name: token-resolver
   description: "\U0001FA99 Token::Resolver provides configurable PEG-based (parslet)
@@ -4149,7 +4057,6 @@
   last_scrape_at: '2026-02-23T04:40:41Z'
   theme: family
   family_id: ast-merge
-  family_name: "*-merge Gem Family"
   family_position: 2
 - name: bash-merge
   description: "☯️ Bash::Merge provides smart Bash script merging that preserves comments,
@@ -4187,7 +4094,6 @@
   last_scrape_at: '2026-02-23T04:40:26Z'
   theme: family
   family_id: ast-merge
-  family_name: "*-merge Gem Family"
   family_position: 4
 - name: commonmarker-merge
   description: "☯️ Commonmarker::Merge provides smart Markdown file merging using
@@ -4225,7 +4131,6 @@
   last_scrape_at: '2026-02-23T04:40:35Z'
   theme: family
   family_id: ast-merge
-  family_name: "*-merge Gem Family"
   family_position: 5
 - name: dotenv-merge
   description: "☯️ Dotenv::Merge provides smart .env file merging that preserves comments,
@@ -4262,7 +4167,6 @@
   last_scrape_at: '2026-02-23T04:40:17Z'
   theme: family
   family_id: ast-merge
-  family_name: "*-merge Gem Family"
   family_position: 6
 - name: json-merge
   description: "☯️ Json::Merge provides smart JSON file merging that understands JSON
@@ -4301,7 +4205,6 @@
   last_scrape_at: '2026-02-23T04:40:28Z'
   theme: family
   family_id: ast-merge
-  family_name: "*-merge Gem Family"
   family_position: 7
 - name: jsonc-merge
   description: "☯️ Jsonc::Merge provides smart JSONC (JSON with Comments) file merging
@@ -4339,7 +4242,6 @@
   last_scrape_at: '2026-02-23T04:40:32Z'
   theme: family
   family_id: ast-merge
-  family_name: "*-merge Gem Family"
   family_position: 8
 - name: markdown-merge
   description: "☯️ Ast::Merge-based structure for merging Markdown files with tools
@@ -4375,7 +4277,6 @@
   last_scrape_at: '2026-02-23T04:40:30Z'
   theme: family
   family_id: ast-merge
-  family_name: "*-merge Gem Family"
   family_position: 9
 - name: markly-merge
   description: "☯️ Markly::Merge provides smart Markdown file merging using libcmark-gfm
@@ -4413,7 +4314,6 @@
   last_scrape_at: '2026-02-23T04:40:39Z'
   theme: family
   family_id: ast-merge
-  family_name: "*-merge Gem Family"
   family_position: 10
 - name: prism-merge
   description: "☯️ Intelligently merge two versions of a Ruby file using Prism AST
@@ -4448,7 +4348,6 @@
   last_scrape_at: '2026-02-23T04:40:13Z'
   theme: family
   family_id: ast-merge
-  family_name: "*-merge Gem Family"
   family_position: 11
 - name: psych-merge
   description: "☯️ Psych::Merge provides smart YAML file merging that preserves comments,
@@ -4485,7 +4384,6 @@
   last_scrape_at: '2026-02-23T04:40:37Z'
   theme: family
   family_id: ast-merge
-  family_name: "*-merge Gem Family"
   family_position: 12
 - name: rbs-merge
   description: "☯️ Intelligently merge RBS type signature files by parsing and comparing
@@ -4522,7 +4420,6 @@
   last_scrape_at: '2026-02-23T04:40:19Z'
   theme: family
   family_id: ast-merge
-  family_name: "*-merge Gem Family"
   family_position: 13
 - name: toml-merge
   description: "☯️ Intelligently merges TOML files by analyzing their AST structure
@@ -4559,7 +4456,6 @@
   last_scrape_at: '2026-02-23T04:40:24Z'
   theme: family
   family_id: ast-merge
-  family_name: "*-merge Gem Family"
   family_position: 14
 - name: ore-light
   ecosystem: go

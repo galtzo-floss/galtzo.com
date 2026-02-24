@@ -263,9 +263,9 @@ body_class: projects
   <% end %>
 <% end %>
 
-<% # Sort family members by their within-family position (index in family_groups insertion order) %>
+<% # Sort family members by family_position %>
 <% family_groups.each do |family_id, members| %>
-  <% family_groups[family_id] = members.sort_by.with_index { |p, i| i } %>
+  <% family_groups[family_id] = members.sort_by { |p| p['family_position'] || 999 } %>
 <% end %>
 
 <% # Order families by their position in families.yml, then merge for rendering %>

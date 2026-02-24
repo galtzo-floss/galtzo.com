@@ -23,7 +23,7 @@ class FamilyManager
   NON_FAMILY_THEMES = %w[adopt-me update-me avoid-me holiday].freeze
 
   # Fields synced to projects_dev.yml for family members
-  FAMILY_FIELDS = %w[theme family_id family_primary].freeze
+  FAMILY_FIELDS = %w[theme family_id family_position family_primary].freeze
 
   def initialize(file: PROJECTS_FILE, dev_file: PROJECTS_DEV_FILE,
                  families_file: FAMILIES_FILE,
@@ -89,13 +89,13 @@ class FamilyManager
       puts ""
 
       puts tt(
-        members.map.with_index(1) do |p, i|
-          { "#": i, name: p['name'], role: p['role'], stars: p['github_stars'],
+        members.map do |p|
+          { pos: p['family_position'], name: p['name'], role: p['role'], stars: p['github_stars'],
             primary: p['family_primary'] ? '★' : '' }
         end,
         title:        "📦 #{fam['name']} (#{fid})  —  slot #{fam['position']}",
-        columns:      %i[# name role stars primary],
-        headers:      { "#": '#', name: 'Project', role: 'Role', stars: '⭐', primary: '' },
+        columns:      %i[pos name role stars primary],
+        headers:      { pos: 'Pos', name: 'Project', role: 'Role', stars: '⭐', primary: '' },
         color_scales: :stars,
       )
 
@@ -155,9 +155,10 @@ class FamilyManager
   # ============================================================================
   # Reorder members within a family
   #
-  # Pick a member to move, pick its target position. The member is inserted
-  # there and all members between slide up or down to fill the gap. The list
-  # re-renders after every move so you can keep reordering until done.
+  # Pick a member to move, pick its target position. family_position values
+  # are updated for all members so the chosen member lands at the target slot
+  # and everything else shifts accordingly. Renumbers 1..N after each move.
+  # The list re-renders after every move so you can keep reordering until done.
   # ============================================================================
 
   def reorder_members(fid)
@@ -197,12 +198,10 @@ class FamilyManager
         cycle:    true,
       )
 
-      # Perform the move in @projects, keeping non-family entries in place
-      family_indices = @projects.each_index.select { |i| @projects[i].is_a?(Hash) && @projects[i]['family_id'] == fid }
-      abs_from = family_indices[current_idx]
-      abs_to   = family_indices[target_idx]
-
-      @projects.insert(abs_to + (target_idx > current_idx ? 1 : 0), @projects.delete_at(abs_from))
+      # Build the new ordered list and assign family_position 1..N
+      reordered = members.reject { |p| p.equal?(subject) }
+      reordered.insert(target_idx, subject)
+      reordered.each_with_index { |p, i| p['family_position'] = i + 1 }
 
       @prompt.ok "Moved '#{subject['name']}' to position #{target_idx + 1}."
     end
@@ -225,6 +224,7 @@ class FamilyManager
     if @prompt.yes?("Remove '#{project['name']}' from family '#{fid}'?", default: false)
       project.delete('theme')
       project.delete('family_id')
+      project.delete('family_position')
       project.delete('family_primary')
       @prompt.ok "'#{project['name']}' is now unassigned."
     end
@@ -256,8 +256,9 @@ class FamilyManager
                              per_page: [choices.size, 12].min, filter: true, cycle: true)
     return unless project
 
-    project['theme']     = 'family'
-    project['family_id'] = fid
+    project['theme']          = 'family'
+    project['family_id']      = fid
+    project['family_position'] = (family_members(fid).map { |p| p['family_position'] || 0 }.max || 0) + 1
 
     if @prompt.yes?("Mark '#{project['name']}' as family primary (shown first in stack)?", default: false)
       project['family_primary'] = true
@@ -331,8 +332,9 @@ class FamilyManager
       selection
     end
 
-    project['theme']     = 'family'
-    project['family_id'] = fid
+    project['theme']           = 'family'
+    project['family_id']       = fid
+    project['family_position'] = (family_members(fid).map { |p| p['family_position'] || 0 }.max || 0) + 1
 
     if @prompt.yes?("Mark '#{project['name']}' as family primary?", default: false)
       project['family_primary'] = true
@@ -375,10 +377,11 @@ class FamilyManager
       )
       break unless project
 
-      project['theme']     = 'family'
-      project['family_id'] = fid
+      project['theme']           = 'family'
+      project['family_id']       = fid
+      project['family_position'] = (family_members(fid).map { |p| p['family_position'] || 0 }.max || 0) + 1
 
-      if family_members(fid).empty? && @prompt.yes?("Mark as family primary?", default: true)
+      if family_members(fid).size == 1 && @prompt.yes?("Mark as family primary?", default: true)
         project['family_primary'] = true
       end
 
@@ -403,6 +406,7 @@ class FamilyManager
     members.each do |p|
       p.delete('theme')
       p.delete('family_id')
+      p.delete('family_position')
       p.delete('family_primary')
     end
 
@@ -423,7 +427,9 @@ class FamilyManager
   end
 
   def family_members(fid)
-    @projects.select { |p| p.is_a?(Hash) && p['family_id'] == fid }
+    @projects
+      .select { |p| p.is_a?(Hash) && p['family_id'] == fid }
+      .sort_by { |p| p['family_position'] || 999 }
   end
 
   def unassigned_projects
@@ -484,8 +490,6 @@ class FamilyManager
       src = name_map[dp['name']]
       FAMILY_FIELDS.each { |f| dp[f] = src[f] }
       dp.delete('family_primary') unless src['family_primary']
-      dp.delete('family_name')
-      dp.delete('family_position')
     end
 
     if @dry_run
@@ -534,8 +538,8 @@ if __FILE__ == $0
     op.separator "Interactive TUI for managing project families."
     op.separator ""
     op.separator "Family metadata (name, global display order) lives in families.yml."
-    op.separator "Project entries in projects.yml carry only: theme, family_id, family_primary."
-    op.separator "Within-family member order is the order entries appear in projects.yml."
+    op.separator "Project entries in projects.yml carry: theme, family_id, family_position, family_primary."
+    op.separator "Within-family member order is determined by each project's family_position value."
     op.separator ""
     op.separator "From the main menu:"
     op.separator "  • Select a family by scrolling/filtering to manage its members"
