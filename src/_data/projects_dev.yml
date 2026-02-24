@@ -1194,3 +1194,55 @@
   status: active
   first_commit_by_person: https://github.com/appraisal-rb/setup-ruby-flash/commit/95081d1ec9f5d0e9cd1d78e5c443e4a3c580fc6c
   first_commit_by_person_on: 2026/01/14
+- name: tree_stump
+  ecosystem: rubygems
+  language: Ruby
+  role: contributor
+  forges:
+  - type: GitHub
+    url: https://github.com/joker1007/tree_stump
+    owner: joker1007
+  description: Ruby bindings for Tree-sitter written in Rust using rb_sys and magnus.
+  minimum_version: '2.7'
+  tags:
+  - ruby
+  - rust
+  - ast
+  - tree-sitter
+  - api
+  funding_sites: []
+  docs_site:
+  total_downloads: 717
+  daily_downloads: 6
+  release_downloads: 130
+  release_date: 2026/02/16
+  github_stars: 11
+  last_commit_on: 2026/02/16
+  status: active
+  first_commit_by_person: https://github.com/joker1007/tree_stump/commit/5bb3a191f08b2cbc7d2022f46ba41e8aae7f720b
+  first_commit_by_person_on: 2025/12/15
+- name: ruby_tree_sitter
+  ecosystem: rubygems
+  language: Ruby
+  role: contributor
+  forges:
+  - type: GitHub
+    url: https://www.github.com/Faveod/ruby-tree-sitter
+    owner: Faveod
+  description: Ruby bindings for Tree-Sitter
+  minimum_version: '2.7'
+  tags:
+  - ruby
+  - tree-sitter
+  - api
+  funding_sites: []
+  docs_site: https://faveod.github.io/ruby-tree-sitter/
+  total_downloads: 101181
+  daily_downloads: 244
+  release_downloads: 173
+  release_date: 2026/02/19
+  github_stars: 63
+  last_commit_on: 2026/02/19
+  status: active
+  first_commit_by_person: https://github.com/Faveod/ruby-tree-sitter/commit/710127ddd5025ff53592a33b5a89a6331d994745
+  first_commit_by_person_on: 2026/01/04
