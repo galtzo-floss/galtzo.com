@@ -377,7 +377,7 @@ body_class: projects
       <% family_name = item[:family_name] %>
       <% family_id = item[:family_id] %>
 
-      <li class="card-family-stack" data-family-id="<%= family_id %>" data-family-size="<%= family_members.size %>">
+      <li class="card-family-stack" data-family-id="<%= family_id %>" data-family-name="<%= family_name %>" data-family-size="<%= family_members.size %>">
         <% family_members.each_with_index do |project, index| %>
           <% # Set up project variables for card rendering %>
           <% raise "Project #{project['name']} has no role!" if project['role'].nil? %>
@@ -407,6 +407,7 @@ body_class: projects
            data-family-id="<%= project['family_id'] %>"
            data-family-index="<%= index %>"
            data-is-primary="<%= project['family_primary'] ? 'true' : 'false' %>">
+      <div class="card-body">
     <div class="corner-anchor fork">
       <% if project['status'] == 'archived' || project['theme'] == 'avoid-me' %>
       <%# Avoid-me projects - Uses caution tape X overlay on card, no corner banner %>
@@ -620,6 +621,7 @@ body_class: projects
     </div>
     <% end %>
 
+      </div><%# /.card-body %>
           </div>
         <% end %>
       </li>
@@ -650,6 +652,7 @@ body_class: projects
       <li class="card <%= aspect_class %> <%= project['role'] %> <%= theme_class %> <%= archived_class %>"
           data-tags='<%= tags_for_card.to_json %>'
           <% if project['theme'] %>data-theme="<%= project['theme'] %>"<% end %>>
+      <div class="card-body">
     <div class="corner-anchor fork">
       <% if project['status'] == 'archived' || project['theme'] == 'avoid-me' %>
       <%# Archived projects - Uses caution tape X overlay on card, no corner banner %>
@@ -881,6 +884,7 @@ body_class: projects
     <% end %>
     </p>
     <% end %>
+      </div><%# /.card-body %>
       </li>
     <% end %>
   <% end %>

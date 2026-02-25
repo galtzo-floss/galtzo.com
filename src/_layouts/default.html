@@ -115,6 +115,15 @@
     })();
   </script>
 
+  <!-- Family modal: shows all cards in a family stack as a grid -->
+  <dialog id="family-modal" class="family-modal" aria-labelledby="family-modal-title">
+    <div class="family-modal-header">
+      <h2 id="family-modal-title" class="family-modal-title"></h2>
+      <button type="button" class="family-modal-close" aria-label="Close">&times;</button>
+    </div>
+    <div class="family-modal-grid"></div>
+  </dialog>
+
   <!-- Site behavior: filtering is in /assets/filter.js -->
   <script src="/assets/filter.js"></script>
 </body>

@@ -700,25 +700,12 @@ document.addEventListener('DOMContentLoaded', function() {
             card.style.filter = `brightness(${brightness})`;
           }
 
-          // Add hover overlay and "Click to View" message to each card
-          if (!card.querySelector('.card-hover-overlay')) {
-            const overlay = document.createElement('div');
-            overlay.className = 'card-hover-overlay';
-            card.appendChild(overlay);
-          }
-
-          if (!card.querySelector('.card-click-message')) {
-            const message = document.createElement('div');
-            message.className = 'card-click-message';
-            message.textContent = 'Click to View';
-            card.appendChild(message);
-          }
-
-          // Set up click handler to bring card to front and make it active
+          // Set up click handler to open the family modal
           card.addEventListener('click', (e) => {
-            // Prevent event bubbling
+            // Allow links inside the card to work normally
+            if (e.target.closest('a')) return;
             e.stopPropagation();
-            bringCardToFront(stack, index);
+            openFamilyModal(stack, index);
           });
         });
       } else {
@@ -730,8 +717,12 @@ document.addEventListener('DOMContentLoaded', function() {
         // Position each card dynamically with decreasing z-index
         // Stack orientation: left to right (top card on left, stack extends right)
         cards.forEach((card, index) => {
-          // Set all cards to the same height (tallest card's height)
-          card.style.height = `${maxHeight}px`;
+          // Let each card keep its natural height so the border/glow (on .card)
+          // tracks the visible background edge (on .card-body inside it).
+          // After the .card/.card-body split, forcing uniform height on .card
+          // would make the glow extend beyond the card-body background.
+          // Cards overlap horizontally anyway — uniform height is not needed.
+          card.style.height = '';
 
           // Position: cards stack from left to right
           // First card (index 0) is on the far left
@@ -780,25 +771,12 @@ document.addEventListener('DOMContentLoaded', function() {
             card.style.filter = `brightness(${brightness})`;
           }
 
-          // Add hover overlay and "Click to View" message to each card
-          if (!card.querySelector('.card-hover-overlay')) {
-            const overlay = document.createElement('div');
-            overlay.className = 'card-hover-overlay';
-            card.appendChild(overlay);
-          }
-
-          if (!card.querySelector('.card-click-message')) {
-            const message = document.createElement('div');
-            message.className = 'card-click-message';
-            message.textContent = 'Click to View';
-            card.appendChild(message);
-          }
-
-          // Set up click handler to bring card to front and make it active
+          // Set up click handler to open the family modal
           card.addEventListener('click', (e) => {
-            // Prevent event bubbling
+            // Allow links inside the card to work normally
+            if (e.target.closest('a')) return;
             e.stopPropagation();
-            bringCardToFront(stack, index);
+            openFamilyModal(stack, index);
           });
         });
       }
@@ -821,46 +799,110 @@ document.addEventListener('DOMContentLoaded', function() {
     stack.style.width = `${totalWidth}px`;
   }
 
+  // ============================================================================
+  // FAMILY MODAL — Grid overlay for browsing all cards in a stack
+  // ============================================================================
+
+  const familyModal = document.getElementById('family-modal');
+  const familyModalTitle = document.getElementById('family-modal-title');
+  const familyModalGrid = familyModal ? familyModal.querySelector('.family-modal-grid') : null;
+  const familyModalCloseBtn = familyModal ? familyModal.querySelector('.family-modal-close') : null;
+
   /**
-   * Bring a clicked card to the front of the stack and make it active
-   * Updates z-index and brightness without any movement
+   * Open the family modal for a given stack, showing all its cards in a grid.
+   * The card at clickedIndex starts with the glow-active animation.
    * @param {HTMLElement} stack - The family stack container
-   * @param {number} clickedIndex - Index of the clicked card
+   * @param {number} clickedIndex - Index of the card that was clicked
    */
-  function bringCardToFront(stack, clickedIndex) {
-    const cards = stack.querySelectorAll('.card-in-family');
-    const familySize = cards.length;
-    const clickedCard = cards[clickedIndex];
+  function openFamilyModal(stack, clickedIndex) {
+    if (!familyModal || !familyModalGrid) return;
 
-    // Remove active class from all cards
-    cards.forEach(card => card.classList.remove('active-card'));
+    // Set the title from the stack's data attribute
+    const familyName = stack.dataset.familyName || 'Family';
+    familyModalTitle.textContent = familyName;
 
-    // Mark clicked card as active
-    clickedCard.classList.add('active-card');
+    // Clear any previous content
+    familyModalGrid.innerHTML = '';
 
-    // Reorder z-index: clicked card gets highest, others maintain relative order
-    cards.forEach((card, index) => {
+    // Collect all cards from the stack (including hidden ones from filters)
+    const sourceCards = stack.querySelectorAll('.card-in-family');
+
+    sourceCards.forEach((card, index) => {
+      // Skip cards hidden by filters
+      if (card.style.display === 'none') return;
+
+      // Deep-clone the card
+      const clone = card.cloneNode(true);
+
+      // Strip ALL inline styles inherited from initFamilyStacks via cloneNode.
+      // This lets the modal grid CSS rules apply cleanly without overrides.
+      clone.removeAttribute('style');
+
+      // Remove the card-in-family class (it forces absolute positioning via CSS)
+      clone.classList.remove('card-in-family');
+      clone.classList.remove('active-card');
+
+      // If this is the initially-clicked card, start it glowing
       if (index === clickedIndex) {
-        // Clicked card goes to the front
-        card.style.zIndex = 100;
-        card.style.filter = 'none'; // Full brightness
-      } else {
-        // Other cards: assign z-index based on their position relative to clicked card
-        // Cards before clicked card get lower z-index than cards after
-        const relativePosition = index < clickedIndex ? index : index - 1;
-        card.style.zIndex = 99 - relativePosition;
+        clone.classList.add('glow-active');
+      }
 
-        // Apply darkening to non-active cards
-        const baseBrightness = 0.8;
-        const minBrightness = 0.6;
-        let brightness;
-        if (relativePosition <= 2) {
-          brightness = baseBrightness;
-        } else {
-          const fadeStep = (baseBrightness - minBrightness) / Math.max(familySize - 3, 10);
-          brightness = Math.max(minBrightness, baseBrightness - ((relativePosition - 2) * fadeStep));
+      // Click handler: toggle glow (links can toggle ON only, not off)
+      clone.addEventListener('click', (e) => {
+        const clickedLink = e.target.closest('a');
+        if (clickedLink) {
+          // Link click: toggle ON only (do not toggle off)
+          if (!clone.classList.contains('glow-active')) {
+            clone.classList.add('glow-active');
+          }
+          // Allow the link to navigate normally
+          return;
         }
-        card.style.filter = `brightness(${brightness})`;
+        // Body click: toggle on/off
+        e.preventDefault();
+        e.stopPropagation();
+        clone.classList.toggle('glow-active');
+      });
+
+      familyModalGrid.appendChild(clone);
+    });
+
+    // Prevent background scrolling
+    document.body.style.overflow = 'hidden';
+
+    // Open the native <dialog> as a modal (provides backdrop + focus trapping)
+    familyModal.showModal();
+  }
+
+  /**
+   * Close the family modal and clean up.
+   */
+  function closeFamilyModal() {
+    if (!familyModal) return;
+    familyModal.close();
+    if (familyModalGrid) familyModalGrid.innerHTML = '';
+    document.body.style.overflow = '';
+  }
+
+  // Wire up close button
+  if (familyModalCloseBtn) {
+    familyModalCloseBtn.addEventListener('click', closeFamilyModal);
+  }
+
+  // Close on Escape (native <dialog> handles this, but we also need cleanup)
+  if (familyModal) {
+    familyModal.addEventListener('close', () => {
+      // Runs on Escape or .close() — ensure cleanup
+      if (familyModalGrid) familyModalGrid.innerHTML = '';
+      document.body.style.overflow = '';
+    });
+
+    // Close when clicking the backdrop (area outside the dialog box).
+    // Native <dialog> backdrop clicks hit the dialog element itself at
+    // coordinates outside the visible box.
+    familyModal.addEventListener('click', (e) => {
+      if (e.target === familyModal) {
+        closeFamilyModal();
       }
     });
   }
