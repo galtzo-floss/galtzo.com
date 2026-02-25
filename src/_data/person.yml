@@ -123,3 +123,18 @@ tags:
 - websockets
 docs_site: https://galtzo.com
 tech_site: https://peterboling.com
+orgs:
+- appraisal-rb
+- contriboss
+- Dynamoid
+- kettle-rb
+- floss_funding
+- galtzo-floss
+- omniauth
+- rails
+- resque
+- rubocop-lts
+- ruby
+- ruby-oauth
+- ruby-openid
+- wordtreefoundation

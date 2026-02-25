@@ -414,20 +414,19 @@ body {
 
 header {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
-    /* Center header content (nav) while keeping the theme toggle visually at the right.
-       Use position:relative as a positioning context for the absolutely positioned
-       .theme-toggle so it remains accessible and visually aligned. */
     justify-content: center;
-    position: relative;
+    gap: 0.5rem;
+    position: relative;         /* positioning context for the absolute toggle on wide screens */
     margin-bottom: var(--header-margin-bottom);
 }
 
 .theme-toggle {
-    /* Keep the toggle visually at the right edge of the header while the nav
-       is centered. Use absolute positioning and vertical centering. */
+    /* On wide screens, pull the toggle out of flow so the nav is truly centered.
+       Switched to in-flow below 48rem via media query. */
     position: absolute;
-    right: var(--page-padding-x);
+    right: 0;
     top: 50%;
     transform: translateY(-50%);
     appearance: none;
@@ -445,17 +444,13 @@ header {
     background: var(--control-hover-bg);
 }
 
-/* Responsive: on small viewports keep original flow so the absolute toggle doesn't overlap centered content */
-@media (max-width: 36rem) {
-    header {
-        justify-content: space-between;
-    }
+/* Once the viewport is narrow enough for the nav to wrap, bring the toggle
+   back into flow so it doesn't overlay wrapped link rows. */
+@media (max-width: 48rem) {
     .theme-toggle {
         position: static;
-        right: auto;
-        top: auto;
         transform: none;
-        margin-left: 0.5rem;
+        margin-left: auto;      /* push to the right of the last flex row */
     }
 }
 
@@ -1588,12 +1583,14 @@ header nav a {
     line-height: 1;
 }
 
-/* Layout & spacing for nav anchors: make nav an inline-flex row and add gap
-   so multiple anchors have consistent spacing between them. */
+/* Layout & spacing for nav anchors: make nav a wrapping flex row so links
+   flow to the next line on narrow viewports instead of overflowing. */
 header nav {
-    display: inline-flex;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     align-items: center;
-    gap: 1rem; /* spacing between anchors */
+    gap: 0.5rem 1rem; /* row-gap column-gap */
 }
 
 /* Ensure any image inside the nav matches the link line-height (1 * font-size).
@@ -1680,9 +1677,9 @@ header nav a img {
     header nav a img {
         height: 1em; /* still tied to the (reduced) font-size */
     }
-    /* Slightly reduce the gap on small viewports so it fits better */
+    /* Tighten the gap on very small viewports */
     header nav {
-        gap: 0.6rem;
+        gap: 0.3rem 0.6rem;
     }
 }
 

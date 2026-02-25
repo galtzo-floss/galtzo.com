@@ -364,6 +364,10 @@ body_class: projects
   <% all_projects_for_rendering << { type: :single, project: project } %>
 <% end %>
 
+<header>
+  <%= render "logos" %>
+</header>
+
 <ul class="project-list">
   <% all_projects_for_rendering.each do |item| %>
     <% if item[:type] == :family %>
