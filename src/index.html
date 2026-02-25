@@ -146,7 +146,7 @@ body_class: projects
 <% archived_daily_downloads = archived_projects.sum { |p| (p['daily_downloads'] || 0).to_i } %>
 
 <h1>
-  <span class="title-text"><%= (page.respond_to?(:data) && page.data["title"]) || "Open Source Projects" %></span>
+  <span class="title-text"><%= (page.respond_to?(:data) && page.data["title"]) || "Open Source Projects" %> by Peter Boling</span>
 </h1>
 
 <h1>

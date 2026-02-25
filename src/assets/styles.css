@@ -1621,6 +1621,7 @@ header nav a img {
     display: flex;
     align-items: stretch;
     gap: 1rem;
+    flex-wrap: wrap;           /* safety: wrap before items hit min-content */
 }
 
 /* The headshot itself: full height of the text block, natural aspect ratio */
@@ -1639,18 +1640,36 @@ header nav a img {
     margin: 0;
 }
 
-/* On narrow screens, stack vertically so the text isn't crushed */
+/* On narrow viewports, switch from three-column flex to block layout
+   so the first paragraph's text flows around the floated headshot.
+   48rem ≈ 768px — the point where three side-by-side flex children
+   (image + two <p> blocks) would become unreadably narrow. */
+@media (max-width: 48rem) {
+    /* Drop flexbox so float takes effect (floats are ignored in flex containers) */
+    .person-description {
+        display: block;
+        overflow: auto;         /* clearfix: contain the float within the container */
+    }
+
+    /* Float the headshot to the left; text in the first <p> wraps around it */
+    .person-headshot {
+        float: left;
+        width: clamp(5rem, 30%, 10rem);
+        margin: 0 1rem 0.5rem 0;
+        /* shape-outside lets text hug the rounded corners instead of
+           leaving a rectangular exclusion zone */
+        shape-outside: margin-box;
+        align-self: auto;       /* reset the flex stretch */
+    }
+
+    /* Second paragraph (description2) starts cleanly below the image */
+    .person-description > p:nth-child(3) {
+        clear: left;
+    }
+}
+
 /* Prevent the doubled sizes from overwhelming very small screens */
 @media (max-width: 36rem) {
-    .person-description {
-        flex-direction: column;
-        align-items: center;
-    }
-    .person-headshot {
-        width: 50%;
-        max-width: 10rem;
-        align-self: center;
-    }
     header nav,
     header nav a,
     .intro {
