@@ -128,7 +128,7 @@ galtzo.com/
 - `ecosystem: nil` (absent) — data quality issue; should be set to a real ecosystem or `none`.
 - `funding_sites: []` — valid empty list (external/contributed projects). `funding_sites: nil` / absent is a bug — `index.html` raises on it.
 - `minimum_version` — must always be a quoted string (e.g. `"2.7"`, not `2.7`). `save_yaml` in `update_projects` enforces this automatically.
-- `family_id` — references an `id` in `families.yml`. Project entries carry `theme: family`, `family_id`, `family_position` (within-family display order, 1-based integer), and optionally `family_primary: true`. `family_name` is **not** stored on project entries — it lives in `families.yml`.
+- `family_id` — references an `id` in `families.yml`. Project entries carry `theme: family`, `family_id`, `family_position` (within-family display order, 1-based integer). The position-1 card gets the family count badge. `family_name` is **not** stored on project entries — it lives in `families.yml`.
 
 Read-only by default; writes only when `--interactive` (with confirmation) or `--apply` is used.
 
@@ -144,8 +144,8 @@ bundle exec ruby scripts/manage_families --dry-run # preview saves only
 
 **Data model:** Family metadata (name, global display order) lives exclusively in
 `src/_data/families.yml`. Project entries in `projects.yml` carry:
-`theme: family`, `family_id`, `family_position` (within-family display order),
-and (optionally) `family_primary: true`.
+`theme: family`, `family_id`, `family_position` (within-family display order).
+The position-1 card automatically gets the family count badge.
 
 Main menu: scroll/filter to select a family, `U` for unassigned projects,
 `N` to create a new family, `Q` to save and exit.
@@ -153,7 +153,7 @@ Per-family actions (via `expand` prompt — type the key letter):
 `r` reorder members (pick member, pick destination, list re-renders, repeat until done),
 `m` remove a member, `a` add unassigned project, `p` reposition this family among all
 families, `d` delete family, `b` back.
-Family fields written to projects: `theme`, `family_id`, `family_primary`.
+Family fields written to projects: `theme`, `family_id`, `family_position`.
 
 ```bash
 bundle exec ruby scripts/analyze_tags                    # full report

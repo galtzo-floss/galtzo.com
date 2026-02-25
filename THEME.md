@@ -27,8 +27,7 @@ Some theming ideas...
 #   theme: family
 #   family_id: "unique-family-identifier" # Required: groups related projects
 #   family_name: "Display Name" # Required: human-readable family name
-#   family_position: 1 # Required: order in stack (1 = primary/leftmost)
-#   family_primary: true # Optional: mark as primary card (only one per family)
+#   family_position: 1 # Required: order in stack (1 = front/leftmost, gets family count badge)
 #
 # HOLIDAY THEME (seasonal decorations):
 #   theme: holiday

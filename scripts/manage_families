@@ -23,7 +23,7 @@ class FamilyManager
   NON_FAMILY_THEMES = %w[adopt-me update-me avoid-me holiday].freeze
 
   # Fields synced to projects_dev.yml for family members
-  FAMILY_FIELDS = %w[theme family_id family_position family_primary].freeze
+  FAMILY_FIELDS = %w[theme family_id family_position].freeze
 
   def initialize(file: PROJECTS_FILE, dev_file: PROJECTS_DEV_FILE,
                  families_file: FAMILIES_FILE,
@@ -90,12 +90,11 @@ class FamilyManager
 
       puts tt(
         members.map do |p|
-          { pos: p['family_position'], name: p['name'], role: p['role'], stars: p['github_stars'],
-            primary: p['family_primary'] ? '★' : '' }
+          { pos: p['family_position'], name: p['name'], role: p['role'], stars: p['github_stars'] }
         end,
         title:        "📦 #{fam['name']} (#{fid})  —  slot #{fam['position']}",
-        columns:      %i[pos name role stars primary],
-        headers:      { pos: 'Pos', name: 'Project', role: 'Role', stars: '⭐', primary: '' },
+        columns:      %i[pos name role stars],
+        headers:      { pos: 'Pos', name: 'Project', role: 'Role', stars: '⭐' },
         color_scales: :stars,
       )
 
@@ -225,7 +224,6 @@ class FamilyManager
       project.delete('theme')
       project.delete('family_id')
       project.delete('family_position')
-      project.delete('family_primary')
       @prompt.ok "'#{project['name']}' is now unassigned."
     end
   end
@@ -260,9 +258,6 @@ class FamilyManager
     project['family_id']      = fid
     project['family_position'] = (family_members(fid).map { |p| p['family_position'] || 0 }.max || 0) + 1
 
-    if @prompt.yes?("Mark '#{project['name']}' as family primary (shown first in stack)?", default: false)
-      project['family_primary'] = true
-    end
 
     @prompt.ok "Added '#{project['name']}' to '#{fname}'."
   end
@@ -336,9 +331,6 @@ class FamilyManager
     project['family_id']       = fid
     project['family_position'] = (family_members(fid).map { |p| p['family_position'] || 0 }.max || 0) + 1
 
-    if @prompt.yes?("Mark '#{project['name']}' as family primary?", default: false)
-      project['family_primary'] = true
-    end
 
     fname = @families.find { |f| f['id'] == fid }&.dig('name') || fid
     @prompt.ok "Assigned '#{project['name']}' → '#{fname}'."
@@ -381,9 +373,6 @@ class FamilyManager
       project['family_id']       = fid
       project['family_position'] = (family_members(fid).map { |p| p['family_position'] || 0 }.max || 0) + 1
 
-      if family_members(fid).size == 1 && @prompt.yes?("Mark as family primary?", default: true)
-        project['family_primary'] = true
-      end
 
       @prompt.ok "Added '#{project['name']}' to '#{fname}'."
     end
@@ -407,7 +396,6 @@ class FamilyManager
       p.delete('theme')
       p.delete('family_id')
       p.delete('family_position')
-      p.delete('family_primary')
     end
 
     @families.delete(fam)
@@ -488,7 +476,6 @@ class FamilyManager
       next unless dp.is_a?(Hash) && dp['name'] && name_map.key?(dp['name'])
       src = name_map[dp['name']]
       FAMILY_FIELDS.each { |f| dp[f] = src[f] }
-      dp.delete('family_primary') unless src['family_primary']
     end
 
     if @dry_run
@@ -537,7 +524,7 @@ if __FILE__ == $0
     op.separator "Interactive TUI for managing project families."
     op.separator ""
     op.separator "Family metadata (name, global display order) lives in families.yml."
-    op.separator "Project entries in projects.yml carry: theme, family_id, family_position, family_primary."
+    op.separator "Project entries in projects.yml carry: theme, family_id, family_position."
     op.separator "Within-family member order is determined by each project's family_position value."
     op.separator ""
     op.separator "From the main menu:"

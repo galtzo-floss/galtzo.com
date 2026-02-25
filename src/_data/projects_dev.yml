@@ -133,7 +133,7 @@
   last_scrape_at: '2026-02-24T05:39:30Z'
   theme: family
   family_id: rubygems-bundler-family
-  family_position: 9
+  family_position: 10
 - name: appraisal2
   description: Appraisal2 integrates with bundler and rake to test your library against
     different versions of dependencies in repeatable scenarios called "appraisals."
@@ -387,7 +387,6 @@
   family_id: rails-auth-suite
   family_name: Rails Authentication Suite
   family_position: 1
-  family_primary: true
   funding_sites:
   - type: OpenCollective
     url: https://opencollective.com/galtzo-floss
@@ -793,7 +792,6 @@
   last_scrape_at: '2026-02-24T05:44:05Z'
   theme: family
   family_id: ast-merge
-  family_primary: true
   family_position: 1
 - name: toml-merge
   description: "☯️ Intelligently merges TOML files by analyzing their AST structure
@@ -1112,7 +1110,7 @@
   last_scrape_at: '2026-02-24T05:44:38Z'
   theme: family
   family_id: rubygems-bundler-family
-  family_position: 8
+  family_position: 2
 - name: rb-sys
   ecosystem: cargo
   language: Rust
@@ -1238,7 +1236,7 @@
   first_commit_by_person_on: 2026/01/14
   theme: family
   family_id: rubygems-bundler-family
-  family_position: 7
+  family_position: 9
   last_scrape_at: '2026-02-24T16:31:59Z'
 - name: tree_stump
   ecosystem: rubygems
@@ -1358,7 +1356,6 @@
   family_id: miscellaneous
   family_position: 1
   last_scrape_at: '2026-02-24T16:32:10Z'
-  family_primary: true
 - name: bundler
   ecosystem: rubygems
   language: Ruby
@@ -1386,7 +1383,6 @@
   theme: family
   family_id: rubygems-bundler-family
   family_position: 4
-  family_primary: true
   last_scrape_at: '2026-02-24T16:32:12Z'
 - name: hashie
   ecosystem: rubygems
@@ -1447,3 +1443,33 @@
   theme: family
   family_id: rails-family
   family_position: 3
+- name: rv
+  ecosystem: none
+  family: rubygems-bundler-family
+  language: Rust
+  role: contributor
+  forges:
+  - type: GitHub
+    url: https://github.com/spinel-coop/rv/
+    owner: spinel-coop
+  description: "\U0001F48E\U0001F4A8 Extremely fast Ruby version and gem manager"
+  minimum_version: '1.93'
+  tags:
+  - rust
+  - bundler
+  - rubygems
+  - ruby
+  funding_sites: []
+  docs_site:
+  total_downloads:
+  daily_downloads:
+  release_downloads:
+  release_date:
+  github_stars: 1614
+  last_commit_on: 2026/02/24
+  status: active
+  first_commit_by_person: https://github.com/spinel-coop/rv/commit/fb840bf830986170df2bbe9b51b5d7774770cf67
+  first_commit_by_person_on: 2026/01/21
+  theme: family
+  family_id: rubygems-bundler-family
+  family_position: 1
