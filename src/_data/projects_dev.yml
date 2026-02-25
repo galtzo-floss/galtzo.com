@@ -516,7 +516,7 @@
     a cookie by an after_filter (default) or a Rack Middleware (option).
   language: Ruby
   ecosystem: rubygems
-  minimum_version: '2.7'
+  minimum_version: '1.8'
   role: author
   first_commit_by_person_on: 2010/02/05
   first_commit_by_person: https://github.com/pboling/cacheable-flash/commit/cb952b3338df3610ab993c944ee5c0cd894d3185
@@ -548,7 +548,7 @@
     to ASCII braces afterward"
   language: Ruby
   ecosystem: rubygems
-  minimum_version: '2.7'
+  minimum_version: '3.2'
   role: author
   first_commit_by_person_on: 2025/11/07
   first_commit_by_person: https://github.com/galtzo-floss/yard-fence/commit/242b77a6caa398ca01ab3b3643d3e3b970497f05
@@ -580,7 +580,7 @@
     notes."
   language: Ruby
   ecosystem: rubygems
-  minimum_version: '2.7'
+  minimum_version: '3.2'
   role: author
   first_commit_by_person_on: 2025/11/08
   first_commit_by_person: https://github.com/galtzo-floss/yaml-converter/commit/232ad133b6259aabb39993b476f727d91d0a5f0c
@@ -609,7 +609,7 @@
   description: "\U0001F968 A YARD plugin for YAML documents"
   language: Ruby
   ecosystem: rubygems
-  minimum_version: '2.7'
+  minimum_version: '3.2'
   role: author
   first_commit_by_person_on: 2025/11/10
   first_commit_by_person: https://github.com/galtzo-floss/yard-yaml/commit/fe07f29d0831a3e702e3dc76088debfadc81ad2b
@@ -639,7 +639,7 @@
     analysis, similar to a smart 'git merge' specifically designed for Ruby code."
   language: Ruby
   ecosystem: rubygems
-  minimum_version: '2.7'
+  minimum_version: '3.2'
   role: author
   first_commit_by_person_on: 2025/12/02
   first_commit_by_person: https://github.com/kettle-rb/prism-merge/commit/71fcddaa659cd6e9e94053e67524e5a400423ced
@@ -671,7 +671,7 @@
     psych-merge, json-merge, and other format-specific merge gems."
   language: Ruby
   ecosystem: rubygems
-  minimum_version: '2.7'
+  minimum_version: '3.2'
   role: author
   first_commit_by_person_on: 2025/12/06
   first_commit_by_person: https://github.com/kettle-rb/ast-merge/commit/a63a4858cb229530c1706925bb209546695e8b3a
@@ -703,7 +703,7 @@
     configuration. Perfect for merging environment templates with local overrides."
   language: Ruby
   ecosystem: rubygems
-  minimum_version: '2.7'
+  minimum_version: '3.2'
   role: author
   first_commit_by_person_on: 2025/12/06
   first_commit_by_person: https://github.com/kettle-rb/dotenv-merge/commit/a34c8f20c877a45d03b9f0b83b973614e123a92b
@@ -734,7 +734,7 @@
     matching, and configurable merge strategies."
   language: Ruby
   ecosystem: rubygems
-  minimum_version: '2.7'
+  minimum_version: '3.2'
   role: author
   first_commit_by_person_on: 2025/12/06
   first_commit_by_person: https://github.com/kettle-rb/rbs-merge/commit/7ae936a6ae844aee513264eecc39215eed53c313
@@ -767,7 +767,7 @@
     & write once & run anywhere'"
   language: Ruby
   ecosystem: rubygems
-  minimum_version: '2.7'
+  minimum_version: '3.2'
   role: author
   first_commit_by_person_on: 2025/12/14
   first_commit_by_person: https://github.com/kettle-rb/tree_haver/commit/a89211bff10f4440b96758a8ac9d7d539001b0c8
@@ -801,7 +801,7 @@
     structural similarity."
   language: Ruby
   ecosystem: rubygems
-  minimum_version: '2.7'
+  minimum_version: '3.2'
   role: author
   first_commit_by_person_on: 2025/12/09
   first_commit_by_person: https://github.com/kettle-rb/toml-merge/commit/772a5f5802ce518f2e2c83a561eb583ed634bac4
@@ -833,7 +833,7 @@
     destination files."
   language: Ruby
   ecosystem: rubygems
-  minimum_version: '2.7'
+  minimum_version: '3.2'
   role: author
   first_commit_by_person_on: 2025/12/06
   first_commit_by_person: https://github.com/kettle-rb/bash-merge/commit/db525d5aedd0c895422a067629118f3fa9c3c22d
@@ -866,7 +866,7 @@
     instead."
   language: Ruby
   ecosystem: rubygems
-  minimum_version: '2.7'
+  minimum_version: '3.2'
   role: author
   first_commit_by_person_on: 2025/12/06
   first_commit_by_person: https://github.com/kettle-rb/json-merge/commit/f1cc25b1d9b79c598270e3aa203fa56787e6c6fc
@@ -896,7 +896,7 @@
     like markly-merge and commonmarker-merge"
   language: Ruby
   ecosystem: rubygems
-  minimum_version: '2.7'
+  minimum_version: '3.2'
   role: author
   first_commit_by_person_on: 2025/12/11
   first_commit_by_person: https://github.com/kettle-rb/markdown-merge/commit/76f2230840b236dd10fdd7baf322c082762dddb0
@@ -928,7 +928,7 @@
     devcontainer.json, tsconfig.json, package.json, and VS Code settings."
   language: Ruby
   ecosystem: rubygems
-  minimum_version: '2.7'
+  minimum_version: '3.2'
   role: author
   first_commit_by_person_on: 2025/12/06
   first_commit_by_person: https://github.com/kettle-rb/jsonc-merge/commit/f1cc25b1d9b79c598270e3aa203fa56787e6c6fc
@@ -960,7 +960,7 @@
     customized files."
   language: Ruby
   ecosystem: rubygems
-  minimum_version: '2.7'
+  minimum_version: '3.2'
   role: author
   first_commit_by_person_on: 2025/12/06
   first_commit_by_person: https://github.com/kettle-rb/commonmarker-merge/commit/12d4e9fff5bbe6a9b29e81c6643b4dd705f8e80a
@@ -991,7 +991,7 @@
     Perfect for merging configuration templates with customized destination files."
   language: Ruby
   ecosystem: rubygems
-  minimum_version: '2.7'
+  minimum_version: '3.2'
   role: author
   first_commit_by_person_on: 2025/12/05
   first_commit_by_person: https://github.com/kettle-rb/psych-merge/commit/3330d3309d6962a4e676aa1c43e4ca90dfd21dc4
@@ -1023,7 +1023,7 @@
     files."
   language: Ruby
   ecosystem: rubygems
-  minimum_version: '2.7'
+  minimum_version: '3.2'
   role: author
   first_commit_by_person_on: 2025/12/09
   first_commit_by_person: https://github.com/kettle-rb/markly-merge/commit/3dcd8b855b8a773f175ff34d31e3885a28a3e70b
@@ -1055,7 +1055,7 @@
     resolved before format-specific merging."
   language: Ruby
   ecosystem: rubygems
-  minimum_version: '2.7'
+  minimum_version: '3.2'
   role: author
   first_commit_by_person_on: 2026/02/21
   first_commit_by_person: https://github.com/kettle-rb/token-resolver/commit/e0e299cad6e6914d512845c71df6b7ac8009e5ac
@@ -1181,7 +1181,7 @@
     owner: matsadler
   description: High level Ruby bindings. Write Ruby extension gems in Rust, or call
     Ruby code from a Rust binary.
-  minimum_version:
+  minimum_version: '1.56'
   tags:
   - ruby
   - rust
@@ -1249,7 +1249,7 @@
     url: https://github.com/joker1007/tree_stump
     owner: joker1007
   description: Ruby bindings for Tree-sitter written in Rust using rb_sys and magnus.
-  minimum_version: '2.7'
+  minimum_version: '3.1'
   tags:
   - ruby
   - rust
@@ -1280,7 +1280,7 @@
     url: https://www.github.com/Faveod/ruby-tree-sitter
     owner: Faveod
   description: Ruby bindings for Tree-Sitter
-  minimum_version: '2.7'
+  minimum_version: '3.1'
   tags:
   - ruby
   - tree-sitter
@@ -1309,7 +1309,7 @@
     url: https://github.com/mongodb/bson-ruby
     owner: mongodb
   description: A fully featured BSON specification implementation in Ruby
-  minimum_version: '2.7'
+  minimum_version: '2.6'
   tags:
   - json
   - data
@@ -1338,7 +1338,7 @@
     url: https://github.com/ruby/rexml
     owner: ruby
   description: An XML toolkit for Ruby
-  minimum_version: '2.7'
+  minimum_version: '2.5'
   tags:
   - ruby
   - data
@@ -1368,7 +1368,7 @@
     owner: ruby
   description: Bundler manages an application's dependencies through its entire life,
     across many machines, systematically and repeatably
-  minimum_version: '2.7'
+  minimum_version: '3.2'
   tags:
   - ruby
   funding_sites: []

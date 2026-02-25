@@ -36,11 +36,17 @@ class ProjectUpdater
   VALID_SURGICAL_FIELDS = %w[
     github_stars gitlab_stars codeberg_stars
     total_downloads daily_downloads release_downloads
+    minimum_version
     release_date last_commit_on status
     first_commit_by_person first_commit_by_person_on
   ]
 
-  def initialize(surgical_fields: [], discover_rubygems: true, auto_confirm: false)
+  # Fallback minimum Ruby version for RubyGems entries when the API reports none.
+  # Ruby 1.8 is the oldest version that can be meaningfully specified; if a gem
+  # truly has no constraint it is safe to assume it was written for 1.8+.
+  RUBYGEMS_MINIMUM_VERSION_DEFAULT = '1.8'
+
+  def initialize(surgical_fields: [], discover_rubygems: true, auto_confirm: false, project_filter: nil)
     # SAFETY CHECK: projects_dev.yml must exist
     # If it doesn't exist, it means scripts/devswap was run but not run again to restore prod
     # This risks deploying dev/test projects to production
@@ -71,6 +77,9 @@ class ProjectUpdater
     @surgical_fields = Array(surgical_fields).compact
     @discover_rubygems = discover_rubygems
     @auto_confirm = auto_confirm
+    @project_filter = project_filter
+    # A project filter implies targeted work — disable discovery automatically
+    @discover_rubygems = false if @project_filter
     @prompt = TTY::Prompt.new
 
     # Preserve header comments from YAML files
@@ -121,12 +130,21 @@ class ProjectUpdater
       puts "🔬 SURGICAL UPDATE MODE: Only updating #{@surgical_fields.map { |f| "'#{f}'" }.join(', ')} field(s)"
       puts "   (Ignoring last_scrape_at timestamps)"
     end
+    if @project_filter
+      puts "🎯 Project filter: '#{@project_filter}' (exact match)"
+    end
     puts "Processing #{@projects.size} projects from #{PROJECTS_FILE}"
     puts "GitHub Token: #{GITHUB_TOKEN ? '✅ Set' : '❌ Not set'}"
     puts "GitLab Token: #{GITLAB_TOKEN ? '✅ Set' : '❌ Not set'}"
     puts "RubyGems Handle: #{RUBYGEMS_HANDLE ? "✅ Set (#{RUBYGEMS_HANDLE})" : '❌ Not set'}"
 
     non_person   = @projects
+    if @project_filter
+      non_person = non_person.select { |p| p['name'] == @project_filter }
+      if non_person.empty?
+        abort "❌ No project named '#{@project_filter}' found in projects.yml. Check the name and try again."
+      end
+    end
     skippable    = non_person.select { |p| !@surgical_fields.any? && recently_scraped?(p) }
     to_process   = non_person - skippable
 
@@ -664,15 +682,33 @@ class ProjectUpdater
     when 'rubygems'
       puts "  🔍 Scraping RubyGems.org for '#{pkg_name}'..."
       gem_data = api_request("https://rubygems.org/api/v1/gems/#{pkg_name}.json")
-      return result unless gem_data
+      unless gem_data
+        puts "  ⚠️  RubyGems API returned no data for '#{pkg_name}'"
+        return result
+      end
 
       result[:found]           = true
       result[:description]     = gem_data['info'] || gem_data['summary']
       result[:docs_site]       = gem_data['documentation_uri']
-      req_ver = gem_data['required_ruby_version'] || '>= 0'
-      result[:minimum_version] = extract_minimum_version(req_ver)
       result[:tags]            = determine_tags_from_gem(gem_data)
       result[:release_date]    = fetch_rubygems_release_date(pkg_name)
+
+      # Fetch the latest version's ruby_version requirement from v2 API
+      # (v1 API doesn't include this field)
+      latest_version = gem_data['version']
+      if latest_version
+        v2_version_data = api_request("https://rubygems.org/api/v2/rubygems/#{pkg_name}/versions/#{latest_version}.json")
+        if v2_version_data && v2_version_data['ruby_version']
+          result[:minimum_version] = extract_minimum_version(v2_version_data['ruby_version'])
+          puts "    💎 Minimum Ruby version: #{result[:minimum_version]}  (raw: #{v2_version_data['ruby_version']})"
+        else
+          result[:minimum_version] = RUBYGEMS_MINIMUM_VERSION_DEFAULT
+          puts "    💎 Minimum Ruby version: #{RUBYGEMS_MINIMUM_VERSION_DEFAULT} (default — API reported none)"
+        end
+      else
+        result[:minimum_version] = RUBYGEMS_MINIMUM_VERSION_DEFAULT
+        puts "    💎 Minimum Ruby version: #{RUBYGEMS_MINIMUM_VERSION_DEFAULT} (default — no version in API response)"
+      end
 
       gem_info = fetch_rubygems_info(pkg_name)
       if gem_info
@@ -920,6 +956,68 @@ class ProjectUpdater
     []
   end
 
+
+  # Try to extract minimum Ruby version from GitHub gemspec.
+  # This is more accurate than relying on RubyGems API which often doesn't include it.
+  def fetch_minimum_ruby_version_from_github(github_url, gem_name)
+    return nil unless github_url && gem_name
+
+    begin
+      # Extract owner/repo from GitHub URL
+      match = github_url.match(%r{github\.com[/:]([^/]+)/([^/\.]+)})
+      return nil unless match
+
+      owner, repo = match[1], match[2]
+      repo = repo.sub(/\.git$/, '')
+
+      # Try both main and master branches
+      ['main', 'master'].each do |branch|
+        uri = URI("https://raw.githubusercontent.com/#{owner}/#{repo}/#{branch}/#{repo}.gemspec")
+        response = Net::HTTP.get_response(uri)
+
+        next unless response.code == '200'
+
+        gemspec_content = response.body
+
+        # Look for required_ruby_version specification
+        # Examples:
+        #   spec.required_ruby_version = '>= 2.7'
+        #   spec.required_ruby_version = '>= 3.0'
+        if match = gemspec_content.match(/required_ruby_version\s*=\s*['"]([^'"]+)['"]/)
+          return extract_minimum_version(match[1])
+        elsif match = gemspec_content.match(/required_ruby_version\s*=\s*Gem::Requirement\.new\(['"]([^'"]+)['"]\)/)
+          return extract_minimum_version(match[1])
+        end
+      end
+
+      nil
+    rescue => e
+      # Silently fail; we already have a default
+      nil
+    end
+  end
+
+  public
+
+  # ...existing code...
+
+  def fetch_user_rubygems(handle)
+    api_url = "https://rubygems.org/api/v1/owners/#{handle}/gems.json"
+
+    puts "  Fetching gems from: #{api_url}"
+    data = api_request(api_url)
+
+    return [] unless data && data.is_a?(Array)
+
+    # The API returns an array of gem objects with 'name' field
+    data.map { |gem| gem['name'] }.compact
+  rescue => e
+    error_msg = "Failed to fetch RubyGems for #{handle}: #{e.message}"
+    @errors << error_msg
+    puts "  ❌ #{error_msg}"
+    []
+  end
+
   def build_project_from_rubygem(gem_name)
     # Fetch gem metadata
     gem_info = fetch_rubygems_info(gem_name)
@@ -963,9 +1061,16 @@ class ProjectUpdater
     # Get release date
     release_date = fetch_rubygems_release_date(gem_name)
 
-    # Determine minimum Ruby version
-    required_ruby_version = gem_data['required_ruby_version'] || '>= 0'
-    min_version = extract_minimum_version(required_ruby_version)
+    # Determine minimum Ruby version from v2 API
+    # The v1 API doesn't have this field, but v2 does
+    min_version = RUBYGEMS_MINIMUM_VERSION_DEFAULT
+    latest_version = gem_data['version']
+    if latest_version
+      v2_data = api_request("https://rubygems.org/api/v2/rubygems/#{gem_name}/versions/#{latest_version}.json")
+      if v2_data && v2_data['ruby_version']
+        min_version = extract_minimum_version(v2_data['ruby_version']) || RUBYGEMS_MINIMUM_VERSION_DEFAULT
+      end
+    end
 
     # Build the project hash
     project = {
@@ -1105,10 +1210,16 @@ class ProjectUpdater
   def extract_minimum_version(version_string)
     # Parse version string like ">= 2.7.0" or "~> 3.0"
     # Return just the major.minor version
+    #
+    # If version_string is nil or empty, returns nil (user will fill in manually or default will be used)
+    # This is more accurate than guessing a default
+    return nil if version_string.nil? || version_string.to_s.strip.empty?
+
     if match = version_string.match(/(\d+\.\d+)/)
       match[1]
     else
-      '2.7' # Default to a reasonable version
+      # If we can't parse, return nil to force user to enter it
+      nil
     end
   end
 
@@ -1237,6 +1348,63 @@ class ProjectUpdater
         project['status'] = 'active'
         puts "  ✅ Status: active"
       end
+
+    when 'minimum_version'
+      eco  = project['ecosystem']
+      name = project['name']
+
+      case eco
+      when 'rubygems'
+        # v1 API omits required_ruby_version; use v2 which exposes ruby_version
+        gem_data = api_request("https://rubygems.org/api/v1/gems/#{name}.json")
+        if !gem_data
+          puts "  ⚠️  Could not fetch v1 gem data for #{name} — skipping"
+        else
+          latest_version = gem_data['version']
+          v2_data = api_request("https://rubygems.org/api/v2/rubygems/#{name}/versions/#{latest_version}.json")
+          if v2_data && v2_data['ruby_version']
+            min_ver = extract_minimum_version(v2_data['ruby_version']) || RUBYGEMS_MINIMUM_VERSION_DEFAULT
+            project['minimum_version'] = min_ver
+            puts "  💎 minimum_version (rubygems v2 API): #{min_ver}  (raw: #{v2_data['ruby_version']})"
+          else
+            project['minimum_version'] = RUBYGEMS_MINIMUM_VERSION_DEFAULT
+            puts "  💎 minimum_version: #{RUBYGEMS_MINIMUM_VERSION_DEFAULT} (default — API reported none for #{name} v#{latest_version})"
+          end
+        end
+
+      when 'cargo'
+        cargo_info = fetch_cargo_info(name)
+        if cargo_info && cargo_info[:rust_version]
+          min_ver = cargo_info[:rust_version]
+          project['minimum_version'] = min_ver
+          puts "  🦀 minimum_version (crates.io): #{min_ver}"
+        else
+          puts "  ⚠️  rust_version not available for #{name} — leaving unchanged"
+        end
+
+      when 'npm'
+        npm_info = fetch_npm_info(name)
+        if npm_info && npm_info[:node_version]
+          min_ver = npm_info[:node_version]
+          project['minimum_version'] = min_ver
+          puts "  📦 minimum_version (npm): #{min_ver}"
+        else
+          puts "  ⚠️  node version not available for #{name} — leaving unchanged"
+        end
+
+      when 'pypi'
+        pypi_info = fetch_pypi_info(name)
+        if pypi_info && pypi_info[:python_version]
+          min_ver = pypi_info[:python_version]
+          project['minimum_version'] = min_ver
+          puts "  🐍 minimum_version (PyPI): #{min_ver}"
+        else
+          puts "  ⚠️  python version not available for #{name} — leaving unchanged"
+        end
+
+      else
+        puts "  ⏭️  minimum_version not fetchable for ecosystem '#{eco || 'none'}' — skipping #{name}"
+      end
     end
   end
 
@@ -1295,6 +1463,20 @@ class ProjectUpdater
         puts "  📊 Daily downloads (28d avg): #{gem_info[:daily_downloads] || 'N/A'}"
         puts "  📥 Release downloads: #{gem_info[:release_downloads]}"
       end
+
+      # Step 4b: Minimum Ruby version via v2 API (v1 omits this field)
+      gem_data_v1 = api_request("https://rubygems.org/api/v1/gems/#{gem_name}.json")
+      if gem_data_v1
+        latest_version = gem_data_v1['version']
+        v2_data = api_request("https://rubygems.org/api/v2/rubygems/#{gem_name}/versions/#{latest_version}.json")
+        if v2_data && v2_data['ruby_version']
+          project['minimum_version'] = extract_minimum_version(v2_data['ruby_version']) || RUBYGEMS_MINIMUM_VERSION_DEFAULT
+          puts "  💎 Minimum Ruby version: #{project['minimum_version']}  (raw: #{v2_data['ruby_version']})"
+        else
+          project['minimum_version'] ||= RUBYGEMS_MINIMUM_VERSION_DEFAULT
+          puts "  💎 Minimum Ruby version: #{project['minimum_version']} (default — API reported none)"
+        end
+      end
     end
 
     # Step 7: Latest release date
@@ -1338,6 +1520,7 @@ class ProjectUpdater
     sync_fields = %w[
       github_stars gitlab_stars codeberg_stars
       total_downloads daily_downloads release_downloads
+      minimum_version
       release_date last_commit_on status last_scrape_at
       first_commit_by_person first_commit_by_person_on
     ]
@@ -1838,6 +2021,7 @@ if __FILE__ == $0
   options = {
     auto_confirm:     false,
     discover_rubygems: nil,   # nil = decide after parsing; true/false = explicit
+    project_filter:   nil,
   }
   add_project_opts = {}
 
@@ -1869,9 +2053,11 @@ if __FILE__ == $0
     op.separator "  #{$0}                                             # Full update + gem discovery"
     op.separator "  #{$0} -y                                          # Full update, non-interactive"
     op.separator "  #{$0} --no-discover                               # Full update, skip discovery"
-    op.separator "  #{$0} release_date                                # Surgical: one field"
-    op.separator "  #{$0} total_downloads daily_downloads release_downloads  # Surgical: multiple"
+    op.separator "  #{$0} release_date                                # Surgical: one field, all projects"
+    op.separator "  #{$0} total_downloads daily_downloads release_downloads  # Surgical: multiple fields"
     op.separator "  #{$0} -y github_stars                             # Surgical, non-interactive"
+    op.separator "  #{$0} -p my-gem minimum_version                   # Surgical: one field, one project"
+    op.separator "  #{$0} -p my-gem github_stars release_date         # Surgical: multiple fields, one project"
     op.separator "  #{$0} add_project                                 # Interactively add a project"
     op.separator "  #{$0} add_project --name my-gem --ecosystem rubygems --github-url https://github.com/org/repo"
     op.separator "  #{$0} add_project --name my-pkg --ecosystem rubygems,npm  # Two cards, one per ecosystem"
@@ -1887,6 +2073,12 @@ if __FILE__ == $0
 
     op.on("--no-discover", "Skip the RubyGems discovery pre-flight") do
       options[:discover_rubygems] = false
+    end
+
+    op.on("-p", "--project NAME",
+          "Restrict update to the single project with this exact name.",
+          "Implies --no-discover. Works with surgical fields or full update.") do |v|
+      options[:project_filter] = v
     end
 
     op.separator ""
@@ -1950,16 +2142,17 @@ if __FILE__ == $0
   surgical_fields = subcommand ? [] : ARGV.select { |a| !a.start_with?('--') }
 
   # Discovery is on by default ONLY for a bare full update (no subcommand, no
-  # surgical fields). When the user is doing something more targeted they don't
-  # want the pre-flight slowing them down unless they asked for it explicitly.
+  # surgical fields, no project filter). When the user is doing something more
+  # targeted they don't want the pre-flight slowing them down.
   if options[:discover_rubygems].nil?
-    options[:discover_rubygems] = subcommand.nil? && surgical_fields.empty?
+    options[:discover_rubygems] = subcommand.nil? && surgical_fields.empty? && options[:project_filter].nil?
   end
 
   updater = ProjectUpdater.new(
     surgical_fields:   surgical_fields,
     discover_rubygems: options[:discover_rubygems],
     auto_confirm:      options[:auto_confirm],
+    project_filter:    options[:project_filter],
   )
 
   case subcommand
