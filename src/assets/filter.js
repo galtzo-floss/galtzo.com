@@ -872,6 +872,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Open the native <dialog> as a modal (provides backdrop + focus trapping)
     familyModal.showModal();
+
+    // Scroll the modal grid so the initially-clicked card is visible.
+    // Use rAF to wait for the browser to lay out the grid after showModal().
+    requestAnimationFrame(() => {
+      const activeCard = familyModalGrid.querySelector('.glow-active');
+      if (activeCard) {
+        // scrollIntoView on the grid's scrollable container — 'nearest'
+        // avoids scrolling if the card is already fully visible.
+        activeCard.scrollIntoView({ block: 'start', behavior: 'smooth' });
+      }
+    });
   }
 
   /**
