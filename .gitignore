@@ -3,6 +3,7 @@
 /output/
 /.bundle/
 /.bridgetown-cache/
+/node_modules/
 
 # Bundler
 /vendor/bundle/
