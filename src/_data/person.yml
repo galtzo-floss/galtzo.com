@@ -50,6 +50,7 @@ forges:
   url: https://sr.ht/~galtzo/
 tags:
 - api
+- ast
 - bash
 - bridgetown
 - ci/cd
@@ -77,6 +78,7 @@ tags:
 - sqlite3
 - svelte
 - test
+- tree-sitter
 - typescript
 - websockets
 docs_site: https://galtzo.com
