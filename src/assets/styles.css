@@ -556,7 +556,8 @@ button,
 }
 
 /* Inner clipping container — holds all card content and clips the 720px-wide
-   rotated corner ribbons, absolutely-positioned role/stats banners, etc.
+   rotated corner ribbons, absolutely-positioned role/stats banners, and the
+   141.4%-tall caution-tape pseudo-elements on archived cards.
    Separated from .card so that .card can remain overflow:visible, which is
    required for correct CSS Grid row sizing in the family modal. */
 .card-body {
@@ -988,19 +989,20 @@ button,
    ========================================================================= */
 
 /* Darken archived cards to indicate deprecated status (without transparency).
-   overflow:hidden is needed here because the caution-tape ::before/::after
-   pseudo-elements attach to .card.archived (not .card-body) and extend to
-   141.4% height.  Archived cards never appear in the modal grid, so this
-   does not affect CSS Grid row sizing. */
+   NOTE: overflow is NOT set here.  .card must remain overflow:visible for
+   correct CSS Grid row sizing in the family modal.  The caution-tape
+   pseudo-elements are placed on .card-body (which already has overflow:hidden)
+   so they are clipped without affecting the outer .card element. */
 .card.archived {
     filter: brightness(0.75);
     position: relative;
-    overflow: hidden;
 }
 
-/* Caution tape X overlay - diagonal stripes from corners */
-.card.archived::before,
-.card.archived::after {
+/* Caution tape X overlay — placed on .card-body so the existing
+   overflow:hidden clips the 141.4%-tall pseudo-elements.  .card-body
+   already has position:relative, which provides the containing block. */
+.card.archived > .card-body::before,
+.card.archived > .card-body::after {
     content: '';
     position: absolute;
     width: var(--avoid-tape-width);
@@ -1009,6 +1011,8 @@ button,
     left: 50%;
     opacity: var(--avoid-tape-opacity);
     pointer-events: none;
+    /* Layer above card content but below interactive elements */
+    z-index: 5;
 
     /* Caution tape pattern - diagonal yellow/black stripes perpendicular to tape direction */
     background: repeating-linear-gradient(
@@ -1021,12 +1025,12 @@ button,
 }
 
 /* Top-left to bottom-right diagonal */
-.card.archived::before {
+.card.archived > .card-body::before {
     transform: translate(-50%, -50%) rotate(45deg);
 }
 
 /* Top-right to bottom-left diagonal */
-.card.archived::after {
+.card.archived > .card-body::after {
     transform: translate(-50%, -50%) rotate(-45deg);
 }
 
@@ -1794,7 +1798,7 @@ img[src*="img.shields.io"].no-dark-filter {
 
 /* Cards with the glow toggled on */
 .card.glow-active {
-    animation: glow-pulse 1.5s ease-in-out infinite;
+    animation: glow-pulse 15s ease-in-out infinite;
     /* Ensure the glow is visible above neighbours */
     z-index: 2;
 }
