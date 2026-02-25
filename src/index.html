@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Open Source Projects
+title: Open Source & Source Available Projects
 permalink: /
 body_class: projects
 ---
@@ -147,12 +147,15 @@ body_class: projects
 
 <h1>
   <span class="title-text"><%= (page.respond_to?(:data) && page.data["title"]) || "Open Source Projects" %></span>
+</h1>
+
+<h1>
   <span class="tag-list">
     <% allowed_roles.each do |role| %>
     <span>
       <button type="button" class="tag-link pill-outer role-link <%= role %>" data-tag="<%= role %>">
         <span class="count left"><%== role_counts[role].to_s.rjust(2, 'x').gsub('x', '&nbsp;') %></span>
-        <span class="tag <%= role %>"><%= role %> <small>[ ~<%== fmt_num.call(role_daily_downloads[role]) %>&nbsp;/&nbsp;d ]</small></span>
+        <span class="tag <%= role %>"><%= role %> <small><span class="stat-label">&nbsp;DL&nbsp;</span>~<%== fmt_num.call(role_daily_downloads[role]) %>&nbsp;/&nbsp;d</small></span>
         <span class="count right"><%== role_counts[role].to_s.ljust(2, 'x').gsub('x', '&nbsp;') %></span>
       </button>
     </span>
@@ -160,14 +163,14 @@ body_class: projects
     <span>
       <button type="button" class="tag-link pill-outer special-filter" data-tag="adoptable" data-special-filter="adoptable-family">
         <span class="count left"><%== adoptable_count.to_s.rjust(2, 'x').gsub('x', '&nbsp;') %></span>
-        <span class="tag">👁️ Adoptable <small>[ ~<%== fmt_num.call(adoptable_daily_downloads) %>&nbsp;/&nbsp;d ]</small></span>
+        <span class="tag">👁️ Adoptable <small><span class="stat-label">&nbsp;DL&nbsp;</span>~<%== fmt_num.call(adoptable_daily_downloads) %>&nbsp;/&nbsp;d</small></span>
         <span class="count right"><%== adoptable_count.to_s.ljust(2, 'x').gsub('x', '&nbsp;') %></span>
       </button>
     </span>
     <span>
       <button type="button" class="tag-link pill-outer special-filter" data-tag="archived" data-special-filter="archived-family">
         <span class="count left"><%== archived_count.to_s.rjust(2, 'x').gsub('x', '&nbsp;') %></span>
-        <span class="tag">👁️ Archived <small>[ ~<%== fmt_num.call(archived_daily_downloads) %>&nbsp;/&nbsp;d ]</small></span>
+        <span class="tag">👁️ Archived <small><span class="stat-label">&nbsp;DL&nbsp;</span>~<%== fmt_num.call(archived_daily_downloads) %>&nbsp;/&nbsp;d</small></span>
         <span class="count right"><%== archived_count.to_s.ljust(2, 'x').gsub('x', '&nbsp;') %></span>
       </button>
     </span>
@@ -676,7 +679,7 @@ body_class: projects
       <div class="horizontal-banner banner-role <%= project['role'] %>">
           <span class="role-label">
             <% if project["_is_person"] %>
-            <a href="<%= gh_forge['url'] %>" target="_blank" rel="noopener">Human</a>
+            <a href="<%= gh_forge['url'] %>" target="_blank" rel="noopener">Human Programmer</a>
             <% else %>
             <% if gh_forge %>
             <% capitalized_role = project['role'].capitalize %>
@@ -687,7 +690,13 @@ body_class: projects
             <% end %>
             <% if project['first_commit_by_person'] && year %>
             &nbsp;|&nbsp;
+            <% if project['_is_person'] %>
+            starting in first grade with BASIC&nbsp;<a href="https://www.c64-wiki.com/wiki/C64-Commands" class="role-start" target="_blank" rel="noopener">v2.0</a>&nbsp;
+            and&nbsp;<a href="https://www.c64-wiki.com/wiki/BASIC#Overview_of_BASIC_Version_7.0_Commands" class="role-start" target="_blank" rel="noopener">v7.0</a>&nbsp;
+            on the&nbsp;<a href="https://www.c64-wiki.com/wiki/Commodore_128" class="role-start" target="_blank" rel="noopener">Commodore 128</a>
+            <% else %>
             <a href="<%= project['first_commit_by_person'] %>" class="role-start" target="_blank" rel="noopener">since <%= year %></a>
+            <% end %>
             <% end %>
             <% if project['archived'] %>
             &nbsp;|&nbsp;
@@ -741,6 +750,15 @@ body_class: projects
         >
         <%= project["name"] %>
       </a>
+      <% elsif project["_is_person"] %>
+      <a href="<%= project['tech_site'] %>" class="project-language gem-link" target="_blank" rel="noopener">
+        <img
+                src="/assets/images/<%= project['avatar'] %>"
+                alt="It's me"
+                class="language"
+        >
+        <%= project["full_name"] %>
+      </a>
       <% else %>
       <span class="project-language">
         <img
@@ -761,7 +779,7 @@ body_class: projects
         <img src="/assets/images/Liberapay.svg" alt="Liberapay" class="link-icon funding-site">
       </a>
       <%# Render any project-specific OpenCollective orgs stored in funding_sites %>
-      <% Array(project["funding_sites"]).each do |funding_site| %>
+      <% Array(project["funding_sites"]).reject {|f| f['type'] == "Liberapay"}.each do |funding_site| %>
       <a href="<%= funding_site['url'] %>" class="funding-link" target="_blank" rel="noopener">
         <img
                 src="/assets/images/<%= funding_site['type'] %>.svg"
@@ -818,7 +836,17 @@ body_class: projects
       <% end %>
     </p>
     <% end %>
+    <% if project["_is_person"] && project["headshot"] %>
+    <div class="person-description">
+      <img src="/assets/images/<%= project['headshot'] %>"
+           alt="<%= project['name'] %>"
+           class="person-headshot">
+      <p><%== project["description"] %></p>
+      <p><%== project["description2"] %></p>
+    </div>
+    <% else %>
     <p><%== project["description"] %></p>
+    <% end %>
     <% raise "#{project['name']}" if project["funding_sites"].nil? %>
     <% if project['archived'] %>
     <% # No reason to show funding links for archived projects %>
@@ -853,6 +881,3 @@ body_class: projects
     <% end %>
   <% end %>
 </ul>
-
-<!-- Inline script handles layout adjustments so expanded filter panels don't overlap the project list -->
-<!-- removed: script previously adjusted filters.style.paddingBottom; panels now push content via CSS -->

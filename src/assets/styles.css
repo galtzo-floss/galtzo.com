@@ -1612,8 +1612,45 @@ header nav a img {
     line-height: 1.25;
 }
 
+/* =========================================================================
+   PERSON HEADSHOT (inside the wide person card)
+   ========================================================================= */
+
+/* Flex container: headshot left, description text right */
+.person-description {
+    display: flex;
+    align-items: stretch;
+    gap: 1rem;
+}
+
+/* The headshot itself: full height of the text block, natural aspect ratio */
+.person-headshot {
+    flex: 0 0 auto;
+    width: clamp(6rem, 18%, 12rem);
+    height: auto;
+    object-fit: cover;
+    border-radius: var(--border-radius-sm);
+    align-self: stretch;
+}
+
+/* Let the description paragraph fill the remaining space */
+.person-description > p {
+    flex: 1 1 0%;
+    margin: 0;
+}
+
+/* On narrow screens, stack vertically so the text isn't crushed */
 /* Prevent the doubled sizes from overwhelming very small screens */
 @media (max-width: 36rem) {
+    .person-description {
+        flex-direction: column;
+        align-items: center;
+    }
+    .person-headshot {
+        width: 50%;
+        max-width: 10rem;
+        align-self: center;
+    }
     header nav,
     header nav a,
     .intro {
