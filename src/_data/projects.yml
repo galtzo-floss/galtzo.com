@@ -268,6 +268,9 @@
   last_commit_on: 2026/02/11
   status: active
   last_scrape_at: '2026-02-24T05:39:30Z'
+  theme: family
+  family_id: rubygems-bundler-family
+  family_position: 9
 - name: appraisal2
   description: Appraisal2 integrates with bundler and rake to test your library against
     different versions of dependencies in repeatable scenarios called "appraisals."
@@ -334,6 +337,9 @@
   last_commit_on: 2026/01/17
   status: active
   last_scrape_at: '2026-02-24T05:39:35Z'
+  theme: family
+  family_id: miscellaneous
+  family_position: 2
 - name: awesome_search
   description: Organize complicated search results
   language: Ruby
@@ -392,6 +398,9 @@
   last_commit_on: 2026/02/20
   status: active
   last_scrape_at: '2026-02-24T05:39:39Z'
+  theme: family
+  family_id: miscellaneous
+  family_position: 3
 - name: bash_step
   description: Bash Step Function Library
   language: Bash
@@ -415,6 +424,9 @@
   last_commit_on: 2021/12/07
   status: stale
   last_scrape_at: '2026-02-24T05:39:41Z'
+  theme: family
+  family_id: miscellaneous
+  family_position: 4
 - name: bsfl
   description: Bash Script Function Library
   language: Bash
@@ -438,6 +450,9 @@
   last_commit_on: 2021/12/07
   status: stale
   last_scrape_at: '2026-02-24T05:39:44Z'
+  theme: family
+  family_id: miscellaneous
+  family_position: 5
 - name: cacheable_flash
   description: |-
     Allows caching of pages with flash messages by rendering flash
@@ -551,7 +566,7 @@
   ecosystem: rubygems
   theme: family
   family_id: rails-family
-  family_position: 4
+  family_position: 6
   minimum_version: '1.8'
   role: author
   first_commit_by_person_on: 2014/11/20
@@ -696,7 +711,7 @@
   ecosystem: rubygems
   theme: family
   family_id: rails-family
-  family_position: 2
+  family_position: 4
   minimum_version: '1.8'
   role: author
   first_commit_by_person_on: 2012/08/14
@@ -753,6 +768,10 @@
   last_commit_on: 2026/01/17
   status: active
   last_scrape_at: '2026-02-24T05:40:05Z'
+  theme: family
+  family_id: rails-family
+  family_position: 1
+  family_primary: true
 - name: each_in_batches
   description: Batch Processing of Records with Blocks in Rails
   language: Ruby
@@ -931,6 +950,9 @@
   last_commit_on: 2025/11/21
   status: active
   last_scrape_at: '2026-02-24T05:40:18Z'
+  theme: family
+  family_id: miscellaneous
+  family_position: 7
 - name: humorous_log_formatter
   description: Humorous Log Levels and Color For Rails.  Customizable!
   language: Ruby
@@ -1023,6 +1045,9 @@
   last_commit_on: 2026/01/22
   status: active
   last_scrape_at: '2026-02-24T05:40:25Z'
+  theme: family
+  family_id: rspec-family
+  family_position: 7
 - name: kettle-dev
   description: "\U0001F372 Kettle::Dev is a meta tool from kettle-rb to streamline
     development and testing. Acts as a shim dependency, pulling in many other dependencies,
@@ -1218,6 +1243,9 @@
   last_commit_on: 2025/11/21
   status: active
   last_scrape_at: '2026-02-24T05:40:39Z'
+  theme: family
+  family_id: miscellaneous
+  family_position: 9
 - name: logos
   description: "\U0001FAB5 A resource for logos, with proper attribution information,
     including license and copyright, for open source projects I care about."
@@ -1244,6 +1272,9 @@
   last_commit_on: 2025/11/21
   status: active
   last_scrape_at: '2026-02-24T05:40:41Z'
+  theme: family
+  family_id: miscellaneous
+  family_position: 10
 - name: masq
   description: Masq supports OpenID 2.0 and supports SReg, AX (fetch and store requests)
     and PAPE as well as some custom additions like multi-factor authentication using
@@ -1349,6 +1380,9 @@
   last_commit_on: 2025/11/21
   status: active
   last_scrape_at: '2026-02-24T05:40:50Z'
+  theme: family
+  family_id: active-record
+  family_position: 13
 - name: oauth
   description: "\U0001F511 A Ruby wrapper for the original OAuth 1.0 / 1.0a spec."
   language: Ruby
@@ -1681,6 +1715,9 @@
   last_commit_on: 2025/06/08
   status: active
   last_scrape_at: '2026-02-24T05:41:19Z'
+  theme: family
+  family_id: miscellaneous
+  family_position: 11
 - name: pretty_feed
   description: |
     PrettyFeed provides a modulizer you can include in a job, worker, class, rake task, etc,
@@ -1907,7 +1944,7 @@
   ecosystem: rubygems
   theme: family
   family_id: rails-family
-  family_position: 5
+  family_position: 7
   minimum_version: '1.8'
   role: author
   first_commit_by_person_on: 2016/03/08
@@ -2945,7 +2982,7 @@
   ecosystem: rubygems
   theme: family
   family_id: rails-family
-  family_position: 1
+  family_position: 2
   minimum_version: '2.3'
   role: author
   first_commit_by_person_on: 2008/11/15
@@ -3076,6 +3113,9 @@
   last_commit_on: 2025/08/13
   status: active
   last_scrape_at: '2026-02-24T05:43:08Z'
+  theme: family
+  family_id: miscellaneous
+  family_position: 12
 - name: shields-badge
   description: |
     Shields::Badge.gem_total_downloads(path_parameters: {gem: 'rails'})
@@ -3111,6 +3151,9 @@
   last_commit_on: 2025/08/18
   status: active
   last_scrape_at: '2026-02-24T05:43:12Z'
+  theme: family
+  family_id: miscellaneous
+  family_position: 13
 - name: shiftable
   description: Move single records (has_one) or collections (has_many) from one parent
     (belongs_to) to another
@@ -3367,7 +3410,7 @@
   ecosystem: rubygems
   theme: family
   family_id: rails-family
-  family_position: 3
+  family_position: 5
   minimum_version: '1.8'
   role: author
   first_commit_by_person_on: 2015/08/24
@@ -3487,7 +3530,7 @@
   ecosystem: rubygems
   theme: family
   family_id: rails-family
-  family_position: 6
+  family_position: 8
   minimum_version: '1.8'
   role: author
   first_commit_by_person_on: 2008/11/15
@@ -3585,6 +3628,9 @@
   last_commit_on: 2025/11/27
   status: active
   last_scrape_at: '2026-02-24T05:43:48Z'
+  theme: family
+  family_id: miscellaneous
+  family_position: 14
 - name: version_gem
   description: "\U0001F516 Versions are good. Versions are cool. Versions will win."
   language: Ruby
@@ -3680,6 +3726,9 @@
   last_commit_on: 2025/12/17
   status: active
   last_scrape_at: '2026-02-24T05:43:56Z'
+  theme: family
+  family_id: miscellaneous
+  family_position: 15
 - name: yard-fence
   description: "\U0001F93A Convert ASCII braces ('{}') to full-width braces ('{}')
     within code fences (triple-or-single backticks) during YARD processing, and back
@@ -3708,6 +3757,9 @@
   last_commit_on: 2026/02/23
   status: active
   last_scrape_at: '2026-02-24T05:43:58Z'
+  theme: family
+  family_id: miscellaneous
+  family_position: 17
 - name: yaml-converter
   description: "\U0001F968 yaml-converter parses YAML files (with inline #note: annotations
     and validation markers) and emits polished Markdown, HTML, and PDF/DOCX (via pandoc)
@@ -3737,6 +3789,9 @@
   last_commit_on: 2026/02/23
   status: active
   last_scrape_at: '2026-02-24T05:44:00Z'
+  theme: family
+  family_id: miscellaneous
+  family_position: 16
 - name: yard-yaml
   description: "\U0001F968 A YARD plugin for YAML documents"
   language: Ruby
@@ -3763,6 +3818,9 @@
   last_commit_on: 2026/02/23
   status: active
   last_scrape_at: '2026-02-24T05:44:03Z'
+  theme: family
+  family_id: miscellaneous
+  family_position: 18
 - name: tree_haver
   description: "\U0001F334 TreeHaver is a cross-Ruby adapter for many AST parsing
     libraries; supporting MRI Ruby, JRuby, & TruffleRuby. Provides unified parsing
@@ -4356,6 +4414,9 @@
   first_commit_by_person: https://github.com/CycloneDX/cyclonedx-ruby-gem/commit/6a174b8a9248c6eb29d90bd2e5f100f7213f2cd5
   first_commit_by_person_on: 2025/10/26
   last_scrape_at: '2026-02-24T05:44:38Z'
+  theme: family
+  family_id: rubygems-bundler-family
+  family_position: 8
 - name: rb-sys
   ecosystem: cargo
   language: Rust
@@ -4575,6 +4636,9 @@
   first_commit_by_person: https://github.com/mongodb/bson-ruby/commit/ddbfce8c9b71470f61b68f0730102e1db4a965f8
   first_commit_by_person_on: 2025/06/02
   last_scrape_at: '2026-02-24T16:32:07Z'
+  theme: family
+  family_id: miscellaneous
+  family_position: 6
 - name: rexml
   ecosystem: rubygems
   language: Ruby
@@ -4602,6 +4666,10 @@
   first_commit_by_person: https://github.com/ruby/rexml/commit/ec410a0d5e5e5daddca82fd1455824219403f676
   first_commit_by_person_on: 2025/07/09
   last_scrape_at: '2026-02-24T16:32:10Z'
+  theme: family
+  family_id: miscellaneous
+  family_position: 1
+  family_primary: true
 - name: bundler
   ecosystem: rubygems
   language: Ruby
@@ -4657,6 +4725,9 @@
   first_commit_by_person: https://github.com/hashie/hashie/commit/a44dd9a2687055d0074f8e71f1c50e3096ee846b
   first_commit_by_person_on: 2015/10/19
   last_scrape_at: '2026-02-24T16:32:15Z'
+  theme: family
+  family_id: miscellaneous
+  family_position: 8
 - name: rails
   ecosystem: rubygems
   family: rails-family
@@ -4684,3 +4755,6 @@
   first_commit_by_person: https://github.com/rails/rails/commit/40143bf9d032fbc0081384f00edb5ca1d600068f
   first_commit_by_person_on: 2023/02/23
   last_scrape_at: '2026-02-24T16:32:18Z'
+  theme: family
+  family_id: rails-family
+  family_position: 3

@@ -41,3 +41,6 @@
 - id: rubocop-lts
   name: RuboCop-LTS Family
   position: 14
+- id: miscellaneous
+  name: Miscellanous
+  position: 15
