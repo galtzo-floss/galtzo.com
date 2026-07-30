@@ -44,3 +44,6 @@
 
 # Sentinels
 .floss_funding.*.lock
+
+# My docs
+/docs/
