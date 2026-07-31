@@ -7,6 +7,7 @@ require 'json'
 require 'uri'
 require 'date'
 require 'time'
+require 'fileutils'
 require 'tty-prompt'
 
 class ProjectUpdater
@@ -45,6 +46,22 @@ class ProjectUpdater
   # Ruby 1.8 is the oldest version that can be meaningfully specified; if a gem
   # truly has no constraint it is safe to assume it was written for 1.8+.
   RUBYGEMS_MINIMUM_VERSION_DEFAULT = '1.8'
+  RUBYGEMS_VERSION_CACHE_TTL = 30 * 24 * 60 * 60
+  CLICKGEMS_DAILY_DOWNLOADS_CACHE_TTL = 24 * 60 * 60
+  RUBYGEMS_VERSION_CACHE_PATH = ENV.fetch(
+    'KETTLE_RUBYGEMS_VERSION_CACHE_PATH',
+    ENV.fetch(
+      'KETTLE_JEM_DEPS_FLOOR_CACHE',
+      File.join(ENV.fetch('XDG_CACHE_HOME', File.join(Dir.home, '.cache')),
+                'kettle-jem/deps-floor-rubygems-versions.json')
+    )
+  )
+  RUBYGEMS_CACHE_BUST_PATH = ENV.fetch(
+    'KETTLE_RUBYGEMS_CACHE_BUST_PATH',
+    File.join(ENV.fetch('XDG_STATE_HOME', File.join(Dir.home, '.local/state')),
+              'kettle-dev/rubygems-cache-bust.json')
+  )
+  CLICKGEMS_CACHE_PATH = ENV.fetch('KETTLE_CLICKGEMS_CACHE', RUBYGEMS_VERSION_CACHE_PATH)
 
   def initialize(surgical_fields: [], discover_rubygems: true, auto_confirm: false, project_filter: nil)
     # SAFETY CHECK: projects_dev.yml must exist
@@ -74,6 +91,7 @@ class ProjectUpdater
     @families = load_yaml(FAMILIES_FILE)
     @rate_limit_delay = 1 # seconds between API calls
     @errors = [] # Track errors for summary
+    @gitlab_token_usable = !GITLAB_TOKEN.nil?
     @surgical_fields = Array(surgical_fields).compact
     @discover_rubygems = discover_rubygems
     @auto_confirm = auto_confirm
@@ -145,7 +163,7 @@ class ProjectUpdater
         abort "❌ No project named '#{@project_filter}' found in projects.yml. Check the name and try again."
       end
     end
-    skippable    = non_person.select { |p| !@surgical_fields.any? && recently_scraped?(p) }
+    skippable    = non_person.select { |p| !@surgical_fields.any? && @project_filter.nil? && recently_scraped?(p) }
     to_process   = non_person - skippable
 
     # Partition what we can actually update
@@ -177,16 +195,18 @@ class ProjectUpdater
     skipped_count = 0
     updated_count = 0
 
-    @projects.each_with_index do |project, index|
+    projects_to_update = @project_filter ? @projects.select { |project| project['name'] == @project_filter } : @projects
+
+    projects_to_update.each_with_index do |project, index|
 
       # Check if project was recently scraped (skip this check in surgical mode)
-      if !@surgical_fields.any? && recently_scraped?(project)
-        puts "[#{index + 1}/#{@projects.size}] ⏭️  Skipping (scraped #{time_ago(project['last_scrape_at'])}): #{project['name']}"
+      if !@surgical_fields.any? && @project_filter.nil? && recently_scraped?(project)
+        puts "[#{index + 1}/#{projects_to_update.size}] ⏭️  Skipping (scraped #{time_ago(project['last_scrape_at'])}): #{project['name']}"
         skipped_count += 1
         next
       end
 
-      puts "\n[#{index + 1}/#{@projects.size}] Processing: #{project['name']}"
+      puts "\n[#{index + 1}/#{projects_to_update.size}] Processing: #{project['name']}"
 
       # Skip projects with no GitHub forge — we have no update source for them
       has_github_forge = (project['forges'] || []).any? { |f| f['type'] == 'GitHub' }
@@ -617,7 +637,7 @@ class ProjectUpdater
 
     project['docs_site']          = scraped[:docs_site]
     project['total_downloads']    = scraped[:total_downloads]
-    project['daily_downloads']    = scraped[:daily_downloads]
+    project['daily_downloads']    = scraped[:daily_downloads] unless scraped[:daily_downloads].nil?
     project['release_downloads']  = scraped[:release_downloads]
     project['release_date']       = scraped[:release_date]
 
@@ -693,21 +713,14 @@ class ProjectUpdater
       result[:tags]            = determine_tags_from_gem(gem_data)
       result[:release_date]    = fetch_rubygems_release_date(pkg_name)
 
-      # Fetch the latest version's ruby_version requirement from v2 API
-      # (v1 API doesn't include this field)
-      latest_version = gem_data['version']
+      latest_version = latest_rubygems_version(pkg_name)
       if latest_version
-        v2_version_data = api_request("https://rubygems.org/api/v2/rubygems/#{pkg_name}/versions/#{latest_version}.json")
-        if v2_version_data && v2_version_data['ruby_version']
-          result[:minimum_version] = extract_minimum_version(v2_version_data['ruby_version'])
-          puts "    💎 Minimum Ruby version: #{result[:minimum_version]}  (raw: #{v2_version_data['ruby_version']})"
-        else
-          result[:minimum_version] = RUBYGEMS_MINIMUM_VERSION_DEFAULT
-          puts "    💎 Minimum Ruby version: #{RUBYGEMS_MINIMUM_VERSION_DEFAULT} (default — API reported none)"
-        end
+        ruby_version = latest_version['ruby_version']
+        result[:minimum_version] = extract_minimum_version(ruby_version) || RUBYGEMS_MINIMUM_VERSION_DEFAULT
+        puts "    💎 Minimum Ruby version: #{result[:minimum_version]}  (raw: #{ruby_version || 'none'})"
       else
         result[:minimum_version] = RUBYGEMS_MINIMUM_VERSION_DEFAULT
-        puts "    💎 Minimum Ruby version: #{RUBYGEMS_MINIMUM_VERSION_DEFAULT} (default — no version in API response)"
+        puts "    💎 Minimum Ruby version: #{RUBYGEMS_MINIMUM_VERSION_DEFAULT} (default — no version data)"
       end
 
       gem_info = fetch_rubygems_info(pkg_name)
@@ -1061,16 +1074,9 @@ class ProjectUpdater
     # Get release date
     release_date = fetch_rubygems_release_date(gem_name)
 
-    # Determine minimum Ruby version from v2 API
-    # The v1 API doesn't have this field, but v2 does
-    min_version = RUBYGEMS_MINIMUM_VERSION_DEFAULT
-    latest_version = gem_data['version']
-    if latest_version
-      v2_data = api_request("https://rubygems.org/api/v2/rubygems/#{gem_name}/versions/#{latest_version}.json")
-      if v2_data && v2_data['ruby_version']
-        min_version = extract_minimum_version(v2_data['ruby_version']) || RUBYGEMS_MINIMUM_VERSION_DEFAULT
-      end
-    end
+    latest_version = latest_rubygems_version(gem_name)
+    min_version = extract_minimum_version(latest_version&.fetch('ruby_version', nil)) ||
+                  RUBYGEMS_MINIMUM_VERSION_DEFAULT
 
     # Build the project hash
     project = {
@@ -1283,7 +1289,7 @@ class ProjectUpdater
         gem_info = fetch_rubygems_info(gem_name)
         if gem_info
           project['total_downloads']   = gem_info[:total_downloads]
-          project['daily_downloads']   = gem_info[:daily_downloads]
+          project['daily_downloads']   = gem_info[:daily_downloads] unless gem_info[:daily_downloads].nil?
           project['release_downloads'] = gem_info[:release_downloads]
           puts "  📦 #{field}: #{gem_info[field.to_sym]}"
         end
@@ -1355,22 +1361,11 @@ class ProjectUpdater
 
       case eco
       when 'rubygems'
-        # v1 API omits required_ruby_version; use v2 which exposes ruby_version
-        gem_data = api_request("https://rubygems.org/api/v1/gems/#{name}.json")
-        if !gem_data
-          puts "  ⚠️  Could not fetch v1 gem data for #{name} — skipping"
-        else
-          latest_version = gem_data['version']
-          v2_data = api_request("https://rubygems.org/api/v2/rubygems/#{name}/versions/#{latest_version}.json")
-          if v2_data && v2_data['ruby_version']
-            min_ver = extract_minimum_version(v2_data['ruby_version']) || RUBYGEMS_MINIMUM_VERSION_DEFAULT
-            project['minimum_version'] = min_ver
-            puts "  💎 minimum_version (rubygems v2 API): #{min_ver}  (raw: #{v2_data['ruby_version']})"
-          else
-            project['minimum_version'] = RUBYGEMS_MINIMUM_VERSION_DEFAULT
-            puts "  💎 minimum_version: #{RUBYGEMS_MINIMUM_VERSION_DEFAULT} (default — API reported none for #{name} v#{latest_version})"
-          end
-        end
+        latest_version = latest_rubygems_version(name)
+        ruby_version = latest_version&.fetch('ruby_version', nil)
+        min_ver = extract_minimum_version(ruby_version) || RUBYGEMS_MINIMUM_VERSION_DEFAULT
+        project['minimum_version'] = min_ver
+        puts "  💎 minimum_version (RubyGems versions): #{min_ver}  (raw: #{ruby_version || 'none'})"
 
       when 'cargo'
         cargo_info = fetch_cargo_info(name)
@@ -1456,7 +1451,7 @@ class ProjectUpdater
 
       if gem_info
         project['total_downloads'] = gem_info[:total_downloads]
-        project['daily_downloads'] = gem_info[:daily_downloads]
+        project['daily_downloads'] = gem_info[:daily_downloads] unless gem_info[:daily_downloads].nil?
         project['release_downloads'] = gem_info[:release_downloads]
 
         puts "  📦 Total downloads: #{gem_info[:total_downloads]}"
@@ -1464,19 +1459,10 @@ class ProjectUpdater
         puts "  📥 Release downloads: #{gem_info[:release_downloads]}"
       end
 
-      # Step 4b: Minimum Ruby version via v2 API (v1 omits this field)
-      gem_data_v1 = api_request("https://rubygems.org/api/v1/gems/#{gem_name}.json")
-      if gem_data_v1
-        latest_version = gem_data_v1['version']
-        v2_data = api_request("https://rubygems.org/api/v2/rubygems/#{gem_name}/versions/#{latest_version}.json")
-        if v2_data && v2_data['ruby_version']
-          project['minimum_version'] = extract_minimum_version(v2_data['ruby_version']) || RUBYGEMS_MINIMUM_VERSION_DEFAULT
-          puts "  💎 Minimum Ruby version: #{project['minimum_version']}  (raw: #{v2_data['ruby_version']})"
-        else
-          project['minimum_version'] ||= RUBYGEMS_MINIMUM_VERSION_DEFAULT
-          puts "  💎 Minimum Ruby version: #{project['minimum_version']} (default — API reported none)"
-        end
-      end
+      latest_version = latest_rubygems_version(gem_name)
+      ruby_version = latest_version&.fetch('ruby_version', nil)
+      project['minimum_version'] = extract_minimum_version(ruby_version) || RUBYGEMS_MINIMUM_VERSION_DEFAULT
+      puts "  💎 Minimum Ruby version: #{project['minimum_version']}  (raw: #{ruby_version || 'none'})"
     end
 
     # Step 7: Latest release date
@@ -1513,7 +1499,9 @@ class ProjectUpdater
 
   def sync_to_dev(project)
 
-    dev_project = @projects_dev.find { |p| p['name'] == project['name'] }
+    dev_project = @projects_dev.find do |p|
+      p['name'] == project['name'] && p['ecosystem'] == project['ecosystem']
+    end
     return unless dev_project
 
     # Sync the computed fields
@@ -1696,45 +1684,100 @@ class ProjectUpdater
     nil
   end
 
-  BESTGEMS_API = "http://bestgems.org/api/v1/gems"
+  CLICKGEMS_API = 'https://sql-clickhouse.clickhouse.com/'
+  CLICKGEMS_USERNAME = 'demo'
 
   # Number of most-recent non-nil days used for the trailing daily-average.
   # 28 days = exactly 4 weeks, which eliminates weekday/weekend download cycles.
   DAILY_AVG_WINDOW = 28
 
   def fetch_bestgems_daily(gem_name)
-    url  = "#{BESTGEMS_API}/#{gem_name}/daily_downloads.json"
-    data = api_request(url)
-    return nil unless data.is_a?(Array) && data.any?
+    cached_entry = clickgems_daily_downloads_cache_entry(gem_name)
+    if cached_entry && !clickgems_refresh? && !fresh_release_marker?(gem_name)
+      puts "    ♻️  Using shared ClickGems cache for #{gem_name}"
+      return cached_entry['daily_downloads']
+    end
 
-    # Response is the gem's *complete* download history, newest-first.
-    # A single day's count is too volatile (can vary 3-4× within one week due to
-    # weekday/weekend patterns).  Instead compute a 28-day trailing average:
-    #   • 28 days = exactly 4 weeks → eliminates Mon-spike / Sun-trough cycles
-    #   • Skip nil rows (bestgems data gaps, ~12 per gem lifetime) so they don't
-    #     drag the average down.
-    # The stored value is a rounded integer; the UI displays it as "~N/d" to
-    # signal it is an average, not a spot reading.
-    recent = data.select { |row| !row['daily_downloads'].nil? }.first(DAILY_AVG_WINDOW)
-    return nil if recent.empty?
-
-    (recent.sum { |row| row['daily_downloads'] }.to_f / recent.size).round
+    # ClickGems is RubyGems' public ClickHouse analytics service. Querying its
+    # pre-aggregated daily table avoids the unavailable BestGems endpoint.
+    gem = gem_name.gsub("'", "''")
+    query = <<~SQL
+      SELECT round(avg(downloads)) AS daily_downloads
+      FROM (
+        SELECT date, sum(count) AS downloads
+        FROM rubygems.downloads_per_day
+        WHERE gem = '#{gem}'
+          AND date >= today() - INTERVAL 40 DAY
+        GROUP BY date
+        ORDER BY date DESC
+        LIMIT #{DAILY_AVG_WINDOW}
+      )
+      FORMAT JSON
+    SQL
+    daily_downloads = clickgems_request(query).dig('data', 0, 'daily_downloads')&.round
+    write_clickgems_daily_downloads_cache_entry(gem_name, daily_downloads) unless daily_downloads.nil?
+    daily_downloads
   rescue => e
-    error_msg = "Failed to fetch bestgems daily downloads for #{gem_name}: #{e.message}"
+    return cached_entry['daily_downloads'] if cached_entry
+
+    error_msg = "Failed to fetch ClickGems daily downloads for #{gem_name}: #{e.message}"
     @errors << error_msg unless @errors.include?(error_msg)
     puts "    ⚠️  #{error_msg}"
     nil
   end
 
-  def fetch_rubygems_release_date(gem_name)
-    # The versions endpoint returns an array of all versions, with the latest first
+  def clickgems_request(query)
+    uri = URI(CLICKGEMS_API)
+    request = Net::HTTP::Post.new(uri)
+    request['User-Agent'] = 'Galtzo-Project-Updater'
+    request.basic_auth(CLICKGEMS_USERNAME, '')
+    request.body = query
+
+    response = Net::HTTP.start(uri.hostname, uri.port, use_ssl: true) do |http|
+      http.request(request)
+    end
+    raise "ClickGems API error: #{response.code} - #{response.body[0..200]}" unless response.code.to_i == 200
+
+    JSON.parse(response.body)
+  end
+
+  # Shares successful RubyGems version responses with the kettle toolchain.
+  # Version data covers release dates and required Ruby versions, unlike the
+  # current download counters which must still come from the gem metadata API.
+  def fetch_rubygems_versions(gem_name)
+    cached_entry = rubygems_version_cache_entry(gem_name)
+    if cached_entry && !shared_rubygems_refresh? && !fresh_release_marker?(gem_name)
+      puts "    ♻️  Using shared RubyGems version cache for #{gem_name}"
+      return cached_entry['entries']
+    end
+
     api_url = "https://rubygems.org/api/v1/versions/#{gem_name}.json"
-    data = api_request(api_url)
+    begin
+      data = api_request(api_url)
+      unless data.is_a?(Array)
+        puts "    ⚠️  RubyGems versions response for #{gem_name} was not an array; no version data available."
+        return []
+      end
 
-    return nil unless data && data.is_a?(Array) && data.any?
+      write_rubygems_version_cache_entry(gem_name, data)
+      data
+    rescue => e
+      if cached_entry
+        puts "    ⚠️  Live RubyGems version lookup failed for #{gem_name}; using fresh shared cache: #{e.message}"
+        cached_entry['entries']
+      else
+        raise
+      end
+    end
+  end
 
-    # Get the first non-prerelease version
-    latest_version = data.find { |v| !v['prerelease'] }
+  def latest_rubygems_version(gem_name)
+    versions = fetch_rubygems_versions(gem_name)
+    versions.find { |version| !version['prerelease'] }
+  end
+
+  def fetch_rubygems_release_date(gem_name)
+    latest_version = latest_rubygems_version(gem_name)
     return nil unless latest_version && latest_version['created_at']
 
     Date.parse(latest_version['created_at']).strftime('%Y/%m/%d')
@@ -1743,6 +1786,92 @@ class ProjectUpdater
     @errors << error_msg unless @errors.include?(error_msg)
     puts "    ⚠️  #{error_msg}"
     nil
+  end
+
+  def rubygems_version_cache_entry(gem_name)
+    return nil unless rubygems_version_cache_enabled?
+
+    entry = read_json_object(RUBYGEMS_VERSION_CACHE_PATH).fetch('versions', {})[gem_name]
+    return nil unless entry.is_a?(Hash) && entry['entries'].is_a?(Array)
+    return nil unless fresh_timestamp?(entry['cached_at'])
+
+    entry
+  end
+
+  def clickgems_daily_downloads_cache_entry(gem_name)
+    return nil unless clickgems_cache_enabled?
+
+    entry = read_json_object(CLICKGEMS_CACHE_PATH).fetch('clickgems_daily_downloads', {})[gem_name]
+    return nil unless entry.is_a?(Hash) && entry['daily_downloads'].is_a?(Numeric)
+    return nil unless fresh_timestamp?(entry['cached_at'], ttl: CLICKGEMS_DAILY_DOWNLOADS_CACHE_TTL)
+
+    entry
+  end
+
+  def fresh_release_marker?(gem_name)
+    marker = read_json_object(RUBYGEMS_CACHE_BUST_PATH).fetch('releases', {})[gem_name]
+    marker.is_a?(Hash) && fresh_timestamp?(marker['released_at'])
+  end
+
+  def shared_rubygems_refresh?
+    %w[1 true yes on enabled].include?(ENV.fetch('KETTLE_RUBYGEMS_REFRESH', '').downcase) ||
+      %w[1 true yes on enabled].include?(ENV.fetch('KETTLE_JEM_DEPS_FLOOR_CACHE_REFRESH', '').downcase)
+  end
+
+  def clickgems_refresh?
+    shared_rubygems_refresh? ||
+      %w[1 true yes on enabled].include?(ENV.fetch('KETTLE_CLICKGEMS_CACHE_REFRESH', '').downcase)
+  end
+
+  def fresh_timestamp?(timestamp, ttl: RUBYGEMS_VERSION_CACHE_TTL)
+    Time.iso8601(timestamp.to_s) >= Time.now.utc - ttl
+  rescue ArgumentError
+    false
+  end
+
+  def read_json_object(path)
+    return {} unless File.file?(path)
+
+    data = JSON.parse(File.read(path))
+    data.is_a?(Hash) ? data : {}
+  rescue JSON::ParserError
+    {}
+  end
+
+  def write_rubygems_version_cache_entry(gem_name, entries)
+    return unless rubygems_version_cache_enabled?
+
+    cache = read_json_object(RUBYGEMS_VERSION_CACHE_PATH)
+    cache['versions'] = {} unless cache['versions'].is_a?(Hash)
+    cache['versions'][gem_name] = {
+      'cached_at' => Time.now.utc.iso8601,
+      'entries' => entries
+    }
+
+    FileUtils.mkdir_p(File.dirname(RUBYGEMS_VERSION_CACHE_PATH))
+    File.write(RUBYGEMS_VERSION_CACHE_PATH, "#{JSON.pretty_generate(cache)}\n")
+  end
+
+  def write_clickgems_daily_downloads_cache_entry(gem_name, daily_downloads)
+    return unless clickgems_cache_enabled?
+
+    cache = read_json_object(CLICKGEMS_CACHE_PATH)
+    cache['clickgems_daily_downloads'] = {} unless cache['clickgems_daily_downloads'].is_a?(Hash)
+    cache['clickgems_daily_downloads'][gem_name] = {
+      'cached_at' => Time.now.utc.iso8601,
+      'daily_downloads' => daily_downloads
+    }
+
+    FileUtils.mkdir_p(File.dirname(CLICKGEMS_CACHE_PATH))
+    File.write(CLICKGEMS_CACHE_PATH, "#{JSON.pretty_generate(cache)}\n")
+  end
+
+  def rubygems_version_cache_enabled?
+    !%w[false 0 no off disabled].include?(RUBYGEMS_VERSION_CACHE_PATH.downcase)
+  end
+
+  def clickgems_cache_enabled?
+    !%w[false 0 no off disabled].include?(CLICKGEMS_CACHE_PATH.downcase)
   end
 
   def github_api_request(url)
@@ -1754,6 +1883,10 @@ class ProjectUpdater
 
     response = Net::HTTP.start(uri.hostname, uri.port, use_ssl: true) do |http|
       http.request(request)
+    end
+
+    if redirect_response?(response)
+      return github_api_request(redirect_url(response, from: uri))
     end
 
     if response.code.to_i == 404
@@ -1768,11 +1901,21 @@ class ProjectUpdater
   def gitlab_api_request(url)
     uri = URI(url)
     request = Net::HTTP::Get.new(uri)
-    request['Authorization'] = "Bearer #{GITLAB_TOKEN}" if GITLAB_TOKEN
+    request['Authorization'] = "Bearer #{GITLAB_TOKEN}" if @gitlab_token_usable
     request['User-Agent'] = 'Galtzo-Project-Updater'
 
     response = Net::HTTP.start(uri.hostname, uri.port, use_ssl: true) do |http|
       http.request(request)
+    end
+
+    if response.code.to_i == 401 && @gitlab_token_usable
+      @gitlab_token_usable = false
+      puts "    ⚠️  GITLAB_TOKEN was rejected; retrying public GitLab requests without it."
+      return gitlab_api_request(url)
+    end
+
+    if redirect_response?(response)
+      return gitlab_api_request(redirect_url(response, from: uri))
     end
 
     if response.code.to_i == 404
@@ -1793,6 +1936,10 @@ class ProjectUpdater
       http.request(request)
     end
 
+    if redirect_response?(response)
+      return api_request(redirect_url(response, from: uri))
+    end
+
     if response.code.to_i == 404
       return nil
     elsif response.code.to_i != 200
@@ -1800,6 +1947,17 @@ class ProjectUpdater
     end
 
     JSON.parse(response.body)
+  end
+
+  def redirect_response?(response)
+    response.is_a?(Net::HTTPRedirection) && !response['location'].to_s.empty?
+  end
+
+  def redirect_url(response, from:)
+    redirect = URI.join(from, response.fetch('location'))
+    raise "Refusing non-HTTPS redirect to #{redirect}" unless redirect.scheme == 'https'
+
+    redirect.to_s
   end
 
   def extract_repo_path(url)

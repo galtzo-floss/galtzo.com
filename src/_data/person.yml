@@ -1,37 +1,25 @@
 ---
-# Full name with title
-full_name: "@pboling team leader, web architect, security researcher, and rubyist. Building for web since 2004. \U0001F9F0"
-
-# Short name/nickname
-name: "Peter Boling"
-nickname: "Peter"
-
-# Greeting message (used for personalization)
-greeting: "Hi, I am"
-
-# Profile image
-avatar: "avatar.jpg"
-headshot: "headshot.jpg"
-
-# Contact information
+full_name: "@pboling team leader, web architect, security researcher, and rubyist.
+  Building for web since 2004. \U0001F9F0"
+name: Peter Boling
+nickname: Peter
+greeting: Hi, I am
+avatar: avatar.jpg
+headshot: headshot.jpg
 contact_info:
   email:
-    handle: "peter.boling"
-    domain: "gmail.com"
-    full: "peter.boling@gmail.com"
+    handle: peter.boling
+    domain: gmail.com
+    full: peter.boling@gmail.com
   phone: "+1-925-252-5351"
-
-# Personal summary/tagline
 summary:
-  - I am a computer programmer
-  - I build web applications
-  - I am a father, son, husband, brother
-  - I work on free and open-source projects
-  - I tenaciously study reality
-  - I am a humanist
-  - I took this picture of jellyfish
-
-# Main description for projects page
+- I am a computer programmer
+- I build web applications
+- I am a father, son, husband, brother
+- I work on free and open-source projects
+- I tenaciously study reality
+- I am a humanist
+- I took this picture of jellyfish
 description: |
   <span class="intro">
   Hi! I love to solve problems with code.
@@ -65,7 +53,7 @@ funding_sites:
 - type: OpenCollective
   url: https://opencollective.com/dynamoid
 - type: OpenCollective
-  url: https://opencollective.com/kettle-rb
+  url: https://opencollective.com/kettle-dev
 - type: OpenCollective
   url: https://opencollective.com/galtzo-floss
 - type: OpenCollective
@@ -127,7 +115,7 @@ orgs:
 - appraisal-rb
 - contriboss
 - Dynamoid
-- kettle-rb
+- kettle-dev
 - floss_funding
 - galtzo-floss
 - omniauth

@@ -1,46 +1,61 @@
 ---
-- id: ast-merge
-  name: "*-merge Gem Family"
+- id: smorg-rb
+  name: StructuredMerge Ruby
   position: 1
+- id: smorg-ts
+  name: StructuredMerge TypeScript
+  position: 2
+- id: smorg-rs
+  name: StructuredMerge Rust
+  position: 3
+- id: smorg-go
+  name: StructuredMerge Go
+  position: 4
+- id: ast-merge
+  name: AST / Ruby Interoperability
+  position: 6
+- id: galtzo-floss
+  name: Galtzo FLOSS
+  position: 5
 - id: active-record
   name: ActiveRecord Plugins
-  position: 2
+  position: 7
 - id: logging-family
   name: Logging Tools
-  position: 3
+  position: 8
 - id: rspec-family
   name: RSpec Plugins
-  position: 4
+  position: 9
 - id: adoptable-family
   name: Looking for Maintainers!
-  position: 5
+  position: 10
 - id: archived-family
   name: Thanks for the Memories!
-  position: 6
+  position: 11
 - id: rails-family
   name: Rails Plugins
-  position: 7
+  position: 12
 - id: rubygems-bundler-family
   name: RubyGems/Bundler Plugins
-  position: 8
-- id: kettle-rb-family
-  name: Kettle-RB Family
-  position: 9
+  position: 13
+- id: kettle-dev-family
+  name: Kettle Dev
+  position: 14
 - id: ruby-openid
   name: Ruby OpenID Family
-  position: 10
+  position: 15
 - id: ruby-oauth
   name: Ruby OAuth Family
-  position: 11
+  position: 16
 - id: omniauth-family
   name: OmniAuth Family
-  position: 12
+  position: 17
 - id: resque-family
   name: Resque Family
-  position: 13
+  position: 18
 - id: rubocop-lts
   name: RuboCop-LTS Family
-  position: 14
+  position: 19
 - id: miscellaneous
   name: Miscellanous
-  position: 15
+  position: 20

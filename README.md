@@ -38,8 +38,25 @@ back to both `projects.yml` and `projects_dev.yml`.
 | `GITHUB_TOKEN` | Recommended | Raises the GitHub API rate limit from 60 to 5,000 req/hr |
 | `GITLAB_TOKEN` | Optional | Authenticates GitLab API requests |
 | `RUBYGEMS_HANDLE` | Recommended | Your RubyGems username (e.g. `pboling`) — enables gem discovery |
+| `KETTLE_RUBYGEMS_VERSION_CACHE_PATH` | Optional | Preferred shared RubyGems version-response cache path |
+| `KETTLE_JEM_DEPS_FLOOR_CACHE` | Optional | Legacy shared cache path, used when the preferred variable is unset |
+| `KETTLE_RUBYGEMS_REFRESH` | Optional | Set to `true` to bypass fresh cached RubyGems version responses |
+| `KETTLE_CLICKGEMS_CACHE` | Optional | Shared ClickGems daily-download cache path; defaults to the version-response cache file |
+| `KETTLE_CLICKGEMS_CACHE_REFRESH` | Optional | Set to `true` to bypass a fresh cached ClickGems daily-download average |
 
 Set these in a `.env.local` file (or however your shell loads env vars) before running.
+
+`update_projects` uses the shared RubyGems version cache for release dates and
+minimum Ruby versions. It reads cached responses before making a version API
+request, respects fresh release markers, and writes successful live responses
+back to the cache. Download counters remain live because they are not version
+data.
+
+Daily RubyGems downloads use ClickGems' public ClickHouse analytics dataset and
+are stored as a trailing 28-day average. These values are cached per gem for 24
+hours in the shared cache; a fresh release marker or
+`KETTLE_RUBYGEMS_REFRESH=true` invalidates both the RubyGems version and
+ClickGems entries for that gem.
 
 #### Full update (default)
 

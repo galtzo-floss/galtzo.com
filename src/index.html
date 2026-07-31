@@ -387,7 +387,7 @@ body_class: projects
           <%# Build a reusable list of tags for the card so filtering doesn't rely on visible DOM elements %>
           <% tags_for_card = (project['tags'] || []).dup %>
           <% tags_for_card << project['role'] %>
-          <% tags_for_card << year %>
+          <% tags_for_card << year if year %>
           <% if project['minimum_version'] %>
             <% tags_for_card << "#{project['language']} >= #{project['minimum_version']}" %>
           <% end %>
@@ -395,7 +395,7 @@ body_class: projects
           <% tags_for_card << "adoptable" if project['adoptable'] %>
           <% tags_for_card << "archived" if project['status'] == 'archived' %>
           <% tags_for_card.sort! %>
-          <% sorted_tags = (project['tags'] || []).sort %>
+          <% sorted_tags = (project['tags'] || []).compact.sort %>
       <% aspect_class = project['aspect'].nil? ? '' : "card-#{project['aspect']}" %>
       <% theme_class = project['theme'] ? "theme-#{project['theme']}" : '' %>
       <% archived_class = project['archived'] || project['status'] == 'archived' || project['theme'] == 'avoid-me' ? 'archived' : '' %>
@@ -634,7 +634,7 @@ body_class: projects
       <%# Build a reusable list of tags for the card so filtering doesn't rely on visible DOM elements %>
       <% tags_for_card = (project['tags'] || []).dup %>
       <% tags_for_card << project['role'] %>
-      <% tags_for_card << year %>
+      <% tags_for_card << year if year %>
       <% if project['minimum_version'] %>
         <% tags_for_card << "#{project['language']} >= #{project['minimum_version']}" %>
       <% end %>
