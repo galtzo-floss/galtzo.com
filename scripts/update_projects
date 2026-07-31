@@ -37,7 +37,7 @@ class ProjectUpdater
   VALID_SURGICAL_FIELDS = %w[
     github_stars gitlab_stars codeberg_stars
     total_downloads daily_downloads release_downloads
-    minimum_version
+    minimum_version minimum_node_version
     release_date last_commit_on status
     first_commit_by_person first_commit_by_person_on
   ]
@@ -533,8 +533,13 @@ class ProjectUpdater
     when 'Go'         then "Minimum Go version#{label} (e.g. 1.21)"
     else                   "Minimum runtime version#{label}"
     end
-    project['minimum_version'] = ask("  #{version_label}",
-                                     default: opts[:minimum_version] || scraped[:minimum_version])
+    if ecosystem == 'npm'
+      project['minimum_node_version'] = ask("  Minimum Node.js version",
+                                            default: opts[:minimum_node_version] || scraped[:minimum_node_version])
+    else
+      project['minimum_version'] = ask("  #{version_label}",
+                                       default: opts[:minimum_version] || scraped[:minimum_version])
+    end
 
     # ── Tags ──────────────────────────────────────────────────────────────────
     scraped_tags_str = scraped[:tags]&.join(', ')
@@ -694,7 +699,7 @@ class ProjectUpdater
   # package was not found or scrape failed.
   def scrape_ecosystem_data(pkg_name, ecosystem)
     result = { found: false, github_url: nil, description: nil,
-               minimum_version: nil, tags: nil, docs_site: nil,
+               minimum_version: nil, minimum_node_version: nil, tags: nil, docs_site: nil,
                total_downloads: nil, daily_downloads: nil,
                release_downloads: nil, release_date: nil }
 
@@ -770,7 +775,7 @@ class ProjectUpdater
       result[:found]           = true
       result[:description]     = npm_info[:description]
       result[:release_date]    = npm_info[:release_date]
-      result[:minimum_version] = npm_info[:node_version]
+      result[:minimum_node_version] = npm_info[:node_version]
       puts "    📅 Latest release: #{npm_info[:release_date] || 'unknown'}"
 
       if npm_info[:repository]
@@ -1381,8 +1386,8 @@ class ProjectUpdater
         npm_info = fetch_npm_info(name)
         if npm_info && npm_info[:node_version]
           min_ver = npm_info[:node_version]
-          project['minimum_version'] = min_ver
-          puts "  📦 minimum_version (npm): #{min_ver}"
+          project['minimum_node_version'] = min_ver
+          puts "  📦 minimum_node_version (npm): #{min_ver}"
         else
           puts "  ⚠️  node version not available for #{name} — leaving unchanged"
         end
@@ -1508,7 +1513,7 @@ class ProjectUpdater
     sync_fields = %w[
       github_stars gitlab_stars codeberg_stars
       total_downloads daily_downloads release_downloads
-      minimum_version
+      minimum_version minimum_node_version
       release_date last_commit_on status last_scrape_at
       first_commit_by_person first_commit_by_person_on
     ]

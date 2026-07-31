@@ -3706,7 +3706,7 @@
   description: Yet Another Crypto Scanner; Alternative Front End Demo for DEX
   language: TypeScript
   ecosystem: none
-  minimum_version: '5.8'
+  minimum_typescript_version: '5.8'
   role: author
   first_commit_by_person_on: 2025/09/24
   first_commit_by_person: https://github.com/pboling/yacs/commit/1a1182a2d0949ea0a2170b9374983687d43539cf
@@ -5609,6 +5609,7 @@
   description: 'StructuredMerge TypeScript package: ast-merge.'
   language: TypeScript
   ecosystem: npm
+  minimum_typescript_version: '5.9.3'
   theme: family
   family_id: smorg-ts
   family_position: 1
@@ -5638,6 +5639,7 @@
   description: 'StructuredMerge TypeScript package: ast-template.'
   language: TypeScript
   ecosystem: npm
+  minimum_typescript_version: '5.9.3'
   theme: family
   family_id: smorg-ts
   family_position: 2
@@ -5667,6 +5669,7 @@
   description: 'StructuredMerge TypeScript package: binary-merge.'
   language: TypeScript
   ecosystem: npm
+  minimum_typescript_version: '5.9.3'
   theme: family
   family_id: smorg-ts
   family_position: 3
@@ -5696,6 +5699,7 @@
   description: 'StructuredMerge TypeScript package: go-merge.'
   language: TypeScript
   ecosystem: npm
+  minimum_typescript_version: '5.9.3'
   theme: family
   family_id: smorg-ts
   family_position: 4
@@ -5725,6 +5729,7 @@
   description: 'StructuredMerge TypeScript package: js-yaml-merge.'
   language: TypeScript
   ecosystem: npm
+  minimum_typescript_version: '5.9.3'
   theme: family
   family_id: smorg-ts
   family_position: 5
@@ -5754,6 +5759,7 @@
   description: 'StructuredMerge TypeScript package: json-merge.'
   language: TypeScript
   ecosystem: npm
+  minimum_typescript_version: '5.9.3'
   theme: family
   family_id: smorg-ts
   family_position: 6
@@ -5783,6 +5789,7 @@
   description: 'StructuredMerge TypeScript package: kettle-nodule.'
   language: TypeScript
   ecosystem: npm
+  minimum_typescript_version: '5.9.3'
   theme: family
   family_id: smorg-ts
   family_position: 7
@@ -5812,6 +5819,7 @@
   description: 'StructuredMerge TypeScript package: markdown-it-merge.'
   language: TypeScript
   ecosystem: npm
+  minimum_typescript_version: '5.9.3'
   theme: family
   family_id: smorg-ts
   family_position: 8
@@ -5841,6 +5849,7 @@
   description: 'StructuredMerge TypeScript package: markdown-merge.'
   language: TypeScript
   ecosystem: npm
+  minimum_typescript_version: '5.9.3'
   theme: family
   family_id: smorg-ts
   family_position: 9
@@ -5870,6 +5879,7 @@
   description: 'StructuredMerge TypeScript package: peggy-toml-merge.'
   language: TypeScript
   ecosystem: npm
+  minimum_typescript_version: '5.9.3'
   theme: family
   family_id: smorg-ts
   family_position: 10
@@ -5899,6 +5909,7 @@
   description: 'StructuredMerge TypeScript package: plain-merge.'
   language: TypeScript
   ecosystem: npm
+  minimum_typescript_version: '5.9.3'
   theme: family
   family_id: smorg-ts
   family_position: 11
@@ -5928,6 +5939,7 @@
   description: 'StructuredMerge TypeScript package: ruby-merge.'
   language: TypeScript
   ecosystem: npm
+  minimum_typescript_version: '5.9.3'
   theme: family
   family_id: smorg-ts
   family_position: 12
@@ -5957,6 +5969,7 @@
   description: 'StructuredMerge TypeScript package: rust-merge.'
   language: TypeScript
   ecosystem: npm
+  minimum_typescript_version: '5.9.3'
   theme: family
   family_id: smorg-ts
   family_position: 13
@@ -5986,6 +5999,7 @@
   description: 'StructuredMerge TypeScript package: toml-merge.'
   language: TypeScript
   ecosystem: npm
+  minimum_typescript_version: '5.9.3'
   theme: family
   family_id: smorg-ts
   family_position: 14
@@ -6015,6 +6029,7 @@
   description: 'StructuredMerge TypeScript package: tree-haver.'
   language: TypeScript
   ecosystem: npm
+  minimum_typescript_version: '5.9.3'
   theme: family
   family_id: smorg-ts
   family_position: 15
@@ -6044,6 +6059,7 @@
   description: 'StructuredMerge TypeScript package: typescript-compiler-merge.'
   language: TypeScript
   ecosystem: npm
+  minimum_typescript_version: '5.9.3'
   theme: family
   family_id: smorg-ts
   family_position: 16
@@ -6073,6 +6089,7 @@
   description: 'StructuredMerge TypeScript package: typescript-merge.'
   language: TypeScript
   ecosystem: npm
+  minimum_typescript_version: '5.9.3'
   theme: family
   family_id: smorg-ts
   family_position: 17
@@ -6102,6 +6119,7 @@
   description: 'StructuredMerge TypeScript package: yaml-merge.'
   language: TypeScript
   ecosystem: npm
+  minimum_typescript_version: '5.9.3'
   theme: family
   family_id: smorg-ts
   family_position: 18
@@ -6131,6 +6149,7 @@
   description: 'StructuredMerge TypeScript package: zip-merge.'
   language: TypeScript
   ecosystem: npm
+  minimum_typescript_version: '5.9.3'
   theme: family
   family_id: smorg-ts
   family_position: 19
@@ -6163,7 +6182,7 @@
   theme: family
   family_id: smorg-rs
   family_position: 1
-  minimum_version:
+  minimum_version: '1.85'
   role: author
   first_commit_by_person_on:
   first_commit_by_person:
@@ -6192,7 +6211,7 @@
   theme: family
   family_id: smorg-rs
   family_position: 2
-  minimum_version:
+  minimum_version: '1.85'
   role: author
   first_commit_by_person_on:
   first_commit_by_person:
@@ -6221,7 +6240,7 @@
   theme: family
   family_id: smorg-rs
   family_position: 3
-  minimum_version:
+  minimum_version: '1.85'
   role: author
   first_commit_by_person_on:
   first_commit_by_person:
@@ -6250,7 +6269,7 @@
   theme: family
   family_id: smorg-rs
   family_position: 4
-  minimum_version:
+  minimum_version: '1.85'
   role: author
   first_commit_by_person_on:
   first_commit_by_person:
@@ -6279,7 +6298,7 @@
   theme: family
   family_id: smorg-rs
   family_position: 5
-  minimum_version:
+  minimum_version: '1.85'
   role: author
   first_commit_by_person_on:
   first_commit_by_person:
@@ -6308,7 +6327,7 @@
   theme: family
   family_id: smorg-rs
   family_position: 6
-  minimum_version:
+  minimum_version: '1.85'
   role: author
   first_commit_by_person_on:
   first_commit_by_person:
@@ -6337,7 +6356,7 @@
   theme: family
   family_id: smorg-rs
   family_position: 7
-  minimum_version:
+  minimum_version: '1.85'
   role: author
   first_commit_by_person_on:
   first_commit_by_person:
@@ -6366,7 +6385,7 @@
   theme: family
   family_id: smorg-rs
   family_position: 8
-  minimum_version:
+  minimum_version: '1.85'
   role: author
   first_commit_by_person_on:
   first_commit_by_person:
@@ -6395,7 +6414,7 @@
   theme: family
   family_id: smorg-rs
   family_position: 9
-  minimum_version:
+  minimum_version: '1.85'
   role: author
   first_commit_by_person_on:
   first_commit_by_person:
@@ -6424,7 +6443,7 @@
   theme: family
   family_id: smorg-rs
   family_position: 10
-  minimum_version:
+  minimum_version: '1.85'
   role: author
   first_commit_by_person_on:
   first_commit_by_person:
@@ -6453,7 +6472,7 @@
   theme: family
   family_id: smorg-rs
   family_position: 11
-  minimum_version:
+  minimum_version: '1.85'
   role: author
   first_commit_by_person_on:
   first_commit_by_person:
@@ -6482,7 +6501,7 @@
   theme: family
   family_id: smorg-rs
   family_position: 12
-  minimum_version:
+  minimum_version: '1.85'
   role: author
   first_commit_by_person_on:
   first_commit_by_person:
@@ -6511,7 +6530,7 @@
   theme: family
   family_id: smorg-rs
   family_position: 13
-  minimum_version:
+  minimum_version: '1.85'
   role: author
   first_commit_by_person_on:
   first_commit_by_person:
@@ -6540,7 +6559,7 @@
   theme: family
   family_id: smorg-rs
   family_position: 14
-  minimum_version:
+  minimum_version: '1.85'
   role: author
   first_commit_by_person_on:
   first_commit_by_person:
@@ -6569,7 +6588,7 @@
   theme: family
   family_id: smorg-rs
   family_position: 15
-  minimum_version:
+  minimum_version: '1.85'
   role: author
   first_commit_by_person_on:
   first_commit_by_person:
@@ -6598,7 +6617,7 @@
   theme: family
   family_id: smorg-rs
   family_position: 16
-  minimum_version:
+  minimum_version: '1.85'
   role: author
   first_commit_by_person_on:
   first_commit_by_person:
@@ -6627,7 +6646,7 @@
   theme: family
   family_id: smorg-rs
   family_position: 17
-  minimum_version:
+  minimum_version: '1.85'
   role: author
   first_commit_by_person_on:
   first_commit_by_person:
@@ -6657,7 +6676,7 @@
   theme: family
   family_id: smorg-rs
   family_position: 18
-  minimum_version:
+  minimum_version: '1.85'
   role: author
   first_commit_by_person_on:
   first_commit_by_person:

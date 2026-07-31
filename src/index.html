@@ -79,13 +79,21 @@ body_class: projects
 <% end %>
 
 <% ts_projects = projects.select {|p| p["language"] == "TypeScript" } %>
-<% min_ts_versions = ts_projects.flat_map { |project| project["minimum_version"] || [] }.uniq.sort %>
+<% min_ts_versions = ts_projects.flat_map { |project| project["minimum_typescript_version"] || [] }.uniq.sort %>
 <% min_ts_counts = {} %>
 <% ts_projects.each do |project| %>
-<% if project["minimum_version"] %>
-<% min_ts_counts[project["minimum_version"]] ||= 0 %>
-<% min_ts_counts[project["minimum_version"]] += 1 %>
+<% if project["minimum_typescript_version"] %>
+<% min_ts_counts[project["minimum_typescript_version"]] ||= 0 %>
+<% min_ts_counts[project["minimum_typescript_version"]] += 1 %>
 <% end %>
+<% end %>
+
+<% node_projects = projects.select {|p| p["minimum_node_version"] } %>
+<% min_node_versions = node_projects.flat_map { |project| project["minimum_node_version"] || [] }.uniq.sort %>
+<% min_node_counts = {} %>
+<% node_projects.each do |project| %>
+<% min_node_counts[project["minimum_node_version"]] ||= 0 %>
+<% min_node_counts[project["minimum_node_version"]] += 1 %>
 <% end %>
 
 <% rb_projects = projects.select {|p| p["language"] == "Ruby" } %>
@@ -118,7 +126,7 @@ body_class: projects
 <% end %>
 <% end %>
 
-<% lanugage_count = min_go_versions.count + min_rb_counts.count + min_ts_counts.count + min_bash_counts.count + min_rust_versions.count %>
+<% lanugage_count = min_go_versions.count + min_rb_counts.count + min_ts_counts.count + min_node_counts.count + min_bash_counts.count + min_rust_versions.count %>
 
 <% role_counts = {} %>
 <% projects.each do |project| %>
@@ -257,6 +265,15 @@ body_class: projects
         </button>
       </li>
       <% end %>
+      <% min_node_versions.each do |min_node| %>
+      <li>
+        <button type="button" class="tag-link pill-outer min_lang_link" data-tag="Node.js >= <%= min_node %>">
+          <span class="count left"><%== min_node_counts[min_node].to_s.rjust(2, 'x').gsub('x', '&nbsp;') %></span>
+          <span class="tag min-language">Node.js&nbsp;>=&nbsp;v<%= min_node %></span>
+          <span class="count right"><%== min_node_counts[min_node].to_s.ljust(2, 'x').gsub('x', '&nbsp;') %></span>
+        </button>
+      </li>
+      <% end %>
       <% min_go_versions.each do |min_go| %>
       <li>
         <button type="button" class="tag-link pill-outer min_lang_link" data-tag="Go >= <%= min_go %>">
@@ -390,6 +407,12 @@ body_class: projects
           <% tags_for_card << year if year %>
           <% if project['minimum_version'] %>
             <% tags_for_card << "#{project['language']} >= #{project['minimum_version']}" %>
+          <% end %>
+          <% if project['minimum_typescript_version'] %>
+            <% tags_for_card << "TypeScript >= #{project['minimum_typescript_version']}" %>
+          <% end %>
+          <% if project['minimum_node_version'] %>
+            <% tags_for_card << "Node.js >= #{project['minimum_node_version']}" %>
           <% end %>
           <% # Add special filter tags %>
           <% tags_for_card << "adoptable" if project['adoptable'] %>
@@ -561,6 +584,16 @@ body_class: projects
               class="language <%= project['language'].downcase %>"
       ><%= project["language"] %>&nbsp;>=&nbsp;<%= project["minimum_version"] %></span>
       <% end %>
+      <% if project["minimum_typescript_version"] %>
+      <span class="tag min-language"><img
+              src="/assets/images/TypeScript.svg"
+              alt="TypeScript >= <%= project['minimum_typescript_version'] %>"
+              class="language typescript"
+      >TypeScript&nbsp;>=&nbsp;<%= project["minimum_typescript_version"] %></span>
+      <% end %>
+      <% if project["minimum_node_version"] %>
+      <span class="tag min-language">Node.js&nbsp;>=&nbsp;<%= project["minimum_node_version"] %></span>
+      <% end %>
       <% if project["tags"] && project["tags"].any? %>
       <% sorted_tags.each do |tag| %>
       <span class="tag <%= tag %>"><%= tag %></span>
@@ -637,6 +670,12 @@ body_class: projects
       <% tags_for_card << year if year %>
       <% if project['minimum_version'] %>
         <% tags_for_card << "#{project['language']} >= #{project['minimum_version']}" %>
+      <% end %>
+      <% if project['minimum_typescript_version'] %>
+        <% tags_for_card << "TypeScript >= #{project['minimum_typescript_version']}" %>
+      <% end %>
+      <% if project['minimum_node_version'] %>
+        <% tags_for_card << "Node.js >= #{project['minimum_node_version']}" %>
       <% end %>
       <% # Add special filter tags %>
       <% tags_for_card << "adoptable" if project['adoptable'] %>
@@ -820,6 +859,16 @@ body_class: projects
               alt="<%= project['language'] %> >= <%= project['minimum_version'] %>"
               class="language <%= project['language'].downcase %>"
       ><%= project["language"] %>&nbsp;>=&nbsp;<%= project["minimum_version"] %></span>
+      <% end %>
+      <% if project["minimum_typescript_version"] %>
+      <span class="tag min-language"><img
+              src="/assets/images/TypeScript.svg"
+              alt="TypeScript >= <%= project['minimum_typescript_version'] %>"
+              class="language typescript"
+      >TypeScript&nbsp;>=&nbsp;<%= project["minimum_typescript_version"] %></span>
+      <% end %>
+      <% if project["minimum_node_version"] %>
+      <span class="tag min-language">Node.js&nbsp;>=&nbsp;<%= project["minimum_node_version"] %></span>
       <% end %>
       <% if project["tags"] && project["tags"].any? %>
       <% sorted_tags.each do |tag| %>

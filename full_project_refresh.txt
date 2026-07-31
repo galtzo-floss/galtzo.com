@@ -1,0 +1,385 @@
+================================================================================
+🔍 PRE-FLIGHT: RUBYGEMS DISCOVERY
+================================================================================
+  Querying RubyGems.org for gems owned by pboling...
+  Fetching gems from: https://rubygems.org/api/v1/owners/pboling/gems.json
+  Found 143 gem(s) owned by pboling on RubyGems.org.
+
+📦 29 gem(s) on RubyGems.org are not yet in projects.yml:
+  • namespaced-gem
+  • nomono
+  • ast-template
+  • plain-merge
+  • yaml-merge
+  • ruby-merge
+  • go-merge
+  • rust-merge
+  • typescript-merge
+  • binary-merge
+  • zip-merge
+  • citrus-toml-merge
+  • parslet-toml-merge
+  • kramdown-merge
+  • kettle-jem
+  • auth-sanitizer
+  • turbo_tests2
+  • yard-timekeeper
+  • kettle-drift
+  • oauth2-mcp
+  • rubocop-lts-rspec
+  • appraisal2-rubocop
+  • kettle-family
+  • gem_mine
+  • anonymous_loader
+  • kettle-rb
+  • kettle-wash
+  • kettle-gha-pins
+  • kettle-ndjson
+
+➕ Add these 29 missing gem(s) to projects.yml now? [auto: y]
+
+🔨 Adding 29 missing gem(s) to projects.yml...
+
+[1/29] Adding: namespaced-gem
+    ⚠️  Failed to fetch bestgems daily downloads for namespaced-gem: API error: 522 - error code: 522
+    ⚠️  No GitHub URL found - will need manual configuration
+  ✅ Added namespaced-gem
+  💾 Saved to projects.yml
+  🔄 Synced to projects_dev.yml
+
+[2/29] Adding: nomono
+    ⚠️  Failed to fetch bestgems daily downloads for nomono: API error: 522 - <!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en-US"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en-US"> <![endif]-->
+<!--[if IE 8]>    <html class="no-j
+  ✅ Added nomono
+  💾 Saved to projects.yml
+  🔄 Synced to projects_dev.yml
+
+[3/29] Adding: ast-template
+    ⚠️  Failed to fetch bestgems daily downloads for ast-template: API error: 522 - <!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en-US"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en-US"> <![endif]-->
+<!--[if IE 8]>    <html class="no-j
+  ✅ Added ast-template
+  💾 Saved to projects.yml
+  🔄 Synced to projects_dev.yml
+
+[4/29] Adding: plain-merge
+    ⚠️  Failed to fetch bestgems daily downloads for plain-merge: API error: 522 - <!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en-US"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en-US"> <![endif]-->
+<!--[if IE 8]>    <html class="no-j
+  ✅ Added plain-merge
+  💾 Saved to projects.yml
+  🔄 Synced to projects_dev.yml
+
+[5/29] Adding: yaml-merge
+    ⚠️  Failed to fetch RubyGems info for yaml-merge: API error: 503 - 
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <!--[if IE 
+  ✅ Added yaml-merge
+  💾 Saved to projects.yml
+  🔄 Synced to projects_dev.yml
+
+[6/29] Adding: ruby-merge
+    ⚠️  Failed to fetch bestgems daily downloads for ruby-merge: API error: 522 - <!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en-US"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en-US"> <![endif]-->
+<!--[if IE 8]>    <html class="no-j
+  ✅ Added ruby-merge
+  💾 Saved to projects.yml
+  🔄 Synced to projects_dev.yml
+
+[7/29] Adding: go-merge
+    ⚠️  Failed to fetch bestgems daily downloads for go-merge: API error: 522 - <!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en-US"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en-US"> <![endif]-->
+<!--[if IE 8]>    <html class="no-j
+  ✅ Added go-merge
+  💾 Saved to projects.yml
+  🔄 Synced to projects_dev.yml
+
+[8/29] Adding: rust-merge
+    ⚠️  Failed to fetch bestgems daily downloads for rust-merge: API error: 522 - <!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en-US"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en-US"> <![endif]-->
+<!--[if IE 8]>    <html class="no-j
+  ✅ Added rust-merge
+  💾 Saved to projects.yml
+  🔄 Synced to projects_dev.yml
+
+[9/29] Adding: typescript-merge
+    ⚠️  Failed to fetch bestgems daily downloads for typescript-merge: API error: 522 - <!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en-US"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en-US"> <![endif]-->
+<!--[if IE 8]>    <html class="no-j
+  ✅ Added typescript-merge
+  💾 Saved to projects.yml
+  🔄 Synced to projects_dev.yml
+
+[10/29] Adding: binary-merge
+    ⚠️  Failed to fetch bestgems daily downloads for binary-merge: API error: 522 - <!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en-US"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en-US"> <![endif]-->
+<!--[if IE 8]>    <html class="no-j
+  ✅ Added binary-merge
+  💾 Saved to projects.yml
+  🔄 Synced to projects_dev.yml
+
+[11/29] Adding: zip-merge
+    ⚠️  Failed to fetch bestgems daily downloads for zip-merge: API error: 522 - <!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en-US"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en-US"> <![endif]-->
+<!--[if IE 8]>    <html class="no-j
+  ✅ Added zip-merge
+  💾 Saved to projects.yml
+  🔄 Synced to projects_dev.yml
+
+[12/29] Adding: citrus-toml-merge
+    ⚠️  Failed to fetch bestgems daily downloads for citrus-toml-merge: API error: 522 - <!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en-US"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en-US"> <![endif]-->
+<!--[if IE 8]>    <html class="no-j
+  ✅ Added citrus-toml-merge
+  💾 Saved to projects.yml
+  🔄 Synced to projects_dev.yml
+
+[13/29] Adding: parslet-toml-merge
+    ⚠️  Failed to fetch bestgems daily downloads for parslet-toml-merge: API error: 522 - <!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en-US"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en-US"> <![endif]-->
+<!--[if IE 8]>    <html class="no-j
+  ✅ Added parslet-toml-merge
+  💾 Saved to projects.yml
+  🔄 Synced to projects_dev.yml
+
+[14/29] Adding: kramdown-merge
+    ⚠️  Failed to fetch bestgems daily downloads for kramdown-merge: API error: 522 - <!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en-US"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en-US"> <![endif]-->
+<!--[if IE 8]>    <html class="no-j
+  ✅ Added kramdown-merge
+  💾 Saved to projects.yml
+  🔄 Synced to projects_dev.yml
+
+[15/29] Adding: kettle-jem
+    ⚠️  Failed to fetch bestgems daily downloads for kettle-jem: API error: 522 - <!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en-US"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en-US"> <![endif]-->
+<!--[if IE 8]>    <html class="no-j
+  ✅ Added kettle-jem
+  💾 Saved to projects.yml
+  🔄 Synced to projects_dev.yml
+
+[16/29] Adding: auth-sanitizer
+    ⚠️  Failed to fetch bestgems daily downloads for auth-sanitizer: API error: 522 - <!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en-US"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en-US"> <![endif]-->
+<!--[if IE 8]>    <html class="no-j
+  ✅ Added auth-sanitizer
+  💾 Saved to projects.yml
+  🔄 Synced to projects_dev.yml
+
+[17/29] Adding: turbo_tests2
+    ⚠️  Failed to fetch bestgems daily downloads for turbo_tests2: API error: 522 - <!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en-US"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en-US"> <![endif]-->
+<!--[if IE 8]>    <html class="no-j
+  ✅ Added turbo_tests2
+  💾 Saved to projects.yml
+  🔄 Synced to projects_dev.yml
+
+[18/29] Adding: yard-timekeeper
+    ⚠️  Failed to fetch bestgems daily downloads for yard-timekeeper: API error: 522 - <!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en-US"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en-US"> <![endif]-->
+<!--[if IE 8]>    <html class="no-j
+  ✅ Added yard-timekeeper
+  💾 Saved to projects.yml
+  🔄 Synced to projects_dev.yml
+
+[19/29] Adding: kettle-drift
+    ⚠️  Failed to fetch bestgems daily downloads for kettle-drift: API error: 522 - <!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en-US"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en-US"> <![endif]-->
+<!--[if IE 8]>    <html class="no-j
+  ✅ Added kettle-drift
+  💾 Saved to projects.yml
+  🔄 Synced to projects_dev.yml
+
+[20/29] Adding: oauth2-mcp
+    ⚠️  Failed to fetch bestgems daily downloads for oauth2-mcp: API error: 522 - <!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en-US"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en-US"> <![endif]-->
+<!--[if IE 8]>    <html class="no-j
+  ✅ Added oauth2-mcp
+  💾 Saved to projects.yml
+  🔄 Synced to projects_dev.yml
+
+[21/29] Adding: rubocop-lts-rspec
+    ⚠️  Failed to fetch bestgems daily downloads for rubocop-lts-rspec: API error: 522 - <!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en-US"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en-US"> <![endif]-->
+<!--[if IE 8]>    <html class="no-j
+  ✅ Added rubocop-lts-rspec
+  💾 Saved to projects.yml
+  🔄 Synced to projects_dev.yml
+
+[22/29] Adding: appraisal2-rubocop
+    ⚠️  Failed to fetch bestgems daily downloads for appraisal2-rubocop: API error: 522 - <!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en-US"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en-US"> <![endif]-->
+<!--[if IE 8]>    <html class="no-j
+  ✅ Added appraisal2-rubocop
+  💾 Saved to projects.yml
+  🔄 Synced to projects_dev.yml
+
+[23/29] Adding: kettle-family
+    ⚠️  Failed to fetch bestgems daily downloads for kettle-family: API error: 522 - <!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en-US"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en-US"> <![endif]-->
+<!--[if IE 8]>    <html class="no-j
+  ✅ Added kettle-family
+  💾 Saved to projects.yml
+  🔄 Synced to projects_dev.yml
+
+[24/29] Adding: gem_mine
+    ⚠️  Failed to fetch bestgems daily downloads for gem_mine: API error: 522 - <!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en-US"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en-US"> <![endif]-->
+<!--[if IE 8]>    <html class="no-j
+  ✅ Added gem_mine
+  💾 Saved to projects.yml
+  🔄 Synced to projects_dev.yml
+
+[25/29] Adding: anonymous_loader
+    ⚠️  Failed to fetch bestgems daily downloads for anonymous_loader: API error: 522 - <!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en-US"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en-US"> <![endif]-->
+<!--[if IE 8]>    <html class="no-j
+  ✅ Added anonymous_loader
+  💾 Saved to projects.yml
+  🔄 Synced to projects_dev.yml
+
+[26/29] Adding: kettle-rb
+    ⚠️  Failed to fetch bestgems daily downloads for kettle-rb: API error: 522 - <!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en-US"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en-US"> <![endif]-->
+<!--[if IE 8]>    <html class="no-j
+  ✅ Added kettle-rb
+  💾 Saved to projects.yml
+  🔄 Synced to projects_dev.yml
+
+[27/29] Adding: kettle-wash
+    ⚠️  Failed to fetch bestgems daily downloads for kettle-wash: API error: 522 - <!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en-US"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en-US"> <![endif]-->
+<!--[if IE 8]>    <html class="no-j
+  ✅ Added kettle-wash
+  💾 Saved to projects.yml
+  🔄 Synced to projects_dev.yml
+
+[28/29] Adding: kettle-gha-pins
+    ⚠️  Failed to fetch bestgems daily downloads for kettle-gha-pins: API error: 522 - <!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en-US"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en-US"> <![endif]-->
+<!--[if IE 8]>    <html class="no-j
+  ✅ Added kettle-gha-pins
+  💾 Saved to projects.yml
+  🔄 Synced to projects_dev.yml
+
+[29/29] Adding: kettle-ndjson
+    ⚠️  Failed to fetch bestgems daily downloads for kettle-ndjson: API error: 522 - <!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en-US"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en-US"> <![endif]-->
+<!--[if IE 8]>    <html class="no-j
+  ✅ Added kettle-ndjson
+  💾 Saved to projects.yml
+  🔄 Synced to projects_dev.yml
+
+💾 Saved: /var/home/pboling/src/galtzo-floss/galtzo.com/src/_data/projects.yml
+
+💾 Saved: /var/home/pboling/src/galtzo-floss/galtzo.com/src/_data/projects_dev.yml
+
+✅ Discovery complete! Added 0 of 29 gem(s).
+
+================================================================================
+Starting project update...
+Processing 167 projects from /var/home/pboling/src/galtzo-floss/galtzo.com/src/_data/projects.yml
+GitHub Token: ✅ Set
+GitLab Token: ✅ Set
+RubyGems Handle: ✅ Set (pboling)
+
+  📋 167 projects total
+  ⏭️  0 recently scraped (will skip)
+
+  Of the 167 remaining:
+    ⭐ 166 have a GitHub forge → stars, status, last commit, release date
+    💎 154 are RubyGems → also: total/daily(28d avg)/release downloads
+    🔗 12 are GitHub-only (no download stats available)
+    ⚠️  1 have no GitHub forge → will be skipped (no update source):
+       • namespaced-gem (rubygems)
+
+▶️  Proceed with updating 166 project(s)? [auto: y]
+
+
+[1/167] Processing: active_security
+  ⭐ GitHub stars: 7
+    ⚠️  Failed to fetch bestgems daily downloads for active_security: API error: 522 - <!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en-US"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en-US"> <![endif]-->
+<!--[if IE 8]>    <html class="no-j
+  📦 Total downloads: 4090
+  📊 Daily downloads (28d avg): N/A
+  📥 Release downloads: 3518
+  💎 Minimum Ruby version: 2.7  (raw: >= 2.7.0)
+  📅 Release date (RubyGems): 2024/07/05
+  🔨 Last commit: 2026/01/22
+  ✅ Status: active
+  🔄 Synced to projects_dev.yml
+
+[2/167] Processing: activerecord-tablefree
+  ⭐ GitHub stars: 2
+    ⚠️  Failed to fetch bestgems daily downloads for activerecord-tablefree: API error: 522 - <!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en-US"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en-US"> <![endif]-->
+<!--[if IE 8]>    <html class="no-j
+  📦 Total downloads: 112895
+  📊 Daily downloads (28d avg): N/A
+  📥 Release downloads: 86938
+  💎 Minimum Ruby version: 2.2  (raw: >= 2.2.2)
+  📅 Release date (RubyGems): 2018/09/23
+  🔨 Last commit: 2026/01/17
+  ✅ Status: active
+
+[3/167] Processing: activerecord-transactionable
+  ⭐ GitHub stars: 11
+    ⚠️  Failed to fetch GitLab stars from https://gitlab.com/galtzo-floss/activerecord-transactionable: GitLab API error: 401 - {"error":"invalid_token","error_description":"Token is expired. You can either do re-authorization or token refresh."}
+  ⭐ GitLab stars: 0
+  ⭐ Codeberg stars: 0
+    ⚠️  Failed to fetch bestgems daily downloads for activerecord-transactionable: API error: 522 - <!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en-US"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en-US"> <![endif]-->
+<!--[if IE 8]>    <html class="no-j
+  📦 Total downloads: 62075
+  📊 Daily downloads (28d avg): N/A
+  📥 Release downloads: 3833
+  💎 Minimum Ruby version: 2.5  (raw: >= 2.5.0)
+  📅 Release date (RubyGems): 2024/03/06
+  🔨 Last commit: 2026/01/17
+  ✅ Status: active
+  🔄 Synced to projects_dev.yml
+
+[4/167] Processing: activesupport-broadcast_logger
+  ⭐ GitHub stars: 9
+    ⚠️  Failed to fetch bestgems daily downloads for activesupport-broadcast_logger: API error: 522 - <!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en-US"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en-US"> <![endif]-->
+<!--[if IE 8]>    <html class="no-j
+  📦 Total downloads: 9643
+  📊 Daily downloads (28d avg): N/A
