@@ -30,6 +30,9 @@
   theme: family
   family_id: active-record
   family_position: 2
+  licenses:
+  - MIT
+  license_url: https://github.com/galtzo-floss/active_security/blob/main/LICENSE.txt
 - name: activerecord-transactionable
   description: Getting transactions right is hard, and this gem makes it easier.
   language: Ruby
@@ -69,6 +72,9 @@
   theme: family
   family_id: active-record
   family_position: 4
+  licenses:
+  - MIT
+  license_url: https://github.com/galtzo-floss/activerecord-transactionable/blob/main/LICENSE.txt
 - name: anonymous_active_record
   description: Replacement for broken Class.new(ActiveRecord::Base)
   language: Ruby
@@ -100,6 +106,9 @@
   theme: family
   family_id: active-record
   family_position: 5
+  licenses:
+  - MIT
+  license_url: https://github.com/galtzo-floss/anonymous_active_record/blob/main/LICENSE.txt
 - name: skywalking-eyes
   description: |
     A full-featured license tool to check and fix license headers and resolve dependencies' licenses.
@@ -134,6 +143,9 @@
   theme: family
   family_id: rubygems-bundler-family
   family_position: 10
+  licenses:
+  - Apache-2.0
+  license_url: https://github.com/apache/skywalking-eyes/blob/main/LICENSE
 - name: appraisal2
   description: Appraisal2 integrates with bundler and rake to test your library against
     different versions of dependencies in repeatable scenarios called "appraisals."
@@ -172,6 +184,9 @@
   theme: family
   family_id: rspec-family
   family_position: 1
+  licenses:
+  - MIT
+  license_url: https://github.com/appraisal-rb/appraisal2/blob/main/LICENSE.md
 - name: archivist-client
   description: archivist-client queries archive.org for book data and downloads some
     things.
@@ -203,6 +218,9 @@
   theme: family
   family_id: miscellaneous
   family_position: 2
+  licenses:
+  - MIT
+  license_url: https://github.com/wordtreefoundation/archivist-client/blob/master/LICENSE
 - name: awesome_search
   description: Organize complicated search results
   language: Ruby
@@ -233,6 +251,9 @@
   theme: family
   family_id: adoptable-family
   family_position: 7
+  licenses:
+  - MIT
+  license_url: https://github.com/galtzo-floss/awesome_search/blob/main/LICENSE
 - name: bash_step
   description: Bash Step Function Library
   language: Bash
@@ -259,6 +280,9 @@
   theme: family
   family_id: miscellaneous
   family_position: 4
+  licenses:
+  - MIT
+  license_url: https://github.com/pboling/bash_step/blob/master/LICENSE
 - name: bsfl
   description: Bash Script Function Library
   language: Bash
@@ -541,6 +565,9 @@
   theme: family
   family_id: archived-family
   family_position: 1
+  licenses:
+  - MIT
+  license_url: https://github.com/pboling/cacheable-flash/blob/master/LICENSE
 - name: yard-fence
   description: "\U0001F93A Convert ASCII braces ('{}') to full-width braces ('{}')
     within code fences (triple-or-single backticks) during YARD processing, and back
@@ -572,6 +599,9 @@
   last_commit_on: 2026/07/02
   status: active
   last_scrape_at: '2026-07-30T23:55:00Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/galtzo-floss/yard-fence/blob/main/LICENSE.md
 - name: yaml-converter
   description: "\U0001F968 yaml-converter parses YAML files (with inline #note: annotations
     and validation markers) and emits polished Markdown, HTML, and PDF/DOCX (via pandoc)
@@ -604,6 +634,9 @@
   last_commit_on: 2026/07/02
   status: active
   last_scrape_at: '2026-07-30T23:55:22Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/galtzo-floss/yaml-converter/blob/main/LICENSE.md
 - name: yard-yaml
   description: "\U0001F968 A YARD plugin for YAML documents"
   language: Ruby
@@ -633,6 +666,9 @@
   last_commit_on: 2026/07/02
   status: active
   last_scrape_at: '2026-07-30T23:55:44Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/galtzo-floss/yard-yaml/blob/main/LICENSE.md
 - name: prism-merge
   description: "☯️ Intelligently merge two versions of a Ruby file using Prism AST
     analysis, similar to a smart 'git merge' specifically designed for Ruby code."
@@ -664,6 +700,10 @@
   theme: family
   family_id: smorg-rb
   family_position: 16
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: ast-merge
   description: "☯️ Ast::Merge provides base classes, modules, and RSpec shared examples
     for building intelligent file mergers using AST analysis. It powers prism-merge,
@@ -696,6 +736,10 @@
   theme: family
   family_id: smorg-rb
   family_position: 1
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: dotenv-merge
   description: "☯️ Dotenv::Merge provides smart .env file merging that preserves comments,
     understands variable assignments, and supports freeze blocks for protecting sensitive
@@ -727,6 +771,9 @@
   theme: family
   family_id: smorg-rb
   family_position: 7
+  licenses:
+  - MIT
+  license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: rbs-merge
   description: "☯️ Intelligently merge RBS type signature files by parsing and comparing
     AST structures. Supports freeze blocks to protect customizations, signature-based
@@ -758,6 +805,9 @@
   theme: family
   family_id: smorg-rb
   family_position: 18
+  licenses:
+  - MIT
+  license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: tree_haver
   description: "\U0001F334 TreeHaver is a cross-Ruby adapter for many AST parsing
     libraries; supporting MRI Ruby, JRuby, & TruffleRuby. Provides unified parsing
@@ -793,6 +843,10 @@
   theme: family
   family_id: smorg-rb
   family_position: 22
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: toml-merge
   description: "☯️ Intelligently merges TOML files by analyzing their AST structure
     with tree-sitter, preserving key organization and resolving conflicts based on
@@ -824,6 +878,10 @@
   theme: family
   family_id: smorg-rb
   family_position: 21
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: bash-merge
   description: "☯️ Bash::Merge provides smart Bash script merging that preserves comments,
     understands shell structure, and supports freeze blocks for protecting destination
@@ -856,6 +914,9 @@
   theme: family
   family_id: smorg-rb
   family_position: 3
+  licenses:
+  - MIT
+  license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: json-merge
   description: "☯️ Json::Merge provides smart JSON file merging that understands JSON
     structure. Perfect for merging strict JSON configuration files like package.json,
@@ -889,6 +950,10 @@
   theme: family
   family_id: smorg-rb
   family_position: 9
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: markdown-merge
   description: "☯️ Ast::Merge-based structure for merging Markdown files with tools
     like markly-merge and commonmarker-merge"
@@ -919,6 +984,10 @@
   theme: family
   family_id: smorg-rb
   family_position: 12
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: jsonc-merge
   description: "☯️ Jsonc::Merge provides smart JSONC (JSON with Comments) file merging
     that preserves comments, understands JSON structure, and supports freeze blocks
@@ -951,6 +1020,9 @@
   theme: family
   family_id: ast-merge
   family_position: 8
+  licenses:
+  - MIT
+  license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: commonmarker-merge
   description: "☯️ Commonmarker::Merge provides smart Markdown file merging using
     Comrak (Rust) via Commonmarker. It understands document structure including headings,
@@ -983,6 +1055,10 @@
   theme: family
   family_id: smorg-rb
   family_position: 6
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: psych-merge
   description: "☯️ Psych::Merge provides smart YAML file merging that preserves comments,
     anchors/aliases, and supports freeze blocks for protecting destination content.
@@ -1014,6 +1090,10 @@
   theme: family
   family_id: smorg-rb
   family_position: 17
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: markly-merge
   description: "☯️ Markly::Merge provides smart Markdown file merging using libcmark-gfm
     via Markly. It understands document structure including headings, lists, code
@@ -1046,6 +1126,10 @@
   theme: family
   family_id: smorg-rb
   family_position: 13
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: token-resolver
   description: "\U0001FA99 Token::Resolver provides configurable PEG-based (parslet)
     parsing and resolution of structured tokens (e.g., {KJ|GEM_NAME}) in arbitrary
@@ -1079,6 +1163,10 @@
   theme: family
   family_id: ast-merge
   family_position: 2
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/kettle-dev/token-resolver/blob/main/LICENSE.md
 - name: cyclonedx-ruby
   ecosystem: rubygems
   language: Ruby
@@ -1111,6 +1199,9 @@
   theme: family
   family_id: rubygems-bundler-family
   family_position: 2
+  licenses:
+  - Apache-2.0
+  license_url: https://github.com/CycloneDX/cyclonedx-ruby-gem/blob/master/LICENSE.txt
 - name: rb-sys
   ecosystem: cargo
   language: Rust
@@ -1140,6 +1231,10 @@
   family_id: ast-merge
   family_position: 17
   last_scrape_at: '2026-07-31T00:01:13Z'
+  licenses:
+  - MIT
+  - Apache-2.0
+  license_url: https://github.com/oxidize-rb/rb-sys/blob/main/LICENSE-APACHE
 - name: rb_sys
   ecosystem: rubygems
   language: Ruby
@@ -1169,6 +1264,10 @@
   family_id: ast-merge
   family_position: 18
   last_scrape_at: '2026-07-31T00:01:35Z'
+  licenses:
+  - MIT
+  - Apache-2.0
+  license_url: https://github.com/oxidize-rb/rb-sys/blob/main/LICENSE-APACHE
 - name: magnus
   ecosystem: cargo
   language: Rust
@@ -1200,6 +1299,9 @@
   family_id: ast-merge
   family_position: 16
   last_scrape_at: '2026-07-31T00:01:37Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/matsadler/magnus/blob/main/LICENSE
 - name: setup-ruby-flash
   ecosystem: none
   language: Ruby
@@ -1238,6 +1340,9 @@
   family_id: rubygems-bundler-family
   family_position: 9
   last_scrape_at: '2026-07-31T00:01:40Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/appraisal-rb/setup-ruby-flash/blob/main/LICENSE.txt
 - name: tree_stump
   ecosystem: rubygems
   language: Ruby
@@ -1269,6 +1374,9 @@
   family_id: ast-merge
   family_position: 15
   last_scrape_at: '2026-07-31T00:02:02Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/joker1007/tree_stump/blob/main/LICENSE
 - name: ruby_tree_sitter
   ecosystem: rubygems
   language: Ruby
@@ -1298,6 +1406,9 @@
   family_id: ast-merge
   family_position: 19
   last_scrape_at: '2026-07-31T00:02:24Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/Faveod/ruby-tree-sitter/blob/master/LICENSE
 - name: bson
   ecosystem: rubygems
   language: Ruby
@@ -1327,6 +1438,9 @@
   family_id: miscellaneous
   family_position: 6
   last_scrape_at: '2026-07-31T00:02:46Z'
+  licenses:
+  - Apache-2.0
+  license_url: https://github.com/mongodb/bson-ruby/blob/master/LICENSE
 - name: rexml
   ecosystem: rubygems
   language: Ruby
@@ -1356,6 +1470,9 @@
   family_id: miscellaneous
   family_position: 1
   last_scrape_at: '2026-07-31T00:03:08Z'
+  licenses:
+  - BSD-2-Clause
+  license_url: https://github.com/ruby/rexml/blob/master/LICENSE.txt
 - name: bundler
   ecosystem: rubygems
   language: Ruby
@@ -1384,6 +1501,9 @@
   family_id: rubygems-bundler-family
   family_position: 4
   last_scrape_at: '2026-07-31T00:03:30Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/ruby/rubygems/blob/master/LICENSE.txt
 - name: hashie
   ecosystem: rubygems
   language: Ruby
@@ -1413,6 +1533,9 @@
   theme: family
   family_id: miscellaneous
   family_position: 8
+  licenses:
+  - MIT
+  license_url: https://github.com/hashie/hashie/blob/master/LICENSE
 - name: rails
   ecosystem: rubygems
   family: rails-family
@@ -1443,6 +1566,9 @@
   theme: family
   family_id: rails-family
   family_position: 3
+  licenses:
+  - MIT
+  license_url: https://github.com/rails/rails/blob/main/MIT-LICENSE
 - name: rv
   ecosystem: none
   family: rubygems-bundler-family
@@ -1474,6 +1600,9 @@
   family_id: rubygems-bundler-family
   family_position: 1
   last_scrape_at: '2026-07-31T00:04:17Z'
+  licenses:
+  - Apache-2.0
+  license_url: https://github.com/spinel-coop/rv/blob/main/LICENSE-APACHE
 - name: namespaced-gem
   description: "\U0001F50C A RubyGems plugin that allows gemspec dependencies to be
     declared as full\nURIs pointing to namespaced gem sources such as gem.coop namespaces\n(e.g.
@@ -1503,6 +1632,8 @@
   release_date:
   github_stars: 0
   status: active
+  licenses:
+  - MIT
 - name: nomono
   description: 1️⃣ Provides nomono_gems and eval_nomono_gems to standardize local
     multi-repo dependency wiring in Gemfiles.
@@ -1531,6 +1662,9 @@
   last_commit_on: 2026/07/28
   status: active
   last_scrape_at: '2026-07-31T00:04:39Z'
+  licenses:
+  - AGPL-3.0-only
+  license_url: https://github.com/kettle-dev/nomono/blob/main/LICENSE.md
 - name: ast-template
   description: Product-level directory session reporting above ast-merge for Structured
     Merge.
@@ -1559,6 +1693,10 @@
   theme: family
   family_id: smorg-rb
   family_position: 2
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: plain-merge
   description: Portable text normalization, similarity, matching, and merge behavior
     for Structured Merge.
@@ -1587,6 +1725,10 @@
   theme: family
   family_id: smorg-rb
   family_position: 15
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: yaml-merge
   description: Portable YAML analysis, owner matching, and merge behavior for Structured
     Merge.
@@ -1615,6 +1757,10 @@
   theme: family
   family_id: smorg-rb
   family_position: 24
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: ruby-merge
   description: Tree-sitter-backed Ruby family substrate for Structured Merge.
   language: Ruby
@@ -1642,6 +1788,10 @@
   theme: family
   family_id: smorg-rb
   family_position: 19
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: go-merge
   description: Portable Go module owner analysis and merge behavior for Structured
     Merge.
@@ -1670,6 +1820,10 @@
   theme: family
   family_id: smorg-rb
   family_position: 8
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: rust-merge
   description: Portable Rust module owner analysis and merge behavior for Structured
     Merge.
@@ -1698,6 +1852,10 @@
   theme: family
   family_id: smorg-rb
   family_position: 20
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: typescript-merge
   description: Portable TypeScript module owner analysis and merge behavior for Structured
     Merge.
@@ -1726,6 +1884,10 @@
   theme: family
   family_id: smorg-rb
   family_position: 23
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: binary-merge
   description: Portable binary preservation planning and diagnostics for Structured
     Merge.
@@ -1754,6 +1916,10 @@
   theme: family
   family_id: smorg-rb
   family_position: 4
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: zip-merge
   description: Portable ZIP inventory, planning, nested dispatch, and raw-preservation
     rendering helpers for Structured Merge.
@@ -1782,6 +1948,10 @@
   theme: family
   family_id: smorg-rb
   family_position: 25
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: citrus-toml-merge
   description: Citrus-backed TOML provider gem for the Structured Merge TOML family.
   language: Ruby
@@ -1809,6 +1979,10 @@
   theme: family
   family_id: smorg-rb
   family_position: 5
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: parslet-toml-merge
   description: Parslet-backed TOML provider gem for the Structured Merge TOML family.
   language: Ruby
@@ -1836,6 +2010,10 @@
   theme: family
   family_id: smorg-rb
   family_position: 14
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: kramdown-merge
   description: Kramdown-backed Markdown provider gem for the Structured Merge Markdown
     family.
@@ -1864,6 +2042,10 @@
   theme: family
   family_id: smorg-rb
   family_position: 11
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: kettle-jem
   description: RubyGems-focused recipe-pack wrapper that shapes package facts into
     ast-merge transport.
@@ -1892,6 +2074,10 @@
   theme: family
   family_id: smorg-rb
   family_position: 10
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: auth-sanitizer
   description: "\U0001F48E Configurable KV output redaction. Sanitize/filter your
     secrets."
@@ -1920,6 +2106,9 @@
   last_commit_on: 2026/07/19
   status: active
   last_scrape_at: '2026-07-31T00:09:42Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/ruby-oauth/auth-sanitizer/blob/main/LICENSE.md
 - name: turbo_tests2
   description: "\U0001F680 turbo_tests2` is an RSpec parallel test runner built on
     `parallel_tests`. It uses `parallel_tests` for process counts, file grouping,
@@ -1952,6 +2141,9 @@
   last_commit_on: 2026/07/27
   status: active
   last_scrape_at: '2026-07-31T00:10:04Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/galtzo-floss/turbo_tests2/blob/main/LICENSE.md
 - name: yard-timekeeper
   description: "\U0001F570️ A YARD plugin that post-processes generated docs, detects
     timestamp-only diffs in tracked HTML files under docs/, and restores those files
@@ -1959,6 +2151,9 @@
     changed pages."
   language: Ruby
   ecosystem: rubygems
+  theme: family
+  family_id: galtzo-floss
+  family_position: 11
   minimum_version: '3.2'
   role: author
   first_commit_by_person_on: 2026/04/11
@@ -1979,6 +2174,9 @@
   last_commit_on: 2026/07/19
   status: active
   last_scrape_at: '2026-07-31T00:10:26Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/galtzo-floss/yard-timekeeper/blob/main/LICENSE.md
 - name: kettle-drift
   description: "\U0001F372 Kettle::Drift tracks repeated adjacent-line chunks that
     usually signal template drift or copy/paste corruption."
@@ -2007,6 +2205,9 @@
   last_commit_on: 2026/07/28
   status: active
   last_scrape_at: '2026-07-31T00:10:47Z'
+  licenses:
+  - AGPL-3.0-only
+  license_url: https://github.com/kettle-dev/kettle-drift/blob/main/LICENSE.md
 - name: oauth2-mcp
   description: "\U0001F372 oauth2-mcp provides Ruby helpers for securing HTTP Model
     Context Protocol servers with OAuth protected-resource metadata, bearer challenges,
@@ -2036,6 +2237,9 @@
   last_commit_on: 2026/07/15
   status: active
   last_scrape_at: '2026-07-31T00:11:09Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/ruby-oauth/oauth2-mcp/blob/main/LICENSE.md
 - name: rubocop-lts-rspec
   description: |
     Enables Ruby projects that test with RSpec to more confidently support even the most finely-aged Rubies.
@@ -2066,6 +2270,9 @@
   last_commit_on: 2026/07/04
   status: active
   last_scrape_at: '2026-07-31T00:11:30Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/rubocop-lts/rubocop-lts-rspec/blob/main/LICENSE.md
 - name: appraisal2-rubocop
   description: "\U0001F48E Appraisal2::Rubocop registers Appraisal2 generation hooks
     that run RuboCop against generated appraisal gemfiles."
@@ -2094,6 +2301,9 @@
   last_commit_on: 2026/07/18
   status: active
   last_scrape_at: '2026-07-31T00:11:52Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/appraisal-rb/appraisal2-rubocop/blob/main/LICENSE.md
 - name: kettle-family
   description: "\U0001F469‍\U0001F469‍\U0001F467‍\U0001F467 Kettle::Family provides
     scripts and conventions for coordinating related Ruby gems as one family."
@@ -2122,6 +2332,9 @@
   last_commit_on: 2026/07/30
   status: active
   last_scrape_at: '2026-07-31T00:12:14Z'
+  licenses:
+  - AGPL-3.0-only
+  license_url: https://github.com/kettle-dev/kettle-family/blob/main/LICENSE.md
 - name: gem_mine
   description: "⛏️ Provides helpers for setting up temporary scaffolded gem projects
     and reliably tearing them down after tests."
@@ -2150,6 +2363,9 @@
   last_commit_on: 2026/07/01
   status: active
   last_scrape_at: '2026-07-31T00:12:36Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/appraisal-rb/gem_mine/blob/main/LICENSE.md
 - name: anonymous_loader
   description: "\U0001F48E AnonymousLoader resolves Ruby files from paths, gem metadata,
     or $LOAD_PATH and evaluates them inside anonymous modules to avoid top-level namespace
@@ -2179,6 +2395,9 @@
   last_commit_on: 2026/07/14
   status: active
   last_scrape_at: '2026-07-31T00:12:57Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/ruby-oauth/anonymous_loader/blob/main/LICENSE.md
 - name: kettle-rb
   description: "\U0001F4CF Provides the shared Ruby, engine, Rails, RuboCop, and RuboCop
     LTS compatibility matrix used by Kettle-managed gems."
@@ -2207,6 +2426,9 @@
   last_commit_on: 2026/07/30
   status: active
   last_scrape_at: '2026-07-31T00:13:19Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/kettle-dev/kettle-rb/blob/main/LICENSE.md
 - name: kettle-wash
   description: "\U0001F6BF Constant deletion and reset helpers for gems that need
     repeatable reloads while testing constant-backed runtime configuration."
@@ -2235,6 +2457,11 @@
   last_commit_on: 2026/07/28
   status: active
   last_scrape_at: '2026-07-31T00:13:41Z'
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  - LicenseRef-Big-Time-Public-License
+  license_url: https://github.com/kettle-dev/kettle-wash/blob/main/LICENSE.md
 - name: kettle-gha-pins
   description: "\U0001F4CC GitHub Actions workflow SHA pin maintenance, including
     deterministic release-tag parsing, canonicalization, cache-backed GitHub ref resolution,
@@ -2264,6 +2491,9 @@
   last_commit_on: 2026/07/28
   status: active
   last_scrape_at: '2026-07-31T00:14:03Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/kettle-dev/kettle-gha-pins/blob/main/LICENSE.md
 - name: kettle-ndjson
   description: "\U0001F4DF️ NDJSON event stream primitives, filters, recorders, and
     payload helpers shared by Kettle CLI tools."
@@ -2292,11 +2522,14 @@
   last_commit_on: 2026/07/30
   status: active
   last_scrape_at: '2026-07-31T00:14:24Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/kettle-dev/kettle-ndjson/blob/main/LICENSE.md
 - name: "@structuredmerge/ast-merge"
   description: 'StructuredMerge TypeScript package: ast-merge.'
   language: TypeScript
   ecosystem: npm
-  minimum_typescript_version: '5.9.3'
+  minimum_typescript_version: 5.9.3
   theme: family
   family_id: smorg-ts
   family_position: 1
@@ -2322,11 +2555,15 @@
   release_date: 2026/05/06
   total_downloads: 134
   release_downloads:
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-typescript/blob/main/LICENSE.md
 - name: "@structuredmerge/ast-template"
   description: 'StructuredMerge TypeScript package: ast-template.'
   language: TypeScript
   ecosystem: npm
-  minimum_typescript_version: '5.9.3'
+  minimum_typescript_version: 5.9.3
   theme: family
   family_id: smorg-ts
   family_position: 2
@@ -2352,11 +2589,15 @@
   release_date: 2026/05/06
   total_downloads: 101
   release_downloads:
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-typescript/blob/main/LICENSE.md
 - name: "@structuredmerge/binary-merge"
   description: 'StructuredMerge TypeScript package: binary-merge.'
   language: TypeScript
   ecosystem: npm
-  minimum_typescript_version: '5.9.3'
+  minimum_typescript_version: 5.9.3
   theme: family
   family_id: smorg-ts
   family_position: 3
@@ -2382,11 +2623,15 @@
   release_date: 2026/05/06
   total_downloads: 107
   release_downloads:
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-typescript/blob/main/LICENSE.md
 - name: "@structuredmerge/go-merge"
   description: 'StructuredMerge TypeScript package: go-merge.'
   language: TypeScript
   ecosystem: npm
-  minimum_typescript_version: '5.9.3'
+  minimum_typescript_version: 5.9.3
   theme: family
   family_id: smorg-ts
   family_position: 4
@@ -2412,11 +2657,15 @@
   release_date: 2026/05/06
   total_downloads: 108
   release_downloads:
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-typescript/blob/main/LICENSE.md
 - name: "@structuredmerge/js-yaml-merge"
   description: 'StructuredMerge TypeScript package: js-yaml-merge.'
   language: TypeScript
   ecosystem: npm
-  minimum_typescript_version: '5.9.3'
+  minimum_typescript_version: 5.9.3
   theme: family
   family_id: smorg-ts
   family_position: 5
@@ -2442,11 +2691,15 @@
   release_date: 2026/05/06
   total_downloads: 112
   release_downloads:
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-typescript/blob/main/LICENSE.md
 - name: "@structuredmerge/json-merge"
   description: 'StructuredMerge TypeScript package: json-merge.'
   language: TypeScript
   ecosystem: npm
-  minimum_typescript_version: '5.9.3'
+  minimum_typescript_version: 5.9.3
   theme: family
   family_id: smorg-ts
   family_position: 6
@@ -2472,11 +2725,15 @@
   release_date: 2026/05/06
   total_downloads: 90
   release_downloads:
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-typescript/blob/main/LICENSE.md
 - name: "@structuredmerge/kettle-nodule"
   description: 'StructuredMerge TypeScript package: kettle-nodule.'
   language: TypeScript
   ecosystem: npm
-  minimum_typescript_version: '5.9.3'
+  minimum_typescript_version: 5.9.3
   theme: family
   family_id: smorg-ts
   family_position: 7
@@ -2502,11 +2759,15 @@
   release_date: 2026/05/06
   total_downloads: 106
   release_downloads:
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-typescript/blob/main/LICENSE.md
 - name: "@structuredmerge/markdown-it-merge"
   description: 'StructuredMerge TypeScript package: markdown-it-merge.'
   language: TypeScript
   ecosystem: npm
-  minimum_typescript_version: '5.9.3'
+  minimum_typescript_version: 5.9.3
   theme: family
   family_id: smorg-ts
   family_position: 8
@@ -2532,11 +2793,15 @@
   release_date: 2026/05/06
   total_downloads: 103
   release_downloads:
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-typescript/blob/main/LICENSE.md
 - name: "@structuredmerge/markdown-merge"
   description: 'StructuredMerge TypeScript package: markdown-merge.'
   language: TypeScript
   ecosystem: npm
-  minimum_typescript_version: '5.9.3'
+  minimum_typescript_version: 5.9.3
   theme: family
   family_id: smorg-ts
   family_position: 9
@@ -2562,11 +2827,15 @@
   release_date: 2026/05/06
   total_downloads: 108
   release_downloads:
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-typescript/blob/main/LICENSE.md
 - name: "@structuredmerge/peggy-toml-merge"
   description: 'StructuredMerge TypeScript package: peggy-toml-merge.'
   language: TypeScript
   ecosystem: npm
-  minimum_typescript_version: '5.9.3'
+  minimum_typescript_version: 5.9.3
   theme: family
   family_id: smorg-ts
   family_position: 10
@@ -2592,11 +2861,15 @@
   release_date: 2026/05/06
   total_downloads: 112
   release_downloads:
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-typescript/blob/main/LICENSE.md
 - name: "@structuredmerge/plain-merge"
   description: 'StructuredMerge TypeScript package: plain-merge.'
   language: TypeScript
   ecosystem: npm
-  minimum_typescript_version: '5.9.3'
+  minimum_typescript_version: 5.9.3
   theme: family
   family_id: smorg-ts
   family_position: 11
@@ -2622,11 +2895,15 @@
   release_date: 2026/05/06
   total_downloads: 101
   release_downloads:
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-typescript/blob/main/LICENSE.md
 - name: "@structuredmerge/ruby-merge"
   description: 'StructuredMerge TypeScript package: ruby-merge.'
   language: TypeScript
   ecosystem: npm
-  minimum_typescript_version: '5.9.3'
+  minimum_typescript_version: 5.9.3
   theme: family
   family_id: smorg-ts
   family_position: 12
@@ -2652,11 +2929,15 @@
   release_date: 2026/05/06
   total_downloads: 111
   release_downloads:
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-typescript/blob/main/LICENSE.md
 - name: "@structuredmerge/rust-merge"
   description: 'StructuredMerge TypeScript package: rust-merge.'
   language: TypeScript
   ecosystem: npm
-  minimum_typescript_version: '5.9.3'
+  minimum_typescript_version: 5.9.3
   theme: family
   family_id: smorg-ts
   family_position: 13
@@ -2682,11 +2963,15 @@
   release_date: 2026/05/06
   total_downloads: 117
   release_downloads:
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-typescript/blob/main/LICENSE.md
 - name: "@structuredmerge/toml-merge"
   description: 'StructuredMerge TypeScript package: toml-merge.'
   language: TypeScript
   ecosystem: npm
-  minimum_typescript_version: '5.9.3'
+  minimum_typescript_version: 5.9.3
   theme: family
   family_id: smorg-ts
   family_position: 14
@@ -2712,11 +2997,15 @@
   release_date: 2026/05/06
   total_downloads: 110
   release_downloads:
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-typescript/blob/main/LICENSE.md
 - name: "@structuredmerge/tree-haver"
   description: 'StructuredMerge TypeScript package: tree-haver.'
   language: TypeScript
   ecosystem: npm
-  minimum_typescript_version: '5.9.3'
+  minimum_typescript_version: 5.9.3
   theme: family
   family_id: smorg-ts
   family_position: 15
@@ -2742,11 +3031,15 @@
   release_date: 2026/05/06
   total_downloads: 146
   release_downloads:
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-typescript/blob/main/LICENSE.md
 - name: "@structuredmerge/typescript-compiler-merge"
   description: 'StructuredMerge TypeScript package: typescript-compiler-merge.'
   language: TypeScript
   ecosystem: npm
-  minimum_typescript_version: '5.9.3'
+  minimum_typescript_version: 5.9.3
   theme: family
   family_id: smorg-ts
   family_position: 16
@@ -2772,11 +3065,15 @@
   release_date: 2026/05/06
   total_downloads: 100
   release_downloads:
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-typescript/blob/main/LICENSE.md
 - name: "@structuredmerge/typescript-merge"
   description: 'StructuredMerge TypeScript package: typescript-merge.'
   language: TypeScript
   ecosystem: npm
-  minimum_typescript_version: '5.9.3'
+  minimum_typescript_version: 5.9.3
   theme: family
   family_id: smorg-ts
   family_position: 17
@@ -2802,11 +3099,15 @@
   release_date: 2026/05/06
   total_downloads: 108
   release_downloads:
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-typescript/blob/main/LICENSE.md
 - name: "@structuredmerge/yaml-merge"
   description: 'StructuredMerge TypeScript package: yaml-merge.'
   language: TypeScript
   ecosystem: npm
-  minimum_typescript_version: '5.9.3'
+  minimum_typescript_version: 5.9.3
   theme: family
   family_id: smorg-ts
   family_position: 18
@@ -2832,11 +3133,15 @@
   release_date: 2026/05/06
   total_downloads: 109
   release_downloads:
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-typescript/blob/main/LICENSE.md
 - name: "@structuredmerge/zip-merge"
   description: 'StructuredMerge TypeScript package: zip-merge.'
   language: TypeScript
   ecosystem: npm
-  minimum_typescript_version: '5.9.3'
+  minimum_typescript_version: 5.9.3
   theme: family
   family_id: smorg-ts
   family_position: 19
@@ -2862,6 +3167,10 @@
   release_date: 2026/05/06
   total_downloads: 112
   release_downloads:
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-typescript/blob/main/LICENSE.md
 - name: ast-merge
   description: Core Structured Merge AST, ruleset, planning, and review contracts
   language: Rust
@@ -2891,6 +3200,10 @@
   total_downloads: 440
   release_downloads: 426
   release_date: 2026/05/06
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-rust/blob/main/LICENSE.md
 - name: ast-template
   description: Recipe and template helpers for Structured Merge AST libraries
   language: Rust
@@ -2920,6 +3233,10 @@
   total_downloads: 12
   release_downloads: 12
   release_date: 2026/05/06
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-rust/blob/main/LICENSE.md
 - name: structuredmerge-binary-merge
   description: Binary preservation planning and diagnostics for Structured Merge
   language: Rust
@@ -2949,6 +3266,10 @@
   total_downloads: 14
   release_downloads: 14
   release_date: 2026/05/06
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-rust/blob/main/LICENSE.md
 - name: go-merge
   description: Go syntax merge helpers for Structured Merge
   language: Rust
@@ -2978,6 +3299,10 @@
   total_downloads: 14
   release_downloads: 14
   release_date: 2026/05/06
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-rust/blob/main/LICENSE.md
 - name: json-merge
   description: JSON merge helpers for Structured Merge
   language: Rust
@@ -3007,6 +3332,10 @@
   total_downloads: 19
   release_downloads: 19
   release_date: 2026/05/06
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-rust/blob/main/LICENSE.md
 - name: kettle-rusty
   description: Rust crate recipe helpers for Structured Merge
   language: Rust
@@ -3036,6 +3365,10 @@
   total_downloads: 15
   release_downloads: 15
   release_date: 2026/05/06
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-rust/blob/main/LICENSE.md
 - name: markdown-merge
   description: Markdown merge helpers for Structured Merge
   language: Rust
@@ -3065,6 +3398,10 @@
   total_downloads: 76
   release_downloads: 76
   release_date: 2026/05/06
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-rust/blob/main/LICENSE.md
 - name: pest-toml-merge
   description: Pest TOML merge helpers for Structured Merge
   language: Rust
@@ -3094,6 +3431,10 @@
   total_downloads: 14
   release_downloads: 14
   release_date: 2026/05/06
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-rust/blob/main/LICENSE.md
 - name: plain-merge
   description: Plain text merge helpers for Structured Merge
   language: Rust
@@ -3123,6 +3464,10 @@
   total_downloads: 14
   release_downloads: 14
   release_date: 2026/05/06
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-rust/blob/main/LICENSE.md
 - name: pulldown-cmark-merge
   description: Pulldown-cmark Markdown merge helpers for Structured Merge
   language: Rust
@@ -3152,6 +3497,10 @@
   total_downloads: 16
   release_downloads: 16
   release_date: 2026/05/06
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-rust/blob/main/LICENSE.md
 - name: ruby-merge
   description: Ruby syntax merge helpers for Structured Merge
   language: Rust
@@ -3181,6 +3530,10 @@
   total_downloads: 46
   release_downloads: 46
   release_date: 2026/05/06
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-rust/blob/main/LICENSE.md
 - name: rust-merge
   description: Rust syntax merge helpers for Structured Merge
   language: Rust
@@ -3210,6 +3563,10 @@
   total_downloads: 16
   release_downloads: 16
   release_date: 2026/05/06
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-rust/blob/main/LICENSE.md
 - name: structuredmerge-toml-merge
   description: TOML merge helpers for Structured Merge
   language: Rust
@@ -3239,6 +3596,10 @@
   total_downloads: 78
   release_downloads: 78
   release_date: 2026/05/06
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-rust/blob/main/LICENSE.md
 - name: tree-haver
   description: Tree substrate and binary location contracts for Structured Merge
   language: Rust
@@ -3268,6 +3629,10 @@
   total_downloads: 496
   release_downloads: 478
   release_date: 2026/05/06
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-rust/blob/main/LICENSE.md
 - name: typescript-merge
   description: TypeScript syntax merge helpers for Structured Merge
   language: Rust
@@ -3297,6 +3662,10 @@
   total_downloads: 16
   release_downloads: 16
   release_date: 2026/05/06
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-rust/blob/main/LICENSE.md
 - name: yaml-merge
   description: YAML merge helpers for Structured Merge
   language: Rust
@@ -3326,6 +3695,10 @@
   total_downloads: 50
   release_downloads: 50
   release_date: 2026/05/06
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-rust/blob/main/LICENSE.md
 - name: yaml-serde-merge
   description: yaml-serde merge helpers for Structured Merge
   language: Rust
@@ -3355,6 +3728,10 @@
   total_downloads: 16
   release_downloads: 16
   release_date: 2026/05/06
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-rust/blob/main/LICENSE.md
 - name: structuredmerge-zip-merge
   description: ZIP inventory, planning, nested dispatch, and raw-preservation helpers
     for Structured Merge
@@ -3385,6 +3762,10 @@
   total_downloads: 15
   release_downloads: 15
   release_date: 2026/05/06
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-rust/blob/main/LICENSE.md
 - name: github.com/structuredmerge/structuredmerge-go
   description: Go implementation of the StructuredMerge contract.
   language: Go
@@ -3411,3 +3792,7 @@
   last_commit_on:
   status: active
   release_date: 2026/05/06
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-go/blob/main/LICENSE.md

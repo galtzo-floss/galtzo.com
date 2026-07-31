@@ -30,6 +30,9 @@
   last_commit_on: 2026/01/22
   status: active
   last_scrape_at: '2026-07-30T23:18:03Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/galtzo-floss/active_security/blob/main/LICENSE.txt
 - name: activerecord-tablefree
   description: ActiveRecord Tablefree Models provides a simple mixin for creating
     models that are not bound to the database. Take advantage of ActiveRecord features
@@ -64,6 +67,9 @@
   last_commit_on: 2026/01/17
   status: active
   last_scrape_at: '2026-07-30T23:18:26Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/galtzo-floss/activerecord-tablefree/blob/main/LICENSE.txt
 - name: activerecord-transactionable
   description: Getting transactions right is hard, and this gem makes it easier.
   language: Ruby
@@ -103,6 +109,9 @@
   last_commit_on: 2026/01/17
   status: active
   last_scrape_at: '2026-07-30T23:18:49Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/galtzo-floss/activerecord-transactionable/blob/main/LICENSE.txt
 - name: activesupport-broadcast_logger
   description: Rails v8 ActiveSupport::BroadcastLogger, fixed & backported to Rails
     v5.2+ & Ruby 2.7+
@@ -136,6 +145,9 @@
   last_commit_on: 2026/01/22
   status: active
   last_scrape_at: '2026-07-30T23:19:11Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/galtzo-floss/activesupport-broadcast_logger/blob/main/LICENSE.txt
 - name: activesupport-logger
   description: Rails v8 ActiveSupport::Logger backported to Rails v5.2+ & Ruby 2.7+
   language: Ruby
@@ -168,6 +180,9 @@
   last_commit_on: 2026/01/22
   status: active
   last_scrape_at: '2026-07-30T23:19:33Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/galtzo-floss/activesupport-logger/blob/main/LICENSE.txt
 - name: activesupport-tagged_logging
   description: Rails v8 ActiveSupport::TaggedLogging, fixed & backported to Rails
     v5.2+ & Ruby 2.7+
@@ -201,6 +216,9 @@
   last_commit_on: 2026/01/22
   status: active
   last_scrape_at: '2026-07-30T23:19:55Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/galtzo-floss/activesupport-tagged_logging/blob/main/LICENSE.txt
 - name: anonymous_active_record
   description: Replacement for broken Class.new(ActiveRecord::Base)
   language: Ruby
@@ -232,6 +250,9 @@
   last_commit_on: 2026/01/17
   status: active
   last_scrape_at: '2026-07-30T23:20:17Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/galtzo-floss/anonymous_active_record/blob/main/LICENSE.txt
 - name: skywalking-eyes
   description: |
     A full-featured license tool to check and fix license headers and resolve dependencies' licenses.
@@ -271,6 +292,9 @@
   theme: family
   family_id: rubygems-bundler-family
   family_position: 10
+  licenses:
+  - Apache-2.0
+  license_url: https://github.com/apache/skywalking-eyes/blob/main/LICENSE
 - name: appraisal2
   description: Appraisal2 integrates with bundler and rake to test your library against
     different versions of dependencies in repeatable scenarios called "appraisals."
@@ -309,6 +333,9 @@
   last_commit_on: 2026/07/19
   status: active
   last_scrape_at: '2026-07-30T23:20:43Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/appraisal-rb/appraisal2/blob/main/LICENSE.md
 - name: archivist-client
   description: archivist-client queries archive.org for book data and downloads some
     things.
@@ -340,6 +367,9 @@
   theme: family
   family_id: miscellaneous
   family_position: 2
+  licenses:
+  - MIT
+  license_url: https://github.com/wordtreefoundation/archivist-client/blob/master/LICENSE
 - name: awesome_search
   description: Organize complicated search results
   language: Ruby
@@ -372,6 +402,9 @@
   last_commit_on: 2026/01/22
   status: active
   last_scrape_at: '2026-07-30T23:21:28Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/galtzo-floss/awesome_search/blob/main/LICENSE
 - name: awesome-sponsorships
   description: "\U0001F496 An Open Source Funding How To Awesome List: checklist and
     inspiration to earn more as a FLOSS developer"
@@ -401,6 +434,9 @@
   theme: family
   family_id: miscellaneous
   family_position: 3
+  licenses:
+  - MIT
+  license_url: https://github.com/floss-funding/awesome-sponsorships/blob/main/LICENSE.txt
 - name: bash_step
   description: Bash Step Function Library
   language: Bash
@@ -427,6 +463,9 @@
   theme: family
   family_id: miscellaneous
   family_position: 4
+  licenses:
+  - MIT
+  license_url: https://github.com/pboling/bash_step/blob/master/LICENSE
 - name: bsfl
   description: Bash Script Function Library
   language: Bash
@@ -489,6 +528,9 @@
   last_commit_on: 2020/11/15
   status: archived
   last_scrape_at: '2026-07-30T23:21:58Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/pboling/cacheable-flash/blob/master/LICENSE
 - name: capistrano_mailer
   description: Capistrano Deployment Email Notification.  Keep the whole team informed
     of each release!
@@ -525,6 +567,9 @@
   last_commit_on: 2026/01/17
   status: active
   last_scrape_at: '2026-07-30T23:22:20Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/galtzo-floss/capistrano_mailer/blob/main/LICENSE
 - name: celluloid-io-pg-listener
   description: Asynchronously LISTEN for Postgresql NOTIFY messages with payloads
     and Do Something
@@ -560,6 +605,9 @@
   last_commit_on: 2026/01/17
   status: active
   last_scrape_at: '2026-07-30T23:22:42Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/galtzo-floss/celluloid-io-pg-listener/blob/main/LICENSE.txt
 - name: controller_validator
   description: Use the familiar ActiveModel::Errors pattern for controller validations
   language: Ruby
@@ -591,6 +639,9 @@
   last_commit_on: 2026/01/17
   status: active
   last_scrape_at: '2026-07-30T23:23:04Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/galtzo-floss/controller_validator/blob/main/LICENSE.txt
 - name: csv_pirate
   description: |-
     CsvPirate is the easy way to create a CSV of essentially anything in Ruby, in full pirate regalia.
@@ -627,6 +678,9 @@
   last_commit_on: 2026/01/17
   status: active
   last_scrape_at: '2026-07-30T23:23:26Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/galtzo-floss/csv_pirate/blob/main/LICENSE
 - name: debug_logging
   description: |
     Unobtrusive debug logging for Ruby.  NO LITTERING.
@@ -667,6 +721,9 @@
   last_commit_on: 2026/07/26
   status: active
   last_scrape_at: '2026-07-30T23:23:49Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/galtzo-floss/debug_logging/blob/main/LICENSE.md
 - name: destination_errors
   description: Useful when a presenter deals with multiple objects that may enter
     into error states, and the errors need to be collected at a single point.
@@ -704,6 +761,9 @@
   last_commit_on: 2026/01/17
   status: active
   last_scrape_at: '2026-07-30T23:24:11Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/galtzo-floss/destination_errors/blob/main/LICENSE.txt
 - name: dry_views
   description: 'Provides extensions to ActionView::Helpers::CaptureHelper: content_for_with_default,
     no_content_for, and an enhanced content_for that plays nice with friends'
@@ -738,6 +798,9 @@
   last_commit_on: 2026/01/17
   status: active
   last_scrape_at: '2026-07-30T23:24:33Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/galtzo-floss/dry_views/blob/main/LICENSE
 - name: dynamoid
   description: Dynamoid is an ORM for Amazon's DynamoDB that supports offline development,
     associations, querying, and everything else you'd expect from an ActiveRecord-style
@@ -771,6 +834,9 @@
   theme: family
   family_id: rails-family
   family_position: 1
+  licenses:
+  - MIT
+  license_url: https://github.com/Dynamoid/dynamoid/blob/master/LICENSE.txt
 - name: each_in_batches
   description: Batch Processing of Records with Blocks in Rails
   language: Ruby
@@ -804,6 +870,9 @@
   last_commit_on: 2026/01/17
   status: active
   last_scrape_at: '2026-07-30T23:25:17Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/galtzo-floss/each_in_batches/blob/main/MIT-LICENSE
 - name: flag_shih_tzu
   description: Bit fields for ActiveRecord - store multiple boolean flags in a single
     integer column
@@ -845,6 +914,9 @@
   last_commit_on: 2026/07/26
   status: active
   last_scrape_at: '2026-07-30T23:25:40Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/galtzo-floss/flag_shih_tzu/blob/main/LICENSE
 - name: floss_funding
   description: Help overlooked open source projects - the ones at the bottom of the
     stack, and the dev dependencies - by funding them.
@@ -877,6 +949,9 @@
   last_commit_on: 2026/03/27
   status: active
   last_scrape_at: '2026-07-30T23:26:02Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/floss-funding/floss_funding/blob/main/LICENSE.txt
 - name: gem_bench
   description: |-
     * Benchmark different versions of same or similar gems
@@ -917,6 +992,9 @@
   last_commit_on: 2026/01/17
   status: active
   last_scrape_at: '2026-07-30T23:26:24Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/galtzo-floss/gem_bench/blob/main/LICENSE.txt
 - name: gitmoji-regex
   description: "\U0001F61C A regular expression matching Gitmoji (a subset of Unicode
     Emoji) symbolsFund overlooked open source projects - bottom of stack, dev/test
@@ -952,6 +1030,9 @@
   last_commit_on: 2026/07/29
   status: active
   last_scrape_at: '2026-07-30T23:26:46Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/galtzo-floss/gitmoji-regex/blob/main/LICENSE.md
 - name: humorous_log_formatter
   description: Humorous Log Levels and Color For Rails.  Customizable!
   language: Ruby
@@ -983,6 +1064,9 @@
   last_commit_on: 2026/01/22
   status: active
   last_scrape_at: '2026-07-30T23:27:09Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/galtzo-floss/humorous_log_formatter/blob/main/LICENSE.txt
 - name: include_with_respect
   description: Find out if your Module include/extend hooks are misbehaving!
   language: Ruby
@@ -1017,6 +1101,9 @@
   last_commit_on: 2026/01/17
   status: active
   last_scrape_at: '2026-07-30T23:27:31Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/galtzo-floss/include_with_respect/blob/main/LICENSE
 - name: json_schemer-fuzz
   description: Fuzz generator for json_schemer
   language: Ruby
@@ -1047,6 +1134,9 @@
   theme: family
   family_id: rspec-family
   family_position: 7
+  licenses:
+  - MIT
+  license_url: https://github.com/galtzo-floss/json_schemer-fuzz/blob/main/LICENSE.txt
 - name: kettle-dev
   description: "\U0001F372 Kettle::Dev is a meta tool from kettle-rb to streamline
     development and testing. Acts as a shim dependency, pulling in many other dependencies,
@@ -1098,6 +1188,9 @@
   last_commit_on:
   status: stale
   last_scrape_at: '2026-07-30T23:28:16Z'
+  licenses:
+  - AGPL-3.0-only
+  license_url: https://github.com/kettle-dev/kettle-dev/blob/main/LICENSE.md
 - name: kettle-soup-cover
   description: |
     A Covered Kettle of Test Coverage SOUP (Software of Unknown Provenance)
@@ -1138,6 +1231,9 @@
   last_commit_on:
   status: stale
   last_scrape_at: '2026-07-30T23:28:38Z'
+  licenses:
+  - AGPL-3.0-only
+  license_url: https://github.com/kettle-dev/kettle-soup-cover/blob/main/LICENSE.md
 - name: kettle-test
   description: "\U0001F372 Kettle::Test is a meta tool from kettle-rb to streamline
     testing. Acts as a shim dependency, pulling in many other dependencies, to give
@@ -1182,6 +1278,10 @@
   last_commit_on:
   status: stale
   last_scrape_at: '2026-07-30T23:29:00Z'
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/kettle-dev/kettle-test/blob/main/LICENSE.md
 - name: letter_group
   description: Organize data results from raw sql queries (as with PGresult, or Dossier)
     intelligently.
@@ -1215,6 +1315,9 @@
   last_commit_on: 2026/01/17
   status: active
   last_scrape_at: '2026-07-30T23:29:22Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/galtzo-floss/letter_group/blob/main/LICENSE.txt
 - name: library_tree
   description: Builds a tree of module inclusion of a target module into other modules
   language: Ruby
@@ -1245,6 +1348,9 @@
   last_commit_on: 2026/03/27
   status: active
   last_scrape_at: '2026-07-30T23:29:44Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/galtzo-floss/library_tree/blob/main/LICENSE.txt
 - name: logos
   description: "\U0001FAB5 A resource for logos, with proper attribution information,
     including license and copyright, for open source projects I care about."
@@ -1274,6 +1380,9 @@
   last_commit_on: 2026/07/29
   status: active
   last_scrape_at: '2026-07-30T23:29:47Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/galtzo-floss/logos/blob/main/LICENSE.txt
 - name: masq
   description: Masq supports OpenID 2.0 and supports SReg, AX (fetch and store requests)
     and PAPE as well as some custom additions like multi-factor authentication using
@@ -1311,6 +1420,9 @@
   last_commit_on:
   status: stale
   last_scrape_at: '2026-07-30T23:29:49Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/ruby-openid/masq2/blob/main/LICENSE.txt
 - name: masq2
   description: Originally a fork. Has been merged back to the original gem.
   language: Ruby
@@ -1349,6 +1461,9 @@
   last_commit_on:
   status: stale
   last_scrape_at: '2026-07-30T23:30:11Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/ruby-openid/masq2/blob/main/LICENSE.txt
 - name: month-serializer
   description: Serialize Month objects to Integer
   language: Ruby
@@ -1382,6 +1497,9 @@
   theme: family
   family_id: active-record
   family_position: 13
+  licenses:
+  - MIT
+  license_url: https://github.com/galtzo-floss/month-serializer/blob/main/LICENSE.txt
 - name: oauth
   description: "\U0001F511 A Ruby wrapper for the original OAuth 1.0 / 1.0a spec."
   language: Ruby
@@ -1420,6 +1538,9 @@
   last_commit_on: 2026/07/27
   status: active
   last_scrape_at: '2026-07-30T23:30:56Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/ruby-oauth/oauth/blob/main/LICENSE.md
 - name: oauth-tty
   description: "\U0001F5A5️ OAuth 1.0 / 1.0a TTY Command Line Interface"
   language: Ruby
@@ -1459,6 +1580,9 @@
   last_commit_on: 2026/07/15
   status: active
   last_scrape_at: '2026-07-30T23:31:19Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/ruby-oauth/oauth-tty/blob/main/LICENSE.md
 - name: oauth2
   description: Ruby OAuth 2.0 framework for building OAuth providers and clients
   language: Ruby
@@ -1497,6 +1621,9 @@
   last_commit_on: 2026/07/19
   status: active
   last_scrape_at: '2026-07-30T23:31:42Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/ruby-oauth/oauth2/blob/main/LICENSE.md
 - name: omniauth-identity
   description: Traditional username/password based authentication system for OmniAuth
   language: Ruby
@@ -1526,6 +1653,9 @@
   last_commit_on: 2026/07/15
   status: active
   last_scrape_at: '2026-07-30T23:32:04Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/omniauth/omniauth-identity/blob/main/LICENSE.md
 - name: omniauth-jwt
   description: An OmniAuth strategy to accept JWT-based single sign-on.
   language: Ruby
@@ -1555,6 +1685,9 @@
   last_commit_on: 2026/06/16
   status: active
   last_scrape_at: '2026-07-30T23:32:27Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/omniauth/omniauth-jwt/blob/main/LICENSE.txt
 - name: omniauth-jwt2
   description: Originally a fork. Has been merged back to the original gem.
   language: Ruby
@@ -1584,6 +1717,9 @@
   last_commit_on: 2026/07/14
   status: active
   last_scrape_at: '2026-07-30T23:32:49Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/omniauth/omniauth-jwt2/blob/main/LICENSE.md
 - name: omniauth-ldap
   description: A LDAP strategy for OmniAuth.
   language: Ruby
@@ -1613,6 +1749,9 @@
   last_commit_on: 2026/07/14
   status: active
   last_scrape_at: '2026-07-30T23:33:11Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/omniauth/omniauth-ldap/blob/main/LICENSE.md
 - name: omniauth-openid
   description: OpenID (not OIDC) strategy for OmniAuth.
   language: Ruby
@@ -1651,6 +1790,9 @@
   last_commit_on: 2025/12/02
   status: active
   last_scrape_at: '2026-07-30T23:33:34Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/ruby-openid/omniauth-openid/blob/main/LICENSE.txt
 - name: open_id_authentication
   description: Provides a thin wrapper around the excellent rack-openid2 gem.
   language: Ruby
@@ -1689,6 +1831,9 @@
   last_commit_on: 2026/01/22
   status: active
   last_scrape_at: '2026-07-30T23:33:57Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/ruby-openid/open_id_authentication/blob/main/LICENSE.txt
 - name: os
   description: Easily determine which OS your Ruby code is running on.
   language: Ruby
@@ -1717,6 +1862,9 @@
   theme: family
   family_id: miscellaneous
   family_position: 11
+  licenses:
+  - MIT
+  license_url: https://github.com/rdp/os/blob/master/LICENSE
 - name: pretty_feed
   description: |
     PrettyFeed provides a modulizer you can include in a job, worker, class, rake task, etc,
@@ -1752,6 +1900,9 @@
   last_commit_on: 2026/01/22
   status: active
   last_scrape_at: '2026-07-30T23:34:42Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/galtzo-floss/pretty_feed/blob/main/LICENSE.txt
 - name: qfill
   description: Advanced Queue Transformation
   language: Ruby
@@ -1786,6 +1937,9 @@
   last_commit_on: 2026/01/17
   status: active
   last_scrape_at: '2026-07-30T23:35:04Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/galtzo-floss/qfill/blob/main/LICENSE
 - name: rack-insight
   description: |-
     Debugging toolbar for Rack applications implemented as middleware.
@@ -1821,6 +1975,9 @@
   last_commit_on: 2016/04/27
   status: stale
   last_scrape_at: '2026-07-30T23:35:26Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/pboling/rack-insight/blob/master/LICENSE
 - name: rack-openid
   description: Provides a more HTTPish API around the ruby-openid library
   language: Ruby
@@ -1859,6 +2016,9 @@
   last_commit_on: 2025/09/14
   status: active
   last_scrape_at: '2026-07-30T23:35:49Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/ruby-openid/rack-openid/blob/master/LICENSE.txt
 - name: rack-openid2
   description: Originally a fork. Has been merged back to the original gem.
   language: Ruby
@@ -1897,6 +2057,9 @@
   last_commit_on: 2025/06/07
   status: stale
   last_scrape_at: '2026-07-30T23:36:12Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/ruby-openid/rack-openid2/blob/main/LICENSE.txt
 - name: rack-toolbar
   description: Provides an easy way to create Rack Middleware that injects things
     into the response body. Extracted from rack-insight.
@@ -1931,6 +2094,8 @@
   last_commit_on: 2025/08/13
   status: active
   last_scrape_at: '2026-07-30T23:36:34Z'
+  licenses:
+  - MIT
 - name: rails_env_local
   description: |2
       If existing infrastructure for deployed environments
@@ -1971,6 +2136,9 @@
   last_commit_on: 2025/08/04
   status: archived
   last_scrape_at: '2026-07-30T23:36:56Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/pboling/rails_env_local/blob/master/LICENSE
 - name: react-rails-benchmark_renderer
   description: Concern::Instrumentation Plugin for React::Rails Render Benchmarking
     with a reference implementation
@@ -2006,6 +2174,9 @@
   last_commit_on: 2025/08/13
   status: active
   last_scrape_at: '2026-07-30T23:37:18Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/galtzo-floss/react-rails-benchmark_renderer/blob/main/LICENSE.txt
 - name: remit
   description: An API for using the Amazon Flexible Payment Service (FPS).
   language: Ruby
@@ -2037,6 +2208,9 @@
   last_commit_on: 2013/03/27
   status: stale
   last_scrape_at: '2026-07-30T23:37:40Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/tylerhunt/remit/blob/master/LICENSE
 - name: require_bench
   description: Ruby app loading slowly, or never? Discover bootstrapping issues in
     Ruby by logging/benchmarking/timing-out/rescuing 'Kernel.require' & 'load'
@@ -2078,6 +2252,9 @@
   last_commit_on: 2026/01/17
   status: active
   last_scrape_at: '2026-07-30T23:38:02Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/galtzo-floss/require_bench/blob/main/LICENSE.txt
 - name: resque
   description: Resque is a Redis-backed Ruby library for creating background jobs,
     placing them on multiple queues, and processing them later.
@@ -2112,6 +2289,9 @@
   last_commit_on: 2026/07/28
   status: active
   last_scrape_at: '2026-07-30T23:38:24Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/resque/resque/blob/master/LICENSE
 - name: resque-lonely_job
   description: |
     Ensures that for a given queue, only one worker is working on a job at any given time.
@@ -2156,6 +2336,9 @@
   last_commit_on: 2026/01/17
   status: active
   last_scrape_at: '2026-07-30T23:38:46Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/resque/resque-lonely_job/blob/main/LICENSE.txt
 - name: resque-unique_at_runtime
   description: |
     Ensures that for a given queue, only one worker is working on a job at any given time.
@@ -2199,6 +2382,9 @@
   last_commit_on: 2026/01/17
   status: active
   last_scrape_at: '2026-07-30T23:39:08Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/resque/resque-unique_at_runtime/blob/main/LICENSE
 - name: resque-unique_by_arity
   description: Configure resque-unique_in_queue and resque-unique_at_runtime uniqueness
     by arity of perform method, with automated cleanup tools
@@ -2234,6 +2420,9 @@
   last_commit_on: 2026/01/17
   status: active
   last_scrape_at: '2026-07-30T23:39:30Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/resque/resque-unique_by_arity/blob/main/LICENSE
 - name: resque-unique_in_queue
   description: A resque plugin that ensures job uniqueness at enqueue time.
   language: Ruby
@@ -2266,6 +2455,9 @@
   last_commit_on: 2026/07/14
   status: active
   last_scrape_at: '2026-07-30T23:39:52Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/resque/resque-unique_in_queue/blob/main/LICENSE
 - name: rots
   description: |
     Ruby OpenID Test Server (ROTS) provides a basic OpenID server made in top of the Rack gem.
@@ -2307,6 +2499,9 @@
   last_commit_on: 2025/11/23
   status: active
   last_scrape_at: '2026-07-30T23:40:14Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/ruby-openid/rots/blob/master/LICENSE.txt
 - name: rspec-block_is_expected
   description: subject { Integer(nil) }; it('raises') { block_is_expected.to raise_error(TypeError)
     }
@@ -2347,6 +2542,9 @@
   last_commit_on: 2026/01/17
   status: active
   last_scrape_at: '2026-07-30T23:40:36Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/galtzo-floss/rspec-block_is_expected/blob/main/LICENSE.txt
 - name: rspec-pending_for
   description: "⏳️ Mark specs pending or skipped for specific Ruby engine (e.g. MRI
     or JRuby) & versions, or version ranges. Fund overlooked open source projects
@@ -2387,6 +2585,9 @@
   last_commit_on: 2026/07/29
   status: active
   last_scrape_at: '2026-07-30T23:40:59Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/galtzo-floss/rspec-pending_for/blob/main/LICENSE.md
 - name: rspec-stubbed_env
   description: |
     Stub or hide environment variables in a scoped context for testing
@@ -2429,6 +2630,9 @@
   last_commit_on: 2026/07/29
   status: active
   last_scrape_at: '2026-07-30T23:41:21Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/galtzo-floss/rspec-stubbed_env/blob/main/LICENSE.md
 - name: rubocop-lts
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby code
   language: Ruby
@@ -2465,6 +2669,9 @@
   last_commit_on: 2026/06/28
   status: active
   last_scrape_at: '2026-07-30T23:41:43Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/rubocop-lts/rubocop-lts/blob/main/LICENSE.md
 - name: rubocop-ruby1_8
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 1.8 code
   language: Ruby
@@ -2498,6 +2705,9 @@
   last_commit_on: 2026/07/03
   status: active
   last_scrape_at: '2026-07-30T23:42:05Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/rubocop-lts/rubocop-ruby1_8/blob/main/LICENSE.md
 - name: rubocop-ruby1_9
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 1.9 code
   language: Ruby
@@ -2531,6 +2741,9 @@
   last_commit_on: 2026/07/03
   status: active
   last_scrape_at: '2026-07-30T23:42:27Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/rubocop-lts/rubocop-ruby1_9/blob/main/LICENSE.md
 - name: rubocop-ruby2_0
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 2.0 code
   language: Ruby
@@ -2564,6 +2777,9 @@
   last_commit_on: 2026/07/03
   status: active
   last_scrape_at: '2026-07-30T23:42:50Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/rubocop-lts/rubocop-ruby2_0/blob/main/LICENSE.md
 - name: rubocop-ruby2_1
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 2.1 code
   language: Ruby
@@ -2597,6 +2813,9 @@
   last_commit_on: 2026/07/03
   status: active
   last_scrape_at: '2026-07-30T23:43:12Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/rubocop-lts/rubocop-ruby2_1/blob/main/LICENSE.md
 - name: rubocop-ruby2_2
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 2.2 code
   language: Ruby
@@ -2630,6 +2849,9 @@
   last_commit_on: 2026/07/03
   status: active
   last_scrape_at: '2026-07-30T23:43:34Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/rubocop-lts/rubocop-ruby2_2/blob/main/LICENSE.md
 - name: rubocop-ruby2_3
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 2.3 code
   language: Ruby
@@ -2663,6 +2885,9 @@
   last_commit_on: 2026/07/03
   status: active
   last_scrape_at: '2026-07-30T23:43:56Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/rubocop-lts/rubocop-ruby2_3/blob/main/LICENSE.md
 - name: rubocop-ruby2_4
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 2.4 code
   language: Ruby
@@ -2696,6 +2921,9 @@
   last_commit_on: 2026/07/03
   status: active
   last_scrape_at: '2026-07-30T23:44:18Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/rubocop-lts/rubocop-ruby2_4/blob/main/LICENSE.md
 - name: rubocop-ruby2_5
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 2.5 code
   language: Ruby
@@ -2729,6 +2957,9 @@
   last_commit_on: 2026/07/03
   status: active
   last_scrape_at: '2026-07-30T23:44:40Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/rubocop-lts/rubocop-ruby2_5/blob/main/LICENSE.md
 - name: rubocop-ruby2_6
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 2.6 code
   language: Ruby
@@ -2762,6 +2993,9 @@
   last_commit_on: 2026/07/03
   status: active
   last_scrape_at: '2026-07-30T23:45:02Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/rubocop-lts/rubocop-ruby2_6/blob/main/LICENSE.md
 - name: rubocop-ruby2_7
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 2.7 code
   language: Ruby
@@ -2795,6 +3029,9 @@
   last_commit_on: 2026/07/03
   status: active
   last_scrape_at: '2026-07-30T23:45:24Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/rubocop-lts/rubocop-ruby2_7/blob/main/LICENSE.md
 - name: rubocop-ruby3_0
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 3.0 code
   language: Ruby
@@ -2831,6 +3068,9 @@
   last_commit_on: 2026/07/03
   status: active
   last_scrape_at: '2026-07-30T23:45:47Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/rubocop-lts/rubocop-ruby3_0/blob/main/LICENSE.md
 - name: rubocop-ruby3_1
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 3.1 code
   language: Ruby
@@ -2864,6 +3104,9 @@
   last_commit_on: 2026/07/03
   status: active
   last_scrape_at: '2026-07-30T23:46:09Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/rubocop-lts/rubocop-ruby3_1/blob/main/LICENSE.md
 - name: rubocop-ruby3_2
   description: Configure RuboCop + a bevy of friends to gradually lint Ruby 3.2 code
   language: Ruby
@@ -2897,6 +3140,9 @@
   last_commit_on: 2026/07/03
   status: active
   last_scrape_at: '2026-07-30T23:46:31Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/rubocop-lts/rubocop-ruby3_2/blob/main/LICENSE.md
 - name: ruby-openid
   description: A library for consuming and serving OpenID identities.
   language: Ruby
@@ -2935,6 +3181,10 @@
   last_commit_on:
   status: stale
   last_scrape_at: '2026-07-30T23:46:53Z'
+  licenses:
+  - Ruby
+  - Apache Software License 2.0
+  license_url: https://github.com/ruby-openid/ruby-openid2/blob/main/LICENSE.txt
 - name: ruby-openid2
   description: Originally a fork. Has been merged back to the original gem.
   language: Ruby
@@ -2973,6 +3223,10 @@
   last_commit_on:
   status: stale
   last_scrape_at: '2026-07-30T23:47:15Z'
+  licenses:
+  - Ruby
+  - Apache Software License 2.0
+  license_url: https://github.com/ruby-openid/ruby-openid2/blob/main/LICENSE.txt
 - name: sanitize_email
   description: |2
       Email Condom for your Ruby Server.
@@ -3015,6 +3269,9 @@
   last_commit_on: 2026/07/26
   status: active
   last_scrape_at: '2026-07-30T23:47:37Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/galtzo-floss/sanitize_email/blob/main/LICENSE.md
 - name: seed_migration
   description: Rails gem for Data Migrations
   language: Ruby
@@ -3048,6 +3305,9 @@
   last_commit_on: 2025/08/18
   status: active
   last_scrape_at: '2026-07-30T23:47:59Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/galtzo-floss/seed_migration/blob/main/LICENSE.txt
 - name: sequential_file
   description: Create Files Named Sequentially Intelligently
   language: Ruby
@@ -3082,6 +3342,9 @@
   last_commit_on: 2026/01/17
   status: active
   last_scrape_at: '2026-07-30T23:48:20Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/galtzo-floss/sequential_file/blob/main/LICENSE.txt
 - name: service_actor-promptable
   description: TTY Prompt plugin for your service objects for your application logic
   language: Ruby
@@ -3115,6 +3378,9 @@
   last_commit_on: 2025/08/13
   status: active
   last_scrape_at: '2026-07-30T23:48:43Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/galtzo-floss/service_actor-promptable/blob/main/LICENSE.txt
 - name: shields-badge
   description: |
     Shields::Badge.gem_total_downloads(path_parameters: {gem: 'rails'})
@@ -3153,6 +3419,9 @@
   last_commit_on: 2025/08/18
   status: active
   last_scrape_at: '2026-07-30T23:49:05Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/galtzo-floss/shields-badge/blob/main/LICENSE.txt
 - name: shiftable
   description: Move single records (has_one) or collections (has_many) from one parent
     (belongs_to) to another
@@ -3187,6 +3456,9 @@
   last_commit_on: 2026/01/17
   status: active
   last_scrape_at: '2026-07-30T23:49:27Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/galtzo-floss/shiftable/blob/main/LICENSE.txt
 - name: silent_stream
   description: "\U0001F515 (formerly) ActiveSupport Kernel Reporting Detritus with
     a few enhancementsFund overlooked open source projects - bottom of stack, dev/test
@@ -3228,6 +3500,9 @@
   last_commit_on: 2026/03/26
   status: active
   last_scrape_at: '2026-07-30T23:49:49Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/galtzo-floss/silent_stream/blob/main/LICENSE.txt
 - name: simple_column-scopes
   description: Dynamic modules which define dynamic methods for scopes based on a
     dynamic array of column names
@@ -3260,6 +3535,9 @@
   last_commit_on: 2026/03/27
   status: active
   last_scrape_at: '2026-07-30T23:50:11Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/galtzo-floss/simple_column-scopes/blob/main/LICENSE.txt
 - name: snaky_hash
   description: 'A Hashie::Mash joint to make #snakelife better'
   language: Ruby
@@ -3296,6 +3574,9 @@
   last_commit_on: 2026/07/14
   status: active
   last_scrape_at: '2026-07-30T23:50:33Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/ruby-oauth/snaky_hash/blob/main/LICENSE.md
 - name: spyke-connection_lambda
   description: Dynamic Spyke API connection plugin for the Enterprise Cloud
   language: Ruby
@@ -3328,6 +3609,9 @@
   last_commit_on: 2025/08/13
   status: active
   last_scrape_at: '2026-07-30T23:50:55Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/galtzo-floss/spyke-connection_lambda/blob/main/LICENSE.txt
 - name: stackable_flash
   description: Allows flashes to stack intelligently, while preserving existing behavior
     of the Rails FlashHash
@@ -3363,6 +3647,9 @@
   last_commit_on: 2025/08/04
   status: archived
   last_scrape_at: '2026-07-30T23:51:16Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/pboling/stackable_flash/blob/master/LICENSE
 - name: standard-rubocop-lts
   description: |
     Enables Ruby projects to more confidently support even the most finely-aged Rubies.
@@ -3401,6 +3688,9 @@
   last_commit_on: 2026/07/03
   status: active
   last_scrape_at: '2026-07-30T23:51:39Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/rubocop-lts/standard-rubocop-lts/blob/main/LICENSE.md
 - name: status_tag
   description: |-
     Provides content_tag_for method signature to create customizable and logic-gated labels from objects.
@@ -3442,6 +3732,8 @@
   last_commit_on: 2026/01/17
   status: active
   last_scrape_at: '2026-07-30T23:52:01Z'
+  licenses:
+  - MIT
 - name: stone_checksums
   description: "\U0001F5FF Generate both SHA256 & SHA512 checksums into the checksums
     directory, and git commit them.\n  gem install stone_checksums\nThen, use the
@@ -3486,6 +3778,9 @@
   last_commit_on: 2026/07/26
   status: active
   last_scrape_at: '2026-07-30T23:52:24Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/galtzo-floss/stone_checksums/blob/main/LICENSE.md
 - name: strict_states
   description: Safely access state machine states with guarantee that there are no
     typos.  Compatible with all Ruby state machine libraries.
@@ -3522,6 +3817,9 @@
   last_commit_on: 2026/01/17
   status: active
   last_scrape_at: '2026-07-30T23:52:46Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/galtzo-floss/strict_states/blob/main/LICENSE.txt
 - name: super_exception_notifier
   description: In the Rails v2 era, this was a popular fork of exception_notification,
     with many extra features.  It is now deprecated in favor of the original gem.
@@ -3556,6 +3854,9 @@
   last_commit_on: 2014/01/19
   status: stale
   last_scrape_at: '2026-07-30T23:53:07Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/pboling/super_exception_notifier/blob/master/LICENSE
 - name: timecop-rspec
   description: "⌚️ Timecop::Rspec provides Timecop time-machines for RSpec that allow
     youto time-travel test examples, context/describes, and/or your entire test suite.
@@ -3590,6 +3891,9 @@
   last_commit_on: 2026/03/26
   status: active
   last_scrape_at: '2026-07-30T23:53:29Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/galtzo-floss/timecop-rspec/blob/main/LICENSE.txt
 - name: undrive_google
   description: "\U0001F3F4 Liberate files from your Google Drive with transformations"
   language: Ruby
@@ -3630,6 +3934,9 @@
   last_commit_on: 2026/03/18
   status: active
   last_scrape_at: '2026-07-30T23:53:52Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/galtzo-floss/undrive_google/blob/main/LICENSE.txt
 - name: version_gem
   description: "\U0001F516 Versions are good. Versions are cool. Versions will win."
   language: Ruby
@@ -3669,6 +3976,9 @@
   last_commit_on: 2026/07/14
   status: active
   last_scrape_at: '2026-07-30T23:54:14Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/ruby-oauth/version_gem/blob/main/LICENSE.md
 - name: warden_oauth
   description: warden_oauth will help you create oauth authentication strategies using
     the oauth helper method on the Warden::Manager config setup
@@ -3702,6 +4012,9 @@
   last_commit_on: 2026/07/15
   status: active
   last_scrape_at: '2026-07-30T23:54:35Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/ruby-oauth/warden_oauth/blob/main/LICENSE.md
 - name: yacs
   description: Yet Another Crypto Scanner; Alternative Front End Demo for DEX
   language: TypeScript
@@ -3728,6 +4041,9 @@
   theme: family
   family_id: miscellaneous
   family_position: 15
+  licenses:
+  - CC-BY-NC-SA-4.0
+  license_url: https://github.com/pboling/yacs/blob/main/LICENSE.txt
 - name: yard-fence
   description: "\U0001F93A Convert ASCII braces ('{}') to full-width braces ('{}')
     within code fences (triple-or-single backticks) during YARD processing, and back
@@ -3759,6 +4075,9 @@
   last_commit_on: 2026/07/02
   status: active
   last_scrape_at: '2026-07-30T23:55:00Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/galtzo-floss/yard-fence/blob/main/LICENSE.md
 - name: yaml-converter
   description: "\U0001F968 yaml-converter parses YAML files (with inline #note: annotations
     and validation markers) and emits polished Markdown, HTML, and PDF/DOCX (via pandoc)
@@ -3791,6 +4110,9 @@
   last_commit_on: 2026/07/02
   status: active
   last_scrape_at: '2026-07-30T23:55:22Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/galtzo-floss/yaml-converter/blob/main/LICENSE.md
 - name: yard-yaml
   description: "\U0001F968 A YARD plugin for YAML documents"
   language: Ruby
@@ -3820,6 +4142,9 @@
   last_commit_on: 2026/07/02
   status: active
   last_scrape_at: '2026-07-30T23:55:44Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/galtzo-floss/yard-yaml/blob/main/LICENSE.md
 - name: tree_haver
   description: "\U0001F334 TreeHaver is a cross-Ruby adapter for many AST parsing
     libraries; supporting MRI Ruby, JRuby, & TruffleRuby. Provides unified parsing
@@ -3857,6 +4182,10 @@
   theme: family
   family_id: smorg-rb
   family_position: 22
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: ast-merge
   description: "☯️ Ast::Merge provides base classes, modules, and RSpec shared examples
     for building intelligent file mergers using AST analysis. It powers prism-merge,
@@ -3893,6 +4222,10 @@
   theme: family
   family_id: smorg-rb
   family_position: 1
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: token-resolver
   description: "\U0001FA99 Token::Resolver provides configurable PEG-based (parslet)
     parsing and resolution of structured tokens (e.g., {KJ|GEM_NAME}) in arbitrary
@@ -3927,6 +4260,10 @@
   theme: family
   family_id: ast-merge
   family_position: 2
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/kettle-dev/token-resolver/blob/main/LICENSE.md
 - name: bash-merge
   description: "☯️ Bash::Merge provides smart Bash script merging that preserves comments,
     understands shell structure, and supports freeze blocks for protecting destination
@@ -3964,6 +4301,9 @@
   theme: family
   family_id: smorg-rb
   family_position: 3
+  licenses:
+  - MIT
+  license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: commonmarker-merge
   description: "☯️ Commonmarker::Merge provides smart Markdown file merging using
     Comrak (Rust) via Commonmarker. It understands document structure including headings,
@@ -4000,6 +4340,10 @@
   theme: family
   family_id: smorg-rb
   family_position: 6
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: dotenv-merge
   description: "☯️ Dotenv::Merge provides smart .env file merging that preserves comments,
     understands variable assignments, and supports freeze blocks for protecting sensitive
@@ -4037,6 +4381,9 @@
   theme: family
   family_id: smorg-rb
   family_position: 7
+  licenses:
+  - MIT
+  license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: json-merge
   description: "☯️ Json::Merge provides smart JSON file merging that understands JSON
     structure. Perfect for merging strict JSON configuration files like package.json,
@@ -4075,6 +4422,10 @@
   theme: family
   family_id: smorg-rb
   family_position: 9
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: jsonc-merge
   description: "☯️ Jsonc::Merge provides smart JSONC (JSON with Comments) file merging
     that preserves comments, understands JSON structure, and supports freeze blocks
@@ -4112,6 +4463,9 @@
   theme: family
   family_id: ast-merge
   family_position: 8
+  licenses:
+  - MIT
+  license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: markdown-merge
   description: "☯️ Ast::Merge-based structure for merging Markdown files with tools
     like markly-merge and commonmarker-merge"
@@ -4147,6 +4501,10 @@
   theme: family
   family_id: smorg-rb
   family_position: 12
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: markly-merge
   description: "☯️ Markly::Merge provides smart Markdown file merging using libcmark-gfm
     via Markly. It understands document structure including headings, lists, code
@@ -4183,6 +4541,10 @@
   theme: family
   family_id: smorg-rb
   family_position: 13
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: prism-merge
   description: "☯️ Intelligently merge two versions of a Ruby file using Prism AST
     analysis, similar to a smart 'git merge' specifically designed for Ruby code."
@@ -4216,6 +4578,10 @@
   theme: family
   family_id: smorg-rb
   family_position: 16
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: psych-merge
   description: "☯️ Psych::Merge provides smart YAML file merging that preserves comments,
     anchors/aliases, and supports freeze blocks for protecting destination content.
@@ -4251,6 +4617,10 @@
   theme: family
   family_id: smorg-rb
   family_position: 17
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: rbs-merge
   description: "☯️ Intelligently merge RBS type signature files by parsing and comparing
     AST structures. Supports freeze blocks to protect customizations, signature-based
@@ -4287,6 +4657,9 @@
   theme: family
   family_id: smorg-rb
   family_position: 18
+  licenses:
+  - MIT
+  license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: toml-merge
   description: "☯️ Intelligently merges TOML files by analyzing their AST structure
     with tree-sitter, preserving key organization and resolving conflicts based on
@@ -4324,6 +4697,10 @@
   theme: family
   family_id: smorg-rb
   family_position: 21
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: ore-light
   ecosystem: go
   language: Go
@@ -4383,6 +4760,9 @@
   theme: family
   family_id: rubygems-bundler-family
   family_position: 8
+  licenses:
+  - MIT
+  license_url: https://github.com/contriboss/gemfile-go/blob/master/LICENSE
 - name: cyclonedx-ruby
   ecosystem: rubygems
   language: Ruby
@@ -4415,6 +4795,9 @@
   theme: family
   family_id: rubygems-bundler-family
   family_position: 2
+  licenses:
+  - Apache-2.0
+  license_url: https://github.com/CycloneDX/cyclonedx-ruby-gem/blob/master/LICENSE.txt
 - name: rb-sys
   ecosystem: cargo
   language: Rust
@@ -4446,6 +4829,10 @@
   family_id: ast-merge
   family_position: 17
   last_scrape_at: '2026-07-31T00:01:13Z'
+  licenses:
+  - MIT
+  - Apache-2.0
+  license_url: https://github.com/oxidize-rb/rb-sys/blob/main/LICENSE-APACHE
 - name: rb_sys
   ecosystem: rubygems
   language: Ruby
@@ -4475,6 +4862,10 @@
   family_id: ast-merge
   family_position: 18
   last_scrape_at: '2026-07-31T00:01:35Z'
+  licenses:
+  - MIT
+  - Apache-2.0
+  license_url: https://github.com/oxidize-rb/rb-sys/blob/main/LICENSE-APACHE
 - name: magnus
   ecosystem: cargo
   language: Rust
@@ -4508,6 +4899,9 @@
   family_id: ast-merge
   family_position: 16
   last_scrape_at: '2026-07-31T00:01:37Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/matsadler/magnus/blob/main/LICENSE
 - name: setup-ruby-flash
   ecosystem: none
   language: Ruby
@@ -4546,6 +4940,9 @@
   family_id: rubygems-bundler-family
   family_position: 9
   last_scrape_at: '2026-07-31T00:01:40Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/appraisal-rb/setup-ruby-flash/blob/main/LICENSE.txt
 - name: tree_stump
   ecosystem: rubygems
   language: Ruby
@@ -4577,6 +4974,9 @@
   family_id: ast-merge
   family_position: 15
   last_scrape_at: '2026-07-31T00:02:02Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/joker1007/tree_stump/blob/main/LICENSE
 - name: ruby_tree_sitter
   ecosystem: rubygems
   language: Ruby
@@ -4607,6 +5007,9 @@
   family_id: ast-merge
   family_position: 19
   last_scrape_at: '2026-07-31T00:02:24Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/Faveod/ruby-tree-sitter/blob/master/LICENSE
 - name: bson
   ecosystem: rubygems
   language: Ruby
@@ -4637,6 +5040,9 @@
   theme: family
   family_id: miscellaneous
   family_position: 6
+  licenses:
+  - Apache-2.0
+  license_url: https://github.com/mongodb/bson-ruby/blob/master/LICENSE
 - name: rexml
   ecosystem: rubygems
   language: Ruby
@@ -4667,6 +5073,9 @@
   theme: family
   family_id: miscellaneous
   family_position: 1
+  licenses:
+  - BSD-2-Clause
+  license_url: https://github.com/ruby/rexml/blob/master/LICENSE.txt
 - name: bundler
   ecosystem: rubygems
   language: Ruby
@@ -4695,6 +5104,9 @@
   family_id: rubygems-bundler-family
   family_position: 4
   last_scrape_at: '2026-07-31T00:03:30Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/ruby/rubygems/blob/master/LICENSE.txt
 - name: hashie
   ecosystem: rubygems
   language: Ruby
@@ -4724,6 +5136,9 @@
   theme: family
   family_id: miscellaneous
   family_position: 8
+  licenses:
+  - MIT
+  license_url: https://github.com/hashie/hashie/blob/master/LICENSE
 - name: rails
   ecosystem: rubygems
   family: rails-family
@@ -4754,6 +5169,9 @@
   theme: family
   family_id: rails-family
   family_position: 3
+  licenses:
+  - MIT
+  license_url: https://github.com/rails/rails/blob/main/MIT-LICENSE
 - name: rv
   ecosystem: none
   family: rubygems-bundler-family
@@ -4787,6 +5205,9 @@
   family_id: rubygems-bundler-family
   family_position: 1
   last_scrape_at: '2026-07-31T00:04:17Z'
+  licenses:
+  - Apache-2.0
+  license_url: https://github.com/spinel-coop/rv/blob/main/LICENSE-APACHE
 - name: namespaced-gem
   description: "\U0001F50C A RubyGems plugin that allows gemspec dependencies to be
     declared as full\nURIs pointing to namespaced gem sources such as gem.coop namespaces\n(e.g.
@@ -4816,6 +5237,8 @@
   release_date:
   github_stars: 0
   status: active
+  licenses:
+  - MIT
 - name: nomono
   description: 1️⃣ Provides nomono_gems and eval_nomono_gems to standardize local
     multi-repo dependency wiring in Gemfiles.
@@ -4844,6 +5267,9 @@
   last_commit_on: 2026/07/28
   status: active
   last_scrape_at: '2026-07-31T00:04:39Z'
+  licenses:
+  - AGPL-3.0-only
+  license_url: https://github.com/kettle-dev/nomono/blob/main/LICENSE.md
 - name: ast-template
   description: Product-level directory session reporting above ast-merge for Structured
     Merge.
@@ -4872,6 +5298,10 @@
   theme: family
   family_id: smorg-rb
   family_position: 2
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: plain-merge
   description: Portable text normalization, similarity, matching, and merge behavior
     for Structured Merge.
@@ -4900,6 +5330,10 @@
   theme: family
   family_id: smorg-rb
   family_position: 15
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: yaml-merge
   description: Portable YAML analysis, owner matching, and merge behavior for Structured
     Merge.
@@ -4928,6 +5362,10 @@
   theme: family
   family_id: smorg-rb
   family_position: 24
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: ruby-merge
   description: Tree-sitter-backed Ruby family substrate for Structured Merge.
   language: Ruby
@@ -4955,6 +5393,10 @@
   theme: family
   family_id: smorg-rb
   family_position: 19
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: go-merge
   description: Portable Go module owner analysis and merge behavior for Structured
     Merge.
@@ -4983,6 +5425,10 @@
   theme: family
   family_id: smorg-rb
   family_position: 8
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: rust-merge
   description: Portable Rust module owner analysis and merge behavior for Structured
     Merge.
@@ -5011,6 +5457,10 @@
   theme: family
   family_id: smorg-rb
   family_position: 20
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: typescript-merge
   description: Portable TypeScript module owner analysis and merge behavior for Structured
     Merge.
@@ -5039,6 +5489,10 @@
   theme: family
   family_id: smorg-rb
   family_position: 23
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: binary-merge
   description: Portable binary preservation planning and diagnostics for Structured
     Merge.
@@ -5067,6 +5521,10 @@
   theme: family
   family_id: smorg-rb
   family_position: 4
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: zip-merge
   description: Portable ZIP inventory, planning, nested dispatch, and raw-preservation
     rendering helpers for Structured Merge.
@@ -5095,6 +5553,10 @@
   theme: family
   family_id: smorg-rb
   family_position: 25
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: citrus-toml-merge
   description: Citrus-backed TOML provider gem for the Structured Merge TOML family.
   language: Ruby
@@ -5122,6 +5584,10 @@
   theme: family
   family_id: smorg-rb
   family_position: 5
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: parslet-toml-merge
   description: Parslet-backed TOML provider gem for the Structured Merge TOML family.
   language: Ruby
@@ -5149,6 +5615,10 @@
   theme: family
   family_id: smorg-rb
   family_position: 14
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: kramdown-merge
   description: Kramdown-backed Markdown provider gem for the Structured Merge Markdown
     family.
@@ -5177,6 +5647,10 @@
   theme: family
   family_id: smorg-rb
   family_position: 11
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: kettle-jem
   description: RubyGems-focused recipe-pack wrapper that shapes package facts into
     ast-merge transport.
@@ -5205,6 +5679,10 @@
   theme: family
   family_id: smorg-rb
   family_position: 10
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: auth-sanitizer
   description: "\U0001F48E Configurable KV output redaction. Sanitize/filter your
     secrets."
@@ -5233,6 +5711,9 @@
   last_commit_on: 2026/07/19
   status: active
   last_scrape_at: '2026-07-31T00:09:42Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/ruby-oauth/auth-sanitizer/blob/main/LICENSE.md
 - name: turbo_tests2
   description: "\U0001F680 turbo_tests2` is an RSpec parallel test runner built on
     `parallel_tests`. It uses `parallel_tests` for process counts, file grouping,
@@ -5265,6 +5746,9 @@
   last_commit_on: 2026/07/27
   status: active
   last_scrape_at: '2026-07-31T00:10:04Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/galtzo-floss/turbo_tests2/blob/main/LICENSE.md
 - name: yard-timekeeper
   description: "\U0001F570️ A YARD plugin that post-processes generated docs, detects
     timestamp-only diffs in tracked HTML files under docs/, and restores those files
@@ -5272,6 +5756,9 @@
     changed pages."
   language: Ruby
   ecosystem: rubygems
+  theme: family
+  family_id: galtzo-floss
+  family_position: 11
   minimum_version: '3.2'
   role: author
   first_commit_by_person_on: 2026/04/11
@@ -5292,6 +5779,9 @@
   last_commit_on: 2026/07/19
   status: active
   last_scrape_at: '2026-07-31T00:10:26Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/galtzo-floss/yard-timekeeper/blob/main/LICENSE.md
 - name: kettle-drift
   description: "\U0001F372 Kettle::Drift tracks repeated adjacent-line chunks that
     usually signal template drift or copy/paste corruption."
@@ -5320,6 +5810,9 @@
   last_commit_on: 2026/07/28
   status: active
   last_scrape_at: '2026-07-31T00:10:47Z'
+  licenses:
+  - AGPL-3.0-only
+  license_url: https://github.com/kettle-dev/kettle-drift/blob/main/LICENSE.md
 - name: oauth2-mcp
   description: "\U0001F372 oauth2-mcp provides Ruby helpers for securing HTTP Model
     Context Protocol servers with OAuth protected-resource metadata, bearer challenges,
@@ -5349,6 +5842,9 @@
   last_commit_on: 2026/07/15
   status: active
   last_scrape_at: '2026-07-31T00:11:09Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/ruby-oauth/oauth2-mcp/blob/main/LICENSE.md
 - name: rubocop-lts-rspec
   description: |
     Enables Ruby projects that test with RSpec to more confidently support even the most finely-aged Rubies.
@@ -5379,6 +5875,9 @@
   last_commit_on: 2026/07/04
   status: active
   last_scrape_at: '2026-07-31T00:11:30Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/rubocop-lts/rubocop-lts-rspec/blob/main/LICENSE.md
 - name: appraisal2-rubocop
   description: "\U0001F48E Appraisal2::Rubocop registers Appraisal2 generation hooks
     that run RuboCop against generated appraisal gemfiles."
@@ -5407,6 +5906,9 @@
   last_commit_on: 2026/07/18
   status: active
   last_scrape_at: '2026-07-31T00:11:52Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/appraisal-rb/appraisal2-rubocop/blob/main/LICENSE.md
 - name: kettle-family
   description: "\U0001F469‍\U0001F469‍\U0001F467‍\U0001F467 Kettle::Family provides
     scripts and conventions for coordinating related Ruby gems as one family."
@@ -5435,6 +5937,9 @@
   last_commit_on: 2026/07/30
   status: active
   last_scrape_at: '2026-07-31T00:12:14Z'
+  licenses:
+  - AGPL-3.0-only
+  license_url: https://github.com/kettle-dev/kettle-family/blob/main/LICENSE.md
 - name: gem_mine
   description: "⛏️ Provides helpers for setting up temporary scaffolded gem projects
     and reliably tearing them down after tests."
@@ -5463,6 +5968,9 @@
   last_commit_on: 2026/07/01
   status: active
   last_scrape_at: '2026-07-31T00:12:36Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/appraisal-rb/gem_mine/blob/main/LICENSE.md
 - name: anonymous_loader
   description: "\U0001F48E AnonymousLoader resolves Ruby files from paths, gem metadata,
     or $LOAD_PATH and evaluates them inside anonymous modules to avoid top-level namespace
@@ -5492,6 +6000,9 @@
   last_commit_on: 2026/07/14
   status: active
   last_scrape_at: '2026-07-31T00:12:57Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/ruby-oauth/anonymous_loader/blob/main/LICENSE.md
 - name: kettle-rb
   description: "\U0001F4CF Provides the shared Ruby, engine, Rails, RuboCop, and RuboCop
     LTS compatibility matrix used by Kettle-managed gems."
@@ -5520,6 +6031,9 @@
   last_commit_on: 2026/07/30
   status: active
   last_scrape_at: '2026-07-31T00:13:19Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/kettle-dev/kettle-rb/blob/main/LICENSE.md
 - name: kettle-wash
   description: "\U0001F6BF Constant deletion and reset helpers for gems that need
     repeatable reloads while testing constant-backed runtime configuration."
@@ -5548,6 +6062,11 @@
   last_commit_on: 2026/07/28
   status: active
   last_scrape_at: '2026-07-31T00:13:41Z'
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  - LicenseRef-Big-Time-Public-License
+  license_url: https://github.com/kettle-dev/kettle-wash/blob/main/LICENSE.md
 - name: kettle-gha-pins
   description: "\U0001F4CC GitHub Actions workflow SHA pin maintenance, including
     deterministic release-tag parsing, canonicalization, cache-backed GitHub ref resolution,
@@ -5577,6 +6096,9 @@
   last_commit_on: 2026/07/28
   status: active
   last_scrape_at: '2026-07-31T00:14:03Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/kettle-dev/kettle-gha-pins/blob/main/LICENSE.md
 - name: kettle-ndjson
   description: "\U0001F4DF️ NDJSON event stream primitives, filters, recorders, and
     payload helpers shared by Kettle CLI tools."
@@ -5605,11 +6127,14 @@
   last_commit_on: 2026/07/30
   status: active
   last_scrape_at: '2026-07-31T00:14:24Z'
+  licenses:
+  - MIT
+  license_url: https://github.com/kettle-dev/kettle-ndjson/blob/main/LICENSE.md
 - name: "@structuredmerge/ast-merge"
   description: 'StructuredMerge TypeScript package: ast-merge.'
   language: TypeScript
   ecosystem: npm
-  minimum_typescript_version: '5.9.3'
+  minimum_typescript_version: 5.9.3
   theme: family
   family_id: smorg-ts
   family_position: 1
@@ -5635,11 +6160,15 @@
   total_downloads: 134
   release_downloads:
   release_date: 2026/05/06
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-typescript/blob/main/LICENSE.md
 - name: "@structuredmerge/ast-template"
   description: 'StructuredMerge TypeScript package: ast-template.'
   language: TypeScript
   ecosystem: npm
-  minimum_typescript_version: '5.9.3'
+  minimum_typescript_version: 5.9.3
   theme: family
   family_id: smorg-ts
   family_position: 2
@@ -5665,11 +6194,15 @@
   total_downloads: 101
   release_downloads:
   release_date: 2026/05/06
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-typescript/blob/main/LICENSE.md
 - name: "@structuredmerge/binary-merge"
   description: 'StructuredMerge TypeScript package: binary-merge.'
   language: TypeScript
   ecosystem: npm
-  minimum_typescript_version: '5.9.3'
+  minimum_typescript_version: 5.9.3
   theme: family
   family_id: smorg-ts
   family_position: 3
@@ -5695,11 +6228,15 @@
   total_downloads: 107
   release_downloads:
   release_date: 2026/05/06
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-typescript/blob/main/LICENSE.md
 - name: "@structuredmerge/go-merge"
   description: 'StructuredMerge TypeScript package: go-merge.'
   language: TypeScript
   ecosystem: npm
-  minimum_typescript_version: '5.9.3'
+  minimum_typescript_version: 5.9.3
   theme: family
   family_id: smorg-ts
   family_position: 4
@@ -5725,11 +6262,15 @@
   total_downloads: 108
   release_downloads:
   release_date: 2026/05/06
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-typescript/blob/main/LICENSE.md
 - name: "@structuredmerge/js-yaml-merge"
   description: 'StructuredMerge TypeScript package: js-yaml-merge.'
   language: TypeScript
   ecosystem: npm
-  minimum_typescript_version: '5.9.3'
+  minimum_typescript_version: 5.9.3
   theme: family
   family_id: smorg-ts
   family_position: 5
@@ -5755,11 +6296,15 @@
   total_downloads: 112
   release_downloads:
   release_date: 2026/05/06
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-typescript/blob/main/LICENSE.md
 - name: "@structuredmerge/json-merge"
   description: 'StructuredMerge TypeScript package: json-merge.'
   language: TypeScript
   ecosystem: npm
-  minimum_typescript_version: '5.9.3'
+  minimum_typescript_version: 5.9.3
   theme: family
   family_id: smorg-ts
   family_position: 6
@@ -5785,11 +6330,15 @@
   total_downloads: 90
   release_downloads:
   release_date: 2026/05/06
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-typescript/blob/main/LICENSE.md
 - name: "@structuredmerge/kettle-nodule"
   description: 'StructuredMerge TypeScript package: kettle-nodule.'
   language: TypeScript
   ecosystem: npm
-  minimum_typescript_version: '5.9.3'
+  minimum_typescript_version: 5.9.3
   theme: family
   family_id: smorg-ts
   family_position: 7
@@ -5815,11 +6364,15 @@
   total_downloads: 106
   release_downloads:
   release_date: 2026/05/06
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-typescript/blob/main/LICENSE.md
 - name: "@structuredmerge/markdown-it-merge"
   description: 'StructuredMerge TypeScript package: markdown-it-merge.'
   language: TypeScript
   ecosystem: npm
-  minimum_typescript_version: '5.9.3'
+  minimum_typescript_version: 5.9.3
   theme: family
   family_id: smorg-ts
   family_position: 8
@@ -5845,11 +6398,15 @@
   total_downloads: 103
   release_downloads:
   release_date: 2026/05/06
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-typescript/blob/main/LICENSE.md
 - name: "@structuredmerge/markdown-merge"
   description: 'StructuredMerge TypeScript package: markdown-merge.'
   language: TypeScript
   ecosystem: npm
-  minimum_typescript_version: '5.9.3'
+  minimum_typescript_version: 5.9.3
   theme: family
   family_id: smorg-ts
   family_position: 9
@@ -5875,11 +6432,15 @@
   total_downloads: 108
   release_downloads:
   release_date: 2026/05/06
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-typescript/blob/main/LICENSE.md
 - name: "@structuredmerge/peggy-toml-merge"
   description: 'StructuredMerge TypeScript package: peggy-toml-merge.'
   language: TypeScript
   ecosystem: npm
-  minimum_typescript_version: '5.9.3'
+  minimum_typescript_version: 5.9.3
   theme: family
   family_id: smorg-ts
   family_position: 10
@@ -5905,11 +6466,15 @@
   total_downloads: 112
   release_downloads:
   release_date: 2026/05/06
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-typescript/blob/main/LICENSE.md
 - name: "@structuredmerge/plain-merge"
   description: 'StructuredMerge TypeScript package: plain-merge.'
   language: TypeScript
   ecosystem: npm
-  minimum_typescript_version: '5.9.3'
+  minimum_typescript_version: 5.9.3
   theme: family
   family_id: smorg-ts
   family_position: 11
@@ -5935,11 +6500,15 @@
   total_downloads: 101
   release_downloads:
   release_date: 2026/05/06
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-typescript/blob/main/LICENSE.md
 - name: "@structuredmerge/ruby-merge"
   description: 'StructuredMerge TypeScript package: ruby-merge.'
   language: TypeScript
   ecosystem: npm
-  minimum_typescript_version: '5.9.3'
+  minimum_typescript_version: 5.9.3
   theme: family
   family_id: smorg-ts
   family_position: 12
@@ -5965,11 +6534,15 @@
   total_downloads: 111
   release_downloads:
   release_date: 2026/05/06
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-typescript/blob/main/LICENSE.md
 - name: "@structuredmerge/rust-merge"
   description: 'StructuredMerge TypeScript package: rust-merge.'
   language: TypeScript
   ecosystem: npm
-  minimum_typescript_version: '5.9.3'
+  minimum_typescript_version: 5.9.3
   theme: family
   family_id: smorg-ts
   family_position: 13
@@ -5995,11 +6568,15 @@
   total_downloads: 117
   release_downloads:
   release_date: 2026/05/06
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-typescript/blob/main/LICENSE.md
 - name: "@structuredmerge/toml-merge"
   description: 'StructuredMerge TypeScript package: toml-merge.'
   language: TypeScript
   ecosystem: npm
-  minimum_typescript_version: '5.9.3'
+  minimum_typescript_version: 5.9.3
   theme: family
   family_id: smorg-ts
   family_position: 14
@@ -6025,11 +6602,15 @@
   total_downloads: 110
   release_downloads:
   release_date: 2026/05/06
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-typescript/blob/main/LICENSE.md
 - name: "@structuredmerge/tree-haver"
   description: 'StructuredMerge TypeScript package: tree-haver.'
   language: TypeScript
   ecosystem: npm
-  minimum_typescript_version: '5.9.3'
+  minimum_typescript_version: 5.9.3
   theme: family
   family_id: smorg-ts
   family_position: 15
@@ -6055,11 +6636,15 @@
   total_downloads: 146
   release_downloads:
   release_date: 2026/05/06
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-typescript/blob/main/LICENSE.md
 - name: "@structuredmerge/typescript-compiler-merge"
   description: 'StructuredMerge TypeScript package: typescript-compiler-merge.'
   language: TypeScript
   ecosystem: npm
-  minimum_typescript_version: '5.9.3'
+  minimum_typescript_version: 5.9.3
   theme: family
   family_id: smorg-ts
   family_position: 16
@@ -6085,11 +6670,15 @@
   total_downloads: 100
   release_downloads:
   release_date: 2026/05/06
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-typescript/blob/main/LICENSE.md
 - name: "@structuredmerge/typescript-merge"
   description: 'StructuredMerge TypeScript package: typescript-merge.'
   language: TypeScript
   ecosystem: npm
-  minimum_typescript_version: '5.9.3'
+  minimum_typescript_version: 5.9.3
   theme: family
   family_id: smorg-ts
   family_position: 17
@@ -6115,11 +6704,15 @@
   total_downloads: 108
   release_downloads:
   release_date: 2026/05/06
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-typescript/blob/main/LICENSE.md
 - name: "@structuredmerge/yaml-merge"
   description: 'StructuredMerge TypeScript package: yaml-merge.'
   language: TypeScript
   ecosystem: npm
-  minimum_typescript_version: '5.9.3'
+  minimum_typescript_version: 5.9.3
   theme: family
   family_id: smorg-ts
   family_position: 18
@@ -6145,11 +6738,15 @@
   total_downloads: 109
   release_downloads:
   release_date: 2026/05/06
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-typescript/blob/main/LICENSE.md
 - name: "@structuredmerge/zip-merge"
   description: 'StructuredMerge TypeScript package: zip-merge.'
   language: TypeScript
   ecosystem: npm
-  minimum_typescript_version: '5.9.3'
+  minimum_typescript_version: 5.9.3
   theme: family
   family_id: smorg-ts
   family_position: 19
@@ -6175,6 +6772,10 @@
   total_downloads: 112
   release_downloads:
   release_date: 2026/05/06
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-typescript/blob/main/LICENSE.md
 - name: ast-merge
   description: Core Structured Merge AST, ruleset, planning, and review contracts
   language: Rust
@@ -6204,6 +6805,10 @@
   total_downloads: 440
   release_downloads: 426
   release_date: 2026/05/06
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-rust/blob/main/LICENSE.md
 - name: ast-template
   description: Recipe and template helpers for Structured Merge AST libraries
   language: Rust
@@ -6233,6 +6838,10 @@
   total_downloads: 12
   release_downloads: 12
   release_date: 2026/05/06
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-rust/blob/main/LICENSE.md
 - name: structuredmerge-binary-merge
   description: Binary preservation planning and diagnostics for Structured Merge
   language: Rust
@@ -6262,6 +6871,10 @@
   total_downloads: 14
   release_downloads: 14
   release_date: 2026/05/06
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-rust/blob/main/LICENSE.md
 - name: go-merge
   description: Go syntax merge helpers for Structured Merge
   language: Rust
@@ -6291,6 +6904,10 @@
   total_downloads: 14
   release_downloads: 14
   release_date: 2026/05/06
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-rust/blob/main/LICENSE.md
 - name: json-merge
   description: JSON merge helpers for Structured Merge
   language: Rust
@@ -6320,6 +6937,10 @@
   total_downloads: 19
   release_downloads: 19
   release_date: 2026/05/06
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-rust/blob/main/LICENSE.md
 - name: kettle-rusty
   description: Rust crate recipe helpers for Structured Merge
   language: Rust
@@ -6349,6 +6970,10 @@
   total_downloads: 15
   release_downloads: 15
   release_date: 2026/05/06
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-rust/blob/main/LICENSE.md
 - name: markdown-merge
   description: Markdown merge helpers for Structured Merge
   language: Rust
@@ -6378,6 +7003,10 @@
   total_downloads: 76
   release_downloads: 76
   release_date: 2026/05/06
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-rust/blob/main/LICENSE.md
 - name: pest-toml-merge
   description: Pest TOML merge helpers for Structured Merge
   language: Rust
@@ -6407,6 +7036,10 @@
   total_downloads: 14
   release_downloads: 14
   release_date: 2026/05/06
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-rust/blob/main/LICENSE.md
 - name: plain-merge
   description: Plain text merge helpers for Structured Merge
   language: Rust
@@ -6436,6 +7069,10 @@
   total_downloads: 14
   release_downloads: 14
   release_date: 2026/05/06
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-rust/blob/main/LICENSE.md
 - name: pulldown-cmark-merge
   description: Pulldown-cmark Markdown merge helpers for Structured Merge
   language: Rust
@@ -6465,6 +7102,10 @@
   total_downloads: 16
   release_downloads: 16
   release_date: 2026/05/06
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-rust/blob/main/LICENSE.md
 - name: ruby-merge
   description: Ruby syntax merge helpers for Structured Merge
   language: Rust
@@ -6494,6 +7135,10 @@
   total_downloads: 46
   release_downloads: 46
   release_date: 2026/05/06
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-rust/blob/main/LICENSE.md
 - name: rust-merge
   description: Rust syntax merge helpers for Structured Merge
   language: Rust
@@ -6523,6 +7168,10 @@
   total_downloads: 16
   release_downloads: 16
   release_date: 2026/05/06
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-rust/blob/main/LICENSE.md
 - name: structuredmerge-toml-merge
   description: TOML merge helpers for Structured Merge
   language: Rust
@@ -6552,6 +7201,10 @@
   total_downloads: 78
   release_downloads: 78
   release_date: 2026/05/06
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-rust/blob/main/LICENSE.md
 - name: tree-haver
   description: Tree substrate and binary location contracts for Structured Merge
   language: Rust
@@ -6581,6 +7234,10 @@
   total_downloads: 496
   release_downloads: 478
   release_date: 2026/05/06
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-rust/blob/main/LICENSE.md
 - name: typescript-merge
   description: TypeScript syntax merge helpers for Structured Merge
   language: Rust
@@ -6610,6 +7267,10 @@
   total_downloads: 16
   release_downloads: 16
   release_date: 2026/05/06
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-rust/blob/main/LICENSE.md
 - name: yaml-merge
   description: YAML merge helpers for Structured Merge
   language: Rust
@@ -6639,6 +7300,10 @@
   total_downloads: 50
   release_downloads: 50
   release_date: 2026/05/06
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-rust/blob/main/LICENSE.md
 - name: yaml-serde-merge
   description: yaml-serde merge helpers for Structured Merge
   language: Rust
@@ -6668,6 +7333,10 @@
   total_downloads: 16
   release_downloads: 16
   release_date: 2026/05/06
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-rust/blob/main/LICENSE.md
 - name: structuredmerge-zip-merge
   description: ZIP inventory, planning, nested dispatch, and raw-preservation helpers
     for Structured Merge
@@ -6698,6 +7367,10 @@
   total_downloads: 15
   release_downloads: 15
   release_date: 2026/05/06
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-rust/blob/main/LICENSE.md
 - name: github.com/structuredmerge/structuredmerge-go
   description: Go implementation of the StructuredMerge contract.
   language: Go
@@ -6724,3 +7397,7 @@
   last_commit_on:
   status: active
   release_date: 2026/05/06
+  licenses:
+  - AGPL-3.0-only
+  - PolyForm-Small-Business-1.0.0
+  license_url: https://github.com/structuredmerge/structuredmerge-go/blob/main/LICENSE.md

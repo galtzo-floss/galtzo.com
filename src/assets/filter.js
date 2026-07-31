@@ -220,6 +220,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (visibleCards.length === 0) return;
 
+    allCards.forEach(function(card) {
+      card.classList.remove('active-card');
+    });
+
     // Detect if we're on a mobile viewport
     const isMobile = window.innerWidth <= 768;
 
@@ -317,6 +321,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Apply brightness fade based on visual position
         if (visualIndex === 0) {
           card.style.filter = 'none';
+          card.classList.add('active-card');
         } else {
           const baseBrightness = 0.8;
           const minBrightness = 0.6;
@@ -334,8 +339,9 @@ document.addEventListener('DOMContentLoaded', function() {
       // DESKTOP: Horizontal stacking with vertical offsets (existing behavior)
       // Reposition visible cards with continuous positioning (no gaps)
       visibleCards.forEach(function(card, visualIndex) {
-        // Set all visible cards to the new maximum height (based only on visible cards)
-        card.style.height = maxVisibleHeight + 'px';
+        // Keep the card at its natural height. The opaque background belongs to
+        // .card-body, so stretching the outer .card creates transparent regions.
+        card.style.height = '';
 
         // Position based on visual index (position in the visible sequence)
         const leftPosition = cardWidth * overlap * visualIndex;
@@ -360,6 +366,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Apply brightness fade based on visual position
         if (visualIndex === 0) {
           card.style.filter = 'none';
+          card.classList.add('active-card');
         } else {
           const baseBrightness = 0.8;
           const minBrightness = 0.6;

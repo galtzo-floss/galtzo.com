@@ -8,6 +8,7 @@ require 'uri'
 require 'date'
 require 'time'
 require 'fileutils'
+require 'base64'
 require 'tty-prompt'
 
 class ProjectUpdater
@@ -37,7 +38,7 @@ class ProjectUpdater
   VALID_SURGICAL_FIELDS = %w[
     github_stars gitlab_stars codeberg_stars
     total_downloads daily_downloads release_downloads
-    minimum_version minimum_node_version
+    minimum_version minimum_node_version license
     release_date last_commit_on status
     first_commit_by_person first_commit_by_person_on
   ]
@@ -91,6 +92,8 @@ class ProjectUpdater
     @families = load_yaml(FAMILIES_FILE)
     @rate_limit_delay = 1 # seconds between API calls
     @errors = [] # Track errors for summary
+    @registry_license_cache = {}
+    @github_license_cache = {}
     @gitlab_token_usable = !GITLAB_TOKEN.nil?
     @surgical_fields = Array(surgical_fields).compact
     @discover_rubygems = discover_rubygems
@@ -645,6 +648,7 @@ class ProjectUpdater
     project['daily_downloads']    = scraped[:daily_downloads] unless scraped[:daily_downloads].nil?
     project['release_downloads']  = scraped[:release_downloads]
     project['release_date']       = scraped[:release_date]
+    project['licenses']           = scraped[:licenses] if scraped[:licenses]&.any?
 
     # Merge scraped tags if none were entered manually
     if project['tags'].empty? && scraped[:tags]&.any?
@@ -683,6 +687,8 @@ class ProjectUpdater
       project['status']       = 'active'
     end
 
+    apply_license_metadata(project, github_forge, preferred_licenses: project['licenses'])
+
     project['first_commit_by_person_on'] ||= project['release_date']
     project['status']          ||= 'active'
 
@@ -699,7 +705,7 @@ class ProjectUpdater
   # package was not found or scrape failed.
   def scrape_ecosystem_data(pkg_name, ecosystem)
     result = { found: false, github_url: nil, description: nil,
-               minimum_version: nil, minimum_node_version: nil, tags: nil, docs_site: nil,
+               minimum_version: nil, minimum_node_version: nil, licenses: nil, tags: nil, docs_site: nil,
                total_downloads: nil, daily_downloads: nil,
                release_downloads: nil, release_date: nil }
 
@@ -714,6 +720,7 @@ class ProjectUpdater
 
       result[:found]           = true
       result[:description]     = gem_data['info'] || gem_data['summary']
+      result[:licenses]        = normalize_licenses(gem_data['licenses'])
       result[:docs_site]       = gem_data['documentation_uri']
       result[:tags]            = determine_tags_from_gem(gem_data)
       result[:release_date]    = fetch_rubygems_release_date(pkg_name)
@@ -756,6 +763,7 @@ class ProjectUpdater
       result[:release_downloads] = cargo_info[:release_downloads]
       result[:release_date]      = cargo_info[:release_date]
       result[:minimum_version]   = cargo_info[:rust_version]
+      result[:licenses]          = cargo_info[:licenses]
       puts "    📦 Downloads: #{cargo_info[:total_downloads]} total"
       puts "    📅 Latest release: #{cargo_info[:release_date] || 'unknown'}"
 
@@ -776,6 +784,7 @@ class ProjectUpdater
       result[:description]     = npm_info[:description]
       result[:release_date]    = npm_info[:release_date]
       result[:minimum_node_version] = npm_info[:node_version]
+      result[:licenses]        = npm_info[:licenses]
       puts "    📅 Latest release: #{npm_info[:release_date] || 'unknown'}"
 
       if npm_info[:repository]
@@ -795,6 +804,7 @@ class ProjectUpdater
       result[:description]     = pypi_info[:description]
       result[:release_date]    = pypi_info[:release_date]
       result[:minimum_version] = pypi_info[:python_version]
+      result[:licenses]        = pypi_info[:licenses]
       puts "    📅 Latest release: #{pypi_info[:release_date] || 'unknown'}"
 
       if pypi_info[:repository]
@@ -844,6 +854,7 @@ class ProjectUpdater
       release_date:     newest_version ? Date.parse(newest_version['updated_at']).strftime('%Y/%m/%d') : nil,
       rust_version:     newest_version&.dig('rust_version'),
       repository:       c['repository'],
+      licenses:         normalize_licenses(newest_version&.dig('license') || c['license']),
     }
   rescue => e
     puts "    ⚠️  crates.io fetch failed: #{e.message}"
@@ -865,6 +876,7 @@ class ProjectUpdater
       release_date: nil, # latest endpoint doesn't include publish time; dist-tags/time needs separate call
       node_version: node_ver,
       repository:   repo.include?('github.com') ? repo : nil,
+      licenses:     normalize_licenses(data['license']),
     }
   rescue => e
     puts "    ⚠️  npm fetch failed: #{e.message}"
@@ -896,6 +908,7 @@ class ProjectUpdater
       release_date:   release_date,
       python_version: python_ver,
       repository:     repo,
+      licenses:       normalize_licenses(info['license_expression'] || info['license']),
     }
   rescue => e
     puts "    ⚠️  PyPI fetch failed: #{e.message}"
@@ -921,6 +934,136 @@ class ProjectUpdater
   rescue => e
     puts "    ⚠️  Go proxy fetch failed: #{e.message}"
     nil
+  end
+
+  def normalize_licenses(value)
+    values = Array(value).flat_map do |entry|
+      case entry
+      when Hash
+        entry['type'] || entry['name']
+      when String
+        entry
+      end
+    end
+
+    values.filter_map do |license|
+      normalized = license.to_s.strip
+      next if normalized.empty? || normalized.casecmp('unknown').zero?
+
+      normalized
+    end.uniq
+  end
+
+  def registry_licenses(project)
+    name = project['name']
+    cache_key = [project['ecosystem'], name]
+    return @registry_license_cache[cache_key].dup if @registry_license_cache.key?(cache_key)
+
+    licenses = case project['ecosystem']
+    when 'rubygems'
+      normalize_licenses(api_request("https://rubygems.org/api/v1/gems/#{name}.json")&.dig('licenses'))
+    when 'npm'
+      normalize_licenses(api_request("https://registry.npmjs.org/#{URI.encode_www_form_component(name)}/latest")&.dig('license'))
+    when 'cargo'
+      data = api_request("https://crates.io/api/v1/crates/#{name}")
+      normalize_licenses(data&.dig('versions')&.find { |version| !version['yanked'] }&.dig('license') ||
+                         data&.dig('crate', 'license'))
+    when 'pypi'
+      data = api_request("https://pypi.org/pypi/#{name}/json")
+      normalize_licenses(data&.dig('info', 'license_expression') || data&.dig('info', 'license'))
+    else
+      []
+    end
+    @registry_license_cache[cache_key] = licenses
+    licenses.dup
+  rescue => e
+    puts "    ⚠️  Registry license fetch failed for #{name}: #{e.message}"
+    []
+  end
+
+  def github_license_metadata(github_url)
+    repo_path = extract_repo_path(github_url)
+    return { licenses: [], url: nil } unless repo_path
+    return duplicate_license_metadata(@github_license_cache[repo_path]) if @github_license_cache.key?(repo_path)
+
+    data = github_api_request("https://api.github.com/repos/#{repo_path}/license")
+    unless data
+      metadata = { licenses: readme_license_identifiers(repo_path), url: nil }
+      @github_license_cache[repo_path] = metadata
+      return duplicate_license_metadata(metadata)
+    end
+
+    license_url = data['html_url']
+    spdx_id = data.dig('license', 'spdx_id')
+    if spdx_id && !%w[NOASSERTION OTHER].include?(spdx_id.upcase)
+      metadata = { licenses: [spdx_id], url: license_url }
+      @github_license_cache[repo_path] = metadata
+      return duplicate_license_metadata(metadata)
+    end
+
+    content = decode_github_content(data)
+    licenses = linked_license_identifiers(content)
+    licenses = license_identifiers_from_text(content) if licenses.empty?
+    licenses = readme_license_identifiers(repo_path) if licenses.empty?
+    metadata = { licenses: licenses, url: license_url }
+    @github_license_cache[repo_path] = metadata
+    duplicate_license_metadata(metadata)
+  rescue => e
+    puts "    ⚠️  GitHub license fetch failed for #{github_url}: #{e.message}"
+    { licenses: [], url: nil }
+  end
+
+  def duplicate_license_metadata(metadata)
+    { licenses: metadata[:licenses].dup, url: metadata[:url] }
+  end
+
+  def decode_github_content(data)
+    return '' unless data['encoding'] == 'base64' && data['content']
+
+    Base64.decode64(data['content'])
+  end
+
+  def linked_license_identifiers(markdown)
+    markdown.to_s.scan(/\[([^\]]+)\]\(([^)]+)\)/).filter_map do |label, target|
+      next unless target.match?(/\.md(?:\z|[#?])/i)
+      next unless label.match?(/\A(?:MIT|Apache|A?GPL|L?GPL|MPL|BSD|ISC|PolyForm|Unlicense|CC0|Artistic|EPL|BSL|Ruby)[A-Za-z0-9.+-]*\z/i)
+
+      label
+    end.uniq
+  end
+
+  def license_identifiers_from_text(text)
+    text.to_s.scan(%r{creativecommons\.org/licenses/([a-z-]+)/(\d+\.\d+)}i).map do |code, version|
+      "CC-#{code.upcase}-#{version}"
+    end.uniq
+  end
+
+  def readme_license_identifiers(repo_path)
+    data = github_api_request("https://api.github.com/repos/#{repo_path}/readme")
+    content = decode_github_content(data || {})
+    licenses = content.scan(/\[!\[License:\s*([^\]]+)\]/i).flatten.map(&:strip)
+    licenses.concat(content.scan(/^\|\s*license\s*\|\s*([^|]+?)\s*\|/i).flatten.map(&:strip))
+    licenses.concat(license_identifiers_from_text(content))
+    licenses.uniq
+  rescue => e
+    puts "    ⚠️  README license fallback failed for #{repo_path}: #{e.message}"
+    []
+  end
+
+  def apply_license_metadata(project, github_forge, preferred_licenses: nil)
+    licenses = normalize_licenses(preferred_licenses)
+    licenses = registry_licenses(project) if licenses.empty?
+
+    github = github_forge ? github_license_metadata(github_forge['url']) : { licenses: [], url: nil }
+    licenses = github[:licenses] if licenses.empty?
+
+    if licenses.any?
+      project['licenses'] = licenses
+      project['license_url'] = github[:url] if github[:url]
+      puts "  📄 License: #{licenses.join(' OR ')}"
+    else
+      puts "  ⚠️  No license metadata found for #{project['name']} — leaving unchanged"
+    end
   end
 
   # Prompt user to select a family using tty-prompt menu.
@@ -1096,7 +1239,8 @@ class ProjectUpdater
       'funding_sites' => [], # Populated interactively: only OpenCollective entries are stored
       'forges' => forges,
       'tags' => determine_tags_from_gem(gem_data),
-      'docs_site' => gem_data['documentation_uri'] || nil
+      'docs_site' => gem_data['documentation_uri'] || nil,
+      'licenses' => normalize_licenses(gem_data['licenses'])
     }
 
     # Add download stats if available
@@ -1133,6 +1277,8 @@ class ProjectUpdater
       project['github_stars'] = 0
       project['status'] = 'active'
     end
+
+    apply_license_metadata(project, forges.first, preferred_licenses: project['licenses'])
 
     project
   end
@@ -1405,6 +1551,8 @@ class ProjectUpdater
       else
         puts "  ⏭️  minimum_version not fetchable for ecosystem '#{eco || 'none'}' — skipping #{name}"
       end
+    when 'license'
+      apply_license_metadata(project, github_forge)
     end
   end
 
@@ -1423,6 +1571,8 @@ class ProjectUpdater
     github_info = fetch_github_info(github_forge['url'])
     project['github_stars'] = github_info[:stars]
     puts "  ⭐ GitHub stars: #{github_info[:stars]}"
+
+    apply_license_metadata(project, github_forge)
 
     # Step 2: GitLab stars (if present)
     if gitlab_forge
@@ -1513,7 +1663,7 @@ class ProjectUpdater
     sync_fields = %w[
       github_stars gitlab_stars codeberg_stars
       total_downloads daily_downloads release_downloads
-      minimum_version minimum_node_version
+      minimum_version minimum_node_version licenses license_url
       release_date last_commit_on status last_scrape_at
       first_commit_by_person first_commit_by_person_on
     ]
@@ -1983,7 +2133,8 @@ class ProjectUpdater
   end
 
   def load_yaml(file_path)
-    YAML.load_file(file_path) || []
+    data = YAML.load_file(file_path, aliases: true) || []
+    JSON.parse(JSON.generate(data))
   end
 
   def extract_yaml_header(file_path)

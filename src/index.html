@@ -49,6 +49,20 @@ body_class: projects
   end
 } %>
 
+<% github_repo_path_for = ->(forge) {
+  match = forge && forge["url"].to_s.match(%r{github\.com/([^/]+)/([^/]+)})
+  match ? "#{match[1]}/#{match[2].sub(/\.git\z/, '')}" : nil
+} %>
+<% license_badge_src_for = ->(project, repo_path) {
+  licenses = Array(project["licenses"])
+  if licenses.any?
+    label = ERB::Util.url_encode(licenses.join(" OR ")).gsub("-", "--")
+    "https://img.shields.io/badge/License-#{label}-blue?style=social"
+  else
+    "https://img.shields.io/github/license/#{repo_path}?style=social"
+  end
+} %>
+
 <% years = projects.map {|p| p['first_commit_by_person_on']&.to_s&.split('/')&.first }.compact.uniq.sort %>
 <% year_counts = {} %>
 <% projects.each do |project| %>
@@ -604,13 +618,16 @@ body_class: projects
     </p>
     <% if project['archived'] %>
     <% # No reason to show GitHub stats for archived projects %>
-    <% elsif gh_forge %>
+    <% elsif gh_forge && (gh_repo_path = github_repo_path_for.call(gh_forge)) %>
     <%# Per-project GitHub badge stats — family cards are never the person card %>
+    <% license_badge_src = license_badge_src_for.call(project, gh_repo_path) %>
     <p>
-      <img alt="<%= project['name'] %> GitHub License" src="https://img.shields.io/github/license/<%= gh_forge['owner'] %>/<%= project['name'] %>?style=social">
-      <img alt="<%= project['name'] %> GitHub commit activity" src="https://img.shields.io/github/commit-activity/m/<%= gh_forge['owner'] %>/<%= project['name'] %>?style=social">
+      <% if project["license_url"] %><a href="<%= project['license_url'] %>" target="_blank" rel="noopener"><% end %>
+      <img alt="<%= project['name'] %> License" src="<%= license_badge_src %>">
+      <% if project["license_url"] %></a><% end %>
+      <img alt="<%= project['name'] %> GitHub commit activity" src="https://img.shields.io/github/commit-activity/m/<%= gh_repo_path %>?style=social">
       <% if project["release_date"] && project["last_commit_on"] %>
-      <img alt="<%= project['name'] %> GitHub commits since latest release" src="https://img.shields.io/github/commits-since/<%= gh_forge['owner'] %>/<%= project['name'] %>/latest?style=social">
+      <img alt="<%= project['name'] %> GitHub commits since latest release" src="https://img.shields.io/github/commits-since/<%= gh_repo_path %>/latest?style=social">
       <% end %>
     </p>
     <% end %>
@@ -880,13 +897,16 @@ body_class: projects
     </p>
     <% if project['archived'] %>
     <% # No reason to show GitHub stats for archived projects %>
-    <% elsif !project["_is_person"] && gh_forge %>
+    <% elsif !project["_is_person"] && gh_forge && (gh_repo_path = github_repo_path_for.call(gh_forge)) %>
     <%# Per-project GitHub badge stats (not shown on the person card) %>
+    <% license_badge_src = license_badge_src_for.call(project, gh_repo_path) %>
     <p>
-      <img alt="<%= project['name'] %> GitHub License" src="https://img.shields.io/github/license/<%= gh_forge['owner'] %>/<%= project['name'] %>?style=social">
-      <img alt="<%= project['name'] %> GitHub commit activity" src="https://img.shields.io/github/commit-activity/m/<%= gh_forge['owner'] %>/<%= project['name'] %>?style=social">
+      <% if project["license_url"] %><a href="<%= project['license_url'] %>" target="_blank" rel="noopener"><% end %>
+      <img alt="<%= project['name'] %> License" src="<%= license_badge_src %>">
+      <% if project["license_url"] %></a><% end %>
+      <img alt="<%= project['name'] %> GitHub commit activity" src="https://img.shields.io/github/commit-activity/m/<%= gh_repo_path %>?style=social">
       <% if project["release_date"] && project["last_commit_on"] %>
-      <img alt="<%= project['name'] %> GitHub commits since latest release" src="https://img.shields.io/github/commits-since/<%= gh_forge['owner'] %>/<%= project['name'] %>/latest?style=social">
+      <img alt="<%= project['name'] %> GitHub commits since latest release" src="https://img.shields.io/github/commits-since/<%= gh_repo_path %>/latest?style=social">
       <% end %>
     </p>
     <% end %>
