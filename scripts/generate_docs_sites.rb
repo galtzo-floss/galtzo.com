@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# ...existing code...
+# frozen_string_literal: true
 require 'yaml'
 require 'net/http'
 require 'uri'
@@ -150,6 +150,14 @@ end
 
 # Write YAML
 begin
+  # Guard: minimum_version must always be a String so YAML round-trips cleanly
+  # (same convention as scripts/update_projects#save_yaml).
+  projects.each do |entry|
+    next unless entry.is_a?(Hash) && entry.key?('minimum_version')
+    v = entry['minimum_version']
+    entry['minimum_version'] = v.to_s unless v.nil? || v.is_a?(String)
+  end
+
   # Use safe YAML dump and preserve UTF-8
   yaml_text = projects.to_yaml
   File.write(out_path, yaml_text)
