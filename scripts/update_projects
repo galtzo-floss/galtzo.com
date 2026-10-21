@@ -171,7 +171,8 @@ class ProjectUpdater
 
     # Partition what we can actually update
     has_github   = to_process.select { |p| (p['forges'] || []).any? { |f| f['type'] == 'GitHub' } }
-    no_github    = to_process - has_github
+    updatable    = to_process.select { |p| (p['forges'] || []).any? { |f| %w[GitHub GitLab].include?(f['type']) } }
+    no_forge     = to_process - updatable
     rubygems     = has_github.select { |p| p['language'] == 'Ruby' && p['ecosystem'] == 'rubygems' }
     github_only  = has_github - rubygems
 
@@ -183,13 +184,18 @@ class ProjectUpdater
     puts "    ⭐ #{has_github.size} have a GitHub forge → stars, status, last commit, release date"
     puts "    💎 #{rubygems.size} are RubyGems → also: total/daily(28d avg)/release downloads"
     puts "    🔗 #{github_only.size} are GitHub-only (no download stats available)"
-    if no_github.any?
-      puts "    ⚠️  #{no_github.size} have no GitHub forge → will be skipped (no update source):"
-      no_github.each { |p| puts "       • #{p['name']} (#{p['ecosystem']})" }
+    gitlab_only = updatable - has_github
+    if gitlab_only.any?
+      puts "    🦊 #{gitlab_only.size} are GitLab-only → GitLab stars/activity/status, no GitHub stats:"
+      gitlab_only.each { |p| puts "       • #{p['name']} (#{p['ecosystem']})" }
+    end
+    if no_forge.any?
+      puts "    ⚠️  #{no_forge.size} have no GitHub/GitLab forge → will be skipped (no update source):"
+      no_forge.each { |p| puts "       • #{p['name']} (#{p['ecosystem']})" }
     end
     puts ""
 
-    unless confirm("▶️  Proceed with updating #{has_github.size} project(s)?", default: true)
+    unless confirm("▶️  Proceed with updating #{updatable.size} project(s)?", default: true)
       puts "Aborted."
       exit 0
     end
@@ -211,10 +217,10 @@ class ProjectUpdater
 
       puts "\n[#{index + 1}/#{projects_to_update.size}] Processing: #{project['name']}"
 
-      # Skip projects with no GitHub forge — we have no update source for them
-      has_github_forge = (project['forges'] || []).any? { |f| f['type'] == 'GitHub' }
-      unless has_github_forge || @surgical_fields.any?
-        puts "  ⏭️  No GitHub forge — skipping (no update source available)"
+      # Skip projects with no GitHub or GitLab forge — we have no update source for them
+      has_usable_forge = (project['forges'] || []).any? { |f| %w[GitHub GitLab].include?(f['type']) }
+      unless has_usable_forge || @surgical_fields.any?
+        puts "  ⏭️  No GitHub/GitLab forge — skipping (no update source available)"
         skipped_count += 1
         next
       end
@@ -662,11 +668,13 @@ class ProjectUpdater
       puts "  Querying GitHub for: #{github_forge['url']}..."
       begin
         github_info = fetch_github_info(github_forge['url'])
-        project['github_stars']   = github_info[:stars]
-        project['last_commit_on'] = github_info[:last_commit]
-        project['status']         = github_info[:archived] ? 'archived' : 'active'
-        puts "    ⭐ Stars: #{github_info[:stars]}"
-        puts "    🔨 Last commit: #{github_info[:last_commit] || 'unknown'}"
+        if github_info
+          project['github_stars']   = github_info[:stars]
+          project['last_commit_on'] = github_info[:last_commit]
+          project['status']         = github_info[:archived] ? 'archived' : 'active'
+          puts "    ⭐ Stars: #{github_info[:stars]}"
+          puts "    🔨 Last commit: #{github_info[:last_commit] || 'unknown'}"
+        end
 
         repo_path = extract_repo_path(github_forge['url'])
         if repo_path
@@ -1256,16 +1264,21 @@ class ProjectUpdater
     if github_url
       begin
         github_info = fetch_github_info(github_url)
-        project['github_stars'] = github_info[:stars]
-        project['last_commit_on'] = github_info[:last_commit]
-        project['status'] = github_info[:archived] ? 'archived' : 'active'
+        if github_info
+          project['github_stars'] = github_info[:stars]
+          project['last_commit_on'] = github_info[:last_commit]
+          project['status'] = github_info[:archived] ? 'archived' : 'active'
 
-        # Try to get first commit info
-        repo_path = extract_repo_path(github_url)
-        if repo_path
-          first_commit = fetch_first_commit_by_person(repo_path)
-          project['first_commit_by_person']    = first_commit[:url] if first_commit
-          project['first_commit_by_person_on'] = first_commit[:date] if first_commit
+          # Try to get first commit info
+          repo_path = extract_repo_path(github_url)
+          if repo_path
+            first_commit = fetch_first_commit_by_person(repo_path)
+            project['first_commit_by_person']    = first_commit[:url] if first_commit
+            project['first_commit_by_person_on'] = first_commit[:date] if first_commit
+          end
+        else
+          project['github_stars'] = 0
+          project['status'] = 'active'
         end
       rescue => e
         puts "    ⚠️  Could not fetch GitHub info: #{e.message}"
@@ -1413,8 +1426,10 @@ class ProjectUpdater
     when 'github_stars'
       raise "Missing GitHub forge for project: #{project['name']}" unless github_forge
       github_info = fetch_github_info(github_forge['url'])
-      project['github_stars'] = github_info[:stars]
-      puts "  ⭐ GitHub stars: #{github_info[:stars]}"
+      if github_info
+        project['github_stars'] = github_info[:stars]
+        puts "  ⭐ GitHub stars: #{github_info[:stars]}"
+      end
 
     when 'gitlab_stars'
       if gitlab_forge
@@ -1470,11 +1485,13 @@ class ProjectUpdater
       end
 
     when 'last_commit_on'
-      raise "Missing GitHub forge for project: #{project['name']}" unless github_forge
-      github_info = fetch_github_info(github_forge['url'])
-      last_commit = github_info[:last_commit]
-      project['last_commit_on'] = last_commit
-      puts "  🔨 Last commit: #{last_commit || 'N/A'}"
+      raise "Missing GitHub or GitLab forge for project: #{project['name']}" unless github_forge || gitlab_forge
+      commit_info = github_forge ? fetch_github_info(github_forge['url']) : fetch_gitlab_info(gitlab_forge['url'])
+      if commit_info
+        last_commit = commit_info[:last_commit]
+        project['last_commit_on'] = last_commit
+        puts "  🔨 Last commit: #{last_commit || 'N/A'}"
+      end
 
     when 'first_commit_by_person', 'first_commit_by_person_on'
       raise "Missing GitHub forge for project: #{project['name']}" unless github_forge
@@ -1491,19 +1508,21 @@ class ProjectUpdater
       end
 
     when 'status'
-      raise "Missing GitHub forge for project: #{project['name']}" unless github_forge
-      github_info = fetch_github_info(github_forge['url'])
-      last_commit = github_info[:last_commit]
+      raise "Missing GitHub or GitLab forge for project: #{project['name']}" unless github_forge || gitlab_forge
+      commit_info = github_forge ? fetch_github_info(github_forge['url']) : fetch_gitlab_info(gitlab_forge['url'])
+      if commit_info
+        last_commit = commit_info[:last_commit]
 
-      if github_info[:archived]
-        project['status'] = 'archived'
-        puts "  📦 Status: archived"
-      elsif last_commit.nil? || days_since(last_commit) > 365
-        project['status'] = 'stale'
-        puts "  ⚠️  Status: stale"
-      else
-        project['status'] = 'active'
-        puts "  ✅ Status: active"
+        if commit_info[:archived]
+          project['status'] = 'archived'
+          puts "  📦 Status: archived"
+        elsif last_commit.nil? || days_since(last_commit) > 365
+          project['status'] = 'stale'
+          puts "  ⚠️  Status: stale"
+        else
+          project['status'] = 'active'
+          puts "  ✅ Status: active"
+        end
       end
 
     when 'minimum_version'
@@ -1565,20 +1584,27 @@ class ProjectUpdater
     gitlab_forge = forges.find { |f| f['type'] == 'GitLab' }
     codeberg_forge = forges.find { |f| f['type'] == 'Codeberg' }
 
-    # Step 1: GitHub stars (required)
-    raise "Missing GitHub forge for project: #{project['name']}" unless github_forge
+    # Step 1: Forge stars/info — GitHub preferred, GitLab-only projects supported
+    raise "Missing GitHub or GitLab forge for project: #{project['name']}" unless github_forge || gitlab_forge
 
-    github_info = fetch_github_info(github_forge['url'])
-    project['github_stars'] = github_info[:stars]
-    puts "  ⭐ GitHub stars: #{github_info[:stars]}"
+    github_info = nil
+    if github_forge
+      github_info = fetch_github_info(github_forge['url'])
+      if github_info
+        project['github_stars'] = github_info[:stars]
+        puts "  ⭐ GitHub stars: #{github_info[:stars]}"
 
-    apply_license_metadata(project, github_forge)
+        apply_license_metadata(project, github_forge)
+      end
+    end
 
-    # Step 2: GitLab stars (if present)
+    gitlab_info = nil
     if gitlab_forge
-      gitlab_stars = fetch_gitlab_stars(gitlab_forge['url'])
-      project['gitlab_stars'] = gitlab_stars
-      puts "  ⭐ GitLab stars: #{gitlab_stars}"
+      gitlab_info = fetch_gitlab_info(gitlab_forge['url'])
+      if gitlab_info
+        project['gitlab_stars'] = gitlab_info[:stars]
+        puts "  ⭐ GitLab stars: #{gitlab_info[:stars]}"
+      end
     end
 
     # Step 3: Codeberg stars (if present)
@@ -1589,7 +1615,7 @@ class ProjectUpdater
     end
 
     # Step 3b: GitHub release downloads (non-rubygems only — rubygems has no release assets)
-    unless project['language'] == 'Ruby' && project['ecosystem'] == 'rubygems'
+    if github_forge && !(project['language'] == 'Ruby' && project['ecosystem'] == 'rubygems')
       gh_downloads = fetch_github_release_downloads(github_forge['url'])
       if gh_downloads
         github_forge['total_downloads']   = gh_downloads[:total_downloads]
@@ -1616,7 +1642,8 @@ class ProjectUpdater
 
       latest_version = latest_rubygems_version(gem_name)
       ruby_version = latest_version&.fetch('ruby_version', nil)
-      project['minimum_version'] = extract_minimum_version(ruby_version) || RUBYGEMS_MINIMUM_VERSION_DEFAULT
+      # Gemspec requirement wins; otherwise keep any curated value before falling back to the default
+      project['minimum_version'] = extract_minimum_version(ruby_version) || project['minimum_version'] || RUBYGEMS_MINIMUM_VERSION_DEFAULT
       puts "  💎 Minimum Ruby version: #{project['minimum_version']}  (raw: #{ruby_version || 'none'})"
     end
 
@@ -1627,28 +1654,36 @@ class ProjectUpdater
       release_date = fetch_rubygems_release_date(gem_name)
       project['release_date'] = release_date
       puts "  📅 Release date (RubyGems): #{release_date}"
-    else
+    elsif github_forge
       # Use GitHub release date
       release_date = fetch_github_release_date(github_forge['url'])
       project['release_date'] = release_date
       puts "  📅 Release date (GitHub): #{release_date || 'N/A'}"
     end
 
-    # Step 8: Last commit date
-    last_commit = github_info[:last_commit]
-    project['last_commit_on'] = last_commit
-    puts "  🔨 Last commit: #{last_commit || 'N/A'}"
-
-    # Step 9-10: Determine status (archived, stale, or active)
-    if github_info[:archived]
-      project['status'] = 'archived'
-      puts "  📦 Status: archived"
-    elsif last_commit.nil? || days_since(last_commit) > 365
-      project['status'] = 'stale'
-      puts "  ⚠️  Status: stale (#{days_since(last_commit)} days since last commit)"
+    # Step 8: Last commit date (GitHub preferred, GitLab last_activity_at as fallback)
+    commit_source = github_info || gitlab_info
+    if commit_source.nil?
+      puts "  ⚠️  No forge data available — last commit / status left unchanged"
     else
-      project['status'] = 'active'
-      puts "  ✅ Status: active"
+      last_commit = commit_source[:last_commit]
+      project['last_commit_on'] = last_commit
+      puts "  🔨 Last commit: #{last_commit || 'N/A'}"
+
+      # Step 9-10: Determine status (archived, stale, or active)
+      if commit_source[:archived]
+        project['status'] = 'archived'
+        puts "  📦 Status: archived"
+      elsif last_commit.nil?
+        project['status'] = 'stale'
+        puts "  ⚠️  Status: stale (no commit date available)"
+      elsif days_since(last_commit) > 365
+        project['status'] = 'stale'
+        puts "  ⚠️  Status: stale (#{days_since(last_commit)} days since last commit)"
+      else
+        project['status'] = 'active'
+        puts "  ✅ Status: active"
+      end
     end
   end
 
@@ -1761,7 +1796,7 @@ class ProjectUpdater
     error_msg = "Failed to fetch GitHub info: #{e.message}"
     @errors << error_msg unless @errors.include?(error_msg)
     puts "    ⚠️  #{error_msg}"
-    { stars: 0, archived: false, last_commit: nil }
+    nil
   end
 
   def fetch_github_release_date(url)
@@ -1779,7 +1814,7 @@ class ProjectUpdater
     nil
   end
 
-  def fetch_gitlab_stars(url)
+  def fetch_gitlab_info(url)
     # Extract project path from GitLab URL
     # Format: https://gitlab.com/owner/project
     path = url.gsub('https://gitlab.com/', '')
@@ -1787,14 +1822,26 @@ class ProjectUpdater
     api_url = "https://gitlab.com/api/v4/projects/#{encoded_path}"
 
     data = gitlab_api_request(api_url)
-    return 0 unless data
+    unless data
+      puts "    ⚠️  No GitLab data for #{url} (private, moved, or API error) — fields left unchanged"
+      return nil
+    end
 
-    data['star_count'] || 0
+    last_activity = data['last_activity_at']
+    {
+      stars:       data['star_count'] || 0,
+      last_commit: last_activity ? Date.parse(last_activity).strftime('%Y/%m/%d') : nil,
+      archived:    data['archived'] || false,
+    }
   rescue => e
-    error_msg = "Failed to fetch GitLab stars from #{url}: #{e.message}"
+    error_msg = "Failed to fetch GitLab info from #{url}: #{e.message}"
     @errors << error_msg unless @errors.include?(error_msg)
     puts "    ⚠️  #{error_msg}"
-    0
+    nil
+  end
+
+  def fetch_gitlab_stars(url)
+    fetch_gitlab_info(url)&.fetch(:stars, nil) || 0
   end
 
   def fetch_codeberg_stars(url)
@@ -1928,7 +1975,8 @@ class ProjectUpdater
 
   def latest_rubygems_version(gem_name)
     versions = fetch_rubygems_versions(gem_name)
-    versions.find { |version| !version['prerelease'] }
+    # Prefer latest stable; fall back to latest prerelease for prerelease-only gems
+    versions.find { |version| !version['prerelease'] } || versions.first
   end
 
   def fetch_rubygems_release_date(gem_name)
