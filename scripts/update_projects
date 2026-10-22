@@ -1807,11 +1807,32 @@ class ProjectUpdater
     api_url = "https://api.github.com/repos/#{repo_path}/releases/latest"
 
     data = github_api_request(api_url)
-    return nil unless data && data['published_at']
+    if data && data['published_at']
+      return Date.parse(data['published_at']).strftime('%Y/%m/%d')
+    end
 
-    Date.parse(data['published_at']).strftime('%Y/%m/%d')
+    # No GitHub "release" objects — many repos only push tags.
+    # Fall back to the commit date of the most recent tag.
+    fetch_github_latest_tag_date(repo_path)
   rescue => e
     error_msg = "Failed to fetch GitHub release date from #{url}: #{e.message}"
+    @errors << error_msg unless @errors.include?(error_msg)
+    puts "    ⚠️  #{error_msg}"
+    nil
+  end
+
+  def fetch_github_latest_tag_date(repo_path)
+    tags = github_api_request("https://api.github.com/repos/#{repo_path}/tags?per_page=1")
+    return nil unless tags.is_a?(Array) && tags.any?
+
+    sha = tags.first.dig('commit', 'sha')
+    return nil unless sha
+
+    commit = github_api_request("https://api.github.com/repos/#{repo_path}/commits/#{sha}")
+    date = commit && commit.dig('commit', 'committer', 'date')
+    date ? Date.parse(date).strftime('%Y/%m/%d') : nil
+  rescue => e
+    error_msg = "Failed to fetch latest tag date for #{repo_path}: #{e.message}"
     @errors << error_msg unless @errors.include?(error_msg)
     puts "    ⚠️  #{error_msg}"
     nil
