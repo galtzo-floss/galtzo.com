@@ -35,8 +35,9 @@
   license_url: https://github.com/galtzo-floss/active_security/blob/main/LICENSE.md
 - name: activerecord-tablefree
   description: ActiveRecord Tablefree Models provides a simple mixin for creating
-    models that are not bound to the database. Take advantage of ActiveRecord features
-    like validation, relationships, and nested_attributes.
+    models that are not bound to the database. This approach is useful for taking
+    advantage of the features of ActiveRecord such as validation, relationships, nested_attributes,
+    etc.
   language: Ruby
   ecosystem: rubygems
   theme: family
@@ -113,8 +114,8 @@
   - MIT
   license_url: https://github.com/galtzo-floss/activerecord-transactionable/blob/main/LICENSE.md
 - name: activesupport-broadcast_logger
-  description: Rails v8 ActiveSupport::BroadcastLogger, fixed & backported to Rails
-    v5.2+ & Ruby 2.7+
+  description: "\U0001F48E Rails v8 ActiveSupport::BroadcastLogger, fixed & backported
+    to Rails v5.2+ & Ruby 2.7+"
   language: Ruby
   ecosystem: rubygems
   theme: family
@@ -149,7 +150,8 @@
   - MIT
   license_url: https://github.com/galtzo-floss/activesupport-broadcast_logger/blob/main/LICENSE.md
 - name: activesupport-logger
-  description: Rails v8 ActiveSupport::Logger backported to Rails v5.2+ & Ruby 2.7+
+  description: "\U0001F48E Rails v8 ActiveSupport::Logger backported to Rails v5.2+
+    & Ruby 3.1+"
   language: Ruby
   ecosystem: rubygems
   theme: family
@@ -184,8 +186,8 @@
   - MIT
   license_url: https://github.com/galtzo-floss/activesupport-logger/blob/main/LICENSE.md
 - name: activesupport-tagged_logging
-  description: Rails v8 ActiveSupport::TaggedLogging, fixed & backported to Rails
-    v5.2+ & Ruby 2.7+
+  description: "\U0001F48E Rails v8 ActiveSupport::TaggedLogging, fixed & backported
+    to Rails v5.2+ & Ruby 2.7+"
   language: Ruby
   ecosystem: rubygems
   theme: family
@@ -296,8 +298,9 @@
   - Apache-2.0
   license_url: https://github.com/apache/skywalking-eyes/blob/main/LICENSE
 - name: appraisal2
-  description: Appraisal2 integrates with bundler and rake to test your library against
-    different versions of dependencies in repeatable scenarios called "appraisals."
+  description: "\U0001F50D️ Appraisal2 integrates with bundler and rake to test your
+    library against different versions of dependencies in repeatable scenarios called
+    \"appraisals.\""
   language: Ruby
   ecosystem: rubygems
   theme: family
@@ -683,9 +686,8 @@
   - MIT
   license_url: https://github.com/galtzo-floss/csv_pirate/blob/main/LICENSE
 - name: debug_logging
-  description: |
-    Unobtrusive debug logging for Ruby.  NO LITTERING.
-    Automatically log selected methods and their arguments as they are called at runtime!
+  description: "\U0001FAB2 Unobtrusive debug logging for Ruby.  NO LITTERING.\nAutomatically
+    log selected methods and their arguments as they are called at runtime!\n"
   language: Ruby
   ecosystem: rubygems
   theme: family
@@ -876,8 +878,11 @@
   - MIT
   license_url: https://github.com/galtzo-floss/each_in_batches/blob/main/MIT-LICENSE
 - name: flag_shih_tzu
-  description: Bit fields for ActiveRecord - store multiple boolean flags in a single
-    integer column
+  description: "\U0001F3C1 Single and Multi-Bit Fields for ActiveRecord:\nThis gem
+    lets you use a single integer column in an ActiveRecord model\nto store a collection
+    of boolean attributes (flags). Each flag can be used\nalmost in the same way you
+    would use any boolean attribute on an\nActiveRecord object. Support for multi-bit
+    fields, like tri-state or enums.\n"
   language: Ruby
   ecosystem: rubygems
   theme: family
@@ -999,7 +1004,7 @@
   - MIT
   license_url: https://github.com/galtzo-floss/gem_bench/blob/main/LICENSE.md
 - name: gitmoji-regex
-  description: "\U0001F61C A regular expression matching Gitmoji (a subset of Unicode
+  description: "\U0001F3C1 A regular expression matching Gitmoji (a subset of Unicode
     Emoji) symbolsFund overlooked open source projects - bottom of stack, dev/test
     dependencies: floss-funding.dev"
   language: Ruby
@@ -1071,7 +1076,7 @@
   - MIT
   license_url: https://github.com/galtzo-floss/humorous_log_formatter/blob/main/LICENSE.txt
 - name: include_with_respect
-  description: Find out if your Module include/extend hooks are misbehaving!
+  description: "\U0001F48E Find out if your Module include/extend hooks are misbehaving!"
   language: Ruby
   ecosystem: rubygems
   theme: family
@@ -1142,7 +1147,7 @@
   - MIT
   license_url: https://github.com/galtzo-floss/json_schemer-fuzz/blob/main/LICENSE.txt
 - name: kettle-dev
-  description: "\U0001F372 Kettle::Dev is a meta tool from kettle-rb to streamline
+  description: "\U0001F372 Kettle::Dev is a meta tool from kettle-dev to streamline
     development and testing. Acts as a shim dependency, pulling in many other dependencies,
     to give you OOTB productivity with a RubyGem, or Ruby app project. Configures
     a complete set of Rake tasks, for all the libraries is brings in, so they arrive
@@ -1197,10 +1202,10 @@
   - AGPL-3.0-only
   license_url: https://github.com/kettle-dev/kettle-dev/blob/main/LICENSE.md
 - name: kettle-soup-cover
-  description: |
-    A Covered Kettle of Test Coverage SOUP (Software of Unknown Provenance)
-    Four-line SimpleCov config, w/ curated, opinionated, pre-configured, dependencies
-    for every CI platform, batteries included.
+  description: "\U0001F958 A Covered Kettle of Test Coverage SOUP (Software of Unknown
+    Provenance)\nFour-line SimpleCov config, w/ curated, opinionated, pre-configured,
+    dependencies\nfor every CI platform, batteries included.\nFund overlooked open
+    source projects - bottom of stack, dev/test dependencies: floss-funding.dev\n"
   language: Ruby
   ecosystem: rubygems
   theme: family
@@ -1241,7 +1246,7 @@
   - AGPL-3.0-only
   license_url: https://github.com/kettle-dev/kettle-soup-cover/blob/main/LICENSE.md
 - name: kettle-test
-  description: "\U0001F372 Kettle::Test is a meta tool from kettle-rb to streamline
+  description: "\U0001F372 Kettle::Test is a meta tool from kettle-dev to streamline
     testing. Acts as a shim dependency, pulling in many other dependencies, to give
     you OOTB productivity with a RubyGem, or Ruby app project. Configures RSpec w/
     syntactic sugar to make writing tests, and testing more scenarios, easier.Configures
@@ -1432,7 +1437,9 @@
   - MIT
   license_url: https://github.com/ruby-openid/masq2/blob/main/LICENSE.txt
 - name: masq2
-  description: Originally a fork. Has been merged back to the original gem.
+  description: Masq2 supports OpenID 2.0 and supports SReg, AX (fetch and store requests)
+    and PAPE as well as some custom additions like multi-factor authentication using
+    a yubikey
   language: Ruby
   ecosystem: rubygems
   theme: family
@@ -1473,7 +1480,7 @@
   - MIT
   license_url: https://github.com/ruby-openid/masq2/blob/main/LICENSE.txt
 - name: month-serializer
-  description: Serialize Month objects to Integer
+  description: "\U0001F5D3️ Serialize Month objects to Integer"
   language: Ruby
   ecosystem: rubygems
   minimum_version: '1.9'
@@ -1510,7 +1517,7 @@
   - MIT
   license_url: https://github.com/galtzo-floss/month-serializer/blob/main/LICENSE.md
 - name: oauth
-  description: "\U0001F511 A Ruby wrapper for the original OAuth 1.0 / 1.0a spec."
+  description: "\U0001F52E A Ruby wrapper for the original OAuth 1.0 / 1.0a spec."
   language: Ruby
   ecosystem: rubygems
   theme: family
@@ -1593,7 +1600,8 @@
   - MIT
   license_url: https://github.com/ruby-oauth/oauth-tty/blob/main/LICENSE.md
 - name: oauth2
-  description: Ruby OAuth 2.0 framework for building OAuth providers and clients
+  description: "\U0001F510 A Ruby wrapper for the OAuth 2.0 Authorization Framework,
+    including the OAuth 2.1 draft spec, and OpenID Connect (OIDC)"
   language: Ruby
   ecosystem: rubygems
   theme: family
@@ -1634,7 +1642,8 @@
   - MIT
   license_url: https://github.com/ruby-oauth/oauth2/blob/main/LICENSE.md
 - name: omniauth-identity
-  description: Traditional username/password based authentication system for OmniAuth
+  description: "\U0001FAF5 Traditional username/password based authentication system
+    for OmniAuth"
   language: Ruby
   ecosystem: rubygems
   theme: family
@@ -1700,7 +1709,7 @@
   - MIT
   license_url: https://github.com/omniauth/omniauth-jwt/blob/main/LICENSE.txt
 - name: omniauth-jwt2
-  description: Originally a fork. Has been merged back to the original gem.
+  description: "\U0001F510 An OmniAuth strategy to accept JWT-based single sign-on."
   language: Ruby
   ecosystem: rubygems
   theme: family
@@ -1733,7 +1742,7 @@
   - MIT
   license_url: https://github.com/omniauth/omniauth-jwt2/blob/main/LICENSE.md
 - name: omniauth-ldap
-  description: A LDAP strategy for OmniAuth.
+  description: "\U0001F4C1 LDAP strategy for OmniAuth."
   language: Ruby
   ecosystem: rubygems
   theme: family
@@ -1848,7 +1857,8 @@
   - MIT
   license_url: https://github.com/ruby-openid/open_id_authentication/blob/main/LICENSE.md
 - name: os
-  description: Easily determine which OS your Ruby code is running on.
+  description: The OS gem allows for some useful and easy functions, like OS.windows?
+    (=> true or false) OS.bits ( => 32 or 64) etc"
   language: Ruby
   ecosystem: rubygems
   minimum_version: '1.8'
@@ -2033,7 +2043,7 @@
   - MIT
   license_url: https://github.com/ruby-openid/rack-openid/blob/master/LICENSE.txt
 - name: rack-openid2
-  description: Originally a fork. Has been merged back to the original gem.
+  description: Provides a more HTTPish API around the ruby-openid2 library
   language: Ruby
   ecosystem: rubygems
   theme: family
@@ -2111,12 +2121,9 @@
   - MIT
 - name: rails_env_local
   description: |2
-      If existing infrastructure for deployed environments
-      has names that conflict with Rails' default non-deployed environments,
-      e.g., "development" and "test", this gem allows renaming them locally.
-      You can rename "development" to "localdev", for example, to prevent confusion.
-      But before using this gem, consider whether renaming your existing environments
-      to remove the conflict might be a better long-term solution.
+      "development" is not always the best name for the local environment.
+      An alternate environment name, like "localdev", will prevent confusion,
+      when "dev", or "develop", is used as a deployed environment.
   language: Ruby
   ecosystem: rubygems
   theme: family
@@ -2269,8 +2276,21 @@
   - MIT
   license_url: https://github.com/galtzo-floss/require_bench/blob/main/LICENSE.md
 - name: resque
-  description: Resque is a Redis-backed Ruby library for creating background jobs,
-    placing them on multiple queues, and processing them later.
+  description: |2
+        Resque is a Redis-backed Ruby library for creating background jobs,
+        placing those jobs on multiple queues, and processing them later.
+
+        Background jobs can be any Ruby class or module that responds to
+        perform. Your existing classes can easily be converted to background
+        jobs or you can create new classes specifically to do work. Or, you
+        can do both.
+
+        Resque is heavily inspired by DelayedJob (which rocks) and is
+        comprised of three parts:
+
+        * A Ruby library for creating, querying, and processing jobs
+        * A Rake task for starting a worker which processes jobs
+        * A Sinatra app for monitoring queues, jobs, and workers.
   language: Ruby
   ecosystem: rubygems
   theme: family
@@ -2306,18 +2326,11 @@
   - MIT
   license_url: https://github.com/resque/resque/blob/master/LICENSE
 - name: resque-lonely_job
-  description: |
-    Ensures that for a given queue, only one worker is working on a job at any given time.
-    Example:
-      require 'resque/plugins/lonely_job'
-      class StrictlySerialJob
-        extend Resque::Plugins::LonelyJob
-        @queue = :serial_work
-        def self.perform
-          # only one at a time in this block, no parallelism allowed for this
-          # particular queue
-        end
-      end
+  description: "\U0001F48E Ensures that for a given queue, only one worker is working
+    on a job at any given time.\n\nExample:\n\n  require 'resque/plugins/lonely_job'\n\n
+    \ class StrictlySerialJob\n    extend Resque::Plugins::LonelyJob\n\n    @queue
+    = :serial_work\n\n    def self.perform\n      # only one at a time in this block,
+    no parallelism allowed for this\n      # particular queue\n    end\n  end\n"
   language: Ruby
   ecosystem: rubygems
   theme: family
@@ -2399,8 +2412,8 @@
   - MIT
   license_url: https://github.com/resque/resque-unique_at_runtime/blob/main/LICENSE
 - name: resque-unique_by_arity
-  description: Configure resque-unique_in_queue and resque-unique_at_runtime uniqueness
-    by arity of perform method, with automated cleanup tools
+  description: "\U0001F48E Configure resque-unique_in_queue and resque-unique_at_runtime
+    uniqueness by arity of perform method, with automated cleanup tools"
   language: Ruby
   ecosystem: rubygems
   theme: family
@@ -2437,7 +2450,8 @@
   - MIT
   license_url: https://github.com/resque/resque-unique_by_arity/blob/main/LICENSE
 - name: resque-unique_in_queue
-  description: A resque plugin that ensures job uniqueness at enqueue time.
+  description: "\U0001F48E A resque plugin that ensures job uniqueness at enqueue
+    time."
   language: Ruby
   ecosystem: rubygems
   theme: family
@@ -2604,10 +2618,8 @@
   - MIT
   license_url: https://github.com/galtzo-floss/rspec-pending_for/blob/main/LICENSE.md
 - name: rspec-stubbed_env
-  description: |
-    Stub or hide environment variables in a scoped context for testing
-    stub_env('REDIS_URL' => 'redis://localhost:6379/')
-    hide_env('SESSION_SECRET')
+  description: "\U0001FAE5 Stub or hide environment variables in a scoped context
+    for testing\nstub_env('REDIS_URL' => 'redis://localhost:6379/')\nhide_env('SESSION_SECRET')\n"
   language: Ruby
   ecosystem: rubygems
   theme: family
@@ -2650,7 +2662,8 @@
   - MIT
   license_url: https://github.com/galtzo-floss/rspec-stubbed_env/blob/main/LICENSE.md
 - name: rubocop-lts
-  description: Configure RuboCop + a bevy of friends to gradually lint Ruby code
+  description: "\U0001F9BE Configure RuboCop + a bevy of friends to gradually lint
+    Ruby code"
   language: Ruby
   ecosystem: rubygems
   theme: family
@@ -2689,7 +2702,8 @@
   - MIT
   license_url: https://github.com/rubocop-lts/rubocop-lts/blob/main/LICENSE.md
 - name: rubocop-ruby1_8
-  description: Configure RuboCop + a bevy of friends to gradually lint Ruby 1.8 code
+  description: "\U0001F9BE Configure RuboCop + a bevy of friends to gradually lint
+    Ruby 1.8 code"
   language: Ruby
   ecosystem: rubygems
   theme: family
@@ -2725,7 +2739,8 @@
   - MIT
   license_url: https://github.com/rubocop-lts/rubocop-ruby1_8/blob/main/LICENSE.md
 - name: rubocop-ruby1_9
-  description: Configure RuboCop + a bevy of friends to gradually lint Ruby 1.9 code
+  description: "\U0001F9BE Configure RuboCop + a bevy of friends to gradually lint
+    Ruby 1.9 code"
   language: Ruby
   ecosystem: rubygems
   theme: family
@@ -2761,7 +2776,8 @@
   - MIT
   license_url: https://github.com/rubocop-lts/rubocop-ruby1_9/blob/main/LICENSE.md
 - name: rubocop-ruby2_0
-  description: Configure RuboCop + a bevy of friends to gradually lint Ruby 2.0 code
+  description: "\U0001F9BE Configure RuboCop + a bevy of friends to gradually lint
+    Ruby 2.0 code"
   language: Ruby
   ecosystem: rubygems
   theme: family
@@ -2797,7 +2813,8 @@
   - MIT
   license_url: https://github.com/rubocop-lts/rubocop-ruby2_0/blob/main/LICENSE.md
 - name: rubocop-ruby2_1
-  description: Configure RuboCop + a bevy of friends to gradually lint Ruby 2.1 code
+  description: "\U0001F9BE Configure RuboCop + a bevy of friends to gradually lint
+    Ruby 2.1 code"
   language: Ruby
   ecosystem: rubygems
   theme: family
@@ -2833,7 +2850,8 @@
   - MIT
   license_url: https://github.com/rubocop-lts/rubocop-ruby2_1/blob/main/LICENSE.md
 - name: rubocop-ruby2_2
-  description: Configure RuboCop + a bevy of friends to gradually lint Ruby 2.2 code
+  description: "\U0001F9BE Configure RuboCop + a bevy of friends to gradually lint
+    Ruby 2.2 code"
   language: Ruby
   ecosystem: rubygems
   theme: family
@@ -2869,7 +2887,8 @@
   - MIT
   license_url: https://github.com/rubocop-lts/rubocop-ruby2_2/blob/main/LICENSE.md
 - name: rubocop-ruby2_3
-  description: Configure RuboCop + a bevy of friends to gradually lint Ruby 2.3 code
+  description: "\U0001F9BE Configure RuboCop + a bevy of friends to gradually lint
+    Ruby 2.3 code"
   language: Ruby
   ecosystem: rubygems
   theme: family
@@ -2905,7 +2924,8 @@
   - MIT
   license_url: https://github.com/rubocop-lts/rubocop-ruby2_3/blob/main/LICENSE.md
 - name: rubocop-ruby2_4
-  description: Configure RuboCop + a bevy of friends to gradually lint Ruby 2.4 code
+  description: "\U0001F9BE Configure RuboCop + a bevy of friends to gradually lint
+    Ruby 2.4 code"
   language: Ruby
   ecosystem: rubygems
   theme: family
@@ -2941,7 +2961,8 @@
   - MIT
   license_url: https://github.com/rubocop-lts/rubocop-ruby2_4/blob/main/LICENSE.md
 - name: rubocop-ruby2_5
-  description: Configure RuboCop + a bevy of friends to gradually lint Ruby 2.5 code
+  description: "\U0001F9BE Configure RuboCop + a bevy of friends to gradually lint
+    Ruby 2.5 code"
   language: Ruby
   ecosystem: rubygems
   theme: family
@@ -2977,7 +2998,8 @@
   - MIT
   license_url: https://github.com/rubocop-lts/rubocop-ruby2_5/blob/main/LICENSE.md
 - name: rubocop-ruby2_6
-  description: Configure RuboCop + a bevy of friends to gradually lint Ruby 2.6 code
+  description: "\U0001F9BE Configure RuboCop + a bevy of friends to gradually lint
+    Ruby 2.6 code"
   language: Ruby
   ecosystem: rubygems
   theme: family
@@ -3013,7 +3035,8 @@
   - MIT
   license_url: https://github.com/rubocop-lts/rubocop-ruby2_6/blob/main/LICENSE.md
 - name: rubocop-ruby2_7
-  description: Configure RuboCop + a bevy of friends to gradually lint Ruby 2.7 code
+  description: "\U0001F9BE Configure RuboCop + a bevy of friends to gradually lint
+    Ruby 2.7 code"
   language: Ruby
   ecosystem: rubygems
   theme: family
@@ -3049,7 +3072,8 @@
   - MIT
   license_url: https://github.com/rubocop-lts/rubocop-ruby2_7/blob/main/LICENSE.md
 - name: rubocop-ruby3_0
-  description: Configure RuboCop + a bevy of friends to gradually lint Ruby 3.0 code
+  description: "\U0001F9BE Configure RuboCop + a bevy of friends to gradually lint
+    Ruby 3.0 code"
   language: Ruby
   ecosystem: rubygems
   theme: family
@@ -3088,7 +3112,8 @@
   - MIT
   license_url: https://github.com/rubocop-lts/rubocop-ruby3_0/blob/main/LICENSE.md
 - name: rubocop-ruby3_1
-  description: Configure RuboCop + a bevy of friends to gradually lint Ruby 3.1 code
+  description: "\U0001F9BE Configure RuboCop + a bevy of friends to gradually lint
+    Ruby 3.1 code"
   language: Ruby
   ecosystem: rubygems
   theme: family
@@ -3124,7 +3149,8 @@
   - MIT
   license_url: https://github.com/rubocop-lts/rubocop-ruby3_1/blob/main/LICENSE.md
 - name: rubocop-ruby3_2
-  description: Configure RuboCop + a bevy of friends to gradually lint Ruby 3.2 code
+  description: "\U0001F9BE Configure RuboCop + a bevy of friends to gradually lint
+    Ruby 3.2 code"
   language: Ruby
   ecosystem: rubygems
   theme: family
@@ -3202,7 +3228,7 @@
   - Apache Software License 2.0
   license_url: https://github.com/ruby-openid/ruby-openid2/blob/main/LICENSE.md
 - name: ruby-openid2
-  description: Originally a fork. Has been merged back to the original gem.
+  description: A library for consuming and serving OpenID identities.
   language: Ruby
   ecosystem: rubygems
   theme: family
@@ -3521,8 +3547,8 @@
   - MIT
   license_url: https://github.com/galtzo-floss/silent_stream/blob/main/LICENSE.md
 - name: simple_column-scopes
-  description: Dynamic modules which define dynamic methods for scopes based on a
-    dynamic array of column names
+  description: "\U0001F3DB️ Dynamic modules which define dynamic methods for scopes
+    based on a dynamic array of column names"
   language: Ruby
   ecosystem: rubygems
   theme: family
@@ -3556,7 +3582,7 @@
   - MIT
   license_url: https://github.com/galtzo-floss/simple_column-scopes/blob/main/LICENSE.md
 - name: snaky_hash
-  description: 'A Hashie::Mash joint to make #snakelife better'
+  description: "\U0001F52E A Hashie::Mash joint to make #snakelife better"
   language: Ruby
   ecosystem: rubygems
   theme: family
@@ -3753,7 +3779,7 @@
   licenses:
   - MIT
 - name: stone_checksums
-  description: "\U0001F5FF Generate both SHA256 & SHA512 checksums into the checksums
+  description: "\U0001F997 Generate both SHA256 & SHA512 checksums into the checksums
     directory, and git commit them.\n  gem install stone_checksums\nThen, use the
     rake task or the script:\n  rake build:generate_checksums\n  gem_checksums\nControl
     options with ENV variables!\nFund overlooked open source projects - bottom of
@@ -3840,8 +3866,28 @@
   - MIT
   license_url: https://github.com/galtzo-floss/strict_states/blob/main/LICENSE.txt
 - name: super_exception_notifier
-  description: In the Rails v2 era, this was a popular fork of exception_notification,
-    with many extra features.  It is now deprecated in favor of the original gem.
+  description: |-
+    Allows customization of:
+    * Specify which level of notification you would like with an array of optional styles of notification (email, webhooks)
+    * the sender address of the email
+    * the recipient addresses
+    * the text used to prefix the subject line
+    * the HTTP status codes to notify for
+    * the error classes to send emails for
+    * alternatively, the error classes to not notify for
+    * whether to send error emails or just render without sending anything
+    * the HTTP status and status code that gets rendered with specific errors
+    * the view path to the error page templates
+    * custom errors, with custom error templates
+    * define error layouts at application or controller level, or use the controller's own default layout, or no layout at all
+    * get error notification for errors that occur in the console, using notifiable method
+    * Override the gem's handling and rendering with explicit rescue statements inline.
+    * Hooks into `git blame` output so you can get an idea of who (may) have introduced the bug
+    * Hooks into other website services (e.g. you can send exceptions to to Switchub.com)
+    * Can notify of errors occurring in any class/method using notifiable { method }
+    * Can notify of errors in Rake tasks using NotifiedTask.new instead of task
+    * Works with Hoptoad Notifier, so you can notify via SEN and/or Hoptoad for any particular errors.
+    * Tested with Rails 2.3.x, should work with rails 2.2.x, and is apparently not yet compatible with rails 3.
   language: Ruby
   ecosystem: rubygems
   theme: family
@@ -3916,7 +3962,7 @@
   - MIT
   license_url: https://github.com/galtzo-floss/timecop-rspec/blob/main/LICENSE.md
 - name: undrive_google
-  description: "\U0001F3F4 Liberate files from your Google Drive with transformations"
+  description: "\U0001F3F4‍☠️ Liberate files from your Google Drive with transformations"
   language: Ruby
   ecosystem: rubygems
   theme: family
@@ -3959,7 +4005,7 @@
   - MIT
   license_url: https://github.com/galtzo-floss/undrive_google/blob/main/LICENSE.md
 - name: version_gem
-  description: "\U0001F516 Versions are good. Versions are cool. Versions will win."
+  description: "\U0001F372 Versions are good. Versions are cool. Versions will win."
   language: Ruby
   ecosystem: rubygems
   theme: family
@@ -4002,8 +4048,9 @@
   - MIT
   license_url: https://github.com/ruby-oauth/version_gem/blob/main/LICENSE.md
 - name: warden_oauth
-  description: warden_oauth will help you create oauth authentication strategies using
-    the oauth helper method on the Warden::Manager config setup
+  description: "\U0001F6E1️ warden_oauth will help you create oauth authentication
+    strategies using the oauth\n      helper method on the Warden::Manager config
+    setup\n    "
   language: Ruby
   ecosystem: rubygems
   theme: family
@@ -4067,7 +4114,7 @@
   - CC-BY-NC-SA-4.0
   license_url: https://github.com/pboling/yacs/blob/main/LICENSE.txt
 - name: yard-fence
-  description: "\U0001F93A Convert ASCII braces ('{}') to full-width braces ('{}')
+  description: "\U0001F372 Convert ASCII braces ('{}') to full-width braces ('{}')
     within code fences (triple-or-single backticks) during YARD processing, and back
     to ASCII braces afterward"
   language: Ruby
@@ -4136,7 +4183,7 @@
   - MIT
   license_url: https://github.com/galtzo-floss/yaml-converter/blob/main/LICENSE.md
 - name: yard-yaml
-  description: "\U0001F968 A YARD plugin for YAML documents"
+  description: "\U0001F997 A YARD plugin for YAML documents"
   language: Ruby
   ecosystem: rubygems
   theme: family
@@ -4168,11 +4215,8 @@
   - MIT
   license_url: https://github.com/galtzo-floss/yard-yaml/blob/main/LICENSE.md
 - name: tree_haver
-  description: "\U0001F334 TreeHaver is a cross-Ruby adapter for many AST parsing
-    libraries; supporting MRI Ruby, JRuby, & TruffleRuby. Provides unified parsing
-    API & AST when using ruby_tree_sitter, parslet, citrus, ffi, tree_stump (Rust),
-    JRuby JARs, etc. As Faraday is to HTTP clients, this is for ASTs: 'Learn once
-    & write once & run anywhere'"
+  description: "\U0001F334 Backend registry, parser request/result contracts, and
+    tree-sitter language-pack integration for Structured Merge."
   language: Ruby
   ecosystem: rubygems
   minimum_version: '4.0'
@@ -4210,9 +4254,8 @@
   - PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: ast-merge
-  description: "☯️ Ast::Merge provides base classes, modules, and RSpec shared examples
-    for building intelligent file mergers using AST analysis. It powers prism-merge,
-    psych-merge, json-merge, and other format-specific merge gems."
+  description: "☯️ Core diagnostics, conformance, planning, reporting, and review-state
+    contracts for Structured Merge."
   language: Ruby
   ecosystem: rubygems
   minimum_version: '4.0'
@@ -4289,10 +4332,8 @@
   - PolyForm-Small-Business-1.0.0
   license_url: https://github.com/kettle-dev/token-resolver/blob/main/LICENSE.md
 - name: bash-merge
-  description: "☯️ Bash::Merge provides smart Bash script merging that preserves comments,
-    understands shell structure, and supports freeze blocks for protecting destination
-    content. Perfect for merging configuration scripts and shell templates with customized
-    destination files."
+  description: "☯️ Bash statement, comment, freeze-block, and template merge behavior
+    for Structured Merge."
   language: Ruby
   ecosystem: rubygems
   minimum_version: '4.0'
@@ -4331,10 +4372,8 @@
   - PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: commonmarker-merge
-  description: "☯️ Commonmarker::Merge provides smart Markdown file merging using
-    Comrak (Rust) via Commonmarker. It understands document structure including headings,
-    lists, code blocks, and tables. Perfect for merging documentation templates with
-    customized files."
+  description: "☯️ Commonmarker-backed Markdown provider gem for the Structured Merge
+    Markdown family."
   language: Ruby
   ecosystem: rubygems
   minimum_version: '4.0'
@@ -4372,9 +4411,8 @@
   - PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: dotenv-merge
-  description: "☯️ Dotenv::Merge provides smart .env file merging that preserves comments,
-    understands variable assignments, and supports freeze blocks for protecting sensitive
-    configuration. Perfect for merging environment templates with local overrides."
+  description: "☯️ Dotenv assignment, comment, freeze-block, and template merge behavior
+    for Structured Merge."
   language: Ruby
   ecosystem: rubygems
   minimum_version: '4.0'
@@ -4414,11 +4452,8 @@
   - PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: json-merge
-  description: "☯️ Json::Merge provides smart JSON file merging that understands JSON
-    structure. Perfect for merging strict JSON configuration files like package.json,
-    tsconfig.json (without comments), and other standard JSON files. For JSON with
-    Comments (JSONC) files like devcontainer.json and VS Code settings, use jsonc-merge
-    instead."
+  description: "☯️ Portable JSON and JSONC analysis, owner matching, fallback, and
+    merge behavior for Structured Merge."
   language: Ruby
   ecosystem: rubygems
   minimum_version: '4.0'
@@ -4497,8 +4532,8 @@
   - MIT
   license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: markdown-merge
-  description: "☯️ Ast::Merge-based structure for merging Markdown files with tools
-    like markly-merge and commonmarker-merge"
+  description: "☯️ Portable Markdown owner analysis and matching behavior for Structured
+    Merge."
   language: Ruby
   ecosystem: rubygems
   minimum_version: '4.0'
@@ -4537,10 +4572,8 @@
   - PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: markly-merge
-  description: "☯️ Markly::Merge provides smart Markdown file merging using libcmark-gfm
-    via Markly. It understands document structure including headings, lists, code
-    blocks, and tables. Perfect for merging documentation templates with customized
-    files."
+  description: "☯️ Markly-backed Markdown provider gem for the Structured Merge Markdown
+    family."
   language: Ruby
   ecosystem: rubygems
   minimum_version: '4.0'
@@ -4578,8 +4611,7 @@
   - PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: prism-merge
-  description: "☯️ Intelligently merge two versions of a Ruby file using Prism AST
-    analysis, similar to a smart 'git merge' specifically designed for Ruby code."
+  description: "☯️ Prism-backed Ruby provider gem for the Structured Merge Ruby family."
   language: Ruby
   ecosystem: rubygems
   minimum_version: '4.0'
@@ -4616,9 +4648,7 @@
   - PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: psych-merge
-  description: "☯️ Psych::Merge provides smart YAML file merging that preserves comments,
-    anchors/aliases, and supports freeze blocks for protecting destination content.
-    Perfect for merging configuration templates with customized destination files."
+  description: "☯️ Psych-backed YAML provider gem for the Structured Merge YAML family."
   language: Ruby
   ecosystem: rubygems
   minimum_version: '4.0'
@@ -4656,9 +4686,8 @@
   - PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: rbs-merge
-  description: "☯️ Intelligently merge RBS type signature files by parsing and comparing
-    AST structures. Supports freeze blocks to protect customizations, signature-based
-    matching, and configurable merge strategies."
+  description: "☯️ RBS declaration, comment, freeze-block, and template merge behavior
+    for Structured Merge."
   language: Ruby
   ecosystem: rubygems
   minimum_version: '4.0'
@@ -4697,9 +4726,8 @@
   - PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: toml-merge
-  description: "☯️ Intelligently merges TOML files by analyzing their AST structure
-    with tree-sitter, preserving key organization and resolving conflicts based on
-    structural similarity."
+  description: "☯️ Tree-sitter-backed TOML substrate behavior for the Structured Merge
+    TOML family."
   language: Ruby
   ecosystem: rubygems
   minimum_version: '4.0'
@@ -4808,7 +4836,9 @@
   - type: GitHub
     url: https://github.com/CycloneDX/cyclonedx-ruby-gem
     owner: CycloneDX
-  description: Creates CycloneDX Software Bill of Materials (SBOM) from Ruby projects
+  description: CycloneDX is a lightweight software bill-of-material (SBOM) specification
+    designed for use in application security contexts and supply chain component analysis.
+    This Gem generates CycloneDX BOMs from Ruby projects.
   minimum_version: '1.8'
   tags:
   - bundler
@@ -5318,8 +5348,8 @@
   - AGPL-3.0-only
   license_url: https://github.com/kettle-dev/nomono/blob/main/LICENSE.md
 - name: ast-template
-  description: Product-level directory session reporting above ast-merge for Structured
-    Merge.
+  description: "\U0001F48E Product-level directory session reporting above ast-merge
+    for Structured Merge."
   language: Ruby
   ecosystem: rubygems
   minimum_version: '4.0'
@@ -5351,8 +5381,8 @@
   - PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: plain-merge
-  description: Portable text normalization, similarity, matching, and merge behavior
-    for Structured Merge.
+  description: "☯️ Portable text normalization, similarity, matching, and merge behavior
+    for Structured Merge."
   language: Ruby
   ecosystem: rubygems
   minimum_version: '4.0'
@@ -5384,8 +5414,8 @@
   - PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: yaml-merge
-  description: Portable YAML analysis, owner matching, and merge behavior for Structured
-    Merge.
+  description: "☯️ Portable YAML analysis, owner matching, and merge behavior for
+    Structured Merge."
   language: Ruby
   ecosystem: rubygems
   minimum_version: '4.0'
@@ -5417,7 +5447,7 @@
   - PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: ruby-merge
-  description: Tree-sitter-backed Ruby family substrate for Structured Merge.
+  description: "☯️ Tree-sitter-backed Ruby family substrate for Structured Merge."
   language: Ruby
   ecosystem: rubygems
   minimum_version: '4.0'
@@ -5449,8 +5479,8 @@
   - PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: go-merge
-  description: Portable Go module owner analysis and merge behavior for Structured
-    Merge.
+  description: "☯️ Portable Go module owner analysis and merge behavior for Structured
+    Merge."
   language: Ruby
   ecosystem: rubygems
   minimum_version: '4.0'
@@ -5482,8 +5512,8 @@
   - PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: rust-merge
-  description: Portable Rust module owner analysis and merge behavior for Structured
-    Merge.
+  description: "☯️ Portable Rust module owner analysis and merge behavior for Structured
+    Merge."
   language: Ruby
   ecosystem: rubygems
   minimum_version: '4.0'
@@ -5515,8 +5545,8 @@
   - PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: typescript-merge
-  description: Portable TypeScript module owner analysis and merge behavior for Structured
-    Merge.
+  description: "☯️ Portable TypeScript module owner analysis and merge behavior for
+    Structured Merge."
   language: Ruby
   ecosystem: rubygems
   minimum_version: '4.0'
@@ -5548,8 +5578,8 @@
   - PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: binary-merge
-  description: Portable binary preservation planning and diagnostics for Structured
-    Merge.
+  description: "☯️ Portable binary preservation planning and diagnostics for Structured
+    Merge."
   language: Ruby
   ecosystem: rubygems
   minimum_version: '4.0'
@@ -5581,8 +5611,8 @@
   - PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: zip-merge
-  description: Portable ZIP inventory, planning, nested dispatch, and raw-preservation
-    rendering helpers for Structured Merge.
+  description: "☯️ Portable ZIP inventory, planning, nested dispatch, and raw-preservation
+    rendering helpers for Structured Merge."
   language: Ruby
   ecosystem: rubygems
   minimum_version: '4.0'
@@ -5614,7 +5644,7 @@
   - PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: citrus-toml-merge
-  description: Citrus-backed TOML provider gem for the Structured Merge TOML family.
+  description: "☯️ Citrus-backed TOML provider gem for the Structured Merge TOML family."
   language: Ruby
   ecosystem: rubygems
   minimum_version: '4.0'
@@ -5646,7 +5676,8 @@
   - PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: parslet-toml-merge
-  description: Parslet-backed TOML provider gem for the Structured Merge TOML family.
+  description: "☯️ Parslet-backed TOML provider gem for the Structured Merge TOML
+    family."
   language: Ruby
   ecosystem: rubygems
   minimum_version: '4.0'
@@ -5678,8 +5709,8 @@
   - PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: kramdown-merge
-  description: Kramdown-backed Markdown provider gem for the Structured Merge Markdown
-    family.
+  description: "☯️ Kramdown-backed Markdown provider gem for the Structured Merge
+    Markdown family."
   language: Ruby
   ecosystem: rubygems
   minimum_version: '4.0'
@@ -5711,8 +5742,10 @@
   - PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: kettle-jem
-  description: RubyGems-focused recipe-pack wrapper that shapes package facts into
-    ast-merge transport.
+  description: "\U0001F52E Kettle::Jem provides gem scaffolding, templating, and setup
+    automation using the *-merge gem family for AST-based file merging and token-resolver
+    for template token resolution. Includes MergerConfig presets, YAML recipes, and
+    a complete gem template scaffold."
   language: Ruby
   ecosystem: rubygems
   minimum_version: '4.0'
@@ -5776,11 +5809,11 @@
   - MIT
   license_url: https://github.com/ruby-oauth/auth-sanitizer/blob/main/LICENSE.md
 - name: turbo_tests2
-  description: "\U0001F680 turbo_tests2` is an RSpec parallel test runner built on
-    `parallel_tests`. It uses `parallel_tests` for process counts, file grouping,
-    and runtime balancing, then replaces interleaved worker output with incremental
-    summarized RSpec reporting. Source code of `turbo_test2` gem is based on Discourse
-    and Rubygems work in this area (see README.md)."
+  description: "\U0001F680 turbo_tests2` is an RSpec parallel test runner. It uses
+    runtime_groups for process counts, pid bookkeeping, file grouping, and runtime
+    balancing, and replaces interleaved worker output with incremental summarized
+    RSpec reporting. Source code of `turbo_test2` gem is based on Discourse and Rubygems
+    work in this area (see README.md)."
   language: Ruby
   ecosystem: rubygems
   theme: family

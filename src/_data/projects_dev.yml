@@ -148,8 +148,9 @@
   - Apache-2.0
   license_url: https://github.com/apache/skywalking-eyes/blob/main/LICENSE
 - name: appraisal2
-  description: Appraisal2 integrates with bundler and rake to test your library against
-    different versions of dependencies in repeatable scenarios called "appraisals."
+  description: "\U0001F50D️ Appraisal2 integrates with bundler and rake to test your
+    library against different versions of dependencies in repeatable scenarios called
+    \"appraisals.\""
   language: Ruby
   ecosystem: rubygems
   minimum_version: '1.8'
@@ -571,7 +572,7 @@
   - MIT
   license_url: https://github.com/pboling/cacheable-flash/blob/master/LICENSE
 - name: yard-fence
-  description: "\U0001F93A Convert ASCII braces ('{}') to full-width braces ('{}')
+  description: "\U0001F372 Convert ASCII braces ('{}') to full-width braces ('{}')
     within code fences (triple-or-single backticks) during YARD processing, and back
     to ASCII braces afterward"
   language: Ruby
@@ -640,7 +641,7 @@
   - MIT
   license_url: https://github.com/galtzo-floss/yaml-converter/blob/main/LICENSE.md
 - name: yard-yaml
-  description: "\U0001F968 A YARD plugin for YAML documents"
+  description: "\U0001F997 A YARD plugin for YAML documents"
   language: Ruby
   ecosystem: rubygems
   theme: family
@@ -672,8 +673,7 @@
   - MIT
   license_url: https://github.com/galtzo-floss/yard-yaml/blob/main/LICENSE.md
 - name: prism-merge
-  description: "☯️ Intelligently merge two versions of a Ruby file using Prism AST
-    analysis, similar to a smart 'git merge' specifically designed for Ruby code."
+  description: "☯️ Prism-backed Ruby provider gem for the Structured Merge Ruby family."
   language: Ruby
   ecosystem: rubygems
   minimum_version: '4.0'
@@ -708,9 +708,8 @@
   - PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: ast-merge
-  description: "☯️ Ast::Merge provides base classes, modules, and RSpec shared examples
-    for building intelligent file mergers using AST analysis. It powers prism-merge,
-    psych-merge, json-merge, and other format-specific merge gems."
+  description: "☯️ Core diagnostics, conformance, planning, reporting, and review-state
+    contracts for Structured Merge."
   language: Ruby
   ecosystem: rubygems
   minimum_version: '4.0'
@@ -745,9 +744,8 @@
   - PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: dotenv-merge
-  description: "☯️ Dotenv::Merge provides smart .env file merging that preserves comments,
-    understands variable assignments, and supports freeze blocks for protecting sensitive
-    configuration. Perfect for merging environment templates with local overrides."
+  description: "☯️ Dotenv assignment, comment, freeze-block, and template merge behavior
+    for Structured Merge."
   language: Ruby
   ecosystem: rubygems
   minimum_version: '4.0'
@@ -781,9 +779,8 @@
   - PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: rbs-merge
-  description: "☯️ Intelligently merge RBS type signature files by parsing and comparing
-    AST structures. Supports freeze blocks to protect customizations, signature-based
-    matching, and configurable merge strategies."
+  description: "☯️ RBS declaration, comment, freeze-block, and template merge behavior
+    for Structured Merge."
   language: Ruby
   ecosystem: rubygems
   minimum_version: '4.0'
@@ -817,11 +814,8 @@
   - PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: tree_haver
-  description: "\U0001F334 TreeHaver is a cross-Ruby adapter for many AST parsing
-    libraries; supporting MRI Ruby, JRuby, & TruffleRuby. Provides unified parsing
-    API & AST when using ruby_tree_sitter, parslet, citrus, ffi, tree_stump (Rust),
-    JRuby JARs, etc. As Faraday is to HTTP clients, this is for ASTs: 'Learn once
-    & write once & run anywhere'"
+  description: "\U0001F334 Backend registry, parser request/result contracts, and
+    tree-sitter language-pack integration for Structured Merge."
   language: Ruby
   ecosystem: rubygems
   minimum_version: '4.0'
@@ -857,9 +851,8 @@
   - PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: toml-merge
-  description: "☯️ Intelligently merges TOML files by analyzing their AST structure
-    with tree-sitter, preserving key organization and resolving conflicts based on
-    structural similarity."
+  description: "☯️ Tree-sitter-backed TOML substrate behavior for the Structured Merge
+    TOML family."
   language: Ruby
   ecosystem: rubygems
   minimum_version: '4.0'
@@ -893,10 +886,8 @@
   - PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: bash-merge
-  description: "☯️ Bash::Merge provides smart Bash script merging that preserves comments,
-    understands shell structure, and supports freeze blocks for protecting destination
-    content. Perfect for merging configuration scripts and shell templates with customized
-    destination files."
+  description: "☯️ Bash statement, comment, freeze-block, and template merge behavior
+    for Structured Merge."
   language: Ruby
   ecosystem: rubygems
   minimum_version: '4.0'
@@ -930,11 +921,8 @@
   - PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: json-merge
-  description: "☯️ Json::Merge provides smart JSON file merging that understands JSON
-    structure. Perfect for merging strict JSON configuration files like package.json,
-    tsconfig.json (without comments), and other standard JSON files. For JSON with
-    Comments (JSONC) files like devcontainer.json and VS Code settings, use jsonc-merge
-    instead."
+  description: "☯️ Portable JSON and JSONC analysis, owner matching, fallback, and
+    merge behavior for Structured Merge."
   language: Ruby
   ecosystem: rubygems
   minimum_version: '4.0'
@@ -968,8 +956,8 @@
   - PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: markdown-merge
-  description: "☯️ Ast::Merge-based structure for merging Markdown files with tools
-    like markly-merge and commonmarker-merge"
+  description: "☯️ Portable Markdown owner analysis and matching behavior for Structured
+    Merge."
   language: Ruby
   ecosystem: rubygems
   minimum_version: '4.0'
@@ -1038,10 +1026,8 @@
   - MIT
   license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: commonmarker-merge
-  description: "☯️ Commonmarker::Merge provides smart Markdown file merging using
-    Comrak (Rust) via Commonmarker. It understands document structure including headings,
-    lists, code blocks, and tables. Perfect for merging documentation templates with
-    customized files."
+  description: "☯️ Commonmarker-backed Markdown provider gem for the Structured Merge
+    Markdown family."
   language: Ruby
   ecosystem: rubygems
   minimum_version: '4.0'
@@ -1075,9 +1061,7 @@
   - PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: psych-merge
-  description: "☯️ Psych::Merge provides smart YAML file merging that preserves comments,
-    anchors/aliases, and supports freeze blocks for protecting destination content.
-    Perfect for merging configuration templates with customized destination files."
+  description: "☯️ Psych-backed YAML provider gem for the Structured Merge YAML family."
   language: Ruby
   ecosystem: rubygems
   minimum_version: '4.0'
@@ -1111,10 +1095,8 @@
   - PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: markly-merge
-  description: "☯️ Markly::Merge provides smart Markdown file merging using libcmark-gfm
-    via Markly. It understands document structure including headings, lists, code
-    blocks, and tables. Perfect for merging documentation templates with customized
-    files."
+  description: "☯️ Markly-backed Markdown provider gem for the Structured Merge Markdown
+    family."
   language: Ruby
   ecosystem: rubygems
   minimum_version: '4.0'
@@ -1192,7 +1174,9 @@
   - type: GitHub
     url: https://github.com/CycloneDX/cyclonedx-ruby-gem
     owner: CycloneDX
-  description: Creates CycloneDX Software Bill of Materials (SBOM) from Ruby projects
+  description: CycloneDX is a lightweight software bill-of-material (SBOM) specification
+    designed for use in application security contexts and supply chain component analysis.
+    This Gem generates CycloneDX BOMs from Ruby projects.
   minimum_version: '1.8'
   tags:
   - bundler
@@ -1694,8 +1678,8 @@
   - AGPL-3.0-only
   license_url: https://github.com/kettle-dev/nomono/blob/main/LICENSE.md
 - name: ast-template
-  description: Product-level directory session reporting above ast-merge for Structured
-    Merge.
+  description: "\U0001F48E Product-level directory session reporting above ast-merge
+    for Structured Merge."
   language: Ruby
   ecosystem: rubygems
   minimum_version: '4.0'
@@ -1727,8 +1711,8 @@
   - PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: plain-merge
-  description: Portable text normalization, similarity, matching, and merge behavior
-    for Structured Merge.
+  description: "☯️ Portable text normalization, similarity, matching, and merge behavior
+    for Structured Merge."
   language: Ruby
   ecosystem: rubygems
   minimum_version: '4.0'
@@ -1760,8 +1744,8 @@
   - PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: yaml-merge
-  description: Portable YAML analysis, owner matching, and merge behavior for Structured
-    Merge.
+  description: "☯️ Portable YAML analysis, owner matching, and merge behavior for
+    Structured Merge."
   language: Ruby
   ecosystem: rubygems
   minimum_version: '4.0'
@@ -1793,7 +1777,7 @@
   - PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: ruby-merge
-  description: Tree-sitter-backed Ruby family substrate for Structured Merge.
+  description: "☯️ Tree-sitter-backed Ruby family substrate for Structured Merge."
   language: Ruby
   ecosystem: rubygems
   minimum_version: '4.0'
@@ -1825,8 +1809,8 @@
   - PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: go-merge
-  description: Portable Go module owner analysis and merge behavior for Structured
-    Merge.
+  description: "☯️ Portable Go module owner analysis and merge behavior for Structured
+    Merge."
   language: Ruby
   ecosystem: rubygems
   minimum_version: '4.0'
@@ -1858,8 +1842,8 @@
   - PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: rust-merge
-  description: Portable Rust module owner analysis and merge behavior for Structured
-    Merge.
+  description: "☯️ Portable Rust module owner analysis and merge behavior for Structured
+    Merge."
   language: Ruby
   ecosystem: rubygems
   minimum_version: '4.0'
@@ -1891,8 +1875,8 @@
   - PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: typescript-merge
-  description: Portable TypeScript module owner analysis and merge behavior for Structured
-    Merge.
+  description: "☯️ Portable TypeScript module owner analysis and merge behavior for
+    Structured Merge."
   language: Ruby
   ecosystem: rubygems
   minimum_version: '4.0'
@@ -1924,8 +1908,8 @@
   - PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: binary-merge
-  description: Portable binary preservation planning and diagnostics for Structured
-    Merge.
+  description: "☯️ Portable binary preservation planning and diagnostics for Structured
+    Merge."
   language: Ruby
   ecosystem: rubygems
   minimum_version: '4.0'
@@ -1957,8 +1941,8 @@
   - PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: zip-merge
-  description: Portable ZIP inventory, planning, nested dispatch, and raw-preservation
-    rendering helpers for Structured Merge.
+  description: "☯️ Portable ZIP inventory, planning, nested dispatch, and raw-preservation
+    rendering helpers for Structured Merge."
   language: Ruby
   ecosystem: rubygems
   minimum_version: '4.0'
@@ -1990,7 +1974,7 @@
   - PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: citrus-toml-merge
-  description: Citrus-backed TOML provider gem for the Structured Merge TOML family.
+  description: "☯️ Citrus-backed TOML provider gem for the Structured Merge TOML family."
   language: Ruby
   ecosystem: rubygems
   minimum_version: '4.0'
@@ -2022,7 +2006,8 @@
   - PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: parslet-toml-merge
-  description: Parslet-backed TOML provider gem for the Structured Merge TOML family.
+  description: "☯️ Parslet-backed TOML provider gem for the Structured Merge TOML
+    family."
   language: Ruby
   ecosystem: rubygems
   minimum_version: '4.0'
@@ -2054,8 +2039,8 @@
   - PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: kramdown-merge
-  description: Kramdown-backed Markdown provider gem for the Structured Merge Markdown
-    family.
+  description: "☯️ Kramdown-backed Markdown provider gem for the Structured Merge
+    Markdown family."
   language: Ruby
   ecosystem: rubygems
   minimum_version: '4.0'
@@ -2087,8 +2072,10 @@
   - PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: kettle-jem
-  description: RubyGems-focused recipe-pack wrapper that shapes package facts into
-    ast-merge transport.
+  description: "\U0001F52E Kettle::Jem provides gem scaffolding, templating, and setup
+    automation using the *-merge gem family for AST-based file merging and token-resolver
+    for template token resolution. Includes MergerConfig presets, YAML recipes, and
+    a complete gem template scaffold."
   language: Ruby
   ecosystem: rubygems
   minimum_version: '4.0'
@@ -2152,11 +2139,11 @@
   - MIT
   license_url: https://github.com/ruby-oauth/auth-sanitizer/blob/main/LICENSE.md
 - name: turbo_tests2
-  description: "\U0001F680 turbo_tests2` is an RSpec parallel test runner built on
-    `parallel_tests`. It uses `parallel_tests` for process counts, file grouping,
-    and runtime balancing, then replaces interleaved worker output with incremental
-    summarized RSpec reporting. Source code of `turbo_test2` gem is based on Discourse
-    and Rubygems work in this area (see README.md)."
+  description: "\U0001F680 turbo_tests2` is an RSpec parallel test runner. It uses
+    runtime_groups for process counts, pid bookkeeping, file grouping, and runtime
+    balancing, and replaces interleaved worker output with incremental summarized
+    RSpec reporting. Source code of `turbo_test2` gem is based on Discourse and Rubygems
+    work in this area (see README.md)."
   language: Ruby
   ecosystem: rubygems
   theme: family
