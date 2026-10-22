@@ -1416,7 +1416,7 @@
   github_stars: 10
   gitlab_stars: 0
   codeberg_stars: 0
-  release_date:
+  release_date: 2025/06/01
   last_commit_on: 2026/09/21
   status: active
   last_scrape_at: '2026-10-21T22:31:29Z'
@@ -6164,7 +6164,7 @@
   status: active
   total_downloads: 134
   release_downloads:
-  release_date:
+  release_date: 2026/05/06
   licenses:
   - AGPL-3.0-only
   - PolyForm-Small-Business-1.0.0
@@ -6199,7 +6199,7 @@
   status: active
   total_downloads: 101
   release_downloads:
-  release_date:
+  release_date: 2026/05/06
   licenses:
   - AGPL-3.0-only
   - PolyForm-Small-Business-1.0.0
@@ -6234,7 +6234,7 @@
   status: active
   total_downloads: 107
   release_downloads:
-  release_date:
+  release_date: 2026/05/06
   licenses:
   - AGPL-3.0-only
   - PolyForm-Small-Business-1.0.0
@@ -6269,7 +6269,7 @@
   status: active
   total_downloads: 108
   release_downloads:
-  release_date:
+  release_date: 2026/05/06
   licenses:
   - AGPL-3.0-only
   - PolyForm-Small-Business-1.0.0
@@ -6304,7 +6304,7 @@
   status: active
   total_downloads: 112
   release_downloads:
-  release_date:
+  release_date: 2026/05/06
   licenses:
   - AGPL-3.0-only
   - PolyForm-Small-Business-1.0.0
@@ -6339,7 +6339,7 @@
   status: active
   total_downloads: 90
   release_downloads:
-  release_date:
+  release_date: 2026/05/06
   licenses:
   - AGPL-3.0-only
   - PolyForm-Small-Business-1.0.0
@@ -6374,7 +6374,7 @@
   status: active
   total_downloads: 106
   release_downloads:
-  release_date:
+  release_date: 2026/05/06
   licenses:
   - AGPL-3.0-only
   - PolyForm-Small-Business-1.0.0
@@ -6409,7 +6409,7 @@
   status: active
   total_downloads: 103
   release_downloads:
-  release_date:
+  release_date: 2026/05/06
   licenses:
   - AGPL-3.0-only
   - PolyForm-Small-Business-1.0.0
@@ -6444,7 +6444,7 @@
   status: active
   total_downloads: 108
   release_downloads:
-  release_date:
+  release_date: 2026/05/06
   licenses:
   - AGPL-3.0-only
   - PolyForm-Small-Business-1.0.0
@@ -6479,7 +6479,7 @@
   status: active
   total_downloads: 112
   release_downloads:
-  release_date:
+  release_date: 2026/05/06
   licenses:
   - AGPL-3.0-only
   - PolyForm-Small-Business-1.0.0
@@ -6514,7 +6514,7 @@
   status: active
   total_downloads: 101
   release_downloads:
-  release_date:
+  release_date: 2026/05/06
   licenses:
   - AGPL-3.0-only
   - PolyForm-Small-Business-1.0.0
@@ -6549,7 +6549,7 @@
   status: active
   total_downloads: 111
   release_downloads:
-  release_date:
+  release_date: 2026/05/06
   licenses:
   - AGPL-3.0-only
   - PolyForm-Small-Business-1.0.0
@@ -6584,7 +6584,7 @@
   status: active
   total_downloads: 117
   release_downloads:
-  release_date:
+  release_date: 2026/05/06
   licenses:
   - AGPL-3.0-only
   - PolyForm-Small-Business-1.0.0
@@ -6619,7 +6619,7 @@
   status: active
   total_downloads: 110
   release_downloads:
-  release_date:
+  release_date: 2026/05/06
   licenses:
   - AGPL-3.0-only
   - PolyForm-Small-Business-1.0.0
@@ -6654,7 +6654,7 @@
   status: active
   total_downloads: 146
   release_downloads:
-  release_date:
+  release_date: 2026/05/06
   licenses:
   - AGPL-3.0-only
   - PolyForm-Small-Business-1.0.0
@@ -6689,7 +6689,7 @@
   status: active
   total_downloads: 100
   release_downloads:
-  release_date:
+  release_date: 2026/05/06
   licenses:
   - AGPL-3.0-only
   - PolyForm-Small-Business-1.0.0
@@ -6724,7 +6724,7 @@
   status: active
   total_downloads: 108
   release_downloads:
-  release_date:
+  release_date: 2026/05/06
   licenses:
   - AGPL-3.0-only
   - PolyForm-Small-Business-1.0.0
@@ -6759,7 +6759,7 @@
   status: active
   total_downloads: 109
   release_downloads:
-  release_date:
+  release_date: 2026/05/06
   licenses:
   - AGPL-3.0-only
   - PolyForm-Small-Business-1.0.0
@@ -6794,7 +6794,7 @@
   status: active
   total_downloads: 112
   release_downloads:
-  release_date:
+  release_date: 2026/05/06
   licenses:
   - AGPL-3.0-only
   - PolyForm-Small-Business-1.0.0
@@ -6828,7 +6828,7 @@
   status: active
   total_downloads: 440
   release_downloads: 426
-  release_date:
+  release_date: 2026/05/06
   licenses:
   - AGPL-3.0-only OR PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-rust/blob/main/LICENSE.md
@@ -6861,7 +6861,7 @@
   status: active
   total_downloads: 12
   release_downloads: 12
-  release_date:
+  release_date: 2026/05/06
   licenses:
   - AGPL-3.0-only OR PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-rust/blob/main/LICENSE.md
@@ -6894,7 +6894,7 @@
   status: active
   total_downloads: 14
   release_downloads: 14
-  release_date:
+  release_date: 2026/05/06
   licenses:
   - AGPL-3.0-only OR PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-rust/blob/main/LICENSE.md
@@ -6927,7 +6927,7 @@
   status: active
   total_downloads: 14
   release_downloads: 14
-  release_date:
+  release_date: 2026/05/06
   licenses:
   - AGPL-3.0-only OR PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-rust/blob/main/LICENSE.md
@@ -6960,7 +6960,7 @@
   status: active
   total_downloads: 19
   release_downloads: 19
-  release_date:
+  release_date: 2026/05/06
   licenses:
   - AGPL-3.0-only OR PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-rust/blob/main/LICENSE.md
@@ -6993,7 +6993,7 @@
   status: active
   total_downloads: 15
   release_downloads: 15
-  release_date:
+  release_date: 2026/05/06
   licenses:
   - AGPL-3.0-only OR PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-rust/blob/main/LICENSE.md
@@ -7026,7 +7026,7 @@
   status: active
   total_downloads: 76
   release_downloads: 76
-  release_date:
+  release_date: 2026/05/06
   licenses:
   - AGPL-3.0-only OR PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-rust/blob/main/LICENSE.md
@@ -7059,7 +7059,7 @@
   status: active
   total_downloads: 14
   release_downloads: 14
-  release_date:
+  release_date: 2026/05/06
   licenses:
   - AGPL-3.0-only OR PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-rust/blob/main/LICENSE.md
@@ -7092,7 +7092,7 @@
   status: active
   total_downloads: 14
   release_downloads: 14
-  release_date:
+  release_date: 2026/05/06
   licenses:
   - AGPL-3.0-only OR PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-rust/blob/main/LICENSE.md
@@ -7125,7 +7125,7 @@
   status: active
   total_downloads: 16
   release_downloads: 16
-  release_date:
+  release_date: 2026/05/06
   licenses:
   - AGPL-3.0-only OR PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-rust/blob/main/LICENSE.md
@@ -7158,7 +7158,7 @@
   status: active
   total_downloads: 46
   release_downloads: 46
-  release_date:
+  release_date: 2026/05/06
   licenses:
   - AGPL-3.0-only OR PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-rust/blob/main/LICENSE.md
@@ -7191,7 +7191,7 @@
   status: active
   total_downloads: 16
   release_downloads: 16
-  release_date:
+  release_date: 2026/05/06
   licenses:
   - AGPL-3.0-only OR PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-rust/blob/main/LICENSE.md
@@ -7224,7 +7224,7 @@
   status: active
   total_downloads: 78
   release_downloads: 78
-  release_date:
+  release_date: 2026/05/06
   licenses:
   - AGPL-3.0-only OR PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-rust/blob/main/LICENSE.md
@@ -7257,7 +7257,7 @@
   status: active
   total_downloads: 496
   release_downloads: 478
-  release_date:
+  release_date: 2026/05/06
   licenses:
   - AGPL-3.0-only OR PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-rust/blob/main/LICENSE.md
@@ -7290,7 +7290,7 @@
   status: active
   total_downloads: 16
   release_downloads: 16
-  release_date:
+  release_date: 2026/05/06
   licenses:
   - AGPL-3.0-only OR PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-rust/blob/main/LICENSE.md
@@ -7323,7 +7323,7 @@
   status: active
   total_downloads: 50
   release_downloads: 50
-  release_date:
+  release_date: 2026/05/06
   licenses:
   - AGPL-3.0-only OR PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-rust/blob/main/LICENSE.md
@@ -7356,7 +7356,7 @@
   status: active
   total_downloads: 16
   release_downloads: 16
-  release_date:
+  release_date: 2026/05/06
   licenses:
   - AGPL-3.0-only OR PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-rust/blob/main/LICENSE.md
@@ -7390,7 +7390,7 @@
   status: active
   total_downloads: 15
   release_downloads: 15
-  release_date:
+  release_date: 2026/05/06
   licenses:
   - AGPL-3.0-only OR PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-rust/blob/main/LICENSE.md
