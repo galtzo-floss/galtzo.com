@@ -35,6 +35,30 @@ class ProjectQuery
   # Ecosystems that should have a release_date
   RELEASE_DATE_ECOSYSTEMS = %w[rubygems cargo npm pypi go].freeze
 
+  # GitHub-owner → OpenCollective-slug pairs that are intentional, so the
+  # oc_org_mismatch audit stays quiet for them while still catching new,
+  # unreviewed mismatches:
+  # - structuredmerge → kettle-dev: no structuredmerge OpenCollective exists
+  #   (opencollective.com/structuredmerge is 404); smorg projects fund via the
+  #   kettle-dev collective.
+  # - pboling → galtzo-floss: personal-namespace repos funded via the family
+  #   collective (rack-insight, rails_env_local, stackable_flash,
+  #   super_exception_notifier).
+  # - galtzo-floss → floss_funding: awesome-sponsorships intentionally promotes
+  #   the Floss Funding collective.
+  INTENTIONAL_OC_PAIRS = [
+    %w[structuredmerge kettle-dev],
+    %w[pboling galtzo-floss],
+    %w[galtzo-floss floss_funding],
+  ].freeze
+
+  # Normalise owner/slug for comparison (matches the audit's norm lambda)
+  def self.norm_org(s) = s.downcase.gsub(/[-_]/, '')
+
+  NORMALIZED_INTENTIONAL_OC_PAIRS = INTENTIONAL_OC_PAIRS.map { |gh, oc|
+    [norm_org(gh), norm_org(oc)]
+  }.freeze
+
   def initialize(file: PROJECTS_FILE, format: :table, color: $stdout.tty?)
     @file     = file
     @format   = format
@@ -288,9 +312,10 @@ class ProjectQuery
       # Only OpenCollective entries are stored in funding_sites (Liberapay and
       # GitHub Sponsors are injected at render time). Flag any project where
       # the OC org slug doesn't match the GitHub forge owner after normalising
-      # hyphens, underscores, and case — these need a human review to confirm
-      # whether the mismatch is intentional (e.g. a personal repo using an org
-      # collective) or a data error.
+      # hyphens, underscores, and case — unless the pair is a known-intentional
+      # one from INTENTIONAL_OC_PAIRS. Unlisted mismatches need a human review
+      # to confirm whether they are intentional (e.g. a personal repo using an
+      # org collective) or a data error.
       gh_forge = Array(p['forges']).find { |f| f['type'] == 'GitHub' }
       if gh_forge
         gh_owner = gh_forge['owner'].to_s
@@ -298,11 +323,12 @@ class ProjectQuery
           .select  { |f| f['type'] == 'OpenCollective' }
           .each do |oc|
             oc_slug = oc['url'].to_s.split('/').last.to_s
-            norm    = ->(s) { s.downcase.gsub(/[-_]/, '') }
-            unless norm.call(gh_owner) == norm.call(oc_slug)
-              issues << row_issue(name, 'oc_org_mismatch',
-                "github_owner=#{gh_owner} vs opencollective=#{oc_slug} — confirm intentional")
-            end
+            pair    = [ProjectQuery.norm_org(gh_owner), ProjectQuery.norm_org(oc_slug)]
+            next if pair.first == pair.last
+            next if NORMALIZED_INTENTIONAL_OC_PAIRS.include?(pair)
+
+            issues << row_issue(name, 'oc_org_mismatch',
+              "github_owner=#{gh_owner} vs opencollective=#{oc_slug} — confirm intentional (add to INTENTIONAL_OC_PAIRS if so)")
           end
       end
     end
