@@ -26,9 +26,9 @@ class TagAnalyzer
   # semantically justified.
   # ---------------------------------------------------------------------------
   SUGGESTED_RENAMES = {
-    # test / rspec / testing → test
+    # test / testing → test  (rspec is a first-class tag: RSpec-specific
+    # plugins are a real ecosystem filter, kept distinct from the test umbrella)
     'testing'          => 'test',
-    'rspec'            => 'test',
     'mock'             => 'test',
     'harness'          => 'test',
     'coverage'         => 'test',
