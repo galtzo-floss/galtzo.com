@@ -275,13 +275,13 @@
     total_downloads: 2542
     release_downloads: 375
   tags:
+  - bundler
   - ci
   - cli
   - go
   - license
-  - shell
-  - bundler
   - rubygems
+  - shell
   - validation
   docs_site:
   github_stars: 317
@@ -320,6 +320,7 @@
     url: https://codeberg.org/appraisal-rb/appraisal2
   tags:
   - bundler
+  - rspec
   - ruby
   - test
   docs_site: https://appraisal2.galtzo.com
@@ -1120,6 +1121,7 @@
     url: https://github.com/galtzo-floss/json_schemer-fuzz
     owner: galtzo-floss
   tags:
+  - rspec
   - ruby
   - test
   docs_site:
@@ -1265,6 +1267,7 @@
   tags:
   - env
   - rake
+  - rspec
   - ruby
   - test
   docs_site: https://kettle-test.galtzo.com
@@ -2529,6 +2532,7 @@
     url: https://git.sr.ht/~galtzo/rspec-block_is_expected
   tags:
   - errors
+  - rspec
   - ruby
   - test
   docs_site:
@@ -2572,6 +2576,7 @@
   - type: SourceHut
     url: https://git.sr.ht/~galtzo/rspec-pending_for
   tags:
+  - rspec
   - ruby
   - test
   docs_site:
@@ -2617,6 +2622,7 @@
     url: https://git.sr.ht/~galtzo/rspec-stubbed_env
   tags:
   - env
+  - rspec
   - ruby
   - test
   docs_site: https://rspec-stubbed-env.galtzo.com
@@ -3487,6 +3493,7 @@
     url: https://git.sr.ht/~galtzo/silent_stream
   tags:
   - log
+  - rspec
   - ruby
   - test
   docs_site: https://silent-stream.galtzo.com
@@ -3880,6 +3887,7 @@
     owner: galtzo-floss
   tags:
   - data
+  - rspec
   - ruby
   - test
   docs_site: https://timecop-rspec.galtzo.com
@@ -4166,9 +4174,9 @@
     owner: structuredmerge
   tags:
   - api
+  - ast
   - cli
   - ruby
-  - ast
   - tree-sitter
   docs_site: https://www.rubydoc.info/gems/tree_haver/5.0.5
   total_downloads: 29746
@@ -4205,10 +4213,10 @@
     owner: structuredmerge
   tags:
   - ast
+  - grammar
   - ruby
   - templating
   - test
-  - grammar
   - tree-sitter
   docs_site: https://www.rubydoc.info/gems/ast-merge/4.0.6
   total_downloads: 31062
@@ -4283,12 +4291,12 @@
     url: https://github.com/structuredmerge/structuredmerge-ruby
     owner: structuredmerge
   tags:
-  - ruby
-  - ast
-  - templating
-  - bash
-  - tree-sitter
   - api
+  - ast
+  - bash
+  - ruby
+  - templating
+  - tree-sitter
   docs_site: https://www.rubydoc.info/gems/bash-merge/2.0.6
   total_downloads: 16467
   daily_downloads: 18
@@ -4324,11 +4332,11 @@
     url: https://github.com/structuredmerge/structuredmerge-ruby
     owner: structuredmerge
   tags:
-  - ruby
-  - ast
-  - templating
-  - markdown
   - api
+  - ast
+  - markdown
+  - ruby
+  - templating
   docs_site: https://www.rubydoc.info/gems/commonmarker-merge/1.0.1
   total_downloads: 9588
   daily_downloads: 7
@@ -4363,13 +4371,13 @@
     url: https://github.com/structuredmerge/structuredmerge-ruby
     owner: structuredmerge
   tags:
-  - ruby
+  - api
   - ast
-  - templating
   - dotenv
   - grammar
+  - ruby
+  - templating
   - tree-sitter
-  - api
   docs_site: https://www.rubydoc.info/gems/dotenv-merge/1.0.3
   total_downloads: 16226
   daily_downloads: 7
@@ -4406,12 +4414,12 @@
     url: https://github.com/structuredmerge/structuredmerge-ruby
     owner: structuredmerge
   tags:
-  - ruby
-  - json
+  - api
   - ast
+  - json
+  - ruby
   - templating
   - tree-sitter
-  - api
   docs_site: https://www.rubydoc.info/gems/json-merge/1.1.2
   total_downloads: 14109
   daily_downloads: 17
@@ -4447,12 +4455,12 @@
     url: https://github.com/structuredmerge/structuredmerge-ruby
     owner: structuredmerge
   tags:
-  - ruby
-  - json
+  - api
   - ast
+  - json
+  - ruby
   - templating
   - tree-sitter
-  - api
   docs_site: https://www.rubydoc.info/gems/jsonc-merge/1.0.1
   total_downloads: 1030
   daily_downloads: 8
@@ -4485,12 +4493,12 @@
     url: https://github.com/structuredmerge/structuredmerge-ruby
     owner: structuredmerge
   tags:
-  - ruby
-  - ast
-  - templating
-  - markdown
-  - tree-sitter
   - api
+  - ast
+  - markdown
+  - ruby
+  - templating
+  - tree-sitter
   docs_site: https://www.rubydoc.info/gems/markdown-merge/1.0.3
   total_downloads: 13348
   daily_downloads: 8
@@ -4526,11 +4534,11 @@
     url: https://github.com/structuredmerge/structuredmerge-ruby
     owner: structuredmerge
   tags:
-  - ruby
-  - ast
-  - templating
-  - markdown
   - api
+  - ast
+  - markdown
+  - ruby
+  - templating
   docs_site: https://www.rubydoc.info/gems/markly-merge/1.0.0
   total_downloads: 11777
   daily_downloads: 4
@@ -4564,10 +4572,10 @@
     url: https://github.com/structuredmerge/structuredmerge-ruby
     owner: structuredmerge
   tags:
-  - ruby
-  - ast
-  - templating
   - api
+  - ast
+  - ruby
+  - templating
   docs_site: https://www.rubydoc.info/gems/prism-merge/2.0.4
   total_downloads: 16399
   daily_downloads: 23
@@ -4602,11 +4610,11 @@
     url: https://github.com/structuredmerge/structuredmerge-ruby
     owner: structuredmerge
   tags:
-  - ruby
+  - api
   - ast
+  - ruby
   - templating
   - yaml
-  - api
   docs_site: https://www.rubydoc.info/gems/psych-merge/1.0.0
   total_downloads: 11372
   daily_downloads: 4
@@ -4641,12 +4649,12 @@
     url: https://github.com/structuredmerge/structuredmerge-ruby
     owner: structuredmerge
   tags:
-  - ruby
-  - ast
-  - templating
-  - rbs
-  - tree-sitter
   - api
+  - ast
+  - rbs
+  - ruby
+  - templating
+  - tree-sitter
   docs_site: https://www.rubydoc.info/gems/rbs-merge/2.0.0
   total_downloads: 13433
   daily_downloads: 4
@@ -4681,13 +4689,13 @@
     url: https://github.com/structuredmerge/structuredmerge-ruby
     owner: structuredmerge
   tags:
-  - ruby
+  - api
   - ast
+  - grammar
+  - ruby
   - templating
   - toml
   - tree-sitter
-  - api
-  - grammar
   docs_site: https://www.rubydoc.info/gems/toml-merge/2.0.1
   total_downloads: 17725
   daily_downloads: 53
@@ -4749,9 +4757,9 @@
   - bundler
   - cli
   - go
+  - grammar
   - ruby
   - rubygems
-  - grammar
   github_stars: 5
   last_commit_on: 2026/09/10
   status: active
@@ -4777,12 +4785,12 @@
   description: Creates CycloneDX Software Bill of Materials (SBOM) from Ruby projects
   minimum_version: '1.8'
   tags:
-  - ruby
   - bundler
+  - cyclonedx
   - gem
   - owasp
+  - ruby
   - sbom
-  - cyclonedx
   funding_sites: []
   docs_site: https://www.rubydoc.info/gems/cyclonedx-ruby/1.1.0
   total_downloads: 264375
@@ -4814,9 +4822,9 @@
   description: Rust bindings for the CRuby API
   minimum_version: '1.71'
   tags:
-  - rust
-  - ruby
   - api
+  - ruby
+  - rust
   funding_sites: []
   docs_site:
   total_downloads: 4566189
@@ -4846,9 +4854,9 @@
   description: Helpers for compiling Rust extensions for ruby
   minimum_version: '2.7'
   tags:
+  - api
   - ruby
   - rust
-  - api
   funding_sites: []
   docs_site:
   total_downloads: 37336057
@@ -4882,10 +4890,10 @@
     Ruby code from a Rust binary.
   minimum_version: '1.56'
   tags:
-  - ruby
-  - rust
-  - rubygems
   - api
+  - ruby
+  - rubygems
+  - rust
   funding_sites: []
   docs_site:
   total_downloads: 4013194
@@ -4918,12 +4926,12 @@
     with fallback to setup-ruby)'
   minimum_version: '2.3'
   tags:
-  - ruby
-  - rust
-  - go
   - bundler
-  - rubygems
   - ci
+  - go
+  - ruby
+  - rubygems
+  - rust
   - test
   funding_sites:
   - type: OpenCollective
@@ -4956,11 +4964,11 @@
   description: Ruby bindings for Tree-sitter written in Rust using rb_sys and magnus.
   minimum_version: '3.1'
   tags:
+  - api
+  - ast
   - ruby
   - rust
-  - ast
   - tree-sitter
-  - api
   funding_sites: []
   docs_site:
   total_downloads: 1437
@@ -4990,10 +4998,10 @@
   description: Ruby bindings for Tree-Sitter
   minimum_version: '3.2'
   tags:
-  - ruby
-  - ast
-  - tree-sitter
   - api
+  - ast
+  - ruby
+  - tree-sitter
   funding_sites: []
   docs_site: https://faveod.github.io/ruby-tree-sitter/
   total_downloads: 205681
@@ -5023,9 +5031,9 @@
   description: A fully featured BSON specification implementation in Ruby
   minimum_version: '2.6'
   tags:
-  - ruby
-  - json
   - data
+  - json
+  - ruby
   - serialization
   funding_sites: []
   docs_site: https://www.mongodb.com/docs/ruby-driver/current/tutorials/bson-v4/
@@ -5056,8 +5064,8 @@
   description: An XML toolkit for Ruby
   minimum_version: '2.5'
   tags:
-  - ruby
   - data
+  - ruby
   - serialization
   - xml
   funding_sites: []
@@ -5121,8 +5129,8 @@
     powerful.
   minimum_version: '2.7'
   tags:
-  - ruby
   - data
+  - ruby
   funding_sites: []
   docs_site: https://www.rubydoc.info/gems/hashie
   total_downloads: 495720750
@@ -5188,10 +5196,10 @@
   description: "\U0001F48E\U0001F4A8 Extremely fast Ruby version and gem manager"
   minimum_version: '1.93'
   tags:
-  - rust
   - bundler
-  - rubygems
   - ruby
+  - rubygems
+  - rust
   funding_sites: []
   docs_site:
   total_downloads:
@@ -5234,7 +5242,7 @@
     url: https://gitlab.com/galtzo-floss/namespaced-gem
     owner: galtzo-floss
   tags:
-  - testing
+  - test
   docs_site:
   total_downloads: 212
   daily_downloads: 2
@@ -5741,7 +5749,7 @@
     owner: galtzo-floss
   tags:
   - rspec
-  - testing
+  - test
   docs_site: https://www.rubydoc.info/gems/turbo_tests2/3.2.3
   total_downloads: 253710
   daily_downloads: 902
@@ -5870,7 +5878,7 @@
     owner: rubocop-lts
   tags:
   - rspec
-  - testing
+  - test
   docs_site: https://www.rubydoc.info/gems/rubocop-lts-rspec/1.0.5
   total_downloads: 27408
   daily_downloads: 165
@@ -5963,7 +5971,8 @@
     url: https://github.com/appraisal-rb/gem_mine
     owner: appraisal-rb
   tags:
-  - testing
+  - rspec
+  - test
   docs_site: https://www.rubydoc.info/gems/gem_mine/0.1.2
   total_downloads: 5356
   daily_downloads: 9
@@ -6057,7 +6066,7 @@
     url: https://github.com/kettle-dev/kettle-wash
     owner: kettle-dev
   tags:
-  - testing
+  - test
   docs_site: https://www.rubydoc.info/gems/kettle-wash/0.1.2
   total_downloads: 23495
   daily_downloads: 342
@@ -6155,9 +6164,9 @@
     url: https://github.com/structuredmerge/structuredmerge-typescript
     owner: structuredmerge
   tags:
+  - npm
   - structuredmerge
   - typescript
-  - npm
   docs_site: https://structuredmerge.org
   github_stars: 0
   last_commit_on: 2026/08/10
@@ -6190,9 +6199,9 @@
     url: https://github.com/structuredmerge/structuredmerge-typescript
     owner: structuredmerge
   tags:
+  - npm
   - structuredmerge
   - typescript
-  - npm
   docs_site: https://structuredmerge.org
   github_stars: 0
   last_commit_on: 2026/08/10
@@ -6225,9 +6234,9 @@
     url: https://github.com/structuredmerge/structuredmerge-typescript
     owner: structuredmerge
   tags:
+  - npm
   - structuredmerge
   - typescript
-  - npm
   docs_site: https://structuredmerge.org
   github_stars: 0
   last_commit_on: 2026/08/10
@@ -6260,9 +6269,9 @@
     url: https://github.com/structuredmerge/structuredmerge-typescript
     owner: structuredmerge
   tags:
+  - npm
   - structuredmerge
   - typescript
-  - npm
   docs_site: https://structuredmerge.org
   github_stars: 0
   last_commit_on: 2026/08/10
@@ -6295,9 +6304,9 @@
     url: https://github.com/structuredmerge/structuredmerge-typescript
     owner: structuredmerge
   tags:
+  - npm
   - structuredmerge
   - typescript
-  - npm
   docs_site: https://structuredmerge.org
   github_stars: 0
   last_commit_on: 2026/08/10
@@ -6330,9 +6339,9 @@
     url: https://github.com/structuredmerge/structuredmerge-typescript
     owner: structuredmerge
   tags:
+  - npm
   - structuredmerge
   - typescript
-  - npm
   docs_site: https://structuredmerge.org
   github_stars: 0
   last_commit_on: 2026/08/10
@@ -6365,9 +6374,9 @@
     url: https://github.com/structuredmerge/structuredmerge-typescript
     owner: structuredmerge
   tags:
+  - npm
   - structuredmerge
   - typescript
-  - npm
   docs_site: https://structuredmerge.org
   github_stars: 0
   last_commit_on: 2026/08/10
@@ -6400,9 +6409,9 @@
     url: https://github.com/structuredmerge/structuredmerge-typescript
     owner: structuredmerge
   tags:
+  - npm
   - structuredmerge
   - typescript
-  - npm
   docs_site: https://structuredmerge.org
   github_stars: 0
   last_commit_on: 2026/08/10
@@ -6435,9 +6444,9 @@
     url: https://github.com/structuredmerge/structuredmerge-typescript
     owner: structuredmerge
   tags:
+  - npm
   - structuredmerge
   - typescript
-  - npm
   docs_site: https://structuredmerge.org
   github_stars: 0
   last_commit_on: 2026/08/10
@@ -6470,9 +6479,9 @@
     url: https://github.com/structuredmerge/structuredmerge-typescript
     owner: structuredmerge
   tags:
+  - npm
   - structuredmerge
   - typescript
-  - npm
   docs_site: https://structuredmerge.org
   github_stars: 0
   last_commit_on: 2026/08/10
@@ -6505,9 +6514,9 @@
     url: https://github.com/structuredmerge/structuredmerge-typescript
     owner: structuredmerge
   tags:
+  - npm
   - structuredmerge
   - typescript
-  - npm
   docs_site: https://structuredmerge.org
   github_stars: 0
   last_commit_on: 2026/08/10
@@ -6540,9 +6549,9 @@
     url: https://github.com/structuredmerge/structuredmerge-typescript
     owner: structuredmerge
   tags:
+  - npm
   - structuredmerge
   - typescript
-  - npm
   docs_site: https://structuredmerge.org
   github_stars: 0
   last_commit_on: 2026/08/10
@@ -6575,9 +6584,9 @@
     url: https://github.com/structuredmerge/structuredmerge-typescript
     owner: structuredmerge
   tags:
+  - npm
   - structuredmerge
   - typescript
-  - npm
   docs_site: https://structuredmerge.org
   github_stars: 0
   last_commit_on: 2026/08/10
@@ -6610,9 +6619,9 @@
     url: https://github.com/structuredmerge/structuredmerge-typescript
     owner: structuredmerge
   tags:
+  - npm
   - structuredmerge
   - typescript
-  - npm
   docs_site: https://structuredmerge.org
   github_stars: 0
   last_commit_on: 2026/08/10
@@ -6645,9 +6654,9 @@
     url: https://github.com/structuredmerge/structuredmerge-typescript
     owner: structuredmerge
   tags:
+  - npm
   - structuredmerge
   - typescript
-  - npm
   docs_site: https://structuredmerge.org
   github_stars: 0
   last_commit_on: 2026/08/10
@@ -6680,9 +6689,9 @@
     url: https://github.com/structuredmerge/structuredmerge-typescript
     owner: structuredmerge
   tags:
+  - npm
   - structuredmerge
   - typescript
-  - npm
   docs_site: https://structuredmerge.org
   github_stars: 0
   last_commit_on: 2026/08/10
@@ -6715,9 +6724,9 @@
     url: https://github.com/structuredmerge/structuredmerge-typescript
     owner: structuredmerge
   tags:
+  - npm
   - structuredmerge
   - typescript
-  - npm
   docs_site: https://structuredmerge.org
   github_stars: 0
   last_commit_on: 2026/08/10
@@ -6750,9 +6759,9 @@
     url: https://github.com/structuredmerge/structuredmerge-typescript
     owner: structuredmerge
   tags:
+  - npm
   - structuredmerge
   - typescript
-  - npm
   docs_site: https://structuredmerge.org
   github_stars: 0
   last_commit_on: 2026/08/10
@@ -6785,9 +6794,9 @@
     url: https://github.com/structuredmerge/structuredmerge-typescript
     owner: structuredmerge
   tags:
+  - npm
   - structuredmerge
   - typescript
-  - npm
   docs_site: https://structuredmerge.org
   github_stars: 0
   last_commit_on: 2026/08/10
@@ -6819,9 +6828,9 @@
     url: https://github.com/structuredmerge/structuredmerge-rust
     owner: structuredmerge
   tags:
-  - structuredmerge
-  - rust
   - cargo
+  - rust
+  - structuredmerge
   docs_site: https://structuredmerge.org
   github_stars: 0
   last_commit_on: 2026/09/16
@@ -6852,9 +6861,9 @@
     url: https://github.com/structuredmerge/structuredmerge-rust
     owner: structuredmerge
   tags:
-  - structuredmerge
-  - rust
   - cargo
+  - rust
+  - structuredmerge
   docs_site: https://structuredmerge.org
   github_stars: 0
   last_commit_on: 2026/09/16
@@ -6885,9 +6894,9 @@
     url: https://github.com/structuredmerge/structuredmerge-rust
     owner: structuredmerge
   tags:
-  - structuredmerge
-  - rust
   - cargo
+  - rust
+  - structuredmerge
   docs_site: https://structuredmerge.org
   github_stars: 0
   last_commit_on: 2026/09/16
@@ -6918,9 +6927,9 @@
     url: https://github.com/structuredmerge/structuredmerge-rust
     owner: structuredmerge
   tags:
-  - structuredmerge
-  - rust
   - cargo
+  - rust
+  - structuredmerge
   docs_site: https://structuredmerge.org
   github_stars: 0
   last_commit_on: 2026/09/16
@@ -6951,9 +6960,9 @@
     url: https://github.com/structuredmerge/structuredmerge-rust
     owner: structuredmerge
   tags:
-  - structuredmerge
-  - rust
   - cargo
+  - rust
+  - structuredmerge
   docs_site: https://structuredmerge.org
   github_stars: 0
   last_commit_on: 2026/09/16
@@ -6984,9 +6993,9 @@
     url: https://github.com/structuredmerge/structuredmerge-rust
     owner: structuredmerge
   tags:
-  - structuredmerge
-  - rust
   - cargo
+  - rust
+  - structuredmerge
   docs_site: https://structuredmerge.org
   github_stars: 0
   last_commit_on: 2026/09/16
@@ -7017,9 +7026,9 @@
     url: https://github.com/structuredmerge/structuredmerge-rust
     owner: structuredmerge
   tags:
-  - structuredmerge
-  - rust
   - cargo
+  - rust
+  - structuredmerge
   docs_site: https://structuredmerge.org
   github_stars: 0
   last_commit_on: 2026/09/16
@@ -7050,9 +7059,9 @@
     url: https://github.com/structuredmerge/structuredmerge-rust
     owner: structuredmerge
   tags:
-  - structuredmerge
-  - rust
   - cargo
+  - rust
+  - structuredmerge
   docs_site: https://structuredmerge.org
   github_stars: 0
   last_commit_on: 2026/09/16
@@ -7083,9 +7092,9 @@
     url: https://github.com/structuredmerge/structuredmerge-rust
     owner: structuredmerge
   tags:
-  - structuredmerge
-  - rust
   - cargo
+  - rust
+  - structuredmerge
   docs_site: https://structuredmerge.org
   github_stars: 0
   last_commit_on: 2026/09/16
@@ -7116,9 +7125,9 @@
     url: https://github.com/structuredmerge/structuredmerge-rust
     owner: structuredmerge
   tags:
-  - structuredmerge
-  - rust
   - cargo
+  - rust
+  - structuredmerge
   docs_site: https://structuredmerge.org
   github_stars: 0
   last_commit_on: 2026/09/16
@@ -7149,9 +7158,9 @@
     url: https://github.com/structuredmerge/structuredmerge-rust
     owner: structuredmerge
   tags:
-  - structuredmerge
-  - rust
   - cargo
+  - rust
+  - structuredmerge
   docs_site: https://structuredmerge.org
   github_stars: 0
   last_commit_on: 2026/09/16
@@ -7182,9 +7191,9 @@
     url: https://github.com/structuredmerge/structuredmerge-rust
     owner: structuredmerge
   tags:
-  - structuredmerge
-  - rust
   - cargo
+  - rust
+  - structuredmerge
   docs_site: https://structuredmerge.org
   github_stars: 0
   last_commit_on: 2026/09/16
@@ -7215,9 +7224,9 @@
     url: https://github.com/structuredmerge/structuredmerge-rust
     owner: structuredmerge
   tags:
-  - structuredmerge
-  - rust
   - cargo
+  - rust
+  - structuredmerge
   docs_site: https://structuredmerge.org
   github_stars: 0
   last_commit_on: 2026/09/16
@@ -7248,9 +7257,9 @@
     url: https://github.com/structuredmerge/structuredmerge-rust
     owner: structuredmerge
   tags:
-  - structuredmerge
-  - rust
   - cargo
+  - rust
+  - structuredmerge
   docs_site: https://structuredmerge.org
   github_stars: 0
   last_commit_on: 2026/09/16
@@ -7281,9 +7290,9 @@
     url: https://github.com/structuredmerge/structuredmerge-rust
     owner: structuredmerge
   tags:
-  - structuredmerge
-  - rust
   - cargo
+  - rust
+  - structuredmerge
   docs_site: https://structuredmerge.org
   github_stars: 0
   last_commit_on: 2026/09/16
@@ -7314,9 +7323,9 @@
     url: https://github.com/structuredmerge/structuredmerge-rust
     owner: structuredmerge
   tags:
-  - structuredmerge
-  - rust
   - cargo
+  - rust
+  - structuredmerge
   docs_site: https://structuredmerge.org
   github_stars: 0
   last_commit_on: 2026/09/16
@@ -7347,9 +7356,9 @@
     url: https://github.com/structuredmerge/structuredmerge-rust
     owner: structuredmerge
   tags:
-  - structuredmerge
-  - rust
   - cargo
+  - rust
+  - structuredmerge
   docs_site: https://structuredmerge.org
   github_stars: 0
   last_commit_on: 2026/09/16
@@ -7381,9 +7390,9 @@
     url: https://github.com/structuredmerge/structuredmerge-rust
     owner: structuredmerge
   tags:
-  - structuredmerge
-  - rust
   - cargo
+  - rust
+  - structuredmerge
   docs_site: https://structuredmerge.org
   github_stars: 0
   last_commit_on: 2026/09/16
@@ -7414,8 +7423,8 @@
     url: https://github.com/structuredmerge/structuredmerge-go
     owner: structuredmerge
   tags:
-  - structuredmerge
   - go
+  - structuredmerge
   docs_site: https://structuredmerge.org
   github_stars: 0
   last_commit_on: 2026/07/21
@@ -7634,7 +7643,7 @@
     owner: appraisal-rb
   tags:
   - api
-  - testing
+  - test
   docs_site: https://www.rubydoc.info/gems/kettle-jem-appraisals/0.1.7
   licenses:
   - AGPL-3.0-only
@@ -7765,7 +7774,7 @@
     url: https://github.com/galtzo-floss/runtime_groups
     owner: galtzo-floss
   tags:
-  - testing
+  - test
   docs_site: https://www.rubydoc.info/gems/runtime_groups/0.1.3
   licenses:
   - MIT
