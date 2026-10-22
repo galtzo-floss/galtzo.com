@@ -98,6 +98,12 @@ ruby scripts/update_projects total_downloads daily_downloads release_downloads
 ruby scripts/update_projects github_stars gitlab_stars codeberg_stars
 ```
 
+Restrict any run to specific projects with `-p` (comma-separated, exact name
+match — note names shared across ecosystems, e.g. `json-merge`, match ALL of them):
+```bash
+ruby scripts/update_projects -y -p turbo_tests2,rails description
+```
+
 **`add_project`** supports any ecosystem: `rubygems`, `cargo`, `npm`, `pypi`, `go`, `none`.
 All flags are optional — omitted values are prompted interactively.
 Flags: `--name`, `--ecosystem`, `--language`, `--role`, `--github-url`,
@@ -124,6 +130,14 @@ galtzo.com/
 
 ### projects.yml conventions
 
+- `description_source` — declares the authoritative description for the project:
+  - `site` (default for hand-written entries) — the description is curated here and
+    `update_projects` will never overwrite it.
+  - `registry` — the description mirrors the ecosystem registry of record
+    (RubyGems gemspec info / crates.io / npm) and `update_projects` keeps it
+    synced on full updates and via the surgical `description` field.
+  Upstream text containing HTML is refused (descriptions render raw on the site).
+  `project_query needs-attention` flags entries with a missing/invalid value.
 - `ecosystem: none` — explicit sentinel meaning "this project has no package registry". Distinct from a missing/nil `ecosystem`, which triggers a `ruby_missing_ecosystem` data-quality warning in `project_query needs-attention`.
 - `ecosystem: nil` (absent) — data quality issue; should be set to a real ecosystem or `none`.
 - `funding_sites: []` — valid empty list (external/contributed projects). `funding_sites: nil` / absent is a bug — `index.html` raises on it.

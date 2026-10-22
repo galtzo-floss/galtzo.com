@@ -41,6 +41,7 @@ class ProjectUpdater
     minimum_version minimum_node_version license
     release_date last_commit_on status
     first_commit_by_person first_commit_by_person_on
+    description
   ]
 
   # Fallback minimum Ruby version for RubyGems entries when the API reports none.
@@ -534,6 +535,12 @@ class ProjectUpdater
     puts ""
     project['description'] = ask("  Description#{label} (can be HTML)",
                                  default: opts[:description] || scraped[:description])
+    # Authority key: if the accepted text is verbatim the scraped registry
+    # description, the registry is authoritative; any edit makes it site-authored.
+    scraped_desc = scraped[:description].to_s.gsub(/\s+/, ' ').strip
+    accepted_desc = project['description'].to_s.gsub(/\s+/, ' ').strip
+    project['description_source'] =
+      !scraped_desc.empty? && scraped_desc == accepted_desc ? 'registry' : 'site'
 
     # ── Minimum runtime version ───────────────────────────────────────────────
     version_label = case project['language']
@@ -1241,6 +1248,7 @@ class ProjectUpdater
     project = {
       'name' => gem_name,
       'description' => description,
+      'description_source' => 'registry', # Discovery pulls the gemspec description verbatim
       'language' => 'Ruby',
       'ecosystem' => 'rubygems',
       'minimum_version' => min_version,
@@ -1479,6 +1487,9 @@ class ProjectUpdater
       project['release_date'] = release_date
       puts "  📅 Release date: #{release_date || 'N/A'}"
 
+    when 'description'
+      sync_registry_description(project)
+
     when 'last_commit_on'
       raise "Missing GitHub or GitLab forge for project: #{project['name']}" unless github_forge || gitlab_forge
       commit_info = github_forge ? fetch_github_info(github_forge['url']) : fetch_gitlab_info(gitlab_forge['url'])
@@ -1648,6 +1659,9 @@ class ProjectUpdater
     project['release_date'] = release_date
     puts "  📅 Release date: #{release_date || 'N/A'}"
 
+    # Step 7b: Description — synced only when description_source is 'registry'
+    sync_registry_description(project)
+
     # Step 8: Last commit date (GitHub preferred, GitLab last_activity_at as fallback)
     commit_source = github_info || gitlab_info
     if commit_source.nil?
@@ -1688,6 +1702,7 @@ class ProjectUpdater
       minimum_version minimum_node_version licenses license_url
       release_date last_commit_on status last_scrape_at
       first_commit_by_person first_commit_by_person_on
+      description description_source
     ]
 
     sync_fields.each do |field|
@@ -1820,6 +1835,52 @@ class ProjectUpdater
     @errors << error_msg unless @errors.include?(error_msg)
     puts "    ⚠️  #{error_msg}"
     nil
+  end
+
+  # Fetch the project's description from its ecosystem registry of record.
+  # Returns nil for ecosystems without a registry or when no description exists.
+  def fetch_registry_description(project)
+    case project['ecosystem']
+    when 'rubygems'
+      data = api_request("https://gem.coop/api/v1/gems/#{URI.encode_www_form_component(project['name'])}.json")
+      data && data['info']
+    when 'cargo'
+      data = api_request("https://crates.io/api/v1/crates/#{URI.encode_www_form_component(project['name'])}")
+      data && data.dig('crate', 'description')
+    when 'npm'
+      data = api_request("https://registry.npmjs.org/#{project['name'].gsub('/', '%2F')}",
+                         headers: { 'Accept' => 'application/vnd.npm.install-v1+json' })
+      data && data['description']
+    end
+  rescue => e
+    error_msg = "Failed to fetch registry description for #{project['name']}: #{e.message}"
+    @errors << error_msg unless @errors.include?(error_msg)
+    puts "    ⚠️  #{error_msg}"
+    nil
+  end
+
+  # Sync description from the registry — ONLY when description_source is
+  # 'registry'. Site-authored descriptions (source 'site' or unset) are never
+  # overwritten. Upstream text containing HTML is refused: descriptions render
+  # raw on the site, and registry HTML would break layout or inject markup.
+  def sync_registry_description(project)
+    source = project['description_source'] || 'site'
+    unless source == 'registry'
+      puts "  ⏭️  description_source=#{source} — site is authoritative, not syncing"
+      return
+    end
+
+    upstream = fetch_registry_description(project)
+    if upstream.nil?
+      puts "  ⚠️  No upstream description available — unchanged"
+    elsif upstream.match?(/<\w+/)
+      puts "  ⚠️  Upstream description contains HTML — refused, unchanged"
+    elsif upstream.gsub(/\s+/, ' ').strip == project['description'].to_s.gsub(/\s+/, ' ').strip
+      puts "  📝 Description already in sync"
+    else
+      project['description'] = upstream
+      puts "  📝 Description synced from #{project['ecosystem']} registry"
+    end
   end
 
   # Resolve a project's release date from its package registry, falling back

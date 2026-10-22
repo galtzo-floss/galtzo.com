@@ -276,6 +276,11 @@ class ProjectQuery
       issues << row_issue(name, 'no_forges',             'forges is empty')              if blank?(p['forges'])
       issues << row_issue(name, 'no_funding_sites',      'funding_sites is nil')         if p['funding_sites'].nil?
       issues << row_issue(name, 'no_status',             'status is nil')                if p['status'].nil?
+      # description_source declares the authoritative description: 'site' (never
+      # auto-overwritten) or 'registry' (update_projects keeps it synced)
+      unless %w[site registry].include?(p['description_source'])
+        issues << row_issue(name, 'invalid_description_source', "description_source=#{p['description_source'].inspect} (want site|registry)")
+      end
       issues << row_issue(name, 'no_tags',               'tags is empty')                if blank?(p['tags'])
       # minimum_version is the Ruby version floor — only meaningful for Ruby projects
       issues << row_issue(name, 'no_minimum_version',    'minimum_version is nil')       if p['minimum_version'].nil? && lang == 'Ruby'
