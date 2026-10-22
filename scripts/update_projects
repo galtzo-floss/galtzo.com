@@ -152,7 +152,7 @@ class ProjectUpdater
       puts "   (Ignoring last_scrape_at timestamps)"
     end
     if @project_filter
-      puts "🎯 Project filter: '#{@project_filter}' (exact match)"
+      puts "🎯 Project filter: #{@project_filter.map { |n| "'#{n}'" }.join(', ')} (exact match)"
     end
     puts "Processing #{@projects.size} projects from #{PROJECTS_FILE}"
     puts "GitHub Token: #{GITHUB_TOKEN ? '✅ Set' : '❌ Not set'}"
@@ -161,9 +161,12 @@ class ProjectUpdater
 
     non_person   = @projects
     if @project_filter
-      non_person = non_person.select { |p| p['name'] == @project_filter }
+      non_person = non_person.select { |p| @project_filter.include?(p['name']) }
+      found_names = non_person.map { |p| p['name'] }
+      missing = @project_filter - found_names
+      missing.each { |n| puts "  ⚠️  No project named '#{n}' found in projects.yml — skipping" }
       if non_person.empty?
-        abort "❌ No project named '#{@project_filter}' found in projects.yml. Check the name and try again."
+        abort "❌ None of the filtered projects (#{@project_filter.join(', ')}) found in projects.yml. Check the names and try again."
       end
     end
     skippable    = non_person.select { |p| !@surgical_fields.any? && @project_filter.nil? && recently_scraped?(p) }
@@ -204,7 +207,7 @@ class ProjectUpdater
     skipped_count = 0
     updated_count = 0
 
-    projects_to_update = @project_filter ? @projects.select { |project| project['name'] == @project_filter } : @projects
+    projects_to_update = @project_filter ? @projects.select { |project| @project_filter.include?(project['name']) } : @projects
 
     projects_to_update.each_with_index do |project, index|
 
@@ -2420,6 +2423,7 @@ if __FILE__ == $0
     op.separator "  #{$0} -y github_stars                             # Surgical, non-interactive"
     op.separator "  #{$0} -p my-gem minimum_version                   # Surgical: one field, one project"
     op.separator "  #{$0} -p my-gem github_stars release_date         # Surgical: multiple fields, one project"
+    op.separator "  #{$0} -p gem-a,gem-b first_commit_by_person       # Surgical: one field, several projects"
     op.separator "  #{$0} add_project                                 # Interactively add a project"
     op.separator "  #{$0} add_project --name my-gem --ecosystem rubygems --github-url https://github.com/org/repo"
     op.separator "  #{$0} add_project --name my-pkg --ecosystem rubygems,npm  # Two cards, one per ecosystem"
@@ -2437,10 +2441,10 @@ if __FILE__ == $0
       options[:discover_rubygems] = false
     end
 
-    op.on("-p", "--project NAME",
-          "Restrict update to the single project with this exact name.",
+    op.on("-p", "--project NAME[,NAME...]",
+          "Restrict update to the named project(s) (comma-separated, exact match).",
           "Implies --no-discover. Works with surgical fields or full update.") do |v|
-      options[:project_filter] = v
+      options[:project_filter] = v.split(',').map(&:strip).reject(&:empty?)
     end
 
     op.separator ""
