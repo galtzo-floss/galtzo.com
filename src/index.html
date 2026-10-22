@@ -560,8 +560,9 @@ body_class: projects
       <a href="https://liberapay.com/pboling" class="funding-link" target="_blank" rel="noopener">
         <img src="/assets/images/Liberapay.svg" alt="Liberapay" class="link-icon funding-site">
       </a>
-      <%# Render any project-specific OpenCollective orgs stored in funding_sites %>
-      <% Array(project["funding_sites"]).each do |funding_site| %>
+      <%# Render any project-specific OpenCollective orgs stored in funding_sites
+          (Liberapay/GitHub Sponsors are always-on canonical links, added separately) %>
+      <% Array(project["funding_sites"]).reject {|f| ["Liberapay", "GitHub Sponsors"].include?(f['type'])}.each do |funding_site| %>
       <a href="<%= funding_site['url'] %>" class="funding-link" target="_blank" rel="noopener">
         <img
                 src="/assets/images/<%= funding_site['type'] %>.svg"
@@ -639,8 +640,9 @@ body_class: projects
       This project is in the to-be-archived queue. It is no longer maintained, so speak up if you use it!
     </p>
     <% else %>
-    <%# Always show Liberapay + GitHub Sponsors; prepend any project-specific OC orgs %>
-    <% text_funding = Array(project["funding_sites"]).dup %>
+    <%# Always show Liberapay + GitHub Sponsors; prepend any project-specific OC orgs.
+        Reject the canonical types from stored data so they never duplicate. %>
+    <% text_funding = Array(project["funding_sites"]).reject {|f| ["Liberapay", "GitHub Sponsors"].include?(f['type'])} %>
     <% text_funding << {"type" => "Liberapay",       "url" => "https://liberapay.com/pboling"} %>
     <% text_funding << {"type" => "GitHub Sponsors", "url" => "https://github.com/sponsors/pboling"} %>
     <p>
@@ -839,8 +841,9 @@ body_class: projects
       <a href="https://liberapay.com/pboling" class="funding-link" target="_blank" rel="noopener">
         <img src="/assets/images/Liberapay.svg" alt="Liberapay" class="link-icon funding-site">
       </a>
-      <%# Render any project-specific OpenCollective orgs stored in funding_sites %>
-      <% Array(project["funding_sites"]).reject {|f| f['type'] == "Liberapay"}.each do |funding_site| %>
+      <%# Render any project-specific OpenCollective orgs stored in funding_sites
+          (Liberapay/GitHub Sponsors are always-on canonical links, added separately) %>
+      <% Array(project["funding_sites"]).reject {|f| ["Liberapay", "GitHub Sponsors"].include?(f['type'])}.each do |funding_site| %>
       <a href="<%= funding_site['url'] %>" class="funding-link" target="_blank" rel="noopener">
         <img
                 src="/assets/images/<%= funding_site['type'] %>.svg"
@@ -928,8 +931,9 @@ body_class: projects
       This project is in the to-be-archived queue. It is no longer maintained, so speak up if you use it!
     </p>
     <% else %>
-    <%# Always show Liberapay + GitHub Sponsors; prepend any project-specific OC orgs %>
-    <% text_funding = Array(project["funding_sites"]).dup %>
+    <%# Always show Liberapay + GitHub Sponsors; prepend any project-specific OC orgs.
+        Reject the canonical types from stored data so they never duplicate. %>
+    <% text_funding = Array(project["funding_sites"]).reject {|f| ["Liberapay", "GitHub Sponsors"].include?(f['type'])} %>
     <% text_funding << {"type" => "Liberapay",       "url" => "https://liberapay.com/pboling"} %>
     <% text_funding << {"type" => "GitHub Sponsors", "url" => "https://github.com/sponsors/pboling"} %>
     <p>
