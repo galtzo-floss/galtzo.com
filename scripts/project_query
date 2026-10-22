@@ -277,7 +277,8 @@ class ProjectQuery
       issues << row_issue(name, 'no_funding_sites',      'funding_sites is nil')         if p['funding_sites'].nil?
       issues << row_issue(name, 'no_status',             'status is nil')                if p['status'].nil?
       issues << row_issue(name, 'no_tags',               'tags is empty')                if blank?(p['tags'])
-      issues << row_issue(name, 'no_minimum_version',    'minimum_version is nil')       if p['minimum_version'].nil?
+      # minimum_version is the Ruby version floor — only meaningful for Ruby projects
+      issues << row_issue(name, 'no_minimum_version',    'minimum_version is nil')       if p['minimum_version'].nil? && lang == 'Ruby'
       issues << row_issue(name, 'no_role',               'role is nil')                  if p['role'].nil?
       issues << row_issue(name, 'no_first_commit_by_person_on', 'first_commit_by_person_on is nil') if p['first_commit_by_person_on'].nil?
 
