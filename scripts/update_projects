@@ -1475,17 +1475,9 @@ class ProjectUpdater
       end
 
     when 'release_date'
-      if project['language'] == 'Ruby' && project['ecosystem'] == 'rubygems'
-        gem_name = project['name']
-        release_date = fetch_rubygems_release_date(gem_name)
-        project['release_date'] = release_date
-        puts "  📅 Release date (RubyGems): #{release_date}"
-      else
-        raise "Missing GitHub forge for project: #{project['name']}" unless github_forge
-        release_date = fetch_github_release_date(github_forge['url'])
-        project['release_date'] = release_date
-        puts "  📅 Release date (GitHub): #{release_date || 'N/A'}"
-      end
+      release_date = fetch_release_date_for_project(project, github_forge)
+      project['release_date'] = release_date
+      puts "  📅 Release date: #{release_date || 'N/A'}"
 
     when 'last_commit_on'
       raise "Missing GitHub or GitLab forge for project: #{project['name']}" unless github_forge || gitlab_forge
@@ -1650,19 +1642,11 @@ class ProjectUpdater
       puts "  💎 Minimum Ruby version: #{project['minimum_version']}  (raw: #{ruby_version || 'none'})"
     end
 
-    # Step 7: Latest release date
-    if project['language'] == 'Ruby' && project['ecosystem'] == 'rubygems'
-      # Prefer RubyGems release date
-      gem_name = project['name']
-      release_date = fetch_rubygems_release_date(gem_name)
-      project['release_date'] = release_date
-      puts "  📅 Release date (RubyGems): #{release_date}"
-    elsif github_forge
-      # Use GitHub release date
-      release_date = fetch_github_release_date(github_forge['url'])
-      project['release_date'] = release_date
-      puts "  📅 Release date (GitHub): #{release_date || 'N/A'}"
-    end
+    # Step 7: Latest release date — registry first (RubyGems/crates.io/npm),
+    # then GitHub releases, then latest git tag
+    release_date = fetch_release_date_for_project(project, github_forge)
+    project['release_date'] = release_date
+    puts "  📅 Release date: #{release_date || 'N/A'}"
 
     # Step 8: Last commit date (GitHub preferred, GitLab last_activity_at as fallback)
     commit_source = github_info || gitlab_info
@@ -1835,6 +1819,72 @@ class ProjectUpdater
     error_msg = "Failed to fetch latest tag date for #{repo_path}: #{e.message}"
     @errors << error_msg unless @errors.include?(error_msg)
     puts "    ⚠️  #{error_msg}"
+    nil
+  end
+
+  # Resolve a project's release date from its package registry, falling back
+  # to GitHub releases → latest git tag (fetch_github_release_date handles
+  # that chain) when the registry has no data or the ecosystem has no registry.
+  def fetch_release_date_for_project(project, github_forge)
+    eco = project['ecosystem']
+    name = project['name']
+
+    registry_date =
+      if eco == 'rubygems' && project['language'] == 'Ruby'
+        fetch_rubygems_release_date(name)
+      elsif eco == 'cargo'
+        fetch_crates_io_release_date(name)
+      elsif eco == 'npm'
+        fetch_npm_release_date(name)
+      end
+    return registry_date if registry_date
+
+    github_forge ? fetch_github_release_date(github_forge['url']) : nil
+  end
+
+  def fetch_crates_io_release_date(crate_name)
+    encoded = URI.encode_www_form_component(crate_name)
+    data = api_request("https://crates.io/api/v1/crates/#{encoded}/versions")
+    return nil unless data && data['versions'].is_a?(Array)
+
+    latest = data['versions'].reject { |v| v['yanked'] }.filter_map { |v| v['created_at'] }.max
+    latest ? Date.parse(latest).strftime('%Y/%m/%d') : nil
+  rescue => e
+    error_msg = "Failed to fetch crates.io release date for #{crate_name}: #{e.message}"
+    @errors << error_msg unless @errors.include?(error_msg)
+    puts "    ⚠️  #{error_msg}"
+    nil
+  end
+
+  def fetch_npm_release_date(package_name)
+    encoded = package_name.gsub('/', '%2F')
+    data = api_request("https://registry.npmjs.org/#{encoded}")
+    return fetch_npm_release_date_abbrev(encoded, package_name) unless data && data['time'].is_a?(Hash)
+
+    times = data['time']
+    latest_version = data.dig('dist-tags', 'latest')
+    stamp = (latest_version && times[latest_version]) ||
+            times.reject { |k, _| %w[created modified].include?(k) }.values.max
+    stamp ? Date.parse(stamp).strftime('%Y/%m/%d') : nil
+  rescue => e
+    fallback = fetch_npm_release_date_abbrev(encoded, package_name)
+    return fallback if fallback
+
+    error_msg = "Failed to fetch npm release date for #{package_name}: #{e.message}"
+    @errors << error_msg unless @errors.include?(error_msg)
+    puts "    ⚠️  #{error_msg}"
+    nil
+  end
+
+  # Last-ditch: the abbreviated (install-v1) doc has no per-version `time`,
+  # but its `modified` timestamp is close enough when the full doc errors
+  # (some package documents 502 on the npm registry).
+  def fetch_npm_release_date_abbrev(encoded, package_name)
+    data = api_request("https://registry.npmjs.org/#{encoded}",
+                       headers: { 'Accept' => 'application/vnd.npm.install-v1+json' })
+    stamp = data && data['modified']
+    stamp ? Date.parse(stamp).strftime('%Y/%m/%d') : nil
+  rescue
     nil
   end
 
@@ -2154,10 +2204,11 @@ class ProjectUpdater
     JSON.parse(response.body)
   end
 
-  def api_request(url)
+  def api_request(url, headers: {})
     uri = URI(url)
     request = Net::HTTP::Get.new(uri)
     request['User-Agent'] = 'Galtzo-Project-Updater'
+    headers.each { |k, v| request[k] = v }
 
     response = Net::HTTP.start(uri.hostname, uri.port, use_ssl: uri.scheme == 'https') do |http|
       http.request(request)
