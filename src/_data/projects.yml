@@ -945,7 +945,7 @@
   total_downloads: 779
   daily_downloads: 4
   release_downloads: 446
-  release_date:
+  release_date: 2025/08/11
   last_commit_on: 2026/10/12
   status: active
   last_scrape_at: '2026-10-21T22:30:43Z'
@@ -7420,7 +7420,7 @@
   github_stars: 0
   last_commit_on: 2026/07/21
   status: active
-  release_date:
+  release_date: 2026/05/06
   licenses:
   - AGPL-3.0-only
   - PolyForm-Small-Business-1.0.0
