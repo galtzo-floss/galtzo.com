@@ -1,6 +1,7 @@
 ---
 - name: active_security
   description: Disallow insecure, unscoped, finds
+  description_source: site
   language: Ruby
   ecosystem: rubygems
   minimum_version: '2.7'
@@ -35,6 +36,7 @@
   license_url: https://github.com/galtzo-floss/active_security/blob/main/LICENSE.md
 - name: activerecord-transactionable
   description: Getting transactions right is hard, and this gem makes it easier.
+  description_source: site
   language: Ruby
   ecosystem: rubygems
   minimum_version: '2.5'
@@ -77,6 +79,7 @@
   license_url: https://github.com/galtzo-floss/activerecord-transactionable/blob/main/LICENSE.md
 - name: anonymous_active_record
   description: Replacement for broken Class.new(ActiveRecord::Base)
+  description_source: site
   language: Ruby
   ecosystem: rubygems
   minimum_version: '2.4'
@@ -117,6 +120,7 @@
     Added configurations for ASF Category A and B licenses.
     Enabled specification of FSF Free/Libre and OSI Approved requirements.
     <a href="https://dev.to/galtzo/how-to-check-license-compatibility-41h0" class="text-link" target="_blank" rel="noopener">Learn how</a> to add it to your project!
+  description_source: site
   language: Go
   ecosystem: none
   minimum_version: '1.23'
@@ -151,6 +155,7 @@
   description: "\U0001F50D️ Appraisal2 integrates with bundler and rake to test your
     library against different versions of dependencies in repeatable scenarios called
     \"appraisals.\""
+  description_source: registry
   language: Ruby
   ecosystem: rubygems
   minimum_version: '1.8'
@@ -193,6 +198,7 @@
 - name: archivist-client
   description: archivist-client queries archive.org for book data and downloads some
     things.
+  description_source: site
   language: Ruby
   ecosystem: rubygems
   minimum_version: '2.4'
@@ -226,6 +232,7 @@
   license_url: https://github.com/wordtreefoundation/archivist-client/blob/master/LICENSE
 - name: awesome_search
   description: Organize complicated search results
+  description_source: site
   language: Ruby
   ecosystem: rubygems
   minimum_version: '1.8'
@@ -259,6 +266,7 @@
   license_url: https://github.com/galtzo-floss/awesome_search/blob/main/LICENSE
 - name: bash_step
   description: Bash Step Function Library
+  description_source: site
   language: Bash
   ecosystem: none
   minimum_version: '4.0'
@@ -288,6 +296,7 @@
   license_url: https://github.com/pboling/bash_step/blob/master/LICENSE
 - name: bsfl
   description: Bash Script Function Library
+  description_source: site
   language: Bash
   ecosystem: none
   minimum_version: '4.0'
@@ -315,6 +324,7 @@
 - name: test-adopt-me-gem
   description: This project is available for adoption. Looking for a new maintainer
     who can take it forward!
+  description_source: site
   language: Ruby
   ecosystem: rubygems
   minimum_version: '2.7'
@@ -343,6 +353,7 @@
 - name: test-update-me-lib
   description: This library needs updates - dependencies are stale and security patches
     are needed.
+  description_source: site
   language: Ruby
   ecosystem: rubygems
   minimum_version: '2.5'
@@ -374,6 +385,7 @@
 - name: test-avoid-me-deprecated
   description: This project is deprecated and archived. Please use the new replacement
     project instead.
+  description_source: site
   language: Ruby
   ecosystem: rubygems
   minimum_version: '2.3'
@@ -404,6 +416,7 @@
 - name: test-family-auth-core
   description: Core authentication library for Rails - part of the authentication
     family
+  description_source: site
   language: Ruby
   ecosystem: rubygems
   minimum_version: '2.7'
@@ -436,6 +449,7 @@
   status: active
 - name: test-family-auth-oauth
   description: OAuth integration for the Rails authentication suite
+  description_source: site
   language: Ruby
   ecosystem: rubygems
   minimum_version: '2.7'
@@ -468,6 +482,7 @@
   status: active
 - name: test-family-auth-2fa
   description: Two-factor authentication for the Rails authentication suite
+  description_source: site
   language: Ruby
   ecosystem: rubygems
   minimum_version: '2.7'
@@ -500,6 +515,7 @@
   status: active
 - name: test-holiday-christmas
   description: A festive project celebrating the winter season!
+  description_source: site
   language: Ruby
   ecosystem: rubygems
   minimum_version: '2.7'
@@ -540,6 +556,7 @@
     messages from a cookie using JavaScript, instead of statically in your Rails
     view template.  Flash contents are converted to JSON and placed in
     a cookie by an after_filter (default) or a Rack Middleware (option).
+  description_source: site
   language: Ruby
   ecosystem: rubygems
   minimum_version: '1.8'
@@ -575,6 +592,7 @@
   description: "\U0001F372 Convert ASCII braces ('{}') to full-width braces ('{}')
     within code fences (triple-or-single backticks) during YARD processing, and back
     to ASCII braces afterward"
+  description_source: registry
   language: Ruby
   ecosystem: rubygems
   theme: family
@@ -610,6 +628,7 @@
     and validation markers) and emits polished Markdown, HTML, and PDF/DOCX (via pandoc)
     outputs including a validation status line, fenced YAML blocks, and extracted
     notes."
+  description_source: site
   language: Ruby
   ecosystem: rubygems
   theme: family
@@ -642,6 +661,7 @@
   license_url: https://github.com/galtzo-floss/yaml-converter/blob/main/LICENSE.md
 - name: yard-yaml
   description: "\U0001F997 A YARD plugin for YAML documents"
+  description_source: registry
   language: Ruby
   ecosystem: rubygems
   theme: family
@@ -674,6 +694,7 @@
   license_url: https://github.com/galtzo-floss/yard-yaml/blob/main/LICENSE.md
 - name: prism-merge
   description: "☯️ Prism-backed Ruby provider gem for the Structured Merge Ruby family."
+  description_source: registry
   language: Ruby
   ecosystem: rubygems
   minimum_version: '4.0'
@@ -710,6 +731,7 @@
 - name: ast-merge
   description: "☯️ Core diagnostics, conformance, planning, reporting, and review-state
     contracts for Structured Merge."
+  description_source: registry
   language: Ruby
   ecosystem: rubygems
   minimum_version: '4.0'
@@ -746,6 +768,7 @@
 - name: dotenv-merge
   description: "☯️ Dotenv assignment, comment, freeze-block, and template merge behavior
     for Structured Merge."
+  description_source: registry
   language: Ruby
   ecosystem: rubygems
   minimum_version: '4.0'
@@ -781,6 +804,7 @@
 - name: rbs-merge
   description: "☯️ RBS declaration, comment, freeze-block, and template merge behavior
     for Structured Merge."
+  description_source: registry
   language: Ruby
   ecosystem: rubygems
   minimum_version: '4.0'
@@ -816,6 +840,7 @@
 - name: tree_haver
   description: "\U0001F334 Backend registry, parser request/result contracts, and
     tree-sitter language-pack integration for Structured Merge."
+  description_source: registry
   language: Ruby
   ecosystem: rubygems
   minimum_version: '4.0'
@@ -853,6 +878,7 @@
 - name: toml-merge
   description: "☯️ Tree-sitter-backed TOML substrate behavior for the Structured Merge
     TOML family."
+  description_source: registry
   language: Ruby
   ecosystem: rubygems
   minimum_version: '4.0'
@@ -888,6 +914,7 @@
 - name: bash-merge
   description: "☯️ Bash statement, comment, freeze-block, and template merge behavior
     for Structured Merge."
+  description_source: registry
   language: Ruby
   ecosystem: rubygems
   minimum_version: '4.0'
@@ -923,6 +950,7 @@
 - name: json-merge
   description: "☯️ Portable JSON and JSONC analysis, owner matching, fallback, and
     merge behavior for Structured Merge."
+  description_source: registry
   language: Ruby
   ecosystem: rubygems
   minimum_version: '4.0'
@@ -958,6 +986,7 @@
 - name: markdown-merge
   description: "☯️ Portable Markdown owner analysis and matching behavior for Structured
     Merge."
+  description_source: registry
   language: Ruby
   ecosystem: rubygems
   minimum_version: '4.0'
@@ -995,6 +1024,7 @@
     that preserves comments, understands JSON structure, and supports freeze blocks
     for protecting destination content. Perfect for merging configuration files like
     devcontainer.json, tsconfig.json, package.json, and VS Code settings."
+  description_source: site
   language: Ruby
   ecosystem: rubygems
   minimum_version: '3.2'
@@ -1028,6 +1058,7 @@
 - name: commonmarker-merge
   description: "☯️ Commonmarker-backed Markdown provider gem for the Structured Merge
     Markdown family."
+  description_source: registry
   language: Ruby
   ecosystem: rubygems
   minimum_version: '4.0'
@@ -1062,6 +1093,7 @@
   license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: psych-merge
   description: "☯️ Psych-backed YAML provider gem for the Structured Merge YAML family."
+  description_source: registry
   language: Ruby
   ecosystem: rubygems
   minimum_version: '4.0'
@@ -1097,6 +1129,7 @@
 - name: markly-merge
   description: "☯️ Markly-backed Markdown provider gem for the Structured Merge Markdown
     family."
+  description_source: registry
   language: Ruby
   ecosystem: rubygems
   minimum_version: '4.0'
@@ -1134,6 +1167,7 @@
     parsing and resolution of structured tokens (e.g., {KJ|GEM_NAME}) in arbitrary
     text. Useful for template ETL pipelines where tokens in template files must be
     resolved before format-specific merging."
+  description_source: site
   language: Ruby
   ecosystem: rubygems
   minimum_version: '3.2'
@@ -1177,6 +1211,7 @@
   description: CycloneDX is a lightweight software bill-of-material (SBOM) specification
     designed for use in application security contexts and supply chain component analysis.
     This Gem generates CycloneDX BOMs from Ruby projects.
+  description_source: registry
   minimum_version: '1.8'
   tags:
   - bundler
@@ -1212,6 +1247,7 @@
     url: https://github.com/oxidize-rb/rb-sys
     owner: oxidize-rb
   description: Rust bindings for the CRuby API
+  description_source: site
   minimum_version: '1.71'
   tags:
   - api
@@ -1245,6 +1281,7 @@
     url: https://github.com/oxidize-rb/rb-sys
     owner: oxidize-rb
   description: Helpers for compiling Rust extensions for ruby
+  description_source: site
   minimum_version: '2.7'
   tags:
   - api
@@ -1279,6 +1316,7 @@
     owner: matsadler
   description: High level Ruby bindings. Write Ruby extension gems in Rust, or call
     Ruby code from a Rust binary.
+  description_source: site
   minimum_version: '1.56'
   tags:
   - api
@@ -1314,6 +1352,7 @@
     owner: appraisal-rb
   description: 'GHA: ⚡️Fast Setup of Ruby & Gems via rv & ore (alternative to setup-ruby,
     with fallback to setup-ruby)'
+  description_source: site
   minimum_version: '2.3'
   tags:
   - bundler
@@ -1354,6 +1393,7 @@
     url: https://github.com/joker1007/tree_stump
     owner: joker1007
   description: Ruby bindings for Tree-sitter written in Rust using rb_sys and magnus.
+  description_source: site
   minimum_version: '3.1'
   tags:
   - api
@@ -1388,6 +1428,7 @@
     url: https://www.github.com/Faveod/ruby-tree-sitter
     owner: Faveod
   description: Ruby bindings for Tree-Sitter
+  description_source: site
   minimum_version: '3.2'
   tags:
   - api
@@ -1420,6 +1461,7 @@
     url: https://github.com/mongodb/bson-ruby
     owner: mongodb
   description: A fully featured BSON specification implementation in Ruby
+  description_source: site
   minimum_version: '2.6'
   tags:
   - data
@@ -1453,6 +1495,7 @@
     url: https://github.com/ruby/rexml
     owner: ruby
   description: An XML toolkit for Ruby
+  description_source: site
   minimum_version: '2.5'
   tags:
   - data
@@ -1486,6 +1529,7 @@
     owner: ruby
   description: Bundler manages an application's dependencies through its entire life,
     across many machines, systematically and repeatably
+  description_source: site
   minimum_version: '3.2'
   tags:
   - bundler
@@ -1518,6 +1562,7 @@
     owner: hashie
   description: Hashie is a collection of classes and mixins that make hashes more
     powerful.
+  description_source: site
   minimum_version: '2.7'
   tags:
   - data
@@ -1552,6 +1597,7 @@
   description: Ruby on Rails is a full-stack web framework optimized for programmer
     happiness and sustainable productivity. It encourages beautiful code by favoring
     convention over configuration.
+  description_source: site
   minimum_version: '3.2'
   tags:
   - rails
@@ -1584,6 +1630,7 @@
     url: https://github.com/spinel-coop/rv/
     owner: spinel-coop
   description: "\U0001F48E\U0001F4A8 Extremely fast Ruby version and gem manager"
+  description_source: site
   minimum_version: '1.93'
   tags:
   - bundler
@@ -1617,6 +1664,7 @@
     source, and remap transitive deps\non the fly — so `gem install @kaspth/oaken`
     and `bundle install` with URI\ndeps in gemspecs both Just Work™.\n\nSee https://github.com/gem-coop/gem.coop/issues/12
     for the original discussion.\n"
+  description_source: site
   language: Ruby
   ecosystem: rubygems
   theme: family
@@ -1648,6 +1696,7 @@
 - name: nomono
   description: 1️⃣ Provides nomono_gems and eval_nomono_gems to standardize local
     multi-repo dependency wiring in Gemfiles.
+  description_source: site
   language: Ruby
   ecosystem: rubygems
   theme: family
@@ -1680,6 +1729,7 @@
 - name: ast-template
   description: "\U0001F48E Product-level directory session reporting above ast-merge
     for Structured Merge."
+  description_source: registry
   language: Ruby
   ecosystem: rubygems
   minimum_version: '4.0'
@@ -1713,6 +1763,7 @@
 - name: plain-merge
   description: "☯️ Portable text normalization, similarity, matching, and merge behavior
     for Structured Merge."
+  description_source: registry
   language: Ruby
   ecosystem: rubygems
   minimum_version: '4.0'
@@ -1746,6 +1797,7 @@
 - name: yaml-merge
   description: "☯️ Portable YAML analysis, owner matching, and merge behavior for
     Structured Merge."
+  description_source: registry
   language: Ruby
   ecosystem: rubygems
   minimum_version: '4.0'
@@ -1778,6 +1830,7 @@
   license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: ruby-merge
   description: "☯️ Tree-sitter-backed Ruby family substrate for Structured Merge."
+  description_source: registry
   language: Ruby
   ecosystem: rubygems
   minimum_version: '4.0'
@@ -1811,6 +1864,7 @@
 - name: go-merge
   description: "☯️ Portable Go module owner analysis and merge behavior for Structured
     Merge."
+  description_source: registry
   language: Ruby
   ecosystem: rubygems
   minimum_version: '4.0'
@@ -1844,6 +1898,7 @@
 - name: rust-merge
   description: "☯️ Portable Rust module owner analysis and merge behavior for Structured
     Merge."
+  description_source: registry
   language: Ruby
   ecosystem: rubygems
   minimum_version: '4.0'
@@ -1877,6 +1932,7 @@
 - name: typescript-merge
   description: "☯️ Portable TypeScript module owner analysis and merge behavior for
     Structured Merge."
+  description_source: registry
   language: Ruby
   ecosystem: rubygems
   minimum_version: '4.0'
@@ -1910,6 +1966,7 @@
 - name: binary-merge
   description: "☯️ Portable binary preservation planning and diagnostics for Structured
     Merge."
+  description_source: registry
   language: Ruby
   ecosystem: rubygems
   minimum_version: '4.0'
@@ -1943,6 +2000,7 @@
 - name: zip-merge
   description: "☯️ Portable ZIP inventory, planning, nested dispatch, and raw-preservation
     rendering helpers for Structured Merge."
+  description_source: registry
   language: Ruby
   ecosystem: rubygems
   minimum_version: '4.0'
@@ -1975,6 +2033,7 @@
   license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
 - name: citrus-toml-merge
   description: "☯️ Citrus-backed TOML provider gem for the Structured Merge TOML family."
+  description_source: registry
   language: Ruby
   ecosystem: rubygems
   minimum_version: '4.0'
@@ -2008,6 +2067,7 @@
 - name: parslet-toml-merge
   description: "☯️ Parslet-backed TOML provider gem for the Structured Merge TOML
     family."
+  description_source: registry
   language: Ruby
   ecosystem: rubygems
   minimum_version: '4.0'
@@ -2041,6 +2101,7 @@
 - name: kramdown-merge
   description: "☯️ Kramdown-backed Markdown provider gem for the Structured Merge
     Markdown family."
+  description_source: registry
   language: Ruby
   ecosystem: rubygems
   minimum_version: '4.0'
@@ -2076,6 +2137,7 @@
     automation using the *-merge gem family for AST-based file merging and token-resolver
     for template token resolution. Includes MergerConfig presets, YAML recipes, and
     a complete gem template scaffold."
+  description_source: registry
   language: Ruby
   ecosystem: rubygems
   minimum_version: '4.0'
@@ -2109,6 +2171,7 @@
 - name: auth-sanitizer
   description: "\U0001F48E Configurable KV output redaction. Sanitize/filter your
     secrets."
+  description_source: site
   language: Ruby
   ecosystem: rubygems
   theme: family
@@ -2144,6 +2207,7 @@
     balancing, and replaces interleaved worker output with incremental summarized
     RSpec reporting. Source code of `turbo_test2` gem is based on Discourse and Rubygems
     work in this area (see README.md)."
+  description_source: registry
   language: Ruby
   ecosystem: rubygems
   theme: family
@@ -2179,6 +2243,7 @@
     timestamp-only diffs in tracked HTML files under docs/, and restores those files
     from git to prevent pointless churn while keeping the footer timestamp on genuinely
     changed pages."
+  description_source: site
   language: Ruby
   ecosystem: rubygems
   theme: family
@@ -2210,6 +2275,7 @@
 - name: kettle-drift
   description: "\U0001F372 Kettle::Drift tracks repeated adjacent-line chunks that
     usually signal template drift or copy/paste corruption."
+  description_source: site
   language: Ruby
   ecosystem: rubygems
   theme: family
@@ -2243,6 +2309,7 @@
   description: "\U0001F372 oauth2-mcp provides Ruby helpers for securing HTTP Model
     Context Protocol servers with OAuth protected-resource metadata, bearer challenges,
     and scoped authorization."
+  description_source: site
   language: Ruby
   ecosystem: rubygems
   theme: family
@@ -2277,6 +2344,7 @@
   description: |
     Enables Ruby projects that test with RSpec to more confidently support even the most finely-aged Rubies.
     Part of the rubocop-lts family.
+  description_source: site
   language: Ruby
   ecosystem: rubygems
   theme: family
@@ -2311,6 +2379,7 @@
 - name: appraisal2-rubocop
   description: "\U0001F48E Appraisal2::Rubocop registers Appraisal2 generation hooks
     that run RuboCop against generated appraisal gemfiles."
+  description_source: site
   language: Ruby
   ecosystem: rubygems
   theme: family
@@ -2342,6 +2411,7 @@
 - name: kettle-family
   description: "\U0001F469‍\U0001F469‍\U0001F467‍\U0001F467 Kettle::Family provides
     scripts and conventions for coordinating related Ruby gems as one family."
+  description_source: site
   language: Ruby
   ecosystem: rubygems
   theme: family
@@ -2374,6 +2444,7 @@
 - name: gem_mine
   description: "⛏️ Provides helpers for setting up temporary scaffolded gem projects
     and reliably tearing them down after tests."
+  description_source: site
   language: Ruby
   ecosystem: rubygems
   theme: family
@@ -2408,6 +2479,7 @@
   description: "\U0001F48E AnonymousLoader resolves Ruby files from paths, gem metadata,
     or $LOAD_PATH and evaluates them inside anonymous modules to avoid top-level namespace
     collisions."
+  description_source: site
   language: Ruby
   ecosystem: rubygems
   theme: family
@@ -2440,6 +2512,7 @@
 - name: kettle-rb
   description: "\U0001F4CF Provides the shared Ruby, engine, Rails, RuboCop, and RuboCop
     LTS compatibility matrix used by Kettle-managed gems."
+  description_source: site
   language: Ruby
   ecosystem: rubygems
   theme: family
@@ -2473,6 +2546,7 @@
 - name: kettle-wash
   description: "\U0001F6BF Constant deletion and reset helpers for gems that need
     repeatable reloads while testing constant-backed runtime configuration."
+  description_source: site
   language: Ruby
   ecosystem: rubygems
   theme: family
@@ -2509,6 +2583,7 @@
   description: "\U0001F4CC GitHub Actions workflow SHA pin maintenance, including
     deterministic release-tag parsing, canonicalization, cache-backed GitHub ref resolution,
     and upgrade planning."
+  description_source: site
   language: Ruby
   ecosystem: rubygems
   theme: family
@@ -2541,6 +2616,7 @@
 - name: kettle-ndjson
   description: "\U0001F4DF️ NDJSON event stream primitives, filters, recorders, and
     payload helpers shared by Kettle CLI tools."
+  description_source: site
   language: Ruby
   ecosystem: rubygems
   theme: family
@@ -2573,6 +2649,7 @@
   license_url: https://github.com/kettle-dev/kettle-ndjson/blob/main/LICENSE.md
 - name: "@structuredmerge/ast-merge"
   description: 'StructuredMerge TypeScript package: ast-merge.'
+  description_source: site
   language: TypeScript
   ecosystem: npm
   minimum_typescript_version: 5.9.3
@@ -2608,6 +2685,7 @@
   last_scrape_at: '2026-10-21T22:37:57Z'
 - name: "@structuredmerge/ast-template"
   description: 'StructuredMerge TypeScript package: ast-template.'
+  description_source: site
   language: TypeScript
   ecosystem: npm
   minimum_typescript_version: 5.9.3
@@ -2643,6 +2721,7 @@
   last_scrape_at: '2026-10-21T22:37:59Z'
 - name: "@structuredmerge/binary-merge"
   description: 'StructuredMerge TypeScript package: binary-merge.'
+  description_source: site
   language: TypeScript
   ecosystem: npm
   minimum_typescript_version: 5.9.3
@@ -2678,6 +2757,7 @@
   last_scrape_at: '2026-10-21T22:38:02Z'
 - name: "@structuredmerge/go-merge"
   description: 'StructuredMerge TypeScript package: go-merge.'
+  description_source: site
   language: TypeScript
   ecosystem: npm
   minimum_typescript_version: 5.9.3
@@ -2713,6 +2793,7 @@
   last_scrape_at: '2026-10-21T22:38:04Z'
 - name: "@structuredmerge/js-yaml-merge"
   description: 'StructuredMerge TypeScript package: js-yaml-merge.'
+  description_source: site
   language: TypeScript
   ecosystem: npm
   minimum_typescript_version: 5.9.3
@@ -2748,6 +2829,7 @@
   last_scrape_at: '2026-10-21T22:38:07Z'
 - name: "@structuredmerge/json-merge"
   description: 'StructuredMerge TypeScript package: json-merge.'
+  description_source: site
   language: TypeScript
   ecosystem: npm
   minimum_typescript_version: 5.9.3
@@ -2783,6 +2865,7 @@
   last_scrape_at: '2026-10-21T22:38:09Z'
 - name: "@structuredmerge/kettle-nodule"
   description: 'StructuredMerge TypeScript package: kettle-nodule.'
+  description_source: site
   language: TypeScript
   ecosystem: npm
   minimum_typescript_version: 5.9.3
@@ -2818,6 +2901,7 @@
   last_scrape_at: '2026-10-21T22:38:12Z'
 - name: "@structuredmerge/markdown-it-merge"
   description: 'StructuredMerge TypeScript package: markdown-it-merge.'
+  description_source: site
   language: TypeScript
   ecosystem: npm
   minimum_typescript_version: 5.9.3
@@ -2853,6 +2937,7 @@
   last_scrape_at: '2026-10-21T22:38:15Z'
 - name: "@structuredmerge/markdown-merge"
   description: 'StructuredMerge TypeScript package: markdown-merge.'
+  description_source: site
   language: TypeScript
   ecosystem: npm
   minimum_typescript_version: 5.9.3
@@ -2888,6 +2973,7 @@
   last_scrape_at: '2026-10-21T22:38:17Z'
 - name: "@structuredmerge/peggy-toml-merge"
   description: 'StructuredMerge TypeScript package: peggy-toml-merge.'
+  description_source: site
   language: TypeScript
   ecosystem: npm
   minimum_typescript_version: 5.9.3
@@ -2923,6 +3009,7 @@
   last_scrape_at: '2026-10-21T22:38:20Z'
 - name: "@structuredmerge/plain-merge"
   description: 'StructuredMerge TypeScript package: plain-merge.'
+  description_source: site
   language: TypeScript
   ecosystem: npm
   minimum_typescript_version: 5.9.3
@@ -2958,6 +3045,7 @@
   last_scrape_at: '2026-10-21T22:38:22Z'
 - name: "@structuredmerge/ruby-merge"
   description: 'StructuredMerge TypeScript package: ruby-merge.'
+  description_source: site
   language: TypeScript
   ecosystem: npm
   minimum_typescript_version: 5.9.3
@@ -2993,6 +3081,7 @@
   last_scrape_at: '2026-10-21T22:38:25Z'
 - name: "@structuredmerge/rust-merge"
   description: 'StructuredMerge TypeScript package: rust-merge.'
+  description_source: site
   language: TypeScript
   ecosystem: npm
   minimum_typescript_version: 5.9.3
@@ -3028,6 +3117,7 @@
   last_scrape_at: '2026-10-21T22:38:27Z'
 - name: "@structuredmerge/toml-merge"
   description: 'StructuredMerge TypeScript package: toml-merge.'
+  description_source: site
   language: TypeScript
   ecosystem: npm
   minimum_typescript_version: 5.9.3
@@ -3063,6 +3153,7 @@
   last_scrape_at: '2026-10-21T22:38:30Z'
 - name: "@structuredmerge/tree-haver"
   description: 'StructuredMerge TypeScript package: tree-haver.'
+  description_source: site
   language: TypeScript
   ecosystem: npm
   minimum_typescript_version: 5.9.3
@@ -3098,6 +3189,7 @@
   last_scrape_at: '2026-10-21T22:38:33Z'
 - name: "@structuredmerge/typescript-compiler-merge"
   description: 'StructuredMerge TypeScript package: typescript-compiler-merge.'
+  description_source: site
   language: TypeScript
   ecosystem: npm
   minimum_typescript_version: 5.9.3
@@ -3133,6 +3225,7 @@
   last_scrape_at: '2026-10-21T22:38:35Z'
 - name: "@structuredmerge/typescript-merge"
   description: 'StructuredMerge TypeScript package: typescript-merge.'
+  description_source: site
   language: TypeScript
   ecosystem: npm
   minimum_typescript_version: 5.9.3
@@ -3168,6 +3261,7 @@
   last_scrape_at: '2026-10-21T22:38:38Z'
 - name: "@structuredmerge/yaml-merge"
   description: 'StructuredMerge TypeScript package: yaml-merge.'
+  description_source: site
   language: TypeScript
   ecosystem: npm
   minimum_typescript_version: 5.9.3
@@ -3203,6 +3297,7 @@
   last_scrape_at: '2026-10-21T22:38:40Z'
 - name: "@structuredmerge/zip-merge"
   description: 'StructuredMerge TypeScript package: zip-merge.'
+  description_source: site
   language: TypeScript
   ecosystem: npm
   minimum_typescript_version: 5.9.3
@@ -3238,6 +3333,7 @@
   last_scrape_at: '2026-10-21T22:38:43Z'
 - name: ast-merge
   description: Core Structured Merge AST, ruleset, planning, and review contracts
+  description_source: registry
   language: Rust
   ecosystem: cargo
   theme: family
@@ -3271,6 +3367,7 @@
   last_scrape_at: '2026-10-21T22:38:45Z'
 - name: ast-template
   description: Recipe and template helpers for Structured Merge AST libraries
+  description_source: registry
   language: Rust
   ecosystem: cargo
   theme: family
@@ -3304,6 +3401,7 @@
   last_scrape_at: '2026-10-21T22:38:48Z'
 - name: structuredmerge-binary-merge
   description: Binary preservation planning and diagnostics for Structured Merge
+  description_source: site
   language: Rust
   ecosystem: cargo
   theme: family
@@ -3337,6 +3435,7 @@
   last_scrape_at: '2026-10-21T22:38:50Z'
 - name: go-merge
   description: Go syntax merge helpers for Structured Merge
+  description_source: registry
   language: Rust
   ecosystem: cargo
   theme: family
@@ -3370,6 +3469,7 @@
   last_scrape_at: '2026-10-21T22:38:52Z'
 - name: json-merge
   description: JSON merge helpers for Structured Merge
+  description_source: registry
   language: Rust
   ecosystem: cargo
   theme: family
@@ -3403,6 +3503,7 @@
   last_scrape_at: '2026-10-21T22:38:55Z'
 - name: kettle-rusty
   description: Rust crate recipe helpers for Structured Merge
+  description_source: site
   language: Rust
   ecosystem: cargo
   theme: family
@@ -3436,6 +3537,7 @@
   last_scrape_at: '2026-10-21T22:38:57Z'
 - name: markdown-merge
   description: Markdown merge helpers for Structured Merge
+  description_source: registry
   language: Rust
   ecosystem: cargo
   theme: family
@@ -3469,6 +3571,7 @@
   last_scrape_at: '2026-10-21T22:38:59Z'
 - name: pest-toml-merge
   description: Pest TOML merge helpers for Structured Merge
+  description_source: site
   language: Rust
   ecosystem: cargo
   theme: family
@@ -3502,6 +3605,7 @@
   last_scrape_at: '2026-10-21T22:39:01Z'
 - name: plain-merge
   description: Plain text merge helpers for Structured Merge
+  description_source: registry
   language: Rust
   ecosystem: cargo
   theme: family
@@ -3535,6 +3639,7 @@
   last_scrape_at: '2026-10-21T22:39:04Z'
 - name: pulldown-cmark-merge
   description: Pulldown-cmark Markdown merge helpers for Structured Merge
+  description_source: site
   language: Rust
   ecosystem: cargo
   theme: family
@@ -3568,6 +3673,7 @@
   last_scrape_at: '2026-10-21T22:39:06Z'
 - name: ruby-merge
   description: Ruby syntax merge helpers for Structured Merge
+  description_source: registry
   language: Rust
   ecosystem: cargo
   theme: family
@@ -3601,6 +3707,7 @@
   last_scrape_at: '2026-10-21T22:39:08Z'
 - name: rust-merge
   description: Rust syntax merge helpers for Structured Merge
+  description_source: registry
   language: Rust
   ecosystem: cargo
   theme: family
@@ -3634,6 +3741,7 @@
   last_scrape_at: '2026-10-21T22:39:10Z'
 - name: structuredmerge-toml-merge
   description: TOML merge helpers for Structured Merge
+  description_source: site
   language: Rust
   ecosystem: cargo
   theme: family
@@ -3667,6 +3775,7 @@
   last_scrape_at: '2026-10-21T22:39:13Z'
 - name: tree-haver
   description: Tree substrate and binary location contracts for Structured Merge
+  description_source: site
   language: Rust
   ecosystem: cargo
   theme: family
@@ -3700,6 +3809,7 @@
   last_scrape_at: '2026-10-21T22:39:15Z'
 - name: typescript-merge
   description: TypeScript syntax merge helpers for Structured Merge
+  description_source: registry
   language: Rust
   ecosystem: cargo
   theme: family
@@ -3733,6 +3843,7 @@
   last_scrape_at: '2026-10-21T22:39:17Z'
 - name: yaml-merge
   description: YAML merge helpers for Structured Merge
+  description_source: registry
   language: Rust
   ecosystem: cargo
   theme: family
@@ -3766,6 +3877,7 @@
   last_scrape_at: '2026-10-21T22:39:20Z'
 - name: yaml-serde-merge
   description: yaml-serde merge helpers for Structured Merge
+  description_source: site
   language: Rust
   ecosystem: cargo
   theme: family
@@ -3800,6 +3912,7 @@
 - name: structuredmerge-zip-merge
   description: ZIP inventory, planning, nested dispatch, and raw-preservation helpers
     for Structured Merge
+  description_source: site
   language: Rust
   ecosystem: cargo
   theme: family
@@ -3833,6 +3946,7 @@
   last_scrape_at: '2026-10-21T22:39:24Z'
 - name: github.com/structuredmerge/structuredmerge-go
   description: Go implementation of the StructuredMerge contract.
+  description_source: site
   language: Go
   ecosystem: go
   theme: family
@@ -3865,6 +3979,7 @@
 - name: ast-crispr
   description: "\U0001F9EC A thin structural edit tool layer over ast-merge structured-edit
     contracts."
+  description_source: site
   language: Ruby
   ecosystem: rubygems
   minimum_version: '4.0'
@@ -3898,6 +4013,7 @@
 - name: ast-crispr-ruby-prism
   description: "\U0001F9EC Ruby/Prism structural owner selectors and edit helpers
     for ast-crispr."
+  description_source: site
   language: Ruby
   ecosystem: rubygems
   minimum_version: '4.0'
@@ -3931,6 +4047,7 @@
 - name: ast-crispr-markdown-markly
   description: "\U0001F9EC Markdown/Markly heading section selectors and edit helpers
     for ast-crispr."
+  description_source: site
   language: Ruby
   ecosystem: rubygems
   minimum_version: '4.0'
@@ -3963,6 +4080,7 @@
   family_position: 27
 - name: ast-merge-git
   description: "☯️ Git protocol adaptation and provider dispatch over ast-merge primitives."
+  description_source: site
   language: Ruby
   ecosystem: rubygems
   minimum_version: '4.0'
@@ -3996,6 +4114,7 @@
 - name: html-merge
   description: "\U0001F48E Parser-backed HTML analysis and merge primitives for Structured
     Merge."
+  description_source: site
   language: Ruby
   ecosystem: rubygems
   minimum_version: '3.2'
@@ -4028,6 +4147,7 @@
 - name: smorg-rb
   description: "\U0001F48E Git-compatible StructuredMerge command surface for the
     Ruby implementation."
+  description_source: site
   language: Ruby
   ecosystem: rubygems
   minimum_version: '4.0'
@@ -4063,6 +4183,7 @@
     from RubyGems API data. Scaffolds tier1/tier2 gem lists from gemspec, resolves
     version spreads per mode (major/minor/minor-minmax/semver), generates modular
     gemfiles and Appraisals files. Part of the kettle-dev ecosystem."
+  description_source: site
   language: Ruby
   ecosystem: rubygems
   minimum_version: '4.0'
@@ -4098,6 +4219,7 @@
   description: |
     RuboCop cops that detect use of Ruby core and standard library APIs that are
     unavailable for the configured TargetRubyVersion.
+  description_source: site
   language: Ruby
   ecosystem: rubygems
   minimum_version: '3.2'
@@ -4131,6 +4253,7 @@
 - name: kettle-changelog
   description: "\U0001F4DD kettle-changelog formats release sections, manages Unreleased
     entries, and emits machine-readable release events for Ruby gems."
+  description_source: site
   language: Ruby
   ecosystem: rubygems
   minimum_version: '4.0'
@@ -4167,6 +4290,7 @@
     compares equal: symlinked ancestors (/home/x vs /var/home/x) and Windows
     8.3 short names (RUNNER~1 vs runneradmin). Pure Ruby, no dependencies, so it
     can be shared across MIT and AGPL tooling.
+  description_source: site
   language: Ruby
   ecosystem: rubygems
   minimum_version: '2.4'
@@ -4201,6 +4325,7 @@
     from turbo_tests2 — worker process count resolution, pid-file bookkeeping, runtime
     log recording, and runtime-weighted balanced file grouping — into a dependency-free
     gem that is engine-portable across MRI, JRuby, and TruffleRuby."
+  description_source: site
   language: Ruby
   ecosystem: rubygems
   minimum_version: '2.4'
@@ -4234,6 +4359,7 @@
 - name: ast-crispr-toml
   description: "\U0001F9EC TOML table and dotted-key-path selectors and edit helpers
     for ast-crispr, backed by toml-merge."
+  description_source: site
   language: Ruby
   ecosystem: rubygems
   minimum_version: '4.0'
@@ -4267,6 +4393,7 @@
 - name: config-merge
   description: "\U0001F527 Three-way configuration merging with declared per-format
     policies and named normalizers."
+  description_source: site
   language: Ruby
   ecosystem: rubygems
   minimum_version: '4.0'
@@ -4299,6 +4426,7 @@
   family_position: 32
 - name: ast-crispr-yaml-psych
   description: "\U0001F9EC YAML structural owner selectors and edit helpers for ast-crispr."
+  description_source: site
   language: Ruby
   ecosystem: rubygems
   minimum_version: '4.0'
