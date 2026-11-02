@@ -213,4 +213,5 @@ In the IRB console: `PROJS`, `table()`, `find()`, `by_language()`, `by_status()`
 
 - `refresh-project.yml`: every 15 minutes, refreshes the stalest of the top 24 owned projects (`--only top:24 --oldest-first --limit 1 --no-clickgems`) and commits only that entry. A full rotation takes 6 hours. Pass a project name to `workflow_dispatch` to refresh a specific one.
 - `refresh-clickgems.yml`: once a day, one ClickGems query for every gem. Per-project runs never query ClickGems.
-- Both share the `data-refresh` concurrency group so commits never race. Commits made with `GITHUB_TOKEN` do not trigger `deploy.yml`; deploy the site on its own schedule if it should show refreshed data.
+- `refresh-sweep.yml`: hourly, refreshes the 10 stalest projects outside the top 24 (`--only rest:24 --oldest-first --limit 10 --no-clickgems`), so each remaining project is refreshed about once a day.
+- All three share the `data-refresh` concurrency group so commits never race. Commits made with `GITHUB_TOKEN` do not trigger `deploy.yml`; deploy the site on its own schedule if it should show refreshed data.
