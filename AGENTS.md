@@ -200,3 +200,11 @@ All subcommands accept `--format table|names|yaml`, `--file PATH`, `--no-color`.
 In the IRB console: `PROJS`, `table()`, `find()`, `by_language()`, `by_status()`,
 `by_ecosystem()`, `by_role()`, `by_tag()`, `missing()`, `stale_scrape()`,
 `stale_commit()`, `needs_attention`, `stats`.
+
+### Targeted runs (`-p`, `--only`)
+
+- `-p a,b` restricts to named projects; `--only stale,pending` restricts to classes (union).
+  Classes: `stale active archived pending failed no-forge`, or `role:|ecosystem:|language:|family:|tag:|status:` + value.
+  `failed` = projects that errored in the previous run log. `-p` and `--only` together intersect.
+- Targeted runs rewrite ONLY the changed entries via `ast-crispr-yaml-psych`; the rest of the YAML stays byte-identical.
+- Every run writes an NDJSON log to `tmp/update_projects/run-*.ndjson` (see summary event for per-source outcomes).
