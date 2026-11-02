@@ -2159,10 +2159,11 @@ class ProjectUpdater
     list
   end
 
-  # The N most-downloaded projects I author or maintain (the ones shown on the profile).
+  # The N most-downloaded featured projects I author or maintain (the ones shown on the profile).
   def top_owned_ids(count)
     @top_owned_ids ||= {}
-    @top_owned_ids[count] ||= @projects.reject { |pr| pr['role'] == 'contributor' }
+    # Featured = mine (not contributor), still maintained (not archived), and not up for adoption.
+    @top_owned_ids[count] ||= @projects.reject { |pr| pr['role'] == 'contributor' || pr['adoptable'] || pr['status'] == 'archived' }
                                         .sort_by { |pr| -(pr['total_downloads'] || 0) }
                                         .first(count).map(&:object_id)
   end
@@ -2881,7 +2882,7 @@ if __FILE__ == $0
 
     op.on("-o", "--only CLASS[,CLASS...]",
           "Restrict update to classes of projects (union): stale, active, archived, pending, failed, no-forge,",
-          "or key:value (role:, ecosystem:, language:, family:, tag:, status:, top:N = N most-downloaded I own, rest:N = everything else). Intersects with -p.",
+          "or key:value (role:, ecosystem:, language:, family:, tag:, status:, top:N = N most-downloaded featured (no archived/adoptable), rest:N = everything else). Intersects with -p.",
           "Targeted runs rewrite only the changed entries, via ast-crispr-yaml-psych.") do |v|
       options[:project_classes] = v.split(',').map(&:strip).reject(&:empty?)
     end
