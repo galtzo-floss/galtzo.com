@@ -208,3 +208,9 @@ In the IRB console: `PROJS`, `table()`, `find()`, `by_language()`, `by_status()`
   `failed` = projects that errored in the previous run log. `-p` and `--only` together intersect.
 - Targeted runs rewrite ONLY the changed entries via `ast-crispr-yaml-psych`; the rest of the YAML stays byte-identical.
 - Every run writes an NDJSON log to `tmp/update_projects/run-*.ndjson` (see summary event for per-source outcomes).
+
+### Scheduled refresh (GitHub Actions)
+
+- `refresh-project.yml`: every 15 minutes, refreshes the stalest of the top 24 owned projects (`--only top:24 --oldest-first --limit 1 --no-clickgems`) and commits only that entry. A full rotation takes 6 hours. Pass a project name to `workflow_dispatch` to refresh a specific one.
+- `refresh-clickgems.yml`: once a day, one ClickGems query for every gem. Per-project runs never query ClickGems.
+- Both share the `data-refresh` concurrency group so commits never race. Commits made with `GITHUB_TOKEN` do not trigger `deploy.yml`; deploy the site on its own schedule if it should show refreshed data.

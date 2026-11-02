@@ -1,0 +1,50 @@
+name: Refresh one project
+
+# One project per run, 15 minutes apart: the stalest of the 24 projects shown on the profile
+# (top 24 by downloads among those I author or maintain). Bulk sources (ClickGems) are NOT
+# touched here; see refresh-clickgems.yml. Each run only rewrites the entry it refreshed.
+on:
+  schedule:
+    - cron: "*/15 * * * *"
+  workflow_dispatch:
+    inputs:
+      project:
+        description: "Project name to refresh (default: stalest of the top 24)"
+        required: false
+
+concurrency:
+  group: data-refresh
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "4.0.9"
+          bundler-cache: true
+      - name: Refresh
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PROJECT: ${{ inputs.project }}
+        run: |
+          if [ -n "$PROJECT" ]; then
+            bundle exec ruby scripts/update_projects -y --no-clickgems -p "$PROJECT"
+          else
+            bundle exec ruby scripts/update_projects -y --only top:24 --oldest-first --limit 1 --no-clickgems
+          fi
+      - name: Commit
+        run: |
+          name=$(jq -rs '[.[] | select(.type=="project_result") | .name] | first // "project"' tmp/update_projects/run-*.ndjson)
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/_data/projects.yml src/_data/projects_dev.yml
+          git diff --staged --quiet && exit 0
+          git commit -m "data: refresh ${name}"
+          for i in 1 2 3; do git pull --rebase -q && git push && break; sleep 5; done
