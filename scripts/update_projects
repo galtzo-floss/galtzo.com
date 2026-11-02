@@ -10,6 +10,8 @@ require 'time'
 require 'fileutils'
 require 'base64'
 require 'tty-prompt'
+require 'kettle/ndjson'
+require 'ast-crispr-yaml-psych'
 
 class ProjectUpdater
   PROJECTS_FILE = File.expand_path('../src/_data/projects.yml', __dir__)
@@ -30,6 +32,16 @@ class ProjectUpdater
     github_forge = Array(person['forges']).find { |f| f['type'] == 'GitHub' }
     github_forge&.dig('owner') || ENV['GITHUB_HANDLE'] || 'pboling'
   end
+
+  # Structured run log (NDJSON, one event per line), modeled on kettle-family's event tapes.
+  # Event types: run_start, phase_start, phase_finish, source_request, project_result, diagnostic, summary.
+  RUN_LOG_DIR = File.expand_path('../tmp/update_projects', __dir__)
+  EVENT_TYPES = %w[run_start phase_start phase_finish source_request project_result diagnostic summary].freeze
+  EVENT_ALIASES = { 'all' => EVENT_TYPES, 'default' => EVENT_TYPES }.freeze
+  TRACKED_FIELDS = %w[
+    total_downloads daily_downloads release_downloads downloads_basis github_stars gitlab_stars codeberg_stars
+    release_date last_commit_on status minimum_version description
+  ].freeze
 
   # Skip projects scraped within the last 24 hours
   SCRAPE_THRESHOLD_HOURS = 24
@@ -65,7 +77,7 @@ class ProjectUpdater
   )
   CLICKGEMS_CACHE_PATH = ENV.fetch('KETTLE_CLICKGEMS_CACHE', RUBYGEMS_VERSION_CACHE_PATH)
 
-  def initialize(surgical_fields: [], discover_rubygems: true, auto_confirm: false, project_filter: nil)
+  def initialize(surgical_fields: [], discover_rubygems: true, auto_confirm: false, project_filter: nil, project_classes: [])
     # SAFETY CHECK: projects_dev.yml must exist
     # If it doesn't exist, it means scripts/devswap was run but not run again to restore prod
     # This risks deploying dev/test projects to production
@@ -93,6 +105,16 @@ class ProjectUpdater
     @families = load_yaml(FAMILIES_FILE)
     @rate_limit_delay = 1 # seconds between API calls
     @errors = [] # Track errors for summary
+    @run_started_at = Time.now.utc
+    FileUtils.mkdir_p(RUN_LOG_DIR)
+    @run_log_path = File.join(RUN_LOG_DIR, "run-#{@run_started_at.strftime('%Y%m%dT%H%M%SZ')}-#{Process.pid}.ndjson")
+    @run_log = File.open(@run_log_path, 'a')
+    @events = Kettle::Ndjson.event_recorder(
+      Kettle::Ndjson.event_stream(@run_log, types: 'all', event_types: EVENT_TYPES, aliases: EVENT_ALIASES)
+    )
+    @source_tally = Hash.new { |h, k| h[k] = Hash.new(0) } # source => outcome => count
+    @clickgems_results = nil # gem => daily average, set by the batch query
+    @clickgems_batch_error = nil
     @registry_license_cache = {}
     @github_license_cache = {}
     @gitlab_token_usable = !GITLAB_TOKEN.nil?
@@ -100,8 +122,11 @@ class ProjectUpdater
     @discover_rubygems = discover_rubygems
     @auto_confirm = auto_confirm
     @project_filter = project_filter
+    @project_classes = Array(project_classes)
+    @targeted = !@project_filter.nil? || @project_classes.any?
     # A project filter implies targeted work — disable discovery automatically
-    @discover_rubygems = false if @project_filter
+    @discover_rubygems = false if @targeted
+    validate_project_classes!
     @prompt = TTY::Prompt.new
 
     # Preserve header comments from YAML files
@@ -152,6 +177,7 @@ class ProjectUpdater
       puts "🔬 SURGICAL UPDATE MODE: Only updating #{@surgical_fields.map { |f| "'#{f}'" }.join(', ')} field(s)"
       puts "   (Ignoring last_scrape_at timestamps)"
     end
+    puts "🏷️  Project classes: #{@project_classes.join(', ')} (union; combined with -p as intersection)" if @project_classes.any?
     if @project_filter
       puts "🎯 Project filter: #{@project_filter.map { |n| "'#{n}'" }.join(', ')} (exact match)"
     end
@@ -160,17 +186,15 @@ class ProjectUpdater
     puts "GitLab Token: #{GITLAB_TOKEN ? '✅ Set' : '❌ Not set'}"
     puts "RubyGems Handle: #{RUBYGEMS_HANDLE ? "✅ Set (#{RUBYGEMS_HANDLE})" : '❌ Not set'}"
 
-    non_person   = @projects
-    if @project_filter
-      non_person = non_person.select { |p| @project_filter.include?(p['name']) }
-      found_names = non_person.map { |p| p['name'] }
-      missing = @project_filter - found_names
-      missing.each { |n| puts "  ⚠️  No project named '#{n}' found in projects.yml — skipping" }
-      if non_person.empty?
-        abort "❌ None of the filtered projects (#{@project_filter.join(', ')}) found in projects.yml. Check the names and try again."
+    non_person = select_targets(@projects)
+    if @targeted
+      (@project_filter || []).each do |n|
+        puts "  ⚠️  No project named '#{n}' found in projects.yml — skipping" unless @projects.any? { |p| p['name'] == n }
       end
+      abort "❌ No projects matched the filter/classes. Check the names and try again." if non_person.empty?
+      puts "🎯 #{non_person.size} project(s) selected: #{non_person.first(12).map { |p| p['name'] }.join(', ')}#{non_person.size > 12 ? ', …' : ''}"
     end
-    skippable    = non_person.select { |p| !@surgical_fields.any? && @project_filter.nil? && recently_scraped?(p) }
+    skippable    = non_person.select { |p| !@surgical_fields.any? && !@targeted && recently_scraped?(p) }
     to_process   = non_person - skippable
 
     # Partition what we can actually update
@@ -207,15 +231,24 @@ class ProjectUpdater
     puts ""
     skipped_count = 0
     updated_count = 0
+    error_count = 0
+    field_changes = Hash.new(0)
 
-    projects_to_update = @project_filter ? @projects.select { |project| @project_filter.include?(project['name']) } : @projects
+    projects_to_update = select_targets(@projects)
+    before_dumps = projects_to_update.to_h { |pr| [pr.object_id, YAML.dump(pr)] }
+
+    emit_event('run_start', classes: @project_classes, mode: (@surgical_fields.any? ? 'surgical' : 'full'), surgical_fields: @surgical_fields,
+               project_filter: @project_filter, total_projects: projects_to_update.size, auto_confirm: @auto_confirm)
+    prefetch_clickgems_daily!(projects_to_update) if @surgical_fields.empty? || @surgical_fields.include?('daily_downloads')
+    emit_event('phase_start', phase: 'projects')
 
     projects_to_update.each_with_index do |project, index|
 
       # Check if project was recently scraped (skip this check in surgical mode)
-      if !@surgical_fields.any? && @project_filter.nil? && recently_scraped?(project)
+      if !@surgical_fields.any? && !@targeted && recently_scraped?(project)
         puts "[#{index + 1}/#{projects_to_update.size}] ⏭️  Skipping (scraped #{time_ago(project['last_scrape_at'])}): #{project['name']}"
         skipped_count += 1
+        emit_event('project_result', name: project['name'], ecosystem: project['ecosystem'], status: 'skipped', reason: 'recently_scraped')
         next
       end
 
@@ -226,9 +259,11 @@ class ProjectUpdater
       unless has_usable_forge || @surgical_fields.any?
         puts "  ⏭️  No GitHub/GitLab forge — skipping (no update source available)"
         skipped_count += 1
+        emit_event('project_result', name: project['name'], ecosystem: project['ecosystem'], status: 'skipped', reason: 'no_forge')
         next
       end
 
+      before = project.slice(*TRACKED_FIELDS)
       begin
         if @surgical_fields.any?
           @surgical_fields.each { |field| update_single_field(project, field) }
@@ -242,17 +277,31 @@ class ProjectUpdater
         sync_to_dev(project)
 
         updated_count += 1
+        changes = TRACKED_FIELDS.each_with_object({}) do |f, h|
+          h[f] = [before[f], project[f]] unless before[f] == project[f]
+        end
+        changes.each_key { |f| field_changes[f] += 1 }
+        emit_event('project_result', name: project['name'], ecosystem: project['ecosystem'], status: 'updated',
+                   changed_count: changes.size, changes: changes)
         sleep(@rate_limit_delay) # Rate limiting
       rescue => e
         error_msg = "#{project['name']}: #{e.message}"
         @errors << error_msg
+        error_count += 1
+        emit_event('project_result', name: project['name'], ecosystem: project['ecosystem'], status: 'error', message: e.message)
         puts "  ❌ ERROR: #{e.message}"
         puts "  #{e.backtrace.first}"
       end
     end
 
-    save_yaml(PROJECTS_FILE, @projects)
-    save_yaml(PROJECTS_DEV_FILE, @projects_dev)
+    if @targeted
+      changed = projects_to_update.select { |pr| before_dumps[pr.object_id] != YAML.dump(pr) }
+      persist_targeted(PROJECTS_FILE, @projects, changed)
+      persist_targeted(PROJECTS_DEV_FILE, @projects_dev, changed)
+    else
+      save_yaml(PROJECTS_FILE, @projects)
+      save_yaml(PROJECTS_DEV_FILE, @projects_dev)
+    end
 
     puts "\n" + "="*80
     puts "📊 Summary"
@@ -260,6 +309,19 @@ class ProjectUpdater
     puts "Updated: #{updated_count}"
     puts "Skipped (recent): #{skipped_count}"
     puts "Errors: #{@errors.size}"
+    puts "\nField changes (projects changed per field):"
+    field_changes.sort_by { |_, n| -n }.each { |f, n| puts "  #{f.ljust(20)} #{n}" }
+    puts "  (none)" if field_changes.empty?
+    puts "\nSource outcomes:"
+    @source_tally.each { |src, outcomes| puts "  #{src.ljust(20)} #{outcomes.map { |k, v| "#{k}=#{v}" }.join(' ')}" }
+    puts "  (none)" if @source_tally.empty?
+    @errors.each { |msg| emit_event('diagnostic', severity: 'error', message: msg) }
+    emit_event('phase_finish', phase: 'projects', status: error_count.zero? ? 'ok' : 'errors')
+    emit_event('summary', updated: updated_count, skipped: skipped_count, errors: @errors.size,
+               field_changes: field_changes, sources: @source_tally, clickgems_batch_error: @clickgems_batch_error,
+               duration_seconds: (Time.now.utc - @run_started_at).round(1))
+    @run_log.close
+    puts "\n🧾 Run log: #{@run_log_path}"
 
     if @errors.any?
       puts "\n⚠️  Problems Encountered:"
@@ -359,6 +421,9 @@ class ProjectUpdater
     'npm'      => { label: 'npm',        language: 'JavaScript' },
     'pypi'     => { label: 'PyPI',       language: 'Python'     },
     'go'       => { label: 'Go Modules', language: 'Go'         },
+    'hex'      => { label: 'Hex',        language: 'Elixir'     },
+    'nuget'    => { label: 'NuGet',      language: 'C#'         },
+    'packagist' => { label: 'Packagist', language: 'PHP'        },
     'none'     => { label: 'None',       language: nil          },
   }.freeze
 
@@ -842,6 +907,38 @@ class ProjectUpdater
       result[:release_date]    = go_info[:release_date]
       result[:minimum_version] = go_info[:go_version]
       puts "    📅 Latest release: #{go_info[:release_date] || 'unknown'}"
+
+    when 'hex'
+      puts "  🔍 Scraping hex.pm for '#{pkg_name}'..."
+      data = api_request("https://hex.pm/api/packages/#{pkg_name}")
+      return result unless data
+
+      result[:found]       = true
+      result[:description] = data.dig('meta', 'description')
+      result[:licenses]    = Array(data.dig('meta', 'licenses'))
+      result[:release_date] = (Date.parse(data["updated_at"]).strftime('%Y/%m/%d') rescue nil)
+      links = data.dig('meta', 'links') || {}
+      url = links.values.find { |u| u.to_s.include?('github.com') }
+      result[:github_url] = url.sub(/\.git$/, '') if url
+
+    when 'nuget'
+      puts "  🔍 Scraping nuget.org for '#{pkg_name}'..."
+      data = api_request("https://azuresearch-usnc.nuget.org/query?q=packageid:#{pkg_name}&take=1")&.dig('data', 0)
+      return result unless data
+
+      result[:found]       = true
+      result[:description] = data['description'] || data['summary']
+      url = [data['projectUrl'], data.dig('versions', 0, '@id')].compact.find { |u| u.include?('github.com') }
+      result[:github_url] = url.sub(/\.git$/, '') if url
+
+    when 'packagist'
+      puts "  🔍 Scraping packagist.org for '#{pkg_name}'..."
+      data = api_request("https://packagist.org/packages/#{pkg_name}.json")&.dig('package')
+      return result unless data
+
+      result[:found]       = true
+      result[:description] = data['description']
+      result[:github_url]  = data['repository'].sub(/\.git$/, '') if data['repository'].to_s.include?('github.com')
 
     # 'none' or unknown ecosystem — nothing to scrape
     end
@@ -1470,8 +1567,9 @@ class ProjectUpdater
           project['release_downloads'] = gem_info[:release_downloads]
           puts "  📦 #{field}: #{gem_info[field.to_sym]}"
         end
-      elsif github_forge
-        gh_downloads = fetch_github_release_downloads(github_forge['url'])
+      elsif github_forge || REGISTRY_DOWNLOAD_ECOSYSTEMS.include?(project['ecosystem'])
+        apply_registry_downloads(project)
+        gh_downloads = github_forge && fetch_github_release_downloads(github_forge['url'])
         if gh_downloads
           github_forge['total_downloads']   = gh_downloads[:total_downloads]
           github_forge['release_downloads'] = gh_downloads[:release_downloads]
@@ -1653,6 +1751,9 @@ class ProjectUpdater
       puts "  💎 Minimum Ruby version: #{project['minimum_version']}  (raw: #{ruby_version || 'none'})"
     end
 
+    # Steps 4b: registry download statistics for non-RubyGems ecosystems
+    apply_registry_downloads(project)
+
     # Step 7: Latest release date — registry first (RubyGems/crates.io/npm),
     # then GitHub releases, then latest git tag
     release_date = fetch_release_date_for_project(project, github_forge)
@@ -1698,7 +1799,7 @@ class ProjectUpdater
     # Sync the computed fields
     sync_fields = %w[
       github_stars gitlab_stars codeberg_stars
-      total_downloads daily_downloads release_downloads
+      total_downloads daily_downloads release_downloads downloads_basis
       minimum_version minimum_node_version licenses license_url
       release_date last_commit_on status last_scrape_at
       first_commit_by_person first_commit_by_person_on
@@ -2028,39 +2129,220 @@ class ProjectUpdater
   # 28 days = exactly 4 weeks, which eliminates weekday/weekend download cycles.
   DAILY_AVG_WINDOW = 28
 
+  # --- Targeting -------------------------------------------------------------
+  # Project classes (`--only`), modeled on kettle-family's selectable member classes.
+  # A comma-separated list is a UNION; the result is intersected with `-p` names.
+  CLASS_SIMPLE = %w[stale active archived pending failed no-forge].freeze
+  CLASS_KEYED = %w[role ecosystem language family tag status].freeze
+
+  def validate_project_classes!
+    bad = @project_classes.reject do |c|
+      CLASS_SIMPLE.include?(c) || (c.include?(':') && CLASS_KEYED.include?(c.split(':', 2).first))
+    end
+    return if bad.empty?
+
+    raise "Unknown project class(es): #{bad.join(', ')}. Simple: #{CLASS_SIMPLE.join(', ')}. " \
+          "Keyed (key:value): #{CLASS_KEYED.join(', ')}"
+  end
+
+  def select_targets(projects)
+    list = projects
+    list = list.select { |pr| @project_filter.include?(pr['name']) } if @project_filter
+    list = list.select { |pr| @project_classes.any? { |c| project_in_class?(pr, c) } } if @project_classes.any?
+    list
+  end
+
+  def project_in_class?(project, klass)
+    case klass
+    when 'stale', 'active', 'archived' then project['status'] == klass
+    when 'pending' then !recently_scraped?(project)
+    when 'failed' then last_run_failed_names.include?([project['name'], project['ecosystem']])
+    when 'no-forge' then (project['forges'] || []).none? { |f| %w[GitHub GitLab].include?(f['type']) }
+    else
+      key, value = klass.split(':', 2)
+      case key
+      when 'role', 'ecosystem', 'language', 'status' then project[key].to_s == value
+      when 'family' then project['family_id'].to_s == value
+      when 'tag' then Array(project['tags']).include?(value)
+      end
+    end
+  end
+
+  # Projects whose result was `error` in the most recent previous run log.
+  def last_run_failed_names
+    @last_run_failed_names ||= begin
+      log = Dir[File.join(RUN_LOG_DIR, 'run-*.ndjson')].reject { |f| f == @run_log_path }.max
+      if log
+        File.foreach(log).filter_map do |line|
+          ev = JSON.parse(line)
+          [ev['name'], ev['ecosystem']] if ev['type'] == 'project_result' && ev['status'] == 'error'
+        end
+      else
+        []
+      end
+    end
+  end
+
+  # Write only the changed entries back into the YAML file, structurally, with
+  # ast-crispr-yaml-psych, so every other entry, comment and blank line stays
+  # byte-for-byte identical (a full YAML.dump rewrites the whole file).
+  def persist_targeted(file, entries, changed)
+    content = File.read(file)
+    original = YAML.safe_load(content, permitted_classes: [Date, Time], aliases: true) || []
+    count = 0
+    changed.each do |project|
+      idx = original.index { |e| e['name'] == project['name'] && e['ecosystem'] == project['ecosystem'] }
+      next unless idx
+
+      entry = entries.find { |e| e['name'] == project['name'] && e['ecosystem'] == project['ecosystem'] }
+      entry['minimum_version'] = entry['minimum_version'].to_s if entry.key?('minimum_version') && !entry['minimum_version'].nil?
+      text = YAML.dump([entry]).sub(/\A---\n/, '')
+      target = Ast::Crispr::Yaml::Psych::Selectors.sequence_item(path: [], index: idx)
+      result = Ast::Crispr::Replace.result(content: content, target: target, replacement: text)
+      raise "ast-crispr replace failed for #{project['name']}: #{result.error}" unless result.success?
+
+      content = result.updated_content
+      count += 1
+    end
+    File.write(file, content) if count.positive?
+    puts "\n💾 #{File.basename(file)}: #{count} entr#{count == 1 ? 'y' : 'ies'} rewritten via ast-crispr-yaml-psych"
+    emit_event('diagnostic', severity: 'info', message: "#{File.basename(file)}: #{count} entries rewritten structurally")
+  end
+
+  # --- Registry download statistics (non-RubyGems) ----------------------------
+  # Each registry reports different things. `downloads_basis` records what
+  # total_downloads means so downstream tallies can be honest about it:
+  #   lifetime  crates.io, hex.pm, nuget.org, packagist.org report all-time totals
+  #   18mo      npm only serves ranges up to 18 months, so the total is that window
+  #   180d      pypistats.org only keeps 180 days, so the total is that window
+  REGISTRY_DOWNLOAD_ECOSYSTEMS = %w[cargo npm pypi hex nuget packagist].freeze
+
+  def apply_registry_downloads(project)
+    return unless REGISTRY_DOWNLOAD_ECOSYSTEMS.include?(project['ecosystem'])
+
+    info = fetch_registry_downloads(project['ecosystem'], project['name'])
+    if info.nil?
+      @source_tally["#{project['ecosystem']}_downloads"][:missing] += 1
+      puts "  ⚠️  No #{project['ecosystem']} download data for #{project['name']} (existing values kept)"
+      return
+    end
+    @source_tally["#{project['ecosystem']}_downloads"][:fetched] += 1
+    project['total_downloads']   = info[:total]
+    project['daily_downloads']   = info[:daily] unless info[:daily].nil?
+    project['release_downloads'] = info[:release] unless info[:release].nil?
+    project['downloads_basis']   = info[:basis]
+    puts "  📦 #{project['ecosystem']} downloads: #{info[:total]} (#{info[:basis]}), ~#{info[:daily] || 'n/a'}/day"
+  rescue => e
+    @source_tally["#{project['ecosystem']}_downloads"][:failed] += 1
+    error_msg = "Failed to fetch #{project['ecosystem']} downloads for #{project['name']}: #{e.message}"
+    @errors << error_msg unless @errors.include?(error_msg)
+    puts "    ⚠️  #{error_msg}"
+  end
+
+  def fetch_registry_downloads(ecosystem, name)
+    case ecosystem
+    when 'cargo'
+      data = api_request("https://crates.io/api/v1/crates/#{name}") or return nil
+      crate = data['crate']
+      latest = Array(data['versions']).find { |v| !v['yanked'] }
+      { total: crate['downloads'], daily: (crate['recent_downloads'].to_f / 90).round,
+        release: latest && latest['downloads'], basis: 'lifetime' }
+    when 'npm'
+      stop = Date.today
+      start = stop - 540
+      data = api_request("https://api.npmjs.org/downloads/range/#{start}:#{stop}/#{name.gsub('/', '%2F')}") or return nil
+      days = Array(data['downloads']).map { |d| d['downloads'].to_i }
+      { total: days.sum, daily: days.last(28).then { |l| l.empty? ? nil : (l.sum.to_f / l.size).round }, basis: '18mo' }
+    when 'pypi'
+      data = api_request("https://pypistats.org/api/packages/#{name}/overall?mirrors=false") or return nil
+      days = Array(data['data']).select { |d| d['category'] == 'without_mirrors' }.sort_by { |d| d['date'] }.map { |d| d['downloads'].to_i }
+      return nil if days.empty?
+
+      { total: days.sum, daily: (days.last(28).sum.to_f / days.last(28).size).round, basis: '180d' }
+    when 'hex'
+      data = api_request("https://hex.pm/api/packages/#{name}") or return nil
+      dl = data['downloads'] || {}
+      { total: dl['all'], daily: (dl['recent'].to_f / 90).round, basis: 'lifetime' }
+    when 'nuget'
+      data = api_request("https://azuresearch-usnc.nuget.org/query?q=packageid:#{name}&take=1")&.dig('data', 0) or return nil
+      { total: data['totalDownloads'], daily: nil, basis: 'lifetime' }
+    when 'packagist'
+      data = api_request("https://packagist.org/packages/#{name}.json")&.dig('package', 'downloads') or return nil
+      { total: data['total'], daily: (data['monthly'].to_f / 30).round, basis: 'lifetime' }
+    end
+  end
+
+  def emit_event(type, **payload)
+    Kettle::Ndjson.emit_event(@events, type, payload.merge(ts: Time.now.utc.iso8601))
+  end
+
+  # ClickGems (public ClickHouse "demo" user) enforces `queries_per_normalized_hash`
+  # of 20 per 3600s. A query that differs only by its literal (e.g. WHERE gem = 'x')
+  # shares one hash, so per-gem queries die after 20 gems. Fetch every gem in ONE
+  # query (IN list + LIMIT 28 BY gem) so a whole run costs a single quota unit.
+  def prefetch_clickgems_daily!(projects)
+    names = projects.select { |p| p['ecosystem'] == 'rubygems' }.map { |p| p['name'] }.uniq
+    names = names.reject { |n| !clickgems_refresh? && !fresh_release_marker?(n) && clickgems_daily_downloads_cache_entry(n) }
+    @clickgems_results ||= {}
+    return if names.empty?
+
+    emit_event('phase_start', phase: 'clickgems_batch', gems: names.size)
+    started = Process.clock_gettime(Process::CLOCK_MONOTONIC)
+    list = names.map { |n| "'#{n.gsub("'", "''")}'" }.join(', ')
+    query = <<~SQL
+      SELECT gem, round(avg(downloads)) AS daily_downloads
+      FROM (
+        SELECT gem, date, sum(count) AS downloads
+        FROM rubygems.downloads_per_day
+        WHERE gem IN (#{list})
+          AND date >= today() - INTERVAL 40 DAY
+        GROUP BY gem, date
+        ORDER BY gem, date DESC
+        LIMIT #{DAILY_AVG_WINDOW} BY gem
+      )
+      GROUP BY gem
+      FORMAT JSON
+    SQL
+    rows = clickgems_request(query).fetch('data', [])
+    rows.each do |row|
+      @clickgems_results[row['gem']] = row['daily_downloads'].round
+      write_clickgems_daily_downloads_cache_entry(row['gem'], row['daily_downloads'].round)
+    end
+    emit_event('source_request', source: 'clickgems', status: 'ok', requested: names.size, returned: rows.size,
+               missing: names - rows.map { |r| r['gem'] }, duration_ms: ((Process.clock_gettime(Process::CLOCK_MONOTONIC) - started) * 1000).round)
+    emit_event('phase_finish', phase: 'clickgems_batch', status: 'ok')
+  rescue => e
+    @clickgems_batch_error = e.message[0, 400]
+    @errors << "ClickGems batch query failed: #{@clickgems_batch_error}"
+    emit_event('source_request', source: 'clickgems', status: 'failed', requested: names&.size, message: @clickgems_batch_error)
+    emit_event('phase_finish', phase: 'clickgems_batch', status: 'failed')
+    puts "    ⚠️  ClickGems batch failed: #{@clickgems_batch_error}"
+  end
+
   def fetch_bestgems_daily(gem_name)
     cached_entry = clickgems_daily_downloads_cache_entry(gem_name)
     if cached_entry && !clickgems_refresh? && !fresh_release_marker?(gem_name)
+      @source_tally['clickgems_daily'][:cache] += 1
       puts "    ♻️  Using shared ClickGems cache for #{gem_name}"
       return cached_entry['daily_downloads']
     end
 
-    # ClickGems is RubyGems' public ClickHouse analytics service. Querying its
-    # pre-aggregated daily table avoids the unavailable BestGems endpoint.
-    gem = gem_name.gsub("'", "''")
-    query = <<~SQL
-      SELECT round(avg(downloads)) AS daily_downloads
-      FROM (
-        SELECT date, sum(count) AS downloads
-        FROM rubygems.downloads_per_day
-        WHERE gem = '#{gem}'
-          AND date >= today() - INTERVAL 40 DAY
-        GROUP BY date
-        ORDER BY date DESC
-        LIMIT #{DAILY_AVG_WINDOW}
-      )
-      FORMAT JSON
-    SQL
-    daily_downloads = clickgems_request(query).dig('data', 0, 'daily_downloads')&.round
-    write_clickgems_daily_downloads_cache_entry(gem_name, daily_downloads) unless daily_downloads.nil?
-    daily_downloads
-  rescue => e
-    return cached_entry['daily_downloads'] if cached_entry
+    prefetch_clickgems_daily!([{ 'name' => gem_name, 'ecosystem' => 'rubygems' }]) if @clickgems_results.nil?
+    if (value = @clickgems_results[gem_name])
+      @source_tally['clickgems_daily'][:fetched] += 1
+      return value
+    end
 
-    error_msg = "Failed to fetch ClickGems daily downloads for #{gem_name}: #{e.message}"
-    @errors << error_msg unless @errors.include?(error_msg)
-    puts "    ⚠️  #{error_msg}"
-    nil
+    # No fresh value: fall back to the last known value (stale), else report missing.
+    stale = stale_clickgems_daily(gem_name)
+    @source_tally['clickgems_daily'][stale.nil? ? :missing : :stale] += 1
+    puts "    ⚠️  ClickGems #{stale.nil? ? 'no data' : 'stale value used'} for #{gem_name}"
+    stale
+  end
+
+  def stale_clickgems_daily(gem_name)
+    entry = read_json_object(CLICKGEMS_CACHE_PATH).fetch('clickgems_daily_downloads', {})[gem_name]
+    entry.is_a?(Hash) && entry['daily_downloads'].is_a?(Numeric) ? entry['daily_downloads'] : nil
   end
 
   def clickgems_request(query)
@@ -2580,6 +2862,13 @@ if __FILE__ == $0
       options[:project_filter] = v.split(',').map(&:strip).reject(&:empty?)
     end
 
+    op.on("-o", "--only CLASS[,CLASS...]",
+          "Restrict update to classes of projects (union): stale, active, archived, pending, failed, no-forge,",
+          "or key:value (role:, ecosystem:, language:, family:, tag:, status:). Intersects with -p.",
+          "Targeted runs rewrite only the changed entries, via ast-crispr-yaml-psych.") do |v|
+      options[:project_classes] = v.split(',').map(&:strip).reject(&:empty?)
+    end
+
     op.separator ""
     op.separator "add_project options (all optional — omitted values are prompted interactively):"
 
@@ -2588,7 +2877,7 @@ if __FILE__ == $0
     end
 
     op.on("--ecosystem ECO",
-          "Ecosystem: rubygems, cargo, npm, pypi, go, none.",
+          "Ecosystem: rubygems, cargo, npm, pypi, go, hex, nuget, packagist, none.",
           "Comma-separated for multiple (e.g. rubygems,npm) — one card per ecosystem.") do |v|
       add_project_opts[:ecosystem] = v
     end
@@ -2644,7 +2933,7 @@ if __FILE__ == $0
   # surgical fields, no project filter). When the user is doing something more
   # targeted they don't want the pre-flight slowing them down.
   if options[:discover_rubygems].nil?
-    options[:discover_rubygems] = subcommand.nil? && surgical_fields.empty? && options[:project_filter].nil?
+    options[:discover_rubygems] = subcommand.nil? && surgical_fields.empty? && options[:project_filter].nil? && options[:project_classes].nil?
   end
 
   updater = ProjectUpdater.new(
@@ -2652,6 +2941,7 @@ if __FILE__ == $0
     discover_rubygems: options[:discover_rubygems],
     auto_confirm:      options[:auto_confirm],
     project_filter:    options[:project_filter],
+    project_classes:   options[:project_classes] || [],
   )
 
   case subcommand

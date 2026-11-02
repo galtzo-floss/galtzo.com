@@ -6,6 +6,8 @@ gem "bridgetown-builder", "~> 2.2"
 gem "bridgetown-foundation", "~> 2.2"
 gem "bridgetown-paginate", "~> 2.2"
 # Bridgetown 2.2.0 extends Samovar's Mapping::Model DSL, removed in Samovar 2.5.
+gem "kettle-ndjson"
+gem "ast-crispr-yaml-psych"
 gem "samovar", ">= 2.4", "< 2.5"
 
 group :development do
