@@ -1,0 +1,36 @@
+name: Refresh ClickGems daily downloads
+
+# The one bulk source: a single ClickGems query for every gem (the demo user allows ~20 queries
+# an hour per query shape). Runs once a day; refresh-project.yml never queries ClickGems.
+on:
+  schedule:
+    - cron: "17 3 * * *"
+  workflow_dispatch:
+
+concurrency:
+  group: data-refresh
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  clickgems:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "4.0.9"
+          bundler-cache: true
+      - name: Refresh daily_downloads for every gem
+        run: bundle exec ruby scripts/update_projects -y --only ecosystem:rubygems daily_downloads
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/_data/projects.yml src/_data/projects_dev.yml
+          git diff --staged --quiet && exit 0
+          git commit -m "data: refresh daily downloads (ClickGems)"
+          for i in 1 2 3; do git pull --rebase -q && git push && break; sleep 5; done

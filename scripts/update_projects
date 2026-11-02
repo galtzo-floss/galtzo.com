@@ -77,7 +77,7 @@ class ProjectUpdater
   )
   CLICKGEMS_CACHE_PATH = ENV.fetch('KETTLE_CLICKGEMS_CACHE', RUBYGEMS_VERSION_CACHE_PATH)
 
-  def initialize(surgical_fields: [], discover_rubygems: true, auto_confirm: false, project_filter: nil, project_classes: [])
+  def initialize(surgical_fields: [], discover_rubygems: true, auto_confirm: false, project_filter: nil, project_classes: [], limit: nil, oldest_first: false, no_clickgems: false)
     # SAFETY CHECK: projects_dev.yml must exist
     # If it doesn't exist, it means scripts/devswap was run but not run again to restore prod
     # This risks deploying dev/test projects to production
@@ -124,6 +124,10 @@ class ProjectUpdater
     @project_filter = project_filter
     @project_classes = Array(project_classes)
     @targeted = !@project_filter.nil? || @project_classes.any?
+    @limit = limit
+    @oldest_first = oldest_first
+    @no_clickgems = no_clickgems
+    @clickgems_results = {} if no_clickgems # never query ClickGems; daily_downloads comes from the shared cache
     # A project filter implies targeted work — disable discovery automatically
     @discover_rubygems = false if @targeted
     validate_project_classes!
@@ -239,7 +243,7 @@ class ProjectUpdater
 
     emit_event('run_start', classes: @project_classes, mode: (@surgical_fields.any? ? 'surgical' : 'full'), surgical_fields: @surgical_fields,
                project_filter: @project_filter, total_projects: projects_to_update.size, auto_confirm: @auto_confirm)
-    prefetch_clickgems_daily!(projects_to_update) if @surgical_fields.empty? || @surgical_fields.include?('daily_downloads')
+    prefetch_clickgems_daily!(projects_to_update) if !@no_clickgems && (@surgical_fields.empty? || @surgical_fields.include?('daily_downloads'))
     emit_event('phase_start', phase: 'projects')
 
     projects_to_update.each_with_index do |project, index|
@@ -2133,7 +2137,7 @@ class ProjectUpdater
   # Project classes (`--only`), modeled on kettle-family's selectable member classes.
   # A comma-separated list is a UNION; the result is intersected with `-p` names.
   CLASS_SIMPLE = %w[stale active archived pending failed no-forge].freeze
-  CLASS_KEYED = %w[role ecosystem language family tag status].freeze
+  CLASS_KEYED = %w[role ecosystem language family tag status top].freeze
 
   def validate_project_classes!
     bad = @project_classes.reject do |c|
@@ -2149,7 +2153,18 @@ class ProjectUpdater
     list = projects
     list = list.select { |pr| @project_filter.include?(pr['name']) } if @project_filter
     list = list.select { |pr| @project_classes.any? { |c| project_in_class?(pr, c) } } if @project_classes.any?
+    # Stalest first (never-scraped first), so a rotating job always works on the project most overdue.
+    list = list.sort_by.with_index { |pr, i| [pr['last_scrape_at'].to_s, i] } if @oldest_first
+    list = list.first(@limit) if @limit
     list
+  end
+
+  # The N most-downloaded projects I author or maintain (the ones shown on the profile).
+  def top_owned_ids(count)
+    @top_owned_ids ||= {}
+    @top_owned_ids[count] ||= @projects.reject { |pr| pr['role'] == 'contributor' }
+                                        .sort_by { |pr| -(pr['total_downloads'] || 0) }
+                                        .first(count).map(&:object_id)
   end
 
   def project_in_class?(project, klass)
@@ -2162,6 +2177,7 @@ class ProjectUpdater
       key, value = klass.split(':', 2)
       case key
       when 'role', 'ecosystem', 'language', 'status' then project[key].to_s == value
+      when 'top' then top_owned_ids(value.to_i).include?(project.object_id)
       when 'family' then project['family_id'].to_s == value
       when 'tag' then Array(project['tags']).include?(value)
       end
@@ -2864,9 +2880,21 @@ if __FILE__ == $0
 
     op.on("-o", "--only CLASS[,CLASS...]",
           "Restrict update to classes of projects (union): stale, active, archived, pending, failed, no-forge,",
-          "or key:value (role:, ecosystem:, language:, family:, tag:, status:). Intersects with -p.",
+          "or key:value (role:, ecosystem:, language:, family:, tag:, status:, top:N = N most-downloaded I own). Intersects with -p.",
           "Targeted runs rewrite only the changed entries, via ast-crispr-yaml-psych.") do |v|
       options[:project_classes] = v.split(',').map(&:strip).reject(&:empty?)
+    end
+
+    op.on("--limit N", Integer, "Process at most N of the selected projects (after --oldest-first ordering).") do |v|
+      options[:limit] = v
+    end
+
+    op.on("--oldest-first", "Order selected projects by last_scrape_at, never-scraped first.") do
+      options[:oldest_first] = true
+    end
+
+    op.on("--no-clickgems", "Never query ClickGems; daily_downloads comes from the shared cache (a bulk job refreshes it).") do
+      options[:no_clickgems] = true
     end
 
     op.separator ""
@@ -2942,6 +2970,9 @@ if __FILE__ == $0
     auto_confirm:      options[:auto_confirm],
     project_filter:    options[:project_filter],
     project_classes:   options[:project_classes] || [],
+    limit:             options[:limit],
+    oldest_first:      options[:oldest_first] || false,
+    no_clickgems:      options[:no_clickgems] || false,
   )
 
   case subcommand
