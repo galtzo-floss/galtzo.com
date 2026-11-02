@@ -2137,7 +2137,7 @@ class ProjectUpdater
   # Project classes (`--only`), modeled on kettle-family's selectable member classes.
   # A comma-separated list is a UNION; the result is intersected with `-p` names.
   CLASS_SIMPLE = %w[stale active archived pending failed no-forge].freeze
-  CLASS_KEYED = %w[role ecosystem language family tag status top].freeze
+  CLASS_KEYED = %w[role ecosystem language family tag status top rest].freeze
 
   def validate_project_classes!
     bad = @project_classes.reject do |c|
@@ -2178,6 +2178,7 @@ class ProjectUpdater
       case key
       when 'role', 'ecosystem', 'language', 'status' then project[key].to_s == value
       when 'top' then top_owned_ids(value.to_i).include?(project.object_id)
+      when 'rest' then !top_owned_ids(value.to_i).include?(project.object_id) # everything outside top:N, contributors included
       when 'family' then project['family_id'].to_s == value
       when 'tag' then Array(project['tags']).include?(value)
       end
@@ -2880,7 +2881,7 @@ if __FILE__ == $0
 
     op.on("-o", "--only CLASS[,CLASS...]",
           "Restrict update to classes of projects (union): stale, active, archived, pending, failed, no-forge,",
-          "or key:value (role:, ecosystem:, language:, family:, tag:, status:, top:N = N most-downloaded I own). Intersects with -p.",
+          "or key:value (role:, ecosystem:, language:, family:, tag:, status:, top:N = N most-downloaded I own, rest:N = everything else). Intersects with -p.",
           "Targeted runs rewrite only the changed entries, via ast-crispr-yaml-psych.") do |v|
       options[:project_classes] = v.split(',').map(&:strip).reject(&:empty?)
     end
