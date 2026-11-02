@@ -10,6 +10,7 @@ require 'time'
 require 'fileutils'
 require 'base64'
 require 'tty-prompt'
+require 'kettle/ndjson'
 
 class ProjectUpdater
   PROJECTS_FILE = File.expand_path('../src/_data/projects.yml', __dir__)
@@ -30,6 +31,16 @@ class ProjectUpdater
     github_forge = Array(person['forges']).find { |f| f['type'] == 'GitHub' }
     github_forge&.dig('owner') || ENV['GITHUB_HANDLE'] || 'pboling'
   end
+
+  # Structured run log (NDJSON, one event per line), modeled on kettle-family's event tapes.
+  # Event types: run_start, phase_start, phase_finish, source_request, project_result, diagnostic, summary.
+  RUN_LOG_DIR = File.expand_path('../tmp/update_projects', __dir__)
+  EVENT_TYPES = %w[run_start phase_start phase_finish source_request project_result diagnostic summary].freeze
+  EVENT_ALIASES = { 'all' => EVENT_TYPES, 'default' => EVENT_TYPES }.freeze
+  TRACKED_FIELDS = %w[
+    total_downloads daily_downloads release_downloads github_stars gitlab_stars codeberg_stars
+    release_date last_commit_on status minimum_version description
+  ].freeze
 
   # Skip projects scraped within the last 24 hours
   SCRAPE_THRESHOLD_HOURS = 24
@@ -93,6 +104,16 @@ class ProjectUpdater
     @families = load_yaml(FAMILIES_FILE)
     @rate_limit_delay = 1 # seconds between API calls
     @errors = [] # Track errors for summary
+    @run_started_at = Time.now.utc
+    FileUtils.mkdir_p(RUN_LOG_DIR)
+    @run_log_path = File.join(RUN_LOG_DIR, "run-#{@run_started_at.strftime('%Y%m%dT%H%M%SZ')}-#{Process.pid}.ndjson")
+    @run_log = File.open(@run_log_path, 'a')
+    @events = Kettle::Ndjson.event_recorder(
+      Kettle::Ndjson.event_stream(@run_log, types: 'all', event_types: EVENT_TYPES, aliases: EVENT_ALIASES)
+    )
+    @source_tally = Hash.new { |h, k| h[k] = Hash.new(0) } # source => outcome => count
+    @clickgems_results = nil # gem => daily average, set by the batch query
+    @clickgems_batch_error = nil
     @registry_license_cache = {}
     @github_license_cache = {}
     @gitlab_token_usable = !GITLAB_TOKEN.nil?
@@ -207,8 +228,15 @@ class ProjectUpdater
     puts ""
     skipped_count = 0
     updated_count = 0
+    error_count = 0
+    field_changes = Hash.new(0)
 
     projects_to_update = @project_filter ? @projects.select { |project| @project_filter.include?(project['name']) } : @projects
+
+    emit_event('run_start', mode: (@surgical_fields.any? ? 'surgical' : 'full'), surgical_fields: @surgical_fields,
+               project_filter: @project_filter, total_projects: projects_to_update.size, auto_confirm: @auto_confirm)
+    prefetch_clickgems_daily!(projects_to_update) if @surgical_fields.empty? || @surgical_fields.include?('daily_downloads')
+    emit_event('phase_start', phase: 'projects')
 
     projects_to_update.each_with_index do |project, index|
 
@@ -216,6 +244,7 @@ class ProjectUpdater
       if !@surgical_fields.any? && @project_filter.nil? && recently_scraped?(project)
         puts "[#{index + 1}/#{projects_to_update.size}] ⏭️  Skipping (scraped #{time_ago(project['last_scrape_at'])}): #{project['name']}"
         skipped_count += 1
+        emit_event('project_result', name: project['name'], ecosystem: project['ecosystem'], status: 'skipped', reason: 'recently_scraped')
         next
       end
 
@@ -226,9 +255,11 @@ class ProjectUpdater
       unless has_usable_forge || @surgical_fields.any?
         puts "  ⏭️  No GitHub/GitLab forge — skipping (no update source available)"
         skipped_count += 1
+        emit_event('project_result', name: project['name'], ecosystem: project['ecosystem'], status: 'skipped', reason: 'no_forge')
         next
       end
 
+      before = project.slice(*TRACKED_FIELDS)
       begin
         if @surgical_fields.any?
           @surgical_fields.each { |field| update_single_field(project, field) }
@@ -242,10 +273,18 @@ class ProjectUpdater
         sync_to_dev(project)
 
         updated_count += 1
+        changes = TRACKED_FIELDS.each_with_object({}) do |f, h|
+          h[f] = [before[f], project[f]] unless before[f] == project[f]
+        end
+        changes.each_key { |f| field_changes[f] += 1 }
+        emit_event('project_result', name: project['name'], ecosystem: project['ecosystem'], status: 'updated',
+                   changed_count: changes.size, changes: changes)
         sleep(@rate_limit_delay) # Rate limiting
       rescue => e
         error_msg = "#{project['name']}: #{e.message}"
         @errors << error_msg
+        error_count += 1
+        emit_event('project_result', name: project['name'], ecosystem: project['ecosystem'], status: 'error', message: e.message)
         puts "  ❌ ERROR: #{e.message}"
         puts "  #{e.backtrace.first}"
       end
@@ -260,6 +299,19 @@ class ProjectUpdater
     puts "Updated: #{updated_count}"
     puts "Skipped (recent): #{skipped_count}"
     puts "Errors: #{@errors.size}"
+    puts "\nField changes (projects changed per field):"
+    field_changes.sort_by { |_, n| -n }.each { |f, n| puts "  #{f.ljust(20)} #{n}" }
+    puts "  (none)" if field_changes.empty?
+    puts "\nSource outcomes:"
+    @source_tally.each { |src, outcomes| puts "  #{src.ljust(20)} #{outcomes.map { |k, v| "#{k}=#{v}" }.join(' ')}" }
+    puts "  (none)" if @source_tally.empty?
+    @errors.each { |msg| emit_event('diagnostic', severity: 'error', message: msg) }
+    emit_event('phase_finish', phase: 'projects', status: error_count.zero? ? 'ok' : 'errors')
+    emit_event('summary', updated: updated_count, skipped: skipped_count, errors: @errors.size,
+               field_changes: field_changes, sources: @source_tally, clickgems_batch_error: @clickgems_batch_error,
+               duration_seconds: (Time.now.utc - @run_started_at).round(1))
+    @run_log.close
+    puts "\n🧾 Run log: #{@run_log_path}"
 
     if @errors.any?
       puts "\n⚠️  Problems Encountered:"
@@ -2028,39 +2080,77 @@ class ProjectUpdater
   # 28 days = exactly 4 weeks, which eliminates weekday/weekend download cycles.
   DAILY_AVG_WINDOW = 28
 
+  def emit_event(type, **payload)
+    Kettle::Ndjson.emit_event(@events, type, payload.merge(ts: Time.now.utc.iso8601))
+  end
+
+  # ClickGems (public ClickHouse "demo" user) enforces `queries_per_normalized_hash`
+  # of 20 per 3600s. A query that differs only by its literal (e.g. WHERE gem = 'x')
+  # shares one hash, so per-gem queries die after 20 gems. Fetch every gem in ONE
+  # query (IN list + LIMIT 28 BY gem) so a whole run costs a single quota unit.
+  def prefetch_clickgems_daily!(projects)
+    names = projects.select { |p| p['ecosystem'] == 'rubygems' }.map { |p| p['name'] }.uniq
+    names = names.reject { |n| !clickgems_refresh? && !fresh_release_marker?(n) && clickgems_daily_downloads_cache_entry(n) }
+    @clickgems_results ||= {}
+    return if names.empty?
+
+    emit_event('phase_start', phase: 'clickgems_batch', gems: names.size)
+    started = Process.clock_gettime(Process::CLOCK_MONOTONIC)
+    list = names.map { |n| "'#{n.gsub("'", "''")}'" }.join(', ')
+    query = <<~SQL
+      SELECT gem, round(avg(downloads)) AS daily_downloads
+      FROM (
+        SELECT gem, date, sum(count) AS downloads
+        FROM rubygems.downloads_per_day
+        WHERE gem IN (#{list})
+          AND date >= today() - INTERVAL 40 DAY
+        GROUP BY gem, date
+        ORDER BY gem, date DESC
+        LIMIT #{DAILY_AVG_WINDOW} BY gem
+      )
+      GROUP BY gem
+      FORMAT JSON
+    SQL
+    rows = clickgems_request(query).fetch('data', [])
+    rows.each do |row|
+      @clickgems_results[row['gem']] = row['daily_downloads'].round
+      write_clickgems_daily_downloads_cache_entry(row['gem'], row['daily_downloads'].round)
+    end
+    emit_event('source_request', source: 'clickgems', status: 'ok', requested: names.size, returned: rows.size,
+               missing: names - rows.map { |r| r['gem'] }, duration_ms: ((Process.clock_gettime(Process::CLOCK_MONOTONIC) - started) * 1000).round)
+    emit_event('phase_finish', phase: 'clickgems_batch', status: 'ok')
+  rescue => e
+    @clickgems_batch_error = e.message[0, 400]
+    @errors << "ClickGems batch query failed: #{@clickgems_batch_error}"
+    emit_event('source_request', source: 'clickgems', status: 'failed', requested: names&.size, message: @clickgems_batch_error)
+    emit_event('phase_finish', phase: 'clickgems_batch', status: 'failed')
+    puts "    ⚠️  ClickGems batch failed: #{@clickgems_batch_error}"
+  end
+
   def fetch_bestgems_daily(gem_name)
     cached_entry = clickgems_daily_downloads_cache_entry(gem_name)
     if cached_entry && !clickgems_refresh? && !fresh_release_marker?(gem_name)
+      @source_tally['clickgems_daily'][:cache] += 1
       puts "    ♻️  Using shared ClickGems cache for #{gem_name}"
       return cached_entry['daily_downloads']
     end
 
-    # ClickGems is RubyGems' public ClickHouse analytics service. Querying its
-    # pre-aggregated daily table avoids the unavailable BestGems endpoint.
-    gem = gem_name.gsub("'", "''")
-    query = <<~SQL
-      SELECT round(avg(downloads)) AS daily_downloads
-      FROM (
-        SELECT date, sum(count) AS downloads
-        FROM rubygems.downloads_per_day
-        WHERE gem = '#{gem}'
-          AND date >= today() - INTERVAL 40 DAY
-        GROUP BY date
-        ORDER BY date DESC
-        LIMIT #{DAILY_AVG_WINDOW}
-      )
-      FORMAT JSON
-    SQL
-    daily_downloads = clickgems_request(query).dig('data', 0, 'daily_downloads')&.round
-    write_clickgems_daily_downloads_cache_entry(gem_name, daily_downloads) unless daily_downloads.nil?
-    daily_downloads
-  rescue => e
-    return cached_entry['daily_downloads'] if cached_entry
+    prefetch_clickgems_daily!([{ 'name' => gem_name, 'ecosystem' => 'rubygems' }]) if @clickgems_results.nil?
+    if (value = @clickgems_results[gem_name])
+      @source_tally['clickgems_daily'][:fetched] += 1
+      return value
+    end
 
-    error_msg = "Failed to fetch ClickGems daily downloads for #{gem_name}: #{e.message}"
-    @errors << error_msg unless @errors.include?(error_msg)
-    puts "    ⚠️  #{error_msg}"
-    nil
+    # No fresh value: fall back to the last known value (stale), else report missing.
+    stale = stale_clickgems_daily(gem_name)
+    @source_tally['clickgems_daily'][stale.nil? ? :missing : :stale] += 1
+    puts "    ⚠️  ClickGems #{stale.nil? ? 'no data' : 'stale value used'} for #{gem_name}"
+    stale
+  end
+
+  def stale_clickgems_daily(gem_name)
+    entry = read_json_object(CLICKGEMS_CACHE_PATH).fetch('clickgems_daily_downloads', {})[gem_name]
+    entry.is_a?(Hash) && entry['daily_downloads'].is_a?(Numeric) ? entry['daily_downloads'] : nil
   end
 
   def clickgems_request(query)
