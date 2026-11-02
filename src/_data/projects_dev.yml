@@ -4457,3 +4457,332 @@
   theme: family
   family_id: smorg-rb
   family_position: 30
+- name: alef
+  description: Opinionated polyglot binding generator for Rust libraries
+  description_source: registry
+  language: Rust
+  ecosystem: cargo
+  theme: family
+  family_id: xberg-io
+  family_position: 1
+  role: contributor
+  forges:
+  - type: GitHub
+    url: https://github.com/xberg-io/alef
+    owner: xberg-io
+  tags:
+  - bindings
+  - codegen
+  - rust
+  funding_sites: []
+  docs_site:
+  status: active
+  github_stars: 100
+  total_downloads: 12099
+  daily_downloads: 59
+  release_downloads: 0
+  downloads_basis: lifetime
+  licenses:
+  - MIT
+  license_url: https://github.com/xberg-io/alef/blob/main/LICENSE
+  release_date: 2026/11/02
+  last_commit_on: 2026/11/02
+  last_scrape_at: '2026-11-02T16:57:28Z'
+  first_commit_by_person: https://github.com/xberg-io/alef/commit/166e0daad4d0078235f4ccf8c82f95fde3e8b938
+  first_commit_by_person_on: 2026/07/21
+- name: tree-sitter-language-pack
+  description: Core library for tree-sitter language pack - provides compiled parsers
+    for 372 languages
+  description_source: registry
+  language: Rust
+  ecosystem: cargo
+  theme: family
+  family_id: xberg-io
+  family_position: 2
+  role: contributor
+  forges:
+  - type: GitHub
+    url: https://github.com/xberg-io/tree-sitter-language-pack
+    owner: xberg-io
+  tags:
+  - parsing
+  - rust
+  - tree-sitter
+  funding_sites: []
+  docs_site:
+  status: active
+  github_stars: 480
+  total_downloads: 232731
+  daily_downloads: 1672
+  release_downloads: 431
+  downloads_basis: lifetime
+  licenses:
+  - MIT
+  license_url: https://github.com/xberg-io/tree-sitter-language-pack/blob/main/LICENSE
+  release_date: 2026/11/01
+  last_commit_on: 2026/11/02
+  last_scrape_at: '2026-11-02T16:57:37Z'
+  first_commit_by_person: https://github.com/xberg-io/tree-sitter-language-pack/commit/7f947b49631d086a8812caebaf5e91f69e8987bf
+  first_commit_by_person_on: 2026/04/20
+- name: ts-pack-cli
+  description: CLI tool for tree-sitter language pack - manage parser downloads and
+    run code intelligence
+  description_source: registry
+  language: Rust
+  ecosystem: cargo
+  theme: family
+  family_id: xberg-io
+  family_position: 3
+  role: contributor
+  forges:
+  - type: GitHub
+    url: https://github.com/xberg-io/tree-sitter-language-pack
+    owner: xberg-io
+  tags:
+  - cli
+  - rust
+  - tree-sitter
+  funding_sites: []
+  docs_site:
+  status: active
+  github_stars: 480
+  total_downloads: 2634
+  daily_downloads: 5
+  release_downloads: 12
+  downloads_basis: lifetime
+  licenses:
+  - MIT
+  license_url: https://github.com/xberg-io/tree-sitter-language-pack/blob/main/LICENSE
+  release_date: 2026/11/01
+  last_commit_on: 2026/11/02
+  last_scrape_at: '2026-11-02T16:57:44Z'
+  first_commit_by_person: https://github.com/xberg-io/tree-sitter-language-pack/commit/7f947b49631d086a8812caebaf5e91f69e8987bf
+  first_commit_by_person_on: 2026/04/20
+- name: tree-sitter-language-pack
+  description: Parse and understand source code in 300+ languages with one dependency
+    and no grammars to compile (Python).
+  description_source: site
+  language: Python
+  ecosystem: pypi
+  theme: family
+  family_id: xberg-io
+  family_position: 4
+  role: contributor
+  forges:
+  - type: GitHub
+    url: https://github.com/xberg-io/tree-sitter-language-pack
+    owner: xberg-io
+  tags:
+  - parsing
+  - python
+  - tree-sitter
+  funding_sites: []
+  docs_site:
+  status: active
+  github_stars: 480
+  total_downloads: 45572893
+  daily_downloads: 181255
+  downloads_basis: 180d
+  licenses:
+  - MIT
+  license_url: https://github.com/xberg-io/tree-sitter-language-pack/blob/main/LICENSE
+  release_date: 2026/11/01
+  last_commit_on: 2026/11/02
+  last_scrape_at: '2026-11-02T16:57:52Z'
+  first_commit_by_person: https://github.com/xberg-io/tree-sitter-language-pack/commit/7f947b49631d086a8812caebaf5e91f69e8987bf
+  first_commit_by_person_on: 2026/04/20
+- name: "@xberg-io/tree-sitter-language-pack"
+  description: Parse and understand source code in 300+ languages with one dependency and no grammars to compile (Node.js).
+  description_source: site
+  language: JavaScript
+  ecosystem: npm
+  theme: family
+  family_id: xberg-io
+  family_position: 5
+  role: contributor
+  forges:
+  - type: GitHub
+    url: https://github.com/xberg-io/tree-sitter-language-pack
+    owner: xberg-io
+  tags:
+  - javascript
+  - parsing
+  - tree-sitter
+  funding_sites: []
+  docs_site:
+  status: active
+  github_stars: 480
+  total_downloads: 29516
+  daily_downloads: 645
+  downloads_basis: 18mo
+  licenses:
+  - MIT
+  license_url: https://github.com/xberg-io/tree-sitter-language-pack/blob/main/LICENSE
+  release_date: 2026/11/01
+  last_commit_on: 2026/11/02
+  last_scrape_at: '2026-11-02T16:58:02Z'
+  first_commit_by_person: https://github.com/xberg-io/tree-sitter-language-pack/commit/7f947b49631d086a8812caebaf5e91f69e8987bf
+  first_commit_by_person_on: 2026/04/20
+- name: "@xberg-io/tree-sitter-language-pack-wasm"
+  description: Parse and understand source code in 300+ languages with one dependency and no grammars to compile (WebAssembly).
+  description_source: site
+  language: JavaScript
+  ecosystem: npm
+  theme: family
+  family_id: xberg-io
+  family_position: 6
+  role: contributor
+  forges:
+  - type: GitHub
+    url: https://github.com/xberg-io/tree-sitter-language-pack
+    owner: xberg-io
+  tags:
+  - parsing
+  - tree-sitter
+  - wasm
+  funding_sites: []
+  docs_site:
+  status: active
+  github_stars: 480
+  total_downloads: 6981
+  daily_downloads: 33
+  downloads_basis: 18mo
+  licenses:
+  - MIT
+  license_url: https://github.com/xberg-io/tree-sitter-language-pack/blob/main/LICENSE
+  release_date: 2026/11/01
+  last_commit_on: 2026/11/02
+  last_scrape_at: '2026-11-02T16:58:11Z'
+  first_commit_by_person: https://github.com/xberg-io/tree-sitter-language-pack/commit/7f947b49631d086a8812caebaf5e91f69e8987bf
+  first_commit_by_person_on: 2026/04/20
+- name: tree_sitter_language_pack
+  description: Pre-compiled tree-sitter grammars for 372 programming languages
+  description_source: registry
+  language: Ruby
+  ecosystem: rubygems
+  theme: family
+  family_id: xberg-io
+  family_position: 7
+  role: contributor
+  forges:
+  - type: GitHub
+    url: https://github.com/xberg-io/tree-sitter-language-pack
+    owner: xberg-io
+  tags:
+  - parsing
+  - ruby
+  - tree-sitter
+  funding_sites: []
+  docs_site:
+  status: active
+  github_stars: 480
+  total_downloads: 182680
+  daily_downloads: 1165
+  release_downloads: 189
+  minimum_version: '3.2'
+  licenses:
+  - MIT
+  license_url: https://github.com/xberg-io/tree-sitter-language-pack/blob/main/LICENSE
+  release_date: 2026/10/12
+  last_commit_on: 2026/11/02
+  last_scrape_at: '2026-11-02T16:58:14Z'
+  first_commit_by_person: https://github.com/xberg-io/tree-sitter-language-pack/commit/7f947b49631d086a8812caebaf5e91f69e8987bf
+  first_commit_by_person_on: 2026/04/20
+- name: tree_sitter_language_pack
+  description: Parse and understand source code in 300+ languages with one dependency
+    and no grammars to compile (Elixir).
+  description_source: site
+  language: Elixir
+  ecosystem: hex
+  theme: family
+  family_id: xberg-io
+  family_position: 8
+  role: contributor
+  forges:
+  - type: GitHub
+    url: https://github.com/xberg-io/tree-sitter-language-pack
+    owner: xberg-io
+  tags:
+  - elixir
+  - parsing
+  - tree-sitter
+  funding_sites: []
+  docs_site:
+  status: active
+  github_stars: 480
+  total_downloads: 10047
+  daily_downloads: 45
+  downloads_basis: lifetime
+  licenses:
+  - MIT
+  license_url: https://github.com/xberg-io/tree-sitter-language-pack/blob/main/LICENSE
+  release_date: 2026/11/01
+  last_commit_on: 2026/11/02
+  last_scrape_at: '2026-11-02T16:58:21Z'
+  first_commit_by_person: https://github.com/xberg-io/tree-sitter-language-pack/commit/7f947b49631d086a8812caebaf5e91f69e8987bf
+  first_commit_by_person_on: 2026/04/20
+- name: xberg-io/tree-sitter-language-pack
+  description: Parse and understand source code in 300+ languages with one dependency
+    and no grammars to compile (PHP).
+  description_source: site
+  language: PHP
+  ecosystem: packagist
+  theme: family
+  family_id: xberg-io
+  family_position: 9
+  role: contributor
+  forges:
+  - type: GitHub
+    url: https://github.com/xberg-io/tree-sitter-language-pack
+    owner: xberg-io
+  tags:
+  - parsing
+  - php
+  - tree-sitter
+  funding_sites: []
+  docs_site:
+  status: active
+  github_stars: 480
+  total_downloads: 17
+  daily_downloads: 0
+  downloads_basis: lifetime
+  licenses:
+  - MIT
+  license_url: https://github.com/xberg-io/tree-sitter-language-pack/blob/main/LICENSE
+  release_date: 2026/11/01
+  last_commit_on: 2026/11/02
+  last_scrape_at: '2026-11-02T16:58:30Z'
+  first_commit_by_person: https://github.com/xberg-io/tree-sitter-language-pack/commit/7f947b49631d086a8812caebaf5e91f69e8987bf
+  first_commit_by_person_on: 2026/04/20
+- name: XbergIo.TreeSitterLanguagePack
+  description: Parse and understand source code in 300+ languages with one dependency
+    and no grammars to compile (C#).
+  description_source: site
+  language: C#
+  ecosystem: nuget
+  theme: family
+  family_id: xberg-io
+  family_position: 10
+  role: contributor
+  forges:
+  - type: GitHub
+    url: https://github.com/xberg-io/tree-sitter-language-pack
+    owner: xberg-io
+  tags:
+  - csharp
+  - parsing
+  - tree-sitter
+  funding_sites: []
+  docs_site:
+  status: active
+  github_stars: 480
+  total_downloads: 7884
+  downloads_basis: lifetime
+  licenses:
+  - MIT
+  license_url: https://github.com/xberg-io/tree-sitter-language-pack/blob/main/LICENSE
+  release_date: 2026/11/01
+  last_commit_on: 2026/11/02
+  last_scrape_at: '2026-11-02T16:58:38Z'
+  first_commit_by_person: https://github.com/xberg-io/tree-sitter-language-pack/commit/7f947b49631d086a8812caebaf5e91f69e8987bf
+  first_commit_by_person_on: 2026/04/20

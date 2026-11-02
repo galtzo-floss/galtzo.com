@@ -39,7 +39,7 @@ class ProjectUpdater
   EVENT_TYPES = %w[run_start phase_start phase_finish source_request project_result diagnostic summary].freeze
   EVENT_ALIASES = { 'all' => EVENT_TYPES, 'default' => EVENT_TYPES }.freeze
   TRACKED_FIELDS = %w[
-    total_downloads daily_downloads release_downloads github_stars gitlab_stars codeberg_stars
+    total_downloads daily_downloads release_downloads downloads_basis github_stars gitlab_stars codeberg_stars
     release_date last_commit_on status minimum_version description
   ].freeze
 
@@ -421,6 +421,9 @@ class ProjectUpdater
     'npm'      => { label: 'npm',        language: 'JavaScript' },
     'pypi'     => { label: 'PyPI',       language: 'Python'     },
     'go'       => { label: 'Go Modules', language: 'Go'         },
+    'hex'      => { label: 'Hex',        language: 'Elixir'     },
+    'nuget'    => { label: 'NuGet',      language: 'C#'         },
+    'packagist' => { label: 'Packagist', language: 'PHP'        },
     'none'     => { label: 'None',       language: nil          },
   }.freeze
 
@@ -904,6 +907,38 @@ class ProjectUpdater
       result[:release_date]    = go_info[:release_date]
       result[:minimum_version] = go_info[:go_version]
       puts "    📅 Latest release: #{go_info[:release_date] || 'unknown'}"
+
+    when 'hex'
+      puts "  🔍 Scraping hex.pm for '#{pkg_name}'..."
+      data = api_request("https://hex.pm/api/packages/#{pkg_name}")
+      return result unless data
+
+      result[:found]       = true
+      result[:description] = data.dig('meta', 'description')
+      result[:licenses]    = Array(data.dig('meta', 'licenses'))
+      result[:release_date] = (Date.parse(data["updated_at"]).strftime('%Y/%m/%d') rescue nil)
+      links = data.dig('meta', 'links') || {}
+      url = links.values.find { |u| u.to_s.include?('github.com') }
+      result[:github_url] = url.sub(/\.git$/, '') if url
+
+    when 'nuget'
+      puts "  🔍 Scraping nuget.org for '#{pkg_name}'..."
+      data = api_request("https://azuresearch-usnc.nuget.org/query?q=packageid:#{pkg_name}&take=1")&.dig('data', 0)
+      return result unless data
+
+      result[:found]       = true
+      result[:description] = data['description'] || data['summary']
+      url = [data['projectUrl'], data.dig('versions', 0, '@id')].compact.find { |u| u.include?('github.com') }
+      result[:github_url] = url.sub(/\.git$/, '') if url
+
+    when 'packagist'
+      puts "  🔍 Scraping packagist.org for '#{pkg_name}'..."
+      data = api_request("https://packagist.org/packages/#{pkg_name}.json")&.dig('package')
+      return result unless data
+
+      result[:found]       = true
+      result[:description] = data['description']
+      result[:github_url]  = data['repository'].sub(/\.git$/, '') if data['repository'].to_s.include?('github.com')
 
     # 'none' or unknown ecosystem — nothing to scrape
     end
@@ -1532,8 +1567,9 @@ class ProjectUpdater
           project['release_downloads'] = gem_info[:release_downloads]
           puts "  📦 #{field}: #{gem_info[field.to_sym]}"
         end
-      elsif github_forge
-        gh_downloads = fetch_github_release_downloads(github_forge['url'])
+      elsif github_forge || REGISTRY_DOWNLOAD_ECOSYSTEMS.include?(project['ecosystem'])
+        apply_registry_downloads(project)
+        gh_downloads = github_forge && fetch_github_release_downloads(github_forge['url'])
         if gh_downloads
           github_forge['total_downloads']   = gh_downloads[:total_downloads]
           github_forge['release_downloads'] = gh_downloads[:release_downloads]
@@ -1715,6 +1751,9 @@ class ProjectUpdater
       puts "  💎 Minimum Ruby version: #{project['minimum_version']}  (raw: #{ruby_version || 'none'})"
     end
 
+    # Steps 4b: registry download statistics for non-RubyGems ecosystems
+    apply_registry_downloads(project)
+
     # Step 7: Latest release date — registry first (RubyGems/crates.io/npm),
     # then GitHub releases, then latest git tag
     release_date = fetch_release_date_for_project(project, github_forge)
@@ -1760,7 +1799,7 @@ class ProjectUpdater
     # Sync the computed fields
     sync_fields = %w[
       github_stars gitlab_stars codeberg_stars
-      total_downloads daily_downloads release_downloads
+      total_downloads daily_downloads release_downloads downloads_basis
       minimum_version minimum_node_version licenses license_url
       release_date last_commit_on status last_scrape_at
       first_commit_by_person first_commit_by_person_on
@@ -2168,6 +2207,69 @@ class ProjectUpdater
     File.write(file, content) if count.positive?
     puts "\n💾 #{File.basename(file)}: #{count} entr#{count == 1 ? 'y' : 'ies'} rewritten via ast-crispr-yaml-psych"
     emit_event('diagnostic', severity: 'info', message: "#{File.basename(file)}: #{count} entries rewritten structurally")
+  end
+
+  # --- Registry download statistics (non-RubyGems) ----------------------------
+  # Each registry reports different things. `downloads_basis` records what
+  # total_downloads means so downstream tallies can be honest about it:
+  #   lifetime  crates.io, hex.pm, nuget.org, packagist.org report all-time totals
+  #   18mo      npm only serves ranges up to 18 months, so the total is that window
+  #   180d      pypistats.org only keeps 180 days, so the total is that window
+  REGISTRY_DOWNLOAD_ECOSYSTEMS = %w[cargo npm pypi hex nuget packagist].freeze
+
+  def apply_registry_downloads(project)
+    return unless REGISTRY_DOWNLOAD_ECOSYSTEMS.include?(project['ecosystem'])
+
+    info = fetch_registry_downloads(project['ecosystem'], project['name'])
+    if info.nil?
+      @source_tally["#{project['ecosystem']}_downloads"][:missing] += 1
+      puts "  ⚠️  No #{project['ecosystem']} download data for #{project['name']} (existing values kept)"
+      return
+    end
+    @source_tally["#{project['ecosystem']}_downloads"][:fetched] += 1
+    project['total_downloads']   = info[:total]
+    project['daily_downloads']   = info[:daily] unless info[:daily].nil?
+    project['release_downloads'] = info[:release] unless info[:release].nil?
+    project['downloads_basis']   = info[:basis]
+    puts "  📦 #{project['ecosystem']} downloads: #{info[:total]} (#{info[:basis]}), ~#{info[:daily] || 'n/a'}/day"
+  rescue => e
+    @source_tally["#{project['ecosystem']}_downloads"][:failed] += 1
+    error_msg = "Failed to fetch #{project['ecosystem']} downloads for #{project['name']}: #{e.message}"
+    @errors << error_msg unless @errors.include?(error_msg)
+    puts "    ⚠️  #{error_msg}"
+  end
+
+  def fetch_registry_downloads(ecosystem, name)
+    case ecosystem
+    when 'cargo'
+      data = api_request("https://crates.io/api/v1/crates/#{name}") or return nil
+      crate = data['crate']
+      latest = Array(data['versions']).find { |v| !v['yanked'] }
+      { total: crate['downloads'], daily: (crate['recent_downloads'].to_f / 90).round,
+        release: latest && latest['downloads'], basis: 'lifetime' }
+    when 'npm'
+      stop = Date.today
+      start = stop - 540
+      data = api_request("https://api.npmjs.org/downloads/range/#{start}:#{stop}/#{name.gsub('/', '%2F')}") or return nil
+      days = Array(data['downloads']).map { |d| d['downloads'].to_i }
+      { total: days.sum, daily: days.last(28).then { |l| l.empty? ? nil : (l.sum.to_f / l.size).round }, basis: '18mo' }
+    when 'pypi'
+      data = api_request("https://pypistats.org/api/packages/#{name}/overall?mirrors=false") or return nil
+      days = Array(data['data']).select { |d| d['category'] == 'without_mirrors' }.sort_by { |d| d['date'] }.map { |d| d['downloads'].to_i }
+      return nil if days.empty?
+
+      { total: days.sum, daily: (days.last(28).sum.to_f / days.last(28).size).round, basis: '180d' }
+    when 'hex'
+      data = api_request("https://hex.pm/api/packages/#{name}") or return nil
+      dl = data['downloads'] || {}
+      { total: dl['all'], daily: (dl['recent'].to_f / 90).round, basis: 'lifetime' }
+    when 'nuget'
+      data = api_request("https://azuresearch-usnc.nuget.org/query?q=packageid:#{name}&take=1")&.dig('data', 0) or return nil
+      { total: data['totalDownloads'], daily: nil, basis: 'lifetime' }
+    when 'packagist'
+      data = api_request("https://packagist.org/packages/#{name}.json")&.dig('package', 'downloads') or return nil
+      { total: data['total'], daily: (data['monthly'].to_f / 30).round, basis: 'lifetime' }
+    end
   end
 
   def emit_event(type, **payload)
@@ -2775,7 +2877,7 @@ if __FILE__ == $0
     end
 
     op.on("--ecosystem ECO",
-          "Ecosystem: rubygems, cargo, npm, pypi, go, none.",
+          "Ecosystem: rubygems, cargo, npm, pypi, go, hex, nuget, packagist, none.",
           "Comma-separated for multiple (e.g. rubygems,npm) — one card per ecosystem.") do |v|
       add_project_opts[:ecosystem] = v
     end
