@@ -416,7 +416,7 @@
   release_date: 2010/06/22
   last_commit_on: 2026/01/22
   status: active
-  last_scrape_at: '2026-11-02T07:46:39Z'
+  last_scrape_at: '2026-11-03T10:00:17Z'
   licenses:
   - MIT
   license_url: https://github.com/galtzo-floss/awesome_search/blob/main/LICENSE
@@ -446,7 +446,7 @@
   release_date:
   last_commit_on: 2026/03/20
   status: active
-  last_scrape_at: '2026-11-02T07:46:42Z'
+  last_scrape_at: '2026-11-03T10:00:21Z'
   theme: family
   family_id: miscellaneous
   family_position: 3
@@ -535,9 +535,9 @@
   - flash
   - rails
   - ruby
-  total_downloads: 480242
+  total_downloads: 480283
   daily_downloads: 111
-  release_downloads: 192064
+  release_downloads: 192098
   adoptable: false
   archived: true
   deprecation_reason: Incompatible with modern Rails
@@ -546,7 +546,7 @@
   release_date: 2017/04/11
   last_commit_on: 2020/11/15
   status: archived
-  last_scrape_at: '2026-11-02T07:46:51Z'
+  last_scrape_at: '2026-11-03T10:00:24Z'
   licenses:
   - MIT
   license_url: https://github.com/pboling/cacheable-flash/blob/master/LICENSE
@@ -580,13 +580,13 @@
   archived: true
   docs_site:
   github_stars: 49
-  total_downloads: 100357
+  total_downloads: 100360
   daily_downloads: 10
-  release_downloads: 14570
+  release_downloads: 14572
   release_date: 2013/01/22
   last_commit_on: 2026/01/17
   status: active
-  last_scrape_at: '2026-11-02T07:46:56Z'
+  last_scrape_at: '2026-11-03T10:00:27Z'
   licenses:
   - MIT
   license_url: https://github.com/galtzo-floss/capistrano_mailer/blob/main/LICENSE
@@ -619,13 +619,13 @@
   archived: true
   docs_site:
   github_stars: 11
-  total_downloads: 25265
+  total_downloads: 25292
   daily_downloads: 24
-  release_downloads: 5838
+  release_downloads: 5865
   release_date: 2015/11/30
   last_commit_on: 2026/01/17
   status: active
-  last_scrape_at: '2026-11-02T07:47:00Z'
+  last_scrape_at: '2026-11-03T10:00:30Z'
   licenses:
   - MIT
   license_url: https://github.com/galtzo-floss/celluloid-io-pg-listener/blob/main/LICENSE.txt
@@ -654,13 +654,13 @@
   - validation
   docs_site:
   github_stars: 8
-  total_downloads: 8005
+  total_downloads: 8006
   daily_downloads: 3
-  release_downloads: 8005
+  release_downloads: 8006
   release_date: 2014/11/20
   last_commit_on: 2026/01/17
   status: active
-  last_scrape_at: '2026-11-02T07:47:04Z'
+  last_scrape_at: '2026-11-03T10:00:32Z'
   licenses:
   - MIT
   license_url: https://github.com/galtzo-floss/controller_validator/blob/main/LICENSE.txt
@@ -694,13 +694,13 @@
   - ruby
   docs_site:
   github_stars: 34
-  total_downloads: 154618
+  total_downloads: 154620
   daily_downloads: 22
-  release_downloads: 6033
+  release_downloads: 6034
   release_date: 2013/11/26
   last_commit_on: 2026/01/17
   status: active
-  last_scrape_at: '2026-11-02T07:47:08Z'
+  last_scrape_at: '2026-11-03T10:00:35Z'
   licenses:
   - MIT
   license_url: https://github.com/galtzo-floss/csv_pirate/blob/main/LICENSE
@@ -737,13 +737,13 @@
   github_stars: 18
   gitlab_stars: 0
   codeberg_stars: 0
-  total_downloads: 94115
+  total_downloads: 94136
   daily_downloads: 42
-  release_downloads: 443
+  release_downloads: 453
   release_date: 2026/10/01
   last_commit_on: 2026/11/02
   status: active
-  last_scrape_at: '2026-11-02T07:47:12Z'
+  last_scrape_at: '2026-11-03T10:00:40Z'
   licenses:
   - MIT
   license_url: https://github.com/galtzo-floss/debug_logging/blob/main/LICENSE.md
@@ -784,7 +784,7 @@
   release_date: 2015/05/20
   last_commit_on: 2026/01/17
   status: active
-  last_scrape_at: '2026-11-02T07:47:17Z'
+  last_scrape_at: '2026-11-03T10:00:43Z'
   licenses:
   - MIT
   license_url: https://github.com/galtzo-floss/destination_errors/blob/main/LICENSE.txt
@@ -822,7 +822,7 @@
   release_date: 2012/08/15
   last_commit_on: 2026/01/17
   status: active
-  last_scrape_at: '2026-11-02T07:47:21Z'
+  last_scrape_at: '2026-11-03T10:00:46Z'
   licenses:
   - MIT
   license_url: https://github.com/galtzo-floss/dry_views/blob/main/LICENSE

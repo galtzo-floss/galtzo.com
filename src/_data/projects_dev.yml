@@ -257,7 +257,7 @@
   release_date: 2010/06/22
   last_commit_on: 2026/01/22
   status: active
-  last_scrape_at: '2026-11-02T07:46:39Z'
+  last_scrape_at: '2026-11-03T10:00:17Z'
   theme: family
   family_id: adoptable-family
   family_position: 7
@@ -574,14 +574,14 @@
   - rails
   - ruby
   docs_site: https://www.rubydoc.info/gems/cacheable_flash/1.0.0
-  total_downloads: 480242
+  total_downloads: 480283
   daily_downloads: 111
-  release_downloads: 192064
+  release_downloads: 192098
   release_date: 2017/04/11
   github_stars: 101
   last_commit_on: 2020/11/15
   status: archived
-  last_scrape_at: '2026-11-02T07:46:51Z'
+  last_scrape_at: '2026-11-03T10:00:24Z'
   theme: family
   family_id: archived-family
   family_position: 1
