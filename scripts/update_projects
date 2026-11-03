@@ -12,6 +12,7 @@ require 'base64'
 require 'tty-prompt'
 require 'kettle/ndjson'
 require 'ast-crispr-yaml-psych'
+require_relative 'star_history'
 
 class ProjectUpdater
   PROJECTS_FILE = File.expand_path('../src/_data/projects.yml', __dir__)
@@ -48,7 +49,7 @@ class ProjectUpdater
 
   # Valid fields for surgical updates
   VALID_SURGICAL_FIELDS = %w[
-    github_stars gitlab_stars codeberg_stars
+    github_stars gitlab_stars codeberg_stars star_history
     total_downloads daily_downloads release_downloads
     minimum_version minimum_node_version license
     release_date last_commit_on status
@@ -1543,6 +1544,14 @@ class ProjectUpdater
         puts "  ⭐ GitHub stars: #{github_info[:stars]}"
       end
 
+    when 'star_history'
+      if github_forge
+        github_info = fetch_github_info(github_forge['url'])
+        sync_star_history(project, github_forge, github_info[:stars]) if github_info
+      else
+        puts "  ⏭️  No GitHub forge — no star history"
+      end
+
     when 'gitlab_stars'
       if gitlab_forge
         gitlab_stars = fetch_gitlab_stars(gitlab_forge['url'])
@@ -1703,6 +1712,7 @@ class ProjectUpdater
         puts "  ⭐ GitHub stars: #{github_info[:stars]}"
 
         apply_license_metadata(project, github_forge)
+        sync_star_history(project, github_forge, github_info[:stars])
       end
     end
 
@@ -2288,6 +2298,33 @@ class ProjectUpdater
       data = api_request("https://packagist.org/packages/#{name}.json")&.dig('package', 'downloads') or return nil
       { total: data['total'], daily: (data['monthly'].to_f / 30).round, basis: 'lifetime' }
     end
+  end
+
+  # --- Star event history (src/_data/star_history/<owner>--<repo>.yml, see scripts/star_history.rb) ---------
+  # Featured projects only: mine (not contributor), not archived, not adoptable. One sync per GitHub repo per
+  # run, even when several packages share a repo.
+  def sync_star_history(project, github_forge, total)
+    return if project['role'] == 'contributor' || project['adoptable'] || project['status'] == 'archived'
+
+    repo = extract_repo_path(github_forge['url'])
+    return unless repo
+
+    @star_history ||= StarHistory.new
+    @star_synced ||= {}
+    return if @star_synced[repo]
+
+    result = @star_history.sync(repo, total)
+    @star_synced[repo] = true
+    @source_tally['star_history'][result[:mode]] += 1
+    emit_event('source_request', source: 'star_history', repo: repo, status: 'ok', mode: result[:mode].to_s,
+                                 api_calls: result[:api_calls], days_changed: result[:days_changed], total: total)
+    puts "  ⭐ Star history: #{result[:mode]} (#{result[:api_calls]} API call(s))"
+  rescue => e
+    @source_tally['star_history'][:failed] += 1
+    error_msg = "Failed to sync star history for #{repo || project['name']}: #{e.message}"
+    @errors << error_msg unless @errors.include?(error_msg)
+    emit_event('source_request', source: 'star_history', repo: repo, status: 'failed', message: e.message[0, 200])
+    puts "    ⚠️  #{error_msg}"
   end
 
   def emit_event(type, **payload)
