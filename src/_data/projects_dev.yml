@@ -27,7 +27,7 @@
   release_date: 2024/07/05
   last_commit_on: 2026/11/02
   status: active
-  last_scrape_at: '2026-11-02T07:46:01Z'
+  last_scrape_at: '2026-11-03T02:37:45Z'
   theme: family
   family_id: active-record
   family_position: 2
@@ -64,13 +64,13 @@
   github_stars: 11
   gitlab_stars: 0
   codeberg_stars: 0
-  total_downloads: 62843
+  total_downloads: 62846
   daily_downloads: 13
   release_downloads: 3971
   release_date: 2024/03/06
   last_commit_on: 2026/10/22
   status: active
-  last_scrape_at: '2026-11-02T07:46:10Z'
+  last_scrape_at: '2026-11-03T02:37:52Z'
   theme: family
   family_id: active-record
   family_position: 4
@@ -99,13 +99,13 @@
   - ruby
   docs_site:
   github_stars: 12
-  total_downloads: 322157
+  total_downloads: 322202
   daily_downloads: 47
-  release_downloads: 261380
+  release_downloads: 261410
   release_date: 2024/09/18
   last_commit_on: 2026/01/17
   status: active
-  last_scrape_at: '2026-11-02T07:46:24Z'
+  last_scrape_at: '2026-11-03T02:38:02Z'
   theme: family
   family_id: active-record
   family_position: 5
@@ -142,9 +142,9 @@
   docs_site:
   github_stars: 317
   release_date: 2026/09/01
-  last_commit_on: 2026/10/23
+  last_commit_on: 2026/11/03
   status: active
-  last_scrape_at: '2026-11-02T07:46:27Z'
+  last_scrape_at: '2026-11-03T02:38:05Z'
   theme: family
   family_id: rubygems-bundler-family
   family_position: 10
@@ -182,13 +182,13 @@
   github_stars: 22
   gitlab_stars: 0
   codeberg_stars: 0
-  total_downloads: 275958
+  total_downloads: 276521
   daily_downloads: 1164
-  release_downloads: 12907
+  release_downloads: 13322
   release_date: 2026/10/21
   last_commit_on: 2026/10/21
   status: active
-  last_scrape_at: '2026-11-02T07:46:31Z'
+  last_scrape_at: '2026-11-03T02:38:08Z'
   theme: family
   family_id: rspec-family
   family_position: 1
@@ -217,13 +217,13 @@
   - shell
   docs_site:
   github_stars: 16
-  total_downloads: 39876
+  total_downloads: 39888
   daily_downloads: 10
-  release_downloads: 3444
+  release_downloads: 3445
   release_date: 2018/09/04
   last_commit_on: 2026/01/17
   status: active
-  last_scrape_at: '2026-11-02T07:46:35Z'
+  last_scrape_at: '2026-11-03T02:38:11Z'
   theme: family
   family_id: miscellaneous
   family_position: 2
