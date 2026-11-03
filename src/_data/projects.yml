@@ -939,13 +939,13 @@
   github_stars: 508
   gitlab_stars: 0
   codeberg_stars: 0
-  total_downloads: 6836403
+  total_downloads: 6844339
   daily_downloads: 10302
-  release_downloads: 25694
+  release_downloads: 26443
   release_date: 2026/09/12
   last_commit_on: 2026/11/02
   status: active
-  last_scrape_at: '2026-11-02T07:47:34Z'
+  last_scrape_at: '2026-11-03T01:55:58Z'
   licenses:
   - MIT
   license_url: https://github.com/galtzo-floss/flag_shih_tzu/blob/main/LICENSE
