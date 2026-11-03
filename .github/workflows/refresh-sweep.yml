@@ -1,7 +1,7 @@
 name: Refresh the rest (daily sweep)
 
 # Everything outside the 24 projects shown on the profile (refresh-project.yml handles those every
-# 6 hours): the stalest 10 each hour, so each remaining project is refreshed about once a day.
+# 6 hours): about 9 stalest projects per elapsed hour, so each remaining project is refreshed about once a day.
 # Never queries ClickGems; refresh-clickgems.yml owns that.
 on:
   schedule:
@@ -28,7 +28,15 @@ jobs:
       - name: Refresh the 10 stalest projects outside the top 24
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: bundle exec ruby scripts/update_projects -y --only rest:24 --oldest-first --limit 10 --no-clickgems
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Scheduled runs are skipped often, so size by elapsed time: ~9 projects per hour since the
+          # last successful run (min 9, max 60) keeps the ~205 projects outside the top 24 on a daily pace.
+          last=$(gh run list --workflow refresh-sweep.yml --status success --limit 1 --json createdAt -q '.[0].createdAt // empty')
+          mins=60; [ -n "$last" ] && mins=$(( ( $(date +%s) - $(date -d "$last" +%s) ) / 60 ))
+          limit=$(( (mins * 9 + 59) / 60 )); [ "$limit" -lt 9 ] && limit=9; [ "$limit" -gt 60 ] && limit=60
+          echo "last success ${last:-never}, ${mins} min ago -> refreshing $limit project(s)"
+          bundle exec ruby scripts/update_projects -y --only rest:24 --oldest-first --limit "$limit" --no-clickgems
       - name: Commit
         run: |
           git config user.name "github-actions[bot]"

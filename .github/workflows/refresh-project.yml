@@ -1,6 +1,6 @@
 name: Refresh one project
 
-# One project per run, 15 minutes apart: the stalest of the 24 projects shown on the profile
+# About one project per 15 minutes (runs are sized by elapsed time, see below): the stalest of the 24 projects shown on the profile
 # (top 24 by downloads among those I author or maintain). Bulk sources (ClickGems) are NOT
 # touched here; see refresh-clickgems.yml. Each run only rewrites the entry it refreshed.
 on:
@@ -32,12 +32,20 @@ jobs:
       - name: Refresh
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PROJECT: ${{ inputs.project }}
         run: |
           if [ -n "$PROJECT" ]; then
             bundle exec ruby scripts/update_projects -y --no-clickgems -p "$PROJECT"
           else
-            bundle exec ruby scripts/update_projects -y --only top:24 --oldest-first --limit 1 --no-clickgems
+            # GitHub runs "*/15" schedules far less often than asked (a handful a day on quiet repos), so
+            # size each run by the time since the last successful one: one project per 15 minutes elapsed
+            # (min 1, max 8). The rotation stays on pace however many runs GitHub skips.
+            last=$(gh run list --workflow refresh-project.yml --status success --limit 1 --json createdAt -q '.[0].createdAt // empty')
+            mins=900; [ -n "$last" ] && mins=$(( ( $(date +%s) - $(date -d "$last" +%s) ) / 60 ))
+            limit=$(( (mins + 14) / 15 )); [ "$limit" -lt 1 ] && limit=1; [ "$limit" -gt 8 ] && limit=8
+            echo "last success ${last:-never}, ${mins} min ago -> refreshing $limit project(s)"
+            bundle exec ruby scripts/update_projects -y --only top:24 --oldest-first --limit "$limit" --no-clickgems
           fi
       - name: Commit
         run: |
