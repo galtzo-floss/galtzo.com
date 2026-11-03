@@ -215,3 +215,10 @@ In the IRB console: `PROJS`, `table()`, `find()`, `by_language()`, `by_status()`
 - `refresh-clickgems.yml`: once a day, one ClickGems query for every gem. Per-project runs never query ClickGems.
 - `refresh-sweep.yml`: hourly, refreshes about 9 stalest projects per elapsed hour outside the top 24 (`--only rest:24 --oldest-first --limit N --no-clickgems`), so each remaining project is refreshed about once a day.
 - All three share the `data-refresh` concurrency group so commits never race. Commits made with `GITHUB_TOKEN` do not trigger `deploy.yml`; deploy the site on its own schedule if it should show refreshed data.
+
+### Star event history (`src/_data/star_history/`)
+
+- One file per featured repo (mine, not contributor/archived/adoptable): `owner--repo.yml` with `stars:` keyed by day -> that day's star times (UTC, one line a day), plus `observed:` (GitHub's count by day), `synced_through`, `last_full_resync`, `unaligned_delta`. No usernames.
+- `scripts/star_history.rb` edits it structurally with ast-crispr-yaml-psych and re-validates before writing. Only the last 14 days are re-read, and only when the GitHub count changed; once a month a gated resync walks back month by month until the stored total matches GitHub, then stops.
+- Synced as part of each project's refresh (full update) or on demand: `bundle exec ruby scripts/update_projects -y star_history -p NAME`.
+- Known gem gaps worked around here: structuredmerge/structuredmerge-ruby#105 (hence one line per day).
