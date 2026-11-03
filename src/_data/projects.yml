@@ -1020,13 +1020,13 @@
   - ruby
   docs_site:
   github_stars: 93
-  total_downloads: 2977154
+  total_downloads: 2977318
   daily_downloads: 279
-  release_downloads: 31380
+  release_downloads: 31474
   release_date: 2024/09/22
   last_commit_on: 2026/10/12
   status: active
-  last_scrape_at: '2026-11-02T07:47:41Z'
+  last_scrape_at: '2026-11-03T08:52:55Z'
   licenses:
   - MIT
   license_url: https://github.com/galtzo-floss/gem_bench/blob/main/LICENSE.md
