@@ -2608,13 +2608,13 @@
   - shell
   docs_site:
   github_stars: 9468
-  total_downloads: 55614326
+  total_downloads: 55636102
   daily_downloads: 20019
-  release_downloads: 31246
+  release_downloads: 35632
   release_date: 2026/10/16
   last_commit_on: 2026/11/01
   status: active
-  last_scrape_at: '2026-11-03T14:47:50Z'
+  last_scrape_at: '2026-11-04T09:34:30Z'
   licenses:
   - MIT
   license_url: https://github.com/resque/resque/blob/master/LICENSE
@@ -2894,13 +2894,13 @@
   github_stars: 8
   gitlab_stars: 1
   codeberg_stars: 0
-  total_downloads: 557647
+  total_downloads: 558020
   daily_downloads: 741
-  release_downloads: 445499
+  release_downloads: 445869
   release_date: 2024/06/23
   last_commit_on: 2026/01/17
   status: active
-  last_scrape_at: '2026-11-03T16:44:49Z'
+  last_scrape_at: '2026-11-04T09:34:34Z'
   licenses:
   - MIT
   license_url: https://github.com/galtzo-floss/rspec-block_is_expected/blob/main/LICENSE.txt
@@ -2993,23 +2993,18 @@
   github_stars: 16
   gitlab_stars: 1
   codeberg_stars: 0
-  total_downloads: 543863
+  total_downloads: 544456
   daily_downloads: 1050
-  release_downloads: 20316
+  release_downloads: 20819
   release_date: 2026/10/13
   last_commit_on: 2026/10/13
   status: active
-  last_scrape_at: '2026-11-03T16:44:52Z'
+  last_scrape_at: '2026-11-04T09:34:37Z'
   licenses:
   - MIT
   license_url: https://github.com/galtzo-floss/rspec-stubbed_env/blob/main/LICENSE.md
   owner: true
   releaser: true
-  coverage: 100.0
-  coverage_lines_covered: 84
-  coverage_lines_total: 84
-  coverage_branch: 100.0
-  coverage_release: 1.0.17
 - name: rubocop-lts
   description: "\U0001F9BE Configure RuboCop + a bevy of friends to gradually lint
     Ruby code"
@@ -3041,13 +3036,13 @@
   github_stars: 12
   gitlab_stars: 1
   codeberg_stars: 0
-  total_downloads: 330478
+  total_downloads: 330618
   daily_downloads: 457
-  release_downloads: 5374
+  release_downloads: 5456
   release_date: 2026/09/09
   last_commit_on: 2026/10/21
   status: active
-  last_scrape_at: '2026-11-03T16:44:57Z'
+  last_scrape_at: '2026-11-04T09:34:40Z'
   licenses:
   - MIT
   license_url: https://github.com/rubocop-lts/rubocop-lts/blob/main/LICENSE.md
@@ -3673,13 +3668,13 @@
   github_stars: 12
   gitlab_stars: 0
   codeberg_stars: 1
-  total_downloads: 13777466
+  total_downloads: 13779496
   daily_downloads: 2005
-  release_downloads: 6853348
+  release_downloads: 6855195
   release_date: 2019/10/16
   last_commit_on: 2026/10/22
   status: active
-  last_scrape_at: '2026-11-03T16:45:02Z'
+  last_scrape_at: '2026-11-04T09:34:45Z'
   licenses:
   - Ruby
   - Apache Software License 2.0
@@ -3767,23 +3762,18 @@
   github_stars: 174
   gitlab_stars: 0
   codeberg_stars: 0
-  total_downloads: 2780221
+  total_downloads: 2781457
   daily_downloads: 950
-  release_downloads: 4513
+  release_downloads: 4812
   release_date: 2026/10/01
   last_commit_on: 2026/11/02
   status: active
-  last_scrape_at: '2026-11-03T16:45:05Z'
+  last_scrape_at: '2026-11-04T09:34:48Z'
   licenses:
   - MIT
   license_url: https://github.com/galtzo-floss/sanitize_email/blob/main/LICENSE.md
   owner: true
   releaser: true
-  coverage: 95.58
-  coverage_lines_covered: 368
-  coverage_lines_total: 385
-  coverage_branch: 82.91
-  coverage_release: 2.0.17
 - name: seed_migration
   description: Rails gem for Data Migrations
   description_source: site
@@ -4118,23 +4108,18 @@
   github_stars: 19
   gitlab_stars: 2
   codeberg_stars: 2
-  total_downloads: 136309766
+  total_downloads: 136449461
   daily_downloads: 191491
-  release_downloads: 232283
+  release_downloads: 258125
   release_date: 2026/10/25
   last_commit_on: 2026/11/01
   status: active
-  last_scrape_at: '2026-11-03T16:45:09Z'
+  last_scrape_at: '2026-11-04T09:34:51Z'
   licenses:
   - MIT
   license_url: https://github.com/ruby-oauth/snaky_hash/blob/main/LICENSE.md
   owner: true
   releaser: true
-  coverage: 100.0
-  coverage_lines_covered: 133
-  coverage_lines_total: 133
-  coverage_branch: 100.0
-  coverage_release: 2.0.9
 - name: spyke-connection_lambda
   description: Dynamic Spyke API connection plugin for the Enterprise Cloud
   description_source: site
@@ -4246,23 +4231,18 @@
   github_stars: 6
   gitlab_stars: 1
   codeberg_stars: 0
-  total_downloads: 400346
+  total_downloads: 400662
   daily_downloads: 558
-  release_downloads: 7625
+  release_downloads: 7916
   release_date: 2026/10/22
   last_commit_on: 2026/10/22
   status: active
-  last_scrape_at: '2026-11-03T16:45:12Z'
+  last_scrape_at: '2026-11-04T09:34:55Z'
   licenses:
   - MIT
   license_url: https://github.com/rubocop-lts/standard-rubocop-lts/blob/main/LICENSE.md
   owner: true
   releaser: true
-  coverage: 100.0
-  coverage_lines_covered: 19
-  coverage_lines_total: 19
-  coverage_branch: 0.0
-  coverage_release: 2.0.15
 - name: status_tag
   description: |-
     Provides content_tag_for method signature to create customizable and logic-gated labels from objects.
