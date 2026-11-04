@@ -162,6 +162,8 @@ Ownership facts, independent of `role`, are scraped (never hand-set) with `scrip
 - `owner`: `true` when the GitHub token's user has admin on the repo.
 - `releaser`: `true` when the user is listed as an owner/maintainer on the project's registry (RubyGems, npm, crates.io). Left unset for registries with no public owner list.
 
+Families can be rolled up into one summary card by consumers (the GitHub profile): `rollup: <id>` on a family in `src/_data/families.yml` groups every family sharing that id (structuredmerge spans four), and the optional `rollup_lead: <project name>` names the member whose name, description and install command represent the roll-up. Members stay individual entries here; the roll-up is presentation only.
+
 Coverage of the **latest release** (Ruby gems only) is scraped by `scripts/update_projects -y coverage`, and on every project refresh, from the release header kettle-changelog writes into each gem's `CHANGELOG.md`. Parsing is `kettle-changelog --release-stats --json` (`gem install kettle-changelog`), so only its exact format counts; gems without it get no `coverage*` keys at all (never 0). Fields: `coverage` (line %), `coverage_lines_covered`, `coverage_lines_total`, `coverage_branch` (%), `coverage_release` (the release it describes). Monorepo gems read `gems/<name>/CHANGELOG.md`, never the root changelog.
 
 So someone can be a `maintainer` who is neither owner nor releaser; consumers should show those facts next to the role.
