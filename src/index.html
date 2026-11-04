@@ -378,6 +378,22 @@ body_class: projects
   <% family_groups[family_id] = members.sort_by { |p| p['family_position'] || 999 } %>
 <% end %>
 
+<% # Monorepo gems share one repo's star count: show it only on the lead (first by family_position) card per repo %>
+<% star_repo_seen = {} %>
+<% star_hidden = {} %>
+<% family_groups.each do |family_id, members| %>
+  <% members.each do |m| %>
+    <% repo = ((m['forges'] || []).find { |f| f['type'] == 'GitHub' } || {})['url'] %>
+    <% next unless repo %>
+    <% key = [family_id, repo] %>
+    <% if star_repo_seen[key] %>
+      <% star_hidden[m.object_id] = true %>
+    <% else %>
+      <% star_repo_seen[key] = true %>
+    <% end %>
+  <% end %>
+<% end %>
+
 <% # Order families by their position in families.yml, then merge for rendering %>
 <% ordered_families = (site.data.families || []).sort_by { |f| f['position'] || 999 } %>
 
@@ -496,7 +512,7 @@ body_class: projects
           </span>
       </div>
     </div>
-    <% total_stars_for_footer = (project['github_stars'] || 0) + (project['gitlab_stars'] || 0) + (project['codeberg_stars'] || 0) %>
+    <% total_stars_for_footer = star_hidden[project.object_id] ? 0 : (project['github_stars'] || 0) + (project['gitlab_stars'] || 0) + (project['codeberg_stars'] || 0) %>
     <% if project['release_date'] || project['total_downloads'] || total_stars_for_footer > 0 %>
     <div class="bottom-anchor stats">
       <div class="horizontal-banner banner-stats <%= project['role'] %>">
@@ -768,7 +784,7 @@ body_class: projects
           </span>
       </div>
     </div>
-    <% total_stars_for_footer = (project['github_stars'] || 0) + (project['gitlab_stars'] || 0) + (project['codeberg_stars'] || 0) %>
+    <% total_stars_for_footer = star_hidden[project.object_id] ? 0 : (project['github_stars'] || 0) + (project['gitlab_stars'] || 0) + (project['codeberg_stars'] || 0) %>
     <% if project['release_date'] || project['total_downloads'] || total_stars_for_footer > 0 %>
     <div class="bottom-anchor stats">
       <div class="horizontal-banner banner-stats <%= project['role'] %>">

@@ -25,6 +25,8 @@ jobs:
         with:
           ruby-version: "4.0.9"
           bundler-cache: true
+      - name: Install kettle-changelog (reads coverage from release headers)
+        run: gem install kettle-changelog --no-document
       - name: Refresh the 10 stalest projects outside the top 24
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -39,8 +41,8 @@ jobs:
           bundle exec ruby scripts/update_projects -y --only rest:24 --oldest-first --limit "$limit" --no-clickgems
       - name: Commit
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config user.name "autobolt"
+          git config user.email "32689569+autobolt@users.noreply.github.com"
           git add src/_data/projects.yml src/_data/projects_dev.yml src/_data/star_history
           git diff --staged --quiet && exit 0
           git commit -m "data: daily sweep"

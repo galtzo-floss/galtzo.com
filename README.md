@@ -156,12 +156,24 @@ ruby scripts/update_projects add_project -y \
 | `--ecosystem ECO` | `rubygems` \| `cargo` \| `npm` \| `pypi` \| `go` \| `none` | Use `none` for projects with no package registry (forge-only). Stored as `ecosystem: none` — distinguishable from a missing/unset ecosystem, which triggers a data-quality warning. |
 | `--language LANG` | Primary language (inferred from ecosystem if omitted) |
 | `--role ROLE` | `author` \| `contributor` \| `maintainer` (default: `contributor`) |
+
+Ownership facts, independent of `role`, are scraped (never hand-set) with `scripts/update_projects -y owner releaser`:
+
+- `owner`: `true` when the GitHub token's user has admin on the repo.
+- `releaser`: `true` when the user is listed as an owner/maintainer on the project's registry (RubyGems, npm, crates.io). Left unset for registries with no public owner list.
+
+Families can be rolled up into one summary card by consumers (the GitHub profile): `rollup: <id>` on a family in `src/_data/families.yml` groups every family sharing that id (structuredmerge spans four), and the optional `rollup_lead: <project name>` names the member whose name, description and install command represent the roll-up. Members stay individual entries here; the roll-up is presentation only.
+
+Coverage of the **latest release** (Ruby gems only) is scraped by `scripts/update_projects -y coverage`, and on every project refresh, from the release header kettle-changelog writes into each gem's `CHANGELOG.md`. Parsing is `kettle-changelog --release-stats --json` (`gem install kettle-changelog`), so only its exact format counts; gems without it get no `coverage*` keys at all (never 0). Fields: `coverage` (line %), `coverage_lines_covered`, `coverage_lines_total`, `coverage_branch` (%), `coverage_release` (the release it describes). Monorepo gems read `gems/<name>/CHANGELOG.md`, never the root changelog.
+
+So someone can be a `maintainer` who is neither owner nor releaser; consumers should show those facts next to the role.
 | `--github-url URL` | GitHub repository URL |
 | `--gitlab-url URL` | GitLab repository URL |
 | `--codeberg-url URL` | Codeberg repository URL |
 | `--description TEXT` | Short description (HTML allowed) |
 | `--minimum-version VER` | Minimum runtime version |
 | `--tags TAG1,TAG2` | Comma-separated tags |
+| `--family ID` | Family id from `src/_data/families.yml` (e.g. `miscellaneous`); skips the family prompt. Sets `theme`, `family_id` and the next `family_position`. |
 | `--funding-sites VALUE` | Pre-set funding sites. Use `none` for an empty list, or `TYPE1:URL1,TYPE2:URL2` (e.g. `OpenCollective:https://opencollective.com/myorg`). Defaults to OpenCollective + Liberapay for `role: author`, empty list otherwise. |
 
 #### Option reference

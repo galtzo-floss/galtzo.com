@@ -9,6 +9,7 @@ require 'date'
 require 'time'
 require 'fileutils'
 require 'base64'
+require 'open3'
 require 'tty-prompt'
 require 'kettle/ndjson'
 require 'ast-crispr-yaml-psych'
@@ -55,6 +56,7 @@ class ProjectUpdater
     release_date last_commit_on status
     first_commit_by_person first_commit_by_person_on
     description
+    owner releaser coverage
   ]
 
   # Fallback minimum Ruby version for RubyGems entries when the API reports none.
@@ -463,7 +465,15 @@ class ProjectUpdater
     project_name = ask("Project name", default: opts[:name])
 
     # ── Family ────────────────────────────────────────────────────────────────
-    family_id = select_family
+    family_id = if opts[:family]
+      unless (@families || []).any? { |f| f['id'] == opts[:family] }
+        abort "Unknown family '#{opts[:family]}'. Known: #{(@families || []).map { |f| f['id'] }.join(', ')}"
+      end
+      puts "Family: #{opts[:family]} [auto]"
+      opts[:family]
+    else
+      select_family
+    end
 
     # ── Ecosystem(s) ──────────────────────────────────────────────────────────
     # Use tty-prompt select menu for ecosystem selection
@@ -561,7 +571,11 @@ class ProjectUpdater
     puts "─"*80
 
     project = { 'name' => project_name, 'ecosystem' => ecosystem }
-    project['family'] = family_id if family_id
+    if family_id
+      project['theme'] = 'family'
+      project['family_id'] = family_id
+      project['family_position'] = (@projects.select { |pr| pr['family_id'] == family_id }.map { |pr| pr['family_position'].to_i }.max || 0) + 1
+    end
 
     # ── Early ecosystem scrape ─────────────────────────────────────────────
     # Scrape as soon as we know name + ecosystem so we can pre-fill defaults.
@@ -1634,6 +1648,33 @@ class ProjectUpdater
         puts "  ⚠️  No commits by #{GITHUB_HANDLE} found in #{github_forge['url']}"
       end
 
+    when 'owner'
+      # owner = admin permission on the repo for the token's user (the site owner), as GitHub reports it.
+      raise "Missing GitHub forge for project: #{project['name']}" unless github_forge
+      repo_path = extract_repo_path(github_forge['url'])
+      data = github_api_request("https://api.github.com/repos/#{repo_path}")
+      admin = data.is_a?(Hash) ? data.dig('permissions', 'admin') : nil
+      if admin.nil?
+        puts '  ⚠️  GitHub did not report permissions (token missing?); owner left unchanged'
+      else
+        project['owner'] = admin == true
+        puts "  🔑 Owner (admin on #{repo_path}): #{project['owner']}"
+      end
+
+    when 'coverage'
+      apply_coverage(project, github_forge)
+
+    when 'releaser'
+      # releaser = can publish to the project's registry (listed as an owner/maintainer there).
+      # Registries with no public owner list (pypi, ...) are left unset rather than guessed.
+      handle = fetch_registry_handles(project)
+      if handle.nil?
+        puts "  ⚠️  No public owner list for #{project['ecosystem']}; releaser left unchanged"
+      else
+        project['releaser'] = handle
+        puts "  📦 Releaser on #{project['ecosystem']}: #{handle}"
+      end
+
     when 'status'
       raise "Missing GitHub or GitLab forge for project: #{project['name']}" unless github_forge || gitlab_forge
       commit_info = github_forge ? fetch_github_info(github_forge['url']) : fetch_gitlab_info(gitlab_forge['url'])
@@ -1786,6 +1827,9 @@ class ProjectUpdater
 
     # Step 7b: Description — synced only when description_source is 'registry'
     sync_registry_description(project)
+
+    # Step 7c: Coverage of the latest release, from the gem's kettle-changelog release header
+    apply_coverage(project, github_forge)
 
     # Step 8: Last commit date (GitHub preferred, GitLab last_activity_at as fallback)
     commit_source = github_info || gitlab_info
@@ -2596,6 +2640,104 @@ class ProjectUpdater
     !%w[false 0 no off disabled].include?(CLICKGEMS_CACHE_PATH.downcase)
   end
 
+  COVERAGE_KEYS = %w[coverage coverage_branch coverage_lines_covered coverage_lines_total coverage_release].freeze
+
+  # Latest-release coverage for a Ruby gem, read from the release header kettle-changelog writes:
+  #   - COVERAGE: 98.48% -- 649/659 lines in 16 files
+  # Parsing is kettle-changelog's own (`kettle-changelog --release-stats --json`, read-only, stdin), so only
+  # its exact format counts. Anything else (no changelog, other format, no stats in the latest release,
+  # non-Ruby project) records nothing: the keys are removed rather than left stale.
+  def apply_coverage(project, github_forge)
+    stats = fetch_release_coverage(project, github_forge)
+    if stats == :unavailable
+      puts '  🧪 Coverage: kettle-changelog is not installed (gem install kettle-changelog -v ">= 1.0.16"); left unchanged'
+      return
+    end
+    COVERAGE_KEYS.each { |k| project.delete(k) }
+    cov = stats && stats['coverage']
+    if cov
+      project['coverage'] = cov['percent']
+      project['coverage_lines_covered'] = cov['covered']
+      project['coverage_lines_total'] = cov['total']
+      project['coverage_branch'] = stats.dig('branch_coverage', 'percent')
+      project['coverage_release'] = stats['version']
+      project.delete('coverage_branch') if project['coverage_branch'].nil?
+      puts "  🧪 Coverage (v#{stats['version']}): #{cov['percent']}%"
+    else
+      puts '  🧪 Coverage: none recorded in the latest release'
+    end
+  end
+
+  def fetch_release_coverage(project, github_forge)
+    return nil unless project['ecosystem'] == 'rubygems' && github_forge
+
+    repo_path = extract_repo_path(github_forge['url'])
+    gems_in_repo = (@projects || []).count do |pr|
+      pr['ecosystem'] == 'rubygems' && Array(pr['forges']).any? { |f| f['type'] == 'GitHub' && f['url'].to_s.casecmp?(github_forge['url'].to_s) }
+    end
+    # A monorepo's root changelog is not any one gem's: use gems/<name>/CHANGELOG.md only.
+    paths = gems_in_repo > 1 ? ["gems/#{project['name']}/CHANGELOG.md"] : ['CHANGELOG.md']
+    paths.each do |path|
+      text = github_raw_file(repo_path, path)
+      next unless text
+
+      out, status = Open3.capture2('kettle-changelog', '--release-stats', '--json', stdin_data: text)
+      return JSON.parse(out) if status.success?
+    end
+    nil
+  rescue Errno::ENOENT
+    :unavailable
+  rescue JSON::ParserError
+    nil
+  end
+
+  def github_raw_file(repo_path, path, limit = 3)
+    uri = URI("https://api.github.com/repos/#{repo_path}/contents/#{path}")
+    limit.times do
+      request = Net::HTTP::Get.new(uri)
+      request['Accept'] = 'application/vnd.github.raw'
+      request['Authorization'] = "token #{GITHUB_TOKEN}" if GITHUB_TOKEN
+      request['User-Agent'] = 'Galtzo-Project-Updater'
+      response = Net::HTTP.start(uri.hostname, uri.port, use_ssl: true) { |http| http.request(request) }
+      return response.body.force_encoding('UTF-8') if response.code.to_i == 200
+      return nil if response.code.to_i == 404
+      raise "GitHub API error: #{response.code}" unless redirect_response?(response)
+
+      uri = URI(redirect_url(response, from: uri)) # renamed/moved repos answer 301
+    end
+    nil
+  end
+
+  # true/false when the registry publishes its owner list, nil when it cannot tell.
+  def fetch_registry_handles(project)
+    name = project['name']
+    case project['ecosystem']
+    when 'rubygems'
+      owners = JSON.parse(plain_get("https://rubygems.org/api/v1/gems/#{name}/owners.json"))
+      owners.any? { |o| o['handle'].to_s.casecmp?(RUBYGEMS_HANDLE || GITHUB_HANDLE) }
+    when 'npm'
+      info = JSON.parse(plain_get("https://registry.npmjs.org/#{name.sub('/', '%2f')}"))
+      me = ENV['NPM_HANDLE'] || GITHUB_HANDLE
+      Array(info['maintainers']).any? { |m| m['name'].to_s.casecmp?(me) }
+    when 'cargo'
+      sleep 1 # crates.io asks for at most one request per second
+      info = JSON.parse(plain_get("https://crates.io/api/v1/crates/#{name}/owners"))
+      Array(info['users']).any? { |u| u['login'].to_s.casecmp?(GITHUB_HANDLE) }
+    end
+  rescue => e
+    puts "    ⚠️  #{project['ecosystem']} owner lookup failed for #{name}: #{e.message}"
+    nil
+  end
+
+  def plain_get(url)
+    uri = URI(url)
+    req = Net::HTTP::Get.new(uri)
+    req['User-Agent'] = 'Galtzo-Project-Updater'
+    res = Net::HTTP.start(uri.hostname, uri.port, use_ssl: true) { |h| h.request(req) }
+    raise "HTTP #{res.code}" unless res.code.to_i == 200
+    res.body
+  end
+
   def github_api_request(url)
     started = Process.clock_gettime(Process::CLOCK_MONOTONIC)
     uri = URI(url)
@@ -3079,6 +3221,10 @@ if __FILE__ == $0
 
     op.on("--tags TAG1,TAG2", "Comma-separated tags") do |v|
       add_project_opts[:tags] = v
+    end
+
+    op.on("--family ID", "Family id from families.yml (skips the family prompt)") do |v|
+      add_project_opts[:family] = v
     end
 
     op.on("--funding-sites SPEC",
