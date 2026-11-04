@@ -891,13 +891,13 @@
   - ruby
   docs_site:
   github_stars: 612
-  total_downloads: 13485107
+  total_downloads: 13494950
   daily_downloads: 19050
-  release_downloads: 112069
+  release_downloads: 113513
   release_date: 2026/07/26
   last_commit_on: 2026/10/02
   status: active
-  last_scrape_at: '2026-11-03T22:02:53Z'
+  last_scrape_at: '2026-11-04T17:30:45Z'
   theme: family
   family_id: rails-family
   family_position: 1
@@ -983,23 +983,18 @@
   github_stars: 508
   gitlab_stars: 0
   codeberg_stars: 0
-  total_downloads: 6854483
+  total_downloads: 6863811
   daily_downloads: 10199
-  release_downloads: 27133
+  release_downloads: 27755
   release_date: 2026/09/12
   last_commit_on: 2026/11/02
   status: active
-  last_scrape_at: '2026-11-03T22:02:57Z'
+  last_scrape_at: '2026-11-04T17:30:49Z'
   licenses:
   - MIT
   license_url: https://github.com/galtzo-floss/flag_shih_tzu/blob/main/LICENSE
   owner: true
   releaser: true
-  coverage: 90.75
-  coverage_lines_covered: 412
-  coverage_lines_total: 454
-  coverage_branch: 76.76
-  coverage_release: 1.0.7
 - name: floss_funding
   description: Help overlooked open source projects - the ones at the bottom of the
     stack, and the dev dependencies - by funding them.
@@ -1073,23 +1068,18 @@
   - ruby
   docs_site:
   github_stars: 93
-  total_downloads: 2977403
+  total_downloads: 2977545
   daily_downloads: 278
-  release_downloads: 31529
+  release_downloads: 31613
   release_date: 2024/09/22
   last_commit_on: 2026/10/12
   status: active
-  last_scrape_at: '2026-11-03T22:03:00Z'
+  last_scrape_at: '2026-11-04T17:30:52Z'
   licenses:
   - MIT
   license_url: https://github.com/galtzo-floss/gem_bench/blob/main/LICENSE.md
   owner: true
   releaser: true
-  coverage: 99.6
-  coverage_lines_covered: 502
-  coverage_lines_total: 504
-  coverage_branch: 93.71
-  coverage_release: 2.0.6
 - name: gitmoji-regex
   description: "\U0001F3C1 A regular expression matching Gitmoji (a subset of Unicode
     Emoji) symbolsFund overlooked open source projects - bottom of stack, dev/test
@@ -2068,13 +2058,13 @@
   - test
   docs_site:
   github_stars: 166
-  total_downloads: 483700555
+  total_downloads: 484019593
   daily_downloads: 325303
-  release_downloads: 302605141
+  release_downloads: 302912495
   release_date: 2021/11/07
   last_commit_on: 2025/06/08
   status: stale
-  last_scrape_at: '2026-11-03T22:02:48Z'
+  last_scrape_at: '2026-11-04T17:30:38Z'
   theme: family
   family_id: miscellaneous
   family_position: 11
@@ -3726,13 +3716,13 @@
   - ruby
   docs_site:
   github_stars: 382
-  total_downloads: 1753979
+  total_downloads: 1754683
   daily_downloads: 773
-  release_downloads: 1364114
+  release_downloads: 1364786
   release_date: 2017/08/01
   last_commit_on: 2025/08/18
   status: stale
-  last_scrape_at: '2026-11-03T22:02:51Z'
+  last_scrape_at: '2026-11-04T17:30:42Z'
   licenses:
   - MIT
   license_url: https://github.com/galtzo-floss/seed_migration/blob/main/LICENSE.txt
@@ -4484,23 +4474,18 @@
   github_stars: 22
   gitlab_stars: 1
   codeberg_stars: 0
-  total_downloads: 151348897
+  total_downloads: 151534273
   daily_downloads: 201603
-  release_downloads: 265801
+  release_downloads: 299857
   release_date: 2026/10/25
   last_commit_on: 2026/10/25
   status: active
-  last_scrape_at: '2026-11-03T22:02:40Z'
+  last_scrape_at: '2026-11-04T17:30:29Z'
   licenses:
   - MIT
   license_url: https://github.com/ruby-oauth/version_gem/blob/main/LICENSE.md
   owner: true
   releaser: true
-  coverage: 100.0
-  coverage_lines_covered: 119
-  coverage_lines_total: 119
-  coverage_branch: 100.0
-  coverage_release: 1.1.17
 - name: warden_oauth
   description: "\U0001F6E1️ warden_oauth will help you create oauth authentication
     strategies using the oauth\n      helper method on the Warden::Manager config
@@ -6424,24 +6409,19 @@
   - oauth
   - ruby
   docs_site: https://www.rubydoc.info/gems/auth-sanitizer/0.2.3
-  total_downloads: 17635727
+  total_downloads: 17770174
   daily_downloads: 152968
-  release_downloads: 242565
+  release_downloads: 274774
   release_date: 2026/10/25
   github_stars: 15
   last_commit_on: 2026/11/01
   status: active
-  last_scrape_at: '2026-11-03T22:02:43Z'
+  last_scrape_at: '2026-11-04T17:30:32Z'
   licenses:
   - MIT
   license_url: https://github.com/ruby-oauth/auth-sanitizer/blob/main/LICENSE.md
   owner: true
   releaser: true
-  coverage: 100.0
-  coverage_lines_covered: 184
-  coverage_lines_total: 184
-  coverage_branch: 100.0
-  coverage_release: 0.2.5
 - name: turbo_tests2
   description: "\U0001F680 turbo_tests2` is an RSpec parallel test runner. It uses
     runtime_groups for process counts, pid bookkeeping, file grouping, and runtime
@@ -6795,24 +6775,19 @@
   - oauth
   - ruby
   docs_site: https://www.rubydoc.info/gems/anonymous_loader/0.1.3
-  total_downloads: 11626839
+  total_downloads: 11723966
   daily_downloads: 121557
-  release_downloads: 244900
+  release_downloads: 276300
   release_date: 2026/10/25
   github_stars: 2
   last_commit_on: 2026/11/01
   status: active
-  last_scrape_at: '2026-11-03T22:02:45Z'
+  last_scrape_at: '2026-11-04T17:30:35Z'
   licenses:
   - MIT
   license_url: https://github.com/ruby-oauth/anonymous_loader/blob/main/LICENSE.md
   owner: true
   releaser: true
-  coverage: 96.33
-  coverage_lines_covered: 105
-  coverage_lines_total: 109
-  coverage_branch: 81.58
-  coverage_release: 0.1.5
 - name: kettle-rb
   description: "\U0001F4CF Provides the shared Ruby, engine, Rails, RuboCop, and RuboCop
     LTS compatibility matrix used by Kettle-managed gems."
