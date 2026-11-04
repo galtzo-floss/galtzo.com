@@ -8024,12 +8024,12 @@
   minimum_version: '2.4'
   role: author
   first_commit_by_person_on: 2026/10/07
-  first_commit_by_person: https://github.com/pboling/kettle-paths/commit/273d282a2165fff8d910df95fba8dedec87ff154
+  first_commit_by_person: https://github.com/kettle-dev/kettle-paths/commit/273d282a2165fff8d910df95fba8dedec87ff154
   funding_sites: []
   forges:
   - type: GitHub
-    url: https://github.com/pboling/kettle-paths
-    owner: pboling
+    url: https://github.com/kettle-dev/kettle-paths
+    owner: kettle-dev
   tags:
   - kettle
   - ruby
@@ -8043,7 +8043,7 @@
   github_stars: 1
   last_commit_on: 2026/10/28
   status: active
-  license_url: https://github.com/pboling/kettle-paths/blob/main/LICENSE.md
+  license_url: https://github.com/kettle-dev/kettle-paths/blob/main/LICENSE.md
   last_scrape_at: '2026-11-02T07:58:44Z'
   theme: family
   family_id: kettle-dev-family
@@ -8084,6 +8084,40 @@
   theme: family
   family_id: kettle-dev-family
   family_position: 14
+- name: kettle-deps-floor
+  description: "\U0001F48E Discover and raise RubyGems dependency floors in gemspecs
+    and configured template sources, with upgrade limits, dry-run reports, checks,
+    and controlled commits."
+  description_source: registry
+  language: Ruby
+  ecosystem: rubygems
+  minimum_version: '3.2'
+  role: author
+  first_commit_by_person_on: 2026/10/24
+  first_commit_by_person: https://github.com/kettle-dev/kettle-deps-floor/commit/93a58879cd306c9011fb0e1bc6f0bce548101117
+  funding_sites: []
+  forges:
+  - type: GitHub
+    url: https://github.com/kettle-dev/kettle-deps-floor
+    owner: kettle-dev
+  tags:
+  - kettle
+  - ruby
+  docs_site: https://www.rubydoc.info/gems/kettle-deps-floor/0.1.2
+  licenses:
+  - AGPL-3.0-only
+  status: active
+  license_url: https://github.com/kettle-dev/kettle-deps-floor/blob/main/LICENSE.md
+  theme: family
+  family_id: kettle-dev-family
+  family_position: 15
+  github_stars: 1
+  total_downloads: 2395
+  daily_downloads: 232
+  release_downloads: 1190
+  release_date: 2026/10/29
+  last_commit_on: 2026/10/31
+  last_scrape_at: '2026-11-04T15:08:47Z'
 - name: ast-crispr-toml
   description: "\U0001F9EC TOML table and dotted-key-path selectors and edit helpers
     for ast-crispr, backed by toml-merge."

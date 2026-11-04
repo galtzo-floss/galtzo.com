@@ -57,17 +57,18 @@ git status 2>&1 | tee tmp/git_status.txt
 - **Update script**: `scripts/update_projects` — fetches live stats from GitHub, GitLab, RubyGems APIs
 - **Swap script**: `scripts/devswap` — swaps prod/dev projects.yml files; must be run in pairs
 
-### projects.yml Entry Count (as of 2026-02-24)
+### projects.yml Entry Count (as of 2026-11-04)
 
-- Total YAML entries: 126 (person entry moved to `person.yml`)
-- Ruby+rubygems project entries: ~100
-- RubyGems.org gems owned by pboling: 114
-- **Gap: 17 gems missing from projects.yml** (ast-merge, bash-merge, commonmarker-merge,
+- Total YAML entries: 230
+- Ruby+rubygems project entries: 171
+- RubyGems.org gems owned by pboling: 158
+- All 17 previously missing gems are present in `projects.yml` (ast-merge, bash-merge, commonmarker-merge,
   dotenv-merge, json-merge, jsonc-merge, markdown-merge, markly-merge, prism-merge,
   psych-merge, rbs-merge, token-resolver, toml-merge, tree_haver, yaml-converter,
   yard-fence, yard-yaml)
-- 4 entries in projects.yml not owned by pboling on RubyGems.org (intentional):
-  awesome-sponsorships, masq, os, resque
+- 13 entries in projects.yml not owned by pboling on RubyGems.org (intentional external/adopted/contributed):
+  bson, bundler, cyclonedx-ruby, hashie, masq, os, rails, rb_sys, resque, rexml, ruby_tree_sitter,
+  tree_sitter_language_pack, tree_stump
 
 ### scripts/update_projects — key behaviour
 
