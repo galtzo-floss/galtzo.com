@@ -29,8 +29,6 @@ jobs:
         with:
           ruby-version: "4.0.9"
           bundler-cache: true
-      - name: Install kettle-changelog (reads coverage from release headers)
-        run: gem install kettle-changelog --no-document
       - name: Refresh
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

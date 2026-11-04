@@ -2590,6 +2590,10 @@ class ProjectUpdater
   # non-Ruby project) records nothing: the keys are removed rather than left stale.
   def apply_coverage(project, github_forge)
     stats = fetch_release_coverage(project, github_forge)
+    if stats == :unavailable
+      puts '  🧪 Coverage: kettle-changelog is not installed (gem install kettle-changelog -v ">= 1.0.16"); left unchanged'
+      return
+    end
     COVERAGE_KEYS.each { |k| project.delete(k) }
     cov = stats && stats['coverage']
     if cov
@@ -2623,7 +2627,7 @@ class ProjectUpdater
     end
     nil
   rescue Errno::ENOENT
-    raise 'kettle-changelog is not installed (gem install kettle-changelog -v ">= 1.0.16")'
+    :unavailable
   rescue JSON::ParserError
     nil
   end
