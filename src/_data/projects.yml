@@ -8362,7 +8362,8 @@
   first_commit_by_person: https://github.com/xberg-io/tree-sitter-language-pack/commit/7f947b49631d086a8812caebaf5e91f69e8987bf
   first_commit_by_person_on: 2026/04/20
 - name: "@xberg-io/tree-sitter-language-pack"
-  description: Parse and understand source code in 300+ languages with one dependency and no grammars to compile (Node.js).
+  description: Parse and understand source code in 300+ languages with one dependency
+    and no grammars to compile (Node.js).
   description_source: site
   language: JavaScript
   ecosystem: npm
@@ -8396,7 +8397,8 @@
   first_commit_by_person: https://github.com/xberg-io/tree-sitter-language-pack/commit/7f947b49631d086a8812caebaf5e91f69e8987bf
   first_commit_by_person_on: 2026/04/20
 - name: "@xberg-io/tree-sitter-language-pack-wasm"
-  description: Parse and understand source code in 300+ languages with one dependency and no grammars to compile (WebAssembly).
+  description: Parse and understand source code in 300+ languages with one dependency
+    and no grammars to compile (WebAssembly).
   description_source: site
   language: JavaScript
   ecosystem: npm
