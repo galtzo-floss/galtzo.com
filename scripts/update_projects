@@ -55,6 +55,7 @@ class ProjectUpdater
     release_date last_commit_on status
     first_commit_by_person first_commit_by_person_on
     description
+    owner releaser
   ]
 
   # Fallback minimum Ruby version for RubyGems entries when the API reports none.
@@ -1624,6 +1625,30 @@ class ProjectUpdater
         puts "  ⚠️  No commits by #{GITHUB_HANDLE} found in #{github_forge['url']}"
       end
 
+    when 'owner'
+      # owner = admin permission on the repo for the token's user (the site owner), as GitHub reports it.
+      raise "Missing GitHub forge for project: #{project['name']}" unless github_forge
+      repo_path = extract_repo_path(github_forge['url'])
+      data = github_api_request("https://api.github.com/repos/#{repo_path}")
+      admin = data.is_a?(Hash) ? data.dig('permissions', 'admin') : nil
+      if admin.nil?
+        puts '  ⚠️  GitHub did not report permissions (token missing?); owner left unchanged'
+      else
+        project['owner'] = admin == true
+        puts "  🔑 Owner (admin on #{repo_path}): #{project['owner']}"
+      end
+
+    when 'releaser'
+      # releaser = can publish to the project's registry (listed as an owner/maintainer there).
+      # Registries with no public owner list (pypi, ...) are left unset rather than guessed.
+      handle = fetch_registry_handles(project)
+      if handle.nil?
+        puts "  ⚠️  No public owner list for #{project['ecosystem']}; releaser left unchanged"
+      else
+        project['releaser'] = handle
+        puts "  📦 Releaser on #{project['ecosystem']}: #{handle}"
+      end
+
     when 'status'
       raise "Missing GitHub or GitLab forge for project: #{project['name']}" unless github_forge || gitlab_forge
       commit_info = github_forge ? fetch_github_info(github_forge['url']) : fetch_gitlab_info(gitlab_forge['url'])
@@ -2547,6 +2572,36 @@ class ProjectUpdater
 
   def clickgems_cache_enabled?
     !%w[false 0 no off disabled].include?(CLICKGEMS_CACHE_PATH.downcase)
+  end
+
+  # true/false when the registry publishes its owner list, nil when it cannot tell.
+  def fetch_registry_handles(project)
+    name = project['name']
+    case project['ecosystem']
+    when 'rubygems'
+      owners = JSON.parse(plain_get("https://rubygems.org/api/v1/gems/#{name}/owners.json"))
+      owners.any? { |o| o['handle'].to_s.casecmp?(RUBYGEMS_HANDLE || GITHUB_HANDLE) }
+    when 'npm'
+      info = JSON.parse(plain_get("https://registry.npmjs.org/#{name.sub('/', '%2f')}"))
+      me = ENV['NPM_HANDLE'] || GITHUB_HANDLE
+      Array(info['maintainers']).any? { |m| m['name'].to_s.casecmp?(me) }
+    when 'cargo'
+      sleep 1 # crates.io asks for at most one request per second
+      info = JSON.parse(plain_get("https://crates.io/api/v1/crates/#{name}/owners"))
+      Array(info['users']).any? { |u| u['login'].to_s.casecmp?(GITHUB_HANDLE) }
+    end
+  rescue => e
+    puts "    ⚠️  #{project['ecosystem']} owner lookup failed for #{name}: #{e.message}"
+    nil
+  end
+
+  def plain_get(url)
+    uri = URI(url)
+    req = Net::HTTP::Get.new(uri)
+    req['User-Agent'] = 'Galtzo-Project-Updater'
+    res = Net::HTTP.start(uri.hostname, uri.port, use_ssl: true) { |h| h.request(req) }
+    raise "HTTP #{res.code}" unless res.code.to_i == 200
+    res.body
   end
 
   def github_api_request(url)
