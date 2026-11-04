@@ -156,6 +156,13 @@ ruby scripts/update_projects add_project -y \
 | `--ecosystem ECO` | `rubygems` \| `cargo` \| `npm` \| `pypi` \| `go` \| `none` | Use `none` for projects with no package registry (forge-only). Stored as `ecosystem: none` — distinguishable from a missing/unset ecosystem, which triggers a data-quality warning. |
 | `--language LANG` | Primary language (inferred from ecosystem if omitted) |
 | `--role ROLE` | `author` \| `contributor` \| `maintainer` (default: `contributor`) |
+
+Ownership facts, independent of `role`, are scraped (never hand-set) with `scripts/update_projects -y owner releaser`:
+
+- `owner`: `true` when the GitHub token's user has admin on the repo.
+- `releaser`: `true` when the user is listed as an owner/maintainer on the project's registry (RubyGems, npm, crates.io). Left unset for registries with no public owner list.
+
+So someone can be a `maintainer` who is neither owner nor releaser; consumers should show those facts next to the role.
 | `--github-url URL` | GitHub repository URL |
 | `--gitlab-url URL` | GitLab repository URL |
 | `--codeberg-url URL` | Codeberg repository URL |
