@@ -1663,23 +1663,18 @@
   github_stars: 669
   gitlab_stars: 5
   codeberg_stars: 0
-  total_downloads: 174129554
+  total_downloads: 174200844
   daily_downloads: 99343
-  release_downloads: 1397158
+  release_downloads: 1416718
   release_date: 2026/07/15
   last_commit_on: 2026/10/25
   status: active
-  last_scrape_at: '2026-11-04T02:17:28Z'
+  last_scrape_at: '2026-11-04T22:52:43Z'
   licenses:
   - MIT
   license_url: https://github.com/ruby-oauth/oauth/blob/main/LICENSE.md
   owner: true
   releaser: true
-  coverage: 87.71
-  coverage_lines_covered: 849
-  coverage_lines_total: 968
-  coverage_branch: 61.37
-  coverage_release: 1.1.9
 - name: oauth-tty
   description: "\U0001F5A5️ OAuth 1.0 / 1.0a TTY Command Line Interface"
   description_source: site
@@ -1713,23 +1708,18 @@
   github_stars: 7
   gitlab_stars: 1
   codeberg_stars: 1
-  total_downloads: 29401438
+  total_downloads: 29453253
   daily_downloads: 82514
-  release_downloads: 5247490
+  release_downloads: 5270049
   release_date: 2026/07/15
   last_commit_on: 2026/09/26
   status: active
-  last_scrape_at: '2026-11-04T02:17:31Z'
+  last_scrape_at: '2026-11-04T22:52:47Z'
   licenses:
   - MIT
   license_url: https://github.com/ruby-oauth/oauth-tty/blob/main/LICENSE.md
   owner: true
   releaser: true
-  coverage: 99.68
-  coverage_lines_covered: 311
-  coverage_lines_total: 312
-  coverage_branch: 96.55
-  coverage_release: 1.0.13
 - name: oauth2
   description: "\U0001F510 A Ruby wrapper for the OAuth 2.0 Authorization Framework,
     including the OAuth 2.1 draft spec, and OpenID Connect (OIDC)"
@@ -1760,26 +1750,21 @@
   - ruby
   - security
   docs_site: https://oauth2.galtzo.com
-  github_stars: 2181
+  github_stars: 2182
   gitlab_stars: 24
   codeberg_stars: 2
-  total_downloads: 284328504
+  total_downloads: 284529166
   daily_downloads: 161185
-  release_downloads: 141548
+  release_downloads: 166851
   release_date: 2026/10/25
   last_commit_on: 2026/11/03
   status: active
-  last_scrape_at: '2026-11-04T02:17:35Z'
+  last_scrape_at: '2026-11-04T22:52:52Z'
   licenses:
   - MIT
   license_url: https://github.com/ruby-oauth/oauth2/blob/main/LICENSE.md
   owner: true
   releaser: true
-  coverage: 98.48
-  coverage_lines_covered: 649
-  coverage_lines_total: 659
-  coverage_branch: 93.53
-  coverage_release: 2.1.0
 - name: omniauth-identity
   description: "\U0001FAF5 Traditional username/password based authentication system
     for OmniAuth"
@@ -1805,23 +1790,18 @@
   - security
   docs_site: https://omniauth-identity.galtzo.com
   github_stars: 363
-  total_downloads: 2457661
+  total_downloads: 2459186
   daily_downloads: 1145
-  release_downloads: 19234
+  release_downloads: 19625
   release_date: 2026/07/15
-  last_commit_on: 2026/08/11
+  last_commit_on: 2026/11/04
   status: active
-  last_scrape_at: '2026-11-04T02:17:38Z'
+  last_scrape_at: '2026-11-04T22:52:55Z'
   licenses:
   - MIT
   license_url: https://github.com/omniauth/omniauth-identity/blob/main/LICENSE.md
   owner: true
   releaser: true
-  coverage: 22.91
-  coverage_lines_covered: 93
-  coverage_lines_total: 406
-  coverage_branch: 20.75
-  coverage_release: 3.2.1
 - name: omniauth-jwt
   description: An OmniAuth strategy to accept JWT-based single sign-on.
   description_source: site
@@ -1918,23 +1898,18 @@
   - security
   docs_site:
   github_stars: 148
-  total_downloads: 774121
+  total_downloads: 774241
   daily_downloads: 100
-  release_downloads: 4968
+  release_downloads: 5068
   release_date: 2026/07/14
   last_commit_on: 2026/09/21
   status: active
-  last_scrape_at: '2026-11-04T02:17:41Z'
+  last_scrape_at: '2026-11-04T22:52:58Z'
   licenses:
   - MIT
   license_url: https://github.com/omniauth/omniauth-ldap/blob/main/LICENSE.md
   owner: true
   releaser: true
-  coverage: 97.5
-  coverage_lines_covered: 312
-  coverage_lines_total: 320
-  coverage_branch: 79.41
-  coverage_release: 3.0.2
 - name: omniauth-openid
   description: OpenID (not OIDC) strategy for OmniAuth.
   description_source: site
@@ -1967,23 +1942,18 @@
   github_stars: 95
   gitlab_stars: 0
   codeberg_stars: 0
-  total_downloads: 4992014
+  total_downloads: 4993131
   daily_downloads: 973
-  release_downloads: 108671
+  release_downloads: 109240
   release_date: 2025/06/08
   last_commit_on: 2026/08/16
   status: active
-  last_scrape_at: '2026-11-04T02:17:45Z'
+  last_scrape_at: '2026-11-04T22:53:02Z'
   licenses:
   - MIT
   license_url: https://github.com/ruby-openid/omniauth-openid/blob/main/LICENSE.md
   owner: true
   releaser: true
-  coverage: 92.06
-  coverage_lines_covered: 348
-  coverage_lines_total: 378
-  coverage_branch: 79.49
-  coverage_release: 2.0.2
 - name: open_id_authentication
   description: Provides a thin wrapper around the excellent rack-openid2 gem.
   description_source: site
@@ -2217,13 +2187,13 @@
   github_stars: 5
   gitlab_stars: 0
   codeberg_stars: 0
-  total_downloads: 8360217
+  total_downloads: 8361838
   daily_downloads: 1283
-  release_downloads: 4047345
+  release_downloads: 4048802
   release_date: 2014/01/20
   last_commit_on: 2026/06/29
   status: active
-  last_scrape_at: '2026-11-04T02:17:48Z'
+  last_scrape_at: '2026-11-04T22:53:07Z'
   licenses:
   - MIT
   license_url: https://github.com/ruby-openid/rack-openid/blob/master/LICENSE.txt
@@ -8942,8 +8912,8 @@
   - type: GitHub
     url: https://github.com/xberg-io/tree-sitter-language-pack
     owner: xberg-io
-    total_downloads: 9407437
-    release_downloads: 25655
+    total_downloads: 9486560
+    release_downloads: 41273
   tags:
   - parsing
   - python
@@ -8959,8 +8929,8 @@
   daily_downloads: 183441
   downloads_basis: 180d
   release_date: 2026/11/01
-  last_commit_on: 2026/11/03
-  last_scrape_at: '2026-11-04T02:17:23Z'
+  last_commit_on: 2026/11/04
+  last_scrape_at: '2026-11-04T22:52:39Z'
   first_commit_by_person: https://github.com/xberg-io/tree-sitter-language-pack/commit/7f947b49631d086a8812caebaf5e91f69e8987bf
   first_commit_by_person_on: 2026/04/20
   owner: false
