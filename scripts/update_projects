@@ -2381,11 +2381,15 @@ class ProjectUpdater
     puts "    ⚠️  #{error_msg}"
   end
 
-  def record_error(message, severity: 'error')
+  def record_error(message, severity: 'error', source: nil)
     return if @errors.include?(message)
 
     @errors << message
-    emit_event('diagnostic', severity: severity, message: message)
+    if source
+      emit_event('diagnostic', severity: severity, message: message, source: source)
+    else
+      emit_event('diagnostic', severity: severity, message: message)
+    end
   end
 
   def infer_source_from_url(url)
@@ -2730,12 +2734,28 @@ class ProjectUpdater
   end
 
   def plain_get(url)
+    started = Process.clock_gettime(Process::CLOCK_MONOTONIC)
+    source = infer_source_from_url(url)
     uri = URI(url)
     req = Net::HTTP::Get.new(uri)
     req['User-Agent'] = 'Galtzo-Project-Updater'
     res = Net::HTTP.start(uri.hostname, uri.port, use_ssl: true) { |h| h.request(req) }
-    raise "HTTP #{res.code}" unless res.code.to_i == 200
+    duration_ms = ((Process.clock_gettime(Process::CLOCK_MONOTONIC) - started) * 1000).round
+    code = res.code.to_i
+    if code != 200
+      record_error("API error (#{source}): #{code} from #{url}", source: source)
+      emit_event('source_request', source: source, url: url, status: code == 404 ? 'not_found' : 'error', http_code: code, duration_ms: duration_ms)
+      raise "HTTP #{code}"
+    end
+    emit_event('source_request', source: source, url: url, status: 'ok', http_code: 200, duration_ms: duration_ms)
     res.body
+  rescue => e
+    unless e.message.start_with?("HTTP ")
+      duration_ms = ((Process.clock_gettime(Process::CLOCK_MONOTONIC) - started) * 1000).round rescue nil
+      record_error("API request failed (#{source}): #{e.message}", source: source)
+      emit_event('source_request', source: source, url: url, status: 'error', duration_ms: duration_ms, message: e.message)
+    end
+    raise
   end
 
   def github_api_request(url)
@@ -2762,7 +2782,7 @@ class ProjectUpdater
       return nil
     elsif code != 200
       error_msg = "GitHub API error: #{code} - #{response.body[0..200]}"
-      record_error(error_msg)
+      record_error(error_msg, source: 'github')
       emit_event('source_request', source: 'github', url: url, status: 'error', http_code: code, duration_ms: duration_ms, message: error_msg)
       raise error_msg
     end
@@ -2772,7 +2792,7 @@ class ProjectUpdater
   rescue => e
     unless e.message.start_with?('GitHub API error:')
       duration_ms = ((Process.clock_gettime(Process::CLOCK_MONOTONIC) - started) * 1000).round rescue nil
-      record_error("GitHub API request failed: #{e.message}")
+      record_error("GitHub API request failed: #{e.message}", source: 'github')
       emit_event('source_request', source: 'github', url: url, status: 'error', duration_ms: duration_ms, message: e.message)
     end
     raise
@@ -2807,7 +2827,7 @@ class ProjectUpdater
       return nil
     elsif code != 200
       error_msg = "GitLab API error: #{code} - #{response.body[0..200]}"
-      record_error(error_msg)
+      record_error(error_msg, source: 'gitlab')
       emit_event('source_request', source: 'gitlab', url: url, status: 'error', http_code: code, duration_ms: duration_ms, message: error_msg)
       raise error_msg
     end
@@ -2817,7 +2837,7 @@ class ProjectUpdater
   rescue => e
     unless e.message.start_with?('GitLab API error:')
       duration_ms = ((Process.clock_gettime(Process::CLOCK_MONOTONIC) - started) * 1000).round rescue nil
-      record_error("GitLab API request failed: #{e.message}")
+      record_error("GitLab API request failed: #{e.message}", source: 'gitlab')
       emit_event('source_request', source: 'gitlab', url: url, status: 'error', duration_ms: duration_ms, message: e.message)
     end
     raise
@@ -2857,7 +2877,7 @@ class ProjectUpdater
   rescue => e
     unless e.message.start_with?("API error (#{source}):")
       duration_ms = ((Process.clock_gettime(Process::CLOCK_MONOTONIC) - started) * 1000).round rescue nil
-      record_error("API request failed (#{source}): #{e.message}")
+      record_error("API request failed (#{source}): #{e.message}", source: source)
       emit_event('source_request', source: source, url: url, status: 'error', duration_ms: duration_ms, message: e.message)
     end
     raise

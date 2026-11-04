@@ -40,6 +40,63 @@ RSpec.describe "Structured reporting, strict exit code, and log retention (Issue
       diagnostic = lines.find { |l| l['type'] == 'diagnostic' && l['message'] == 'Test unique error 12345' }
       expect(diagnostic).not_to be_nil
       expect(diagnostic['severity']).to eq('error')
+      expect(diagnostic['ts']).not_to be_nil
+    end
+
+    it "attaches the source to the diagnostic event when given" do
+      updater.record_error("Sourced failure 98765", source: 'rubygems')
+      log_content = File.read(updater.run_log_path)
+      lines = log_content.lines.map { |l| JSON.parse(l) }
+      diagnostic = lines.find { |l| l['type'] == 'diagnostic' && l['message'] == 'Sourced failure 98765' }
+      expect(diagnostic).not_to be_nil
+      expect(diagnostic['source']).to eq('rubygems')
+    end
+  end
+
+  describe "#plain_get" do
+    let(:fake_response) do
+      Struct.new(:code, :body).new('200', '{"ok": true}')
+    end
+
+    before do
+      allow(Net::HTTP).to receive(:start).and_return(fake_response)
+    end
+
+    it "emits an ok source_request event with duration on success" do
+      updater.send(:plain_get, "https://rubygems.org/api/v1/gems/foo.json")
+      lines = File.read(updater.run_log_path).lines.map { |l| JSON.parse(l) }
+      event = lines.find { |l| l['type'] == 'source_request' && l['url']&.include?('gems/foo.json') }
+      expect(event).not_to be_nil
+      expect(event['source']).to eq('rubygems')
+      expect(event['status']).to eq('ok')
+      expect(event['http_code']).to eq(200)
+      expect(event['duration_ms']).to be_a(Integer)
+    end
+
+    it "records an error, emits a failed event, and raises on non-200" do
+      allow(Net::HTTP).to receive(:start).and_return(Struct.new(:code, :body).new('503', 'unavailable'))
+      expect {
+        updater.send(:plain_get, "https://crates.io/api/v1/crates/bar/owners")
+      }.to raise_error(RuntimeError, /HTTP 503/)
+
+      expect(updater.errors.join("\n")).to include('API error (cargo): 503')
+      lines = File.read(updater.run_log_path).lines.map { |l| JSON.parse(l) }
+      event = lines.find { |l| l['type'] == 'source_request' && l['url']&.include?('crates/bar/owners') }
+      expect(event['status']).to eq('error')
+      expect(event['http_code']).to eq(503)
+      diagnostic = lines.find { |l| l['type'] == 'diagnostic' && l['message']&.include?('crates/bar/owners') }
+      expect(diagnostic['source']).to eq('cargo')
+    end
+
+    it "emits not_found status for 404 responses" do
+      allow(Net::HTTP).to receive(:start).and_return(Struct.new(:code, :body).new('404', 'missing'))
+      expect {
+        updater.send(:plain_get, "https://registry.npmjs.org/@scoped%2fmissing")
+      }.to raise_error(RuntimeError, /HTTP 404/)
+
+      lines = File.read(updater.run_log_path).lines.map { |l| JSON.parse(l) }
+      event = lines.find { |l| l['type'] == 'source_request' && l['url']&.include?('%2fmissing') }
+      expect(event['status']).to eq('not_found')
     end
   end
 
