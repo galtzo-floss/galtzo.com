@@ -7084,19 +7084,21 @@
   - structuredmerge
   - typescript
   docs_site: https://structuredmerge.org
-  github_stars: 0
+  github_stars: 1
   last_commit_on: 2026/11/01
   status: active
-  total_downloads: 112
+  total_downloads: 157
   release_downloads:
   release_date: 2026/05/06
   licenses:
   - AGPL-3.0-only
   - PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-typescript/blob/main/LICENSE.md
-  last_scrape_at: '2026-11-02T07:57:03Z'
+  last_scrape_at: '2026-11-04T03:12:56Z'
   owner: true
   releaser: true
+  daily_downloads: 0
+  downloads_basis: 18mo
 - name: "@structuredmerge/plain-merge"
   description: 'StructuredMerge TypeScript package: plain-merge.'
   description_source: site
@@ -7122,19 +7124,21 @@
   - structuredmerge
   - typescript
   docs_site: https://structuredmerge.org
-  github_stars: 0
+  github_stars: 1
   last_commit_on: 2026/11/01
   status: active
-  total_downloads: 101
+  total_downloads: 140
   release_downloads:
   release_date: 2026/05/06
   licenses:
   - AGPL-3.0-only
   - PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-typescript/blob/main/LICENSE.md
-  last_scrape_at: '2026-11-02T07:57:06Z'
+  last_scrape_at: '2026-11-04T03:12:59Z'
   owner: true
   releaser: true
+  daily_downloads: 0
+  downloads_basis: 18mo
 - name: "@structuredmerge/ruby-merge"
   description: 'StructuredMerge TypeScript package: ruby-merge.'
   description_source: site
@@ -7160,19 +7164,21 @@
   - structuredmerge
   - typescript
   docs_site: https://structuredmerge.org
-  github_stars: 0
+  github_stars: 1
   last_commit_on: 2026/11/01
   status: active
-  total_downloads: 111
+  total_downloads: 157
   release_downloads:
   release_date: 2026/05/06
   licenses:
   - AGPL-3.0-only
   - PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-typescript/blob/main/LICENSE.md
-  last_scrape_at: '2026-11-02T07:57:09Z'
+  last_scrape_at: '2026-11-04T03:13:01Z'
   owner: true
   releaser: true
+  daily_downloads: 0
+  downloads_basis: 18mo
 - name: "@structuredmerge/rust-merge"
   description: 'StructuredMerge TypeScript package: rust-merge.'
   description_source: site
@@ -7198,19 +7204,21 @@
   - structuredmerge
   - typescript
   docs_site: https://structuredmerge.org
-  github_stars: 0
+  github_stars: 1
   last_commit_on: 2026/11/01
   status: active
-  total_downloads: 117
+  total_downloads: 152
   release_downloads:
   release_date: 2026/05/06
   licenses:
   - AGPL-3.0-only
   - PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-typescript/blob/main/LICENSE.md
-  last_scrape_at: '2026-11-02T07:57:11Z'
+  last_scrape_at: '2026-11-04T03:13:04Z'
   owner: true
   releaser: true
+  daily_downloads: 0
+  downloads_basis: 18mo
 - name: "@structuredmerge/toml-merge"
   description: 'StructuredMerge TypeScript package: toml-merge.'
   description_source: site
@@ -7236,19 +7244,21 @@
   - structuredmerge
   - typescript
   docs_site: https://structuredmerge.org
-  github_stars: 0
+  github_stars: 1
   last_commit_on: 2026/11/01
   status: active
-  total_downloads: 110
+  total_downloads: 152
   release_downloads:
   release_date: 2026/05/06
   licenses:
   - AGPL-3.0-only
   - PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-typescript/blob/main/LICENSE.md
-  last_scrape_at: '2026-11-02T07:57:14Z'
+  last_scrape_at: '2026-11-04T03:13:07Z'
   owner: true
   releaser: true
+  daily_downloads: 0
+  downloads_basis: 18mo
 - name: "@structuredmerge/tree-haver"
   description: 'StructuredMerge TypeScript package: tree-haver.'
   description_source: site
@@ -7274,19 +7284,21 @@
   - structuredmerge
   - typescript
   docs_site: https://structuredmerge.org
-  github_stars: 0
+  github_stars: 1
   last_commit_on: 2026/11/01
   status: active
-  total_downloads: 146
+  total_downloads: 206
   release_downloads:
   release_date: 2026/05/06
   licenses:
   - AGPL-3.0-only
   - PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-typescript/blob/main/LICENSE.md
-  last_scrape_at: '2026-11-02T07:57:16Z'
+  last_scrape_at: '2026-11-04T03:13:09Z'
   owner: true
   releaser: true
+  daily_downloads: 0
+  downloads_basis: 18mo
 - name: "@structuredmerge/typescript-compiler-merge"
   description: 'StructuredMerge TypeScript package: typescript-compiler-merge.'
   description_source: site
@@ -7312,19 +7324,21 @@
   - structuredmerge
   - typescript
   docs_site: https://structuredmerge.org
-  github_stars: 0
+  github_stars: 1
   last_commit_on: 2026/11/01
   status: active
-  total_downloads: 100
+  total_downloads: 148
   release_downloads:
   release_date: 2026/05/06
   licenses:
   - AGPL-3.0-only
   - PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-typescript/blob/main/LICENSE.md
-  last_scrape_at: '2026-11-02T07:57:19Z'
+  last_scrape_at: '2026-11-04T03:13:12Z'
   owner: true
   releaser: true
+  daily_downloads: 0
+  downloads_basis: 18mo
 - name: "@structuredmerge/typescript-merge"
   description: 'StructuredMerge TypeScript package: typescript-merge.'
   description_source: site
@@ -7350,19 +7364,21 @@
   - structuredmerge
   - typescript
   docs_site: https://structuredmerge.org
-  github_stars: 0
+  github_stars: 1
   last_commit_on: 2026/11/01
   status: active
-  total_downloads: 108
+  total_downloads: 149
   release_downloads:
   release_date: 2026/05/06
   licenses:
   - AGPL-3.0-only
   - PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-typescript/blob/main/LICENSE.md
-  last_scrape_at: '2026-11-02T07:57:22Z'
+  last_scrape_at: '2026-11-04T03:13:14Z'
   owner: true
   releaser: true
+  daily_downloads: 0
+  downloads_basis: 18mo
 - name: "@structuredmerge/yaml-merge"
   description: 'StructuredMerge TypeScript package: yaml-merge.'
   description_source: site
@@ -7388,19 +7404,21 @@
   - structuredmerge
   - typescript
   docs_site: https://structuredmerge.org
-  github_stars: 0
+  github_stars: 1
   last_commit_on: 2026/11/01
   status: active
-  total_downloads: 109
+  total_downloads: 149
   release_downloads:
   release_date: 2026/05/06
   licenses:
   - AGPL-3.0-only
   - PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-typescript/blob/main/LICENSE.md
-  last_scrape_at: '2026-11-02T07:57:24Z'
+  last_scrape_at: '2026-11-04T03:13:17Z'
   owner: true
   releaser: true
+  daily_downloads: 0
+  downloads_basis: 18mo
 - name: "@structuredmerge/zip-merge"
   description: 'StructuredMerge TypeScript package: zip-merge.'
   description_source: site
@@ -7426,19 +7444,21 @@
   - structuredmerge
   - typescript
   docs_site: https://structuredmerge.org
-  github_stars: 0
+  github_stars: 1
   last_commit_on: 2026/11/01
   status: active
-  total_downloads: 112
+  total_downloads: 152
   release_downloads:
   release_date: 2026/05/06
   licenses:
   - AGPL-3.0-only
   - PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-typescript/blob/main/LICENSE.md
-  last_scrape_at: '2026-11-02T07:57:27Z'
+  last_scrape_at: '2026-11-04T03:13:19Z'
   owner: true
   releaser: true
+  daily_downloads: 0
+  downloads_basis: 18mo
 - name: ast-merge
   description: Core Structured Merge AST, ruleset, planning, and review contracts
   description_source: registry
@@ -7463,18 +7483,20 @@
   - rust
   - structuredmerge
   docs_site: https://structuredmerge.org
-  github_stars: 0
+  github_stars: 1
   last_commit_on: 2026/11/01
   status: active
-  total_downloads: 440
-  release_downloads: 426
+  total_downloads: 950
+  release_downloads: 934
   release_date: 2026/05/06
   licenses:
   - AGPL-3.0-only OR PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-rust/blob/main/LICENSE.md
-  last_scrape_at: '2026-11-02T07:57:29Z'
+  last_scrape_at: '2026-11-04T03:13:22Z'
   owner: true
   releaser: true
+  daily_downloads: 5
+  downloads_basis: lifetime
 - name: ast-template
   description: Recipe and template helpers for Structured Merge AST libraries
   description_source: registry
@@ -7499,18 +7521,20 @@
   - rust
   - structuredmerge
   docs_site: https://structuredmerge.org
-  github_stars: 0
+  github_stars: 1
   last_commit_on: 2026/11/01
   status: active
-  total_downloads: 12
-  release_downloads: 12
+  total_downloads: 18
+  release_downloads: 18
   release_date: 2026/05/06
   licenses:
   - AGPL-3.0-only OR PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-rust/blob/main/LICENSE.md
-  last_scrape_at: '2026-11-02T07:57:31Z'
+  last_scrape_at: '2026-11-04T03:13:24Z'
   owner: true
   releaser: true
+  daily_downloads: 0
+  downloads_basis: lifetime
 - name: structuredmerge-binary-merge
   description: Binary preservation planning and diagnostics for Structured Merge
   description_source: site
@@ -7535,18 +7559,20 @@
   - rust
   - structuredmerge
   docs_site: https://structuredmerge.org
-  github_stars: 0
+  github_stars: 1
   last_commit_on: 2026/11/01
   status: active
-  total_downloads: 14
-  release_downloads: 14
+  total_downloads: 17
+  release_downloads: 17
   release_date: 2026/05/06
   licenses:
   - AGPL-3.0-only OR PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-rust/blob/main/LICENSE.md
-  last_scrape_at: '2026-11-02T07:57:34Z'
+  last_scrape_at: '2026-11-04T03:13:26Z'
   owner: true
   releaser: true
+  daily_downloads: 0
+  downloads_basis: lifetime
 - name: go-merge
   description: Go syntax merge helpers for Structured Merge
   description_source: registry
@@ -7571,18 +7597,20 @@
   - rust
   - structuredmerge
   docs_site: https://structuredmerge.org
-  github_stars: 0
+  github_stars: 1
   last_commit_on: 2026/11/01
   status: active
-  total_downloads: 14
-  release_downloads: 14
+  total_downloads: 19
+  release_downloads: 19
   release_date: 2026/05/06
   licenses:
   - AGPL-3.0-only OR PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-rust/blob/main/LICENSE.md
-  last_scrape_at: '2026-11-02T07:57:36Z'
+  last_scrape_at: '2026-11-04T03:13:28Z'
   owner: true
   releaser: true
+  daily_downloads: 0
+  downloads_basis: lifetime
 - name: json-merge
   description: JSON merge helpers for Structured Merge
   description_source: registry
@@ -7607,18 +7635,20 @@
   - rust
   - structuredmerge
   docs_site: https://structuredmerge.org
-  github_stars: 0
+  github_stars: 1
   last_commit_on: 2026/11/01
   status: active
-  total_downloads: 19
-  release_downloads: 19
+  total_downloads: 28
+  release_downloads: 28
   release_date: 2026/05/06
   licenses:
   - AGPL-3.0-only OR PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-rust/blob/main/LICENSE.md
-  last_scrape_at: '2026-11-02T07:57:38Z'
+  last_scrape_at: '2026-11-04T03:13:31Z'
   owner: true
   releaser: true
+  daily_downloads: 0
+  downloads_basis: lifetime
 - name: kettle-rusty
   description: Rust crate recipe helpers for Structured Merge
   description_source: site
@@ -7643,18 +7673,20 @@
   - rust
   - structuredmerge
   docs_site: https://structuredmerge.org
-  github_stars: 0
+  github_stars: 1
   last_commit_on: 2026/11/01
   status: active
-  total_downloads: 15
-  release_downloads: 15
+  total_downloads: 19
+  release_downloads: 19
   release_date: 2026/05/06
   licenses:
   - AGPL-3.0-only OR PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-rust/blob/main/LICENSE.md
-  last_scrape_at: '2026-11-02T07:57:40Z'
+  last_scrape_at: '2026-11-04T03:13:33Z'
   owner: true
   releaser: true
+  daily_downloads: 0
+  downloads_basis: lifetime
 - name: markdown-merge
   description: Markdown merge helpers for Structured Merge
   description_source: registry
@@ -7679,18 +7711,20 @@
   - rust
   - structuredmerge
   docs_site: https://structuredmerge.org
-  github_stars: 0
+  github_stars: 1
   last_commit_on: 2026/11/01
   status: active
-  total_downloads: 76
-  release_downloads: 76
+  total_downloads: 156
+  release_downloads: 156
   release_date: 2026/05/06
   licenses:
   - AGPL-3.0-only OR PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-rust/blob/main/LICENSE.md
-  last_scrape_at: '2026-11-02T07:57:42Z'
+  last_scrape_at: '2026-11-04T03:13:35Z'
   owner: true
   releaser: true
+  daily_downloads: 1
+  downloads_basis: lifetime
 - name: pest-toml-merge
   description: Pest TOML merge helpers for Structured Merge
   description_source: site
@@ -7715,18 +7749,20 @@
   - rust
   - structuredmerge
   docs_site: https://structuredmerge.org
-  github_stars: 0
+  github_stars: 1
   last_commit_on: 2026/11/01
   status: active
-  total_downloads: 14
-  release_downloads: 14
+  total_downloads: 16
+  release_downloads: 16
   release_date: 2026/05/06
   licenses:
   - AGPL-3.0-only OR PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-rust/blob/main/LICENSE.md
-  last_scrape_at: '2026-11-02T07:57:44Z'
+  last_scrape_at: '2026-11-04T03:13:37Z'
   owner: true
   releaser: true
+  daily_downloads: 0
+  downloads_basis: lifetime
 - name: plain-merge
   description: Plain text merge helpers for Structured Merge
   description_source: registry
@@ -7751,18 +7787,20 @@
   - rust
   - structuredmerge
   docs_site: https://structuredmerge.org
-  github_stars: 0
+  github_stars: 1
   last_commit_on: 2026/11/01
   status: active
-  total_downloads: 14
-  release_downloads: 14
+  total_downloads: 16
+  release_downloads: 16
   release_date: 2026/05/06
   licenses:
   - AGPL-3.0-only OR PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-rust/blob/main/LICENSE.md
-  last_scrape_at: '2026-11-02T07:57:46Z'
+  last_scrape_at: '2026-11-04T03:13:39Z'
   owner: true
   releaser: true
+  daily_downloads: 0
+  downloads_basis: lifetime
 - name: pulldown-cmark-merge
   description: Pulldown-cmark Markdown merge helpers for Structured Merge
   description_source: site
@@ -7787,18 +7825,20 @@
   - rust
   - structuredmerge
   docs_site: https://structuredmerge.org
-  github_stars: 0
+  github_stars: 1
   last_commit_on: 2026/11/01
   status: active
-  total_downloads: 16
-  release_downloads: 16
+  total_downloads: 18
+  release_downloads: 18
   release_date: 2026/05/06
   licenses:
   - AGPL-3.0-only OR PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-rust/blob/main/LICENSE.md
-  last_scrape_at: '2026-11-02T07:57:48Z'
+  last_scrape_at: '2026-11-04T03:13:41Z'
   owner: true
   releaser: true
+  daily_downloads: 0
+  downloads_basis: lifetime
 - name: ruby-merge
   description: Ruby syntax merge helpers for Structured Merge
   description_source: registry
@@ -7823,18 +7863,20 @@
   - rust
   - structuredmerge
   docs_site: https://structuredmerge.org
-  github_stars: 0
+  github_stars: 1
   last_commit_on: 2026/11/01
   status: active
-  total_downloads: 46
-  release_downloads: 46
+  total_downloads: 87
+  release_downloads: 87
   release_date: 2026/05/06
   licenses:
   - AGPL-3.0-only OR PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-rust/blob/main/LICENSE.md
-  last_scrape_at: '2026-11-02T07:57:50Z'
+  last_scrape_at: '2026-11-04T03:13:43Z'
   owner: true
   releaser: true
+  daily_downloads: 0
+  downloads_basis: lifetime
 - name: rust-merge
   description: Rust syntax merge helpers for Structured Merge
   description_source: registry
@@ -7859,18 +7901,20 @@
   - rust
   - structuredmerge
   docs_site: https://structuredmerge.org
-  github_stars: 0
+  github_stars: 1
   last_commit_on: 2026/11/01
   status: active
-  total_downloads: 16
-  release_downloads: 16
+  total_downloads: 18
+  release_downloads: 18
   release_date: 2026/05/06
   licenses:
   - AGPL-3.0-only OR PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-rust/blob/main/LICENSE.md
-  last_scrape_at: '2026-11-02T07:57:52Z'
+  last_scrape_at: '2026-11-04T03:13:45Z'
   owner: true
   releaser: true
+  daily_downloads: 0
+  downloads_basis: lifetime
 - name: structuredmerge-toml-merge
   description: TOML merge helpers for Structured Merge
   description_source: site
@@ -7895,18 +7939,20 @@
   - rust
   - structuredmerge
   docs_site: https://structuredmerge.org
-  github_stars: 0
+  github_stars: 1
   last_commit_on: 2026/11/01
   status: active
-  total_downloads: 78
-  release_downloads: 78
+  total_downloads: 158
+  release_downloads: 158
   release_date: 2026/05/06
   licenses:
   - AGPL-3.0-only OR PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-rust/blob/main/LICENSE.md
-  last_scrape_at: '2026-11-02T07:57:54Z'
+  last_scrape_at: '2026-11-04T03:13:47Z'
   owner: true
   releaser: true
+  daily_downloads: 1
+  downloads_basis: lifetime
 - name: tree-haver
   description: Tree substrate and binary location contracts for Structured Merge
   description_source: site
@@ -7931,18 +7977,20 @@
   - rust
   - structuredmerge
   docs_site: https://structuredmerge.org
-  github_stars: 0
+  github_stars: 1
   last_commit_on: 2026/11/01
   status: active
-  total_downloads: 496
-  release_downloads: 478
+  total_downloads: 1060
+  release_downloads: 1042
   release_date: 2026/05/06
   licenses:
   - AGPL-3.0-only OR PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-rust/blob/main/LICENSE.md
-  last_scrape_at: '2026-11-02T07:57:57Z'
+  last_scrape_at: '2026-11-04T03:13:50Z'
   owner: true
   releaser: true
+  daily_downloads: 6
+  downloads_basis: lifetime
 - name: typescript-merge
   description: TypeScript syntax merge helpers for Structured Merge
   description_source: registry
@@ -7967,18 +8015,20 @@
   - rust
   - structuredmerge
   docs_site: https://structuredmerge.org
-  github_stars: 0
+  github_stars: 1
   last_commit_on: 2026/11/01
   status: active
-  total_downloads: 16
-  release_downloads: 16
+  total_downloads: 18
+  release_downloads: 18
   release_date: 2026/05/06
   licenses:
   - AGPL-3.0-only OR PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-rust/blob/main/LICENSE.md
-  last_scrape_at: '2026-11-02T07:57:59Z'
+  last_scrape_at: '2026-11-04T03:13:52Z'
   owner: true
   releaser: true
+  daily_downloads: 0
+  downloads_basis: lifetime
 - name: yaml-merge
   description: YAML merge helpers for Structured Merge
   description_source: registry
@@ -8003,18 +8053,20 @@
   - rust
   - structuredmerge
   docs_site: https://structuredmerge.org
-  github_stars: 0
+  github_stars: 1
   last_commit_on: 2026/11/01
   status: active
-  total_downloads: 50
-  release_downloads: 50
+  total_downloads: 91
+  release_downloads: 91
   release_date: 2026/05/06
   licenses:
   - AGPL-3.0-only OR PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-rust/blob/main/LICENSE.md
-  last_scrape_at: '2026-11-02T07:58:01Z'
+  last_scrape_at: '2026-11-04T03:13:54Z'
   owner: true
   releaser: true
+  daily_downloads: 0
+  downloads_basis: lifetime
 - name: yaml-serde-merge
   description: yaml-serde merge helpers for Structured Merge
   description_source: site
@@ -8039,18 +8091,20 @@
   - rust
   - structuredmerge
   docs_site: https://structuredmerge.org
-  github_stars: 0
+  github_stars: 1
   last_commit_on: 2026/11/01
   status: active
-  total_downloads: 16
-  release_downloads: 16
+  total_downloads: 18
+  release_downloads: 18
   release_date: 2026/05/06
   licenses:
   - AGPL-3.0-only OR PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-rust/blob/main/LICENSE.md
-  last_scrape_at: '2026-11-02T07:58:03Z'
+  last_scrape_at: '2026-11-04T03:13:56Z'
   owner: true
   releaser: true
+  daily_downloads: 0
+  downloads_basis: lifetime
 - name: structuredmerge-zip-merge
   description: ZIP inventory, planning, nested dispatch, and raw-preservation helpers
     for Structured Merge
@@ -8076,18 +8130,20 @@
   - rust
   - structuredmerge
   docs_site: https://structuredmerge.org
-  github_stars: 0
+  github_stars: 1
   last_commit_on: 2026/11/01
   status: active
-  total_downloads: 15
-  release_downloads: 15
+  total_downloads: 18
+  release_downloads: 18
   release_date: 2026/05/06
   licenses:
   - AGPL-3.0-only OR PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-rust/blob/main/LICENSE.md
-  last_scrape_at: '2026-11-02T07:58:05Z'
+  last_scrape_at: '2026-11-04T03:13:58Z'
   owner: true
   releaser: true
+  daily_downloads: 0
+  downloads_basis: lifetime
 - name: github.com/structuredmerge/structuredmerge-go
   description: Go implementation of the StructuredMerge contract.
   description_source: site
@@ -8111,7 +8167,7 @@
   - go
   - structuredmerge
   docs_site: https://structuredmerge.org
-  github_stars: 0
+  github_stars: 1
   last_commit_on: 2026/11/01
   status: active
   release_date: 2026/05/06
@@ -8119,7 +8175,7 @@
   - AGPL-3.0-only
   - PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-go/blob/main/LICENSE.md
-  last_scrape_at: '2026-11-02T07:58:09Z'
+  last_scrape_at: '2026-11-04T03:14:01Z'
   owner: true
 - name: ast-crispr
   description: "\U0001F9EC A thin structural edit tool layer over ast-merge structured-edit
@@ -8143,15 +8199,15 @@
   licenses:
   - AGPL-3.0-only
   - PolyForm-Small-Business-1.0.0
-  total_downloads: 14689
+  total_downloads: 14850
   daily_downloads: 235
-  release_downloads: 250
+  release_downloads: 333
   release_date: 2026/10/30
   github_stars: 19
-  last_commit_on: 2026/11/01
+  last_commit_on: 2026/11/04
   status: active
   license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
-  last_scrape_at: '2026-11-02T07:58:12Z'
+  last_scrape_at: '2026-11-04T03:14:03Z'
   theme: family
   family_id: smorg-rb
   family_position: 26
@@ -8179,15 +8235,15 @@
   licenses:
   - AGPL-3.0-only
   - PolyForm-Small-Business-1.0.0
-  total_downloads: 14232
+  total_downloads: 14333
   daily_downloads: 226
-  release_downloads: 232
+  release_downloads: 260
   release_date: 2026/10/30
   github_stars: 19
-  last_commit_on: 2026/11/01
+  last_commit_on: 2026/11/04
   status: active
   license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
-  last_scrape_at: '2026-11-02T07:58:16Z'
+  last_scrape_at: '2026-11-04T03:14:06Z'
   theme: family
   family_id: smorg-rb
   family_position: 28
@@ -8215,15 +8271,15 @@
   licenses:
   - AGPL-3.0-only
   - PolyForm-Small-Business-1.0.0
-  total_downloads: 14538
+  total_downloads: 14697
   daily_downloads: 227
-  release_downloads: 228
+  release_downloads: 307
   release_date: 2026/10/30
   github_stars: 19
-  last_commit_on: 2026/11/01
+  last_commit_on: 2026/11/04
   status: active
   license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
-  last_scrape_at: '2026-11-02T07:58:19Z'
+  last_scrape_at: '2026-11-04T03:14:08Z'
   theme: family
   family_id: smorg-rb
   family_position: 27
@@ -8250,15 +8306,15 @@
   licenses:
   - AGPL-3.0-only
   - PolyForm-Small-Business-1.0.0
-  total_downloads: 6614
+  total_downloads: 6622
   daily_downloads: 86
-  release_downloads: 171
+  release_downloads: 172
   release_date: 2026/10/30
   github_stars: 19
-  last_commit_on: 2026/11/01
+  last_commit_on: 2026/11/04
   status: active
   license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
-  last_scrape_at: '2026-11-02T07:58:22Z'
+  last_scrape_at: '2026-11-04T03:14:09Z'
   theme: family
   family_id: smorg-rb
   family_position: 31
