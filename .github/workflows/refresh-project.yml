@@ -52,8 +52,8 @@ jobs:
       - name: Commit
         run: |
           name=$(jq -rs '[.[] | select(.type=="project_result") | .name] | first // "project"' tmp/update_projects/run-*.ndjson)
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config user.name "autobolt"
+          git config user.email "32689569+autobolt@users.noreply.github.com"
           git add src/_data/projects.yml src/_data/projects_dev.yml src/_data/star_history
           git diff --staged --quiet && exit 0
           git commit -m "data: refresh ${name}"
