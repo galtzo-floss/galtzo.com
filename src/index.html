@@ -62,6 +62,27 @@ body_class: projects
     "https://img.shields.io/github/license/#{repo_path}?style=social"
   end
 } %>
+<%# Registry page for a package, keyed by ecosystem (nil → no public registry page) %>
+<% ecosystem_url_for = ->(project) {
+  name = project['name'].to_s
+  case project['ecosystem']
+  when 'rubygems'  then "https://rubygems.org/gems/#{name}"
+  when 'cargo'     then "https://crates.io/crates/#{name}"
+  when 'npm'       then "https://www.npmjs.com/package/#{ERB::Util.url_encode(name)}"
+  when 'pypi'      then "https://pypi.org/project/#{ERB::Util.url_encode(name)}/"
+  when 'hex'       then "https://hex.pm/packages/#{ERB::Util.url_encode(name)}"
+  when 'nuget'     then "https://www.nuget.org/packages/#{ERB::Util.url_encode(name)}"
+  when 'packagist' then "https://packagist.org/packages/#{ERB::Util.url_encode(name)}"
+  end
+} %>
+<%# What total_downloads actually counts, per downloads_basis (see update_projects) %>
+<% basis_label_for = ->(project) {
+  case project['downloads_basis']
+  when '180d' then 'downloads in the last 180 days (pypistats only keeps that window)'
+  when '18mo' then 'downloads in the last 18 months (npm only serves that window)'
+  when 'lifetime' then 'all-time downloads'
+  end
+} %>
 
 <% years = projects.map {|p| p['first_commit_by_person_on']&.to_s&.split('/')&.first }.compact.uniq.sort %>
 <% year_counts = {} %>
@@ -522,11 +543,12 @@ body_class: projects
             release_dl = project['release_downloads']
             daily_dl   = project['daily_downloads']
             has_dl     = !!total_dl
+            basis_note = basis_label_for.call(project)
           %>
           <% if has_dl %>
           <span class="stat-group dl-group">
             <span class="stat-label">DL</span>
-            <span class="stat-sub" title="Total downloads">T:&nbsp;<%== fmt_num.call(total_dl) %></span>
+            <span class="stat-sub" title="Total downloads<%= basis_note ? " — #{basis_note}" : '' %>">T:&nbsp;<%== fmt_num.call(total_dl) %><%= '*' if %w[180d 18mo].include?(project['downloads_basis']) %></span>
             <% if release_dl %><span class="stat-sub" title="Latest release downloads">R:&nbsp;<%== fmt_num.call(release_dl) %></span><% end %>
             <% if daily_dl %><span class="stat-sub" title="28-day trailing average downloads per day">~<%== fmt_num.call(daily_dl) %>/d</span><% end %>
           </span>
@@ -558,6 +580,18 @@ body_class: projects
         <%= project["name"] %>
       </a>
       <% else %>
+      <% reg_url = ecosystem_url_for.call(project) %>
+      <% if reg_url %>
+      <a href="<%= reg_url %>" class="project-language gem-link" target="_blank" rel="noopener" title="View on <%= project['ecosystem'] %>">
+        <img
+                src="/assets/images/<%= project['language'].gsub('#', 'sharp') %>.svg"
+                alt="<%= project['language'] %>"
+                class="language <%= project['language'].downcase %>"
+        >
+        <%= project["name"] %>
+        <span class="ecosystem-chip"><%= project['ecosystem'] %></span>
+      </a>
+      <% else %>
       <span class="project-language">
         <img
                 src="/assets/images/<%= project['language'].gsub('#', 'sharp') %>.svg"
@@ -566,6 +600,7 @@ body_class: projects
         >
         <%= project["name"] %>
       </span>
+      <% end %>
       <% end %>
     </h2>
     <p>
@@ -794,11 +829,12 @@ body_class: projects
             release_dl = project['release_downloads']
             daily_dl   = project['daily_downloads']
             has_dl     = !!total_dl
+            basis_note = basis_label_for.call(project)
           %>
           <% if has_dl %>
           <span class="stat-group dl-group">
             <span class="stat-label">DL</span>
-            <span class="stat-sub" title="Total downloads">T:&nbsp;<%== fmt_num.call(total_dl) %></span>
+            <span class="stat-sub" title="Total downloads<%= basis_note ? " — #{basis_note}" : '' %>">T:&nbsp;<%== fmt_num.call(total_dl) %><%= '*' if %w[180d 18mo].include?(project['downloads_basis']) %></span>
             <% if release_dl %><span class="stat-sub" title="Latest release downloads">R:&nbsp;<%== fmt_num.call(release_dl) %></span><% end %>
             <% if daily_dl %><span class="stat-sub" title="28-day trailing average downloads per day">~<%== fmt_num.call(daily_dl) %>/d</span><% end %>
           </span>
@@ -839,6 +875,18 @@ body_class: projects
         <%= project["full_name"] %>
       </a>
       <% else %>
+      <% reg_url = ecosystem_url_for.call(project) %>
+      <% if reg_url %>
+      <a href="<%= reg_url %>" class="project-language gem-link" target="_blank" rel="noopener" title="View on <%= project['ecosystem'] %>">
+        <img
+                src="/assets/images/<%= project['language'].gsub('#', 'sharp') %>.svg"
+                alt="<%= project['language'] %>"
+                class="language <%= project['language'].downcase %>"
+        >
+        <%= project["name"] %>
+        <span class="ecosystem-chip"><%= project['ecosystem'] %></span>
+      </a>
+      <% else %>
       <span class="project-language">
         <img
                 src="/assets/images/<%= project['language'].gsub('#', 'sharp') %>.svg"
@@ -847,6 +895,7 @@ body_class: projects
         >
         <%= project["name"] %>
       </span>
+      <% end %>
       <% end %>
     </h2>
     <p>
