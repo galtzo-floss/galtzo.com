@@ -9,6 +9,7 @@ require 'date'
 require 'time'
 require 'fileutils'
 require 'base64'
+require 'open3'
 require 'tty-prompt'
 require 'kettle/ndjson'
 require 'ast-crispr-yaml-psych'
@@ -55,7 +56,7 @@ class ProjectUpdater
     release_date last_commit_on status
     first_commit_by_person first_commit_by_person_on
     description
-    owner releaser
+    owner releaser coverage
   ]
 
   # Fallback minimum Ruby version for RubyGems entries when the API reports none.
@@ -1638,6 +1639,9 @@ class ProjectUpdater
         puts "  🔑 Owner (admin on #{repo_path}): #{project['owner']}"
       end
 
+    when 'coverage'
+      apply_coverage(project, github_forge)
+
     when 'releaser'
       # releaser = can publish to the project's registry (listed as an owner/maintainer there).
       # Registries with no public owner list (pypi, ...) are left unset rather than guessed.
@@ -1801,6 +1805,9 @@ class ProjectUpdater
 
     # Step 7b: Description — synced only when description_source is 'registry'
     sync_registry_description(project)
+
+    # Step 7c: Coverage of the latest release, from the gem's kettle-changelog release header
+    apply_coverage(project, github_forge)
 
     # Step 8: Last commit date (GitHub preferred, GitLab last_activity_at as fallback)
     commit_source = github_info || gitlab_info
@@ -2572,6 +2579,70 @@ class ProjectUpdater
 
   def clickgems_cache_enabled?
     !%w[false 0 no off disabled].include?(CLICKGEMS_CACHE_PATH.downcase)
+  end
+
+  COVERAGE_KEYS = %w[coverage coverage_branch coverage_lines_covered coverage_lines_total coverage_release].freeze
+
+  # Latest-release coverage for a Ruby gem, read from the release header kettle-changelog writes:
+  #   - COVERAGE: 98.48% -- 649/659 lines in 16 files
+  # Parsing is kettle-changelog's own (`kettle-changelog --release-stats --json`, read-only, stdin), so only
+  # its exact format counts. Anything else (no changelog, other format, no stats in the latest release,
+  # non-Ruby project) records nothing: the keys are removed rather than left stale.
+  def apply_coverage(project, github_forge)
+    stats = fetch_release_coverage(project, github_forge)
+    COVERAGE_KEYS.each { |k| project.delete(k) }
+    cov = stats && stats['coverage']
+    if cov
+      project['coverage'] = cov['percent']
+      project['coverage_lines_covered'] = cov['covered']
+      project['coverage_lines_total'] = cov['total']
+      project['coverage_branch'] = stats.dig('branch_coverage', 'percent')
+      project['coverage_release'] = stats['version']
+      project.delete('coverage_branch') if project['coverage_branch'].nil?
+      puts "  🧪 Coverage (v#{stats['version']}): #{cov['percent']}%"
+    else
+      puts '  🧪 Coverage: none recorded in the latest release'
+    end
+  end
+
+  def fetch_release_coverage(project, github_forge)
+    return nil unless project['ecosystem'] == 'rubygems' && github_forge
+
+    repo_path = extract_repo_path(github_forge['url'])
+    gems_in_repo = (@projects || []).count do |pr|
+      pr['ecosystem'] == 'rubygems' && Array(pr['forges']).any? { |f| f['type'] == 'GitHub' && f['url'].to_s.casecmp?(github_forge['url'].to_s) }
+    end
+    # A monorepo's root changelog is not any one gem's: use gems/<name>/CHANGELOG.md only.
+    paths = gems_in_repo > 1 ? ["gems/#{project['name']}/CHANGELOG.md"] : ['CHANGELOG.md']
+    paths.each do |path|
+      text = github_raw_file(repo_path, path)
+      next unless text
+
+      out, status = Open3.capture2('kettle-changelog', '--release-stats', '--json', stdin_data: text)
+      return JSON.parse(out) if status.success?
+    end
+    nil
+  rescue Errno::ENOENT
+    raise 'kettle-changelog is not installed (gem install kettle-changelog -v ">= 1.0.16")'
+  rescue JSON::ParserError
+    nil
+  end
+
+  def github_raw_file(repo_path, path, limit = 3)
+    uri = URI("https://api.github.com/repos/#{repo_path}/contents/#{path}")
+    limit.times do
+      request = Net::HTTP::Get.new(uri)
+      request['Accept'] = 'application/vnd.github.raw'
+      request['Authorization'] = "token #{GITHUB_TOKEN}" if GITHUB_TOKEN
+      request['User-Agent'] = 'Galtzo-Project-Updater'
+      response = Net::HTTP.start(uri.hostname, uri.port, use_ssl: true) { |http| http.request(request) }
+      return response.body.force_encoding('UTF-8') if response.code.to_i == 200
+      return nil if response.code.to_i == 404
+      raise "GitHub API error: #{response.code}" unless redirect_response?(response)
+
+      uri = URI(redirect_url(response, from: uri)) # renamed/moved repos answer 301
+    end
+    nil
   end
 
   # true/false when the registry publishes its owner list, nil when it cannot tell.
