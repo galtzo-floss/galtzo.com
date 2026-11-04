@@ -9431,3 +9431,36 @@
   first_commit_by_person: https://github.com/xberg-io/tree-sitter-language-pack/commit/7f947b49631d086a8812caebaf5e91f69e8987bf
   first_commit_by_person_on: 2026/04/20
   owner: false
+- name: galtzo-os
+  description: "\U0001F4BF️ My Operating System \U0001F4BF️- An Atomic Fedora Universal
+    Blue Aurora DX Spin w/ Ruby, Java, 1Password, & NordVPN"
+  description_source: site
+  language: Bash
+  ecosystem: none
+  role: author
+  funding_sites: []
+  forges:
+  - type: GitHub
+    url: https://github.com/pboling/galtzo-os
+    owner: pboling
+  tags:
+  - atomic
+  - bluebuild
+  - fedora
+  - immutable
+  - linux
+  - operating-system
+  theme: family
+  family_id: miscellaneous
+  family_position: 16
+  github_stars: 3
+  licenses:
+  - Apache-2.0
+  license_url: https://github.com/pboling/galtzo-os/blob/main/LICENSE
+  release_date:
+  last_commit_on: 2026/10/24
+  status: active
+  last_scrape_at: '2026-11-04T11:41:55Z'
+  owner: true
+  first_commit_by_person: https://github.com/pboling/galtzo-os/commit/4afe2c1e2d749159b4adaf84ad01b7441caefc2b
+  first_commit_by_person_on: 2025/08/04
