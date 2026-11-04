@@ -455,7 +455,15 @@ class ProjectUpdater
     project_name = ask("Project name", default: opts[:name])
 
     # ── Family ────────────────────────────────────────────────────────────────
-    family_id = select_family
+    family_id = if opts[:family]
+      unless (@families || []).any? { |f| f['id'] == opts[:family] }
+        abort "Unknown family '#{opts[:family]}'. Known: #{(@families || []).map { |f| f['id'] }.join(', ')}"
+      end
+      puts "Family: #{opts[:family]} [auto]"
+      opts[:family]
+    else
+      select_family
+    end
 
     # ── Ecosystem(s) ──────────────────────────────────────────────────────────
     # Use tty-prompt select menu for ecosystem selection
@@ -553,7 +561,11 @@ class ProjectUpdater
     puts "─"*80
 
     project = { 'name' => project_name, 'ecosystem' => ecosystem }
-    project['family'] = family_id if family_id
+    if family_id
+      project['theme'] = 'family'
+      project['family_id'] = family_id
+      project['family_position'] = (@projects.select { |pr| pr['family_id'] == family_id }.map { |pr| pr['family_position'].to_i }.max || 0) + 1
+    end
 
     # ── Early ecosystem scrape ─────────────────────────────────────────────
     # Scrape as soon as we know name + ecosystem so we can pre-fill defaults.
@@ -3109,6 +3121,10 @@ if __FILE__ == $0
 
     op.on("--tags TAG1,TAG2", "Comma-separated tags") do |v|
       add_project_opts[:tags] = v
+    end
+
+    op.on("--family ID", "Family id from families.yml (skips the family prompt)") do |v|
+      add_project_opts[:family] = v
     end
 
     op.on("--funding-sites SPEC",

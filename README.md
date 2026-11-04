@@ -173,6 +173,7 @@ So someone can be a `maintainer` who is neither owner nor releaser; consumers sh
 | `--description TEXT` | Short description (HTML allowed) |
 | `--minimum-version VER` | Minimum runtime version |
 | `--tags TAG1,TAG2` | Comma-separated tags |
+| `--family ID` | Family id from `src/_data/families.yml` (e.g. `miscellaneous`); skips the family prompt. Sets `theme`, `family_id` and the next `family_position`. |
 | `--funding-sites VALUE` | Pre-set funding sites. Use `none` for an empty list, or `TYPE1:URL1,TYPE2:URL2` (e.g. `OpenCollective:https://opencollective.com/myorg`). Defaults to OpenCollective + Liberapay for `role: author`, empty list otherwise. |
 
 #### Option reference
