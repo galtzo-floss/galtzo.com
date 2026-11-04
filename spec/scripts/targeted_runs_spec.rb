@@ -1,0 +1,194 @@
+# frozen_string_literal: true
+
+require "spec_helper"
+require "tempfile"
+
+RSpec.describe "Targeted runs and class filtering (Issue #7)" do
+  let(:updater) do
+    ProjectUpdater.new(auto_confirm: true, surgical_fields: ['status'])
+  end
+
+  let(:sample_projects) do
+    [
+      {
+        'name' => 'proj_alpha',
+        'ecosystem' => 'rubygems',
+        'language' => 'Ruby',
+        'role' => 'author',
+        'status' => 'active',
+        'family_id' => 'alpha-family',
+        'tags' => ['gem', 'ruby'],
+        'forges' => [{ 'type' => 'GitHub', 'url' => 'https://github.com/test/proj_alpha' }],
+        'total_downloads' => 1000,
+        'last_scrape_at' => '2026-11-01T00:00:00Z'
+      },
+      {
+        'name' => 'proj_beta',
+        'ecosystem' => 'cargo',
+        'language' => 'Rust',
+        'role' => 'maintainer',
+        'status' => 'stale',
+        'family_id' => 'beta-family',
+        'tags' => ['rust'],
+        'forges' => [{ 'type' => 'GitLab', 'url' => 'https://gitlab.com/test/proj_beta' }],
+        'total_downloads' => 500,
+        'last_scrape_at' => '2026-11-02T00:00:00Z'
+      },
+      {
+        'name' => 'proj_gamma',
+        'ecosystem' => 'npm',
+        'language' => 'TypeScript',
+        'role' => 'contributor',
+        'status' => 'archived',
+        'family_id' => nil,
+        'tags' => ['npm'],
+        'forges' => [],
+        'total_downloads' => 200,
+        'last_scrape_at' => '2026-10-01T00:00:00Z'
+      },
+      {
+        'name' => '@scoped/pkg',
+        'ecosystem' => 'npm',
+        'language' => 'JavaScript',
+        'role' => 'author',
+        'status' => 'active',
+        'family_id' => 'scoped-family',
+        'tags' => ['npm', 'scoped'],
+        'forges' => [{ 'type' => 'GitHub', 'url' => 'https://github.com/test/pkg' }],
+        'total_downloads' => 10,
+        'last_scrape_at' => '2026-11-03T00:00:00Z'
+      }
+    ]
+  end
+
+  describe "#project_in_class?" do
+    it "filters simple classes: active, stale, archived, no-forge" do
+      alpha = sample_projects[0]
+      beta = sample_projects[1]
+      gamma = sample_projects[2]
+
+      expect(updater.project_in_class?(alpha, 'active')).to be true
+      expect(updater.project_in_class?(alpha, 'stale')).to be false
+
+      expect(updater.project_in_class?(beta, 'stale')).to be true
+      expect(updater.project_in_class?(gamma, 'archived')).to be true
+
+      expect(updater.project_in_class?(gamma, 'no-forge')).to be true
+      expect(updater.project_in_class?(alpha, 'no-forge')).to be false
+    end
+
+    it "filters keyed classes: role, ecosystem, language, status, family, tag" do
+      alpha = sample_projects[0]
+      beta = sample_projects[1]
+      gamma = sample_projects[2]
+
+      expect(updater.project_in_class?(alpha, 'role:author')).to be true
+      expect(updater.project_in_class?(beta, 'role:maintainer')).to be true
+      expect(updater.project_in_class?(gamma, 'role:contributor')).to be true
+
+      expect(updater.project_in_class?(alpha, 'ecosystem:rubygems')).to be true
+      expect(updater.project_in_class?(beta, 'ecosystem:cargo')).to be true
+      expect(updater.project_in_class?(gamma, 'ecosystem:npm')).to be true
+
+      expect(updater.project_in_class?(alpha, 'language:Ruby')).to be true
+      expect(updater.project_in_class?(beta, 'language:Rust')).to be true
+
+      expect(updater.project_in_class?(alpha, 'family:alpha-family')).to be true
+      expect(updater.project_in_class?(alpha, 'tag:gem')).to be true
+      expect(updater.project_in_class?(alpha, 'tag:rust')).to be false
+    end
+
+    it "filters failed class using last run log" do
+      log_dir = ProjectUpdater::RUN_LOG_DIR
+      FileUtils.mkdir_p(log_dir)
+      test_log = File.join(log_dir, "run-20990101T000000Z-999999.ndjson")
+      File.write(test_log, [
+        JSON.generate({ 'type' => 'project_result', 'name' => 'proj_alpha', 'ecosystem' => 'rubygems', 'status' => 'error' }),
+        JSON.generate({ 'type' => 'project_result', 'name' => 'proj_beta', 'ecosystem' => 'cargo', 'status' => 'ok' })
+      ].join("\n"))
+
+      begin
+        updater_with_log = ProjectUpdater.new(auto_confirm: true, surgical_fields: ['status'])
+        expect(updater_with_log.project_in_class?(sample_projects[0], 'failed')).to be true
+        expect(updater_with_log.project_in_class?(sample_projects[1], 'failed')).to be false
+      ensure
+        FileUtils.rm_f(test_log)
+      end
+    end
+  end
+
+  describe "#select_targets" do
+    it "combines -p filter and --only classes via intersection" do
+      target_updater = ProjectUpdater.new(
+        auto_confirm: true,
+        surgical_fields: ['status'],
+        project_filter: 'proj_alpha,proj_beta',
+        project_classes: ['ecosystem:rubygems']
+      )
+
+      selected = target_updater.select_targets(sample_projects)
+      expect(selected.map { |p| p['name'] }).to eq(['proj_alpha'])
+    end
+
+    it "takes the union of multiple --only classes" do
+      target_updater = ProjectUpdater.new(
+        auto_confirm: true,
+        surgical_fields: ['status'],
+        project_classes: ['ecosystem:cargo', 'ecosystem:npm']
+      )
+
+      selected = target_updater.select_targets(sample_projects)
+      expect(selected.map { |p| p['name'] }).to contain_exactly('proj_beta', 'proj_gamma', '@scoped/pkg')
+    end
+  end
+
+  describe "#persist_targeted with ast-crispr-yaml-psych" do
+    it "modifies only targeted entries leaving untouched entries and formatting byte-identical" do
+      initial_yaml = <<~YAML
+        # Header comment to preserve
+        # Another line
+        - name: first_proj
+          ecosystem: rubygems
+          minimum_version: "2.7"
+          status: active
+        # Middle comment
+        - name: "@scoped/pkg"
+          ecosystem: npm
+          minimum_version: "18.0"
+          status: active
+        - name: third_proj
+          ecosystem: cargo
+          status: active
+      YAML
+
+      file = Tempfile.new(['targeted_test', '.yml'])
+      file.write(initial_yaml)
+      file.flush
+
+      entries = YAML.safe_load(initial_yaml)
+      changed_entry = entries.find { |e| e['name'] == '@scoped/pkg' }
+      changed_entry['status'] = 'stale'
+      changed_entry['minimum_version'] = '20.0'
+
+      updater.persist_targeted(file.path, entries, [changed_entry])
+
+      updated_content = File.read(file.path)
+      updated_entries = YAML.safe_load(updated_content)
+
+      # Check that the modified entry changed
+      target = updated_entries.find { |e| e['name'] == '@scoped/pkg' }
+      expect(target['status']).to eq('stale')
+      expect(target['minimum_version']).to eq('20.0')
+
+      # Check that first_proj and third_proj stayed untouched
+      expect(updated_entries.find { |e| e['name'] == 'first_proj' }['status']).to eq('active')
+      expect(updated_entries.find { |e| e['name'] == 'third_proj' }['status']).to eq('active')
+
+      # Comments remain preserved
+      expect(updated_content).to include("# Header comment to preserve")
+      expect(updated_content).to include("# Middle comment")
+    ensure
+      file.close!
+    end
+  end
+end

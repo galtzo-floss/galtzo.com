@@ -22,3 +22,8 @@ group :development do
   gem "table_tennis"
   gem "tty-prompt"
 end
+
+group :test, :development do
+  gem "kettle-test"
+  gem "kettle-soup-cover"
+end

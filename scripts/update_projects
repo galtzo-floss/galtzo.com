@@ -80,7 +80,10 @@ class ProjectUpdater
   )
   CLICKGEMS_CACHE_PATH = ENV.fetch('KETTLE_CLICKGEMS_CACHE', RUBYGEMS_VERSION_CACHE_PATH)
 
-  def initialize(surgical_fields: [], discover_rubygems: true, auto_confirm: false, project_filter: nil, project_classes: [], limit: nil, oldest_first: false, no_clickgems: false)
+  # Run log retention: keep at most MAX_RUN_LOGS recent NDJSON files
+  MAX_RUN_LOGS = 50
+
+  def initialize(surgical_fields: [], discover_rubygems: true, auto_confirm: false, project_filter: nil, project_classes: [], limit: nil, oldest_first: false, no_clickgems: false, strict: false)
     # SAFETY CHECK: projects_dev.yml must exist
     # If it doesn't exist, it means scripts/devswap was run but not run again to restore prod
     # This risks deploying dev/test projects to production
@@ -130,10 +133,12 @@ class ProjectUpdater
     @limit = limit
     @oldest_first = oldest_first
     @no_clickgems = no_clickgems
+    @strict = strict
     @clickgems_results = {} if no_clickgems # never query ClickGems; daily_downloads comes from the shared cache
     # A project filter implies targeted work — disable discovery automatically
     @discover_rubygems = false if @targeted
     validate_project_classes!
+    prune_run_logs!
     @prompt = TTY::Prompt.new
 
     # Preserve header comments from YAML files
@@ -293,7 +298,7 @@ class ProjectUpdater
         sleep(@rate_limit_delay) # Rate limiting
       rescue => e
         error_msg = "#{project['name']}: #{e.message}"
-        @errors << error_msg
+        record_error(error_msg)
         error_count += 1
         emit_event('project_result', name: project['name'], ecosystem: project['ecosystem'], status: 'error', message: e.message)
         puts "  ❌ ERROR: #{e.message}"
@@ -322,7 +327,6 @@ class ProjectUpdater
     puts "\nSource outcomes:"
     @source_tally.each { |src, outcomes| puts "  #{src.ljust(20)} #{outcomes.map { |k, v| "#{k}=#{v}" }.join(' ')}" }
     puts "  (none)" if @source_tally.empty?
-    @errors.each { |msg| emit_event('diagnostic', severity: 'error', message: msg) }
     emit_event('phase_finish', phase: 'projects', status: error_count.zero? ? 'ok' : 'errors')
     emit_event('summary', updated: updated_count, skipped: skipped_count, errors: @errors.size,
                field_changes: field_changes, sources: @source_tally, clickgems_batch_error: @clickgems_batch_error,
@@ -337,12 +341,18 @@ class ProjectUpdater
       end
     end
 
+    if @strict && @errors.any?
+      puts "\n❌ Update failed in --strict mode (#{@errors.size} error(s))."
+      exit 1
+    end
+
     puts "\n✅ Update complete!"
   end
 
   # run_add_project is declared further down but must be public — Ruby resolves
   # visibility at method-definition time, so we re-open public scope here.
   public
+  attr_reader :errors, :source_tally, :run_log_path
 
   private
 
@@ -404,8 +414,8 @@ class ProjectUpdater
 
         sleep(@rate_limit_delay)
       rescue => e
-        error_msg = "Failed to add #{gem_name}: #{e.message}"
-        @errors << error_msg
+        error_msg = "#{gem_name}: #{e.message}"
+        record_error(error_msg)
         puts "  ❌ ERROR: #{e.message}"
       end
     end
@@ -1246,7 +1256,7 @@ class ProjectUpdater
     data.map { |gem| gem['name'] }.compact
   rescue => e
     error_msg = "Failed to fetch RubyGems for #{handle}: #{e.message}"
-    @errors << error_msg
+    record_error(error_msg)
     puts "  ❌ #{error_msg}"
     []
   end
@@ -1308,7 +1318,7 @@ class ProjectUpdater
     data.map { |gem| gem['name'] }.compact
   rescue => e
     error_msg = "Failed to fetch RubyGems for #{handle}: #{e.message}"
-    @errors << error_msg
+    record_error(error_msg)
     puts "  ❌ #{error_msg}"
     []
   end
@@ -1928,7 +1938,7 @@ class ProjectUpdater
     { total_downloads: total, release_downloads: release }
   rescue => e
     error_msg = "Failed to fetch GitHub release downloads from #{url}: #{e.message}"
-    @errors << error_msg unless @errors.include?(error_msg)
+    record_error(error_msg)
     puts "    ⚠️  #{error_msg}"
     nil
   end
@@ -1955,7 +1965,7 @@ class ProjectUpdater
     }
   rescue => e
     error_msg = "Failed to fetch GitHub info: #{e.message}"
-    @errors << error_msg unless @errors.include?(error_msg)
+    record_error(error_msg)
     puts "    ⚠️  #{error_msg}"
     nil
   end
@@ -1974,7 +1984,7 @@ class ProjectUpdater
     fetch_github_latest_tag_date(repo_path)
   rescue => e
     error_msg = "Failed to fetch GitHub release date from #{url}: #{e.message}"
-    @errors << error_msg unless @errors.include?(error_msg)
+    record_error(error_msg)
     puts "    ⚠️  #{error_msg}"
     nil
   end
@@ -1991,7 +2001,7 @@ class ProjectUpdater
     date ? Date.parse(date).strftime('%Y/%m/%d') : nil
   rescue => e
     error_msg = "Failed to fetch latest tag date for #{repo_path}: #{e.message}"
-    @errors << error_msg unless @errors.include?(error_msg)
+    record_error(error_msg)
     puts "    ⚠️  #{error_msg}"
     nil
   end
@@ -2013,7 +2023,7 @@ class ProjectUpdater
     end
   rescue => e
     error_msg = "Failed to fetch registry description for #{project['name']}: #{e.message}"
-    @errors << error_msg unless @errors.include?(error_msg)
+    record_error(error_msg)
     puts "    ⚠️  #{error_msg}"
     nil
   end
@@ -2071,7 +2081,7 @@ class ProjectUpdater
     latest ? Date.parse(latest).strftime('%Y/%m/%d') : nil
   rescue => e
     error_msg = "Failed to fetch crates.io release date for #{crate_name}: #{e.message}"
-    @errors << error_msg unless @errors.include?(error_msg)
+    record_error(error_msg)
     puts "    ⚠️  #{error_msg}"
     nil
   end
@@ -2091,7 +2101,7 @@ class ProjectUpdater
     return fallback if fallback
 
     error_msg = "Failed to fetch npm release date for #{package_name}: #{e.message}"
-    @errors << error_msg unless @errors.include?(error_msg)
+    record_error(error_msg)
     puts "    ⚠️  #{error_msg}"
     nil
   end
@@ -2129,7 +2139,7 @@ class ProjectUpdater
     }
   rescue => e
     error_msg = "Failed to fetch GitLab info from #{url}: #{e.message}"
-    @errors << error_msg unless @errors.include?(error_msg)
+    record_error(error_msg)
     puts "    ⚠️  #{error_msg}"
     nil
   end
@@ -2153,7 +2163,7 @@ class ProjectUpdater
     data['stars_count'] || 0
   rescue => e
     error_msg = "Failed to fetch Codeberg stars from #{url}: #{e.message}"
-    @errors << error_msg unless @errors.include?(error_msg)
+    record_error(error_msg)
     puts "    ⚠️  #{error_msg}"
     0
   end
@@ -2175,7 +2185,7 @@ class ProjectUpdater
     }
   rescue => e
     error_msg = "Failed to fetch RubyGems info for #{gem_name}: #{e.message}"
-    @errors << error_msg unless @errors.include?(error_msg)
+    record_error(error_msg)
     puts "    ⚠️  #{error_msg}"
     nil
   end
@@ -2307,7 +2317,7 @@ class ProjectUpdater
   rescue => e
     @source_tally["#{project['ecosystem']}_downloads"][:failed] += 1
     error_msg = "Failed to fetch #{project['ecosystem']} downloads for #{project['name']}: #{e.message}"
-    @errors << error_msg unless @errors.include?(error_msg)
+    record_error(error_msg)
     puts "    ⚠️  #{error_msg}"
   end
 
@@ -2366,9 +2376,46 @@ class ProjectUpdater
   rescue => e
     @source_tally['star_history'][:failed] += 1
     error_msg = "Failed to sync star history for #{repo || project['name']}: #{e.message}"
-    @errors << error_msg unless @errors.include?(error_msg)
+    record_error(error_msg)
     emit_event('source_request', source: 'star_history', repo: repo, status: 'failed', message: e.message[0, 200])
     puts "    ⚠️  #{error_msg}"
+  end
+
+  def record_error(message, severity: 'error')
+    return if @errors.include?(message)
+
+    @errors << message
+    emit_event('diagnostic', severity: severity, message: message)
+  end
+
+  def infer_source_from_url(url)
+    host = URI(url).host rescue nil
+    case host
+    when /github\.com/ then 'github'
+    when /gitlab\.com/ then 'gitlab'
+    when /codeberg\.org/ then 'codeberg'
+    when /rubygems\.org/ then 'rubygems'
+    when /crates\.io/ then 'cargo'
+    when /npmjs\.(org|com)/ then 'npm'
+    when /pypi\.org/ then 'pypi'
+    when /hex\.pm/ then 'hex'
+    when /nuget\.org/ then 'nuget'
+    when /packagist\.org/ then 'packagist'
+    when /golang\.org/ then 'go'
+    else host || 'unknown'
+    end
+  end
+
+  def prune_run_logs!(keep: MAX_RUN_LOGS, dir: RUN_LOG_DIR)
+    return unless Dir.exist?(dir)
+
+    logs = Dir[File.join(dir, 'run-*.ndjson')].sort
+    excess = logs.size - keep
+    return unless excess.positive?
+
+    logs.first(excess).each do |file|
+      FileUtils.rm_f(file)
+    end
   end
 
   def emit_event(type, **payload)
@@ -2412,7 +2459,7 @@ class ProjectUpdater
     emit_event('phase_finish', phase: 'clickgems_batch', status: 'ok')
   rescue => e
     @clickgems_batch_error = e.message[0, 400]
-    @errors << "ClickGems batch query failed: #{@clickgems_batch_error}"
+    record_error("ClickGems batch query failed: #{@clickgems_batch_error}")
     emit_event('source_request', source: 'clickgems', status: 'failed', requested: names&.size, message: @clickgems_batch_error)
     emit_event('phase_finish', phase: 'clickgems_batch', status: 'failed')
     puts "    ⚠️  ClickGems batch failed: #{@clickgems_batch_error}"
@@ -2502,7 +2549,7 @@ class ProjectUpdater
     Date.parse(latest_version['created_at']).strftime('%Y/%m/%d')
   rescue => e
     error_msg = "Failed to fetch RubyGems release date for #{gem_name}: #{e.message}"
-    @errors << error_msg unless @errors.include?(error_msg)
+    record_error(error_msg)
     puts "    ⚠️  #{error_msg}"
     nil
   end
@@ -2692,6 +2739,7 @@ class ProjectUpdater
   end
 
   def github_api_request(url)
+    started = Process.clock_gettime(Process::CLOCK_MONOTONIC)
     uri = URI(url)
     request = Net::HTTP::Get.new(uri)
     request['Accept'] = 'application/vnd.github.v3+json'
@@ -2706,16 +2754,32 @@ class ProjectUpdater
       return github_api_request(redirect_url(response, from: uri))
     end
 
-    if response.code.to_i == 404
+    duration_ms = ((Process.clock_gettime(Process::CLOCK_MONOTONIC) - started) * 1000).round
+    code = response.code.to_i
+
+    if code == 404
+      emit_event('source_request', source: 'github', url: url, status: 'not_found', http_code: 404, duration_ms: duration_ms)
       return nil
-    elsif response.code.to_i != 200
-      raise "GitHub API error: #{response.code} - #{response.body[0..200]}"
+    elsif code != 200
+      error_msg = "GitHub API error: #{code} - #{response.body[0..200]}"
+      record_error(error_msg)
+      emit_event('source_request', source: 'github', url: url, status: 'error', http_code: code, duration_ms: duration_ms, message: error_msg)
+      raise error_msg
     end
 
+    emit_event('source_request', source: 'github', url: url, status: 'ok', http_code: 200, duration_ms: duration_ms)
     JSON.parse(response.body)
+  rescue => e
+    unless e.message.start_with?('GitHub API error:')
+      duration_ms = ((Process.clock_gettime(Process::CLOCK_MONOTONIC) - started) * 1000).round rescue nil
+      record_error("GitHub API request failed: #{e.message}")
+      emit_event('source_request', source: 'github', url: url, status: 'error', duration_ms: duration_ms, message: e.message)
+    end
+    raise
   end
 
   def gitlab_api_request(url)
+    started = Process.clock_gettime(Process::CLOCK_MONOTONIC)
     uri = URI(url)
     request = Net::HTTP::Get.new(uri)
     request['Authorization'] = "Bearer #{GITLAB_TOKEN}" if @gitlab_token_usable
@@ -2735,16 +2799,33 @@ class ProjectUpdater
       return gitlab_api_request(redirect_url(response, from: uri))
     end
 
-    if response.code.to_i == 404
+    duration_ms = ((Process.clock_gettime(Process::CLOCK_MONOTONIC) - started) * 1000).round
+    code = response.code.to_i
+
+    if code == 404
+      emit_event('source_request', source: 'gitlab', url: url, status: 'not_found', http_code: 404, duration_ms: duration_ms)
       return nil
-    elsif response.code.to_i != 200
-      raise "GitLab API error: #{response.code} - #{response.body[0..200]}"
+    elsif code != 200
+      error_msg = "GitLab API error: #{code} - #{response.body[0..200]}"
+      record_error(error_msg)
+      emit_event('source_request', source: 'gitlab', url: url, status: 'error', http_code: code, duration_ms: duration_ms, message: error_msg)
+      raise error_msg
     end
 
+    emit_event('source_request', source: 'gitlab', url: url, status: 'ok', http_code: 200, duration_ms: duration_ms)
     JSON.parse(response.body)
+  rescue => e
+    unless e.message.start_with?('GitLab API error:')
+      duration_ms = ((Process.clock_gettime(Process::CLOCK_MONOTONIC) - started) * 1000).round rescue nil
+      record_error("GitLab API request failed: #{e.message}")
+      emit_event('source_request', source: 'gitlab', url: url, status: 'error', duration_ms: duration_ms, message: e.message)
+    end
+    raise
   end
 
   def api_request(url, headers: {})
+    started = Process.clock_gettime(Process::CLOCK_MONOTONIC)
+    source = infer_source_from_url(url)
     uri = URI(url)
     request = Net::HTTP::Get.new(uri)
     request['User-Agent'] = 'Galtzo-Project-Updater'
@@ -2755,16 +2836,31 @@ class ProjectUpdater
     end
 
     if redirect_response?(response)
-      return api_request(redirect_url(response, from: uri))
+      return api_request(redirect_url(response, from: uri), headers: headers)
     end
 
-    if response.code.to_i == 404
+    duration_ms = ((Process.clock_gettime(Process::CLOCK_MONOTONIC) - started) * 1000).round
+    code = response.code.to_i
+
+    if code == 404
+      emit_event('source_request', source: source, url: url, status: 'not_found', http_code: 404, duration_ms: duration_ms)
       return nil
-    elsif response.code.to_i != 200
-      raise "API error: #{response.code} - #{response.body[0..200]}"
+    elsif code != 200
+      error_msg = "API error (#{source}): #{code} - #{response.body[0..200]}"
+      record_error(error_msg)
+      emit_event('source_request', source: source, url: url, status: 'error', http_code: code, duration_ms: duration_ms, message: error_msg)
+      raise error_msg
     end
 
+    emit_event('source_request', source: source, url: url, status: 'ok', http_code: 200, duration_ms: duration_ms)
     JSON.parse(response.body)
+  rescue => e
+    unless e.message.start_with?("API error (#{source}):")
+      duration_ms = ((Process.clock_gettime(Process::CLOCK_MONOTONIC) - started) * 1000).round rescue nil
+      record_error("API request failed (#{source}): #{e.message}")
+      emit_event('source_request', source: source, url: url, status: 'error', duration_ms: duration_ms, message: e.message)
+    end
+    raise
   end
 
   def redirect_response?(response)
@@ -3078,6 +3174,10 @@ if __FILE__ == $0
       options[:no_clickgems] = true
     end
 
+    op.on("--strict", "Exit with code 1 if any errors or failed requests occur during the run.") do
+      options[:strict] = true
+    end
+
     op.separator ""
     op.separator "add_project options (all optional — omitted values are prompted interactively):"
 
@@ -3158,6 +3258,7 @@ if __FILE__ == $0
     limit:             options[:limit],
     oldest_first:      options[:oldest_first] || false,
     no_clickgems:      options[:no_clickgems] || false,
+    strict:            options[:strict] || false,
   )
 
   case subcommand
