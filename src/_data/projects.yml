@@ -8836,8 +8836,8 @@
   - type: GitHub
     url: https://github.com/xberg-io/tree-sitter-language-pack
     owner: xberg-io
-    total_downloads: 9441607
-    release_downloads: 31453
+    total_downloads: 9482208
+    release_downloads: 40037
   tags:
   - parsing
   - rust
@@ -8849,9 +8849,9 @@
   licenses:
   - MIT
   license_url: https://github.com/xberg-io/tree-sitter-language-pack/blob/main/LICENSE
-  total_downloads: 236152
-  daily_downloads: 1491
-  release_downloads: 1405
+  total_downloads: 237709
+  daily_downloads: 1508
+  release_downloads: 1643
   downloads_basis: lifetime
   release_date: 2026/11/01
   last_commit_on: 2026/11/03
@@ -8925,9 +8925,9 @@
   licenses:
   - MIT
   license_url: https://github.com/xberg-io/tree-sitter-language-pack/blob/main/LICENSE
-  total_downloads: 46034681
-  daily_downloads: 183441
-  downloads_basis: 180d
+  total_downloads: 83371026
+  daily_downloads: 187863
+  downloads_basis: lifetime
   release_date: 2026/11/01
   last_commit_on: 2026/11/04
   last_scrape_at: '2026-11-04T22:52:39Z'

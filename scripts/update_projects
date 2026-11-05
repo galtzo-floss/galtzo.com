@@ -2294,7 +2294,8 @@ class ProjectUpdater
   # --- Registry download statistics (non-RubyGems) ----------------------------
   # Each registry reports different things. `downloads_basis` records what
   # total_downloads means so downstream tallies can be honest about it:
-  #   lifetime  crates.io, hex.pm, nuget.org, packagist.org report all-time totals
+  #   lifetime  crates.io, hex.pm, nuget.org, packagist.org report all-time totals;
+  #             pypi too, via pepy.tech (falls back to pypistats' 180d window)
   #   18mo      npm only serves ranges up to 18 months, so the total is that window
   #   180d      pypistats.org only keeps 180 days, so the total is that window
   REGISTRY_DOWNLOAD_ECOSYSTEMS = %w[cargo npm pypi hex nuget packagist].freeze
@@ -2336,11 +2337,25 @@ class ProjectUpdater
       days = Array(data['downloads']).map { |d| d['downloads'].to_i }
       { total: days.sum, daily: days.last(28).then { |l| l.empty? ? nil : (l.sum.to_f / l.size).round }, basis: '18mo' }
     when 'pypi'
-      data = api_request("https://pypistats.org/api/packages/#{name}/overall?mirrors=false") or return nil
-      days = Array(data['data']).select { |d| d['category'] == 'without_mirrors' }.sort_by { |d| d['date'] }.map { |d| d['downloads'].to_i }
-      return nil if days.empty?
+      # pepy.tech mirrors PyPI's BigQuery download counts and serves a lifetime total
+      # (pypistats.org only keeps a 180-day window). ~1000 requests/day unauthenticated.
+      pepy = api_request("https://pepy.tech/api/v2/projects/#{name}") rescue nil
+      if pepy.is_a?(Hash) && pepy['total_downloads']
+        days = (pepy['downloads'] || {}).keys.sort
+        daily = nil
+        if days.any?
+          window = days.last(28)
+          daily = (window.sum { |d| pepy['downloads'][d].values.sum.to_f } / window.size).round
+        end
+        { total: pepy['total_downloads'], daily: daily, basis: 'lifetime' }
+      else
+        # Fallback: pypistats 180-day window (the honest basis is recorded on the card)
+        data = api_request("https://pypistats.org/api/packages/#{name}/overall?mirrors=false") or return nil
+        days = Array(data['data']).select { |d| d['category'] == 'without_mirrors' }.sort_by { |d| d['date'] }.map { |d| d['downloads'].to_i }
+        return nil if days.empty?
 
-      { total: days.sum, daily: (days.last(28).sum.to_f / days.last(28).size).round, basis: '180d' }
+        { total: days.sum, daily: (days.last(28).sum.to_f / days.last(28).size).round, basis: '180d' }
+      end
     when 'hex'
       data = api_request("https://hex.pm/api/packages/#{name}") or return nil
       dl = data['downloads'] || {}
@@ -2413,7 +2428,7 @@ class ProjectUpdater
   def prune_run_logs!(keep: MAX_RUN_LOGS, dir: RUN_LOG_DIR)
     return unless Dir.exist?(dir)
 
-    logs = Dir[File.join(dir, 'run-*.ndjson')].sort
+    logs = Dir[File.join(dir, 'run-*.ndjson')].sort.reject { |f| f == @run_log_path }
     excess = logs.size - keep
     return unless excess.positive?
 

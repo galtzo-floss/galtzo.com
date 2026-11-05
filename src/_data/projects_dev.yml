@@ -4622,9 +4622,9 @@
   docs_site:
   status: active
   github_stars: 481
-  total_downloads: 236152
-  daily_downloads: 1491
-  release_downloads: 1405
+  total_downloads: 237709
+  daily_downloads: 1508
+  release_downloads: 1643
   downloads_basis: lifetime
   licenses:
   - MIT
@@ -4690,9 +4690,9 @@
   docs_site:
   status: active
   github_stars: 481
-  total_downloads: 46034681
-  daily_downloads: 183441
-  downloads_basis: 180d
+  total_downloads: 83371026
+  daily_downloads: 187863
+  downloads_basis: lifetime
   licenses:
   - MIT
   license_url: https://github.com/xberg-io/tree-sitter-language-pack/blob/main/LICENSE
