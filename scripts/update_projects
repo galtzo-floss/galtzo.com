@@ -2428,7 +2428,7 @@ class ProjectUpdater
   def prune_run_logs!(keep: MAX_RUN_LOGS, dir: RUN_LOG_DIR)
     return unless Dir.exist?(dir)
 
-    logs = Dir[File.join(dir, 'run-*.ndjson')].sort
+    logs = Dir[File.join(dir, 'run-*.ndjson')].sort.reject { |f| f == @run_log_path }
     excess = logs.size - keep
     return unless excess.positive?
 

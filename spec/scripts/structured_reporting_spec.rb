@@ -4,6 +4,15 @@ require "spec_helper"
 require "tempfile"
 
 RSpec.describe "Structured reporting, strict exit code, and log retention (Issue #2)" do
+  let(:log_dir) { Dir.mktmpdir }
+
+  before do
+    # Isolate the NDJSON run log per example: the real tmp/update_projects dir
+    # sits at the MAX_RUN_LOGS limit, and a later updater's prune_run_logs!
+    # would delete an earlier example's log file out from under it.
+    stub_const("ProjectUpdater::RUN_LOG_DIR", log_dir)
+  end
+
   let(:updater) do
     ProjectUpdater.new(auto_confirm: true, surgical_fields: ['status'])
   end

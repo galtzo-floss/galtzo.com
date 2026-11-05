@@ -4,6 +4,14 @@ require "spec_helper"
 require "tempfile"
 
 RSpec.describe "Targeted runs and class filtering (Issue #7)" do
+  let(:log_dir) { Dir.mktmpdir }
+
+  before do
+    # Isolate the NDJSON run log per example so prune_run_logs! in a later
+    # updater can never delete an earlier example's log file.
+    stub_const("ProjectUpdater::RUN_LOG_DIR", log_dir)
+  end
+
   let(:updater) do
     ProjectUpdater.new(auto_confirm: true, surgical_fields: ['status'])
   end
