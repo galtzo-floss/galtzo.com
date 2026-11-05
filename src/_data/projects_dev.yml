@@ -4689,16 +4689,16 @@
   funding_sites: []
   docs_site:
   status: active
-  github_stars: 481
-  total_downloads: 83371026
-  daily_downloads: 187863
+  github_stars: 482
+  total_downloads: 83620459
+  daily_downloads: 188854
   downloads_basis: lifetime
   licenses:
   - MIT
   license_url: https://github.com/xberg-io/tree-sitter-language-pack/blob/main/LICENSE
-  release_date: 2026/11/01
-  last_commit_on: 2026/11/04
-  last_scrape_at: '2026-11-04T22:52:39Z'
+  release_date: 2026/11/05
+  last_commit_on: 2026/11/05
+  last_scrape_at: '2026-11-05T18:10:07Z'
   first_commit_by_person: https://github.com/xberg-io/tree-sitter-language-pack/commit/7f947b49631d086a8812caebaf5e91f69e8987bf
   first_commit_by_person_on: 2026/04/20
 - name: "@xberg-io/tree-sitter-language-pack"
