@@ -114,3 +114,115 @@
   logo-alt: "CycloneDX Logo (GitHub org avatar)"
   logo-title: "CycloneDX Logo (GitHub org avatar)"
   forge_gh: "https://github.com/CycloneDX"
+- id: oxidize-rb
+  name: "oxidize-rb"
+  position: 15
+  banner: false
+  logo: "https://github.com/oxidize-rb.png?size=128"
+  logo-alt: "oxidize-rb Logo (GitHub avatar)"
+  logo-title: "oxidize-rb Logo (GitHub avatar)"
+  forge_gh: "https://github.com/oxidize-rb"
+- id: ruby
+  name: "ruby"
+  position: 16
+  banner: false
+  logo: "https://github.com/ruby.png?size=128"
+  logo-alt: "ruby Logo (GitHub avatar)"
+  logo-title: "ruby Logo (GitHub avatar)"
+  forge_gh: "https://github.com/ruby"
+- id: joker1007
+  name: "joker1007"
+  position: 17
+  banner: false
+  logo: "https://github.com/joker1007.png?size=128"
+  logo-alt: "joker1007 Logo (GitHub avatar)"
+  logo-title: "joker1007 Logo (GitHub avatar)"
+  forge_gh: "https://github.com/joker1007"
+- id: faveod
+  name: "faveod"
+  position: 18
+  banner: false
+  logo: "https://github.com/faveod.png?size=128"
+  logo-alt: "faveod Logo (GitHub avatar)"
+  logo-title: "faveod Logo (GitHub avatar)"
+  forge_gh: "https://github.com/faveod"
+- id: mongodb
+  name: "mongodb"
+  position: 19
+  banner: false
+  logo: "https://github.com/mongodb.png?size=128"
+  logo-alt: "mongodb Logo (GitHub avatar)"
+  logo-title: "mongodb Logo (GitHub avatar)"
+  forge_gh: "https://github.com/mongodb"
+- id: hashie
+  name: "hashie"
+  position: 20
+  banner: false
+  logo: "https://github.com/hashie.png?size=128"
+  logo-alt: "hashie Logo (GitHub avatar)"
+  logo-title: "hashie Logo (GitHub avatar)"
+  forge_gh: "https://github.com/hashie"
+- id: rails
+  name: "rails"
+  position: 21
+  banner: false
+  logo: "https://github.com/rails.png?size=128"
+  logo-alt: "rails Logo (GitHub avatar)"
+  logo-title: "rails Logo (GitHub avatar)"
+  forge_gh: "https://github.com/rails"
+- id: spinel-coop
+  name: "spinel-coop"
+  position: 22
+  banner: false
+  logo: "https://github.com/spinel-coop.png?size=128"
+  logo-alt: "spinel-coop Logo (GitHub avatar)"
+  logo-title: "spinel-coop Logo (GitHub avatar)"
+  forge_gh: "https://github.com/spinel-coop"
+- id: matsadler
+  name: "matsadler"
+  position: 23
+  banner: false
+  logo: "https://github.com/matsadler.png?size=128"
+  logo-alt: "matsadler Logo (GitHub avatar)"
+  logo-title: "matsadler Logo (GitHub avatar)"
+  forge_gh: "https://github.com/matsadler"
+- id: apache
+  name: "apache"
+  position: 24
+  banner: false
+  logo: "https://github.com/apache.png?size=128"
+  logo-alt: "apache Logo (GitHub avatar)"
+  logo-title: "apache Logo (GitHub avatar)"
+  forge_gh: "https://github.com/apache"
+- id: tylerhunt
+  name: "tylerhunt"
+  position: 25
+  banner: false
+  logo: "https://github.com/tylerhunt.png?size=128"
+  logo-alt: "tylerhunt Logo (GitHub avatar)"
+  logo-title: "tylerhunt Logo (GitHub avatar)"
+  forge_gh: "https://github.com/tylerhunt"
+- id: rdp
+  name: "rdp"
+  position: 26
+  banner: false
+  logo: "https://github.com/rdp.png?size=128"
+  logo-alt: "rdp Logo (GitHub avatar)"
+  logo-title: "rdp Logo (GitHub avatar)"
+  forge_gh: "https://github.com/rdp"
+- id: dynamoid
+  name: "dynamoid"
+  position: 27
+  banner: false
+  logo: "https://github.com/dynamoid.png?size=128"
+  logo-alt: "dynamoid Logo (GitHub avatar)"
+  logo-title: "dynamoid Logo (GitHub avatar)"
+  forge_gh: "https://github.com/dynamoid"
+- id: wordtreefoundation
+  name: "wordtreefoundation"
+  position: 28
+  banner: false
+  logo: "https://github.com/wordtreefoundation.png?size=128"
+  logo-alt: "wordtreefoundation Logo (GitHub avatar)"
+  logo-title: "wordtreefoundation Logo (GitHub avatar)"
+  forge_gh: "https://github.com/wordtreefoundation"
