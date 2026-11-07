@@ -535,7 +535,7 @@ body_class: projects
       </div>
     </div>
     <% total_stars_for_footer = star_hidden[project.object_id] ? 0 : (project['github_stars'] || 0) + (project['gitlab_stars'] || 0) + (project['codeberg_stars'] || 0) %>
-    <% if project['release_date'] || project['total_downloads'] || total_stars_for_footer > 0 %>
+    <% if project['release_date'] || project['release_downloads'] || project['total_downloads'] || total_stars_for_footer > 0 %>
     <div class="bottom-anchor stats">
       <div class="horizontal-banner banner-stats <%= project['role'] %>">
         <span class="stats-label">
@@ -545,26 +545,35 @@ body_class: projects
             daily_dl   = project['daily_downloads']
             has_dl     = !!total_dl
             basis_note = basis_label_for.call(project)
+            limited_total = %w[180d 18mo].include?(project['downloads_basis'])
           %>
-          <% if has_dl %>
-          <span class="stat-group dl-group">
-            <span class="stat-label">DL</span>
-            <span class="stat-sub" title="Total downloads<%= basis_note ? " — #{basis_note}" : '' %>">T:&nbsp;<%== fmt_num.call(total_dl) %><%= '*' if %w[180d 18mo].include?(project['downloads_basis']) %></span>
-            <% if release_dl %><span class="stat-sub" title="Latest release downloads">R:&nbsp;<%== fmt_num.call(release_dl) %></span><% end %>
-            <% if daily_dl %><span class="stat-sub" title="28-day trailing average downloads per day">~<%== fmt_num.call(daily_dl) %>/d</span><% end %>
+          <% if total_stars_for_footer > 0 %>
+          <span class="stat-group stat-glow stat-stars" role="img" aria-label="<%= total_stars_for_footer %> stars" title="GitHub, GitLab, and Codeberg stars; family repo stars appear on the lead card only">
+            <span class="stat-icon" aria-hidden="true">★</span><span class="stat-value"><%== fmt_num.call(total_stars_for_footer) %></span>
           </span>
           <% end %>
-          <% if total_stars_for_footer > 0 %>
-          <% if has_dl %><span class="stat-sep">&nbsp;|&nbsp;</span><% end %>
-          <span class="stat-group"><span class="stat-item"><%= total_stars_for_footer %> ⭐️</span></span>
+          <% if has_dl %>
+          <span class="stat-group stat-glow stat-total-downloads" role="img" aria-label="Total downloads: <%== fmt_num.call(total_dl) %><%= '*' if limited_total %><%= basis_note ? ", #{basis_note}" : '' %>" title="Total downloads<%= basis_note ? " — #{basis_note}" : '' %>">
+            <span class="stat-icon" aria-hidden="true">↓</span><span class="stat-value"><%== fmt_num.call(total_dl) %><%= '*' if limited_total %></span>
+          </span>
+          <% if daily_dl %>
+          <span class="stat-group stat-glow stat-daily-downloads" role="img" aria-label="28-day trailing average downloads per day: <%== fmt_num.call(daily_dl) %>" title="28-day trailing average downloads per day">
+            <span class="stat-icon" aria-hidden="true">↓/d</span><span class="stat-value"><%== fmt_num.call(daily_dl) %></span>
+          </span>
           <% end %>
-          <% if project['release_date'] || project['last_commit_on'] %>
-          <% if has_dl || total_stars_for_footer > 0 %><span class="stat-sep">&nbsp;|&nbsp;</span><% end %>
-          <% if project['release_date'] %>
-          <span class="stat-group"><span class="stat-label">Last Rel</span><span class="stat-item"><%= project['release_date'] %></span></span>
-          <% else %>
-          <span class="stat-group"><span class="stat-label">Commit</span><span class="stat-item"><%= project['last_commit_on'] %></span></span>
           <% end %>
+          <% if release_dl || project['release_date'] %>
+          <% release_label = ['Latest release', (release_dl ? "#{fmt_num.call(release_dl)} downloads" : nil), (project['release_date'] ? "on #{project['release_date']}" : nil)].compact.join(' ') %>
+          <span class="stat-group stat-package" role="img" aria-label="<%= release_label %>" title="<%= release_label %>">
+            <span class="stat-icon" aria-hidden="true">📦️</span>
+            <% if release_dl %><span class="stat-value"><%== fmt_num.call(release_dl) %></span><% end %>
+            <% if project['release_date'] %><span class="stat-date"><%= project['release_date'] %></span><% end %>
+          </span>
+          <% end %>
+          <% if !project['release_date'] && project['last_commit_on'] %>
+          <span class="stat-group stat-commit" role="img" aria-label="Last commit: <%= project['last_commit_on'] %>" title="Last commit">
+            <span class="stat-label">Commit</span><span class="stat-date"><%= project['last_commit_on'] %></span>
+          </span>
           <% end %>
         </span>
       </div>
@@ -821,7 +830,7 @@ body_class: projects
       </div>
     </div>
     <% total_stars_for_footer = star_hidden[project.object_id] ? 0 : (project['github_stars'] || 0) + (project['gitlab_stars'] || 0) + (project['codeberg_stars'] || 0) %>
-    <% if project['release_date'] || project['total_downloads'] || total_stars_for_footer > 0 %>
+    <% if project['release_date'] || project['release_downloads'] || project['total_downloads'] || total_stars_for_footer > 0 %>
     <div class="bottom-anchor stats">
       <div class="horizontal-banner banner-stats <%= project['role'] %>">
         <span class="stats-label">
@@ -831,26 +840,35 @@ body_class: projects
             daily_dl   = project['daily_downloads']
             has_dl     = !!total_dl
             basis_note = basis_label_for.call(project)
+            limited_total = %w[180d 18mo].include?(project['downloads_basis'])
           %>
-          <% if has_dl %>
-          <span class="stat-group dl-group">
-            <span class="stat-label">DL</span>
-            <span class="stat-sub" title="Total downloads<%= basis_note ? " — #{basis_note}" : '' %>">T:&nbsp;<%== fmt_num.call(total_dl) %><%= '*' if %w[180d 18mo].include?(project['downloads_basis']) %></span>
-            <% if release_dl %><span class="stat-sub" title="Latest release downloads">R:&nbsp;<%== fmt_num.call(release_dl) %></span><% end %>
-            <% if daily_dl %><span class="stat-sub" title="28-day trailing average downloads per day">~<%== fmt_num.call(daily_dl) %>/d</span><% end %>
+          <% if total_stars_for_footer > 0 %>
+          <span class="stat-group stat-glow stat-stars" role="img" aria-label="<%= total_stars_for_footer %> stars" title="GitHub, GitLab, and Codeberg stars; family repo stars appear on the lead card only">
+            <span class="stat-icon" aria-hidden="true">★</span><span class="stat-value"><%== fmt_num.call(total_stars_for_footer) %></span>
           </span>
           <% end %>
-          <% if total_stars_for_footer > 0 %>
-          <% if has_dl %><span class="stat-sep">&nbsp;|&nbsp;</span><% end %>
-          <span class="stat-group"><span class="stat-item"><%= total_stars_for_footer %>&nbsp;⭐️</span></span>
+          <% if has_dl %>
+          <span class="stat-group stat-glow stat-total-downloads" role="img" aria-label="Total downloads: <%== fmt_num.call(total_dl) %><%= '*' if limited_total %><%= basis_note ? ", #{basis_note}" : '' %>" title="Total downloads<%= basis_note ? " — #{basis_note}" : '' %>">
+            <span class="stat-icon" aria-hidden="true">↓</span><span class="stat-value"><%== fmt_num.call(total_dl) %><%= '*' if limited_total %></span>
+          </span>
+          <% if daily_dl %>
+          <span class="stat-group stat-glow stat-daily-downloads" role="img" aria-label="28-day trailing average downloads per day: <%== fmt_num.call(daily_dl) %>" title="28-day trailing average downloads per day">
+            <span class="stat-icon" aria-hidden="true">↓/d</span><span class="stat-value"><%== fmt_num.call(daily_dl) %></span>
+          </span>
           <% end %>
-          <% if project['release_date'] || project['last_commit_on'] %>
-          <% if has_dl || total_stars_for_footer > 0 %><span class="stat-sep">&nbsp;|&nbsp;</span><% end %>
-          <% if project['release_date'] %>
-          <span class="stat-group"><span class="stat-label">Rel</span><span class="stat-item"><%= project['release_date'] %></span></span>
-          <% else %>
-          <span class="stat-group"><span class="stat-label">Commit</span><span class="stat-item"><%= project['last_commit_on'] %></span></span>
           <% end %>
+          <% if release_dl || project['release_date'] %>
+          <% release_label = ['Latest release', (release_dl ? "#{fmt_num.call(release_dl)} downloads" : nil), (project['release_date'] ? "on #{project['release_date']}" : nil)].compact.join(' ') %>
+          <span class="stat-group stat-package" role="img" aria-label="<%= release_label %>" title="<%= release_label %>">
+            <span class="stat-icon" aria-hidden="true">📦️</span>
+            <% if release_dl %><span class="stat-value"><%== fmt_num.call(release_dl) %></span><% end %>
+            <% if project['release_date'] %><span class="stat-date"><%= project['release_date'] %></span><% end %>
+          </span>
+          <% end %>
+          <% if !project['release_date'] && project['last_commit_on'] %>
+          <span class="stat-group stat-commit" role="img" aria-label="Last commit: <%= project['last_commit_on'] %>" title="Last commit">
+            <span class="stat-label">Commit</span><span class="stat-date"><%= project['last_commit_on'] %></span>
+          </span>
           <% end %>
         </span>
       </div>
