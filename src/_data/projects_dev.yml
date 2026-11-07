@@ -612,14 +612,14 @@
   tags:
   - ruby
   docs_site: https://www.rubydoc.info/gems/yard-fence/0.8.2
-  total_downloads: 24317
+  total_downloads: 24368
   daily_downloads: 129
-  release_downloads: 3131
+  release_downloads: 3176
   release_date: 2026/10/01
   github_stars: 2
   last_commit_on: 2026/10/22
   status: active
-  last_scrape_at: '2026-11-06T23:29:43Z'
+  last_scrape_at: '2026-11-07T20:29:57Z'
   licenses:
   - MIT
   license_url: https://github.com/galtzo-floss/yard-fence/blob/main/LICENSE.md
@@ -648,14 +648,14 @@
   tags:
   - ruby
   docs_site: https://www.rubydoc.info/gems/yaml-converter/0.1.0
-  total_downloads: 22202
+  total_downloads: 22252
   daily_downloads: 125
-  release_downloads: 3302
+  release_downloads: 3347
   release_date: 2026/10/01
   github_stars: 3
   last_commit_on: 2026/10/12
   status: active
-  last_scrape_at: '2026-11-06T23:29:46Z'
+  last_scrape_at: '2026-11-07T20:30:00Z'
   licenses:
   - MIT
   license_url: https://github.com/galtzo-floss/yaml-converter/blob/main/LICENSE.md
@@ -681,14 +681,14 @@
   tags:
   - ruby
   docs_site: https://www.rubydoc.info/gems/yard-yaml/0.1.0
-  total_downloads: 21137
+  total_downloads: 21185
   daily_downloads: 104
-  release_downloads: 5401
+  release_downloads: 5446
   release_date: 2026/09/12
   github_stars: 3
   last_commit_on: 2026/10/12
   status: active
-  last_scrape_at: '2026-11-06T23:29:49Z'
+  last_scrape_at: '2026-11-07T20:30:03Z'
   licenses:
   - MIT
   license_url: https://github.com/galtzo-floss/yard-yaml/blob/main/LICENSE.md
@@ -750,14 +750,14 @@
   - structuredmerge
   - test
   docs_site: https://www.rubydoc.info/gems/ast-merge/4.0.6
-  total_downloads: 34614
+  total_downloads: 34778
   daily_downloads: 314
-  release_downloads: 575
+  release_downloads: 614
   release_date: 2026/10/30
   github_stars: 19
-  last_commit_on: 2026/11/04
+  last_commit_on: 2026/11/07
   status: active
-  last_scrape_at: '2026-11-06T23:29:53Z'
+  last_scrape_at: '2026-11-07T20:30:07Z'
   theme: family
   family_id: smorg-rb
   family_position: 1
@@ -860,14 +860,14 @@
   - ruby
   - structuredmerge
   docs_site: https://www.rubydoc.info/gems/tree_haver/5.0.5
-  total_downloads: 33640
+  total_downloads: 33815
   daily_downloads: 377
-  release_downloads: 599
+  release_downloads: 637
   release_date: 2026/10/30
   github_stars: 19
-  last_commit_on: 2026/11/04
+  last_commit_on: 2026/11/07
   status: active
-  last_scrape_at: '2026-11-06T23:29:51Z'
+  last_scrape_at: '2026-11-07T20:30:05Z'
   theme: family
   family_id: smorg-rb
   family_position: 22
