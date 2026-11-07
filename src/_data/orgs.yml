@@ -1,0 +1,119 @@
+---
+# Canonical org registry. Drives the logos banner and org logos on tag badges.
+# peterboling.com pulls this file from here; edit it in this repo only.
+# position: banner order (unique). banner: false keeps an org out of the banner but still gives its projects a badge logo. Org ids match forges[].owner in projects.yml.
+- id: appraisal-rb
+  name: "appraisal-rb"
+  position: 1
+  logo: "https://logos.galtzo.com/assets/images/appraisal-rb/avatar-128px.svg"
+  logo-alt: "appraisal-rb Logo by Aboling0, CC BY-SA 4.0"
+  logo-title: "appraisal-rb Logo by Aboling0, CC BY-SA 4.0"
+  forge_gh: "https://github.com/appraisal-rb"
+  forge_gl: "https://gitlab.com/appraisal-rb"
+  forge_cb: "https://codeberg.org/appraisal-rb"
+- id: kettle-dev
+  name: "kettle-dev"
+  position: 2
+  logo: "https://logos.galtzo.com/assets/images/kettle-dev/avatar-128px.svg"
+  logo-alt: "kettle-dev Logo by Aboling0, CC BY-SA 4.0"
+  logo-title: "kettle-dev Logo by Aboling0, CC BY-SA 4.0"
+  forge_gh: "https://github.com/kettle-dev"
+  forge_gl: "https://gitlab.com/kettle-dev"
+  forge_cb: "https://codeberg.org/kettle-dev"
+- id: structuredmerge
+  name: "structuredmerge"
+  position: 3
+  logo: "https://logos.galtzo.com/assets/images/structuredmerge/avatar-128px.svg"
+  logo-alt: "StructuredMerge Logo"
+  logo-title: "StructuredMerge Logo"
+  forge_gh: "https://github.com/structuredmerge"
+- id: floss-funding
+  name: "floss-funding"
+  position: 4
+  logo: "https://logos.galtzo.com/assets/images/floss-funding/avatar-128px.svg"
+  logo-alt: "floss-funding Logo by Aboling0, CC BY-SA 4.0"
+  logo-title: "floss-funding Logo by Aboling0, CC BY-SA 4.0"
+  forge_gh: "https://github.com/floss-funding"
+  forge_gl: "https://gitlab.com/floss-funding"
+  forge_cb: "https://codeberg.org/floss-funding"
+- id: galtzo-floss
+  name: "galtzo-floss"
+  position: 5
+  logo: "https://logos.galtzo.com/assets/images/galtzo-floss/avatar-128px.svg"
+  logo-alt: "galtzo-floss Logo by Aboling0, CC BY-SA 4.0"
+  logo-title: "galtzo-floss Logo by Aboling0, CC BY-SA 4.0"
+  forge_gh: "https://github.com/galtzo-floss"
+  forge_gl: "https://gitlab.com/galtzo-floss"
+  forge_cb: "https://codeberg.org/galtzo-floss"
+- id: omniauth
+  name: "omniauth"
+  position: 6
+  logo: "https://logos.galtzo.com/assets/images/omniauth/avatar-128px.png"
+  logo-alt: "omniauth Logo by (presumed) tomeara, (presumed) MIT"
+  logo-title: "omniauth Logo by (presumed) tomeara, (presumed) MIT"
+  forge_gh: "https://github.com/omniauth"
+- id: resque
+  name: "resque"
+  position: 7
+  logo: "https://logos.galtzo.com/assets/images/resque/avatar-128px.png"
+  logo-alt: "resque Logo by Resque development team, MIT"
+  logo-title: "resque Logo by Resque development team, MIT"
+  forge_gh: "https://github.com/resque"
+- id: rubocop-lts
+  name: "rubocop-lts"
+  position: 8
+  logo: "https://logos.galtzo.com/assets/images/rubocop-lts/avatar-128px.svg"
+  logo-alt: "rubocop-lts Logo by Aboling0, CC BY-SA 4.0"
+  logo-title: "rubocop-lts Logo by Aboling0, CC BY-SA 4.0"
+  forge_gh: "https://github.com/rubocop-lts"
+  forge_gl: "https://gitlab.com/rubocop-lts"
+  forge_cb: "https://codeberg.org/rubocop-lts"
+- id: ruby-oauth
+  name: "ruby-oauth"
+  position: 9
+  logo: "https://logos.galtzo.com/assets/images/oauth/oauth2/avatar-128px.svg"
+  logo-alt: "oauth Logo by Chris Messina, CC BY-SA 3.0"
+  logo-title: "oauth Logo by Chris Messina, CC BY-SA 3.0"
+  forge_gh: "https://github.com/ruby-oauth"
+  forge_gl: "https://gitlab.com/ruby-oauth"
+  forge_cb: "https://codeberg.org/ruby-oauth"
+- id: ruby-openid
+  name: "ruby-openid"
+  position: 10
+  logo: "https://logos.galtzo.com/assets/images/ruby-openid/avatar-128px.svg"
+  logo-alt: "ruby-openid Logo by Aboling0, CC BY-SA 4.0"
+  logo-title: "ruby-openid Logo by Aboling0, CC BY-SA 4.0"
+  forge_gh: "https://github.com/ruby-openid"
+  forge_gl: "https://gitlab.com/ruby-openid"
+  forge_cb: "https://codeberg.org/ruby-openid"
+- id: xberg-io
+  name: "xberg-io"
+  position: 11
+  logo: "https://github.com/xberg-io.png?size=128"
+  logo-alt: "xberg-io Logo (GitHub org avatar)"
+  logo-title: "xberg-io Logo (GitHub org avatar)"
+  forge_gh: "https://github.com/xberg-io"
+- id: pboling
+  name: "pboling"
+  position: 12
+  banner: false
+  logo: "https://github.com/pboling.png?size=128"
+  logo-alt: "pboling Logo (GitHub org avatar)"
+  logo-title: "pboling Logo (GitHub org avatar)"
+  forge_gh: "https://github.com/pboling"
+- id: contriboss
+  name: "contriboss"
+  position: 13
+  banner: false
+  logo: "https://github.com/contriboss.png?size=128"
+  logo-alt: "contriboss Logo (GitHub org avatar)"
+  logo-title: "contriboss Logo (GitHub org avatar)"
+  forge_gh: "https://github.com/contriboss"
+- id: cyclonedx
+  name: "CycloneDX"
+  position: 14
+  banner: false
+  logo: "https://github.com/CycloneDX.png?size=128"
+  logo-alt: "CycloneDX Logo (GitHub org avatar)"
+  logo-title: "CycloneDX Logo (GitHub org avatar)"
+  forge_gh: "https://github.com/CycloneDX"

@@ -62,6 +62,11 @@ body_class: projects
     "https://img.shields.io/github/license/#{repo_path}?style=social"
   end
 } %>
+<%# Org (forge owner) → entry in orgs.yml, for the org logo on tag badges %>
+<% org_for = ->(project) {
+  owner = project["forges"]&.find { |f| f["type"].to_s.downcase == "github" }&.dig("owner").to_s.downcase
+  owner.empty? ? nil : (site.data.orgs || []).find { |o| o["id"].to_s.downcase == owner }
+} %>
 <%# Registry page for a package, keyed by ecosystem (nil → no public registry page) %>
 <% ecosystem_url_for = ->(project) {
   name = project['name'].to_s
@@ -671,6 +676,9 @@ body_class: projects
       <span class="tag min-language">Node.js&nbsp;>=&nbsp;<%= project["minimum_node_version"] %></span>
       <% end %>
       <% if project["tags"] && project["tags"].any? %>
+      <% if (org = org_for.call(project)) && org["logo"] %>
+      <span class="tag org-tag"><img class="tag-org-logo" src="<%= org['logo'] %>" alt="<%= org['logo-alt'] %>" title="<%= org['logo-title'] %>" loading="lazy"><%= org["id"] %></span>
+      <% end %>
       <% sorted_tags.each do |tag| %>
       <span class="tag <%= tag %>"><%= tag %></span>
       <% end %>
@@ -975,6 +983,9 @@ body_class: projects
       <span class="tag min-language">Node.js&nbsp;>=&nbsp;<%= project["minimum_node_version"] %></span>
       <% end %>
       <% if project["tags"] && project["tags"].any? %>
+      <% if (org = org_for.call(project)) && org["logo"] %>
+      <span class="tag org-tag"><img class="tag-org-logo" src="<%= org['logo'] %>" alt="<%= org['logo-alt'] %>" title="<%= org['logo-title'] %>" loading="lazy"><%= org["id"] %></span>
+      <% end %>
       <% sorted_tags.each do |tag| %>
       <span class="tag <%= tag %>"><%= tag %></span>
       <% end %>
