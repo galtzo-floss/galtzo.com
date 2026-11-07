@@ -1948,3 +1948,7 @@ img[src*="img.shields.io"].no-dark-filter {
 
 /* Org logo on the org tag badge (from orgs.yml) */
 .tag-org-logo { height: 1em; width: 1em; vertical-align: -0.125em; margin-right: 0.3em; object-fit: contain; }
+
+/* Logos banner: one row; shrink logos instead of wrapping as orgs are added */
+.logos { display: flex; justify-content: center; gap: 0.5rem; }
+.logos img { height: auto; width: min(128px, calc((100vw - 2rem) / var(--logo-count, 11) - 0.5rem)); }
