@@ -571,11 +571,11 @@ body_class: projects
           <% end %>
           <% end %>
           <% if release_dl || project['release_date'] %>
-          <% release_label = ['Latest release', (release_dl ? "#{fmt_num.call(release_dl)} downloads" : nil), (project['release_date'] ? "on #{project['release_date']}" : nil)].compact.join(' ') %>
+          <% release_label = ['Latest release', (release_dl ? "#{fmt_num.call(release_dl)} downloads" : nil), (project['release_date'] ? "#{release_dl ? 'since' : 'on'} #{project['release_date']}" : nil)].compact.join(' ') %>
           <span class="stat-group stat-package" role="img" aria-label="<%= release_label %>" title="<%= release_label %>">
             <span class="stat-icon" aria-hidden="true">📦️</span>
-            <% if release_dl %><span class="stat-value"><%== fmt_num.call(release_dl) %></span><% end %>
-            <% if project['release_date'] %><span class="stat-date"><%= project['release_date'] %></span><% end %>
+            <% if release_dl %><span class="stat-icon" aria-hidden="true">↓</span><span class="stat-value"><%== fmt_num.call(release_dl) %></span><% end %>
+            <% if release_dl && project['release_date'] %><span aria-hidden="true"> • </span><% end %><% if project['release_date'] %><span class="stat-date"><%= project['release_date'] %></span><% end %>
           </span>
           <% end %>
           <% if !project['release_date'] && project['last_commit_on'] %>
@@ -870,11 +870,11 @@ body_class: projects
           <% end %>
           <% end %>
           <% if release_dl || project['release_date'] %>
-          <% release_label = ['Latest release', (release_dl ? "#{fmt_num.call(release_dl)} downloads" : nil), (project['release_date'] ? "on #{project['release_date']}" : nil)].compact.join(' ') %>
+          <% release_label = ['Latest release', (release_dl ? "#{fmt_num.call(release_dl)} downloads" : nil), (project['release_date'] ? "#{release_dl ? 'since' : 'on'} #{project['release_date']}" : nil)].compact.join(' ') %>
           <span class="stat-group stat-package" role="img" aria-label="<%= release_label %>" title="<%= release_label %>">
             <span class="stat-icon" aria-hidden="true">📦️</span>
-            <% if release_dl %><span class="stat-value"><%== fmt_num.call(release_dl) %></span><% end %>
-            <% if project['release_date'] %><span class="stat-date"><%= project['release_date'] %></span><% end %>
+            <% if release_dl %><span class="stat-icon" aria-hidden="true">↓</span><span class="stat-value"><%== fmt_num.call(release_dl) %></span><% end %>
+            <% if release_dl && project['release_date'] %><span aria-hidden="true"> • </span><% end %><% if project['release_date'] %><span class="stat-date"><%= project['release_date'] %></span><% end %>
           </span>
           <% end %>
           <% if !project['release_date'] && project['last_commit_on'] %>
