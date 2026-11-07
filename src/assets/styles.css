@@ -808,9 +808,16 @@ button,
 }
 
 /* =========================================================================
-   STATS BANNER — dense footer layout
-   Renders as:  DL {T:4.6M} {R:3.6M} {5.2k/d}  |  507 ⭐️  |  Rel 2018/11/30
+   STATS BANNER — highlighted totals with compact release details
    ========================================================================= */
+
+.card .banner-stats .stats-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.7em;
+    white-space: nowrap;
+}
 
 /* Inline stat items */
 .card .banner-stats .stat-item {
@@ -819,11 +826,35 @@ button,
 
 /* A logical group of related stats (DL block, stars, date) */
 .card .banner-stats .stat-group {
-    display: inline;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.18em;
     white-space: nowrap;
 }
 
-/* Short all-caps label preceding a group: "DL", "Rel", "Commit" */
+.card .banner-stats .stat-glow {
+    font-weight: 700;
+    text-shadow:
+        0 0 2px color-mix(in srgb, var(--stat-glow-color) 45%, transparent),
+        0 0 5px color-mix(in srgb, var(--stat-glow-color) 22%, transparent);
+}
+
+.card .banner-stats .stat-total-downloads {
+    --stat-glow-color: #16a34a;
+    color: color-mix(in oklab, var(--text-color) 35%, var(--stat-glow-color) 65%);
+}
+
+.card .banner-stats .stat-stars {
+    --stat-glow-color: #e8b04a;
+    color: color-mix(in oklab, var(--text-color) 45%, var(--stat-glow-color) 55%);
+}
+
+.card .banner-stats .stat-daily-downloads {
+    --stat-glow-color: #a58bf5;
+    color: color-mix(in oklab, var(--text-color) 45%, var(--stat-glow-color) 55%);
+}
+
+/* Short all-caps label used for commit-only cards. */
 .card .banner-stats .stat-label {
     display: inline;
     font-size: 0.7em;
@@ -834,29 +865,30 @@ button,
     margin-right: 0.2em;
 }
 
-/* Individual sub-values inside the DL group, wrapped in braces via CSS */
-.card .banner-stats .stat-sub {
-    display: inline;
-    font-size: 0.85em;
+.card .banner-stats .stat-icon {
+    flex: 0 0 auto;
 }
 
-.card .banner-stats .stat-sub::before { content: '[ '; opacity: 0.5; }
-.card .banner-stats .stat-sub::after  { content: ' ]'; opacity: 0.5; }
+@media (max-width: 768px) {
+    .card .banner-stats {
+        height: auto;
+        min-height: var(--rolebar-height);
+        line-height: 1.1;
+        padding: 0.25rem 0.35rem;
+    }
 
-/* Space between sub-values */
-.card .banner-stats .stat-sub + .stat-sub {
-    margin-left: 0.2em;
-}
+    .card .banner-stats .stats-label {
+        width: 100%;
+        flex-wrap: wrap;
+        gap: 0.2rem 0.55rem;
+        white-space: normal;
+        font-size: 0.68rem;
+        line-height: 1.1;
+    }
 
-/* Separator between top-level groups */
-.card .banner-stats .stat-sep {
-    display: inline;
-    opacity: 0.5;
-}
-
-/* DL group: tighter internal spacing */
-.card .banner-stats .dl-group .stat-label {
-    margin-right: 0.15em;
+    .card .banner-stats .stat-group {
+        gap: 0.12em;
+    }
 }
 
 /* =========================================================================
