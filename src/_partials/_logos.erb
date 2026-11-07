@@ -1,6 +1,6 @@
-<div class="logos">
-  <% site.data.orgs.sort_by { |o| o['position'] || 999 }.each do |org| %>
-    <% next unless org['logo'] && org['forge_gh'] && org['banner'] != false %>
+<% banner_orgs = site.data.orgs.sort_by { |o| o["position"] || 999 }.select { |o| o["logo"] && o["forge_gh"] && o["banner"] != false } %>
+<div class="logos" style="--logo-count: <%= banner_orgs.size %>">
+  <% banner_orgs.each do |org| %>
     <a href="<%= org['forge_gh'] %>" target="_blank" rel="noopener">
       <img
         src="<%= org['logo'] %>"
