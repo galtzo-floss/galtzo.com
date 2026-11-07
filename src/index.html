@@ -65,6 +65,7 @@ body_class: projects
 <%# Registry page for a package, keyed by ecosystem (nil → no public registry page) %>
 <% ecosystem_url_for = ->(project) {
   name = project['name'].to_s
+  project['registry_url'] ||
   case project['ecosystem']
   when 'rubygems'  then "https://rubygems.org/gems/#{name}"
   when 'cargo'     then "https://crates.io/crates/#{name}"
