@@ -1,7 +1,7 @@
 ---
 # Canonical org registry. Drives the logos banner and org logos on tag badges.
 # peterboling.com pulls this file from here; edit it in this repo only.
-# position: banner order (unique, 1..N). Org ids match forges[].owner in projects.yml.
+# position: banner order (unique). banner: false keeps an org out of the banner but still gives its projects a badge logo. Org ids match forges[].owner in projects.yml.
 - id: appraisal-rb
   name: "appraisal-rb"
   position: 1
@@ -93,3 +93,27 @@
   logo-alt: "xberg-io Logo (GitHub org avatar)"
   logo-title: "xberg-io Logo (GitHub org avatar)"
   forge_gh: "https://github.com/xberg-io"
+- id: pboling
+  name: "pboling"
+  position: 12
+  banner: false
+  logo: "https://github.com/pboling.png?size=128"
+  logo-alt: "pboling Logo (GitHub org avatar)"
+  logo-title: "pboling Logo (GitHub org avatar)"
+  forge_gh: "https://github.com/pboling"
+- id: contriboss
+  name: "contriboss"
+  position: 13
+  banner: false
+  logo: "https://github.com/contriboss.png?size=128"
+  logo-alt: "contriboss Logo (GitHub org avatar)"
+  logo-title: "contriboss Logo (GitHub org avatar)"
+  forge_gh: "https://github.com/contriboss"
+- id: cyclonedx
+  name: "CycloneDX"
+  position: 14
+  banner: false
+  logo: "https://github.com/CycloneDX.png?size=128"
+  logo-alt: "CycloneDX Logo (GitHub org avatar)"
+  logo-title: "CycloneDX Logo (GitHub org avatar)"
+  forge_gh: "https://github.com/CycloneDX"

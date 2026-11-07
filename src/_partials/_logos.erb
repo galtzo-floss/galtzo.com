@@ -1,6 +1,6 @@
 <div class="logos">
   <% site.data.orgs.sort_by { |o| o['position'] || 999 }.each do |org| %>
-    <% next unless org['logo'] && org['forge_gh'] %>
+    <% next unless org['logo'] && org['forge_gh'] && org['banner'] != false %>
     <a href="<%= org['forge_gh'] %>" target="_blank" rel="noopener">
       <img
         src="<%= org['logo'] %>"
