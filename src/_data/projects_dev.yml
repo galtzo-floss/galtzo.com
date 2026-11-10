@@ -2192,14 +2192,14 @@
   - oauth
   - ruby
   docs_site: https://www.rubydoc.info/gems/auth-sanitizer/0.2.3
-  total_downloads: 18292784
+  total_downloads: 18455249
   daily_downloads: 152968
-  release_downloads: 415262
+  release_downloads: 457134
   release_date: 2026/10/25
   github_stars: 15
   last_commit_on: 2026/11/08
   status: active
-  last_scrape_at: '2026-11-09T12:16:30Z'
+  last_scrape_at: '2026-11-10T12:38:51Z'
   licenses:
   - MIT
   license_url: https://github.com/ruby-oauth/auth-sanitizer/blob/main/LICENSE.md
@@ -2500,14 +2500,14 @@
   - oauth
   - ruby
   docs_site: https://www.rubydoc.info/gems/anonymous_loader/0.1.3
-  total_downloads: 12112085
+  total_downloads: 12231107
   daily_downloads: 121557
-  release_downloads: 419954
+  release_downloads: 461683
   release_date: 2026/10/25
   github_stars: 2
   last_commit_on: 2026/11/08
   status: active
-  last_scrape_at: '2026-11-09T12:16:32Z'
+  last_scrape_at: '2026-11-10T12:38:55Z'
   licenses:
   - MIT
   license_url: https://github.com/ruby-oauth/anonymous_loader/blob/main/LICENSE.md
