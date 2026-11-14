@@ -21,13 +21,13 @@
   - ruby
   docs_site:
   github_stars: 8
-  total_downloads: 4358
+  total_downloads: 4361
   daily_downloads: 6
-  release_downloads: 3751
+  release_downloads: 3754
   release_date: 2024/07/05
   last_commit_on: 2026/11/11
   status: active
-  last_scrape_at: '2026-11-13T09:57:39Z'
+  last_scrape_at: '2026-11-14T14:27:31Z'
   theme: family
   family_id: active-record
   family_position: 2
@@ -64,13 +64,13 @@
   github_stars: 12
   gitlab_stars: 0
   codeberg_stars: 0
-  total_downloads: 62945
+  total_downloads: 62969
   daily_downloads: 14
-  release_downloads: 3984
+  release_downloads: 3988
   release_date: 2024/03/06
   last_commit_on: 2026/11/11
   status: active
-  last_scrape_at: '2026-11-13T09:57:47Z'
+  last_scrape_at: '2026-11-14T14:27:39Z'
   theme: family
   family_id: active-record
   family_position: 4
@@ -99,13 +99,13 @@
   - ruby
   docs_site:
   github_stars: 13
-  total_downloads: 322904
+  total_downloads: 322966
   daily_downloads: 46
-  release_downloads: 262069
+  release_downloads: 262117
   release_date: 2024/09/18
   last_commit_on: 2026/01/17
   status: active
-  last_scrape_at: '2026-11-13T09:58:02Z'
+  last_scrape_at: '2026-11-14T14:27:53Z'
   theme: family
   family_id: active-record
   family_position: 5
@@ -144,7 +144,7 @@
   release_date: 2026/09/01
   last_commit_on: 2026/11/11
   status: active
-  last_scrape_at: '2026-11-13T09:58:06Z'
+  last_scrape_at: '2026-11-14T14:27:55Z'
   theme: family
   family_id: rubygems-bundler-family
   family_position: 10
@@ -182,13 +182,13 @@
   github_stars: 22
   gitlab_stars: 0
   codeberg_stars: 0
-  total_downloads: 288837
+  total_downloads: 289469
   daily_downloads: 1190
-  release_downloads: 24601
+  release_downloads: 25096
   release_date: 2026/10/21
   last_commit_on: 2026/11/08
   status: active
-  last_scrape_at: '2026-11-13T09:58:10Z'
+  last_scrape_at: '2026-11-14T14:28:00Z'
   theme: family
   family_id: rspec-family
   family_position: 1
@@ -217,13 +217,13 @@
   - shell
   docs_site:
   github_stars: 16
-  total_downloads: 39934
+  total_downloads: 39943
   daily_downloads: 10
-  release_downloads: 3455
+  release_downloads: 3456
   release_date: 2018/09/04
   last_commit_on: 2026/01/17
   status: active
-  last_scrape_at: '2026-11-13T09:58:13Z'
+  last_scrape_at: '2026-11-14T14:28:03Z'
   theme: family
   family_id: miscellaneous
   family_position: 2
@@ -251,13 +251,13 @@
   - ruby
   docs_site:
   github_stars: 9
-  total_downloads: 11517
+  total_downloads: 11518
   daily_downloads: 3
-  release_downloads: 6440
+  release_downloads: 6441
   release_date: 2010/06/22
   last_commit_on: 2026/01/22
   status: active
-  last_scrape_at: '2026-11-13T09:58:16Z'
+  last_scrape_at: '2026-11-14T14:28:06Z'
   theme: family
   family_id: adoptable-family
   family_position: 7
@@ -574,14 +574,14 @@
   - rails
   - ruby
   docs_site: https://www.rubydoc.info/gems/cacheable_flash/1.0.0
-  total_downloads: 480925
+  total_downloads: 480982
   daily_downloads: 92
-  release_downloads: 192640
+  release_downloads: 192682
   release_date: 2017/04/11
   github_stars: 101
   last_commit_on: 2020/11/15
   status: archived
-  last_scrape_at: '2026-11-13T09:58:23Z'
+  last_scrape_at: '2026-11-14T14:28:12Z'
   theme: family
   family_id: archived-family
   family_position: 1
@@ -4460,12 +4460,12 @@
   family_id: kettle-dev-family
   family_position: 15
   github_stars: 1
-  total_downloads: 4259
+  total_downloads: 4368
   daily_downloads: 232
-  release_downloads: 3003
+  release_downloads: 3111
   release_date: 2026/10/29
   last_commit_on: 2026/11/08
-  last_scrape_at: '2026-11-13T09:59:45Z'
+  last_scrape_at: '2026-11-14T14:29:40Z'
 - name: ast-crispr-toml
   description: "\U0001F9EC TOML table and dotted-key-path selectors and edit helpers
     for ast-crispr, backed by toml-merge."
