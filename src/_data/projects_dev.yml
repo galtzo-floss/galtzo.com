@@ -21,13 +21,13 @@
   - ruby
   docs_site:
   github_stars: 8
-  total_downloads: 4361
+  total_downloads: 4362
   daily_downloads: 6
   release_downloads: 3754
   release_date: 2024/07/05
   last_commit_on: 2026/11/11
   status: active
-  last_scrape_at: '2026-11-14T14:27:31Z'
+  last_scrape_at: '2026-11-15T11:29:33Z'
   theme: family
   family_id: active-record
   family_position: 2
@@ -64,13 +64,13 @@
   github_stars: 12
   gitlab_stars: 0
   codeberg_stars: 0
-  total_downloads: 62969
+  total_downloads: 62971
   daily_downloads: 14
-  release_downloads: 3988
+  release_downloads: 3989
   release_date: 2024/03/06
   last_commit_on: 2026/11/11
   status: active
-  last_scrape_at: '2026-11-14T14:27:39Z'
+  last_scrape_at: '2026-11-15T11:29:41Z'
   theme: family
   family_id: active-record
   family_position: 4
@@ -99,13 +99,13 @@
   - ruby
   docs_site:
   github_stars: 13
-  total_downloads: 322966
+  total_downloads: 322970
   daily_downloads: 46
-  release_downloads: 262117
+  release_downloads: 262119
   release_date: 2024/09/18
   last_commit_on: 2026/01/17
   status: active
-  last_scrape_at: '2026-11-14T14:27:53Z'
+  last_scrape_at: '2026-11-15T11:29:55Z'
   theme: family
   family_id: active-record
   family_position: 5
@@ -144,7 +144,7 @@
   release_date: 2026/09/01
   last_commit_on: 2026/11/11
   status: active
-  last_scrape_at: '2026-11-14T14:27:55Z'
+  last_scrape_at: '2026-11-15T11:29:58Z'
   theme: family
   family_id: rubygems-bundler-family
   family_position: 10
@@ -182,13 +182,13 @@
   github_stars: 22
   gitlab_stars: 0
   codeberg_stars: 0
-  total_downloads: 289469
+  total_downloads: 290380
   daily_downloads: 1190
-  release_downloads: 25096
+  release_downloads: 25949
   release_date: 2026/10/21
   last_commit_on: 2026/11/08
   status: active
-  last_scrape_at: '2026-11-14T14:28:00Z'
+  last_scrape_at: '2026-11-15T11:30:03Z'
   theme: family
   family_id: rspec-family
   family_position: 1
@@ -223,7 +223,7 @@
   release_date: 2018/09/04
   last_commit_on: 2026/01/17
   status: active
-  last_scrape_at: '2026-11-14T14:28:03Z'
+  last_scrape_at: '2026-11-15T11:30:06Z'
   theme: family
   family_id: miscellaneous
   family_position: 2
@@ -257,7 +257,7 @@
   release_date: 2010/06/22
   last_commit_on: 2026/01/22
   status: active
-  last_scrape_at: '2026-11-14T14:28:06Z'
+  last_scrape_at: '2026-11-15T11:30:09Z'
   theme: family
   family_id: adoptable-family
   family_position: 7
@@ -287,7 +287,7 @@
   release_date:
   last_commit_on: 2021/12/07
   status: stale
-  last_scrape_at: '2026-11-14T07:00:28Z'
+  last_scrape_at: '2026-11-15T11:27:54Z'
   theme: family
   family_id: miscellaneous
   family_position: 4
@@ -317,7 +317,7 @@
   release_date:
   last_commit_on: 2021/12/07
   status: stale
-  last_scrape_at: '2026-11-14T07:00:32Z'
+  last_scrape_at: '2026-11-15T11:27:58Z'
   theme: family
   family_id: miscellaneous
   family_position: 5
@@ -574,14 +574,14 @@
   - rails
   - ruby
   docs_site: https://www.rubydoc.info/gems/cacheable_flash/1.0.0
-  total_downloads: 480982
+  total_downloads: 480990
   daily_downloads: 92
-  release_downloads: 192682
+  release_downloads: 192684
   release_date: 2017/04/11
   github_stars: 101
   last_commit_on: 2020/11/15
   status: archived
-  last_scrape_at: '2026-11-14T14:28:12Z'
+  last_scrape_at: '2026-11-15T11:30:16Z'
   theme: family
   family_id: archived-family
   family_position: 1
@@ -2638,14 +2638,14 @@
   - kettle
   - ruby
   docs_site: https://www.rubydoc.info/gems/kettle-ndjson/0.1.3
-  total_downloads: 93924
+  total_downloads: 95229
   daily_downloads: 1107
-  release_downloads: 10901
-  release_date: 2026/10/28
+  release_downloads: 838
+  release_date: 2026/11/15
   github_stars: 1
-  last_commit_on: 2026/11/08
+  last_commit_on: 2026/11/15
   status: active
-  last_scrape_at: '2026-11-14T07:00:11Z'
+  last_scrape_at: '2026-11-15T11:27:40Z'
   licenses:
   - MIT
   license_url: https://github.com/kettle-dev/kettle-ndjson/blob/main/LICENSE.md
@@ -3650,13 +3650,13 @@
   github_stars: 1
   last_commit_on: 2026/11/01
   status: active
-  total_downloads: 28
-  release_downloads: 12
+  total_downloads: 30
+  release_downloads: 13
   release_date: 2026/11/06
   licenses:
   - AGPL-3.0-only OR PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-rust/blob/main/LICENSE.md
-  last_scrape_at: '2026-11-14T06:59:11Z'
+  last_scrape_at: '2026-11-15T11:26:38Z'
   daily_downloads: 0
   downloads_basis: lifetime
 - name: plain-merge
@@ -3686,13 +3686,13 @@
   github_stars: 1
   last_commit_on: 2026/11/01
   status: active
-  total_downloads: 29
-  release_downloads: 13
+  total_downloads: 31
+  release_downloads: 14
   release_date: 2026/11/06
   licenses:
   - AGPL-3.0-only OR PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-rust/blob/main/LICENSE.md
-  last_scrape_at: '2026-11-14T06:59:13Z'
+  last_scrape_at: '2026-11-15T11:26:40Z'
   daily_downloads: 0
   downloads_basis: lifetime
 - name: pulldown-cmark-merge
@@ -3722,13 +3722,13 @@
   github_stars: 1
   last_commit_on: 2026/11/01
   status: active
-  total_downloads: 28
-  release_downloads: 10
+  total_downloads: 30
+  release_downloads: 11
   release_date: 2026/11/06
   licenses:
   - AGPL-3.0-only OR PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-rust/blob/main/LICENSE.md
-  last_scrape_at: '2026-11-14T06:59:15Z'
+  last_scrape_at: '2026-11-15T11:26:43Z'
   daily_downloads: 0
   downloads_basis: lifetime
 - name: ruby-merge
@@ -3758,13 +3758,13 @@
   github_stars: 1
   last_commit_on: 2026/11/01
   status: active
-  total_downloads: 116
-  release_downloads: 26
+  total_downloads: 118
+  release_downloads: 27
   release_date: 2026/11/06
   licenses:
   - AGPL-3.0-only OR PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-rust/blob/main/LICENSE.md
-  last_scrape_at: '2026-11-14T06:59:18Z'
+  last_scrape_at: '2026-11-15T11:26:45Z'
   daily_downloads: 1
   downloads_basis: lifetime
 - name: rust-merge
@@ -3794,13 +3794,13 @@
   github_stars: 1
   last_commit_on: 2026/11/01
   status: active
-  total_downloads: 37
-  release_downloads: 19
+  total_downloads: 40
+  release_downloads: 21
   release_date: 2026/11/06
   licenses:
   - AGPL-3.0-only OR PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-rust/blob/main/LICENSE.md
-  last_scrape_at: '2026-11-14T06:59:20Z'
+  last_scrape_at: '2026-11-15T11:26:48Z'
   daily_downloads: 0
   downloads_basis: lifetime
 - name: structuredmerge-toml-merge
@@ -3830,13 +3830,13 @@
   github_stars: 1
   last_commit_on: 2026/11/01
   status: active
-  total_downloads: 196
-  release_downloads: 32
+  total_downloads: 199
+  release_downloads: 34
   release_date: 2026/11/06
   licenses:
   - AGPL-3.0-only OR PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-rust/blob/main/LICENSE.md
-  last_scrape_at: '2026-11-14T06:59:23Z'
+  last_scrape_at: '2026-11-15T11:26:50Z'
   daily_downloads: 1
   downloads_basis: lifetime
 - name: tree-haver
@@ -3866,13 +3866,13 @@
   github_stars: 1
   last_commit_on: 2026/11/01
   status: active
-  total_downloads: 1224
-  release_downloads: 114
+  total_downloads: 1228
+  release_downloads: 116
   release_date: 2026/11/06
   licenses:
   - AGPL-3.0-only OR PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-rust/blob/main/LICENSE.md
-  last_scrape_at: '2026-11-14T06:59:25Z'
+  last_scrape_at: '2026-11-15T11:26:52Z'
   daily_downloads: 7
   downloads_basis: lifetime
 - name: typescript-merge
@@ -3902,13 +3902,13 @@
   github_stars: 1
   last_commit_on: 2026/11/01
   status: active
-  total_downloads: 35
-  release_downloads: 17
+  total_downloads: 38
+  release_downloads: 19
   release_date: 2026/11/06
   licenses:
   - AGPL-3.0-only OR PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-rust/blob/main/LICENSE.md
-  last_scrape_at: '2026-11-14T06:59:27Z'
+  last_scrape_at: '2026-11-15T11:26:55Z'
   daily_downloads: 0
   downloads_basis: lifetime
 - name: yaml-merge
@@ -3938,13 +3938,13 @@
   github_stars: 1
   last_commit_on: 2026/11/01
   status: active
-  total_downloads: 119
-  release_downloads: 25
+  total_downloads: 122
+  release_downloads: 27
   release_date: 2026/11/06
   licenses:
   - AGPL-3.0-only OR PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-rust/blob/main/LICENSE.md
-  last_scrape_at: '2026-11-14T06:59:30Z'
+  last_scrape_at: '2026-11-15T11:26:57Z'
   daily_downloads: 1
   downloads_basis: lifetime
 - name: yaml-serde-merge
@@ -3974,13 +3974,13 @@
   github_stars: 1
   last_commit_on: 2026/11/01
   status: active
-  total_downloads: 28
-  release_downloads: 10
+  total_downloads: 31
+  release_downloads: 12
   release_date: 2026/11/06
   licenses:
   - AGPL-3.0-only OR PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-rust/blob/main/LICENSE.md
-  last_scrape_at: '2026-11-14T06:59:32Z'
+  last_scrape_at: '2026-11-15T11:26:59Z'
   daily_downloads: 0
   downloads_basis: lifetime
 - name: structuredmerge-zip-merge
@@ -4011,13 +4011,13 @@
   github_stars: 1
   last_commit_on: 2026/11/01
   status: active
-  total_downloads: 29
-  release_downloads: 11
+  total_downloads: 32
+  release_downloads: 13
   release_date: 2026/11/06
   licenses:
   - AGPL-3.0-only OR PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-rust/blob/main/LICENSE.md
-  last_scrape_at: '2026-11-14T06:59:34Z'
+  last_scrape_at: '2026-11-15T11:27:02Z'
   daily_downloads: 0
   downloads_basis: lifetime
 - name: github.com/structuredmerge/structuredmerge-go
@@ -4051,7 +4051,7 @@
   - AGPL-3.0-only
   - PolyForm-Small-Business-1.0.0
   license_url: https://github.com/structuredmerge/structuredmerge-go/blob/main/LICENSE.md
-  last_scrape_at: '2026-11-14T06:59:38Z'
+  last_scrape_at: '2026-11-15T11:27:05Z'
 - name: ast-crispr
   description: "\U0001F9EC A thin structural edit tool layer over ast-merge structured-edit
     contracts."
@@ -4074,15 +4074,15 @@
   licenses:
   - AGPL-3.0-only
   - PolyForm-Small-Business-1.0.0
-  total_downloads: 16490
+  total_downloads: 16806
   daily_downloads: 235
-  release_downloads: 769
+  release_downloads: 804
   release_date: 2026/10/30
   github_stars: 20
-  last_commit_on: 2026/11/11
+  last_commit_on: 2026/11/15
   status: active
   license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
-  last_scrape_at: '2026-11-14T06:59:41Z'
+  last_scrape_at: '2026-11-15T11:27:09Z'
   theme: family
   family_id: smorg-rb
   family_position: 26
@@ -4108,15 +4108,15 @@
   licenses:
   - AGPL-3.0-only
   - PolyForm-Small-Business-1.0.0
-  total_downloads: 15797
+  total_downloads: 16101
   daily_downloads: 226
-  release_downloads: 536
+  release_downloads: 560
   release_date: 2026/10/30
   github_stars: 20
-  last_commit_on: 2026/11/11
+  last_commit_on: 2026/11/15
   status: active
   license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
-  last_scrape_at: '2026-11-14T06:59:44Z'
+  last_scrape_at: '2026-11-15T11:27:11Z'
   theme: family
   family_id: smorg-rb
   family_position: 28
@@ -4142,15 +4142,15 @@
   licenses:
   - AGPL-3.0-only
   - PolyForm-Small-Business-1.0.0
-  total_downloads: 16296
+  total_downloads: 16614
   daily_downloads: 227
-  release_downloads: 725
+  release_downloads: 759
   release_date: 2026/10/30
   github_stars: 20
-  last_commit_on: 2026/11/11
+  last_commit_on: 2026/11/15
   status: active
   license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
-  last_scrape_at: '2026-11-14T06:59:46Z'
+  last_scrape_at: '2026-11-15T11:27:14Z'
   theme: family
   family_id: smorg-rb
   family_position: 27
@@ -4175,15 +4175,15 @@
   licenses:
   - AGPL-3.0-only
   - PolyForm-Small-Business-1.0.0
-  total_downloads: 6760
+  total_downloads: 6771
   daily_downloads: 86
-  release_downloads: 202
+  release_downloads: 203
   release_date: 2026/10/30
   github_stars: 20
-  last_commit_on: 2026/11/11
+  last_commit_on: 2026/11/15
   status: active
   license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
-  last_scrape_at: '2026-11-14T06:59:49Z'
+  last_scrape_at: '2026-11-15T11:27:17Z'
   theme: family
   family_id: smorg-rb
   family_position: 31
@@ -4208,15 +4208,15 @@
   docs_site: https://www.rubydoc.info/gems/html-merge/7.1.15
   licenses:
   - MIT
-  total_downloads: 6521
+  total_downloads: 6536
   daily_downloads: 83
-  release_downloads: 197
+  release_downloads: 198
   release_date: 2026/10/30
   github_stars: 20
-  last_commit_on: 2026/11/11
+  last_commit_on: 2026/11/15
   status: active
   license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
-  last_scrape_at: '2026-11-14T06:59:52Z'
+  last_scrape_at: '2026-11-15T11:27:20Z'
   theme: family
   family_id: smorg-rb
   family_position: 33
@@ -4242,15 +4242,15 @@
   licenses:
   - AGPL-3.0-only
   - PolyForm-Small-Business-1.0.0
-  total_downloads: 6918
+  total_downloads: 6929
   daily_downloads: 88
-  release_downloads: 224
+  release_downloads: 225
   release_date: 2026/10/30
   github_stars: 20
-  last_commit_on: 2026/11/11
+  last_commit_on: 2026/11/15
   status: active
   license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
-  last_scrape_at: '2026-11-14T06:59:54Z'
+  last_scrape_at: '2026-11-15T11:27:22Z'
   theme: family
   family_id: smorg-rb
   family_position: 34
@@ -4279,7 +4279,7 @@
   docs_site: https://www.rubydoc.info/gems/kettle-jem-appraisals/0.1.7
   licenses:
   - AGPL-3.0-only
-  total_downloads: 5073
+  total_downloads: 5077
   daily_downloads: 26
   release_downloads: 206
   release_date: 2026/10/22
@@ -4287,7 +4287,7 @@
   last_commit_on: 2026/11/08
   status: active
   license_url: https://github.com/appraisal-rb/kettle-jem-appraisals/blob/main/LICENSE.md
-  last_scrape_at: '2026-11-14T06:59:57Z'
+  last_scrape_at: '2026-11-15T11:27:26Z'
   theme: family
   family_id: kettle-dev-family
   family_position: 12
@@ -4314,15 +4314,15 @@
   docs_site: https://www.rubydoc.info/gems/rubocop-lts-ruby/0.1.6
   licenses:
   - MIT
-  total_downloads: 36818
+  total_downloads: 37606
   daily_downloads: 483
-  release_downloads: 12015
+  release_downloads: 12788
   release_date: 2026/10/22
   github_stars: 1
   last_commit_on: 2026/11/08
   status: active
   license_url: https://github.com/rubocop-lts/rubocop-lts-ruby/blob/main/LICENSE.md
-  last_scrape_at: '2026-11-14T07:00:01Z'
+  last_scrape_at: '2026-11-15T11:27:29Z'
   theme: family
   family_id: rubocop-lts
   family_position: 17
@@ -4347,15 +4347,15 @@
   docs_site: https://www.rubydoc.info/gems/kettle-changelog/1.0.13
   licenses:
   - AGPL-3.0-only
-  total_downloads: 27545
+  total_downloads: 28124
   daily_downloads: 414
-  release_downloads: 975
+  release_downloads: 1446
   release_date: 2026/11/08
   github_stars: 1
   last_commit_on: 2026/11/08
   status: active
   license_url: https://github.com/kettle-dev/kettle-changelog/blob/main/LICENSE.md
-  last_scrape_at: '2026-11-14T07:00:04Z'
+  last_scrape_at: '2026-11-15T11:27:32Z'
   theme: family
   family_id: kettle-dev-family
   family_position: 11
@@ -4384,15 +4384,15 @@
   docs_site: https://www.rubydoc.info/gems/kettle-paths/0.1.1
   licenses:
   - MIT
-  total_downloads: 1250
+  total_downloads: 1257
   daily_downloads: 60
-  release_downloads: 189
+  release_downloads: 191
   release_date: 2026/10/28
   github_stars: 1
   last_commit_on: 2026/11/08
   status: active
   license_url: https://github.com/kettle-dev/kettle-paths/blob/main/LICENSE.md
-  last_scrape_at: '2026-11-14T07:00:07Z'
+  last_scrape_at: '2026-11-15T11:27:36Z'
   theme: family
   family_id: kettle-dev-family
   family_position: 13
@@ -4420,15 +4420,15 @@
   docs_site: https://www.rubydoc.info/gems/runtime_groups/0.1.3
   licenses:
   - MIT
-  total_downloads: 24798
+  total_downloads: 26078
   daily_downloads: 812
-  release_downloads: 338
+  release_downloads: 1515
   release_date: 2026/11/14
   github_stars: 1
   last_commit_on: 2026/11/14
   status: active
   license_url: https://github.com/galtzo-floss/runtime_groups/blob/main/LICENSE.md
-  last_scrape_at: '2026-11-14T07:00:14Z'
+  last_scrape_at: '2026-11-15T11:27:43Z'
   theme: family
   family_id: kettle-dev-family
   family_position: 14
@@ -4488,15 +4488,15 @@
   licenses:
   - AGPL-3.0-only
   - PolyForm-Small-Business-1.0.0
-  total_downloads: 5230
+  total_downloads: 5500
   daily_downloads: 251
-  release_downloads: 204
+  release_downloads: 205
   release_date: 2026/10/31
   github_stars: 20
-  last_commit_on: 2026/11/11
+  last_commit_on: 2026/11/15
   status: active
   license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
-  last_scrape_at: '2026-11-14T07:00:17Z'
+  last_scrape_at: '2026-11-15T11:27:46Z'
   theme: family
   family_id: smorg-rb
   family_position: 29
@@ -4522,15 +4522,15 @@
   licenses:
   - AGPL-3.0-only
   - PolyForm-Small-Business-1.0.0
-  total_downloads: 1195
+  total_downloads: 1204
   daily_downloads: 80
-  release_downloads: 194
+  release_downloads: 197
   release_date: 2026/10/30
   github_stars: 20
-  last_commit_on: 2026/11/11
+  last_commit_on: 2026/11/15
   status: active
   license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
-  last_scrape_at: '2026-11-14T07:00:22Z'
+  last_scrape_at: '2026-11-15T11:27:49Z'
   theme: family
   family_id: smorg-rb
   family_position: 32
@@ -4555,15 +4555,15 @@
   licenses:
   - AGPL-3.0-only
   - PolyForm-Small-Business-1.0.0
-  total_downloads: 1313
+  total_downloads: 1318
   daily_downloads: 89
-  release_downloads: 215
+  release_downloads: 217
   release_date: 2026/10/30
   github_stars: 20
-  last_commit_on: 2026/11/11
+  last_commit_on: 2026/11/15
   status: active
   license_url: https://github.com/structuredmerge/structuredmerge-ruby/blob/main/LICENSE.md
-  last_scrape_at: '2026-11-14T07:00:25Z'
+  last_scrape_at: '2026-11-15T11:27:51Z'
   theme: family
   family_id: smorg-rb
   family_position: 30
@@ -4588,16 +4588,16 @@
   docs_site:
   status: active
   github_stars: 101
-  total_downloads: 12572
-  daily_downloads: 50
-  release_downloads: 7
+  total_downloads: 13156
+  daily_downloads: 56
+  release_downloads: 0
   downloads_basis: lifetime
   licenses:
   - MIT
   license_url: https://github.com/xberg-io/alef/blob/main/LICENSE
-  release_date: 2026/11/13
-  last_commit_on: 2026/11/14
-  last_scrape_at: '2026-11-14T07:01:06Z'
+  release_date: 2026/11/15
+  last_commit_on: 2026/11/15
+  last_scrape_at: '2026-11-15T11:28:28Z'
   first_commit_by_person: https://github.com/xberg-io/alef/commit/166e0daad4d0078235f4ccf8c82f95fde3e8b938
   first_commit_by_person_on: 2026/07/21
 - name: tree-sitter-language-pack
@@ -4621,17 +4621,17 @@
   funding_sites: []
   docs_site:
   status: active
-  github_stars: 485
-  total_downloads: 257358
-  daily_downloads: 1488
-  release_downloads: 6323
+  github_stars: 486
+  total_downloads: 259373
+  daily_downloads: 1499
+  release_downloads: 8038
   downloads_basis: lifetime
   licenses:
   - MIT
   license_url: https://github.com/xberg-io/tree-sitter-language-pack/blob/main/LICENSE
   release_date: 2026/11/06
-  last_commit_on: 2026/11/07
-  last_scrape_at: '2026-11-14T07:01:16Z'
+  last_commit_on: 2026/11/15
+  last_scrape_at: '2026-11-15T11:28:37Z'
   first_commit_by_person: https://github.com/xberg-io/tree-sitter-language-pack/commit/7f947b49631d086a8812caebaf5e91f69e8987bf
   first_commit_by_person_on: 2026/04/20
   owner: false
@@ -4657,17 +4657,17 @@
   funding_sites: []
   docs_site:
   status: active
-  github_stars: 485
-  total_downloads: 2802
-  daily_downloads: 5
-  release_downloads: 138
+  github_stars: 486
+  total_downloads: 2999
+  daily_downloads: 7
+  release_downloads: 187
   downloads_basis: lifetime
   licenses:
   - MIT
   license_url: https://github.com/xberg-io/tree-sitter-language-pack/blob/main/LICENSE
   release_date: 2026/11/06
-  last_commit_on: 2026/11/07
-  last_scrape_at: '2026-11-14T07:01:26Z'
+  last_commit_on: 2026/11/15
+  last_scrape_at: '2026-11-15T11:28:44Z'
   first_commit_by_person: https://github.com/xberg-io/tree-sitter-language-pack/commit/7f947b49631d086a8812caebaf5e91f69e8987bf
   first_commit_by_person_on: 2026/04/20
   owner: false
@@ -4728,16 +4728,16 @@
   funding_sites: []
   docs_site:
   status: active
-  github_stars: 485
-  total_downloads: 44478
-  daily_downloads: 854
+  github_stars: 486
+  total_downloads: 46510
+  daily_downloads: 908
   downloads_basis: 18mo
   licenses:
   - MIT
   license_url: https://github.com/xberg-io/tree-sitter-language-pack/blob/main/LICENSE
-  release_date: 2026/11/06
-  last_commit_on: 2026/11/07
-  last_scrape_at: '2026-11-14T07:01:36Z'
+  release_date: 2026/11/15
+  last_commit_on: 2026/11/15
+  last_scrape_at: '2026-11-15T11:28:52Z'
   first_commit_by_person: https://github.com/xberg-io/tree-sitter-language-pack/commit/7f947b49631d086a8812caebaf5e91f69e8987bf
   first_commit_by_person_on: 2026/04/20
   owner: false
@@ -4763,16 +4763,16 @@
   funding_sites: []
   docs_site:
   status: active
-  github_stars: 485
-  total_downloads: 10897
-  daily_downloads: 147
+  github_stars: 486
+  total_downloads: 10947
+  daily_downloads: 148
   downloads_basis: 18mo
   licenses:
   - MIT
   license_url: https://github.com/xberg-io/tree-sitter-language-pack/blob/main/LICENSE
   release_date: 2026/11/06
-  last_commit_on: 2026/11/07
-  last_scrape_at: '2026-11-14T07:01:45Z'
+  last_commit_on: 2026/11/15
+  last_scrape_at: '2026-11-15T11:29:00Z'
   first_commit_by_person: https://github.com/xberg-io/tree-sitter-language-pack/commit/7f947b49631d086a8812caebaf5e91f69e8987bf
   first_commit_by_person_on: 2026/04/20
   owner: false
@@ -4797,17 +4797,17 @@
   funding_sites: []
   docs_site:
   status: active
-  github_stars: 485
-  total_downloads: 192978
+  github_stars: 486
+  total_downloads: 194013
   daily_downloads: 1167
-  release_downloads: 404
+  release_downloads: 494
   minimum_version: '3.3'
   licenses:
   - MIT
   license_url: https://github.com/xberg-io/tree-sitter-language-pack/blob/main/LICENSE
   release_date: 2026/11/06
-  last_commit_on: 2026/11/07
-  last_scrape_at: '2026-11-14T07:01:49Z'
+  last_commit_on: 2026/11/15
+  last_scrape_at: '2026-11-15T11:29:04Z'
   first_commit_by_person: https://github.com/xberg-io/tree-sitter-language-pack/commit/7f947b49631d086a8812caebaf5e91f69e8987bf
   first_commit_by_person_on: 2026/04/20
   owner: false
@@ -4833,16 +4833,16 @@
   funding_sites: []
   docs_site:
   status: active
-  github_stars: 485
-  total_downloads: 10659
-  daily_downloads: 49
+  github_stars: 486
+  total_downloads: 10669
+  daily_downloads: 50
   downloads_basis: lifetime
   licenses:
   - MIT
   license_url: https://github.com/xberg-io/tree-sitter-language-pack/blob/main/LICENSE
-  release_date: 2026/11/06
-  last_commit_on: 2026/11/07
-  last_scrape_at: '2026-11-14T07:01:58Z'
+  release_date: 2026/11/14
+  last_commit_on: 2026/11/15
+  last_scrape_at: '2026-11-15T11:29:12Z'
   first_commit_by_person: https://github.com/xberg-io/tree-sitter-language-pack/commit/7f947b49631d086a8812caebaf5e91f69e8987bf
   first_commit_by_person_on: 2026/04/20
   owner: false
@@ -4868,16 +4868,16 @@
   funding_sites: []
   docs_site:
   status: active
-  github_stars: 485
-  total_downloads: 22
+  github_stars: 486
+  total_downloads: 23
   daily_downloads: 0
   downloads_basis: lifetime
   licenses:
   - MIT
   license_url: https://github.com/xberg-io/tree-sitter-language-pack/blob/main/LICENSE
-  release_date: 2026/11/06
-  last_commit_on: 2026/11/07
-  last_scrape_at: '2026-11-14T07:02:09Z'
+  release_date: 2026/11/14
+  last_commit_on: 2026/11/15
+  last_scrape_at: '2026-11-15T11:29:21Z'
   first_commit_by_person: https://github.com/xberg-io/tree-sitter-language-pack/commit/7f947b49631d086a8812caebaf5e91f69e8987bf
   first_commit_by_person_on: 2026/04/20
   owner: false
@@ -4903,15 +4903,15 @@
   funding_sites: []
   docs_site:
   status: active
-  github_stars: 485
+  github_stars: 486
   total_downloads: 10757
   downloads_basis: lifetime
   licenses:
   - MIT
   license_url: https://github.com/xberg-io/tree-sitter-language-pack/blob/main/LICENSE
-  release_date: 2026/11/06
-  last_commit_on: 2026/11/07
-  last_scrape_at: '2026-11-14T07:02:17Z'
+  release_date: 2026/11/14
+  last_commit_on: 2026/11/15
+  last_scrape_at: '2026-11-15T11:29:30Z'
   first_commit_by_person: https://github.com/xberg-io/tree-sitter-language-pack/commit/7f947b49631d086a8812caebaf5e91f69e8987bf
   first_commit_by_person_on: 2026/04/20
   owner: false
