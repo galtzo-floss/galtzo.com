@@ -4700,9 +4700,9 @@
   licenses:
   - MIT
   license_url: https://github.com/xberg-io/tree-sitter-language-pack/blob/main/LICENSE
-  release_date: 2026/11/14
+  release_date: 2026/11/15
   last_commit_on: 2026/11/15
-  last_scrape_at: '2026-11-15T09:40:36Z'
+  last_scrape_at: '2026-11-16T01:15:12Z'
   first_commit_by_person: https://github.com/xberg-io/tree-sitter-language-pack/commit/7f947b49631d086a8812caebaf5e91f69e8987bf
   first_commit_by_person_on: 2026/04/20
   owner: false
