@@ -25,9 +25,9 @@
   daily_downloads: 6
   release_downloads: 3754
   release_date: 2024/07/05
-  last_commit_on: 2026/11/11
+  last_commit_on: 2026/11/16
   status: active
-  last_scrape_at: '2026-11-15T11:29:33Z'
+  last_scrape_at: '2026-11-16T22:29:01Z'
   theme: family
   family_id: active-record
   family_position: 2
@@ -64,13 +64,13 @@
   github_stars: 12
   gitlab_stars: 0
   codeberg_stars: 0
-  total_downloads: 62971
+  total_downloads: 62972
   daily_downloads: 14
   release_downloads: 3989
   release_date: 2024/03/06
-  last_commit_on: 2026/11/11
+  last_commit_on: 2026/11/16
   status: active
-  last_scrape_at: '2026-11-15T11:29:41Z'
+  last_scrape_at: '2026-11-16T22:29:09Z'
   theme: family
   family_id: active-record
   family_position: 4
@@ -99,13 +99,13 @@
   - ruby
   docs_site:
   github_stars: 13
-  total_downloads: 322970
+  total_downloads: 323044
   daily_downloads: 46
-  release_downloads: 262119
+  release_downloads: 262190
   release_date: 2024/09/18
   last_commit_on: 2026/01/17
   status: active
-  last_scrape_at: '2026-11-15T11:29:55Z'
+  last_scrape_at: '2026-11-16T22:29:23Z'
   theme: family
   family_id: active-record
   family_position: 5
@@ -140,11 +140,11 @@
   - license
   - shell
   docs_site:
-  github_stars: 317
+  github_stars: 318
   release_date: 2026/09/01
-  last_commit_on: 2026/11/11
+  last_commit_on: 2026/11/16
   status: active
-  last_scrape_at: '2026-11-15T11:29:58Z'
+  last_scrape_at: '2026-11-16T22:29:26Z'
   theme: family
   family_id: rubygems-bundler-family
   family_position: 10
@@ -182,13 +182,13 @@
   github_stars: 22
   gitlab_stars: 0
   codeberg_stars: 0
-  total_downloads: 290380
+  total_downloads: 292720
   daily_downloads: 1190
-  release_downloads: 25949
+  release_downloads: 28054
   release_date: 2026/10/21
   last_commit_on: 2026/11/08
   status: active
-  last_scrape_at: '2026-11-15T11:30:03Z'
+  last_scrape_at: '2026-11-16T22:29:30Z'
   theme: family
   family_id: rspec-family
   family_position: 1
@@ -217,13 +217,13 @@
   - shell
   docs_site:
   github_stars: 16
-  total_downloads: 39943
+  total_downloads: 39944
   daily_downloads: 10
-  release_downloads: 3456
+  release_downloads: 3457
   release_date: 2018/09/04
   last_commit_on: 2026/01/17
   status: active
-  last_scrape_at: '2026-11-15T11:30:06Z'
+  last_scrape_at: '2026-11-16T22:29:34Z'
   theme: family
   family_id: miscellaneous
   family_position: 2
@@ -257,7 +257,7 @@
   release_date: 2010/06/22
   last_commit_on: 2026/01/22
   status: active
-  last_scrape_at: '2026-11-15T11:30:09Z'
+  last_scrape_at: '2026-11-16T22:29:37Z'
   theme: family
   family_id: adoptable-family
   family_position: 7
@@ -574,14 +574,14 @@
   - rails
   - ruby
   docs_site: https://www.rubydoc.info/gems/cacheable_flash/1.0.0
-  total_downloads: 480990
+  total_downloads: 481037
   daily_downloads: 92
-  release_downloads: 192684
+  release_downloads: 192707
   release_date: 2017/04/11
   github_stars: 101
   last_commit_on: 2020/11/15
   status: archived
-  last_scrape_at: '2026-11-15T11:30:16Z'
+  last_scrape_at: '2026-11-16T22:29:43Z'
   theme: family
   family_id: archived-family
   family_position: 1
@@ -4460,12 +4460,12 @@
   family_id: kettle-dev-family
   family_position: 15
   github_stars: 1
-  total_downloads: 4873
+  total_downloads: 5240
   daily_downloads: 232
-  release_downloads: 3606
+  release_downloads: 3968
   release_date: 2026/10/29
-  last_commit_on: 2026/11/08
-  last_scrape_at: '2026-11-15T17:58:52Z'
+  last_commit_on: 2026/11/16
+  last_scrape_at: '2026-11-16T22:31:08Z'
 - name: ast-crispr-toml
   description: "\U0001F9EC TOML table and dotted-key-path selectors and edit helpers
     for ast-crispr, backed by toml-merge."
@@ -4909,9 +4909,9 @@
   licenses:
   - MIT
   license_url: https://github.com/xberg-io/tree-sitter-language-pack/blob/main/LICENSE
-  release_date: 2026/11/14
-  last_commit_on: 2026/11/15
-  last_scrape_at: '2026-11-15T11:29:30Z'
+  release_date: 2026/11/15
+  last_commit_on: 2026/11/16
+  last_scrape_at: '2026-11-16T22:28:57Z'
   first_commit_by_person: https://github.com/xberg-io/tree-sitter-language-pack/commit/7f947b49631d086a8812caebaf5e91f69e8987bf
   first_commit_by_person_on: 2026/04/20
   owner: false
