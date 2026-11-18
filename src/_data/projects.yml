@@ -1663,13 +1663,13 @@
   github_stars: 668
   gitlab_stars: 5
   codeberg_stars: 0
-  total_downloads: 174918579
+  total_downloads: 175005813
   daily_downloads: 99343
-  release_downloads: 50130
+  release_downloads: 62566
   release_date: 2026/11/08
   last_commit_on: 2026/11/15
   status: active
-  last_scrape_at: '2026-11-17T01:30:21Z'
+  last_scrape_at: '2026-11-18T01:20:22Z'
   licenses:
   - MIT
   license_url: https://github.com/ruby-oauth/oauth/blob/main/LICENSE.md
@@ -1708,13 +1708,13 @@
   github_stars: 7
   gitlab_stars: 1
   codeberg_stars: 1
-  total_downloads: 29991578
+  total_downloads: 30055028
   daily_downloads: 82514
-  release_downloads: 5507301
+  release_downloads: 5535195
   release_date: 2026/07/15
   last_commit_on: 2026/11/08
   status: active
-  last_scrape_at: '2026-11-17T01:30:24Z'
+  last_scrape_at: '2026-11-18T01:20:25Z'
   licenses:
   - MIT
   license_url: https://github.com/ruby-oauth/oauth-tty/blob/main/LICENSE.md
@@ -1753,13 +1753,13 @@
   github_stars: 2181
   gitlab_stars: 24
   codeberg_stars: 2
-  total_downloads: 286523917
+  total_downloads: 286747587
   daily_downloads: 161185
-  release_downloads: 452614
+  release_downloads: 492143
   release_date: 2026/10/25
   last_commit_on: 2026/11/14
   status: active
-  last_scrape_at: '2026-11-17T01:30:29Z'
+  last_scrape_at: '2026-11-18T01:20:29Z'
   licenses:
   - MIT
   license_url: https://github.com/ruby-oauth/oauth2/blob/main/LICENSE.md
@@ -1790,13 +1790,13 @@
   - security
   docs_site: https://omniauth-identity.galtzo.com
   github_stars: 364
-  total_downloads: 2470303
+  total_downloads: 2471475
   daily_downloads: 1145
-  release_downloads: 22446
+  release_downloads: 22815
   release_date: 2026/07/15
   last_commit_on: 2026/11/04
   status: active
-  last_scrape_at: '2026-11-17T01:30:32Z'
+  last_scrape_at: '2026-11-18T01:20:32Z'
   licenses:
   - MIT
   license_url: https://github.com/omniauth/omniauth-identity/blob/main/LICENSE.md
@@ -1898,13 +1898,13 @@
   - security
   docs_site:
   github_stars: 147
-  total_downloads: 775439
+  total_downloads: 775513
   daily_downloads: 100
-  release_downloads: 5769
+  release_downloads: 5825
   release_date: 2026/07/14
   last_commit_on: 2026/11/08
   status: active
-  last_scrape_at: '2026-11-17T01:30:35Z'
+  last_scrape_at: '2026-11-18T01:20:35Z'
   licenses:
   - MIT
   license_url: https://github.com/omniauth/omniauth-ldap/blob/main/LICENSE.md
@@ -1942,13 +1942,13 @@
   github_stars: 96
   gitlab_stars: 0
   codeberg_stars: 0
-  total_downloads: 5006263
+  total_downloads: 5007466
   daily_downloads: 973
-  release_downloads: 115731
+  release_downloads: 116486
   release_date: 2025/06/08
   last_commit_on: 2026/08/16
   status: active
-  last_scrape_at: '2026-11-17T01:30:39Z'
+  last_scrape_at: '2026-11-18T01:20:39Z'
   licenses:
   - MIT
   license_url: https://github.com/ruby-openid/omniauth-openid/blob/main/LICENSE.md
@@ -2187,13 +2187,13 @@
   github_stars: 5
   gitlab_stars: 0
   codeberg_stars: 0
-  total_downloads: 8379112
+  total_downloads: 8380567
   daily_downloads: 1283
-  release_downloads: 4062526
+  release_downloads: 4063849
   release_date: 2014/01/20
   last_commit_on: 2026/06/29
   status: active
-  last_scrape_at: '2026-11-17T01:30:42Z'
+  last_scrape_at: '2026-11-18T01:20:42Z'
   licenses:
   - MIT
   license_url: https://github.com/ruby-openid/rack-openid/blob/master/LICENSE.txt
@@ -8847,8 +8847,8 @@
   - type: GitHub
     url: https://github.com/xberg-io/tree-sitter-language-pack
     owner: xberg-io
-    total_downloads: 10578502
-    release_downloads: 22090
+    total_downloads: 10683800
+    release_downloads: 42285
   tags:
   - parsing
   - python
@@ -8856,16 +8856,16 @@
   funding_sites: []
   docs_site:
   status: active
-  github_stars: 486
+  github_stars: 488
   licenses:
   - MIT
   license_url: https://github.com/xberg-io/tree-sitter-language-pack/blob/main/LICENSE
-  total_downloads: 85990381
-  daily_downloads: 200347
+  total_downloads: 86223277
+  daily_downloads: 201947
   downloads_basis: lifetime
   release_date: 2026/11/15
   last_commit_on: 2026/11/16
-  last_scrape_at: '2026-11-17T01:30:17Z'
+  last_scrape_at: '2026-11-18T01:20:17Z'
   first_commit_by_person: https://github.com/xberg-io/tree-sitter-language-pack/commit/7f947b49631d086a8812caebaf5e91f69e8987bf
   first_commit_by_person_on: 2026/04/20
   owner: false
