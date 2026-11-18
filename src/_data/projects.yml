@@ -814,13 +814,13 @@
   docs_site:
   github_stars: 4
   gitlab_stars: 0
-  total_downloads: 18582
+  total_downloads: 18583
   daily_downloads: 4
-  release_downloads: 4541
+  release_downloads: 4542
   release_date: 2015/05/20
   last_commit_on: 2026/01/17
   status: active
-  last_scrape_at: '2026-11-16T22:30:05Z'
+  last_scrape_at: '2026-11-18T04:41:05Z'
   licenses:
   - MIT
   license_url: https://github.com/galtzo-floss/destination_errors/blob/main/LICENSE.txt
@@ -854,13 +854,13 @@
   - view
   docs_site:
   github_stars: 12
-  total_downloads: 10477
+  total_downloads: 10478
   daily_downloads: 3
   release_downloads: 6681
   release_date: 2012/08/15
   last_commit_on: 2026/01/17
   status: active
-  last_scrape_at: '2026-11-16T22:30:08Z'
+  last_scrape_at: '2026-11-18T04:41:08Z'
   licenses:
   - MIT
   license_url: https://github.com/galtzo-floss/dry_views/blob/main/LICENSE
@@ -933,13 +933,13 @@
   - ruby
   docs_site:
   github_stars: 13
-  total_downloads: 15649
+  total_downloads: 15651
   daily_downloads: 4
   release_downloads: 7140
   release_date: 2016/06/01
   last_commit_on: 2026/01/17
   status: active
-  last_scrape_at: '2026-11-16T22:30:12Z'
+  last_scrape_at: '2026-11-18T04:41:12Z'
   licenses:
   - MIT
   license_url: https://github.com/galtzo-floss/each_in_batches/blob/main/MIT-LICENSE
@@ -1022,13 +1022,13 @@
   - ruby
   docs_site: https://floss-funding.galtzo.com
   github_stars: 5
-  total_downloads: 810
+  total_downloads: 812
   daily_downloads: 3
-  release_downloads: 469
+  release_downloads: 471
   release_date: 2025/08/11
-  last_commit_on: 2026/11/16
+  last_commit_on: 2026/11/18
   status: active
-  last_scrape_at: '2026-11-16T22:30:15Z'
+  last_scrape_at: '2026-11-18T04:41:15Z'
   licenses:
   - MIT
   license_url: https://github.com/floss-funding/floss_funding/blob/main/LICENSE.md
@@ -1109,13 +1109,13 @@
   - vcs
   docs_site:
   github_stars: 12
-  total_downloads: 173755
+  total_downloads: 176079
   daily_downloads: 729
-  release_downloads: 5968
+  release_downloads: 8240
   release_date: 2026/11/09
-  last_commit_on: 2026/11/16
+  last_commit_on: 2026/11/18
   status: active
-  last_scrape_at: '2026-11-16T22:30:19Z'
+  last_scrape_at: '2026-11-18T04:41:19Z'
   licenses:
   - MIT
   license_url: https://github.com/galtzo-floss/gitmoji-regex/blob/main/LICENSE.md
@@ -1146,13 +1146,13 @@
   adoptable: true
   docs_site:
   github_stars: 10
-  total_downloads: 7735
+  total_downloads: 7737
   daily_downloads: 3
   release_downloads: 4938
   release_date: 2014/10/18
   last_commit_on: 2026/01/22
   status: active
-  last_scrape_at: '2026-11-16T22:30:22Z'
+  last_scrape_at: '2026-11-18T04:41:22Z'
   licenses:
   - MIT
   license_url: https://github.com/galtzo-floss/humorous_log_formatter/blob/main/LICENSE.txt
@@ -1186,13 +1186,13 @@
   archived: true
   docs_site:
   github_stars: 7
-  total_downloads: 22128
+  total_downloads: 22132
   daily_downloads: 18
-  release_downloads: 592
+  release_downloads: 594
   release_date: 2026/10/01
-  last_commit_on: 2026/11/16
+  last_commit_on: 2026/11/18
   status: active
-  last_scrape_at: '2026-11-16T22:30:26Z'
+  last_scrape_at: '2026-11-18T04:41:26Z'
   licenses:
   - MIT
   license_url: https://github.com/galtzo-floss/include_with_respect/blob/main/LICENSE
@@ -1226,7 +1226,7 @@
   release_date: 2023/10/26
   last_commit_on: 2026/01/22
   status: active
-  last_scrape_at: '2026-11-16T22:30:29Z'
+  last_scrape_at: '2026-11-18T04:41:30Z'
   theme: family
   family_id: rspec-family
   family_position: 7
@@ -1281,13 +1281,13 @@
   github_stars: 2
   gitlab_stars: 0
   codeberg_stars: 0
-  total_downloads: 288554
+  total_downloads: 291048
   daily_downloads: 1616
-  release_downloads: 2644
+  release_downloads: 5023
   release_date: 2026/11/15
   last_commit_on: 2026/11/15
   status: active
-  last_scrape_at: '2026-11-16T22:30:34Z'
+  last_scrape_at: '2026-11-18T04:41:35Z'
   licenses:
   - AGPL-3.0-only
   license_url: https://github.com/kettle-dev/kettle-dev/blob/main/LICENSE.md
@@ -1328,13 +1328,13 @@
   github_stars: 10
   gitlab_stars: 1
   codeberg_stars: 0
-  total_downloads: 83795
+  total_downloads: 84152
   daily_downloads: 478
-  release_downloads: 3929
+  release_downloads: 4203
   release_date: 2026/10/29
   last_commit_on: 2026/11/08
   status: active
-  last_scrape_at: '2026-11-16T22:30:39Z'
+  last_scrape_at: '2026-11-18T04:41:41Z'
   licenses:
   - AGPL-3.0-only
   license_url: https://github.com/kettle-dev/kettle-soup-cover/blob/main/LICENSE.md
@@ -1380,13 +1380,13 @@
   github_stars: 1
   gitlab_stars: 0
   codeberg_stars: 0
-  total_downloads: 190514
+  total_downloads: 192932
   daily_downloads: 1160
-  release_downloads: 2709
+  release_downloads: 5087
   release_date: 2026/11/15
   last_commit_on: 2026/11/15
   status: active
-  last_scrape_at: '2026-11-16T22:30:44Z'
+  last_scrape_at: '2026-11-18T04:41:46Z'
   licenses:
   - AGPL-3.0-only
   - PolyForm-Small-Business-1.0.0
@@ -1420,13 +1420,13 @@
   archived: true
   docs_site:
   github_stars: 4
-  total_downloads: 13186
+  total_downloads: 13188
   daily_downloads: 4
   release_downloads: 8004
   release_date: 2015/04/11
   last_commit_on: 2026/01/17
   status: active
-  last_scrape_at: '2026-11-16T22:30:47Z'
+  last_scrape_at: '2026-11-18T04:41:49Z'
   licenses:
   - MIT
   license_url: https://github.com/galtzo-floss/letter_group/blob/main/LICENSE.txt
@@ -1460,9 +1460,9 @@
   daily_downloads: 2
   release_downloads: 594
   release_date: 2025/08/12
-  last_commit_on: 2026/11/16
+  last_commit_on: 2026/11/18
   status: active
-  last_scrape_at: '2026-11-16T22:30:51Z'
+  last_scrape_at: '2026-11-18T04:41:53Z'
   licenses:
   - MIT
   license_url: https://github.com/galtzo-floss/library_tree/blob/main/LICENSE.md
@@ -1497,7 +1497,7 @@
   release_date:
   last_commit_on: 2026/09/26
   status: active
-  last_scrape_at: '2026-11-16T22:30:55Z'
+  last_scrape_at: '2026-11-18T04:41:57Z'
   licenses:
   - MIT
   license_url: https://github.com/galtzo-floss/logos/blob/main/LICENSE.txt
@@ -1539,7 +1539,7 @@
   release_date: 2025/06/01
   last_commit_on: 2026/11/08
   status: active
-  last_scrape_at: '2026-11-16T22:31:01Z'
+  last_scrape_at: '2026-11-18T04:42:03Z'
   licenses:
   - MIT
   license_url: https://github.com/ruby-openid/masq2/blob/main/LICENSE.md
@@ -1585,7 +1585,7 @@
   release_date: 2025/04/04
   last_commit_on: 2026/11/08
   status: active
-  last_scrape_at: '2026-11-16T22:31:12Z'
+  last_scrape_at: '2026-11-18T04:42:16Z'
   licenses:
   - MIT
   license_url: https://github.com/ruby-openid/masq2/blob/main/LICENSE.md
@@ -1616,13 +1616,13 @@
   - serialization
   docs_site:
   github_stars: 8
-  total_downloads: 11899
+  total_downloads: 11994
   daily_downloads: 10
-  release_downloads: 131
+  release_downloads: 222
   release_date: 2026/11/16
-  last_commit_on: 2026/11/16
+  last_commit_on: 2026/11/18
   status: active
-  last_scrape_at: '2026-11-16T22:31:16Z'
+  last_scrape_at: '2026-11-18T04:42:19Z'
   theme: family
   family_id: active-record
   family_position: 13
@@ -1832,7 +1832,7 @@
   release_date: 2013/10/19
   last_commit_on: 2026/06/16
   status: active
-  last_scrape_at: '2026-11-16T22:31:19Z'
+  last_scrape_at: '2026-11-18T04:42:23Z'
   licenses:
   - MIT
   license_url: https://github.com/omniauth/omniauth-jwt/blob/main/LICENSE.txt
@@ -1862,13 +1862,13 @@
   - security
   docs_site:
   github_stars: 6
-  total_downloads: 6178
+  total_downloads: 6186
   daily_downloads: 7
-  release_downloads: 637
+  release_downloads: 642
   release_date: 2026/07/14
   last_commit_on: 2026/08/16
   status: active
-  last_scrape_at: '2026-11-16T22:31:22Z'
+  last_scrape_at: '2026-11-18T04:42:26Z'
   licenses:
   - MIT
   license_url: https://github.com/omniauth/omniauth-jwt2/blob/main/LICENSE.md
@@ -1986,13 +1986,13 @@
   github_stars: 10
   gitlab_stars: 0
   codeberg_stars: 0
-  total_downloads: 139014
+  total_downloads: 139028
   daily_downloads: 23
-  release_downloads: 6287
+  release_downloads: 6292
   release_date: 2024/09/25
   last_commit_on: 2026/10/22
   status: active
-  last_scrape_at: '2026-11-16T22:31:26Z'
+  last_scrape_at: '2026-11-18T04:42:31Z'
   licenses:
   - MIT
   license_url: https://github.com/ruby-openid/open_id_authentication/blob/main/LICENSE.md
@@ -2062,13 +2062,13 @@
   - ruby
   docs_site:
   github_stars: 7
-  total_downloads: 22412
+  total_downloads: 22419
   daily_downloads: 10
-  release_downloads: 6447
+  release_downloads: 6452
   release_date: 2023/10/18
   last_commit_on: 2026/01/22
   status: active
-  last_scrape_at: '2026-11-16T22:31:29Z'
+  last_scrape_at: '2026-11-18T04:42:35Z'
   licenses:
   - MIT
   license_url: https://github.com/galtzo-floss/pretty_feed/blob/main/LICENSE.txt
@@ -2102,13 +2102,13 @@
   - ruby
   docs_site:
   github_stars: 7
-  total_downloads: 37513
+  total_downloads: 37515
   daily_downloads: 5
   release_downloads: 12726
   release_date: 2022/02/25
   last_commit_on: 2026/08/29
   status: active
-  last_scrape_at: '2026-11-16T22:31:33Z'
+  last_scrape_at: '2026-11-18T04:42:39Z'
   licenses:
   - MIT
   license_url: https://github.com/galtzo-floss/qfill/blob/main/LICENSE
@@ -2231,13 +2231,13 @@
   github_stars: 10
   gitlab_stars: 0
   codeberg_stars: 0
-  total_downloads: 9152
+  total_downloads: 9155
   daily_downloads: 8
-  release_downloads: 6862
+  release_downloads: 6865
   release_date: 2024/09/25
   last_commit_on: 2026/10/22
   status: active
-  last_scrape_at: '2026-11-16T22:31:36Z'
+  last_scrape_at: '2026-11-18T04:42:44Z'
   licenses:
   - MIT
   license_url: https://github.com/ruby-openid/rack-openid2/blob/main/LICENSE.md
@@ -2313,13 +2313,13 @@
   deprecation_reason: Incompatible with modern Rails
   docs_site:
   github_stars: 2
-  total_downloads: 17549
+  total_downloads: 17551
   daily_downloads: 4
-  release_downloads: 7096
+  release_downloads: 7097
   release_date: 2016/03/11
   last_commit_on: 2025/08/04
   status: archived
-  last_scrape_at: '2026-11-16T22:31:39Z'
+  last_scrape_at: '2026-11-18T04:42:47Z'
   licenses:
   - MIT
   license_url: https://github.com/pboling/rails_env_local/blob/master/LICENSE
@@ -2438,13 +2438,13 @@
   github_stars: 8
   gitlab_stars: 0
   codeberg_stars: 0
-  total_downloads: 195772
+  total_downloads: 197311
   daily_downloads: 702
-  release_downloads: 146951
+  release_downloads: 148490
   release_date: 2023/10/10
-  last_commit_on: 2026/11/16
+  last_commit_on: 2026/11/18
   status: active
-  last_scrape_at: '2026-11-16T22:31:44Z'
+  last_scrape_at: '2026-11-18T04:42:52Z'
   licenses:
   - MIT
   license_url: https://github.com/galtzo-floss/require_bench/blob/main/LICENSE.md
@@ -2521,13 +2521,13 @@
   adoptable: false
   docs_site:
   github_stars: 6
-  total_downloads: 334167
+  total_downloads: 334622
   daily_downloads: 245
-  release_downloads: 571
+  release_downloads: 583
   release_date: 2026/08/27
   last_commit_on: 2026/10/22
   status: active
-  last_scrape_at: '2026-11-17T04:46:01Z'
+  last_scrape_at: '2026-11-18T04:44:23Z'
   licenses:
   - MIT
   license_url: https://github.com/resque/resque-lonely_job/blob/main/LICENSE.md
@@ -2570,13 +2570,13 @@
   - uniq
   docs_site:
   github_stars: 8
-  total_downloads: 121661
+  total_downloads: 121833
   daily_downloads: 108
-  release_downloads: 4833
+  release_downloads: 4913
   release_date: 2026/08/27
   last_commit_on: 2026/10/22
   status: active
-  last_scrape_at: '2026-11-16T22:31:47Z'
+  last_scrape_at: '2026-11-18T04:42:56Z'
   licenses:
   - MIT
   license_url: https://github.com/resque/resque-unique_at_runtime/blob/main/LICENSE
@@ -2611,13 +2611,13 @@
   - uniq
   docs_site:
   github_stars: 9
-  total_downloads: 46766
+  total_downloads: 46780
   daily_downloads: 13
   release_downloads: 198
   release_date: 2026/08/27
   last_commit_on: 2026/11/08
   status: active
-  last_scrape_at: '2026-11-16T22:31:51Z'
+  last_scrape_at: '2026-11-18T04:43:00Z'
   licenses:
   - MIT
   license_url: https://github.com/resque/resque-unique_by_arity/blob/main/LICENSE
@@ -2650,13 +2650,13 @@
   - uniq
   docs_site:
   github_stars: 8
-  total_downloads: 180070
+  total_downloads: 180610
   daily_downloads: 294
-  release_downloads: 3264
+  release_downloads: 3348
   release_date: 2026/08/27
   last_commit_on: 2026/10/22
   status: active
-  last_scrape_at: '2026-11-16T22:31:54Z'
+  last_scrape_at: '2026-11-18T04:43:03Z'
   licenses:
   - MIT
   license_url: https://github.com/resque/resque-unique_in_queue/blob/main/LICENSE
@@ -2703,7 +2703,7 @@
   release_date: 2024/09/25
   last_commit_on: 2026/10/22
   status: active
-  last_scrape_at: '2026-11-16T22:31:58Z'
+  last_scrape_at: '2026-11-18T04:43:08Z'
   licenses:
   - MIT
   license_url: https://github.com/ruby-openid/rots/blob/master/LICENSE.md
@@ -2791,13 +2791,13 @@
   github_stars: 13
   gitlab_stars: 1
   codeberg_stars: 0
-  total_downloads: 306170
+  total_downloads: 308769
   daily_downloads: 818
-  release_downloads: 992
+  release_downloads: 3481
   release_date: 2026/11/16
-  last_commit_on: 2026/11/16
+  last_commit_on: 2026/11/18
   status: active
-  last_scrape_at: '2026-11-16T22:32:03Z'
+  last_scrape_at: '2026-11-18T04:43:13Z'
   licenses:
   - MIT
   license_url: https://github.com/galtzo-floss/rspec-pending_for/blob/main/LICENSE.md
@@ -2921,13 +2921,13 @@
   docs_site: https://rubocop-lts.gitlab.io/
   github_stars: 6
   gitlab_stars: 1
-  total_downloads: 12154
+  total_downloads: 12164
   daily_downloads: 37
-  release_downloads: 564
+  release_downloads: 570
   release_date: 2026/10/22
   last_commit_on: 2026/11/08
   status: active
-  last_scrape_at: '2026-11-16T22:32:06Z'
+  last_scrape_at: '2026-11-18T04:43:17Z'
   licenses:
   - MIT
   license_url: https://github.com/rubocop-lts/rubocop-ruby1_8/blob/main/LICENSE.md
@@ -2961,13 +2961,13 @@
   docs_site: https://rubocop-lts.gitlab.io/
   github_stars: 6
   gitlab_stars: 1
-  total_downloads: 18621
+  total_downloads: 18657
   daily_downloads: 47
-  release_downloads: 586
+  release_downloads: 616
   release_date: 2026/10/22
   last_commit_on: 2026/11/08
   status: active
-  last_scrape_at: '2026-11-16T22:32:10Z'
+  last_scrape_at: '2026-11-18T04:43:20Z'
   licenses:
   - MIT
   license_url: https://github.com/rubocop-lts/rubocop-ruby1_9/blob/main/LICENSE.md
@@ -3001,13 +3001,13 @@
   docs_site: https://rubocop-lts.gitlab.io/
   github_stars: 6
   gitlab_stars: 1
-  total_downloads: 16292
+  total_downloads: 16299
   daily_downloads: 31
   release_downloads: 230
   release_date: 2026/10/22
   last_commit_on: 2026/11/08
   status: active
-  last_scrape_at: '2026-11-16T22:32:14Z'
+  last_scrape_at: '2026-11-18T04:43:25Z'
   licenses:
   - MIT
   license_url: https://github.com/rubocop-lts/rubocop-ruby2_0/blob/main/LICENSE.md
@@ -3041,13 +3041,13 @@
   docs_site: https://rubocop-lts.gitlab.io/
   github_stars: 6
   gitlab_stars: 1
-  total_downloads: 27000
+  total_downloads: 27006
   daily_downloads: 28
   release_downloads: 250
   release_date: 2026/10/22
   last_commit_on: 2026/11/08
   status: active
-  last_scrape_at: '2026-11-16T22:32:17Z'
+  last_scrape_at: '2026-11-18T04:43:28Z'
   licenses:
   - MIT
   license_url: https://github.com/rubocop-lts/rubocop-ruby2_1/blob/main/LICENSE.md
@@ -3081,13 +3081,13 @@
   docs_site: https://rubocop-lts.gitlab.io/
   github_stars: 6
   gitlab_stars: 1
-  total_downloads: 44653
+  total_downloads: 44756
   daily_downloads: 58
-  release_downloads: 928
+  release_downloads: 980
   release_date: 2026/10/22
   last_commit_on: 2026/11/08
   status: active
-  last_scrape_at: '2026-11-16T22:32:21Z'
+  last_scrape_at: '2026-11-18T04:43:33Z'
   licenses:
   - MIT
   license_url: https://github.com/rubocop-lts/rubocop-ruby2_2/blob/main/LICENSE.md
@@ -3121,13 +3121,13 @@
   docs_site: https://rubocop-lts.gitlab.io/
   github_stars: 6
   gitlab_stars: 1
-  total_downloads: 21958
+  total_downloads: 22016
   daily_downloads: 62
-  release_downloads: 554
+  release_downloads: 600
   release_date: 2026/10/22
   last_commit_on: 2026/11/08
   status: active
-  last_scrape_at: '2026-11-16T22:32:24Z'
+  last_scrape_at: '2026-11-18T04:43:38Z'
   licenses:
   - MIT
   license_url: https://github.com/rubocop-lts/rubocop-ruby2_3/blob/main/LICENSE.md
@@ -3161,13 +3161,13 @@
   docs_site: https://rubocop-lts.gitlab.io/
   github_stars: 6
   gitlab_stars: 1
-  total_downloads: 71133
+  total_downloads: 71197
   daily_downloads: 105
-  release_downloads: 1780
+  release_downloads: 1841
   release_date: 2026/10/22
   last_commit_on: 2026/11/08
   status: active
-  last_scrape_at: '2026-11-16T22:32:28Z'
+  last_scrape_at: '2026-11-18T04:43:42Z'
   licenses:
   - MIT
   license_url: https://github.com/rubocop-lts/rubocop-ruby2_4/blob/main/LICENSE.md
@@ -3201,13 +3201,13 @@
   docs_site: https://rubocop-lts.gitlab.io/
   github_stars: 6
   gitlab_stars: 1
-  total_downloads: 14138
+  total_downloads: 14166
   daily_downloads: 30
-  release_downloads: 253
+  release_downloads: 274
   release_date: 2026/10/22
   last_commit_on: 2026/11/08
   status: active
-  last_scrape_at: '2026-11-16T22:32:32Z'
+  last_scrape_at: '2026-11-18T04:43:46Z'
   licenses:
   - MIT
   license_url: https://github.com/rubocop-lts/rubocop-ruby2_5/blob/main/LICENSE.md
@@ -3241,13 +3241,13 @@
   docs_site: https://rubocop-lts.gitlab.io/
   github_stars: 6
   gitlab_stars: 1
-  total_downloads: 18908
+  total_downloads: 18916
   daily_downloads: 28
   release_downloads: 228
   release_date: 2026/10/22
   last_commit_on: 2026/11/08
   status: active
-  last_scrape_at: '2026-11-16T22:32:36Z'
+  last_scrape_at: '2026-11-18T04:43:50Z'
   licenses:
   - MIT
   license_url: https://github.com/rubocop-lts/rubocop-ruby2_6/blob/main/LICENSE.md
@@ -3281,13 +3281,13 @@
   docs_site: https://rubocop-lts.gitlab.io/
   github_stars: 6
   gitlab_stars: 1
-  total_downloads: 109098
+  total_downloads: 109311
   daily_downloads: 60
-  release_downloads: 634
+  release_downloads: 739
   release_date: 2026/10/22
   last_commit_on: 2026/11/08
   status: active
-  last_scrape_at: '2026-11-17T04:45:33Z'
+  last_scrape_at: '2026-11-18T04:43:54Z'
   licenses:
   - MIT
   license_url: https://github.com/rubocop-lts/rubocop-ruby2_7/blob/main/LICENSE.md
@@ -3324,13 +3324,13 @@
   github_stars: 6
   gitlab_stars: 1
   codeberg_stars: 0
-  total_downloads: 20630
+  total_downloads: 20639
   daily_downloads: 32
   release_downloads: 234
   release_date: 2026/10/22
   last_commit_on: 2026/11/08
   status: active
-  last_scrape_at: '2026-11-17T04:45:38Z'
+  last_scrape_at: '2026-11-18T04:43:58Z'
   licenses:
   - MIT
   license_url: https://github.com/rubocop-lts/rubocop-ruby3_0/blob/main/LICENSE.md
@@ -3364,13 +3364,13 @@
   docs_site: https://rubocop-lts.gitlab.io/
   github_stars: 6
   gitlab_stars: 1
-  total_downloads: 36307
+  total_downloads: 36356
   daily_downloads: 41
-  release_downloads: 419
+  release_downloads: 458
   release_date: 2026/10/22
   last_commit_on: 2026/11/08
   status: active
-  last_scrape_at: '2026-11-17T04:45:41Z'
+  last_scrape_at: '2026-11-18T04:44:02Z'
   licenses:
   - MIT
   license_url: https://github.com/rubocop-lts/rubocop-ruby3_1/blob/main/LICENSE.md
@@ -3404,13 +3404,13 @@
   docs_site: https://rubocop-lts.gitlab.io/
   github_stars: 7
   gitlab_stars: 1
-  total_downloads: 284760
+  total_downloads: 284957
   daily_downloads: 314
-  release_downloads: 9092
+  release_downloads: 9281
   release_date: 2026/10/22
   last_commit_on: 2026/11/08
   status: active
-  last_scrape_at: '2026-11-17T04:45:45Z'
+  last_scrape_at: '2026-11-18T04:44:06Z'
   licenses:
   - MIT
   license_url: https://github.com/rubocop-lts/rubocop-ruby3_2/blob/main/LICENSE.md
@@ -3493,13 +3493,13 @@
   github_stars: 12
   gitlab_stars: 0
   codeberg_stars: 1
-  total_downloads: 12250
+  total_downloads: 12285
   daily_downloads: 26
-  release_downloads: 9615
+  release_downloads: 9650
   release_date: 2024/09/25
   last_commit_on: 2026/10/22
   status: active
-  last_scrape_at: '2026-11-17T04:45:50Z'
+  last_scrape_at: '2026-11-18T04:44:12Z'
   licenses:
   - Ruby
   - Apache Software License 2.0
@@ -3627,7 +3627,7 @@
   release_date: 2014/02/26
   last_commit_on: 2026/01/17
   status: active
-  last_scrape_at: '2026-11-17T04:45:53Z'
+  last_scrape_at: '2026-11-18T04:44:15Z'
   licenses:
   - MIT
   license_url: https://github.com/galtzo-floss/sequential_file/blob/main/LICENSE.txt
@@ -3708,9 +3708,9 @@
   daily_downloads: 2
   release_downloads: 735
   release_date: 2025/05/30
-  last_commit_on: 2026/11/16
+  last_commit_on: 2026/11/18
   status: active
-  last_scrape_at: '2026-11-17T04:45:58Z'
+  last_scrape_at: '2026-11-18T04:44:19Z'
   licenses:
   - MIT
   license_url: https://github.com/galtzo-floss/shields-badge/blob/main/LICENSE.md
@@ -3744,13 +3744,13 @@
   - ruby
   docs_site:
   github_stars: 8
-  total_downloads: 31074
+  total_downloads: 31080
   daily_downloads: 5
   release_downloads: 13432
   release_date: 2021/11/15
   last_commit_on: 2026/01/17
   status: active
-  last_scrape_at: '2026-11-17T04:46:05Z'
+  last_scrape_at: '2026-11-18T04:44:27Z'
   licenses:
   - MIT
   license_url: https://github.com/galtzo-floss/shiftable/blob/main/LICENSE.txt
@@ -8586,7 +8586,7 @@
   description_source: registry
   language: Ruby
   ecosystem: rubygems
-  minimum_version: '3.2'
+  minimum_version: '4.0'
   role: author
   first_commit_by_person_on: 2026/10/24
   first_commit_by_person: https://github.com/kettle-dev/kettle-deps-floor/commit/93a58879cd306c9011fb0e1bc6f0bce548101117
@@ -8607,12 +8607,12 @@
   family_id: kettle-dev-family
   family_position: 15
   github_stars: 1
-  total_downloads: 5240
+  total_downloads: 5697
   daily_downloads: 232
-  release_downloads: 3968
-  release_date: 2026/10/29
+  release_downloads: 400
+  release_date: 2026/11/16
   last_commit_on: 2026/11/16
-  last_scrape_at: '2026-11-16T22:31:08Z'
+  last_scrape_at: '2026-11-18T04:42:11Z'
 - name: ast-crispr-toml
   description: "\U0001F9EC TOML table and dotted-key-path selectors and edit helpers
     for ast-crispr, backed by toml-merge."
@@ -9497,7 +9497,7 @@
   release_date:
   last_commit_on: 2026/11/16
   status: active
-  last_scrape_at: '2026-11-16T22:31:04Z'
+  last_scrape_at: '2026-11-18T04:42:08Z'
   owner: true
   first_commit_by_person: https://github.com/pboling/galtzo-os/commit/4afe2c1e2d749159b4adaf84ad01b7441caefc2b
   first_commit_by_person_on: 2025/08/04
