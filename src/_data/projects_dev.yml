@@ -4460,12 +4460,12 @@
   family_id: kettle-dev-family
   family_position: 15
   github_stars: 1
-  total_downloads: 5697
+  total_downloads: 5902
   daily_downloads: 232
-  release_downloads: 400
+  release_downloads: 598
   release_date: 2026/11/16
   last_commit_on: 2026/11/16
-  last_scrape_at: '2026-11-18T04:42:11Z'
+  last_scrape_at: '2026-11-19T12:05:40Z'
 - name: ast-crispr-toml
   description: "\U0001F9EC TOML table and dotted-key-path selectors and edit helpers
     for ast-crispr, backed by toml-merge."
