@@ -891,13 +891,13 @@
   - ruby
   docs_site:
   github_stars: 612
-  total_downloads: 13682694
+  total_downloads: 13700690
   daily_downloads: 19050
-  release_downloads: 141937
+  release_downloads: 144606
   release_date: 2026/07/26
   last_commit_on: 2026/11/13
   status: active
-  last_scrape_at: '2026-11-19T13:45:30Z'
+  last_scrape_at: '2026-11-20T10:44:23Z'
   theme: family
   family_id: rails-family
   family_position: 1
@@ -983,13 +983,13 @@
   github_stars: 509
   gitlab_stars: 0
   codeberg_stars: 0
-  total_downloads: 7001753
+  total_downloads: 7012566
   daily_downloads: 10199
-  release_downloads: 478
+  release_downloads: 706
   release_date: 2026/11/16
   last_commit_on: 2026/11/18
   status: active
-  last_scrape_at: '2026-11-19T13:45:34Z'
+  last_scrape_at: '2026-11-20T10:44:27Z'
   licenses:
   - MIT
   license_url: https://github.com/galtzo-floss/flag_shih_tzu/blob/main/LICENSE
@@ -1068,13 +1068,13 @@
   - ruby
   docs_site:
   github_stars: 94
-  total_downloads: 2980966
+  total_downloads: 2981342
   daily_downloads: 278
-  release_downloads: 368
+  release_downloads: 563
   release_date: 2026/11/18
   last_commit_on: 2026/11/18
   status: active
-  last_scrape_at: '2026-11-19T13:45:38Z'
+  last_scrape_at: '2026-11-20T10:44:41Z'
   licenses:
   - MIT
   license_url: https://github.com/galtzo-floss/gem_bench/blob/main/LICENSE.md
@@ -2018,13 +2018,13 @@
   - test
   docs_site:
   github_stars: 166
-  total_downloads: 488741972
+  total_downloads: 489118765
   daily_downloads: 325303
-  release_downloads: 307456653
+  release_downloads: 307819203
   release_date: 2021/11/07
   last_commit_on: 2025/06/08
   status: stale
-  last_scrape_at: '2026-11-19T13:45:23Z'
+  last_scrape_at: '2026-11-20T10:44:15Z'
   theme: family
   family_id: miscellaneous
   family_position: 11
@@ -3581,13 +3581,13 @@
   - ruby
   docs_site:
   github_stars: 382
-  total_downloads: 1770845
+  total_downloads: 1771840
   daily_downloads: 773
-  release_downloads: 1380313
+  release_downloads: 1381247
   release_date: 2017/08/01
   last_commit_on: 2025/08/18
   status: stale
-  last_scrape_at: '2026-11-19T13:45:26Z'
+  last_scrape_at: '2026-11-20T10:44:19Z'
   licenses:
   - MIT
   license_url: https://github.com/galtzo-floss/seed_migration/blob/main/LICENSE.txt
@@ -4309,13 +4309,13 @@
   github_stars: 22
   gitlab_stars: 1
   codeberg_stars: 0
-  total_downloads: 154203725
+  total_downloads: 154434394
   daily_downloads: 201603
-  release_downloads: 891169
+  release_downloads: 949314
   release_date: 2026/10/25
   last_commit_on: 2026/11/08
   status: active
-  last_scrape_at: '2026-11-19T13:45:13Z'
+  last_scrape_at: '2026-11-20T10:44:05Z'
   licenses:
   - MIT
   license_url: https://github.com/ruby-oauth/version_gem/blob/main/LICENSE.md
@@ -6214,14 +6214,14 @@
   - oauth
   - ruby
   docs_site: https://www.rubydoc.info/gems/auth-sanitizer/0.2.3
-  total_downloads: 19680794
+  total_downloads: 19852784
   daily_downloads: 152968
-  release_downloads: 821361
+  release_downloads: 875740
   release_date: 2026/10/25
   github_stars: 15
   last_commit_on: 2026/11/08
   status: active
-  last_scrape_at: '2026-11-19T13:45:17Z'
+  last_scrape_at: '2026-11-20T10:44:08Z'
   licenses:
   - MIT
   license_url: https://github.com/ruby-oauth/auth-sanitizer/blob/main/LICENSE.md
@@ -6540,14 +6540,14 @@
   - oauth
   - ruby
   docs_site: https://www.rubydoc.info/gems/anonymous_loader/0.1.3
-  total_downloads: 13153189
+  total_downloads: 13287229
   daily_downloads: 121557
-  release_downloads: 827308
+  release_downloads: 881543
   release_date: 2026/10/25
   github_stars: 2
   last_commit_on: 2026/11/19
   status: active
-  last_scrape_at: '2026-11-19T13:45:20Z'
+  last_scrape_at: '2026-11-20T10:44:12Z'
   licenses:
   - MIT
   license_url: https://github.com/ruby-oauth/anonymous_loader/blob/main/LICENSE.md
