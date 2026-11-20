@@ -612,14 +612,14 @@
   tags:
   - ruby
   docs_site: https://www.rubydoc.info/gems/yard-fence/0.8.2
-  total_downloads: 27378
+  total_downloads: 27688
   daily_downloads: 129
-  release_downloads: 991
+  release_downloads: 1224
   release_date: 2026/11/16
   github_stars: 2
   last_commit_on: 2026/11/18
   status: active
-  last_scrape_at: '2026-11-19T20:56:44Z'
+  last_scrape_at: '2026-11-20T18:50:29Z'
   licenses:
   - MIT
   license_url: https://github.com/galtzo-floss/yard-fence/blob/main/LICENSE.md
@@ -648,14 +648,14 @@
   tags:
   - ruby
   docs_site: https://www.rubydoc.info/gems/yaml-converter/0.1.0
-  total_downloads: 24500
+  total_downloads: 24776
   daily_downloads: 125
-  release_downloads: 921
+  release_downloads: 1153
   release_date: 2026/11/16
   github_stars: 3
   last_commit_on: 2026/11/18
   status: active
-  last_scrape_at: '2026-11-19T20:56:48Z'
+  last_scrape_at: '2026-11-20T18:50:33Z'
   licenses:
   - MIT
   license_url: https://github.com/galtzo-floss/yaml-converter/blob/main/LICENSE.md
@@ -681,14 +681,14 @@
   tags:
   - ruby
   docs_site: https://www.rubydoc.info/gems/yard-yaml/0.1.0
-  total_downloads: 22644
+  total_downloads: 22739
   daily_downloads: 104
-  release_downloads: 6809
+  release_downloads: 6872
   release_date: 2026/09/12
   github_stars: 3
   last_commit_on: 2026/11/18
   status: active
-  last_scrape_at: '2026-11-19T20:56:52Z'
+  last_scrape_at: '2026-11-20T18:50:37Z'
   licenses:
   - MIT
   license_url: https://github.com/galtzo-floss/yard-yaml/blob/main/LICENSE.md
@@ -750,14 +750,14 @@
   - structuredmerge
   - test
   docs_site: https://www.rubydoc.info/gems/ast-merge/4.0.6
-  total_downloads: 37578
+  total_downloads: 37879
   daily_downloads: 314
-  release_downloads: 1292
+  release_downloads: 1336
   release_date: 2026/10/30
   github_stars: 20
-  last_commit_on: 2026/11/19
+  last_commit_on: 2026/11/20
   status: active
-  last_scrape_at: '2026-11-19T20:56:59Z'
+  last_scrape_at: '2026-11-20T18:50:43Z'
   theme: family
   family_id: smorg-rb
   family_position: 1
@@ -786,14 +786,14 @@
   - ruby
   - structuredmerge
   docs_site: https://www.rubydoc.info/gems/dotenv-merge/1.0.3
-  total_downloads: 21663
+  total_downloads: 21910
   daily_downloads: 227
-  release_downloads: 813
+  release_downloads: 844
   release_date: 2026/10/30
   github_stars: 20
-  last_commit_on: 2026/11/19
+  last_commit_on: 2026/11/20
   status: active
-  last_scrape_at: '2026-11-19T20:57:12Z'
+  last_scrape_at: '2026-11-20T18:50:55Z'
   theme: family
   family_id: smorg-rb
   family_position: 7
@@ -860,14 +860,14 @@
   - ruby
   - structuredmerge
   docs_site: https://www.rubydoc.info/gems/tree_haver/5.0.5
-  total_downloads: 36802
+  total_downloads: 37127
   daily_downloads: 377
-  release_downloads: 1306
+  release_downloads: 1352
   release_date: 2026/10/30
   github_stars: 20
-  last_commit_on: 2026/11/19
+  last_commit_on: 2026/11/20
   status: active
-  last_scrape_at: '2026-11-19T20:56:55Z'
+  last_scrape_at: '2026-11-20T18:50:40Z'
   theme: family
   family_id: smorg-rb
   family_position: 22
@@ -932,14 +932,14 @@
   - ruby
   - structuredmerge
   docs_site: https://www.rubydoc.info/gems/bash-merge/2.0.6
-  total_downloads: 21917
+  total_downloads: 22181
   daily_downloads: 231
-  release_downloads: 766
+  release_downloads: 797
   release_date: 2026/10/30
   github_stars: 20
-  last_commit_on: 2026/11/19
+  last_commit_on: 2026/11/20
   status: active
-  last_scrape_at: '2026-11-19T20:57:06Z'
+  last_scrape_at: '2026-11-20T18:50:50Z'
   theme: family
   family_id: smorg-rb
   family_position: 3
@@ -968,14 +968,14 @@
   - ruby
   - structuredmerge
   docs_site: https://www.rubydoc.info/gems/json-merge/1.1.2
-  total_downloads: 19435
+  total_downloads: 19692
   daily_downloads: 227
-  release_downloads: 798
+  release_downloads: 830
   release_date: 2026/10/30
   github_stars: 20
-  last_commit_on: 2026/11/19
+  last_commit_on: 2026/11/20
   status: active
-  last_scrape_at: '2026-11-19T20:57:15Z'
+  last_scrape_at: '2026-11-20T18:50:58Z'
   theme: family
   family_id: smorg-rb
   family_position: 9
@@ -1041,14 +1041,14 @@
   tags:
   - ruby
   docs_site: https://www.rubydoc.info/gems/jsonc-merge/1.0.1
-  total_downloads: 1060
+  total_downloads: 1066
   daily_downloads: 3
-  release_downloads: 720
+  release_downloads: 724
   release_date: 2026/02/19
   github_stars: 20
-  last_commit_on: 2026/11/19
+  last_commit_on: 2026/11/20
   status: active
-  last_scrape_at: '2026-11-19T20:57:18Z'
+  last_scrape_at: '2026-11-20T18:51:01Z'
   theme: family
   family_id: ast-merge
   family_position: 8
@@ -1076,14 +1076,14 @@
   - ruby
   - structuredmerge
   docs_site: https://www.rubydoc.info/gems/commonmarker-merge/1.0.1
-  total_downloads: 10707
+  total_downloads: 10759
   daily_downloads: 100
-  release_downloads: 206
+  release_downloads: 209
   release_date: 2026/10/30
   github_stars: 20
-  last_commit_on: 2026/11/19
+  last_commit_on: 2026/11/20
   status: active
-  last_scrape_at: '2026-11-19T20:57:09Z'
+  last_scrape_at: '2026-11-20T18:50:53Z'
   theme: family
   family_id: smorg-rb
   family_position: 6
@@ -1185,14 +1185,14 @@
   - ruby
   - test
   docs_site: https://www.rubydoc.info/gems/token-resolver/1.0.2
-  total_downloads: 35402
+  total_downloads: 35798
   daily_downloads: 479
-  release_downloads: 5083
+  release_downloads: 5426
   release_date: 2026/10/29
   github_stars: 4
   last_commit_on: 2026/11/16
   status: active
-  last_scrape_at: '2026-11-19T20:57:02Z'
+  last_scrape_at: '2026-11-20T18:50:47Z'
   theme: family
   family_id: ast-merge
   family_position: 2
@@ -4460,12 +4460,12 @@
   family_id: kettle-dev-family
   family_position: 15
   github_stars: 1
-  total_downloads: 5902
+  total_downloads: 6324
   daily_downloads: 232
-  release_downloads: 598
+  release_downloads: 993
   release_date: 2026/11/16
-  last_commit_on: 2026/11/16
-  last_scrape_at: '2026-11-19T12:05:40Z'
+  last_commit_on: 2026/11/20
+  last_scrape_at: '2026-11-20T18:47:27Z'
 - name: ast-crispr-toml
   description: "\U0001F9EC TOML table and dotted-key-path selectors and edit helpers
     for ast-crispr, backed by toml-merge."
