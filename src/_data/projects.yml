@@ -2478,13 +2478,13 @@
   - shell
   docs_site:
   github_stars: 9466
-  total_downloads: 55995413
+  total_downloads: 56023166
   daily_downloads: 20019
-  release_downloads: 91953
+  release_downloads: 96488
   release_date: 2026/10/16
   last_commit_on: 2026/11/01
   status: active
-  last_scrape_at: '2026-11-20T02:45:34Z'
+  last_scrape_at: '2026-11-21T00:30:39Z'
   licenses:
   - MIT
   license_url: https://github.com/resque/resque/blob/master/LICENSE
@@ -2744,13 +2744,13 @@
   github_stars: 9
   gitlab_stars: 1
   codeberg_stars: 0
-  total_downloads: 569515
+  total_downloads: 570160
   daily_downloads: 741
-  release_downloads: 457273
+  release_downloads: 457843
   release_date: 2024/06/23
   last_commit_on: 2026/01/17
   status: active
-  last_scrape_at: '2026-11-20T02:45:38Z'
+  last_scrape_at: '2026-11-21T00:30:43Z'
   licenses:
   - MIT
   license_url: https://github.com/galtzo-floss/rspec-block_is_expected/blob/main/LICENSE.txt
@@ -2838,13 +2838,13 @@
   github_stars: 17
   gitlab_stars: 1
   codeberg_stars: 0
-  total_downloads: 562052
+  total_downloads: 563146
   daily_downloads: 1050
-  release_downloads: 4875
+  release_downloads: 5804
   release_date: 2026/11/16
   last_commit_on: 2026/11/18
   status: active
-  last_scrape_at: '2026-11-20T02:45:42Z'
+  last_scrape_at: '2026-11-21T00:30:48Z'
   licenses:
   - MIT
   license_url: https://github.com/galtzo-floss/rspec-stubbed_env/blob/main/LICENSE.md
@@ -3448,13 +3448,13 @@
   github_stars: 12
   gitlab_stars: 0
   codeberg_stars: 1
-  total_downloads: 13820604
+  total_downloads: 13823580
   daily_downloads: 2005
-  release_downloads: 6888672
+  release_downloads: 6890746
   release_date: 2019/10/16
   last_commit_on: 2026/10/22
   status: active
-  last_scrape_at: '2026-11-20T02:45:51Z'
+  last_scrape_at: '2026-11-21T00:30:53Z'
   licenses:
   - Ruby
   - Apache Software License 2.0
@@ -3542,13 +3542,13 @@
   github_stars: 174
   gitlab_stars: 0
   codeberg_stars: 0
-  total_downloads: 2801061
+  total_downloads: 2803145
   daily_downloads: 950
-  release_downloads: 322
+  release_downloads: 472
   release_date: 2026/11/16
   last_commit_on: 2026/11/18
   status: active
-  last_scrape_at: '2026-11-20T02:45:55Z'
+  last_scrape_at: '2026-11-21T00:30:57Z'
   licenses:
   - MIT
   license_url: https://github.com/galtzo-floss/sanitize_email/blob/main/LICENSE.md
@@ -3873,13 +3873,13 @@
   github_stars: 19
   gitlab_stars: 2
   codeberg_stars: 2
-  total_downloads: 139152075
+  total_downloads: 139341507
   daily_downloads: 191491
-  release_downloads: 863954
+  release_downloads: 910609
   release_date: 2026/10/25
   last_commit_on: 2026/11/15
   status: active
-  last_scrape_at: '2026-11-20T02:45:59Z'
+  last_scrape_at: '2026-11-21T00:31:01Z'
   licenses:
   - MIT
   license_url: https://github.com/ruby-oauth/snaky_hash/blob/main/LICENSE.md
@@ -3996,13 +3996,13 @@
   github_stars: 6
   gitlab_stars: 1
   codeberg_stars: 0
-  total_downloads: 408764
+  total_downloads: 409443
   daily_downloads: 558
-  release_downloads: 15124
+  release_downloads: 15682
   release_date: 2026/10/22
   last_commit_on: 2026/11/08
   status: active
-  last_scrape_at: '2026-11-20T02:46:02Z'
+  last_scrape_at: '2026-11-21T00:31:05Z'
   licenses:
   - MIT
   license_url: https://github.com/rubocop-lts/standard-rubocop-lts/blob/main/LICENSE.md
@@ -4309,13 +4309,13 @@
   github_stars: 22
   gitlab_stars: 1
   codeberg_stars: 0
-  total_downloads: 154434394
+  total_downloads: 154562977
   daily_downloads: 201603
-  release_downloads: 949314
+  release_downloads: 981128
   release_date: 2026/10/25
   last_commit_on: 2026/11/08
   status: active
-  last_scrape_at: '2026-11-20T10:44:05Z'
+  last_scrape_at: '2026-11-21T00:31:09Z'
   licenses:
   - MIT
   license_url: https://github.com/ruby-oauth/version_gem/blob/main/LICENSE.md
