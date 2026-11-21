@@ -612,14 +612,14 @@
   tags:
   - ruby
   docs_site: https://www.rubydoc.info/gems/yard-fence/0.8.2
-  total_downloads: 27688
+  total_downloads: 27758
   daily_downloads: 129
-  release_downloads: 1224
+  release_downloads: 1274
   release_date: 2026/11/16
   github_stars: 2
   last_commit_on: 2026/11/18
   status: active
-  last_scrape_at: '2026-11-20T18:50:29Z'
+  last_scrape_at: '2026-11-21T22:22:18Z'
   licenses:
   - MIT
   license_url: https://github.com/galtzo-floss/yard-fence/blob/main/LICENSE.md
@@ -648,14 +648,14 @@
   tags:
   - ruby
   docs_site: https://www.rubydoc.info/gems/yaml-converter/0.1.0
-  total_downloads: 24776
+  total_downloads: 24835
   daily_downloads: 125
-  release_downloads: 1153
+  release_downloads: 1203
   release_date: 2026/11/16
   github_stars: 3
   last_commit_on: 2026/11/18
   status: active
-  last_scrape_at: '2026-11-20T18:50:33Z'
+  last_scrape_at: '2026-11-21T22:22:22Z'
   licenses:
   - MIT
   license_url: https://github.com/galtzo-floss/yaml-converter/blob/main/LICENSE.md
@@ -681,14 +681,14 @@
   tags:
   - ruby
   docs_site: https://www.rubydoc.info/gems/yard-yaml/0.1.0
-  total_downloads: 22739
+  total_downloads: 22765
   daily_downloads: 104
-  release_downloads: 6872
+  release_downloads: 6895
   release_date: 2026/09/12
   github_stars: 3
   last_commit_on: 2026/11/18
   status: active
-  last_scrape_at: '2026-11-20T18:50:37Z'
+  last_scrape_at: '2026-11-21T22:22:26Z'
   licenses:
   - MIT
   license_url: https://github.com/galtzo-floss/yard-yaml/blob/main/LICENSE.md
@@ -713,14 +713,14 @@
   - structuredmerge
   - test
   docs_site: https://www.rubydoc.info/gems/prism-merge/2.0.4
-  total_downloads: 22299
+  total_downloads: 22347
   daily_downloads: 247
-  release_downloads: 823
+  release_downloads: 838
   release_date: 2026/10/30
   github_stars: 20
-  last_commit_on: 2026/11/20
+  last_commit_on: 2026/11/21
   status: active
-  last_scrape_at: '2026-11-21T00:56:23Z'
+  last_scrape_at: '2026-11-21T22:22:59Z'
   theme: family
   family_id: smorg-rb
   family_position: 16
@@ -750,14 +750,14 @@
   - structuredmerge
   - test
   docs_site: https://www.rubydoc.info/gems/ast-merge/4.0.6
-  total_downloads: 37879
+  total_downloads: 37991
   daily_downloads: 314
-  release_downloads: 1336
+  release_downloads: 1367
   release_date: 2026/10/30
   github_stars: 20
-  last_commit_on: 2026/11/20
+  last_commit_on: 2026/11/21
   status: active
-  last_scrape_at: '2026-11-20T18:50:43Z'
+  last_scrape_at: '2026-11-21T22:22:32Z'
   theme: family
   family_id: smorg-rb
   family_position: 1
@@ -786,14 +786,14 @@
   - ruby
   - structuredmerge
   docs_site: https://www.rubydoc.info/gems/dotenv-merge/1.0.3
-  total_downloads: 21910
+  total_downloads: 21971
   daily_downloads: 227
-  release_downloads: 844
+  release_downloads: 864
   release_date: 2026/10/30
   github_stars: 20
-  last_commit_on: 2026/11/20
+  last_commit_on: 2026/11/21
   status: active
-  last_scrape_at: '2026-11-20T18:50:55Z'
+  last_scrape_at: '2026-11-21T22:22:44Z'
   theme: family
   family_id: smorg-rb
   family_position: 7
@@ -822,14 +822,14 @@
   - ruby
   - structuredmerge
   docs_site: https://www.rubydoc.info/gems/rbs-merge/2.0.0
-  total_downloads: 18990
+  total_downloads: 19021
   daily_downloads: 223
-  release_downloads: 795
+  release_downloads: 807
   release_date: 2026/10/30
   github_stars: 20
-  last_commit_on: 2026/11/20
+  last_commit_on: 2026/11/21
   status: active
-  last_scrape_at: '2026-11-21T00:56:28Z'
+  last_scrape_at: '2026-11-21T22:23:04Z'
   theme: family
   family_id: smorg-rb
   family_position: 18
@@ -860,14 +860,14 @@
   - ruby
   - structuredmerge
   docs_site: https://www.rubydoc.info/gems/tree_haver/5.0.5
-  total_downloads: 37127
+  total_downloads: 37203
   daily_downloads: 377
-  release_downloads: 1352
+  release_downloads: 1378
   release_date: 2026/10/30
   github_stars: 20
-  last_commit_on: 2026/11/20
+  last_commit_on: 2026/11/21
   status: active
-  last_scrape_at: '2026-11-20T18:50:40Z'
+  last_scrape_at: '2026-11-21T22:22:29Z'
   theme: family
   family_id: smorg-rb
   family_position: 22
@@ -896,14 +896,14 @@
   - ruby
   - structuredmerge
   docs_site: https://www.rubydoc.info/gems/toml-merge/2.0.1
-  total_downloads: 23494
+  total_downloads: 23527
   daily_downloads: 233
-  release_downloads: 814
+  release_downloads: 828
   release_date: 2026/10/30
   github_stars: 20
-  last_commit_on: 2026/11/20
+  last_commit_on: 2026/11/21
   status: active
-  last_scrape_at: '2026-11-21T00:56:30Z'
+  last_scrape_at: '2026-11-21T22:23:07Z'
   theme: family
   family_id: smorg-rb
   family_position: 21
@@ -932,14 +932,14 @@
   - ruby
   - structuredmerge
   docs_site: https://www.rubydoc.info/gems/bash-merge/2.0.6
-  total_downloads: 22181
+  total_downloads: 22256
   daily_downloads: 231
-  release_downloads: 797
+  release_downloads: 814
   release_date: 2026/10/30
   github_stars: 20
-  last_commit_on: 2026/11/20
+  last_commit_on: 2026/11/21
   status: active
-  last_scrape_at: '2026-11-20T18:50:50Z'
+  last_scrape_at: '2026-11-21T22:22:38Z'
   theme: family
   family_id: smorg-rb
   family_position: 3
@@ -968,14 +968,14 @@
   - ruby
   - structuredmerge
   docs_site: https://www.rubydoc.info/gems/json-merge/1.1.2
-  total_downloads: 19692
+  total_downloads: 19772
   daily_downloads: 227
-  release_downloads: 830
+  release_downloads: 853
   release_date: 2026/10/30
   github_stars: 20
-  last_commit_on: 2026/11/20
+  last_commit_on: 2026/11/21
   status: active
-  last_scrape_at: '2026-11-20T18:50:58Z'
+  last_scrape_at: '2026-11-21T22:22:47Z'
   theme: family
   family_id: smorg-rb
   family_position: 9
@@ -1004,14 +1004,14 @@
   - ruby
   - structuredmerge
   docs_site: https://www.rubydoc.info/gems/markdown-merge/1.0.3
-  total_downloads: 19508
+  total_downloads: 19546
   daily_downloads: 243
-  release_downloads: 1167
+  release_downloads: 1187
   release_date: 2026/10/30
   github_stars: 20
-  last_commit_on: 2026/11/20
+  last_commit_on: 2026/11/21
   status: active
-  last_scrape_at: '2026-11-21T00:56:19Z'
+  last_scrape_at: '2026-11-21T22:22:53Z'
   theme: family
   family_id: smorg-rb
   family_position: 12
@@ -1041,14 +1041,14 @@
   tags:
   - ruby
   docs_site: https://www.rubydoc.info/gems/jsonc-merge/1.0.1
-  total_downloads: 1066
+  total_downloads: 1071
   daily_downloads: 3
-  release_downloads: 724
+  release_downloads: 727
   release_date: 2026/02/19
   github_stars: 20
-  last_commit_on: 2026/11/20
+  last_commit_on: 2026/11/21
   status: active
-  last_scrape_at: '2026-11-20T18:51:01Z'
+  last_scrape_at: '2026-11-21T22:22:50Z'
   theme: family
   family_id: ast-merge
   family_position: 8
@@ -1076,14 +1076,14 @@
   - ruby
   - structuredmerge
   docs_site: https://www.rubydoc.info/gems/commonmarker-merge/1.0.1
-  total_downloads: 10759
+  total_downloads: 10796
   daily_downloads: 100
-  release_downloads: 209
+  release_downloads: 215
   release_date: 2026/10/30
   github_stars: 20
-  last_commit_on: 2026/11/20
+  last_commit_on: 2026/11/21
   status: active
-  last_scrape_at: '2026-11-20T18:50:53Z'
+  last_scrape_at: '2026-11-21T22:22:41Z'
   theme: family
   family_id: smorg-rb
   family_position: 6
@@ -1111,14 +1111,14 @@
   - ruby
   - structuredmerge
   docs_site: https://www.rubydoc.info/gems/psych-merge/1.0.0
-  total_downloads: 17096
+  total_downloads: 17132
   daily_downloads: 230
-  release_downloads: 849
+  release_downloads: 864
   release_date: 2026/10/30
   github_stars: 20
-  last_commit_on: 2026/11/20
+  last_commit_on: 2026/11/21
   status: active
-  last_scrape_at: '2026-11-21T00:56:25Z'
+  last_scrape_at: '2026-11-21T22:23:02Z'
   theme: family
   family_id: smorg-rb
   family_position: 17
@@ -1147,14 +1147,14 @@
   - ruby
   - structuredmerge
   docs_site: https://www.rubydoc.info/gems/markly-merge/1.0.0
-  total_downloads: 17808
+  total_downloads: 17852
   daily_downloads: 231
-  release_downloads: 1141
+  release_downloads: 1161
   release_date: 2026/10/30
   github_stars: 20
-  last_commit_on: 2026/11/20
+  last_commit_on: 2026/11/21
   status: active
-  last_scrape_at: '2026-11-21T00:56:21Z'
+  last_scrape_at: '2026-11-21T22:22:56Z'
   theme: family
   family_id: smorg-rb
   family_position: 13
@@ -1185,14 +1185,14 @@
   - ruby
   - test
   docs_site: https://www.rubydoc.info/gems/token-resolver/1.0.2
-  total_downloads: 35798
+  total_downloads: 35885
   daily_downloads: 479
-  release_downloads: 5426
+  release_downloads: 5489
   release_date: 2026/10/29
   github_stars: 4
   last_commit_on: 2026/11/16
   status: active
-  last_scrape_at: '2026-11-20T18:50:47Z'
+  last_scrape_at: '2026-11-21T22:22:36Z'
   theme: family
   family_id: ast-merge
   family_position: 2
