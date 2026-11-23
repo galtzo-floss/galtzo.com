@@ -1663,13 +1663,13 @@
   github_stars: 668
   gitlab_stars: 5
   codeberg_stars: 0
-  total_downloads: 175298974
+  total_downloads: 175321083
   daily_downloads: 99343
-  release_downloads: 104612
+  release_downloads: 108150
   release_date: 2026/11/08
   last_commit_on: 2026/11/15
   status: active
-  last_scrape_at: '2026-11-22T07:59:34Z'
+  last_scrape_at: '2026-11-23T01:58:16Z'
   licenses:
   - MIT
   license_url: https://github.com/ruby-oauth/oauth/blob/main/LICENSE.md
@@ -1708,13 +1708,13 @@
   github_stars: 7
   gitlab_stars: 1
   codeberg_stars: 1
-  total_downloads: 30268334
+  total_downloads: 30284989
   daily_downloads: 82514
-  release_downloads: 5633650
+  release_downloads: 5640760
   release_date: 2026/07/15
   last_commit_on: 2026/11/08
   status: active
-  last_scrape_at: '2026-11-22T07:59:37Z'
+  last_scrape_at: '2026-11-23T01:58:19Z'
   licenses:
   - MIT
   license_url: https://github.com/ruby-oauth/oauth-tty/blob/main/LICENSE.md
@@ -1753,13 +1753,13 @@
   github_stars: 2180
   gitlab_stars: 24
   codeberg_stars: 2
-  total_downloads: 287564086
+  total_downloads: 287622712
   daily_downloads: 161185
-  release_downloads: 638034
+  release_downloads: 647501
   release_date: 2026/10/25
   last_commit_on: 2026/11/19
   status: active
-  last_scrape_at: '2026-11-22T07:59:41Z'
+  last_scrape_at: '2026-11-23T01:58:23Z'
   licenses:
   - MIT
   license_url: https://github.com/ruby-oauth/oauth2/blob/main/LICENSE.md
@@ -1790,13 +1790,13 @@
   - security
   docs_site: https://omniauth-identity.galtzo.com
   github_stars: 363
-  total_downloads: 2476006
+  total_downloads: 2476199
   daily_downloads: 1145
-  release_downloads: 24213
+  release_downloads: 24270
   release_date: 2026/07/15
   last_commit_on: 2026/11/04
   status: active
-  last_scrape_at: '2026-11-22T07:59:44Z'
+  last_scrape_at: '2026-11-23T01:58:26Z'
   licenses:
   - MIT
   license_url: https://github.com/omniauth/omniauth-identity/blob/main/LICENSE.md
@@ -1898,13 +1898,13 @@
   - security
   docs_site:
   github_stars: 147
-  total_downloads: 776170
+  total_downloads: 776227
   daily_downloads: 100
-  release_downloads: 6169
+  release_downloads: 6191
   release_date: 2026/07/14
   last_commit_on: 2026/11/08
   status: active
-  last_scrape_at: '2026-11-22T07:59:48Z'
+  last_scrape_at: '2026-11-23T01:58:29Z'
   licenses:
   - MIT
   license_url: https://github.com/omniauth/omniauth-ldap/blob/main/LICENSE.md
@@ -1942,13 +1942,13 @@
   github_stars: 96
   gitlab_stars: 0
   codeberg_stars: 0
-  total_downloads: 5011523
+  total_downloads: 5011931
   daily_downloads: 973
-  release_downloads: 118314
+  release_downloads: 118412
   release_date: 2025/06/08
   last_commit_on: 2026/08/16
   status: active
-  last_scrape_at: '2026-11-22T07:59:52Z'
+  last_scrape_at: '2026-11-23T01:58:33Z'
   licenses:
   - MIT
   license_url: https://github.com/ruby-openid/omniauth-openid/blob/main/LICENSE.md
@@ -2187,13 +2187,13 @@
   github_stars: 5
   gitlab_stars: 0
   codeberg_stars: 0
-  total_downloads: 8386235
+  total_downloads: 8386835
   daily_downloads: 1283
-  release_downloads: 4068397
+  release_downloads: 4068779
   release_date: 2014/01/20
   last_commit_on: 2026/06/29
   status: active
-  last_scrape_at: '2026-11-22T07:59:55Z'
+  last_scrape_at: '2026-11-23T01:58:37Z'
   licenses:
   - MIT
   license_url: https://github.com/ruby-openid/rack-openid/blob/master/LICENSE.txt
@@ -8847,8 +8847,8 @@
   - type: GitHub
     url: https://github.com/xberg-io/tree-sitter-language-pack
     owner: xberg-io
-    total_downloads: 11130207
-    release_downloads: 139299
+    total_downloads: 11188192
+    release_downloads: 268
   tags:
   - parsing
   - python
@@ -8863,9 +8863,9 @@
   total_downloads: 87491032
   daily_downloads: 215562
   downloads_basis: lifetime
-  release_date: 2026/11/15
-  last_commit_on: 2026/11/21
-  last_scrape_at: '2026-11-22T07:59:30Z'
+  release_date: 2026/11/23
+  last_commit_on: 2026/11/22
+  last_scrape_at: '2026-11-23T01:58:12Z'
   first_commit_by_person: https://github.com/xberg-io/tree-sitter-language-pack/commit/7f947b49631d086a8812caebaf5e91f69e8987bf
   first_commit_by_person_on: 2026/04/20
   owner: false
